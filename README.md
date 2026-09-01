@@ -4,7 +4,7 @@
 
 * **Integrante 1:** Elmer Jose Manuel Villegas Suarez
 * **Integrante 2:** Alessandro Facundo Freed Monzón Gallegos
-* **Integrante 3:** Juan David Velo Poma (Lider)
+* **Integrante 3:** Juan David Velo Poma (Líder)
 
 
 ## 2. Nombre Tentativo del Producto (Tentative Product Name)
