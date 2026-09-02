@@ -4,7 +4,7 @@
 
 * **Integrante 1:** Elmer Jose Manuel Villegas Suarez
 * **Integrante 2:** Alessandro Facundo Freed Monzón Gallegos
-* **Integrante 3:** Juan David Velo Poma (Líder)
+* **Integrante 3:** Juan David Velo Poma (Líder del grupo)
 
 
 ## 2. Nombre Tentativo del Producto (Tentative Product Name)
@@ -16,16 +16,41 @@
 
 ## 3. Problema u Oportunidad Inicial (Initial Problem or Opportunity)
 
-En el Sistema Integrado de Transporte de Lima (Metropolitano y Corredores Complementarios), los usuarios enfrentan una alta incertidumbre respecto a los tiempos de llegada y el nivel de aforo de las unidades. Esta situación genera colas ineficientes, viajes incómodos y exposición a riesgos de seguridad ciudadana durante los desplazamientos a pie en la primera y última milla. 
+### Contexto y Problemática
+En el Sistema Integrado de Transporte de Lima (Metropolitano y Corredores Complementarios), los usuarios enfrentan una alta incertidumbre respecto a los tiempos de llegada y el nivel de aforo (asientos disponibles, viaje de pie o bus saturado) de las unidades. Esta carencia de información genera tiempos de espera ineficientes, viajes incómodos y aglomeraciones severas en los paraderos.
 
-UrbanSafe AI aborda esta problemática mediante el modelado predictivo del aforo a través de datos proxy (tráfico en tiempo real y registros históricos de la ATU) e integra un algoritmo de enrutamiento por riesgo que prioriza vías iluminadas y seguras sobre la distancia más corta, reduciendo la exposición al peligro de los peatones.
+A esta ineficiencia en la movilidad se suma una problemática crítica de seguridad ciudadana durante la denominada "primera y última milla" (los tramos a pie que realizan los usuarios desde su origen hacia el paradero y desde la estación hasta su destino final). Según el informe técnico del Instituto Nacional de Estadística e Informática (INEI, 2025), la percepción de inseguridad ciudadana en las principales áreas urbanas supera el 85%, registrándose la mayor incidencia de victimización por robos y hurtos en vías públicas desoladas o mal iluminadas durante horarios de alta vulnerabilidad. Las herramientas de navegación convencionales vigentes en el mercado optimizan los trayectos basándose únicamente en la distancia mínima o el menor tiempo hipotético, ignorando el nivel de riesgo peatonal y el estado de ocupación de las unidades de transporte.
+
+### Origen de la Iniciativa y Oportunidad
+Evolucionando a partir de los aprendizajes y propuestas de la **Hackathon ATU 2026** y el concepto desarrollado por **Urbyte**, surge **UrbanSafe AI**. El proyecto capitaliza la disponibilidad de portales de datos abiertos (*Open Data*) y servicios de APIs públicas para transformar la gestión tradicional del transporte hacia un **Producto de Datos**.
+
+### Propuesta de Valor del Producto de Datos
+UrbanSafe AI aborda estas problemáticas mediante el modelado predictivo del aforo a través de datos proxy (tráfico en tiempo real y registros históricos de la ATU) e integra un algoritmo de enrutamiento por riesgo que prioriza vías iluminadas y seguras sobre la distancia más corta, reduciendo la exposición al peligro de los peatones.
+
+### Referencias y Fuentes Consultadas:
+> 
+> * **Instituto Nacional de Estadística e Informática (INEI).** (2025). *Percepción de la Inseguridad Ciudadana y Victimización en Áreas Urbanas de Lima Metropolitana*. Informe Técnico de Seguridad Ciudadana.  
+>   [https://www.inei.gob.pe/estadisticas/indice-tematico/seguridad-ciudadana/](https://www.inei.gob.pe/estadisticas/indice-tematico/seguridad-ciudadana/)
+> 
+> * **Autoridad de Transporte Urbano para Lima y Callao (ATU).** (2026). *ATU lanza la Hackathon 2026 para impulsar soluciones innovadoras en el transporte público: inscripciones ya están habilitadas*. Noticias - Plataforma Única del Estado Peruano.  
+>   [https://www.gob.pe/institucion/atu/noticias/atu-lanza-la-hackathon-2026](https://www.gob.pe/institucion/atu/noticias/atu-lanza-la-hackathon-2026)
+> 
+> * **ProTransporte & Autoridad de Transporte Urbano para Lima y Callao (ATU).** (2026). *Portal Oficial de Datos Abiertos del Sistema Integrado de Transporte*.  
+>   [https://sistemas.protransporte.gob.pe/DatosAbiertos/](https://sistemas.protransporte.gob.pe/DatosAbiertos/)
 
 ## 4. Dominio Objetivo (Target Domain) y Enfoque de la Solución
 
-El proyecto se enmarca en el sector de **Transporte Urbano, Ciudades Inteligentes (Smart Cities) y Seguridad Ciudadana**.
+### Dominio Objetivo
+El proyecto se enmarca analíticamente en la convergencia de tres áreas clave: **Transporte Urbano**, **Ciudades Inteligentes (*Smart Cities*)** y **Seguridad Ciudadana**.
 
+### Enfoque de la Solución
 La solución adopta un enfoque predictivo y prescriptivo mediante el uso de algoritmos de Machine Learning. En lugar de ofrecer un diagnóstico puramente descriptivo sobre la ubicación actual de los buses, el sistema infiere el nivel de aforo futuro de las unidades y sugiere rutas peatonales seguras en función del entorno y la hora del desplazamiento.
 
+### Usuarios Objetivo
+La solución ha sido estructurada considerando dos perfiles de usuarios claramente identificados:
+
+* **Usuarios del Transporte Público (Pasajeros y Peatones):** Ciudadanos que realizan desplazamientos cotidianos en el sistema integrado de Lima y requieren planificar sus viajes reduciendo la incertidumbre del aforo de los buses, optimizando sus tiempos de espera y transitando por caminos peatonales con menor exposición a la delincuencia.
+* **Planificadores Urbanos y Entidades Reguladoras (ATU y Municipios):** Organismos de gestión del transporte que pueden aprovechar el análisis agregado de la demanda e identificar zonas críticas en la infraestructura de la primera y última milla para la toma de decisiones basada en datos.
 
 ## 5. Fuente del Dataset (Dataset Source)
 
