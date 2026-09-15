@@ -26,10 +26,13 @@ En esta sección se detalla la construcción teórica, la fundamentación de las
 * **Propósito del Módulo:** Predecir de manera continua el tiempo en minutos que tardará en arribar la siguiente unidad vehicular a una estación o paradero determinado, reduciendo la incertidumbre del usuario en la plataforma.
 
 * **Construcción Analítica del Target ($y_{ETA}$):**
-  El target continuo $\text{Target\_ETA\_Min}$ se formula analíticamente a partir de la frecuencia de despacho observada y se valida contra el intervalo entre buses ($Headway$):
-  $$\text{Target\_ETA\_Min} = \begin{cases} \frac{60.0}{\text{Frecuencia}} & \text{si Frecuencia} > 0 \\ \text{Headway\_Min} & \text{en otro caso} \end{cases}$$
+  El target continuo `Target_ETA_Min` se formula a partir de la frecuencia de despacho observada y se valida contra el intervalo entre buses (`Headway_Min`):
+  * Si `Frecuencia > 0`:
+  `Target_ETA_Min = 60.0 / Frecuencia`
+  * En otro caso:
+  `Target_ETA_Min = Headway_Min`
 
-* **Variables de Entrada Evaluadas ($X$):**
+* **Variables de Entrada Evaluadas (X):**
   * *Espacio-Temporales:* `Hora`, `Es_Habil`, `Troncal_code`, `Franja_code`, `DiaSemana_code`.
   * *Oferta Operativa:* `Cap_total`, `Frecuencia`, `N_Rutas`, `Sin_Oferta`, `sin_capacidad`.
   * *Inercia de Demanda:* Lags históricos de validaciones (`val_lag_1h`, `val_lag_24h`) y promedio móvil (`val_roll_mean_3h`).
@@ -52,9 +55,18 @@ En esta sección se detalla la construcción teórica, la fundamentación de las
 
 * **Propósito del Módulo:** Clasificar el nivel de ocupación con el que llegará el bus a la estación, permitiendo al usuario anticipar si viajará sentado, de pie o si la unidad vendrá saturada.
 
-* **Construcción Analítica del Target ($y_{Aforo}$):**
-  Se construye a partir del Índice de Ocupación Físico ($\text{Indice\_Ocupacion} = \frac{\text{Validaciones}}{\text{Cap\_total}}$), discretizado en tres clases ordinales de confort:
-  $$\text{Target\_Aforo} = \begin{cases} 0 \text{ (Bajo / Asientos Disponibles)} & \text{si } \text{Indice\_Ocupacion} \le 0.40 \\ 1 \text{ (Medio / Viaje de Pie)} & \text{si } 0.40 < \text{Indice\_Ocupacion} \le 0.85 \\ 2 \text{ (Alto / Bus Saturado)} & \text{si } \text{Indice\_Ocupacion} > 0.85 \end{cases}$$
+* **Construcción Analítica del Target (`y_Aforo`):**
+  Se construye a partir del Índice de Ocupación Físico:
+
+  `Indice_Ocupacion = Validaciones / Cap_total`
+
+  Este índice se discretiza en tres clases ordinales de confort:
+
+  | Condición | `Target_Aforo` | Interpretación |
+  |---|---:|---|
+  | `Indice_Ocupacion <= 0.40` | `0` | Bajo / Asientos Disponibles |
+  | `0.40 < Indice_Ocupacion <= 0.85` | `1` | Medio / Viaje de Pie |
+  | `Indice_Ocupacion > 0.85` | `2` | Alto / Bus Saturado |
 
 * **Variables de Entrada Evaluadas ($X$):**
   Predictores del Módulo 1 enriquecidos con factores ambientales:
@@ -80,15 +92,17 @@ En esta sección se detalla la construcción teórica, la fundamentación de las
 
 * **Propósito del Módulo:** Generar una sugerencia de acción para la toma de decisiones del usuario en tiempo real (abordar inmediatamente, esperar la siguiente unidad o evaluar transporte alternativo).
 
-* **Construcción Analítica del Target ($y_{Rec}$):**
-  Este target prescriptivo se genera mapeando la matriz de decisión de la función de utilidad del producto $U(Aforo, ETA)$:
-  $$\text{Regla}(A, ETA) = \begin{cases} 
-  0 \text{ (Abordar Ahora)} & \text{si } A = 0 \text{ o } (A = 1 \text{ y } ETA \le 5.0\text{ min}) \\
-  1 \text{ (Esperar Siguiente)} & \text{si } (A = 1 \text{ y } ETA > 5.0\text{ min}) \text{ o } (A = 2 \text{ y } ETA \le 3.0\text{ min}) \\
-  2 \text{ (Evaluar Alternativa)} & \text{si } A = 2 \text{ y } ETA > 3.0\text{ min}
-  \end{cases}$$
+* **Construcción Analítica del Target (`y_Rec`):**
+  Este target prescriptivo se genera mapeando la matriz de decisión de la función de utilidad del producto `U(Aforo, ETA)`:
 
-* **Variables de Entrada Evaluadas ($X$):**
+  | Condición | `Regla(A, ETA)` | Recomendación |
+  |---|---:|---|
+  | `A = 0` o (`A = 1` y `ETA <= 5.0 min`) | `0` | Abordar Ahora |
+  | (`A = 1` y `ETA > 5.0 min`) o (`A = 2` y `ETA <= 3.0 min`) | `1` | Esperar Siguiente |
+  | `A = 2` y `ETA > 3.0 min` | `2` | Evaluar Alternativa |
+
+
+* **Variables de Entrada Evaluadas (X):**
   Salidas estimadas de los Módulos 1 y 2 (`ETA_predicho`, `Aforo_predicho`) junto con la variable contextual `Franja_code`.
 
 * **Justificación de Selección de Features:**
@@ -119,18 +133,18 @@ En esta sección se detalla la construcción teórica, la fundamentación de las
   * *Justificación del Baseline:* Aplica límites estadísticos estándar sobre ventanas móviles para detectar valores fuera de rango de manera univariable.
 
 * **Modelo Seleccionado:** **Isolation Forest**.
-  * *Justificación Técnica y Explicabilidad:* Algoritmo no supervisado que aisla datos atípicos mediante particiones aleatorias en el espacio de características. Produce un *Anomaly Score* continuo entre $[-1, 1]$, permitiendo detectar desviaciones multivariables complejas con una baja carga computacional.
+  * *Justificación Técnica y Explicabilidad:* Algoritmo no supervisado que aisla datos atípicos mediante particiones aleatorias en el espacio de características. Produce un *Anomaly Score* continuo entre [-1, 1], permitiendo detectar desviaciones multivariables complejas con una baja carga computacional.
 
 * **Métricas Principales de Evaluación:** **PR-AUC** (*Precision-Recall AUC*), **ROC-AUC en Datos Sintéticos/Inyectados** y **Precision@K**.
-  * *Justificación de Métricas:* Al tratarse de un algoritmo no supervisado (*Isolation Forest*) donde las anomalías son eventos extremadamente raros (clase minoritaria severa), el área bajo la curva Precision-Recall (**PR-AUC**) es significativamente más informativa que la precisión global para medir la especificidad de las alertas. Adicionalmente, se utiliza el ROC-AUC sobre un conjunto de validación con anomalías inyectadas sintéticamente (p. ej., saltos abruptos de *Headway*) y la inspección del $top-K$ ($K=5\%$) de las desviaciones más extremas contra registros históricos de colapsos de ruta.
+  * *Justificación de Métricas:* Al tratarse de un algoritmo no supervisado (*Isolation Forest*) donde las anomalías son eventos extremadamente raros (clase minoritaria severa), el área bajo la curva Precision-Recall (**PR-AUC**) es significativamente más informativa que la precisión global para medir la especificidad de las alertas. Adicionalmente, se utiliza el ROC-AUC sobre un conjunto de validación con anomalías inyectadas sintéticamente (p. ej., saltos abruptos de *Headway*) y la inspección del top-K (K=5%) de las desviaciones más extremas contra registros históricos de colapsos de ruta.
 
 
 > [!WARNING]
-> **Nota Operativa sobre los Target Definidos**
+> **Nota Operativa sobre los Target Definidos :** 
 > Las fórmulas analíticas utilizadas para la construcción de los targets (`Target_ETA_Min`, `Target_Aforo` y `Regla_Recomendacion`) se encuentran sujetas a calibraciones durante las fases avanzadas de desarrollo y pruebas con usuarios. Dichos umbrales y transformaciones podrán ajustarse para reflejar de forma más precisa la dinámica real del servicio de transporte masivo o cambios en las políticas operativas del sistema.
 
 > [!NOTE]
-> **Variables de Entrada (Features) y Validación de Modelos**
+> **Variables de Entrada (Features) y Validación de Modelos :**
 > Las variables de entrada presentadas en este documento corresponden a un conjunto evaluado y seleccionado preliminarmente durante la fase de exploración de datos. Si bien este grupo de características ha demostrado un excelente desempeño analítico y consistencia teórica en las pruebas iniciales, el *feature store* definitivo permanecerá dinámico y podrá incorporar nuevas covariables o descartar predictores redundantes conforme se avance en la etapa de despliegue y refinamiento continuo en producción.
 
 ## 4. Uso Operativo en Producción de los modelos
