@@ -357,7 +357,140 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 
 ---
 
-## 4. Findings — Hallazgos e implicaciones para UrbanSafe AI
+## 4. Data Understanding — Entorno urbano (OpenStreetMap)
+
+### 4.1 Rol de OSM en el producto
+
+| Dato | Bloque | Rol en UrbanSafe AI |
+|---|---|---|
+| `pois_raw_v1.csv` (`categoria`, `lat`, `lon`, `name`) | Equipamiento urbano | Insumo del **enrutamiento peatonal seguro** (RF-03/segundo plus): luminarias e infraestructura de seguridad marcan tramos "iluminados"/"vigilados"; comercio/negocio son proxy de actividad y flujo peatonal. |
+| `red_vial_raw_v1.geojson` (`highway`, `oneway`, `lanes`, `maxspeed`, `length_meters`) | Red vial | Grafo base sobre el que se calculará la **ruta peatonal** de primera/última milla (nodos = intersecciones, aristas = tramos). |
+| `dataset_osm_estaciones_limpio.csv` (`poi_500m_*`, `total_pois_500m`, `ratio_seguridad_comercio`) | Entorno de estación | Features de **contexto urbano por estación** (`num_est`), integrables al dataset de TransMilenio: candidatas a explicar demanda y a informar el score de seguridad de la ruta. |
+
+### 4.2 Origen y proceso de construcción
+
+- **Fuente:** extracto oficial `Bogota.osm.pbf` (BBBike OpenStreetMap Extractor), 20.3 MB, proyecciones **WGS 84 (`EPSG:4326`)** para coordenadas y **Magna-Sirgas Bogotá (`EPSG:3116`)** para cálculos métricos.
+- **Extracción:** `EDA_OSM.ipynb` (Parte 1) usa `pyrosm` para separar dos capas:
+  - **POIs** bajo 5 categorías funcionales definidas por filtro de tags OSM: `luminaria` (`highway=street_lamp`), `hospital` (`amenity=hospital/clinic`), `comisaria` (`amenity=police`), `comercio` (`shop=*`) y `negocio` (bancos, restaurantes, farmacias, etc.).
+  - **Red vial** completa (`get_network(network_type="all")`), con `length_meters` recalculado proyectando a `EPSG:3116` (evita el sesgo de medir distancias en grados).
+- **Salida cruda (versión 1):** `pois_raw_v1.csv`/`pois_raw_v1.geojson` y `red_vial_raw_v1.geojson`, persistidos antes de cualquier limpieza.
+
+### 4.3 Unidad de análisis, granularidad y cobertura
+
+- **Unidad de análisis (POIs):** un punto de interés individual georreferenciado, con su categoría funcional.
+- **Unidad de análisis (red vial):** un **tramo/arista** de vía (segmento entre intersecciones), no la calle completa.
+- **Cobertura espacial:** bounding box de Bogotá, `lat ∈ [4.52, 4.77]`, `lon ∈ [-74.22, -74.01]` — cubre ampliamente las 156 estaciones de TransMilenio.
+
+| Métrica | Valor |
+|---|---|
+| POIs extraídos (crudo) | 35,129 |
+| Tramos de red vial | 123,508 |
+| Categorías de POI | 5 |
+| Estaciones TransMilenio a enriquecer | 156 |
+
+### 4.4 Variables
+
+**`pois_raw_v1.csv` (6 columnas):** `osm_type`, `id`, `categoria`, `name`, `lat`, `lon` (+ `geometry` en la versión GeoJSON).
+
+**`red_vial_raw_v1.geojson` (8 columnas):** `id`, `osm_type`, `highway`, `oneway`, `lanes`, `maxspeed`, `geometry`, `length_meters` (ya calculado en metros reales, `EPSG:3116`).
+
+### 4.5 Inspección inicial — nulos y distribución
+
+| Columna | Origen | Nulos | Observación |
+|---|---|---|---|
+| `lat`, `lon` | POIs | 0% | Geolocalización completa sobre la sabana de Bogotá. |
+| `name` | POIs | >50% | Esperable en OSM: luminarias y comercios menores rara vez registran razón social. La `categoria` es el ancla analítica, no el nombre. |
+| `maxspeed` | Red vial | Mayoría vacío | Vacío estructural típico de OSM voluntario. |
+| `lanes` | Red vial | Mayoría vacío | Ídem; requiere imputación jerárquica (ver §5.1). |
+| `oneway` | Red vial | Codificación mixta | Valores `yes`, `no`, `-1` y nulo implícito (bidireccional). |
+
+Distribución de `length_meters` (123,508 tramos): media 111.65 m, mediana 63.68 m, P95 362.86 m, máximo 9,601.56 m (cola larga típica de vías arteriales/autopistas largas).
+
+---
+
+## 5. Preprocessing — Entorno urbano (OpenStreetMap)
+
+### 5.1 Limpieza y homogeneización
+
+| Columna cruda | Transformación | Columna resultante |
+|---|---|---|
+| `oneway` | Normalizado a booleano (`yes`/`1`/`-1` -> `True`) | `es_unidireccional` |
+| `lanes` | Parseo a numérico (toma el primer valor si viene como lista `"2;3"`) | `lanes_num` |
+| `lanes_num` (nulo) | Imputación **jerárquica**: mediana de `lanes_num` agrupada por `highway`, fallback a `1.0` | `lanes_imputados` + flag `sin_carril_reportado` |
+| `maxspeed` | Parseo a float (extrae dígitos, descarta unidades textuales) | `maxspeed_kmh` + flag `sin_maxspeed` |
+| `name` (POIs) | Nulo -> `"Sin registro"` | flag `sin_nombre` |
+
+**Por qué imputar carriles por jerarquía y no globalmente:** una vía `residential` y una `trunk` no comparten la misma capacidad típica; imputar con la mediana global distorsionaría la capacidad relativa de la red. Al agrupar por `highway`, el valor imputado respeta el tipo de vía.
+
+**Deduplicación de POIs:** se eliminaron **6 duplicados espaciales exactos** (mismo `categoria`, `lat`, `lon`), dejando **35,123 POIs únicos**. El total de tramos de red vial (123,508) no presentó degeneraciones ni geometrías nulas.
+
+Cobertura de los flags de auditoría generados:
+
+| Flag | Filas afectadas | Significado |
+|---|---|---|
+| `sin_carril_reportado` | 92,505 / 123,508 (74.9%) | Tramo sin `lanes` original; el valor en `lanes_imputados` es una imputación jerárquica, no un dato observado. |
+| `sin_maxspeed` | 111,604 / 123,508 (90.4%) | Tramo sin límite de velocidad reportado en OSM. |
+| `sin_nombre` | — | POI sin `name` en OSM (mayoría de luminarias y comercios menores). |
+
+### 5.2 Feature engineering
+
+**Jerarquización vial** — clasificación de `highway` en 5 macro-categorías funcionales (`jerarquia_vial`):
+
+| Jerarquía | Tramos | Longitud (km) | Carriles promedio |
+|---|---|---|---|
+| Arterial (`motorway`, `trunk`, `primary`) | 6,223 | 904.9 | 2.38 |
+| Intermedia (`secondary`, `tertiary`) | 12,273 | 1,619.6 | 2.04 |
+| Local (`residential`, `living_street`, `service`, `unclassified`) | 62,611 | 6,834.7 | 1.98 |
+| No motorizada (`footway`, `cycleway`, `pedestrian`, `path`, `steps`) | 41,081 | 4,186.3 | 1.93 |
+| Otro | 1,320 | 244.1 | 1.00 |
+
+Adicionalmente se calcula `log_length_m = log1p(length_meters)` para estabilizar la cola larga de tramos extensos en gráficos y modelos.
+
+**Agregación espacial por estación (buffer peatonal de 500 m):** se proyectan estaciones de TransMilenio y POIs a `EPSG:3116`, se genera un buffer de 500 m alrededor de cada una de las 156 estaciones y se hace un `spatial join` (`predicate="within"`) para contar POIs por categoría dentro del radio. El resultado se pivotea a columnas `poi_500m_<categoria>` por estación (`num_est`), más dos features derivadas:
+
+| Feature | Definición | Uso previsto |
+|---|---|---|
+| `poi_500m_<categoria>` | Conteo de POIs de esa categoría en el buffer de 500 m de la estación | Contexto urbano por estación, candidato a feature de demanda y de seguridad. |
+| `total_pois_500m` | Suma de todos los `poi_500m_*` | Indicador agregado de actividad/densidad del entorno. |
+| `ratio_seguridad_comercio` | `(poi_500m_comisaria + 1) / (poi_500m_comercio + 1)` | Proxy de cobertura de seguridad relativa a la actividad comercial (suavizado de Laplace para evitar división por cero). |
+
+500 m se eligió por ser una distancia peatonal caminable en ~6–7 minutos, consistente con el radio de influencia típico de una estación de transporte masivo.
+
+---
+
+## 6. Exploratory Analysis — Entorno urbano (OpenStreetMap)
+
+### 6.1 Composición de POIs y red vial
+
+De los **35,123 POIs únicos**, el **96.4%** se concentra en dos categorías transaccionales: `comercio` (22,454) y `negocio` (11,424). Los equipamientos críticos de soporte son una fracción menor: **606 luminarias**, **433 hospitales/clínicas** y **206 comisarías**. La red vial proyectada suma **13,789.6 km**, dominada volumétricamente por vías locales y sendas no motorizadas.
+
+![Composición de POIs y longitud de red vial por jerarquía](images/12_composicion_pois_y_red_vial.png)
+
+**Interpretación para el proyecto:** el fuerte predominio de `comercio`/`negocio` (96.4%) hace que estas categorías dominen cualquier índice agregado de "actividad urbana" (ver `total_pois_500m`); los equipamientos de seguridad (`luminaria`, `comisaria`) son escasos y deben tratarse como **features independientes**, no absorbidas en un total, si el objetivo es modelar seguridad peatonal nocturna.
+
+### 6.2 Densidad comercial por estación
+
+![Top 10 estaciones TransMilenio con mayor densidad comercial (buffer 500m)](images/13_top10_estaciones_comercio.png)
+
+Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y Eje Ambiental) lideran con cerca de **500 locales comerciales** en su entorno inmediato. El corredor Chapinero/Caracas Centro (**Marly** ~455, **Calle 57** ~402, **Flores** ~310) conforma el segundo clúster. En sectores residenciales/periféricos del norte (**Portal Norte**, **Mazurén**) el comercio cae a 40–100 locales.
+
+**Interpretación para el proyecto:** la densidad comercial está **fuertemente polarizada** hacia el centro/Chapinero, lo que coincide con las estaciones de mayor demanda identificadas en el EDA de TransMilenio (§3.3). Esto refuerza `total_pois_500m` como feature candidata de demanda y sugiere que las estaciones periféricas, con menor actividad comercial y potencialmente menor iluminación, son las que más necesitan el enrutamiento peatonal seguro nocturno (el "segundo plus" del producto).
+
+### 6.3 Correlaciones de densidad espacial
+
+![Matriz de correlación de densidad de POIs por estación (Pearson)](images/14_matriz_correlacion_osm.png)
+
+**Hallazgos:**
+
+- `poi_500m_comercio` y `total_pois_500m` están casi perfectamente correlacionados (**r = 0.94**): el comercio rige el volumen total de equipamiento urbano alrededor de una estación.
+- `poi_500m_negocio` coexiste moderadamente con `poi_500m_hospital` (**r = 0.46**) y `poi_500m_comercio` (**r = 0.58**): los servicios tienden a ubicarse cerca de otros servicios y del comercio.
+- `poi_500m_luminaria` y `poi_500m_comisaria` **no** correlacionan con la actividad comercial (**r ≈ −0.04** y **r = 0.24** respectivamente): la infraestructura de seguridad/iluminación en OSM **no sigue la lógica de aglomeración del retail**.
+
+**Interpretación para el proyecto:** el hallazgo #3 es crítico para el segundo plus (enrutamiento seguro nocturno) — **no se puede usar la densidad comercial como proxy de seguridad**. Luminarias y comisarías deben incorporarse como features de seguridad **explícitas e independientes** en el algoritmo de ruteo, no inferidas de la actividad comercial del entorno.
+
+---
+
+## 7. Findings — Hallazgos e implicaciones para UrbanSafe AI
 
 | # | Hallazgo del EDA | Implicación para el modelo (RF-01/RF-02) |
 |---|---|---|
@@ -370,10 +503,13 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 | 7 | **El clima es un efecto despreciable** en el periodo: lluvia ligera asociada a −2–3% (dentro del ruido), todas las correlaciones r ≤ 0.10 a igual franja; la señal de `temp` (0.35) es un proxy del ciclo horario. | Para el MVP, **priorizar features temporales y de oferta** sobre el clima; no esperar que el clima sea decisivo en el aforo. El fallback RF-05 (imputar medias climáticas históricas) no degrada la predicción si el clima no aporta señal. |
 | 8 | 8,735 filas (5%) sin oferta GTFS y 13,256 (7.5%) sin capacidad/ubicación-troncal-fase. | Tratar `Frecuencia=0` como **"sin GTFS"** (`Sin_Oferta`), no como servicio sin frecuencia; el modelo debe aprender ese estado (estaciones de corrales/cables no son comparables a estaciones BRT). No imputar capacidades: usar `sin_capacidad` y dejar la decisión al modelo. |
 | 9 | Pocas estaciones/troncales concentran la demanda; tres fases cubren el sistema. | Estrategia **celda a celda** (estación × hora × tipo de día) y priorización del MVP en estaciones de alta demanda/saturación, donde reducir el tiempo de espera impacta a más usuarios. |
+| 10 | `dataset_osm_estaciones_limpio.csv` aporta `poi_500m_*`/`total_pois_500m` por `num_est`, unible directamente al dataset de TransMilenio. | Incorporar el **entorno urbano como feature de demanda**: la densidad comercial (`poi_500m_comercio`) coincide con las estaciones de mayor demanda (Jiménez, Marly, Calle 57), reforzando la priorización del MVP en esas estaciones (RF-01/RF-02). |
+| 11 | La densidad comercial **no correlaciona** con luminarias/comisarías (r ≈ −0.04 / 0.24). | El **enrutamiento peatonal seguro nocturno** (segundo plus) debe usar `poi_500m_luminaria`/`poi_500m_comisaria` como features de seguridad **independientes** de la actividad comercial del entorno, no derivadas de ella. |
+| 12 | La malla vial no motorizada/local ya trae `highway`, `jerarquia_vial` y `length_meters` por tramo. | Base directa para construir el **grafo peatonal** (nodos = intersecciones, aristas = tramos, peso = `length_meters` o tiempo estimado) que alimentará el algoritmo de ruteo del segundo plus. |
 
 ---
 
-## 5. Limitations (limitaciones)
+## 8. Limitations (limitaciones)
 
 1. **Dato proxy, no la fuente objetivo.** El análisis usa **TransMilenio (Bogotá)**, no la ATU de Lima. Los patrones horarios y de saturación son análogos en sistemas BRT, pero la transferencia a Lima (Metropolitano + Corredores) debe validarse con los datos ATU pendientes; las frecuencias, capacidades y festivos son colombianos, no peruanos.
 2. **Ventana corta (62 días, jul–ago 2026).** No captura estacionalidad anual (un solo invierno boreal, sin temporada completa de lluvias). Los patrones de demanda son robustos en el periodo, pero no se puede afirmar estabilidad interanual.
@@ -383,10 +519,13 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 6. **Cobertura de GTFS y capacidades incompleta.** 7 estaciones cerradas temporalmente por obras (`eta_oper=3`) explican ausencias; ~5% de filas sin oferta GTFS y ~7.5% sin capacidad. La oferta usa el snapshot **semanal más reciente ≤ fecha**, asumiendo estabilidad intrasemana.
 7. **Línea vs ruta.** El crudo agrega por `Linea` (agrupación operativa) porque `Ruta` (servicio concreto) llega casi vacía. No se puede distinguir buses individuales, solo frecuencia agregada por línea. Esto limita la granularidad del pronóstico de "próxima unidad" (RF-02) a nivel de línea/estación.
 8. **Calidad del clima crudo.** `wpgt` es casi todo NaN (1,462/1,488) y `prcp` usa NaN como "no llovió", convención válida en el análisis pero que debe manejarse explícitamente en el pipeline de features (no tratarlos como errores).
+9. **OSM es un mapa colaborativo, no un censo.** El 74.9% de los tramos viales no reporta `lanes` y el 90.4% no reporta `maxspeed`; ambos se imputan (jerárquicamente o quedan `NaN`), por lo que la capacidad/velocidad de la red es una **aproximación**, no una medición oficial. Del mismo modo, luminarias y comisarías dependen de que un mapeador voluntario las haya registrado: su ausencia en el mapa **no implica** su ausencia física en la ciudad, lo cual subestima la cobertura real de seguridad/iluminación.
+10. **Snapshot temporal único.** El extracto `Bogota.osm.pbf` es una foto de un momento dado; no captura obras viales, cierres temporales ni apertura/cierre de comercios ocurridos después de la descarga, mientras que las validaciones de TransMilenio sí son una serie de 62 días. Cruzar ambas fuentes asume que el entorno urbano es estable en esa ventana.
+11. **Buffer circular de 500 m ignora la topología peatonal real.** El conteo `poi_500m_*` usa distancia euclidiana (línea recta) desde la estación, no distancia caminando sobre la red vial; en zonas con manzanas grandes o vías arteriales que actúan como barrera, el buffer puede sobreestimar el equipamiento realmente accesible a pie.
 
 ---
 
-## 6. Reproducibilidad y artefactos
+## 9. Reproducibilidad y artefactos
 
 **Notebooks:**
 
@@ -394,6 +533,7 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 |---|---|
 | `code/eda/eda_transmilenio.ipynb` | Limpieza, feature engineering y análisis de validaciones -> produce `dataset_limpio.csv`. |
 | `code/eda/eda_transmilenio_clima.ipynb` | Cruce clima y análisis del efecto meteorológico -> produce `dataset_final_clima_transmilenio.csv`. |
+| `code/eda/EDA_OSM.ipynb` | Extracción del PBF (`pyrosm`), limpieza de POIs/red vial, feature engineering (jerarquía vial, buffers de 500 m) y análisis del entorno urbano -> produce `dataset_osm_estaciones_limpio.csv`, `pois_limpio.csv`, `red_vial_limpia.geojson`. Ejecutado en Google Colab (usa `google.colab.files` para cargar el `.pbf`); requiere copiar sus salidas a `data/OSM/` del repositorio. |
 
 **Scripts de ingesta:** `code/download/process_transmilenio.py`, `code/download/download_clima.py`, `code/download/download_geo.py`, `code/download/download_gtfs.py`.
 
@@ -405,7 +545,12 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 | `data/transmilenio/dataset_limpio.csv` | Limpio + features derivados (26 columnas). |
 | `data/transmilenio/dataset_final_clima_transmilenio.csv` | Limpio + clima horario (9 crudas + 3 derivadas). |
 | `data/clima/clima_hora_2026-07-01_a_2026-08-31.csv` | Clima horario Meteostat (1,488 registros). |
+| `data/OSM/pois_raw_v1.csv` / `pois_raw_v1.geojson` | POIs crudos extraídos del PBF (35,129 registros × 6 columnas). |
+| `data/OSM/red_vial_raw_v1.geojson` | Red vial cruda (123,508 tramos × 8 columnas, incluye `length_meters` en `EPSG:3116`). |
+| `data/OSM/pois_limpio.csv` | POIs depurados, sin duplicados espaciales (35,123 registros). |
+| `data/OSM/red_vial_limpia.geojson` | Red vial con flags de imputación y `jerarquia_vial` (123,508 tramos). |
+| `data/OSM/dataset_osm_estaciones_limpio.csv` | Features de entorno urbano por estación TransMilenio, unible por `num_est` (156 filas × 12 columnas). |
 
 **Diccionarios de datos:** `data_sample/transmilenio/Data_Dictionary_Transmilenio.md`, `data_sample/clima/Data_Dictionary_Clima.md`, `data_sample/OSM/Data_Dictionary_OSM.md`.
 
-**Figuras:** todas las imágenes de este reporte están en `docs/images/` y fueron extraídas directamente de los notebooks.
+**Figuras:** todas las imágenes de este reporte están en `docs/images/` y fueron extraídas directamente de los notebooks (`01`–`11` de TransMilenio/clima, `12`–`14` de OSM).
