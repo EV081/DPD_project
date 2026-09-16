@@ -139,11 +139,9 @@ En esta sección se detalla la construcción teórica, la fundamentación de las
   * *Justificación de Métricas:* Al tratarse de un algoritmo no supervisado (*Isolation Forest*) donde las anomalías son eventos extremadamente raros (clase minoritaria severa), el área bajo la curva Precision-Recall (**PR-AUC**) es significativamente más informativa que la precisión global para medir la especificidad de las alertas. Adicionalmente, se utiliza el ROC-AUC sobre un conjunto de validación con anomalías inyectadas sintéticamente (p. ej., saltos abruptos de *Headway*) y la inspección del top-K (K=5%) de las desviaciones más extremas contra registros históricos de colapsos de ruta.
 
 
-> [!WARNING]
 > **Nota Operativa sobre los Target Definidos :** 
 > Las fórmulas analíticas utilizadas para la construcción de los targets (`Target_ETA_Min`, `Target_Aforo` y `Regla_Recomendacion`) se encuentran sujetas a calibraciones durante las fases avanzadas de desarrollo y pruebas con usuarios. Dichos umbrales y transformaciones podrán ajustarse para reflejar de forma más precisa la dinámica real del servicio de transporte masivo o cambios en las políticas operativas del sistema.
 
-> [!NOTE]
 > **Variables de Entrada (Features) y Validación de Modelos :**
 > Las variables de entrada presentadas en este documento corresponden a un conjunto evaluado y seleccionado preliminarmente durante la fase de exploración de datos. Si bien este grupo de características ha demostrado un excelente desempeño analítico y consistencia teórica en las pruebas iniciales, el *feature store* definitivo permanecerá dinámico y podrá incorporar nuevas covariables o descartar predictores redundantes conforme se avance en la etapa de despliegue y refinamiento continuo en producción.
 

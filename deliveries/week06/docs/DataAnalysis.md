@@ -357,13 +357,13 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 
 ---
 
-## 4. Data Understanding — Entorno urbano (OpenStreetMap)
+## 4. Data Understanding (OpenStreetMap)
 
 ### 4.1 Rol de OSM en el producto
 
 | Dato | Bloque | Rol en UrbanSafe AI |
 |---|---|---|
-| `pois_raw_v1.csv` (`categoria`, `lat`, `lon`, `name`) | Equipamiento urbano | Insumo del **enrutamiento peatonal seguro** (RF-03/segundo plus): luminarias e infraestructura de seguridad marcan tramos "iluminados"/"vigilados"; comercio/negocio son proxy de actividad y flujo peatonal. |
+| `pois_raw_v1.csv` (`categoria`, `lat`, `lon`, `name`) | Equipamiento urbano | Insumo del **enrutamiento peatonal seguro**: luminarias e infraestructura de seguridad marcan tramos "iluminados"/"vigilados"; comercio/negocio son proxy de actividad y flujo peatonal. |
 | `red_vial_raw_v1.geojson` (`highway`, `oneway`, `lanes`, `maxspeed`, `length_meters`) | Red vial | Grafo base sobre el que se calculará la **ruta peatonal** de primera/última milla (nodos = intersecciones, aristas = tramos). |
 | `dataset_osm_estaciones_limpio.csv` (`poi_500m_*`, `total_pois_500m`, `ratio_seguridad_comercio`) | Entorno de estación | Features de **contexto urbano por estación** (`num_est`), integrables al dataset de TransMilenio: candidatas a explicar demanda y a informar el score de seguridad de la ruta. |
 
@@ -379,7 +379,7 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 
 - **Unidad de análisis (POIs):** un punto de interés individual georreferenciado, con su categoría funcional.
 - **Unidad de análisis (red vial):** un **tramo/arista** de vía (segmento entre intersecciones), no la calle completa.
-- **Cobertura espacial:** bounding box de Bogotá, `lat ∈ [4.52, 4.77]`, `lon ∈ [-74.22, -74.01]` — cubre ampliamente las 156 estaciones de TransMilenio.
+- **Cobertura espacial:** bounding box de Bogotá, `lat ∈ [4.52, 4.77]`, `lon ∈ [-74.22, -74.01]` - cubre ampliamente las 156 estaciones de TransMilenio.
 
 | Métrica | Valor |
 |---|---|
@@ -401,14 +401,14 @@ Correlación de `log(validaciones)` con el clima (toda la muestra):
 | `lat`, `lon` | POIs | 0% | Geolocalización completa sobre la sabana de Bogotá. |
 | `name` | POIs | >50% | Esperable en OSM: luminarias y comercios menores rara vez registran razón social. La `categoria` es el ancla analítica, no el nombre. |
 | `maxspeed` | Red vial | Mayoría vacío | Vacío estructural típico de OSM voluntario. |
-| `lanes` | Red vial | Mayoría vacío | Ídem; requiere imputación jerárquica (ver §5.1). |
+| `lanes` | Red vial | Mayoría vacío | Ídem; requiere imputación jerárquica. |
 | `oneway` | Red vial | Codificación mixta | Valores `yes`, `no`, `-1` y nulo implícito (bidireccional). |
 
 Distribución de `length_meters` (123,508 tramos): media 111.65 m, mediana 63.68 m, P95 362.86 m, máximo 9,601.56 m (cola larga típica de vías arteriales/autopistas largas).
 
 ---
 
-## 5. Preprocessing — Entorno urbano (OpenStreetMap)
+## 5. Preprocessing - (OpenStreetMap)
 
 ### 5.1 Limpieza y homogeneización
 
@@ -454,11 +454,11 @@ Adicionalmente se calcula `log_length_m = log1p(length_meters)` para estabilizar
 | `total_pois_500m` | Suma de todos los `poi_500m_*` | Indicador agregado de actividad/densidad del entorno. |
 | `ratio_seguridad_comercio` | `(poi_500m_comisaria + 1) / (poi_500m_comercio + 1)` | Proxy de cobertura de seguridad relativa a la actividad comercial (suavizado de Laplace para evitar división por cero). |
 
-500 m se eligió por ser una distancia peatonal caminable en ~6–7 minutos, consistente con el radio de influencia típico de una estación de transporte masivo.
+500 m se eligió por ser una distancia peatonal caminable en 6–7 minutos, consistente con el radio de influencia típico de una estación de transporte masivo.
 
 ---
 
-## 6. Exploratory Analysis — Entorno urbano (OpenStreetMap)
+## 6. Exploratory Analysis - (OpenStreetMap)
 
 ### 6.1 Composición de POIs y red vial
 
@@ -472,9 +472,9 @@ De los **35,123 POIs únicos**, el **96.4%** se concentra en dos categorías tra
 
 ![Top 10 estaciones TransMilenio con mayor densidad comercial (buffer 500m)](images/13_top10_estaciones_comercio.png)
 
-Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y Eje Ambiental) lideran con cerca de **500 locales comerciales** en su entorno inmediato. El corredor Chapinero/Caracas Centro (**Marly** ~455, **Calle 57** ~402, **Flores** ~310) conforma el segundo clúster. En sectores residenciales/periféricos del norte (**Portal Norte**, **Mazurén**) el comercio cae a 40–100 locales.
+Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y Eje Ambiental) lideran con cerca de **500 locales comerciales** en su entorno inmediato. El corredor Chapinero/Caracas Centro (**Marly** 455, **Calle 57** 402, **Flores** 310) conforma el segundo clúster. En sectores residenciales/periféricos del norte (**Portal Norte**, **Mazurén**) el comercio cae a 40–100 locales.
 
-**Interpretación para el proyecto:** la densidad comercial está **fuertemente polarizada** hacia el centro/Chapinero, lo que coincide con las estaciones de mayor demanda identificadas en el EDA de TransMilenio (§3.3). Esto refuerza `total_pois_500m` como feature candidata de demanda y sugiere que las estaciones periféricas, con menor actividad comercial y potencialmente menor iluminación, son las que más necesitan el enrutamiento peatonal seguro nocturno (el "segundo plus" del producto).
+**Interpretación:** la densidad comercial está **fuertemente polarizada** hacia el centro/Chapinero, lo que coincide con las estaciones de mayor demanda identificadas en el EDA de TransMilenio. Esto refuerza `total_pois_500m` como feature candidata de demanda y sugiere que las estaciones periféricas, con menor actividad comercial y potencialmente menor iluminación, son las que más necesitan el enrutamiento peatonal seguro nocturno (el "segundo plus" del producto).
 
 ### 6.3 Correlaciones de densidad espacial
 
@@ -490,7 +490,7 @@ Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y
 
 ---
 
-## 7. Findings — Hallazgos e implicaciones para UrbanSafe AI
+## 7. Findings - Hallazgos e implicaciones para UrbanSafe AI
 
 | # | Hallazgo del EDA | Implicación para el modelo (RF-01/RF-02) |
 |---|---|---|
@@ -503,7 +503,7 @@ Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y
 | 7 | **El clima es un efecto despreciable** en el periodo: lluvia ligera asociada a −2–3% (dentro del ruido), todas las correlaciones r ≤ 0.10 a igual franja; la señal de `temp` (0.35) es un proxy del ciclo horario. | Para el MVP, **priorizar features temporales y de oferta** sobre el clima; no esperar que el clima sea decisivo en el aforo. El fallback RF-05 (imputar medias climáticas históricas) no degrada la predicción si el clima no aporta señal. |
 | 8 | 8,735 filas (5%) sin oferta GTFS y 13,256 (7.5%) sin capacidad/ubicación-troncal-fase. | Tratar `Frecuencia=0` como **"sin GTFS"** (`Sin_Oferta`), no como servicio sin frecuencia; el modelo debe aprender ese estado (estaciones de corrales/cables no son comparables a estaciones BRT). No imputar capacidades: usar `sin_capacidad` y dejar la decisión al modelo. |
 | 9 | Pocas estaciones/troncales concentran la demanda; tres fases cubren el sistema. | Estrategia **celda a celda** (estación × hora × tipo de día) y priorización del MVP en estaciones de alta demanda/saturación, donde reducir el tiempo de espera impacta a más usuarios. |
-| 10 | `dataset_osm_estaciones_limpio.csv` aporta `poi_500m_*`/`total_pois_500m` por `num_est`, unible directamente al dataset de TransMilenio. | Incorporar el **entorno urbano como feature de demanda**: la densidad comercial (`poi_500m_comercio`) coincide con las estaciones de mayor demanda (Jiménez, Marly, Calle 57), reforzando la priorización del MVP en esas estaciones (RF-01/RF-02). |
+| 10 | `dataset_osm_estaciones_limpio.csv` aporta `poi_500m_*`/`total_pois_500m` por `num_est`, unible directamente al dataset de TransMilenio. | Incorporar el **entorno urbano como feature de demanda**: la densidad comercial (`poi_500m_comercio`) coincide con las estaciones de mayor demanda (Jiménez, Marly, Calle 57), reforzando la priorización del MVP en esas estaciones. |
 | 11 | La densidad comercial **no correlaciona** con luminarias/comisarías (r ≈ −0.04 / 0.24). | El **enrutamiento peatonal seguro nocturno** (segundo plus) debe usar `poi_500m_luminaria`/`poi_500m_comisaria` como features de seguridad **independientes** de la actividad comercial del entorno, no derivadas de ella. |
 | 12 | La malla vial no motorizada/local ya trae `highway`, `jerarquia_vial` y `length_meters` por tramo. | Base directa para construir el **grafo peatonal** (nodos = intersecciones, aristas = tramos, peso = `length_meters` o tiempo estimado) que alimentará el algoritmo de ruteo del segundo plus. |
 
