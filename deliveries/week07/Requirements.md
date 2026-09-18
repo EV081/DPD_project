@@ -17,11 +17,10 @@ El propósito central de **UrbanSafe AI** es **reducir los tiempos de espera e i
 
 ## 2. Usuarios Objetivo (Target Users)
 
-Los usuarios finales del sistema corresponden a personas que se desplazan diariamente por Lima Metropolitana utilizando la red del Metropolitano y Corredores Complementarios:
+La solución ha sido estructurada considerando dos perfiles de usuarios claramente identificados:
 
-* **Pasajeros Cotidianos en Hora Punta (Trabajadores y Estudiantes):** Usuarios que se desplazan en franjas de alta saturación vehicular y peatonal. Requieren tomar decisiones inmediatas en el andén o paradero para no perder tiempo esperando unidades imposibles de abordar.
-* **Estudiantes y Trabajadores Nocturnos:** Peatones que transitan pasadas las 20:00 - 21:00 horas desde las estaciones hacia sus destinos finales. Experimentan una alta percepción de inseguridad en tramos desolados o con escasa infraestructura de iluminación pública.
-* **Usuarios Frecuentes con Baja Tolerancia a la Incertidumbre:** Personas que buscan comparar si les conviene abordar el bus que llega, esperar el siguiente o trasladarse a un paradero cercano, minimizando el estrés y el tiempo total de viaje.
+* **Usuarios del Transporte Público (Pasajeros y Peatones):** Ciudadanos que realizan desplazamientos cotidianos en el sistema integrado de Lima y requieren planificar sus viajes reduciendo la incertidumbre del aforo de los buses y **optimizando sus tiempos de espera en las estaciones y paraderos**; en horario nocturno, también transitando por caminos peatonales con menor exposición a la delincuencia.
+* **Planificadores Urbanos y Entidades Reguladoras (ATU y Municipios):** Organismos de gestión del transporte que pueden aprovechar el análisis agregado de la demanda e identificar zonas críticas en la infraestructura de la primera y última milla para la toma de decisiones basada en datos.
 
 
 ## 3. Mapa de Stakeholders y Actores
