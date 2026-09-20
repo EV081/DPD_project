@@ -46,11 +46,19 @@ Este documento analiza las 3 fuentes que alimentan al proyecto: las **validacion
 - **Clima:** `download_clima.py` descarga de Meteostat (estación 80222 Bogotá/El Dorado) la serie horaria 24×62 días.
 - **Geo:** `geo/estaciones_troncales.geojson` (153 estaciones) y `geo/trazados_troncales.geojson` (22 trazados).
 
+> Una fila de `dataset_limpio.csv` = validaciones de una **línea** en una **estación**, en una
+> **hora** de un **día** (176,783 × 28). Es la base del pipeline de modelado (pronóstico, ETA,
+> aforo y recomendación); ver [`data_dictionary/Data_Dictionary_Procesados.md`](data_dictionary/Data_Dictionary_Procesados.md).
+
 ### 1.3 Unidad de análisis, granularidad y cobertura
 
 - **Unidad de análisis:** una fila = validaciones de una **línea** en una **estación** durante una **hora** de un **día** (`Tipo_Dia`).
 - **Granularidad temporal:** horaria (la misma que operará la predicción en tiempo real).
-- **Cobertura:** 62 días -> 176,783 filas útiles × 17 columnas (dataset base) → 28 columnas tras el cruce con clima.
+- **Cobertura:** 62 días -> 176,783 filas útiles × 17 columnas (dataset base).
+- **Columnas:** el dataset limpio final (`dataset_limpio.csv`) pasa a **28 columnas** tras el
+  preprocesamiento y el *feature engineering* (§2). El clima **no** forma parte de este dataset:
+  la serie climática se cruza aparte (§2.7). Los datasets procesados y de salida del modelado se
+  describen en [`data_dictionary/DatasetDescriptions.md`](data_dictionary/DatasetDescriptions.md).
 
 Resumen del dataset analizado:
 
@@ -166,7 +174,12 @@ Se verifican: `Validaciones >= 1` y máximos plausibles; capacidades no negativa
 
 - **Unión:** `left join` del dataset limpio contra el clima **por `(Fecha, Hora)`**. El clima es una sola serie para toda la ciudad, por lo que cada hora climática se replica en las celdas (estación × línea) que comparten fecha y hora (relación 1 clima -> N celdas).
 - **Verificación de la unión:** no se pierde ninguna fila y **ninguna celda queda sin clima**. La unión es completa porque TransMilenio no opera todas las horas (madrugadas sin servicio) mientras el clima cubre las 24 h.
-- **Dataset generado:** las 26 columnas del dataset limpio + 9 crudas de clima + 3 derivadas -> `dataset_final_clima_transmilenio.csv`.
+- **Dataset generado:** las 28 columnas del dataset limpio + 9 crudas de clima + 3 derivadas -> `dataset_final_clima_transmilenio.csv`.
+
+> **Uso en modelado:** pese a construirse el cruce, el EDA de la §3.6 determinó que el clima no
+> aporta señal (correlaciones r ≤ 0.10 a igual franja; el aparente efecto de lluvia era un
+> artefacto de festivos). Por eso el modelado (week07) usa **`dataset_limpio.csv` sin columnas
+> climáticas**; el cruce permanece disponible como artefacto de análisis.
 
 **Cobertura de lluvia en el periodo:**
 
@@ -534,6 +547,7 @@ Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y
 | `code/eda/eda_transmilenio.ipynb` | Limpieza, feature engineering y análisis de validaciones -> produce `dataset_limpio.csv`. |
 | `code/eda/eda_transmilenio_clima.ipynb` | Cruce clima y análisis del efecto meteorológico -> produce `dataset_final_clima_transmilenio.csv`. |
 | `code/eda/EDA_OSM.ipynb` | Extracción del PBF (`pyrosm`), limpieza de POIs/red vial, feature engineering (jerarquía vial, buffers de 500 m) y análisis del entorno urbano -> produce `dataset_osm_estaciones_limpio.csv`, `pois_limpio.csv`, `red_vial_limpia.geojson`. Ejecutado en Google Colab (usa `google.colab.files` para cargar el `.pbf`); requiere copiar sus salidas a `data/OSM/` del repositorio. |
+| `code/model/Modelamiento_Preeliminar.ipynb` | Modelado preliminar (week07): pronóstico walk-forward de validaciones con Chronos vs baselines, derivación de ETA/Aforo y recomendación, y comparativas de los 4 módulos -> produce `data_processed/pronostico_24h_estaciones.csv`, `eval_walkforward_modelos.csv`, `metricas_modelos.csv` y los CSVs de `code/model/outputs/`. Detalle en [`ModelSelection.md`](ModelSelection.md). |
 
 **Scripts de ingesta:** `code/download/process_transmilenio.py`, `code/download/download_clima.py`, `code/download/download_geo.py`, `code/download/download_gtfs.py`.
 
@@ -551,6 +565,19 @@ Las estaciones gemelas de transferencia **Avenida Jiménez** (`09110`, Caracas y
 | `data/OSM/red_vial_limpia.geojson` | Red vial con flags de imputación y `jerarquia_vial` (123,508 tramos). |
 | `data/OSM/dataset_osm_estaciones_limpio.csv` | Features de entorno urbano por estación TransMilenio, unible por `num_est` (156 filas × 12 columnas). |
 
-**Diccionarios de datos:** `data_sample/transmilenio/Data_Dictionary_Transmilenio.md`, `data_sample/clima/Data_Dictionary_Clima.md`, `data_sample/OSM/Data_Dictionary_OSM.md`.
+**Salidas del modelado (week07):**
+
+| Archivo | Descripción |
+|---|---|
+| `data_processed/pronostico_24h_estaciones.csv` | Pronóstico 24 h por estación: mediana + banda q10–q90 de validaciones, ocupación, ETA en Modo Histórico y recomendación operativa (3,480 × 12). |
+| `data_processed/eval_walkforward_modelos.csv` | Walk-forward de 5 días × 11 modelos (MAE/RMSE/WMAPE). |
+| `data_processed/metricas_modelos.csv` | Métricas globales `chronos` vs `naive_24` (promedio walk-forward). |
+| `code/model/outputs/eta_comparativa_modelos.csv` | Comparativa ETA (4 opciones × 5 días). |
+| `code/model/outputs/comparativa_aforo_modelos.csv` | Comparativa Aforo (8 clasificadores). |
+| `code/model/outputs/comparativa_modulo3_modelos.csv` | Comparativa Recomendación (8 clasificadores; fidelidad AC-03 y FP de «Abordar»). |
+
+**Diccionarios de datos:** [`docs/data_dictionary/`](data_dictionary/) — `Data_Dictionary_Transmilenio.md`,
+`Data_Dictionary_Clima.md`, `Data_Dictionary_OSM.md` (fuentes crudas) y
+`Data_Dictionary_Procesados.md` + `DatasetDescriptions.md` (datasets procesados y salidas de modelado).
 
 **Figuras:** todas las imágenes de este reporte están en `docs/images/` y fueron extraídas directamente de los notebooks (`01`–`11` de TransMilenio/clima, `12`–`14` de OSM).

@@ -77,6 +77,10 @@ deliveries/week07/data/
 
 ## 4. Clima — Meteostat Bogotá (`download_clima.py`)
 
+> **Nota (feature store):** la data de clima se ingiere solo para el EDA/reporte. El EDA (hallazgo 7)
+> mostró que las variables climáticas no aportan señal al aforo ni al ETA (r ≤ 0.10 a igual franja),
+> por lo que **no forman parte de los predictores** de los Módulos 1–3 del MVP.
+
 - **Fuente:** Meteostat (estación `80222` Bogotá / El Dorado), vía libreria `meteostat`.
 - **Qué guarda:** `deliveries/week07/data/clima/clima_hora_*.csv` (1,488 filas), `clima_dia_*.csv` (62),
   `clima_semana_*.csv` (10). Diario/semanal se derivan de la hora (el `daily()` de Meteostat

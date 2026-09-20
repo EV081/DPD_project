@@ -17,3 +17,13 @@ geopandas>=0.14
 # Visualización
 matplotlib>=3.7
 seaborn>=0.13
+
+# Pronostico de series de tiempo (Amazon Chronos-Bolt / GARCH-like deep forecasting)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+pyarrow>=15
+chronos-forecasting @ git+https://github.com/amazon-science/chronos-forecasting.git
+
+# Modelos comparativos (Modulos 2 y 3: aforo multiclase y prescriptivo)
+lightgbm>=4.0
+xgboost>=2.0
