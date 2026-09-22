@@ -7,7 +7,7 @@
 * **Integrante 3:** Juan David Velo Poma (Líder del grupo)
 
 
-## 2. Nombre Tentativo del Producto
+## 2. Nombre del Producto
 
 **UrbanSafe AI**
 
