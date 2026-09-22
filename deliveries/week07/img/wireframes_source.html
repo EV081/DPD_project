@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>UrbanSafe AI - Wireframes</title>
+<style>
+  :root{
+    --blue:#1d4ed8; --blue-2:#2563eb; --blue-deep:#172f7a;
+    --bg:#f1f3f9; --card:#ffffff; --ink:#0f172a; --muted:#6b7280;
+    --line:#e2e8f0; --amber:#b45309; --amber-bg:#fef3c7; --amber-br:#fcd34d;
+    --green:#15803d; --green-bg:#dcfce7; --orange:#c2660a; --red:#b91c1c; --red-bg:#fee2e2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#8892a6;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       display:flex;flex-wrap:wrap;gap:28px;padding:28px;-webkit-font-smoothing:antialiased}
+  .screen{width:390px;height:844px;background:var(--bg);border:2px solid #111827;border-radius:6px;
+          overflow:hidden;display:flex;flex-direction:column;position:relative;color:var(--ink)}
+  .status{display:flex;justify-content:space-between;align-items:center;padding:12px 20px 6px;
+          font-size:14px;font-weight:600;background:transparent}
+  .status .right{letter-spacing:2px;font-size:13px}
+  .body{flex:1;overflow:hidden;padding:0 16px}
+  .tabbar{display:flex;border-top:1px solid var(--line);background:#fff;padding:10px 0 16px}
+  .tab{flex:1;text-align:center;font-size:12px;color:#9aa3b2}
+  .tab .ic{display:block;font-size:20px;line-height:24px;margin-bottom:3px}
+  .tab.on{color:var(--blue);font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .muted{color:var(--muted)}
+  .h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+  .sec{font-size:15px;font-weight:700;margin:16px 0 8px}
+  .chip{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;
+        padding:7px 13px;font-size:13px;font-weight:600;color:#475569;margin:0 6px 8px 0}
+  .chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .badge{border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:.4px}
+  .b-green{background:var(--green-bg);color:var(--green)}
+  .b-orange{background:#f59e0b;color:#fff}
+  .b-red{background:var(--red-bg);color:var(--red)}
+  .banner{display:flex;gap:10px;background:var(--amber-bg);border:1px solid var(--amber-br);
+          border-radius:10px;padding:11px 13px;font-size:13px;color:var(--amber);line-height:1.35}
+  .banner b{display:block;font-size:13.5px}
+  .privacy{display:flex;gap:7px;font-size:11.5px;color:#7c869a;line-height:1.35;margin-top:10px}
+  /* header azul */
+  .hero{background:linear-gradient(160deg,#2b58d8,#1b3fae);color:#fff;margin:0 -16px;padding:14px 20px 22px;
+        border-radius:0 0 18px 18px}
+  .brandline{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;margin-bottom:14px}
+  .brandmark{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.22);
+             display:flex;align-items:center;justify-content:center;font-size:14px}
+  .search{background:#fff;border-radius:11px;padding:13px 14px;color:#98a2b3;font-size:14px;
+          display:flex;gap:9px;align-items:center;margin-top:12px}
+  /* pantalla detalle */
+  .topbar{display:flex;align-items:center;gap:12px;background:#fff;margin:0 -16px;padding:10px 16px 12px;
+          border-bottom:1px solid var(--line)}
+  .back{width:34px;height:34px;border-radius:50%;background:#e8edfb;color:var(--blue);
+        display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700}
+  .bluecard{background:linear-gradient(155deg,#2b58d8,#152f86);color:#fff;border-radius:16px;padding:16px}
+  .scale{display:flex;gap:6px;margin:14px 0 6px}
+  .step{flex:1;text-align:center;font-size:10px;font-weight:700;letter-spacing:.3px;
+        padding:7px 2px;border-radius:8px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
+  .step.on{background:#f59e0b;color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+  .sug{display:flex;gap:11px;align-items:center;background:rgba(255,255,255,.17);
+       border-radius:12px;padding:12px;margin-top:14px}
+  .sugic{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--blue);
+         display:flex;align-items:center;justify-content:center;font-weight:800}
+  .row{display:flex;justify-content:space-between;align-items:center}
+  .stationrow{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+              border-radius:12px;padding:12px 14px;margin-bottom:9px}
+  .sic{width:38px;height:38px;border-radius:10px;background:#e8edfb;color:var(--blue);
+       display:flex;align-items:center;justify-content:center;font-size:17px}
+  /* feedback */
+  .fbtn{flex:1;border:2px solid var(--line);border-radius:14px;background:#fff;padding:14px 6px;text-align:center}
+  .fbtn .ic{font-size:20px}
+  .fbtn .lb{font-size:12.5px;font-weight:700;margin-top:6px}
+  .fbtn .sb{font-size:10.5px;color:#94a3b8;margin-top:2px}
+  .fbtn.ok{border-color:var(--green);background:#f0fdf4}
+  /* mapa */
+  .map{border-radius:14px;overflow:hidden;position:relative;height:210px;background:#0b1220}
+  .map.day{background:#e6ebf5}
+  .maptag{position:absolute;top:10px;left:10px;background:rgba(15,23,42,.72);color:#fff;
+          font-size:11px;padding:5px 10px;border-radius:999px}
+  .legend{display:flex;gap:16px;font-size:11.5px;color:var(--muted);margin-top:9px;align-items:center}
+  .dash{display:inline-block;width:20px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+  .bar{height:7px;border-radius:4px;background:#e8ecf4;overflow:hidden}
+  .bar>i{display:block;height:100%;border-radius:4px}
+  .slider{position:relative;height:6px;background:#e2e8f0;border-radius:4px;margin:16px 4px 8px}
+  .slider>i{position:absolute;left:0;top:0;height:100%;width:38%;background:var(--blue);border-radius:4px}
+  .knob{position:absolute;left:38%;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;
+        border-radius:50%;background:#fff;border:4px solid var(--blue)}
+  /* dark */
+  .screen.dark{background:#0b1220;color:#e7ecf7}
+  .dark .card{background:#151f35;border-color:#243352}
+  .dark .topbar{background:#0f1830;border-color:#243352}
+  .dark .tabbar{background:#0f1830;border-color:#243352}
+  .dark .muted{color:#94a3b8}
+  .dark .back{background:#1e2a47;color:#9db4ff}
+  .dark .banner{background:#3a2d0c;border-color:#7a5c11;color:#fcd34d}
+  .dark .stationrow{background:#151f35;border-color:#243352}
+  /* estados */
+  .state{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+         border-radius:12px;padding:14px;margin-bottom:12px}
+  .stic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 36px}
+  .skel{height:11px;border-radius:6px;background:#e7ebf3;margin-top:7px}
+  .caption{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:10px;color:#94a3b8}
+</style>
+</head>
+<body>
+
+<!-- ============ P1 · Selección de servicio + estación ============ -->
+<div class="screen" id="s1">
+  <div class="status"><span>9:41</span><span class="right">▮▮▮ ▰</span></div>
+  <div class="body">
+    <div class="hero">
+      <div class="brandline"><span class="brandmark">🚌</span> UrbanSafe AI</div>
+      <div class="h1" style="color:#fff">¿Desde dónde viajas hoy?</div>
+      <div style="font-size:13px;opacity:.85;margin-top:5px">Aforo predictivo y rutas seguras en tiempo real</div>
+      <div class="search"><span>🔍</span> Buscar estación o paradero</div>
+    </div>
+
+    <div class="sec">1 · Servicio del SIT</div>
+    <div>
+      <span class="chip on">Corredor Azul</span>
+      <span class="chip">Metropolitano</span>
+      <span class="chip">C. Rojo</span>
+      <span class="chip">C. Morado</span>
+    </div>
+    <div class="sec">2 · Ruta</div>
+    <div>
+      <span class="chip on">301 · Javier Prado</span>
+      <span class="chip">201 · Angamos</span>
+      <span class="chip">Ver todas</span>
+    </div>
+
+    <div class="sec">Estaciones cercanas <span style="font-weight:400;font-size:12px" class="muted">· ruta 301</span></div>
+    <div class="stationrow">
+      <div class="sic">🚌</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:14.5px">Estación Naranjos</div>
+        <div class="muted" style="font-size:12.5px">Corredor Javier Prado · Sentido Este</div>
+      </div>
+      <div style="color:var(--blue);font-weight:700;font-size:13.5px">180 m</div>
+    </div>
+    <div class="stationrow">
+      <div class="sic">🚏</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:14.5px">Paradero Angamos</div>
+        <div class="muted" style="font-size:12.5px">Ruta Angamos · Sentido Sur</div>
+      </div>
+      <div style="color:var(--blue);font-weight:700;font-size:13.5px">420 m</div>
+    </div>
+    <div class="stationrow">
+      <div class="sic">🚌</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:14.5px">Estación Javier Prado</div>
+        <div class="muted" style="font-size:12.5px">Corredor Javier Prado · Sentido Oeste</div>
+      </div>
+      <div style="color:var(--blue);font-weight:700;font-size:13.5px">650 m</div>
+    </div>
+
+    <div class="privacy">
+      <span>🔒</span>
+      <span>Tu ubicación se usa solo para ordenar esta lista y se descarta al salir.
+      No guardamos historial de recorrido (Ley N° 29733). <u>Más información</u></span>
+    </div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><span class="ic">🚌</span>Aforo</div>
+    <div class="tab"><span class="ic">🗺️</span>Ruta segura</div>
+    <div class="tab"><span class="ic">👤</span>Perfil</div>
+  </div>
+</div>
+
+<!-- ============ P2 · Resultado de aforo ============ -->
+<div class="screen" id="s2">
+  <div class="status"><span>9:41</span><span class="right">▮▮▮ ▰</span></div>
+  <div class="body">
+    <div class="topbar">
+      <div class="back">‹</div>
+      <div>
+        <div style="font-weight:700;font-size:17px">Estación Naranjos</div>
+        <div class="muted" style="font-size:12.5px">Ruta 301 · Corredor Javier Prado</div>
+      </div>
+    </div>
+
+    <div class="banner" style="margin-top:14px">
+      <span>⚠️</span>
+      <span><b>Modo Histórico activo</b>TomTom sin respuesta (&gt;2.0 s) · estimación con matriz histórica ATU</span>
+    </div>
+
+    <div class="bluecard" style="margin-top:14px">
+      <div class="row">
+        <div>
+          <div style="font-size:11.5px;letter-spacing:1.2px;opacity:.8;font-weight:700">PRÓXIMO BUS</div>
+          <div style="font-size:42px;font-weight:800;line-height:1.05">3<span style="font-size:17px;font-weight:600"> min</span></div>
+        </div>
+        <div class="badge b-orange">↑ DE PIE</div>
+      </div>
+
+      <div class="scale">
+        <div class="step">ASIENTOS</div>
+        <div class="step on">DE PIE</div>
+        <div class="step">SATURADO</div>
+      </div>
+      <div style="font-size:11.5px;opacity:.82">Confianza del modelo: 82% · intervalo 74–89%</div>
+
+      <div class="sug">
+        <div class="sugic">→</div>
+        <div>
+          <div style="font-size:11.5px;opacity:.82">Sugerencia del sistema</div>
+          <div style="font-weight:700;font-size:15.5px">Espera el siguiente bus</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">Comparar con la siguiente unidad</div>
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="muted" style="font-size:11.5px;letter-spacing:1.1px;font-weight:700">SIGUIENTE BUS</div>
+          <div style="font-size:28px;font-weight:800">11<span style="font-size:15px;font-weight:600"> min</span></div>
+        </div>
+        <div class="badge b-green">✓ ASIENTOS</div>
+      </div>
+      <div class="scale" style="margin:12px 0 0">
+        <div class="step" style="background:#dcfce7;color:#15803d;box-shadow:0 0 0 2px #86efac">ASIENTOS</div>
+        <div class="step" style="background:#eef2f7;color:#94a3b8">DE PIE</div>
+        <div class="step" style="background:#eef2f7;color:#94a3b8">SATURADO</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:10px;border-style:dashed;background:transparent">
+      <div style="display:flex;gap:9px;align-items:flex-start">
+        <span>📍</span>
+        <div style="font-size:13px" class="muted">
+          <b style="color:var(--ink)">Alternativa:</b> Paradero Angamos · 6 min a pie · Asientos disponibles
+        </div>
+      </div>
+    </div>
+
+    <div class="privacy"><span>🔒</span><span>Consulta procesada de forma efímera · sin registro de tu ubicación.</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><span class="ic">🚌</span>Aforo</div>
+    <div class="tab"><span class="ic">🗺️</span>Ruta segura</div>
+    <div class="tab"><span class="ic">👤</span>Perfil</div>
+  </div>
+</div>
+
+<!-- ============ P3 · Resultado de aforo · modo nocturno ============ -->
+<div class="screen dark" id="s3">
+  <div class="status"><span>21:40</span><span class="right">▮▮▮ ▰</span></div>
+  <div class="body">
+    <div class="topbar">
+      <div class="back">‹</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:17px">Estación Naranjos</div>
+        <div class="muted" style="font-size:12.5px">Ruta 301 · Corredor Javier Prado</div>
+      </div>
+      <div style="font-size:11px;background:#1e2a47;color:#9db4ff;padding:6px 10px;border-radius:999px">🌙 Auto</div>
+    </div>
+
+    <div class="bluecard" style="margin-top:16px;background:linear-gradient(155deg,#1b3fae,#0e1d4f)">
+      <div class="row">
+        <div>
+          <div style="font-size:11.5px;letter-spacing:1.2px;opacity:.85;font-weight:700">PRÓXIMO BUS</div>
+          <div style="font-size:42px;font-weight:800;line-height:1.05">2<span style="font-size:17px;font-weight:600"> min</span></div>
+        </div>
+        <div class="badge" style="background:#fca5a5;color:#7f1d1d">▲ SATURADO</div>
+      </div>
+      <div class="scale">
+        <div class="step">ASIENTOS</div>
+        <div class="step">DE PIE</div>
+        <div class="step on" style="background:#dc2626">SATURADO</div>
+      </div>
+      <div style="font-size:11.5px;opacity:.85">Confianza del modelo: 88% · intervalo 81–93%</div>
+      <div class="sug">
+        <div class="sugic">→</div>
+        <div>
+          <div style="font-size:11.5px;opacity:.85">Sugerencia del sistema</div>
+          <div style="font-weight:700;font-size:15.5px">Espera el siguiente bus</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">Comparar con la siguiente unidad</div>
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="muted" style="font-size:11.5px;letter-spacing:1.1px;font-weight:700">SIGUIENTE BUS</div>
+          <div style="font-size:28px;font-weight:800">9<span style="font-size:15px;font-weight:600"> min</span></div>
+        </div>
+        <div class="badge" style="background:#14532d;color:#86efac">✓ ASIENTOS</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div style="display:flex;gap:10px;align-items:center">
+        <span>🌙</span>
+        <div style="font-size:13px">
+          <b>Hora de alta vulnerabilidad</b>
+          <div class="muted" style="font-size:12px;margin-top:2px">Ver ruta peatonal segura hasta tu destino</div>
+        </div>
+        <div style="margin-left:auto;color:#9db4ff;font-weight:700;font-size:13px">Abrir ›</div>
+      </div>
+    </div>
+
+    <div class="privacy" style="color:#7d8ba8"><span>🔒</span><span>Tema oscuro de alto contraste automático entre 18:00 y 06:00 (RNF-04).</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><span class="ic">🚌</span>Aforo</div>
+    <div class="tab"><span class="ic">🗺️</span>Ruta segura</div>
+    <div class="tab"><span class="ic">👤</span>Perfil</div>
+  </div>
+</div>
+
+<!-- ============ P4 · Feedback ============ -->
+<div class="screen" id="s4">
+  <div class="status"><span>9:41</span><span class="right">▮▮▮ ▰</span></div>
+  <div class="body">
+    <div class="topbar">
+      <div class="back">‹</div>
+      <div>
+        <div style="font-weight:700;font-size:17px">Validar estimación</div>
+        <div class="muted" style="font-size:12.5px">Estación Naranjos · Ruta 301</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;text-align:center;padding:18px 14px">
+      <div style="font-size:13px" class="muted">Tú marcaste</div>
+      <div style="font-weight:800;font-size:17px;margin:4px 0 12px">“Ya abordé este bus”</div>
+      <div class="muted" style="font-size:12px">Nada se activa solo: el aviso aparece al tocar el botón
+      en la pantalla de aforo o al responder la notificación de llegada.</div>
+    </div>
+
+    <div class="banner" style="margin-top:14px">
+      <span>📊</span>
+      <span><b>Habíamos estimado: DE PIE</b>Confianza 82% · 3 min de espera</span>
+    </div>
+
+    <div class="sec" style="text-align:center;font-size:16px;margin-top:20px">¿Cómo viajaste realmente?</div>
+    <div class="muted" style="text-align:center;font-size:12.5px;margin-bottom:14px">Un solo toque · etiqueta el modelo</div>
+
+    <div style="display:flex;gap:10px">
+      <div class="fbtn">
+        <div class="ic">💺</div>
+        <div class="lb">Asientos</div>
+        <div class="sb">1 toque</div>
+      </div>
+      <div class="fbtn ok">
+        <div class="ic">✅</div>
+        <div class="lb">De pie</div>
+        <div class="sb">coincide</div>
+      </div>
+      <div class="fbtn">
+        <div class="ic">🧍‍♂️</div>
+        <div class="lb">Saturado</div>
+        <div class="sb">1 toque</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div class="row" style="font-size:12.5px"><span class="muted">Aciertos reportados en esta ruta</span><b>74%</b></div>
+      <div class="bar" style="margin-top:8px"><i style="width:74%;background:var(--green)"></i></div>
+    </div>
+
+    <div class="privacy"><span>🔒</span><span>Se envía solo la categoría elegida, sin identificarte ni registrar tu recorrido.</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><span class="ic">🚌</span>Aforo</div>
+    <div class="tab"><span class="ic">🗺️</span>Ruta segura</div>
+    <div class="tab"><span class="ic">👤</span>Perfil</div>
+  </div>
+</div>
+
+<!-- ============ P5 · Ruta peatonal segura ============ -->
+<div class="screen" id="s5">
+  <div class="status"><span>22:40</span><span class="right">▮▮▮ ▰</span></div>
+  <div class="body">
+    <div class="topbar">
+      <div class="back">‹</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:17px">Ruta segura a casa</div>
+        <div class="muted" style="font-size:12.5px">Estación Naranjos → Av. Los Nogales</div>
+      </div>
+      <div style="font-size:12px;background:#0f1830;color:#fde68a;padding:6px 11px;border-radius:999px">🌙</div>
+    </div>
+
+    <div class="map" style="margin-top:14px">
+      <svg width="358" height="210" viewBox="0 0 358 210">
+        <rect width="358" height="210" fill="#0b1220"/>
+        <g stroke="#1e2b47" stroke-width="8">
+          <line x1="0" y1="48" x2="358" y2="48"/><line x1="0" y1="106" x2="358" y2="106"/>
+          <line x1="0" y1="168" x2="358" y2="168"/>
+          <line x1="86" y1="0" x2="86" y2="210"/><line x1="242" y1="0" x2="242" y2="210"/>
+        </g>
+        <polyline points="44,168 296,48" fill="none" stroke="#8b97ad" stroke-width="3.5"
+                  stroke-dasharray="9 8" stroke-linecap="round"/>
+        <polyline points="44,168 86,168 86,106 242,106 242,48 296,48" fill="none" stroke="#fbbf24"
+                  stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#fde68a">
+          <circle cx="86" cy="140" r="3.2"/><circle cx="130" cy="106" r="3.2"/>
+          <circle cx="186" cy="106" r="3.2"/><circle cx="242" cy="76" r="3.2"/>
+        </g>
+        <circle cx="44" cy="168" r="8" fill="#3b82f6" stroke="#fff" stroke-width="3"/>
+        <circle cx="296" cy="48" r="8" fill="#f97316" stroke="#fff" stroke-width="3"/>
+      </svg>
+      <div class="maptag">🌙 Vista nocturna · 22:40</div>
+    </div>
+    <div class="legend">
+      <span><i class="dash" style="background:#fbbf24"></i>Ruta segura</span>
+      <span><i class="dash" style="background:#7c8aa5"></i>Ruta más corta</span>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="row">
+        <div>
+          <div style="font-size:19px;font-weight:800">8 min <span class="muted" style="font-size:13px;font-weight:600">(+2 min)</span></div>
+          <div class="muted" style="font-size:12.5px;margin-top:2px">650 m · vs. 520 m de la ruta más corta</div>
+        </div>
+        <div class="badge b-green">RIESGO BAJO</div>
+      </div>
+
+      <div style="border-top:1px solid var(--line);margin:12px -14px 0;padding:12px 14px 0">
+        <div style="font-size:12px;font-weight:700;margin-bottom:9px">Por qué es más segura (índice RF-06)</div>
+        <div class="row" style="font-size:12px;margin-bottom:7px"><span>💡 Alumbrado público</span><b style="color:var(--green)">18 postes · alto</b></div>
+        <div class="row" style="font-size:12px;margin-bottom:7px"><span>🏪 Comercios abiertos</span><b style="color:var(--green)">3 en el trayecto</b></div>
+        <div class="row" style="font-size:12px;margin-bottom:7px"><span>🚓 Comisaría más cercana</span><b style="color:#c2660a">340 m</b></div>
+        <div class="row" style="font-size:12px"><span>🚏 Paraderos en el tramo</span><b style="color:var(--green)">2</b></div>
+      </div>
+    </div>
+
+    <div class="sec">Tolerancia de caminata adicional</div>
+    <div class="card" style="padding:12px 16px 14px">
+      <div class="slider"><i></i><div class="knob"></div></div>
+      <div class="row muted" style="font-size:11.5px"><span>+0 min</span><b style="color:var(--blue)">+6 min</b><span>+15 min</span></div>
+    </div>
+
+    <div class="privacy"><span>🔒</span><span>Origen y destino se procesan en memoria para calcular la ruta y no se almacenan.</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span class="ic">🚌</span>Aforo</div>
+    <div class="tab on"><span class="ic">🗺️</span>Ruta segura</div>
+    <div class="tab"><span class="ic">👤</span>Perfil</div>
+  </div>
+</div>
+
+<!-- ============ P6 · Estados de carga y error ============ -->
+<div class="screen" id="s6">
+  <div class="status"><span>9:41</span><span class="right">▮▮▮ ▰</span></div>
+  <div class="body">
+    <div class="topbar">
+      <div class="back">‹</div>
+      <div>
+        <div style="font-weight:700;font-size:17px">Estados del sistema</div>
+        <div class="muted" style="font-size:12.5px">Carga, degradación y error</div>
+      </div>
+    </div>
+
+    <div class="sec">A · Calculando (&lt; 2.0 s · RNF-02)</div>
+    <div class="card">
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="stic" style="background:#e8edfb;color:var(--blue)">⏳</div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:13.5px">Estimando aforo del próximo bus…</div>
+          <div class="skel" style="width:85%"></div>
+          <div class="skel" style="width:55%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">B · Modo Histórico (RF-05)</div>
+    <div class="state" style="background:var(--amber-bg);border-color:var(--amber-br)">
+      <div class="stic" style="background:#fde68a;color:#92400e">⚠️</div>
+      <div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--amber)">Estimación con matriz histórica ATU</div>
+        <div style="font-size:12.5px;color:var(--amber);margin-top:3px">TomTom superó el timeout de 2.0 s. El resultado sigue disponible con menor confianza.</div>
+      </div>
+    </div>
+
+    <div class="sec">C · Sin conexión</div>
+    <div class="state">
+      <div class="stic" style="background:#e2e8f0;color:#475569">📶</div>
+      <div>
+        <div style="font-weight:700;font-size:13.5px">Sin señal en este punto</div>
+        <div class="muted" style="font-size:12.5px;margin-top:3px">Mostrando la última estimación de hace 4 min.</div>
+        <div style="margin-top:9px"><span class="chip on" style="margin:0">Reintentar</span></div>
+      </div>
+    </div>
+
+    <div class="sec">D · Estación sin datos suficientes</div>
+    <div class="state">
+      <div class="stic" style="background:var(--red-bg);color:var(--red)">🚫</div>
+      <div>
+        <div style="font-weight:700;font-size:13.5px">Aún no podemos estimar esta estación</div>
+        <div class="muted" style="font-size:12.5px;margin-top:3px">Menos de 30 días de validaciones ATU. Te mostramos solo el tiempo de llegada programado.</div>
+        <div style="margin-top:9px"><span class="chip" style="margin:0">Ver estación cercana</span></div>
+      </div>
+    </div>
+
+    <div class="privacy"><span>ℹ️</span><span>Ningún estado bloquea la pantalla: siempre hay un resultado o una acción alternativa.</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><span class="ic">🚌</span>Aforo</div>
+    <div class="tab"><span class="ic">🗺️</span>Ruta segura</div>
+    <div class="tab"><span class="ic">👤</span>Perfil</div>
+  </div>
+</div>
+
+</body>
+</html>
