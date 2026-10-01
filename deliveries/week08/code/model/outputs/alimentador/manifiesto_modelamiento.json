@@ -1,0 +1,36 @@
+{
+  "sistema": "alimentador",
+  "titulo": "Alimentadores",
+  "grano": "ruta",
+  "n_series": 23,
+  "split": "2025-10-31 23:00:00",
+  "dias_eval": [
+    "2025-11-04",
+    "2025-11-11",
+    "2025-11-18",
+    "2025-12-02",
+    "2025-12-09"
+  ],
+  "metricas": {
+    "MAE": {
+      "chronos": 37.9067,
+      "hora_media": 46.1959,
+      "naive_7d": 49.4986
+    },
+    "RMSE": {
+      "chronos": 65.1857,
+      "hora_media": 79.777,
+      "naive_7d": 85.845
+    },
+    "WMAPE": {
+      "chronos": 0.507,
+      "hora_media": 0.6238,
+      "naive_7d": 0.6584
+    }
+  },
+  "umbrales_aforo": {
+    "De_pie": 0.125,
+    "Saturado": 0.37333333333333335
+  },
+  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+}

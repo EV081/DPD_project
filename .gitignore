@@ -1,4 +1,8 @@
 .venv/
 data/
+data_processed/
 __pycache__/
 .env
+# Archives too large for GitHub (>100MB)
+deliveries/**/zip/
+*.zip

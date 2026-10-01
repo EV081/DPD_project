@@ -1,0 +1,36 @@
+{
+  "sistema": "metro_l1",
+  "titulo": "Metro Línea 1",
+  "grano": "estacion",
+  "n_series": 26,
+  "split": "2025-10-31 23:00:00",
+  "dias_eval": [
+    "2025-11-04",
+    "2025-11-11",
+    "2025-11-18",
+    "2025-12-02",
+    "2025-12-09"
+  ],
+  "metricas": {
+    "MAE": {
+      "chronos": 131.4839,
+      "naive_7d": 165.108,
+      "hora_media": 175.5633
+    },
+    "RMSE": {
+      "chronos": 265.612,
+      "naive_7d": 343.5856,
+      "hora_media": 377.3134
+    },
+    "WMAPE": {
+      "chronos": 0.155,
+      "naive_7d": 0.193,
+      "hora_media": 0.1982
+    }
+  },
+  "umbrales_aforo": {
+    "De_pie": 0.064375,
+    "Saturado": 0.15148611111111113
+  },
+  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+}

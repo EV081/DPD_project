@@ -1,0 +1,36 @@
+{
+  "sistema": "corredor",
+  "titulo": "Corredores Complementarios",
+  "grano": "ruta",
+  "n_series": 12,
+  "split": "2025-10-31 23:00:00",
+  "dias_eval": [
+    "2025-11-04",
+    "2025-11-11",
+    "2025-11-18",
+    "2025-12-02",
+    "2025-12-09"
+  ],
+  "metricas": {
+    "MAE": {
+      "chronos": 173.9199,
+      "hora_media": 234.8802,
+      "naive_7d": 239.8014
+    },
+    "RMSE": {
+      "chronos": 283.6041,
+      "hora_media": 392.5406,
+      "naive_7d": 400.2764
+    },
+    "WMAPE": {
+      "chronos": 0.3112,
+      "hora_media": 0.353,
+      "naive_7d": 0.4096
+    }
+  },
+  "umbrales_aforo": {
+    "De_pie": 1.12,
+    "Saturado": 3.0741666666666667
+  },
+  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+}

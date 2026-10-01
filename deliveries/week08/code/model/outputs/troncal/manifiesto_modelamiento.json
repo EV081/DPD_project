@@ -1,0 +1,36 @@
+{
+  "sistema": "troncal",
+  "titulo": "Metropolitano Troncal",
+  "grano": "estacion",
+  "n_series": 45,
+  "split": "2025-10-31 23:00:00",
+  "dias_eval": [
+    "2025-11-04",
+    "2025-11-11",
+    "2025-11-18",
+    "2025-12-02",
+    "2025-12-09"
+  ],
+  "metricas": {
+    "MAE": {
+      "chronos": 73.9984,
+      "hora_media": 94.8999,
+      "naive_7d": 103.1261
+    },
+    "RMSE": {
+      "chronos": 204.1278,
+      "hora_media": 283.515,
+      "naive_7d": 295.1595
+    },
+    "WMAPE": {
+      "chronos": 0.31,
+      "hora_media": 0.3291,
+      "naive_7d": 0.412
+    }
+  },
+  "umbrales_aforo": {
+    "De_pie": 0.1975878766140603,
+    "Saturado": 0.7845229555236729
+  },
+  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+}
