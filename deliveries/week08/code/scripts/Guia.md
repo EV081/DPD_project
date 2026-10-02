@@ -125,9 +125,11 @@ Metro L1 usa shapefiles MTC–AATE. Alimentadores: solo centroides; Moovit no se
 Mapas oficiales ATU (corredores por ruta + Metropolitano por servicio):  
 `python code/scripts/download_atu_mapas.py`
 
-En las celdas de mapa de `eda_corredores` / `eda_troncales_metropolitano`: variables
-`ruta_mapa` / `servicio_mapa` (+ comentarios con **todas las alternativas**),
-imagen ATU + Folium (burbujas = validaciones; línea = trazado elegido).
+Mapas Folium **inline** en cada notebook (estilo week07 TransMilenio: zoom/pan en el
+**output** de la celda; no se guardan HTML en `docs/`).
+En `eda_corredores` / `eda_troncales_metropolitano`: variables `ruta_mapa` / `servicio_mapa`
+(+ comentarios con alternativas), imagen ATU opcional + Folium (burbujas = validaciones;
+línea = trazado).
 
 | Notebook | Sistema |
 |----------|---------|
@@ -137,7 +139,7 @@ imagen ATU + Folium (burbujas = validaciones; línea = trazado elegido).
 | `eda_metro_l1.ipynb` | Metro Línea 1 |
 
 **Salida:** `data_processed/clean/` + `calidad_cobertura_*.csv` + figuras en
-`docs/images/` + mapas en `docs/maps/`.
+`docs/images/` + mapas Folium solo en el output del notebook.
 
 ### Cómo leer cobertura
 
