@@ -33,7 +33,7 @@ Objetivos del EDA:
 - Traducir cada hallazgo en una implicación concreta para RF-01/RF-02.
 - Documentar limitaciones (cobertura irregular, ausencia de headway público, etc.).
 
-Notebooks: `code/eda/eda_*.ipynb`. Figuras: `docs/images/`. Mapas Folium: `docs/maps/`.
+Notebooks: `code/eda/eda_*.ipynb`. Figuras: `docs/images/`. Mapas Folium: output interactivo en celdas del notebook (estilo week07).
 
 ---
 
@@ -55,7 +55,7 @@ Notebooks: `code/eda/eda_*.ipynb`. Figuras: `docs/images/`. Mapas Folium: `docs/
 
 1. Excel/ZIP ATU -> `code/scripts/prepare_parquet.py` escribe **solo crudo** en `data_processed/raw/` (sin validar ni imputar).
 2. Cada notebook EDA lee su `raw/`, aplica calendario, tipado, política NA->0+flag, cobertura, IQR y figuras, y escribe `data_processed/clean/`.
-3. `build_trazados.py` arma GeoJSON/parquet de ejes a partir de paraderos + shapefile L1.
+3. `build_trazados.py` (+ `download_atu_mapas.py` para inventario/imágenes ATU) arma GeoJSON en `data/fuentes/geo/`; los notebooks dibujan Folium inline.
 4. `eda_comparativo_sistemas.ipynb` une coberturas y arma `demanda_consolidada.parquet`
    (todas) + `demanda_consolidada_fiable.parquet` (≥90%; análisis) con columna `grano`.
 
@@ -112,10 +112,8 @@ Detalle por sistema: `docs/data_dictionary/Data_Dictionary_*.md`.
 |---|---|---|
 | Cero **escrito** en Excel | **Conservar** | Señal real de “sin validaciones” en esa celda. |
 | NA / celda vacía | `validaciones = 0` + `era_celda_vacia = True` | Mantiene el marco de exposición completo para ML. |
-| Imputación KNN / media | **No** | Inventaría demanda y sesga aforo/espera. |
-| Borrar filas NA+cero | **No** | En alimentadores eliminaría ~86% del panel. |
 
-Plots de cola (hist log, rankings) pueden filtrar `validaciones > 0` **sin** alterar el panel guardado en `clean/`.
+No se decidio imputar por KNN o media, ya que esto inventaría demanda y sesgo en el aforo por la cantidad de nulo, asi mismo no se decidío eliminar las filas con NA, porque perderiamos muchos registros del dataset final. Plots de cola (hist log, rankings) pueden filtrar `validaciones > 0` **sin** alterar el panel guardado en `clean/`.
 
 ### 2.3 Cobertura, duplicados y sentidos
 
@@ -135,16 +133,19 @@ Plots de cola (hist log, rankings) pueden filtrar `validaciones > 0` **sin** alt
 
 ### 2.5 Geo / trazados
 
-`code/scripts/build_trazados.py` + `eda_geo_maps.py`:
+**Prep (una vez, scripts):**
 
-- Metro L1: eje oficial (shp) + estaciones.
-- Corredores: orden portal ATU + GPS (una **ruta** a la vez); imágenes en `geo/mapas_corredores/`.
-- Troncal: **línea por servicio** ATU + **burbujas por estación**; imágenes en `geo/mapas_metropolitano/`.
-- Alimentadores: **solo centroides** por ruta (sin LineString: el match OSM por nombre generaba trazados espurios).
+- `build_trazados.py` -> GeoJSON de puntos/trazados en `data/fuentes/geo/` (L1 shp; corredores OSRM; troncal OSM por servicio; alimentadores solo centroides).
+- `download_atu_mapas.py` -> JPG/PNG oficiales ATU + `estaciones_por_servicio_atu.csv` (inventario estación<->servicio; **no** entra al modelo).
 
-Scripts: `download_atu_mapas.py`, `build_trazados.py`.
+**Visualización (notebooks):** celdas Folium **interactivas** (zoom/pan) en el **output** de `code/eda/eda_*.ipynb` — burbujas = validaciones; línea = trazado elegido. Opcional: imagen oficial ATU en la misma sección. 
 
-Mapas interactivos: [`maps/`](maps/).
+| Sistema | Qué se dibuja |
+|---------|----------------|
+| Metro L1 | Eje oficial (shp) + estaciones |
+| Corredores | Una **ruta** a la vez (orden portal + GPS) |
+| Troncal | Una **línea por servicio** ATU + burbujas por estación |
+| Alimentadores | Solo centroides por ruta (sin LineString espurio) |
 
 ---
 
@@ -205,7 +206,7 @@ Convención de lectura en este documento:
   | Alimentadores | ~20 M | 4.6% | 23/27 |
 
 - **Importante porque:**
-  1. Escalas muy distintas → no un único regresor global sin offset por sistema.
+  1. Escalas muy distintas, no un único regresor global sin offset por sistema.
   2. `por_unidad_día` **no se mezcla**: L1/troncal = estación; corredor/alimentador = ruta.
   3. El 19% de corredores es solo sobre rutas fiables, no sobre las 26.
 
@@ -215,8 +216,8 @@ Convención de lectura en este documento:
 
 - **Qué muestra:** % del total diario por hora (0–23), un perfil por sistema.
 - **Qué sacamos:**
-  - Buses (troncal/corredor/alimentador): pico ~**07h**; simetría mañana/tarde ≈ **1.0**.
-  - L1: abre ~**05h**, pico ~**18h**; simetría ≈ **0.88** (más tarde).
+  - Buses (troncal/corredor/alimentador): pico ~**07h**; simetría mañana/tarde aprox **1.0**.
+  - L1: abre ~**05h**, pico ~**18h**; simetría aprox **0.88** (más tarde).
   - Todos tienen doble punta laborable (mañana 06–10 y tarde 16–20).
 - **Importante porque:** features temporales compartidas (`hora` cíclica, `franja`),
   pero **calibración por sistema**. Un modelo “promedio Lima” aplasta el pico de la L1.
@@ -225,7 +226,7 @@ Convención de lectura en este documento:
 
 ![Día de la semana](images/eda_comparativo_dia_semana.png)
 
-- **Qué muestra:** índice de demanda (LUN = 100) LUN→DOM.
+- **Qué muestra:** índice de demanda (LUN = 100) Lunes a Domingo.
 - **Qué sacamos:**
 
   | | SÁB/LUN | DOM/LUN |
@@ -234,7 +235,7 @@ Convención de lectura en este documento:
   | Buses | ~0.75–0.78 | ~0.34–0.39 |
 
 - **Importante porque:** **sábado ≠ domingo**. La L1 sostiene el sábado laboral; los
-  buses no. Agrupar “fin de semana” en una sola dummy es un error de modelado.
+  buses no. Agrupar “fin de semana” en una sola dummy seria un error de modelado.
 
 #### Feriados (promedio diario)
 
@@ -302,9 +303,9 @@ Convención de lectura en este documento:
 - **Qué sacamos:** outliers = picos reales de hubs, no basura. Estaciones cercanas /
   mismo corredor se mueven juntas.
 - **Importante porque:** **no borrar** outliers IQR; sirven para etiquetar saturación.
-  Correlación → features de vecindario / modelos jerárquicos.
+  Correlación -> features de vecindario / modelos jerárquicos.
 
-Mapa Folium: [`maps/mapa_troncal.html`](maps/mapa_troncal.html) (trazado OSM Metropolitano + burbujas).
+Mapa Folium interactivo: celda de mapa en [`eda_troncales_metropolitano.ipynb`](../code/eda/eda_troncales_metropolitano.ipynb) (trazado OSM + burbujas).
 
 ---
 
@@ -331,7 +332,7 @@ Mapa Folium: [`maps/mapa_troncal.html`](maps/mapa_troncal.html) (trazado OSM Met
 - **Importante porque:** para series de demanda usar **totales**, no promediar tarifas;
   el ranking define dónde probar el MVP de espera en alimentador.
 
-Mapa: [`maps/mapa_alimentadores.html`](maps/mapa_alimentadores.html) (centroides; sin trazados espurios).
+Mapa Folium interactivo: celda de mapa en [`eda_alimentadores.ipynb`](../code/eda/eda_alimentadores.ipynb) (centroides; sin trazados espurios).
 
 ---
 
@@ -360,7 +361,7 @@ Mapa: [`maps/mapa_alimentadores.html`](maps/mapa_alimentadores.html) (centroides
 - **Importante porque:** features de `corredor`/`ruta` + calendario; sentido Ida/Vuelta
   se analiza aparte (mayoría balanceada, excepciones documentadas en el EDA).
 
-Mapas por ruta ATU + Folium: [`maps/`](maps/) (`mapa_corredor_*.html`).
+Mapa Folium interactivo (una ruta a la vez): celda de mapa en [`eda_corredores.ipynb`](../code/eda/eda_corredores.ipynb).
 
 ---
 
@@ -387,7 +388,7 @@ Mapas por ruta ATU + Folium: [`maps/`](maps/) (`mapa_corredor_*.html`).
   distorsiona. Usar siempre `metro_l1_total_hora` para series de demanda.
 - **Importante porque:** bug metodológico fácil de cometer; ya está cerrado en el EDA.
 
-Mapa (shp MTC–AATE): [`maps/mapa_metro_l1.html`](maps/mapa_metro_l1.html).
+Mapa Folium interactivo (shp MTC–AATE): celda de mapa en [`eda_metro_l1.ipynb`](../code/eda/eda_metro_l1.ipynb).
 
 ---
 
@@ -440,8 +441,8 @@ Mapa (shp MTC–AATE): [`maps/mapa_metro_l1.html`](maps/mapa_metro_l1.html).
 
 1. **Validaciones ≠ ocupación del vehículo.** Miden entradas a estación/paradero, no pasajeros a bordo ni asientos libres.
 2. **Sin oferta (frecuencia/headway) completa y exportable** para todos los corredores/alimentadores; limita el proxy “pasajeros por bus”.
-3. **Cobertura irregular** en parte de corredores y algunas líneas alimentadoras → sesgo si se ignoran los flags `fiable`.
-4. **NA→0** asume que celda vacía = “sin demanda reportada / sin operación en celda”, no un fallo aleatorio de sensor; si ATU omite días enteros de una ruta, el panel puede sobrerrepresentar ceros estructurales.
+3. **Cobertura irregular** en parte de corredores y algunas líneas alimentadoras -> sesgo si se ignoran los flags `fiable`.
+4. **NA->0** asume que celda vacía = “sin demanda reportada / sin operación en celda”, no un fallo aleatorio de sensor; si ATU omite días enteros de una ruta, el panel puede sobrerrepresentar ceros estructurales.
 5. **Trazados geo aproximados** (orden de paraderos / OSM); no reemplazan un GTFS shapes oficial completo.
 6. **Mix tarifario** en L1/alimentadores: promediar tarifas sin cuidado distorsiona domingos y rankings.
 7. **Un solo año (2025).** Patrones robustos dentro del año; no se afirma estabilidad interanual ni efectos de obras futuras.
@@ -455,19 +456,19 @@ Mapa (shp MTC–AATE): [`maps/mapa_metro_l1.html`](maps/mapa_metro_l1.html).
 
 | Archivo | Función |
 |---|---|
-| `code/eda/eda_troncales_metropolitano.ipynb` | Limpieza + EDA troncal → `clean/troncal_hora.parquet` |
-| `code/eda/eda_alimentadores.ipynb` | Limpieza + EDA alimentadores → `clean/alimentador_*.parquet` |
-| `code/eda/eda_corredores.ipynb` | Limpieza + EDA corredores → `clean/corredores_hora.parquet` |
-| `code/eda/eda_metro_l1.ipynb` | Limpieza + EDA Metro L1 → `clean/metro_l1_*.parquet` |
+| `code/eda/eda_troncales_metropolitano.ipynb` | Limpieza + EDA troncal -> `clean/troncal_hora.parquet` |
+| `code/eda/eda_alimentadores.ipynb` | Limpieza + EDA alimentadores -> `clean/alimentador_*.parquet` |
+| `code/eda/eda_corredores.ipynb` | Limpieza + EDA corredores -> `clean/corredores_hora.parquet` |
+| `code/eda/eda_metro_l1.ipynb` | Limpieza + EDA Metro L1 -> `clean/metro_l1_*.parquet` |
 | `code/eda/eda_comparativo_sistemas.ipynb` | Comparativo + consolidada / consolidada_fiable |
 
 **Scripts**
 
 | Script | Función |
 |---|---|
-| `code/scripts/prepare_parquet.py` | Excel/ZIP → `data_processed/raw/` (sin limpieza) |
-| `code/scripts/build_trazados.py` | GeoJSON/parquet de ejes y joins |
-| `code/scripts/eda_geo_maps.py` | Helpers Folium (estilo week07) |
+| `code/scripts/prepare_parquet.py` | Excel/ZIP -> `data_processed/raw/` (sin limpieza) |
+| `code/scripts/build_trazados.py` | GeoJSON de ejes/puntos (prep geo) |
+| `code/scripts/download_atu_mapas.py` | JPG ATU + CSV estación <-> servicio (contexto) |
 
 **Artefactos**
 
@@ -479,7 +480,7 @@ Mapa (shp MTC–AATE): [`maps/mapa_metro_l1.html`](maps/mapa_metro_l1.html).
 | `data_processed/clean/demanda_consolidada.parquet` | Inventario completo |
 | `data_processed/clean/demanda_consolidada_fiable.parquet` | Panel ≥90% (análisis) |
 | `docs/images/eda_*.png` | Figuras de este reporte |
-| `docs/maps/mapa_*.html` | Mapas Folium |
+| Celdas Folium en `code/eda/eda_*.ipynb` | Mapas interactivos (output del notebook) |
 
 **Diccionarios:** [`docs/data_dictionary/`](data_dictionary/).
 

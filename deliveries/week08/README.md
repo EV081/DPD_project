@@ -171,7 +171,7 @@ Documentación detallada: guía de ejecución en
 [`code/scripts/Guia.md`](./code/scripts/Guia.md), y diccionarios campo por campo en
 [`docs/data_dictionary/`](./docs/data_dictionary/) (un archivo por subsistema más un
 `DatasetDescriptions.md` de panorama). Los 5 notebooks de EDA están en
-[`code/eda/`](./code/eda/), con figuras en [`docs/images/`](./docs/images/). Reporte EDA unificado: [`docs/DataAnalysis.md`](./docs/DataAnalysis.md) (mapas Folium en [`docs/maps/`](./docs/maps/)).
+[`code/eda/`](./code/eda/), con figuras en [`docs/images/`](./docs/images/). Reporte EDA unificado: [`docs/DataAnalysis.md`](./docs/DataAnalysis.md) (mapas Folium interactivos en el output de las celdas del notebook).
 
 
 
