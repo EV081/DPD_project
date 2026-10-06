@@ -31,7 +31,18 @@ saltarlos si los CSV ya existen.
 
 ## 1. `extract_zip_data.py`
 
-Descomprime los dos archivos de `deliveries/week08/zip/`:
+Los ZIP **no** van en el repo (son pesados; `zip/` y `*.zip` están en `.gitignore`).
+Hay que crear la carpeta y bajarlos a mano:
+
+```bash
+mkdir -p deliveries/week08/zip
+```
+
+Descargar desde Drive y dejarlos en `deliveries/week08/zip/`:
+
+[ZIP de datos ATU (Drive)](https://drive.google.com/drive/folders/1qktczst2lUi7BqOt3Lr5ffcip9wqOSSw?usp=sharing)
+
+Archivos esperados:
 
 - `OneDrive_2026-09-22.zip`: datos del Metro L1 (12 xlsx mensuales) + 2 shapefiles
   que vienen **dentro de otro ZIP**.

@@ -13,24 +13,82 @@
   ],
   "metricas": {
     "MAE": {
-      "chronos": 73.9984,
+      "autoets": 85.9497,
+      "chronos": 73.9985,
       "hora_media": 94.8999,
+      "lightgbm": 87.2965,
       "naive_7d": 103.1261
     },
     "RMSE": {
+      "autoets": 269.1448,
       "chronos": 204.1278,
       "hora_media": 283.515,
+      "lightgbm": 245.6744,
       "naive_7d": 295.1595
     },
     "WMAPE": {
+      "autoets": 0.2854,
       "chronos": 0.31,
       "hora_media": 0.3291,
+      "lightgbm": 0.3496,
       "naive_7d": 0.412
     }
   },
   "umbrales_aforo": {
-    "De_pie": 0.1975878766140603,
-    "Saturado": 0.7845229555236729
+    "De_pie": 0.20503455284552846,
+    "Saturado": 0.6762703252032519
   },
-  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+  "umbrales_crowding": [
+    {
+      "sistema": "troncal",
+      "franja": "noche",
+      "thr_mid": 0.00813,
+      "thr_hi": 0.112805,
+      "n": 123120,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 45
+    },
+    {
+      "sistema": "troncal",
+      "franja": "punta_am",
+      "thr_mid": 0.205035,
+      "thr_hi": 0.67627,
+      "n": 54720,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 45
+    },
+    {
+      "sistema": "troncal",
+      "franja": "punta_pm",
+      "thr_mid": 0.260804,
+      "thr_hi": 0.730693,
+      "n": 68400,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 45
+    },
+    {
+      "sistema": "troncal",
+      "franja": "valle",
+      "thr_mid": 0.177114,
+      "thr_hi": 0.357576,
+      "n": 82080,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 45
+    }
+  ],
+  "alpha_upstream": 0.3,
+  "k_upstream": 2,
+  "mejor_wmape": "autoets",
+  "bakeoff": [
+    "chronos",
+    "lightgbm",
+    "autoets",
+    "hora_media",
+    "naive_7d"
+  ],
+  "nota": "crowding_index = Validaciones/Cap_hora + alpha*upstream; proxy de presión (no ocupación a bordo); alpha=0.3 prior no calibrado APC"
 }

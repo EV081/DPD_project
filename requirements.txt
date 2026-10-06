@@ -37,6 +37,9 @@ chronos-forecasting @ git+https://github.com/amazon-science/chronos-forecasting.
 lightgbm>=4.0
 xgboost>=2.0
 
+# Forecast clásico (bakeoff AutoETS vs Chronos / LightGBM)
+statsforecast>=1.7
+
 # Mapas interactivos EDA
 folium>=0.15
 branca>=0.7

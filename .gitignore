@@ -6,3 +6,4 @@ __pycache__/
 # Archives too large for GitHub (>100MB)
 deliveries/**/zip/
 *.zip
+deliveries/week08/code/model/outputs

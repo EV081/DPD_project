@@ -13,24 +13,82 @@
   ],
   "metricas": {
     "MAE": {
+      "autoets": 156.6144,
       "chronos": 173.9199,
       "hora_media": 234.8802,
+      "lightgbm": 204.8352,
       "naive_7d": 239.8014
     },
     "RMSE": {
-      "chronos": 283.6041,
+      "autoets": 268.8205,
+      "chronos": 283.6042,
       "hora_media": 392.5406,
+      "lightgbm": 337.4742,
       "naive_7d": 400.2764
     },
     "WMAPE": {
+      "autoets": 0.2152,
       "chronos": 0.3112,
       "hora_media": 0.353,
+      "lightgbm": 0.3532,
       "naive_7d": 0.4096
     }
   },
   "umbrales_aforo": {
-    "De_pie": 1.12,
-    "Saturado": 3.0741666666666667
+    "De_pie": 2.9208333333333334,
+    "Saturado": 6.114166666666665
   },
-  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+  "umbrales_crowding": [
+    {
+      "sistema": "corredor",
+      "franja": "noche",
+      "thr_mid": 0.152083,
+      "thr_hi": 1.625,
+      "n": 32832,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    },
+    {
+      "sistema": "corredor",
+      "franja": "punta_am",
+      "thr_mid": 2.920833,
+      "thr_hi": 6.114167,
+      "n": 14592,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    },
+    {
+      "sistema": "corredor",
+      "franja": "punta_pm",
+      "thr_mid": 2.591667,
+      "thr_hi": 5.321042,
+      "n": 18240,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    },
+    {
+      "sistema": "corredor",
+      "franja": "valle",
+      "thr_mid": 2.046167,
+      "thr_hi": 4.04375,
+      "n": 21888,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    }
+  ],
+  "alpha_upstream": 0.3,
+  "k_upstream": 2,
+  "mejor_wmape": "autoets",
+  "bakeoff": [
+    "chronos",
+    "lightgbm",
+    "autoets",
+    "hora_media",
+    "naive_7d"
+  ],
+  "nota": "crowding_index = Validaciones/Cap_hora + alpha*upstream; proxy de presión (no ocupación a bordo); alpha=0.3 prior no calibrado APC"
 }

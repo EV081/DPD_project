@@ -13,24 +13,82 @@
   ],
   "metricas": {
     "MAE": {
+      "autoets": 40.3026,
       "chronos": 37.9067,
+      "lightgbm": 40.148,
       "hora_media": 46.1959,
       "naive_7d": 49.4986
     },
     "RMSE": {
+      "autoets": 62.7691,
       "chronos": 65.1857,
+      "lightgbm": 67.9239,
       "hora_media": 79.777,
       "naive_7d": 85.845
     },
     "WMAPE": {
+      "autoets": 0.4828,
       "chronos": 0.507,
+      "lightgbm": 0.5293,
       "hora_media": 0.6238,
       "naive_7d": 0.6584
     }
   },
   "umbrales_aforo": {
-    "De_pie": 0.125,
-    "Saturado": 0.37333333333333335
+    "De_pie": 0.23625,
+    "Saturado": 0.55125
   },
-  "nota": "Modelo dedicado; no mezclar con otros sistemas en el mismo fit"
+  "umbrales_crowding": [
+    {
+      "sistema": "alimentador",
+      "franja": "noche",
+      "thr_mid": 0.015,
+      "thr_hi": 0.16,
+      "n": 62658,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    },
+    {
+      "sistema": "alimentador",
+      "franja": "punta_am",
+      "thr_mid": 0.23625,
+      "thr_hi": 0.55125,
+      "n": 27848,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    },
+    {
+      "sistema": "alimentador",
+      "franja": "punta_pm",
+      "thr_mid": 0.21875,
+      "thr_hi": 0.514625,
+      "n": 34810,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    },
+    {
+      "sistema": "alimentador",
+      "franja": "valle",
+      "thr_mid": 0.121667,
+      "thr_hi": 0.28,
+      "n": 41772,
+      "alpha_upstream": 0.3,
+      "k_upstream": 2,
+      "n_orden_geo": 0
+    }
+  ],
+  "alpha_upstream": 0.3,
+  "k_upstream": 2,
+  "mejor_wmape": "autoets",
+  "bakeoff": [
+    "chronos",
+    "lightgbm",
+    "autoets",
+    "hora_media",
+    "naive_7d"
+  ],
+  "nota": "crowding_index = Validaciones/Cap_hora + alpha*upstream; proxy de presión (no ocupación a bordo); alpha=0.3 prior no calibrado APC"
 }
