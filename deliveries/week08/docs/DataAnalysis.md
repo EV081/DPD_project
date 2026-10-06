@@ -222,6 +222,19 @@ Convención de lectura en este documento:
 - **Importante porque:** features temporales compartidas (`hora` cíclica, `franja`),
   pero **calibración por sistema**. Un modelo “promedio Lima” aplasta el pico de la L1.
 
+#### Forma de la demanda diaria (violin, normalizado)
+
+![Violin comparativo](images/eda_comparativo_violin_diario.png)
+
+- **Qué muestra:** distribución de la demanda diaria **relativa a la media de cada
+  unidad** (`val_día / media(unidad)`), un violin por sistema. La línea roja = 1.0
+  (día típico).
+- **Qué sacamos:** alimentadores y corredores tienen colas más anchas (más días
+  “atípicos” respecto a su propia media); L1 y troncal se concentran más cerca de 1.0.
+- **Importante porque:** refuerza el CV del notebook de dispersión — la irregularidad
+  día a día **no es la misma** entre sistemas; el modelo de aforo/espera necesita
+  más margen o features de volatilidad en alimentadores/corredores.
+
 #### Día de la semana
 
 ![Día de la semana](images/eda_comparativo_dia_semana.png)
@@ -297,11 +310,14 @@ Convención de lectura en este documento:
   en “¿abrocho / espero / me cambio?”).
 
 ![Outliers IQR](images/eda_troncal_outliers_iqr.png)
+![Violin diario](images/eda_troncal_violin_diario.png)
 ![Correlación estación×día](images/eda_troncal_correlacion.png)
 
-- **Qué muestra:** días/unidades fuera de IQR; correlación de series entre estaciones.
-- **Qué sacamos:** outliers = picos reales de hubs, no basura. Estaciones cercanas /
-  mismo corredor se mueven juntas.
+- **Qué muestra:** días/unidades fuera de IQR; densidad diaria en hubs (violin);
+  correlación de series entre estaciones.
+- **Qué sacamos:** outliers = picos reales de hubs, no basura. El violin de top
+  estaciones confirma formas concentradas con cola superior (días de saturación).
+  Estaciones cercanas / mismo corredor se mueven juntas.
 - **Importante porque:** **no borrar** outliers IQR; sirven para etiquetar saturación.
   Correlación -> features de vecindario / modelos jerárquicos.
 
@@ -314,10 +330,12 @@ Mapa Folium interactivo: celda de mapa en [`eda_troncales_metropolitano.ipynb`](
 ![Serie](images/eda_alimentador_serie_diaria.png)
 ![Perfil](images/eda_alimentador_perfil_horario.png)
 ![Heatmap](images/eda_alimentador_heatmap_hora_dia.png)
+![Violin diario](images/eda_alimentador_violin_diario.png)
 
-- **Qué muestra:** serie diaria, perfil horario y heatmap de alimentadores fiables.
+- **Qué muestra:** serie diaria, perfil horario, heatmap y violin (top rutas fiables).
 - **Qué sacamos:** panel con muchos ceros estructurales (`era_celda_vacia` ~65% en crudo);
-  CV diario mediano alto (~44%); perfil con punta mañana pero cola de tarde relevante.
+  CV diario mediano alto (~44%); violin más disperso que L1/troncal; perfil con punta
+  mañana pero cola de tarde relevante.
 - **Importante porque:** son la **primera/última milla** hacia el troncal — el plus de
   “cambiar paradero” vive aquí — pero la calidad es la peor: filtrar `fiable` y usar el flag
   de celda vacía.
@@ -340,15 +358,18 @@ Mapa Folium interactivo: celda de mapa en [`eda_alimentadores.ipynb`](../code/ed
 
 ![Serie](images/eda_corredores_serie_diaria.png)
 ![Perfil](images/eda_corredores_perfil_horario.png)
+![Heatmap](images/eda_corredores_heatmap_hora_dia.png)
+![Violin diario](images/eda_corredores_violin_diario.png)
 ![Ranking](images/eda_corredores_ranking.png)
 ![Concentración](images/eda_corredores_concentracion.png)
 
-- **Qué muestra:** evolución diaria, forma horaria, ranking de rutas y concentración.
+- **Qué muestra:** evolución diaria, forma horaria, heatmap hora×día, violin de rutas
+  fiables, ranking y concentración.
 - **Qué sacamos:**
   - Solo **12/26** rutas fiables entran al panel serio.
   - Demanda muy concentrada: ruta **`201`** ~55k validaciones/día media (líder);
     luego `301`, `204`, `206`, `209`.
-  - Doble punta laborable similar al troncal.
+  - Doble punta laborable similar al troncal; violin con más dispersión que L1.
 - **Importante porque:** modelar “corredores” como bloque homogéneo miente; hay que
   modelar **por ruta** y aceptar que la mitad de la red no tiene año completo.
 
@@ -369,14 +390,17 @@ Mapa Folium interactivo (una ruta a la vez): celda de mapa en [`eda_corredores.i
 
 ![Serie](images/eda_l1_serie_diaria.png)
 ![Perfil](images/eda_l1_perfil_horario.png)
+![Heatmap](images/eda_l1_heatmap_hora_dia.png)
+![Violin diario](images/eda_l1_violin_diario.png)
 ![Ranking](images/eda_l1_ranking_estaciones.png)
 ![Día semana](images/eda_l1_dia_semana.png)
 
-- **Qué muestra:** panel de referencia (365 días × 26 estaciones).
+- **Qué muestra:** panel de referencia (365 días × 26 estaciones); heatmap hora×día
+  y violin de hubs.
 - **Qué sacamos:**
   - Sábado ≈ lunes (**~1.01**); domingo cae a ~**0.55**.
   - Hubs: **Gamarra**, La Cultura, Bayóvar, Miguel Grau, Villa El Salvador.
-  - Pico vespertino más marcado que en buses.
+  - Pico vespertino más marcado que en buses; violin más concentrado (menos ruido día a día).
 - **Importante porque:** es el sistema más limpio para prototipar el pipeline de
   predicción; luego se transfiere la receta a troncal/corredores.
 
@@ -410,6 +434,7 @@ Mapa Folium interactivo (shp MTC–AATE): celda de mapa en [`eda_metro_l1.ipynb`
 |---------------------|----------|
 | Cobertura + escala | Filtrar ≥90%; modelos **por sistema**; MVP en L1 + troncal hubs |
 | Perfiles + heatmap | Features `hora`, `franja`, interacción con `dia_semana` |
+| Violin comparativo / por sistema | Volatilidad día a día mayor en alimentadores/corredores → margen o features de irregularidad |
 | SÁB/LUN L1 vs buses | **No** dummy única “fin_de_semana” |
 | Feriados / jul–ago / dic | `es_feriado` + `mes` (más crítico en buses) |
 | Importancia / R² unidad | Incluir identidad `estación`/`ruta` sí o sí |
