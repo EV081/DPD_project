@@ -7,3 +7,4 @@ __pycache__/
 deliveries/**/zip/
 *.zip
 deliveries/week08/code/model/outputs
+deliveries/week10/code/model/outputs

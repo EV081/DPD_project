@@ -1,0 +1,3 @@
+# Las salidas del pipeline se escriben aquí (muestra CSV, reportes, JSON de
+# tráfico y manifiesto_export.json). El directorio debe existir antes de
+# `docker compose up` para que Docker no lo cree con dueño root.

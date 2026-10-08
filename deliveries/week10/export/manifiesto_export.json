@@ -1,0 +1,54 @@
+{
+  "generado_en": "2026-10-08T23:13:43",
+  "fuente": "/data/processed/clean",
+  "limite_muestra": 100000,
+  "conteos_bd": {
+    "troncal_hora": 398928,
+    "metro_l1_hora": 341640,
+    "metro_l1_total_hora": 170820,
+    "corredores_hora": 8253635,
+    "alimentador_hora": 4670304,
+    "alimentador_tarifa": 804864,
+    "cobertura_unidad": 125,
+    "trafico_en_vivo": 6,
+    "demanda_fiable": 12344159
+  },
+  "archivos": {
+    ".gitkeep": {
+      "bytes": 217,
+      "sha256": "ccd192b3507cbcb2026574702e2f1da9b89304b803b4a1be7783acccae4b6bf3"
+    },
+    "modelo/bakeoff_wmape_todos.csv": {
+      "bytes": 1144,
+      "sha256": "a75aedfa5b7508ef57b162774e1bd5f8006586f9187a090fcd523c80f05560f2"
+    },
+    "modelo/eval_walkforward_modelos.csv": {
+      "bytes": 3412,
+      "sha256": "88bc60d06ca903969e7fdd79652912e855983ca6fde6797bc2bc86f1490fd462"
+    },
+    "modelo/manifiesto_modelamiento.json": {
+      "bytes": 1557,
+      "sha256": "d6d1bf7c8b75e5f18934dac8cbe401441764a1660b084fce26de7069f3bf548c"
+    },
+    "modelo/metricas_modelos.csv": {
+      "bytes": 221,
+      "sha256": "e522bf19f8301a99cdf103faf26b12799ae459913acda535d18c08f3ef5dd336"
+    },
+    "muestra_demanda_fiable.csv": {
+      "bytes": 8491814,
+      "sha256": "24e20527daf5a531c57c36524bee08c4f2fade470ffb8b82ff367ad9bed75d88"
+    },
+    "perfil_horario.csv": {
+      "bytes": 2623,
+      "sha256": "783ec3bda2ee2d0af9086a57d998a8bfb9a1e98a777d35fb48c9679da2205edc"
+    },
+    "resumen_por_sistema.csv": {
+      "bytes": 304,
+      "sha256": "6a5d0919394227805a2d7fec2a3362136bf09656ff12293e5fbce70e3ba5ad0d"
+    },
+    "trafico_tomtom.json": {
+      "bytes": 1793,
+      "sha256": "c9a2f465f6c0d5e8d910313f6968b6234a177cb860101cf5196b355d4d14b12a"
+    }
+  }
+}

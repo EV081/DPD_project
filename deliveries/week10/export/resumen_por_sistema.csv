@@ -1,0 +1,5 @@
+sistema,grano,filas,unidades,validaciones,fecha_min,fecha_max
+alimentador,ruta,4667184,23,19875011.0,2025-01-01,2025-12-31
+corredor,ruta,7111955,12,81806735.0,2025-01-01,2025-12-31
+metro_l1,estacion,170820,26,201512887.0,2025-01-01,2025-12-31
+troncal,estacion,394200,45,127492997.0,2025-01-01,2025-12-31

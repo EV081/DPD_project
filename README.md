@@ -29,7 +29,7 @@ abiertos (Open Data/APIs) con una capa sintética.
 | Fuente | Rol |
 | :--- | :--- |
 | **Validaciones ATU (ProTransporte)** | Demanda base prevista — **solicitud pendiente**. Mientras tanto se usa como *proxy* el **dataset de Validaciones Troncales de TransMilenio (Bogotá)** (misma naturaleza BRT). |
-| **TomTom Traffic API** | Telemetría de congestión en tiempo real (key `TOMMTOM_KEY`). |
+| **TomTom Traffic API** | Telemetría de congestión en tiempo real (key `API_TOMTOM`; alias `TOMMTOM_KEY`). |
 | **OpenStreetMap (OSM)** | Infraestructura urbana (luminarias, comisarías, comercios) -> índice de seguridad peatonal. |
 | **Meteostat** | Clima horario de Bogotá — **solo para el EDA**; no entra a los predictores. |
 | **Dataset sintético** | Capa de congestión (`congestion_sintetica.csv`) y simulación de aforo. |
@@ -42,7 +42,7 @@ abiertos (Open Data/APIs) con una capa sintética.
 DPD_project/
 ├── README.md                     ← este archivo
 ├── requirements.txt              ← dependencias (pandas, sklearn, geopandas, torch, chronos…) 
-├── .env(.example)                ← única variable: API key TomTom (TOMMTOM_KEY)
+├── .env(.example)                ← API key TomTom (API_TOMTOM, alias TOMMTOM_KEY) + credenciales PG (PGUSER/PGPASSWORD/PGDATABASE/PGPORT)
 ├── .venv/                        ← entorno virtual
 └── deliveries/
     ├── week04/                   ← ideación/data product canvas inicial

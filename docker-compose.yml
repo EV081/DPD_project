@@ -1,0 +1,51 @@
+# week10 · Pipeline de ingesta + PostgreSQL (Elmer Villegas)
+#
+#   docker compose up --build            # init-db + demanda + trafico + export
+#   docker compose run pipeline live     # solo un snapshot de trafico
+#   docker compose run pipeline loop     # snapshots periodicos (LOOP_SECONDS)
+#   docker compose run pipeline pytest   # suite de regresion/paridad
+#   docker compose down                  # detiene (el volumen pgdata persiste)
+#   docker compose down -v               # detiene y borra la base
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${PGUSER:-urbansafe}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-urbansafe_dev}
+      POSTGRES_DB: ${PGDATABASE:-urbansafe}
+    ports:
+      - "${PGPORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  pipeline:
+    build: ./deliveries/week10
+    depends_on:
+      db:
+        condition: service_healthy
+    # corre como el usuario del host para no dejar export/ con dueño root
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      PGHOST: db
+      PGPORT: "5432"
+      PGUSER: ${PGUSER:-urbansafe}
+      PGPASSWORD: ${PGPASSWORD:-urbansafe_dev}
+      PGDATABASE: ${PGDATABASE:-urbansafe}
+      API_TOMTOM: ${API_TOMTOM:-}
+      TOMMTOM_KEY: ${TOMMTOM_KEY:-}
+      DATA_DIR: /data/processed
+      EXPORT_DIR: /app/out
+      MODELO_OUTPUTS_DIR: /app/model_outputs
+    volumes:
+      - ./deliveries/week10/data_processed:/data/processed:ro
+      - ./deliveries/week10/export:/app/out:rw
+      - ./deliveries/week10/code/model/outputs:/app/model_outputs:ro
+    command: ["full"]
+
+volumes:
+  pgdata:

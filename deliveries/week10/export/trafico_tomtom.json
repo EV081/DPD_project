@@ -1,0 +1,65 @@
+{
+  "generado_en": "2026-10-08T23:13:42",
+  "segmentos": [
+    {
+      "segmento": "argentina_mexico",
+      "lat": -12.0589,
+      "lon": -77.0406,
+      "actual_speed_kph": 41.0,
+      "free_flow_speed_kph": 46.0,
+      "ratio_congestion": 1.1219512195121952,
+      "fuente": "tomtom",
+      "actualizado_en": "2026-10-08 23:11:41.388959+00:00"
+    },
+    {
+      "segmento": "brasil_28julio",
+      "lat": -12.1064,
+      "lon": -77.0246,
+      "actual_speed_kph": 41.0,
+      "free_flow_speed_kph": 46.0,
+      "ratio_congestion": 1.1219512195121952,
+      "fuente": "tomtom",
+      "actualizado_en": "2026-10-08 23:11:41.547859+00:00"
+    },
+    {
+      "segmento": "evitamiento_norte",
+      "lat": -12.005,
+      "lon": -77.075,
+      "actual_speed_kph": 27.0,
+      "free_flow_speed_kph": 27.0,
+      "ratio_congestion": 1.0,
+      "fuente": "tomtom",
+      "actualizado_en": "2026-10-08 23:11:41.701788+00:00"
+    },
+    {
+      "segmento": "javier_prado_salaverry",
+      "lat": -12.0949,
+      "lon": -77.032,
+      "actual_speed_kph": 24.0,
+      "free_flow_speed_kph": 24.0,
+      "ratio_congestion": 1.0,
+      "fuente": "tomtom",
+      "actualizado_en": "2026-10-08 23:11:41.077739+00:00"
+    },
+    {
+      "segmento": "panamericana_norte",
+      "lat": -11.99,
+      "lon": -77.055,
+      "actual_speed_kph": 27.0,
+      "free_flow_speed_kph": 32.0,
+      "ratio_congestion": 1.1851851851851851,
+      "fuente": "tomtom",
+      "actualizado_en": "2026-10-08 23:11:41.857545+00:00"
+    },
+    {
+      "segmento": "via_expresa_pardo",
+      "lat": -12.0795,
+      "lon": -77.0385,
+      "actual_speed_kph": 16.0,
+      "free_flow_speed_kph": 21.0,
+      "ratio_congestion": 1.3125,
+      "fuente": "tomtom",
+      "actualizado_en": "2026-10-08 23:11:41.234009+00:00"
+    }
+  ]
+}

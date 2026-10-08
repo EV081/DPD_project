@@ -68,7 +68,7 @@ subsistemas**:
 |------------|-------------------|-------|----------------|
 | **Metro Línea 1** | estación | 169,921 | **100%** (26/26 estaciones, 365 días) |
 | **Troncales** | estación | 342,703 | **99%** (45/46 estaciones) |
-| **Corredores Complementarios** | ruta numerada | 4,532,529 | 63% (12/26 rutas sobre 90%) |
+| **Corredores Complementarios** | ruta numerada | 4,532,528 | 63% (12/26 rutas sobre 90%) |
 | **Alimentadores (COSAC)** | ruta con nombre | 1,640,842 | 85% (ninguna ruta completa) |
 
 **Total consolidado: 6,685,995 filas** en formato Parquet (~9.8 MB comprimido).
