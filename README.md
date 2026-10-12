@@ -48,31 +48,40 @@ DPD_project/
     ├── week04/                   ← ideación/data product canvas inicial
     ├── week05/                   ← definición, canvas y primeros datasets
     ├── week06/                   ← EDA(TransMilenio+clima+OSM) y selección de modelos (teórica)
-    └── week07/                   ← Integrated Project Definition
-        ├── Requirements.md                    ← especificación de requerimientos (RF/RNF, AC)
-        ├── docs/
-        │   ├── DataAnalysis.md                ← EDA (datos, preprocesamiento, hallazgos)
-        │   ├── ModelSelection.md              ← selección/justificación de modelos + resultados
-        │   ├── images/                        ← figuras del EDA (14 PNG)
-        │   └── data_dictionary/
-        │       ├── Data_Dictionary_Transmilenio.md/Clima.md/OSM.md   ← fuentes crudas
-        │       ├── Data_Dictionary_Procesados.md                         ← datasets procesados
-        │       └── DatasetDescriptions.md                                ← descripción de datasets
-        ├── code/
-        │   ├── download/         ← ingesta (Guia.md explica cada script)
-        │   ├── scripts/congestion.py           ← generador de la capa de congestión sintética
-        │   ├── eda/              ← notebooks EDA (TransMilenio, clima, OSM)
-        │   └── model/            ← Modelamiento_Preeliminar.ipynb + outputs/ (comparativas)
-        ├── data/                               ← datos crudos descargados (gitignored)
-        │   ├── transmilenio/     ← diario/, geo/, gtfs/, dataset.csv (17 cols)
-        │   ├── clima/            ← clima_hora/dia/semana_*.csv
-        │   └── OSM/              ← bogota.osm.pbf, pois.csv, red_vial.geojson
-        └── data_processed/       ← dataset_limpio.csv (modelo) + salidas del notebook
+    ├── week07/                   ← Integrated Project Definition
+    │   ├── Requirements.md                    ← especificación de requerimientos (RF/RNF, AC)
+    │   ├── docs/
+    │   │   ├── DataAnalysis.md                ← EDA (datos, preprocesamiento, hallazgos)
+    │   │   ├── ModelSelection.md              ← selección/justificación de modelos + resultados
+    │   │   ├── images/                        ← figuras del EDA (14 PNG)
+    │   │   └── data_dictionary/
+    │   │       ├── Data_Dictionary_Transmilenio.md/Clima.md/OSM.md   ← fuentes crudas
+    │   │       ├── Data_Dictionary_Procesados.md                         ← datasets procesados
+    │   │       └── DatasetDescriptions.md                                ← descripción de datasets
+    │   ├── code/
+    │   │   ├── download/         ← ingesta (Guia.md explica cada script)
+    │   │   ├── scripts/congestion.py           ← generador de la capa de congestión sintética
+    │   │   ├── eda/              ← notebooks EDA (TransMilenio, clima, OSM)
+    │   │   └── model/            ← Modelamiento_Preeliminar.ipynb + outputs/ (comparativas)
+    │   ├── data/                               ← datos crudos descargados (gitignored)
+    │   │   ├── transmilenio/     ← diario/, geo/, gtfs/, dataset.csv (17 cols)
+    │   │   ├── clima/            ← clima_hora/dia/semana_*.csv
+    │   │   └── OSM/              ← bogota.osm.pbf, pois.csv, red_vial.geojson
+    │   └── data_processed/       ← dataset_limpio.csv (modelo) + salidas del notebook
+    ├── week08/                   ← datos reales ATU 2025: EDA y modelado por sistema (Chronos-Bolt / LightGBM / AutoETS)
+    ├── week09/                   ← avance S09: copia de week08 + evaluación v2 (61 días, Chronos-2, conformal),
+    │                               data_csv/ y PresentationWeek09 (ver deliveries/week09/README.md)
+    └── week10/                   ← prototipo: pipeline PostgreSQL + Docker y models/ serializados (Issue #19)
 ```
 
 ---
 
 ## 4. Instrucciones de Ejecución
+
+> **Datos ATU reales (S08 en adelante):** las instrucciones vigentes están en
+> [`deliveries/week09/README.md`](deliveries/week09/README.md) (datos, EDA, evaluación v2) y
+> [`deliveries/week10/README.md`](deliveries/week10/README.md) (pipeline PostgreSQL y modelos
+> serializados). Las secciones 4.2–4.4 describen la etapa TransMilenio (S06–S07).
 
 ### 4.1 Entorno
 

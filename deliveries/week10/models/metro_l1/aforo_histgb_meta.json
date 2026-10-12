@@ -1,0 +1,50 @@
+{
+  "features": [
+    "hora_n",
+    "hora_sin",
+    "hora_cos",
+    "mes",
+    "dow",
+    "es_feriado_i",
+    "est_cod"
+  ],
+  "codigos_unidad": {
+    "Angamos": 0,
+    "Atocongo": 1,
+    "Ayacucho": 2,
+    "Bayóvar": 3,
+    "Cabitos": 4,
+    "Caja de Agua": 5,
+    "El Ángel": 6,
+    "Gamarra": 7,
+    "Jorge Chavez": 8,
+    "La Cultura": 9,
+    "Los Jardines": 10,
+    "Los Postes": 11,
+    "Maria Auxiliadora": 12,
+    "Miguel Grau": 13,
+    "Nicolas Arriola": 14,
+    "Parque Industrial": 15,
+    "Piramides del Sol": 16,
+    "Presbitero Maestro": 17,
+    "Pumacahua": 18,
+    "San Borja Sur": 19,
+    "San Carlos": 20,
+    "San Juan": 21,
+    "San Martin": 22,
+    "Santa Rosa": 23,
+    "Villa El Salvador": 24,
+    "Villa Maria": 25
+  },
+  "clases": [
+    "Asientos",
+    "De_pie",
+    "Saturado"
+  ],
+  "parametros": {
+    "max_depth": 8,
+    "random_state": 0
+  },
+  "filas_entrenamiento": 170820,
+  "uso": "respaldo cuando no hay pronóstico; el producto usa la cascada pronóstico → crowding → clase"
+}

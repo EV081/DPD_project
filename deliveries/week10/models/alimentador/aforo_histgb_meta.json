@@ -1,0 +1,47 @@
+{
+  "features": [
+    "hora_n",
+    "hora_sin",
+    "hora_cos",
+    "mes",
+    "dow",
+    "es_feriado_i",
+    "est_cod"
+  ],
+  "codigos_unidad": {
+    "Alisos": 0,
+    "Antúnez de Mayolo": 1,
+    "Belaunde": 2,
+    "Bertello": 3,
+    "Carabayllo": 4,
+    "Cedros de Villa": 5,
+    "Collique": 6,
+    "Ensenada": 7,
+    "Izaguirre": 8,
+    "Las Américas": 9,
+    "Los Olivos": 10,
+    "Los Próceres": 11,
+    "Milagro de Jesús": 12,
+    "Naranjal": 13,
+    "Payet": 14,
+    "Puente Piedra": 15,
+    "Puno": 16,
+    "San Juan de Dios": 17,
+    "Tahuantinsuyo": 18,
+    "Torre Blanca": 19,
+    "Trapiche": 20,
+    "Universitaria": 21,
+    "Villa El Salvador": 22
+  },
+  "clases": [
+    "Asientos",
+    "De_pie",
+    "Saturado"
+  ],
+  "parametros": {
+    "max_depth": 8,
+    "random_state": 0
+  },
+  "filas_entrenamiento": 200000,
+  "uso": "respaldo cuando no hay pronóstico; el producto usa la cascada pronóstico → crowding → clase"
+}
