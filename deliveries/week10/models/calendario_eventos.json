@@ -1,0 +1,74 @@
+{
+  "feriados": {
+    "2025-01-01": "Año Nuevo",
+    "2025-04-17": "Jueves Santo",
+    "2025-04-18": "Viernes Santo",
+    "2025-05-01": "Día del Trabajo",
+    "2025-06-07": "Batalla de Arica y Día de la Bandera",
+    "2025-06-29": "San Pedro y San Pablo",
+    "2025-07-23": "Día de la Fuerza Aérea del Perú",
+    "2025-07-28": "Fiestas Patrias",
+    "2025-07-29": "Fiestas Patrias",
+    "2025-08-06": "Batalla de Junín",
+    "2025-08-30": "Santa Rosa de Lima",
+    "2025-10-08": "Combate de Angamos",
+    "2025-11-01": "Todos los Santos",
+    "2025-12-08": "Inmaculada Concepción",
+    "2025-12-09": "Batalla de Ayacucho",
+    "2025-12-25": "Navidad",
+    "2026-01-01": "Año Nuevo",
+    "2026-04-02": "Jueves Santo",
+    "2026-04-03": "Viernes Santo",
+    "2026-05-01": "Día del Trabajo",
+    "2026-06-07": "Batalla de Arica y Día de la Bandera",
+    "2026-06-29": "San Pedro y San Pablo",
+    "2026-07-23": "Día de la Fuerza Aérea del Perú",
+    "2026-07-28": "Fiestas Patrias",
+    "2026-07-29": "Fiestas Patrias",
+    "2026-08-06": "Batalla de Junín",
+    "2026-08-30": "Santa Rosa de Lima",
+    "2026-10-08": "Combate de Angamos",
+    "2026-11-01": "Todos los Santos",
+    "2026-12-08": "Inmaculada Concepción",
+    "2026-12-09": "Batalla de Ayacucho",
+    "2026-12-25": "Navidad"
+  },
+  "paros_2025": {
+    "2025-02-06": {
+      "descripcion": "Paro de transportistas Lima y Callao",
+      "fuente": "https://larepublica.pe/sociedad/2025/02/05/paro-de-transportistas-en-lima-y-callao-horario-del-metropolitano-metro-de-lima-y-corredores-este-6-de-febrero-82545"
+    },
+    "2025-04-07": {
+      "descripcion": "Paro de transportistas Lima Norte (Metropolitano colapsado)",
+      "fuente": "https://www.infobae.com/peru/2025/04/07/metropolitano-colapsa-ante-paro-de-transportistas-se-registra-gran-congestion-y-atu-habilita-nuevos-servicios/"
+    },
+    "2025-04-10": {
+      "descripcion": "Paro de transportistas de 24 h",
+      "fuente": "https://www.infobae.com/peru/2025/04/10/paro-de-transportistas-10-de-abril-el-metropolitano-los-corredores-y-metro-seguiran-operativos-en-lima-y-callao-confirmo-la-atu/"
+    },
+    "2025-08-21": {
+      "descripcion": "Paro de transportistas de 24 h",
+      "fuente": "https://www.infobae.com/peru/2025/08/21/paro-de-transportistas-21-de-agosto-estos-seran-los-horarios-del-metropolitano-corredores-metro-de-lima-y-aerodirecto/"
+    },
+    "2025-10-02": {
+      "descripcion": "Paro de transportistas",
+      "fuente": "https://gestion.pe/peru/atu-metropolitano-corredores-y-metro-operaran-con-normalidad-este-jueves-2-de-octubre-noticia/"
+    },
+    "2025-10-06": {
+      "descripcion": "Paro de transportistas (alta demanda en Línea 1)",
+      "fuente": "https://caretas.pe/?p=769420"
+    },
+    "2025-10-15": {
+      "descripcion": "Paro de transportistas",
+      "fuente": "https://larepublica.pe/sociedad/2025/10/14/paro-del-15-de-octubre-horarios-del-metropolitano-corredores-y-metro-de-lima-segun-atu-769468"
+    },
+    "2025-11-04": {
+      "descripcion": "Paro de transportistas",
+      "fuente": "https://www.infobae.com/peru/2025/11/04/paro-de-transportistas-en-vivo-situacion-del-transporte-en-lima-callao-y-otros-distritos-por-asesinatos-y-extorsiones-a-empresas/"
+    }
+  },
+  "visperas": {
+    "2025-12-24": "Nochebuena",
+    "2025-12-31": "Fin de año"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "sistema": "troncal",
+  "ganador_validacion": "ensemble",
+  "top3_validacion": [
+    "lightgbm",
+    "chronos2",
+    "mstl"
+  ],
+  "lgb_n_estimators": 135,
+  "segundos_modelo": {
+    "naive_7d": 0.0013287067413330078,
+    "hora_media": 0.07480502128601074,
+    "media_4sem": 0.007481575012207031,
+    "autoets": 2096.510867834091,
+    "mstl": 3173.932308912277,
+    "lightgbm": 83.61079597473145,
+    "chronos_bolt": 201.91580963134766,
+    "chronos2": 2473.965347290039,
+    "ensemble": 5731.508452177048
+  },
+  "n_series": 45,
+  "dias_val": [
+    "2025-10-15",
+    "2025-10-31"
+  ],
+  "dias_test": [
+    "2025-11-01",
+    "2025-12-31"
+  ],
+  "umbrales_globales": [
+    0.13546747967479675,
+    0.42735823170731724
+  ],
+  "isolation_forest_umbral": 0.5841490641232263,
+  "segundos_analisis": 53.03877305984497
+}

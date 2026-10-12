@@ -1,0 +1,36 @@
+{
+  "features": [
+    "hora_n",
+    "hora_sin",
+    "hora_cos",
+    "mes",
+    "dow",
+    "es_feriado_i",
+    "est_cod"
+  ],
+  "codigos_unidad": {
+    "201": 0,
+    "204": 1,
+    "206": 2,
+    "209": 3,
+    "301": 4,
+    "305": 5,
+    "370": 6,
+    "371": 7,
+    "404": 8,
+    "405": 9,
+    "406": 10,
+    "412": 11
+  },
+  "clases": [
+    "Asientos",
+    "De_pie",
+    "Saturado"
+  ],
+  "parametros": {
+    "max_depth": 8,
+    "random_state": 0
+  },
+  "filas_entrenamiento": 105120,
+  "uso": "respaldo cuando no hay pronóstico; el producto usa la cascada pronóstico → crowding → clase"
+}

@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "entradas": [
+    "clase de aforo (h)",
+    "clase de aforo (h+1)",
+    "eta_min"
+  ],
+  "reglas": [
+    {
+      "si": "clase == Saturado y eta <= 10 y clase_siguiente != Saturado",
+      "entonces": "esperar_siguiente"
+    },
+    {
+      "si": "clase == Saturado y eta > 10",
+      "entonces": "cambiar_paradero"
+    },
+    {
+      "si": "en otro caso",
+      "entonces": "abordar"
+    }
+  ],
+  "origen": "decision_u de model_atu_common (week08), vectorizada en model_atu_v2.recomendaciones"
+}
