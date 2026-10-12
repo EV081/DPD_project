@@ -1,0 +1,27 @@
+fecha,tipo,descripcion,fuente
+2025-01-01,feriado,Año Nuevo,MTPE (calendario oficial)
+2025-02-06,paro,Paro de transportistas Lima y Callao,https://larepublica.pe/sociedad/2025/02/05/paro-de-transportistas-en-lima-y-callao-horario-del-metropolitano-metro-de-lima-y-corredores-este-6-de-febrero-82545
+2025-04-07,paro,Paro de transportistas Lima Norte (Metropolitano colapsado),https://www.infobae.com/peru/2025/04/07/metropolitano-colapsa-ante-paro-de-transportistas-se-registra-gran-congestion-y-atu-habilita-nuevos-servicios/
+2025-04-10,paro,Paro de transportistas de 24 h,https://www.infobae.com/peru/2025/04/10/paro-de-transportistas-10-de-abril-el-metropolitano-los-corredores-y-metro-seguiran-operativos-en-lima-y-callao-confirmo-la-atu/
+2025-04-17,feriado,Jueves Santo,MTPE (calendario oficial)
+2025-04-18,feriado,Viernes Santo,MTPE (calendario oficial)
+2025-05-01,feriado,Día del Trabajo,MTPE (calendario oficial)
+2025-06-07,feriado,Batalla de Arica y Día de la Bandera,MTPE (calendario oficial)
+2025-06-29,feriado,San Pedro y San Pablo,MTPE (calendario oficial)
+2025-07-23,feriado,Día de la Fuerza Aérea del Perú,MTPE (calendario oficial)
+2025-07-28,feriado,Fiestas Patrias,MTPE (calendario oficial)
+2025-07-29,feriado,Fiestas Patrias,MTPE (calendario oficial)
+2025-08-06,feriado,Batalla de Junín,MTPE (calendario oficial)
+2025-08-21,paro,Paro de transportistas de 24 h,https://www.infobae.com/peru/2025/08/21/paro-de-transportistas-21-de-agosto-estos-seran-los-horarios-del-metropolitano-corredores-metro-de-lima-y-aerodirecto/
+2025-08-30,feriado,Santa Rosa de Lima,MTPE (calendario oficial)
+2025-10-02,paro,Paro de transportistas,https://gestion.pe/peru/atu-metropolitano-corredores-y-metro-operaran-con-normalidad-este-jueves-2-de-octubre-noticia/
+2025-10-06,paro,Paro de transportistas (alta demanda en Línea 1),https://caretas.pe/?p=769420
+2025-10-08,feriado,Combate de Angamos,MTPE (calendario oficial)
+2025-10-15,paro,Paro de transportistas,https://larepublica.pe/sociedad/2025/10/14/paro-del-15-de-octubre-horarios-del-metropolitano-corredores-y-metro-de-lima-segun-atu-769468
+2025-11-01,feriado,Todos los Santos,MTPE (calendario oficial)
+2025-11-04,paro,Paro de transportistas,https://www.infobae.com/peru/2025/11/04/paro-de-transportistas-en-vivo-situacion-del-transporte-en-lima-callao-y-otros-distritos-por-asesinatos-y-extorsiones-a-empresas/
+2025-12-08,feriado,Inmaculada Concepción,MTPE (calendario oficial)
+2025-12-09,feriado,Batalla de Ayacucho,MTPE (calendario oficial)
+2025-12-24,vispera,Nochebuena,calendario
+2025-12-25,feriado,Navidad,MTPE (calendario oficial)
+2025-12-31,vispera,Fin de año,calendario
