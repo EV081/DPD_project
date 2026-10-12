@@ -168,3 +168,23 @@ deliveries/week10/
 | `trafico_tomtom.json` | snapshot de `trafico_en_vivo` |
 | `modelo/` | manifiesto + métricas de los modelos de week08 |
 | `manifiesto_export.json` | inventario con sha256 de cada archivo + conteos de la BD |
+
+## 9. Modelos serializados (Issue #19 — Juan David Velo)
+
+`models/` contiene un modelo operativo por sistema (Metro L1, troncal, corredores, alimentadores)
+entrenado con todo 2025 y elegido en la evaluación v2 de week09 (validación 15–31 oct, test
+1 nov – 31 dic): pronosticador principal, configuración de aforo (crowding), bandas conformal 80 %,
+clasificador de aforo de respaldo, detector de anomalías, `model_card.json` por sistema y un
+`manifest.json` con versión, hiperparámetros, métricas contra baselines y sha256 de cada artefacto.
+
+```bash
+pip install -r requirements-models.txt                      # (sin torch si solo se usa LightGBM)
+python code/model/serializar_modelos.py                      # re-entrena y re-serializa
+python code/model/verificar_modelos.py                       # sha256 + recarga + re-inferencia → models/verify_report.md
+cd code && python -m pytest tests/test_models.py -q          # no requiere PostgreSQL
+```
+
+Inferencia (backend / batch diario → tabla `prediccion`): `code/model/inferencia.py`
+(`ModeloSistema.cargar(sistema).pronosticar(contexto, dia)`). Detalle en `models/README.md`.
+`data_processed/` de esta carpeta es una copia del de week09 (mismos conteos que `FILAS_ESPERADAS`,
+con el calendario de 16 feriados).

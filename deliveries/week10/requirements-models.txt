@@ -1,0 +1,15 @@
+# Dependencias de modelado e inferencia week10 (Issue #19).
+# El pipeline de ingesta usa requirements-pipeline.txt (sin torch).
+pandas>=2.2,<3
+numpy>=1.26
+pyarrow>=17
+scipy>=1.11
+scikit-learn==1.9.1        # los .joblib se cargan con la misma versión con que se serializaron
+lightgbm>=4.0
+joblib>=1.3
+statsforecast>=2.0
+# Modelos fundacionales (solo si el modelo principal o el ensemble los usa)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+chronos-forecasting>=2.3   # incluye Chronos2Pipeline
+pytest>=8.0
