@@ -15,6 +15,7 @@ _WEEK10_DIR = _CODE_DIR.parent
 
 DATA_DIR = Path(os.getenv("DATA_DIR", str(_WEEK10_DIR / "data_processed")))
 CLEAN_DIR = DATA_DIR / "clean"
+GEO_DIR = Path(os.getenv("GEO_DIR", str(_WEEK10_DIR / "data" / "fuentes" / "geo")))
 EXPORT_DIR = Path(os.getenv("EXPORT_DIR", str(_WEEK10_DIR / "export")))
 MODELO_OUTPUTS_DIR = Path(
     os.getenv("MODELO_OUTPUTS_DIR", str(_CODE_DIR / "model" / "outputs"))
@@ -42,3 +43,10 @@ FIABLE_ESPERADO = {
     "metro_l1": 170_820,
 }
 FIABLE_TOTAL_ESPERADO = 12_344_159
+
+# Feedback: probabilidad de pedir el aforo percibido tras "Ya abordé"
+# (demo = 1.0; produccion = 0.2-0.33). `entorno` separa demo de prod al medir.
+ENTORNO = os.getenv("ENTORNO", "prod")
+FEEDBACK_AFORO_PROB = float(
+    os.getenv("FEEDBACK_AFORO_PROB", "1.0" if ENTORNO == "demo" else "0.25")
+)

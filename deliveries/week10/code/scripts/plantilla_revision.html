@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revisión de paradas y rutas</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--bg:#fff;--fg:#1c1c1e;--mut:#6b7280;--line:#e5e7eb;--card:#f7f7f8}
+@media (prefers-color-scheme:dark){:root{--bg:#16171a;--fg:#ececf1;--mut:#9aa0aa;--line:#2c2e33;--card:#1f2125}}
+*{box-sizing:border-box}body{margin:0;font:14px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--fg);display:flex;height:100vh}
+#panel{width:380px;max-width:45vw;border-right:1px solid var(--line);display:flex;flex-direction:column}
+#map{flex:1}
+header{padding:12px;border-bottom:1px solid var(--line)}
+h1{font-size:15px;margin:0 0 8px}
+select,input[type=text],button{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+select{width:100%;margin-bottom:6px}button{cursor:pointer}button:hover{border-color:var(--mut)}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+#lista{list-style:none;margin:0;padding:0;overflow:auto;flex:1}
+#lista li{padding:7px 12px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;gap:8px;align-items:center}
+#lista li:hover,#lista li.sel{background:var(--card)}
+.n{min-width:26px;text-align:center;border-radius:50%;color:#fff;font-weight:600;font-size:12px;padding:2px 0}
+.tag{font-size:11px;color:var(--mut);margin-left:auto;white-space:nowrap}
+.estado{font-size:11px;padding:1px 6px;border-radius:9px;background:#1565c0;color:#fff}
+#info{padding:10px 12px;border-top:1px solid var(--line);background:var(--card);font-size:13px}
+.pin{width:26px;height:26px;border-radius:50%;color:#fff;font:600 12px/26px system-ui;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px #0006}
+.pin.b2{border-radius:5px}
+.n.b2{border-radius:5px}
+.sent{padding:6px 12px;background:var(--card);border-bottom:1px solid var(--line);font-size:12px;color:var(--mut)}
+.leyenda span{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 4px 0 8px}
+.mut{color:var(--mut)}a{color:#1565c0}
+.solo-edicion{display:none}
+body.editar .solo-edicion{display:block}
+body.editar .row.solo-edicion{display:flex}
+#aud{display:none;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--card)}
+#aud.on{display:block}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:6px 0}
+.bar i{display:block;height:100%;background:#1565c0;border-radius:3px}
+kbd{font:11px monospace;border:1px solid var(--line);border-radius:4px;padding:0 4px;background:var(--bg)}
+</style></head><body>
+<div id="panel">
+<header>
+ <h1>Revisión de paradas y rutas</h1>
+ <select id="sis"></select><select id="serv"></select>
+ <label class="mut solo-edicion"><input type="checkbox" id="pend"> solo pendientes (baja, media o sin coordenada)</label>
+ <div class="mut" style="margin-top:6px">● sentido 1 &nbsp; ■ sentido 2</div>
+ <div class="row" style="align-items:center"><span class="mut">Colorear por:</span>
+  <select id="modo" style="width:auto;margin:0"><option value="precision">precisión (Google)</option>
+  <option value="confianza">confianza del método</option></select></div>
+ <div class="leyenda mut" id="ley"><span style="background:#2e7d32"></span>alta<span style="background:#f9a825"></span>media<span style="background:#c62828"></span>baja<span style="background:#455a64"></span>oficial<span style="background:#1565c0"></span>verificada</div>
+ <div class="row solo-edicion"><button id="baud" style="font-weight:600">▶ Modo auditoría</button></div>
+ <div class="row solo-edicion"><button id="exp">Exportar correcciones (CSV)</button><button id="imp">Importar…</button><input type="file" id="file" accept=".csv" hidden></div>
+</header>
+<div id="aud">
+  <div id="audtxt"></div><div class="bar"><i id="audbar" style="width:0"></i></div>
+  <div class="mut" id="audstat"></div>
+  <div class="row"><button id="aprev">← Anterior</button><button id="asig">Saltar →</button>
+   <button id="asal">Salir</button></div>
+  <div class="mut" style="margin-top:6px"><kbd>O</kbd> correcta · <kbd>M</kbd> mover · <kbd>N</kbd> no existe · <kbd>←</kbd><kbd>→</kbd> navegar</div>
+</div>
+<ul id="lista"></ul>
+<div id="info">Elige un servicio y toca una parada.</div>
+</div>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const DATOS = /*__DATOS__*/null;
+const KEY = "correcciones_paradas_v1";
+const EDITAR = new URLSearchParams(location.search).get("editar")==="1";   // herramientas de correccion
+if(EDITAR) document.body.classList.add("editar");
+const COL = {alta:"#2e7d32",media:"#f9a825",baja:"#c62828",oficial:"#455a64",verificada:"#1565c0",sin:"#9e9e9e"};
+let corr = {}; try{corr=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const guardar=()=>{try{localStorage.setItem(KEY,JSON.stringify(corr))}catch(e){}};
+const map=L.map("map").setView([-12.05,-77.04],11);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
+const capa=L.layerGroup().addTo(map);
+let sel=null, modoMover=false, markers={};
+const $=id=>document.getElementById(id);
+const key=(s,p)=>`${s}|${p.bloque}|${p.orden}`;
+const serv=()=>DATOS[$("sis").value].servicios[$("serv").value];
+const editable=()=>DATOS[$("sis").value].editable && EDITAR;
+
+for(const s of Object.keys(DATOS)) $("sis").add(new Option(`${s} (${Object.keys(DATOS[s].servicios).length})`,s));
+function poblarServ(){
+  $("serv").innerHTML="";
+  const S=DATOS[$("sis").value].servicios;
+  for(const k of Object.keys(S).sort()){
+    const pend=S[k].paradas.filter(p=>p.confianza==="baja"||p.confianza==="media"||p.confianza==="sin").length;
+    $("serv").add(new Option(`${k}${S[k].codigo&&S[k].codigo!==k?" ("+S[k].codigo+")":""} · ${S[k].paradas.length} paradas`+(DATOS[$("sis").value].editable?` · ${pend} por revisar`:""),k));
+  }
+  dibujar();
+}
+const estadoDe=(s,p)=>corr[key(s,p)];
+function colorDe(s,p){
+  const conf=confEf(s,p);
+  if($("modo").value==="precision" && p.precision){
+    if(conf==="verificada") return COL.verificada;
+    if(p.precision==="exacta") return "#2e7d32";
+    if(p.precision==="aproximada") return p.evidencia==="parada_cercana_google"?"#f9a825":"#c62828";
+    return COL.sin;
+  }
+  if($("modo").value==="precision" && !p.precision && conf!=="sin") return COL.oficial;   // L1, corredores, troncal
+  return COL[conf]||COL.sin;
+}
+function confEf(s,p){const c=estadoDe(s,p); if(c&&c.estado==="ok"||c&&c.estado==="mover")return "verificada"; return p.confianza}
+function posEf(s,p){const c=estadoDe(s,p); if(c&&c.estado==="mover")return [c.lat,c.lon]; return p.lat==null?null:[p.lat,p.lon]}
+
+function dibujar(){
+  capa.clearLayers(); markers={}; $("lista").innerHTML="";
+  const S=serv(), sk=$("serv").value, pts=[], usados={};
+  const sn=S.sentidos||{};
+  for(const ln of S.trazado||[]) L.polyline(ln,{color:"#5b6270",weight:3,opacity:.55,dashArray:"6 6"}).addTo(capa);
+  const orden=[...S.paradas].sort((a,b)=>a.bloque-b.bloque||a.orden-b.orden);
+  for(const p of orden){
+    const c=estadoDe(sk,p), conf=confEf(sk,p), pos=posEf(sk,p), descartada=c&&c.estado==="sin_parada";
+    const pendiente=["baja","media","sin"].includes(conf)&&!descartada;
+    if($("pend").checked && !pendiente) continue;
+    const li=document.createElement("li"); li.dataset.k=key(sk,p);
+    li.innerHTML=`<span class="n ${p.bloque===2?"b2":""}" style="background:${colorDe(sk,p)}">${p.orden}</span><span>${p.nombre}${descartada?" <s class='mut'>(no existe)</s>":""}</span>`
+      +(c?`<span class="estado">${c.estado}</span>`:"")
+      +`<span class="tag">sentido ${p.bloque} · ${p.confianza==="sin"?"sin coordenada":(p.precision?p.precision+" · "+(p.evidencia||"").replace(/_/g," "):({gps_atu:"GPS de ATU",shapefile_atu:"shapefile ATU",osm_nombre:"OSM por nombre","google_places (corregida)":"Google (corregida)",revision_humana:"revisión manual"}[p.metodo]||p.metodo))}</span>`;
+    li.onclick=()=>elegir(sk,p); $("lista").appendChild(li);
+    if(pos&&!descartada){
+      const kpos=pos[0].toFixed(5)+","+pos[1].toFixed(5); usados[kpos]=(usados[kpos]||0)+1;
+      const j=usados[kpos]-1;                       // misma coordenada: separar solo el dibujo
+      const posV=[pos[0]+j*0.00007,pos[1]+j*0.00007];
+      p._comparte=j>0;
+      const m=L.marker(posV,{icon:L.divIcon({className:"",html:`<div class="pin ${p.bloque===2?"b2":""}" style="background:${colorDe(sk,p)}">${p.orden}</div>`,iconSize:[26,26]}),
+        draggable:editable()});
+      m.bindTooltip(`${p.orden}. ${p.nombre}`); m.on("click",()=>elegir(sk,p));
+      m.on("dragend",e=>{const ll=e.target.getLatLng(), k=key(sk,p);
+        const g=(AUD.activo&&AUD.cola[AUD.idx]&&AUD.cola[AUD.idx].k===k)?AUD.cola[AUD.idx].grupo:((corr[k]||{}).grupo||"");
+        corr[k]={estado:"mover",lat:ll.lat.toFixed(6),lon:ll.lng.toFixed(6),comentario:(corr[k]||{}).comentario||"",grupo:g}; guardar();
+        if(AUD.activo) avanzar(1); else {dibujar(); elegir(sk,p)}});
+      m.addTo(capa); markers[key(sk,p)]=m; pts.push(posV);
+    }
+  }
+  if(pts.length) map.fitBounds(L.latLngBounds(pts).pad(.15));
+  else if((S.trazado||[]).length) map.fitBounds(L.latLngBounds(S.trazado.flat()).pad(.1));
+}
+
+let gMarker=null, iMarker=null;
+const CONSENSO={nuestro_y_google:"✔ nuestro punto y Google coinciden",google_e_imagen:"Google e imagen coinciden (probablemente Google)",
+  nuestro_e_imagen:"nuestro punto e imagen coinciden",sin_consenso:"sin consenso: revisar con cuidado",sin_datos:"sin datos: ubicar a mano"};
+function elegir(sk,p){
+  sel={sk,p};
+  if(gMarker){map.removeLayer(gMarker); gMarker=null}
+  if(iMarker){map.removeLayer(iMarker); iMarker=null}
+  if(p.i_lat!=null){
+    iMarker=L.marker([p.i_lat,p.i_lon],{icon:L.divIcon({className:"",iconSize:[22,22],
+      html:'<div style="width:20px;height:20px;background:#fff;border:3px solid #00838f;box-shadow:0 1px 4px #0006;font:700 11px/14px system-ui;color:#00838f;text-align:center">I</div>'})})
+      .bindTooltip("Interpolación por imagen (≈ ±170 m): "+p.nombre).addTo(map);
+  }
+  if(p.g_lat!=null&&(p.g_dist==null||p.g_dist>25)){
+    gMarker=L.marker([p.g_lat,p.g_lon],{icon:L.divIcon({className:"",iconSize:[26,26],
+      html:'<div style="width:22px;height:22px;transform:rotate(45deg);background:#fff;border:3px solid #8e24aa;box-shadow:0 1px 4px #0006"></div><div style="position:relative;top:-21px;text-align:center;font:700 11px system-ui;color:#8e24aa">G</div>'})})
+      .bindTooltip("Google: "+p.nombre).addTo(map);
+  } document.querySelectorAll("#lista li").forEach(l=>l.classList.toggle("sel",l.dataset.k===key(sk,p)));
+  const pos=posEf(sk,p), c=estadoDe(sk,p)||{};
+  const sn=serv().sentidos||{}, lab=sn[String(p.bloque)]?` (${sn[String(p.bloque)]})`:"";
+  let h=`<b>${p.orden}. ${p.nombre}</b><br><span class="mut">sentido ${p.bloque}${lab} · ${p.metodo} · ${p.n_cand} candidato(s)</span><br>`;
+  const otros=serv().paradas.filter(q=>q!==p&&q.lat!=null&&p.lat!=null&&q.lat===p.lat&&q.lon===p.lon);
+  if(p.g_lat!=null) h+=`<span class="mut">Google (rombo morado «G»): ${p.g_dist==null?"candidato para ubicarla":"a "+p.g_dist+" m de nuestro punto"} · <a href="https://www.google.com/maps/search/?api=1&query=${p.g_lat},${p.g_lon}" target="_blank" rel="noopener">ver en Google Maps</a></span><br>`;
+  else h+=`<span class="mut">Google no devolvió una parada para este nombre.</span><br>`;
+  if(p.i_lat!=null) h+=`<span class="mut">Imagen (cuadrado «I», ±170 m): ${p.i_dist==null?"punto de partida para ubicarla":"a "+p.i_dist+" m de nuestro punto"}</span><br>`;
+  if(p.precision) h+=`<b style="font-size:12px;color:${p.precision==="exacta"?"#2e7d32":"#c62828"}">precisión: ${p.precision}</b> <span class="mut">(${(p.evidencia||"").replace(/_/g," ")})</span><br>`;
+  if(p.consenso) h+=`<b style="font-size:12px">${CONSENSO[p.consenso]||p.consenso}</b><br>`;
+  if(otros.length) h+=`<span class="mut">⚠ mismo punto que: ${otros.map(q=>q.orden+"("+"sentido "+q.bloque+")").join(", ")} — OSM tiene un solo nodo; en la realidad suelen ser dos paraderos (uno por acera).</span><br>`;
+  if(pos){
+    const g=`https://www.google.com/maps/search/?api=1&query=${pos[0]},${pos[1]}`;
+    h+=`<span class="mut">${(+pos[0]).toFixed(5)}, ${(+pos[1]).toFixed(5)}</span> · <a href="${g}" target="_blank" rel="noopener">Google Maps</a> · <a href="https://www.google.com/maps/search/${encodeURIComponent(p.nombre+" Lima")}" target="_blank" rel="noopener">buscar por nombre</a><br>`;
+    map.setView(pos,Math.max(map.getZoom(),16));
+  }else h+=`<span class="mut">Sin coordenada: usa «Ubicar» y toca el mapa.</span><br>`;
+  if(editable()){
+    h+=`<div class="row"><button id="bok">✔ Correcta</button><button id="bmv">📍 Ubicar / mover</button><button id="bno">✖ No existe</button><button id="bun">↩ Deshacer</button></div>
+        <div class="row"><input type="text" id="com" placeholder="comentario o enlace de Google Maps (fija la posición)" value="${(c.comentario||"").replace(/"/g,"&quot;")}" style="flex:1"></div>`;
+  }
+  $("info").innerHTML=h;
+  if(editable()){
+    const k=key(sk,p), grupo=(AUD.activo&&AUD.cola[AUD.idx]&&AUD.cola[AUD.idx].k===k)?AUD.cola[AUD.idx].grupo:((corr[k]||{}).grupo||"");
+    const set=e=>{
+      const co=coordDeUrl($("com").value);                  // enlace de Google Maps en el comentario
+      if(co&&e.estado!=="sin_parada") e=Object.assign({},e,{estado:"mover",lat:co[0],lon:co[1]});
+      corr[k]=Object.assign({},corr[k],e,{comentario:$("com").value,grupo}); guardar();
+                  if(AUD.activo) avanzar(1); else {dibujar(); elegir(sk,p)}};
+    $("bok").onclick=()=>pos?set({estado:"ok"}):alert("Esta parada no tiene coordenada: ubícala primero.");
+    $("bmv").onclick=()=>{modoMover=true; $("info").insertAdjacentHTML("beforeend","<br><b>Toca el mapa para fijar la posición…</b>")};
+    $("bno").onclick=()=>set({estado:"sin_parada"});
+    $("bun").onclick=()=>{delete corr[k]; guardar(); if(AUD.activo) mostrarAud(); else {dibujar(); elegir(sk,p)}};
+  }
+}
+map.on("click",e=>{ if(!modoMover||!sel) return; modoMover=false;
+  const k=key(sel.sk,sel.p), g=(AUD.activo&&AUD.cola[AUD.idx]&&AUD.cola[AUD.idx].k===k)?AUD.cola[AUD.idx].grupo:((corr[k]||{}).grupo||"");
+  corr[k]={estado:"mover",lat:e.latlng.lat.toFixed(6),lon:e.latlng.lng.toFixed(6),comentario:(corr[k]||{}).comentario||"",grupo:g};
+  guardar(); if(AUD.activo) avanzar(1); else {dibujar(); elegir(sel.sk,sel.p)}});
+
+// ── Modo auditoría ────────────────────────────────────────────────────────────────
+let AUD={activo:false,cola:[],idx:0};
+function coordDeUrl(txt){
+  for(const rx of [/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/, /[?&](?:q|query|ll)=(-?\d+\.\d+),(-?\d+\.\d+)/, /@(-?\d+\.\d+),(-?\d+\.\d+)/]){
+    const m=(txt||"").match(rx); if(m) return [m[1],m[2]];
+  } return null;
+}
+const csvCelda=v=>{const s=String(v==null?"":v); return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};
+function parseCsv(txt){
+  const filas=[]; let f=[],c="",q=false;
+  for(let i=0;i<txt.length;i++){const ch=txt[i];
+    if(q){ if(ch==='"'){ if(txt[i+1]==='"'){c+='"';i++} else q=false } else c+=ch }
+    else if(ch==='"') q=true; else if(ch===",") {f.push(c);c=""}
+    else if(ch==="\n"){f.push(c);filas.push(f);f=[];c=""} else if(ch!=="\r") c+=ch;
+  } if(c||f.length){f.push(c);filas.push(f)} return filas;
+}
+const hash=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)};
+function construirCola(){
+  const sin=[],disc=[],baja=[],muestra=[];
+  for(const [sid,S] of Object.entries(DATOS.alimentador.servicios))
+    for(const p of [...S.paradas].sort((a,b)=>a.bloque-b.bloque||a.orden-b.orden)){
+      const k=`${sid}|${p.bloque}|${p.orden}`;
+      if(p.confianza==="sin") sin.push({sid,p,k,grupo:"prioritaria"});
+      else if(p.g_dist!=null&&p.g_dist>150&&p.confianza!=="alta") disc.push({sid,p,k,grupo:"prioritaria"});
+      else if(p.confianza==="baja") baja.push({sid,p,k,grupo:"prioritaria"});
+      else if((p.confianza==="media"||p.confianza==="alta")&&hash(k)%10===0) muestra.push({sid,p,k,grupo:"muestra"});
+    }
+  return sin.concat(disc,baja,muestra);
+}
+function resumenAud(){
+  const hechos=AUD.cola.filter(c=>corr[c.k]);
+  const m=hechos.filter(c=>c.grupo==="muestra"), ok=m.filter(c=>corr[c.k].estado==="ok").length;
+  let s=`${hechos.length}/${AUD.cola.length} revisadas`;
+  if(m.length) s+=` · muestra media/alta: ${ok}/${m.length} correctas (${Math.round(100*ok/m.length)} %)`;
+  return s;
+}
+function mostrarAud(){
+  const it=AUD.cola[AUD.idx]; if(!it){ $("audtxt").innerHTML="<b>¡Cola terminada!</b> Exporta las correcciones."; return; }
+  $("sis").value="alimentador"; poblarServ(); $("serv").value=it.sid; dibujar();
+  const p=serv().paradas.find(q=>q.bloque===it.p.bloque&&q.orden===it.p.orden);
+  $("audtxt").innerHTML=`<b>${AUD.idx+1} / ${AUD.cola.length}</b> · ${it.sid} · <span class="mut">${it.grupo==="muestra"?"muestra de auditoría":"prioritaria ("+(it.p.confianza==="sin"?"sin coordenada":(it.p.g_dist!=null&&it.p.g_dist>150?"Google discrepa "+it.p.g_dist+" m":"confianza baja"))+")"}</span>`;
+  $("audbar").style.width=(100*AUD.idx/AUD.cola.length)+"%"; $("audstat").textContent=resumenAud();
+  elegir(it.sid,p);
+}
+function avanzar(d=1){ if(!AUD.activo) return; AUD.idx=Math.max(0,Math.min(AUD.cola.length,AUD.idx+d)); mostrarAud(); }
+function iniciarAud(){
+  AUD.cola=construirCola(); AUD.activo=true;
+  AUD.idx=Math.max(0,AUD.cola.findIndex(c=>!corr[c.k]));   // primera sin decidir
+  $("aud").classList.add("on"); $("baud").textContent="■ Auditoría activa"; mostrarAud();
+}
+$("baud").onclick=()=>AUD.activo?null:iniciarAud();
+$("asig").onclick=()=>avanzar(1); $("aprev").onclick=()=>avanzar(-1);
+$("asal").onclick=()=>{AUD.activo=false; $("aud").classList.remove("on"); $("baud").textContent="▶ Modo auditoría"; dibujar()};
+document.addEventListener("keydown",e=>{
+  if(!AUD.activo||["INPUT","SELECT","TEXTAREA"].includes((e.target.tagName||""))) return;
+  const k=e.key.toLowerCase();
+  if(k==="arrowright") avanzar(1); else if(k==="arrowleft") avanzar(-1);
+  else if(k==="o"&&$("bok")) $("bok").click(); else if(k==="m"&&$("bmv")) $("bmv").click();
+  else if(k==="n"&&$("bno")) $("bno").click();
+});
+
+function leyenda(){
+  $("ley").innerHTML=$("modo").value==="precision"
+   ? '<span style="background:#2e7d32"></span>exacta (Google la confirma)<span style="background:#f9a825"></span>aproximada, hay parada de Google cerca<span style="background:#c62828"></span>aproximada, sin parada en Google<span style="background:#455a64"></span>oficial'
+   : '<span style="background:#2e7d32"></span>alta<span style="background:#f9a825"></span>media<span style="background:#c62828"></span>baja<span style="background:#455a64"></span>oficial<span style="background:#1565c0"></span>verificada';
+}
+$("modo").onchange=()=>{leyenda(); dibujar()};
+leyenda();
+$("sis").onchange=()=>{sel=null; $("info").textContent="Toca una parada de la lista o del mapa."; poblarServ()}; $("serv").onchange=()=>{sel=null; $("info").textContent="Toca una parada de la lista o del mapa."; dibujar()}; $("pend").onchange=dibujar;
+$("exp").onclick=()=>{
+  const rows=[["servicio","bloque","orden","estado","lat","lon","comentario","grupo"]];
+  for(const [k,c] of Object.entries(corr)){const [s,b,o]=k.split("|"); rows.push([s,b,o,c.estado,c.lat||"",c.lon||"",c.comentario||"",c.grupo||""])}
+  const blob=new Blob([rows.map(r=>r.map(csvCelda).join(",")).join("\n")],{type:"text/csv"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="correcciones_paradas.csv"; a.click();
+};
+$("imp").onclick=()=>$("file").click();
+$("file").onchange=async e=>{
+  const t=await e.target.files[0].text(); const L=parseCsv(t).slice(1);
+  for(const [s,b,o,estado,lat,lon,com,grupo] of L){ if(!s) continue;
+    corr[`${s}|${b}|${o}`]={estado,lat,lon,comentario:com||"",grupo:grupo||""}}
+  guardar(); AUD.activo?mostrarAud():dibujar();
+};
+poblarServ();
+</script></body></html>

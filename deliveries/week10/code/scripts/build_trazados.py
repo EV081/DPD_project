@@ -30,7 +30,7 @@ def log(msg: str) -> None:
     print(msg, flush=True)
 
 
-def norm_name(s: str) -> str:
+def norm_name(s: str, aliases: bool = True) -> str:
     if s is None or (isinstance(s, float) and np.isnan(s)):
         return ""
     t = str(s).strip().lower()
@@ -39,7 +39,7 @@ def norm_name(s: str) -> str:
     t = re.sub(r"[^a-z0-9]+", " ", t)
     t = re.sub(r"\s+", " ", t).strip()
     # alias frecuentes Metropolitano / L1
-    aliases = {
+    alias_tab = {
         "estacion central": "central",
         "estacio n central": "central",
         "jiron de la union": "jiron de la union",
@@ -48,7 +48,7 @@ def norm_name(s: str) -> str:
         "2 de mayo": "2 de mayo",
         "28 de julio": "28 de julio",
     }
-    return aliases.get(t, t)
+    return alias_tab.get(t, t) if aliases else t
 
 
 def write_geojson(path: Path, features: list[dict], name: str) -> None:
@@ -160,31 +160,8 @@ def build_corredores() -> None:
 
     cc2 = cc.copy()
     cc2["paradero_norm"] = cc2["paradero"].map(norm_name)
-
-    # Prefer name within ruta (n_paradero ≠ orden ATU en varios casos)
-    m_name = orden.merge(
-        cc2[["ruta", "paradero_norm", "lat", "lon", "cod_paradero"]],
-        on=["ruta", "paradero_norm"],
-        how="left",
-    )
-    m_ord = orden.merge(
-        cc2[["ruta", "n_paradero", "lat", "lon", "cod_paradero"]].rename(
-            columns={"n_paradero": "orden"}
-        ),
-        on=["ruta", "orden"],
-        how="left",
-    )
-    merged = orden.copy()
-    merged["lat"] = m_name["lat"].combine_first(m_ord["lat"])
-    merged["lon"] = m_name["lon"].combine_first(m_ord["lon"])
-    merged["cod_paradero"] = m_name["cod_paradero"].combine_first(m_ord["cod_paradero"])
-    merged = merged.drop_duplicates(subset=["ruta", "direccion", "orden"], keep="first")
-    # corredor color from orden CSV
     corr_map = (
-        orden.drop_duplicates("ruta")
-        .set_index("ruta")["corredor"]
-        .astype(str)
-        .to_dict()
+        orden.drop_duplicates("ruta").set_index("ruta")["corredor"].astype(str).to_dict()
     )
 
     def _hav_km(a, b):
@@ -194,25 +171,57 @@ def build_corredores() -> None:
         x = np.sin(dlat / 2) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon / 2) ** 2
         return float(2 * 6371 * np.arcsin(np.sqrt(x)))
 
+    MAX_SALTO_KM = 3.0  # paraderos consecutivos de un corredor no distan mas que esto
+
+    def _candidatos(ruta, fila) -> tuple[list[tuple[float, float]], str]:
+        """Coordenadas (lon, lat) posibles de un paradero ATU de la secuencia."""
+        c = cc2[(cc2["ruta"] == ruta) & (cc2["paradero_norm"] == fila["paradero_norm"])]
+        if not c.empty:
+            return sorted({(float(lo), float(la)) for la, lo in zip(c["lat"], c["lon"])}), "nombre"
+        c = cc2[(cc2["ruta"] == ruta) & (cc2["n_paradero"] == fila["orden"])]
+        return sorted({(float(lo), float(la)) for la, lo in zip(c["lat"], c["lon"])}), "orden"
+
     lines = []
-    for (ruta, direccion), g in merged.groupby(["ruta", "direccion"], dropna=False):
-        g = g.sort_values("orden").dropna(subset=["lat", "lon"])
-        if len(g) < 2:
+    paradas: list[dict] = []
+    descartados = 0
+    for (ruta, direccion), g in orden.groupby(["ruta", "direccion"], dropna=False):
+        g = g.sort_values("orden")
+        coords: list[list[float]] = []
+        paradas_ruta: list[dict] = []
+        for _, fila in g.iterrows():
+            cands, _via = _candidatos(ruta, fila)
+            if not cands:
+                continue
+            # homónimos (p. ej. dos "Santa Rosa" a 10 km): el que queda junto al anterior
+            ref = coords[-1] if coords else None
+            lon, lat = (
+                min(cands, key=lambda c: _hav_km((ref[0], ref[1]), c)) if ref else cands[0]
+            )
+            if ref and _hav_km((ref[0], ref[1]), (lon, lat)) > MAX_SALTO_KM:
+                descartados += 1
+                log(f"  [aviso] ruta {ruta}/{direccion}: '{fila['paradero']}' a "
+                    f"{_hav_km((ref[0], ref[1]), (lon, lat)):.1f} km del anterior; se omite")
+                continue
+            coords.append([lon, lat])
+            paradas_ruta.append({
+                "type": "Feature",
+                "properties": {
+                    "ruta": str(ruta), "direccion": int(direccion), "orden": int(fila["orden"]),
+                    "paradero": str(fila["paradero"]).strip(), "fuente": "ATU (orden) + ATU (coordenada)",
+                },
+                "geometry": {"type": "Point", "coordinates": [lon, lat]},
+            })
+        if len(coords) < 2:
             continue
-        coords = [[float(lon), float(lat)] for lat, lon in zip(g["lat"], g["lon"])]
-        jumps = []
-        for i in range(1, len(coords)):
-            a = (coords[i - 1][1], coords[i - 1][0])  # lat, lon
-            b = (coords[i][1], coords[i][0])
-            jumps.append(_hav_km(a, b))
-        max_j = max(jumps) if jumps else 0.0
+        paradas.extend(paradas_ruta)
         corredor = corr_map.get(str(ruta), "")
-        if max_j > 3:
-            log(f"  [aviso] ruta {ruta} dir {direccion}: max_jump={max_j:.1f} km (pre-OSRM)")
         nota = "paraderos orden ATU"
-        if USE_OSRM and len(coords) >= 2:
+        n_recta = 0
+        if USE_OSRM:
             coords, meta = snap_waypoints(coords, max_direct_km=2.5, sleep_s=0.08)
-            nota = f"OSRM driving entre paraderos ({meta['n_osrm_ok']} tramos ok)"
+            n_recta = meta["n_skipped"]
+            nota = (f"derivado: OSRM driving entre paraderos ({meta['n_osrm_ok']} tramos ok, "
+                    f"{n_recta} en recta); no es el trazado oficial")
             log(f"  OSRM {ruta}/{direccion}: {meta}")
         lines.append({
             "type": "Feature",
@@ -222,20 +231,26 @@ def build_corredores() -> None:
                 "corredor": corredor,
                 "color_hex": COLOR.get(corredor, "#4f81bd"),
                 "n_puntos": len(coords),
-                "max_jump_km": round(max_j, 2),
+                "tramos_recta": n_recta,
                 "sistema": "corredor",
                 "nota": nota,
             },
             "geometry": {"type": "LineString", "coordinates": coords},
         })
     write_geojson(GEO / "trazados_corredores.geojson", lines, "trazados_corredores")
-    log(f"  match orden→coords: {merged['lat'].notna().mean():.1%} filas con lat | {len(lines)} LineStrings")
+    write_geojson(GEO / "paradas_corredores.geojson", paradas, "paradas_corredores")
+    log(f"  {len(lines)} LineStrings | paraderos omitidos por salto > {MAX_SALTO_KM} km: {descartados}")
 
 
-def _load_osm_named() -> pd.DataFrame:
+def _load_osm_named(categorias: tuple[str, ...] | None = ("paradero_micro",)) -> pd.DataFrame:
+    """Nombres OSM -> coordenada. Solo ``paradero_micro`` (estaciones del BRT) por defecto:
+    los ``paradero_bus`` homónimos ("Central") caen en otros distritos. Sin alias, para no
+    fusionar "Estación Central" con paraderos "Central"."""
     osm = pd.read_csv(DATA / "OSM" / "transporte.csv", usecols=["categoria", "name", "lat", "lon"])
     osm = osm.dropna(subset=["name", "lat", "lon"]).copy()
-    osm["name_norm"] = osm["name"].map(norm_name)
+    if categorias:
+        osm = osm[osm["categoria"].isin(categorias)]
+    osm["name_norm"] = osm["name"].map(lambda x: norm_name(x, aliases=False))
     osm = osm[osm["name_norm"] != ""]
     # prefer unique names: take median coord
     return (
@@ -243,6 +258,19 @@ def _load_osm_named() -> pd.DataFrame:
         .agg(lat=("lat", "median"), lon=("lon", "median"), name=("name", "first"),
              categoria=("categoria", "first"))
     )
+
+
+def match_estacion(osm: pd.DataFrame, nombre: str) -> pd.DataFrame:
+    """Coincidencia ESTRICTA nombre ATU -> OSM: exacta, o con prefijo "Estación ".
+
+    No hay coincidencia por subcadena: ``"uni" in "24 de junio"`` asignaba a UNI las
+    coordenadas de otra parada. Sin coincidencia -> vacío (mejor sin punto que uno falso).
+    """
+    n = norm_name(nombre, aliases=False)
+    if not n:
+        return osm.iloc[0:0]
+    nn = osm["name_norm"]
+    return osm[(nn == n) | (nn == f"estacion {n}") | nn.str.startswith(f"estacion {n} ")]
 
 
 # ATU portal slug → OSM Metropolitano route=bus ref
@@ -429,11 +457,10 @@ def build_troncal() -> None:
     pts = []
     matched = 0
     for e in est:
-        n = norm_name(e)
-        hit = osm[osm["name_norm"] == n]
-        if hit.empty and n:
-            hit = osm[osm["name_norm"].apply(lambda x: n in x or x in n)]
-        if not hit.empty:
+        hit = match_estacion(osm, e)
+        if hit.empty:
+            log(f"  [aviso] troncal sin coordenada OSM (no se inventa): {e}")
+        else:
             r = hit.iloc[0]
             matched += 1
             pts.append({
@@ -478,26 +505,30 @@ def build_troncal() -> None:
 
 
 def build_alimentadores() -> None:
-    log("\n[4/5] Alimentadores — OSM por nombre de paradero (parcial)")
+    """Alimentadores: ATU NO publica coordenadas de sus paraderos.
+
+    Los nombres ATU son cruces de calles ("Av. Los Alisos con Ca. Galeano", truncados a 30
+    caracteres); asignarles el punto OSM de "Los Alisos" apilaba 1 011 paraderos en 112
+    coordenadas. Solo se publican los **embarques dentro de una estación troncal** (p. ej.
+    "Estación Naranjal Embarque Nº 14"), que sí tienen la coordenada de la estación.
+    El resto queda sin punto y sin trazado hasta contar con una fuente real.
+    """
+    log("\n[4/5] Alimentadores — solo embarques en estación troncal (sin coordenada oficial)")
     if not (RAW / "alimentador_hora.parquet").exists():
         log("  [aviso] falta alimentador raw")
         return
-    # distinct paraderos with names
-    cols = ["ruta", "n_paradero", "paradero"]
-    df = pd.read_parquet(RAW / "alimentador_hora.parquet", columns=cols)
+    df = pd.read_parquet(RAW / "alimentador_hora.parquet", columns=["ruta", "n_paradero", "paradero"])
     df = df.dropna(subset=["n_paradero"]).drop_duplicates(subset=["ruta", "n_paradero"])
-    df["paradero"] = df["paradero"].astype("string")
-    df["paradero_norm"] = df["paradero"].map(norm_name)
+    df["paradero"] = df["paradero"].fillna("").astype("string")
     osm = _load_osm_named()
+    patron = re.compile(r"^\s*estaci[oó]n\s+(.+?)\s+embarque\b", re.I)
 
     pts = []
     for _, r in df.iterrows():
-        n = r["paradero_norm"]
-        if not n:
+        m = patron.match(str(r["paradero"]))
+        if not m:
             continue
-        hit = osm[osm["name_norm"] == n]
-        if hit.empty and n:
-            hit = osm[osm["name_norm"].apply(lambda x: n in x or x in n)]
+        hit = match_estacion(osm, m.group(1))
         if hit.empty:
             continue
         o = hit.iloc[0]
@@ -509,57 +540,28 @@ def build_alimentadores() -> None:
                 "paradero": str(r["paradero"]),
                 "unidad": f"{r['ruta']}|{r['n_paradero']}",
                 "osm_name": str(o["name"]),
+                "match": "estacion_troncal",
             },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [float(o["lon"]), float(o["lat"])],
-            },
+            "geometry": {"type": "Point", "coordinates": [float(o["lon"]), float(o["lat"])]},
         })
     write_geojson(GEO / "puntos_alimentadores.geojson", pts, "puntos_alimentadores")
-    log(f"  paraderos matched: {len(pts)}/{len(df)}")
+    log(f"  embarques con coordenada: {len(pts)}/{len(df)} (el resto no tiene coordenada oficial)")
+    write_geojson(GEO / "trazados_alimentadores.geojson", [], "trazados_alimentadores")
+    log("  trazados_alimentadores: vacío (no hay waypoints fiables)")
 
-    # Sin LineString por defecto: geocoding OSM-por-nombre es ruidoso y OSRM
-    # sobre waypoints malos sigue cruzando la ciudad. El EDA usa centroides.
-    # Para intentar OSRM parcial: USE_OSRM_ALIM=1 en el entorno.
-    import os
-    if os.environ.get("USE_OSRM_ALIM") != "1":
-        write_geojson(GEO / "trazados_alimentadores.geojson", [], "trazados_alimentadores")
-        log("  trazados_alimentadores: vacío (pon USE_OSRM_ALIM=1 para intentar OSRM)")
-        return
 
-    by_ruta: dict[str, list] = {}
-    for f in pts:
-        by_ruta.setdefault(f["properties"]["ruta"], []).append(f)
-    lines = []
-    for ruta, flist in by_ruta.items():
-        flist = sorted(
-            flist,
-            key=lambda f: int(float(f["properties"]["n_paradero"]))
-            if str(f["properties"]["n_paradero"]).replace(".", "", 1).isdigit()
-            else 0,
-        )
-        if len(flist) < 2:
-            continue
-        coords = [f["geometry"]["coordinates"] for f in flist]
-        if len(coords) > 15:
-            idx = np.linspace(0, len(coords) - 1, 15).astype(int)
-            coords = [coords[i] for i in idx]
-        coords, meta = snap_waypoints(coords, max_direct_km=1.2, sleep_s=0.05)
-        if meta["n_osrm_ok"] < 3:
-            continue
-        lines.append({
-            "type": "Feature",
-            "properties": {
-                "ruta": str(ruta).strip(),
-                "sistema": "alimentador",
-                "n_puntos": len(coords),
-                "nota": f"OSRM parcial ({meta['n_osrm_ok']} ok)",
-                "color_hex": "#c0504d",
-            },
-            "geometry": {"type": "LineString", "coordinates": coords},
-        })
-    write_geojson(GEO / "trazados_alimentadores.geojson", lines, "trazados_alimentadores")
-    log(f"  trazados_alimentadores: {len(lines)} rutas OSRM")
+# Variantes de escritura en las paginas de servicio ATU -> nombre del catalogo troncal
+ALIAS_SERVICIO = {
+    "canavaly moreyra": "canaval y moreyra",
+    "plaza flores": "plaza de flores",
+    "dos mayo": "2 de mayo",
+    "28julio": "28 de julio",
+}
+
+
+def _norm_estacion(x) -> str:
+    n = norm_name(x)
+    return ALIAS_SERVICIO.get(n, n)
 
 
 def build_metro_servicios() -> None:
@@ -578,7 +580,7 @@ def build_metro_servicios() -> None:
     if est.empty:
         log("  [aviso] CSV de estaciones por servicio vacío")
         return
-    est["estacion_norm"] = est["estacion"].map(norm_name)
+    est["estacion_norm"] = est["estacion"].map(_norm_estacion)
 
     pts_fc = json.loads(pts_p.read_text(encoding="utf-8"))
     rows = []
@@ -587,7 +589,7 @@ def build_metro_servicios() -> None:
         lon, lat = f["geometry"]["coordinates"][:2]
         rows.append({
             "estacion": props.get("estacion"),
-            "estacion_norm": norm_name(props.get("estacion")),
+            "estacion_norm": _norm_estacion(props.get("estacion")),
             "lat": lat,
             "lon": lon,
         })
@@ -604,23 +606,15 @@ def build_metro_servicios() -> None:
     for slug, g in est.groupby("servicio_slug"):
         g = g.copy()
         g = g.merge(pts, on="estacion_norm", how="left", suffixes=("", "_geo"))
-        miss = g["lat"].isna()
-        if miss.any():
-            for idx in g.index[miss]:
-                n = g.at[idx, "estacion_norm"]
-                hit = pts[pts["estacion_norm"].apply(
-                    lambda x: n in x or x in n if n and x else False
-                )]
-                if not hit.empty:
-                    g.at[idx, "lat"] = hit.iloc[0]["lat"]
-                    g.at[idx, "lon"] = hit.iloc[0]["lon"]
-                    if pd.isna(g.at[idx, "estacion"]) or not g.at[idx, "estacion"]:
-                        g.at[idx, "estacion"] = hit.iloc[0]["estacion"]
+        for _, r0 in g[g["lat"].isna()].iterrows():
+            log(f"  [aviso] {slug}: estación ATU sin coordenada troncal: {r0['estacion']}")
         matched = g.dropna(subset=["lat", "lon"]).copy()
-        matched = matched.sort_values("lat", ascending=False)
+        # orden real del servicio publicado por ATU (columna `orden`), no por latitud
+        matched = matched.sort_values("orden")
         servs_lbl = str(g["servicio_nombre"].iloc[0]) if len(g) else slug
         log(f"  {slug}: {len(matched)}/{len(g)} estaciones geocodificadas")
-        for orden_i, (_, r) in enumerate(matched.iterrows(), start=1):
+        for _, r in matched.iterrows():
+            orden_i = int(r["orden"])
             name = str(r.get("estacion") or r.get("estacion_x") or "")
             otros = [x for x in inv.get(r["estacion_norm"], []) if x != str(slug)]
             all_pts.append({

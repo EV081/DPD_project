@@ -47,6 +47,23 @@ def _cmd_loop(cada: float) -> None:
         conn.close()
 
 
+def _cmd_predict(dia: str | None, modo: str, sistemas: list[str] | None) -> None:
+    import datetime as dt
+
+    from pipeline import predict
+
+    predict.main(dt.date.fromisoformat(dia) if dia else None, modo, sistemas)
+
+
+def _cmd_paraderos(opcional: bool = False) -> None:
+    from pipeline import config, ingest_paraderos
+
+    if opcional and not config.GEO_DIR.exists():
+        print(f"[paraderos] omitido: no existe {config.GEO_DIR}")
+        return
+    ingest_paraderos.main()
+
+
 def _cmd_export() -> None:
     from export.export_data import run
 
@@ -93,6 +110,7 @@ def _cmd_check() -> None:
 def _cmd_full(argv: list[str]) -> None:
     _cmd_init_db()
     _cmd_demand(argv)
+    _cmd_paraderos(opcional=True)
     _cmd_live()
     _cmd_export()
     _cmd_check()
@@ -115,9 +133,16 @@ def main(argv: list[str] | None = None) -> int:
     p_loop.add_argument(
         "--cada",
         type=float,
-        default=float(os.getenv("LOOP_SECONDS", "60")),
-        help="segundos entre snapshots (default LOOP_SECONDS o 60)",
+        default=float(os.getenv("LOOP_SECONDS", "300")),
+        help="segundos entre snapshots (default LOOP_SECONDS o 300 = 5 min)",
     )
+
+    p_pred = sub.add_parser("predict", help="batch diario: llena prediccion")
+    p_pred.add_argument("--dia", help="YYYY-MM-DD (default: dia siguiente al ultimo dato)")
+    p_pred.add_argument("--modo", choices=["ligero", "principal"], default="ligero")
+    p_pred.add_argument("--sistemas", nargs="+")
+
+    sub.add_parser("paraderos", help="carga paraderos/rutas/trazados (GeoJSON) a la BD")
 
     sub.add_parser("export", help="exporta archivos a EXPORT_DIR")
     sub.add_parser("check", help="reporte de conteos")
@@ -135,6 +160,10 @@ def main(argv: list[str] | None = None) -> int:
         _cmd_live()
     elif args.comando == "loop":
         _cmd_loop(args.cada)
+    elif args.comando == "predict":
+        _cmd_predict(args.dia, args.modo, args.sistemas)
+    elif args.comando == "paraderos":
+        _cmd_paraderos()
     elif args.comando == "export":
         _cmd_export()
     elif args.comando == "check":

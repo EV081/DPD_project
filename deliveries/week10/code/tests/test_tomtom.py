@@ -10,7 +10,7 @@ from pipeline import config, ingest_tomtom
 @pytest.fixture()
 def trafico_limpio(db):
     with db.transaction():
-        db.execute("TRUNCATE log_inferencia, trafico_en_vivo")
+        db.execute("TRUNCATE log_inferencia, trafico_en_vivo, trafico_historico")
     yield db
 
 
@@ -47,6 +47,11 @@ def test_snapshot_sin_api_cae_a_fallback(trafico_limpio, monkeypatch):
     assert len(filas) == 6
     assert all(f["fuente"] == "fallback" for f in filas)
     assert all(1.0 <= f["ratio_congestion"] <= 3.0 for f in filas)
+
+    hist = trafico_limpio.execute(
+        "SELECT fuente FROM trafico_historico"
+    ).fetchall()
+    assert len(hist) == 6, "cada snapshot debe quedar en trafico_historico"
 
     logs = trafico_limpio.execute(
         "SELECT fuente, status FROM log_inferencia ORDER BY id"

@@ -228,6 +228,14 @@ CREATE TABLE IF NOT EXISTS prediccion (
 );
 CREATE INDEX IF NOT EXISTS ix_prediccion
     ON prediccion (sistema, unidad, fecha, hora);
+ALTER TABLE prediccion
+    ADD COLUMN IF NOT EXISTS aforo TEXT,
+    ADD COLUMN IF NOT EXISTS eta_min DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS eta2_min DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS recomendacion TEXT,
+    ADD COLUMN IF NOT EXISTS banda80_lo DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS banda80_hi DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS modelo TEXT;
 
 CREATE TABLE IF NOT EXISTS log_inferencia (
     id              BIGSERIAL PRIMARY KEY,
@@ -251,9 +259,29 @@ CREATE TABLE IF NOT EXISTS feedback_usuario (
     unidad      TEXT NOT NULL,
     fecha       DATE,
     hora        SMALLINT,
-    utilidad    SMALLINT NOT NULL CHECK (utilidad BETWEEN 1 AND 5),
+    utilidad    SMALLINT CHECK (utilidad BETWEEN 1 AND 5),
     comentario  TEXT
 );
+-- Feedback mínimo (boton "Ya abordé"): espera real = t_aborde - t_consulta.
+ALTER TABLE feedback_usuario ALTER COLUMN utilidad DROP NOT NULL;
+ALTER TABLE feedback_usuario
+    ADD COLUMN IF NOT EXISTS t_consulta TIMESTAMPTZ,
+    ADD COLUMN IF NOT EXISTS t_aborde TIMESTAMPTZ,
+    ADD COLUMN IF NOT EXISTS eta_mostrado_min DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS eta2_mostrado_min DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS aforo_mostrado TEXT,
+    ADD COLUMN IF NOT EXISTS aforo_percibido TEXT,
+    ADD COLUMN IF NOT EXISTS modo_datos TEXT,
+    ADD COLUMN IF NOT EXISTS edad_snapshot_s DOUBLE PRECISION,
+    ADD COLUMN IF NOT EXISTS entorno TEXT NOT NULL DEFAULT 'prod';
+DO $$ BEGIN
+    ALTER TABLE feedback_usuario ADD CONSTRAINT ck_feedback_aforo_percibido
+        CHECK (aforo_percibido IN ('Asientos', 'De_pie', 'Saturado'));
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+    ALTER TABLE feedback_usuario ADD CONSTRAINT ck_feedback_entorno
+        CHECK (entorno IN ('demo', 'prod'));
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
 -- 5. Trafico en vivo 
 CREATE TABLE IF NOT EXISTS trafico_en_vivo (
@@ -266,3 +294,136 @@ CREATE TABLE IF NOT EXISTS trafico_en_vivo (
     fuente              TEXT NOT NULL CHECK (fuente IN ('tomtom', 'fallback')),
     actualizado_en      TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Historico de snapshots (trafico_en_vivo solo guarda el ultimo por segmento).
+CREATE TABLE IF NOT EXISTS trafico_historico (
+    id            BIGSERIAL PRIMARY KEY,
+    segmento      TEXT NOT NULL,
+    actual_kph    DOUBLE PRECISION,
+    libre_kph     DOUBLE PRECISION,
+    ratio         DOUBLE PRECISION,
+    fuente        TEXT NOT NULL CHECK (fuente IN ('tomtom', 'fallback')),
+    capturado_en  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS ix_trafico_historico
+    ON trafico_historico (segmento, capturado_en DESC);
+
+-- 6. Geografia de la red: paraderos, rutas y consulta de cercanos (sin PostGIS).
+-- `unidad_modelo` enlaza con `prediccion.unidad` / demanda_fiable.unidad.
+CREATE TABLE IF NOT EXISTS paradero (
+    id         BIGSERIAL PRIMARY KEY,
+    sistema    TEXT NOT NULL
+               CHECK (sistema IN ('metro_l1', 'troncal', 'corredor', 'alimentador')),
+    codigo     TEXT NOT NULL,
+    nombre     TEXT NOT NULL,
+    lat        DOUBLE PRECISION NOT NULL,
+    lon        DOUBLE PRECISION NOT NULL,
+    -- gps_atu: coordenada oficial; osm_nombre: aproximada por nombre en OSM;
+    -- shapefile: estaciones del shapefile ATU (L1)
+    calidad_coord TEXT NOT NULL,
+    confianza  TEXT,
+    UNIQUE (sistema, codigo)
+);
+-- gps_atu: coordenada oficial; osm_nombre: aproximada por nombre en OSM;
+-- osm_secuencia: nombre ATU exacto + candidato OSM elegido por secuencia (validado: mediana ~20 m
+-- sobre corredores); shapefile: estaciones del shapefile ATU (L1)
+ALTER TABLE paradero ADD COLUMN IF NOT EXISTS confianza TEXT;
+ALTER TABLE paradero ADD COLUMN IF NOT EXISTS precision_coord TEXT;
+ALTER TABLE paradero ADD COLUMN IF NOT EXISTS evidencia TEXT;
+ALTER TABLE paradero DROP CONSTRAINT IF EXISTS paradero_precision_check;
+ALTER TABLE paradero ADD CONSTRAINT paradero_precision_check
+    CHECK (precision_coord IN ('exacta', 'aproximada'));
+ALTER TABLE paradero DROP CONSTRAINT IF EXISTS paradero_confianza_check;
+ALTER TABLE paradero ADD CONSTRAINT paradero_confianza_check
+    CHECK (confianza IN ('alta', 'media', 'baja', 'verificada'));
+ALTER TABLE paradero DROP CONSTRAINT IF EXISTS paradero_sistema_check;
+ALTER TABLE paradero ADD CONSTRAINT paradero_sistema_check
+    CHECK (sistema IN ('metro_l1', 'troncal', 'corredor', 'alimentador'));
+ALTER TABLE paradero DROP CONSTRAINT IF EXISTS paradero_calidad_coord_check;
+ALTER TABLE paradero ADD CONSTRAINT paradero_calidad_coord_check
+    CHECK (calidad_coord IN ('gps_atu', 'osm_nombre', 'osm_secuencia', 'shapefile', 'google_places', 'revision_humana'));
+CREATE INDEX IF NOT EXISTS ix_paradero_geo ON paradero (lat, lon);
+
+CREATE TABLE IF NOT EXISTS ruta (
+    id         BIGSERIAL PRIMARY KEY,
+    sistema    TEXT NOT NULL
+               CHECK (sistema IN ('metro_l1', 'troncal', 'corredor', 'alimentador')),
+    codigo     TEXT NOT NULL,
+    nombre     TEXT NOT NULL,
+    color_hex  TEXT,
+    trazado    JSONB,          -- GeoJSON geometry (LineString / MultiLineString)
+    nota       TEXT,
+    -- shapefile_atu: eje oficial L1; osm_relation: relacion OSM route=bus;
+    -- derivado_osrm: calculado por calles entre paraderos (NO es el trazado oficial)
+    origen_trazado TEXT CHECK (origen_trazado IN ('shapefile_atu', 'osm_relation', 'derivado_osrm')),
+    UNIQUE (sistema, codigo)
+);
+ALTER TABLE ruta ADD COLUMN IF NOT EXISTS origen_trazado TEXT;
+ALTER TABLE ruta ADD COLUMN IF NOT EXISTS n_paradas INTEGER;
+ALTER TABLE ruta ADD COLUMN IF NOT EXISTS pct_exactas SMALLINT;
+
+CREATE TABLE IF NOT EXISTS paradero_ruta (
+    paradero_id    BIGINT NOT NULL REFERENCES paradero (id) ON DELETE CASCADE,
+    ruta_id        BIGINT NOT NULL REFERENCES ruta (id) ON DELETE CASCADE,
+    direccion      SMALLINT NOT NULL DEFAULT 0,   -- 0 = sin sentido publicado
+    orden          INTEGER,                        -- posicion en la ruta/direccion (ATU)
+    unidad_modelo  TEXT,       -- unidad con prediccion (NULL si no hay demanda)
+    PRIMARY KEY (paradero_id, ruta_id, direccion)
+);
+ALTER TABLE ruta DROP CONSTRAINT IF EXISTS ruta_sistema_check;
+ALTER TABLE ruta ADD CONSTRAINT ruta_sistema_check
+    CHECK (sistema IN ('metro_l1', 'troncal', 'corredor', 'alimentador'));
+-- migracion de cargas anteriores (tabla derivada: se recarga con `run paraderos`)
+ALTER TABLE paradero_ruta ADD COLUMN IF NOT EXISTS direccion SMALLINT NOT NULL DEFAULT 0;
+DO $$ BEGIN
+    IF (SELECT count(*) FROM information_schema.key_column_usage
+        WHERE table_name = 'paradero_ruta' AND constraint_name = 'paradero_ruta_pkey') <> 3 THEN
+        ALTER TABLE paradero_ruta DROP CONSTRAINT IF EXISTS paradero_ruta_pkey;
+        ALTER TABLE paradero_ruta ADD PRIMARY KEY (paradero_id, ruta_id, direccion);
+    END IF;
+END $$;
+CREATE INDEX IF NOT EXISTS ix_paradero_ruta_ruta ON paradero_ruta (ruta_id);
+
+CREATE OR REPLACE FUNCTION paraderos_cercanos(
+    p_lat DOUBLE PRECISION, p_lon DOUBLE PRECISION,
+    p_radio_m DOUBLE PRECISION DEFAULT 800, p_limite INTEGER DEFAULT 10)
+RETURNS TABLE (paradero_id BIGINT, sistema TEXT, nombre TEXT, lat DOUBLE PRECISION,
+               lon DOUBLE PRECISION, calidad_coord TEXT, distancia_m DOUBLE PRECISION,
+               rutas JSONB)
+LANGUAGE sql STABLE AS $$
+    WITH cand AS (
+        SELECT p.*,
+               2 * 6371000 * asin(sqrt(
+                   sin(radians(p.lat - p_lat) / 2) ^ 2
+                   + cos(radians(p_lat)) * cos(radians(p.lat))
+                     * sin(radians(p.lon - p_lon) / 2) ^ 2)) AS d
+        FROM paradero p
+        WHERE p.lat BETWEEN p_lat - p_radio_m / 111320.0 AND p_lat + p_radio_m / 111320.0
+          AND p.lon BETWEEN p_lon - p_radio_m / (111320.0 * greatest(cos(radians(p_lat)), 0.01))
+                        AND p_lon + p_radio_m / (111320.0 * greatest(cos(radians(p_lat)), 0.01))
+    )
+    SELECT c.id, c.sistema, c.nombre, c.lat, c.lon, c.calidad_coord, c.d,
+           coalesce((
+               SELECT jsonb_agg(t.x ORDER BY t.x ->> 'codigo')
+               FROM (SELECT DISTINCT ON (r.id) jsonb_build_object(
+                          'ruta_id', r.id, 'codigo', r.codigo, 'nombre', r.nombre,
+                          'color_hex', r.color_hex, 'orden', pr.orden,
+                          'unidad_modelo', pr.unidad_modelo) AS x
+                     FROM paradero_ruta pr JOIN ruta r ON r.id = pr.ruta_id
+                     WHERE pr.paradero_id = c.id
+                     ORDER BY r.id, pr.direccion) t), '[]'::jsonb)
+    FROM cand c
+    WHERE c.d <= p_radio_m
+    ORDER BY c.d
+    LIMIT p_limite
+$$;
+
+-- Paradas de cada ruta en orden, con coordenadas (paradero a paradero).
+DROP VIEW IF EXISTS ruta_paradas;
+CREATE VIEW ruta_paradas AS
+SELECT r.id AS ruta_id, r.sistema, r.codigo AS ruta, pr.direccion, pr.orden,
+       p.id AS paradero_id, p.nombre, p.lat, p.lon, p.calidad_coord, pr.unidad_modelo
+FROM paradero_ruta pr
+JOIN ruta r ON r.id = pr.ruta_id
+JOIN paradero p ON p.id = pr.paradero_id;
+

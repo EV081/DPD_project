@@ -153,6 +153,14 @@ def snapshot(conn) -> dict:
                 )
                 conn.execute(
                     """
+                    INSERT INTO trafico_historico
+                        (segmento, actual_kph, libre_kph, ratio, fuente)
+                    VALUES (%s, %s, %s, %s, %s)
+                    """,
+                    (r["segmento"], r["actual"], r["libre"], r["ratio"], r["fuente"]),
+                )
+                conn.execute(
+                    """
                     INSERT INTO log_inferencia
                         (fuente, segmento, lat, lon, latencia_ms, status,
                          ratio_congestion, detalle)

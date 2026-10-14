@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "estado": "supuesto, no entrenado",
+  "descripcion": "Ajuste del ETA por congestion TomTom: eta = eta_base x factor_trafico. El factor es una hipotesis acotada; no existe historico TomTom alineado con 2025 ni AVL para estimarlo.",
+  "factor_trafico": "clip(ratio_congestion, 1.0, tope_factor), con ratio_congestion = velocidad_libre / velocidad_actual",
+  "tope_factor": 1.5,
+  "umbrales_edad_s": {"en_vivo": 600, "reciente": 1800},
+  "peso_reciente": 0.5,
+  "modos": {
+    "en_vivo": "snapshot <= 10 min: factor completo",
+    "reciente": "10-30 min: 1 + peso_reciente x (factor - 1)",
+    "historico": "> 30 min, sin dato o fuente fallback: sin ajuste (ETA = headway x factor_aforo)"
+  },
+  "limitacion": "el efecto del trafico en el ETA no esta validado; se mide con feedback_usuario (t_aborde - t_consulta) vs eta_mostrado"
+}

@@ -116,6 +116,10 @@
     }
   ],
   "artefactos": {
+    "ajuste_vivo_config.json": {
+      "bytes": 856,
+      "sha256": "6e90e2e53fbd9a900a32c0cdfebdb865842718ded75f8defeca101bc70d7f12a"
+    },
     "alimentador/aforo_histgb.joblib": {
       "bytes": 1086792,
       "sha256": "62ffbcb07fefb6e3c865c4a64e0669258b2c4009426e33b4968bfbb25eb9be61"
@@ -379,6 +383,10 @@
     "evaluacion/troncal/seleccion_validacion.csv": {
       "bytes": 1027,
       "sha256": "049507d3a6ebe3faf841de81efbcd4cd93ec10b1fb47ec05b64ecd92773d8a4e"
+    },
+    "mapeo_segmentos.json": {
+      "bytes": 840,
+      "sha256": "9ea17dd0f9e97ee9be526a924f00bc1014ba51c14a3c396c3dc57cdc9beab053"
     },
     "metro_l1/aforo_histgb.joblib": {
       "bytes": 1086680,

@@ -115,3 +115,32 @@ AC-03 se cumple, pero también lo cumple «siempre abordar» (90–96 %). Por es
   (ver `evaluacion/<sistema>/aforo_sensibilidad_umbrales.csv`).
 - Sin GPS/AVL no hay llegadas reales: el error de ETA reportado es el inducido por el modelo.
 - Un solo año de historia (2025); los paros no se anticipan, se detectan después.
+- El efecto del tráfico sobre el ETA **no está entrenado** (ver §6).
+
+## 6. Ajuste en vivo del ETA (TomTom)
+
+Tres capas desacopladas; la API nunca llama a TomTom:
+
+| Capa | Frecuencia | Qué hace |
+| :--- | :--- | :--- |
+| A. Demanda | 1 vez al día | `python -m pipeline.run predict` → `prediccion` (demanda, banda 80 %, aforo, ETA base, regla U) |
+| B. Tráfico | cada 5 min | `python -m pipeline.run loop` → `trafico_en_vivo` (último) y `trafico_historico` (serie) |
+| C. Ajuste | por consulta | `ajuste_vivo.ajustar_en_vivo()`: `eta = eta_base × factor_trafico`, recalcula la regla U |
+
+- `factor_trafico = clip(velocidad_libre / velocidad_actual, 1.0, 1.5)`, solo en vía mixta
+  (`corredor`, `alimentador`; ver `mapeo_segmentos.json`). Metro y troncal no se ajustan.
+- Antigüedad del snapshot: ≤ 10 min `en_vivo`; 10–30 min `reciente` (peso 0.5);
+  > 30 min, sin dato o fuente `fallback` → `historico` (sin ajuste, RF-05).
+- **Hipótesis no entrenada** (`ajuste_vivo_config.json`): no hay histórico TomTom alineado con 2025
+  ni AVL. El ETA *incorpora* el tráfico actual; no se afirma que lo *mejore*. El mapeo
+  segmento→sistema es un supuesto geográfico a validar.
+- `prediccion` guarda la clase de la hora; `ajustar_en_vivo` recibe `aforo_siguiente` opcional
+  (si falta, la regla U asume la misma clase para h+1).
+
+### Validación con feedback (sin reentrenamiento automático)
+
+`feedback_usuario` registra `t_consulta`, `t_aborde` ("Ya abordé"), ETA/aforo mostrados, modo de
+datos y `entorno` (`demo`|`prod`). Espera real = `t_aborde − t_consulta`. El aforo percibido es
+opcional y se pregunta con probabilidad `FEEDBACK_AFORO_PROB` (demo 1.0, prod 0.2–0.33).
+Métrica: error absoluto mediano del ETA por `modo_datos`, con n ≥ ~30 eventos por sistema;
+los registros `demo` se excluyen. Con `aforo_percibido` se revisan a mano los umbrales p60/p90.

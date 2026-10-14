@@ -56,8 +56,8 @@ def snap_waypoints(
 ) -> tuple[list[list[float]], dict]:
     """Une waypoints con geometría OSRM entre consecutivos.
 
-    Si un salto > max_direct_km falla OSRM o es absurdo, se omite el tramo
-    (rompe la línea) en lugar de cruzar la ciudad en recta.
+    Si OSRM falla en un tramo, ese tramo queda como **recta** entre los dos paraderos;
+    ``meta["n_skipped"]`` cuenta esos tramos para que el consumidor pueda advertirlo.
     coords: secuencia [lon, lat]
     """
     pts = [[float(c[0]), float(c[1])] for c in coords_lonlat]

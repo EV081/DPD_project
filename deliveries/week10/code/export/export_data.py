@@ -40,6 +40,17 @@ def _sha256(ruta: Path) -> str:
     return h.hexdigest()
 
 
+def _paraderos(conn, out: Path) -> dict:
+    """Paraderos/rutas/trazados (si la BD los tiene cargados con `run paraderos`)."""
+    if not conn.execute("SELECT to_regclass('paradero_ruta') IS NOT NULL AS ok").fetchone()["ok"]:
+        return {}
+    if conn.execute("SELECT count(*) AS n FROM paradero").fetchone()["n"] == 0:
+        return {}
+    from export.export_paraderos import exportar
+
+    return exportar(conn, out)
+
+
 def run() -> Path:
     out = config.EXPORT_DIR
     out.mkdir(parents=True, exist_ok=True)
@@ -99,6 +110,7 @@ def run() -> Path:
         for tabla in list(config.FILAS_ESPERADAS) + ["trafico_en_vivo"]:
             conteos[tabla] = db.table_count(conn, tabla)
         conteos["demanda_fiable"] = db.table_count(conn, "demanda_fiable")
+        conteos.update(_paraderos(conn, out))
     finally:
         conn.close()
 

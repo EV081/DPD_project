@@ -1,0 +1,77 @@
+sistema,ruta,ruta_nombre,origen_trazado,tiene_trazado,n_paradas,pct_exactas,enlaces
+alimentador,ChimpuOcllo/SanJuanDeDios,Alimentador ChimpuOcllo/SanJuanDeDios (ChimpuOcllo/SanJuanDeDios),derivado_osrm,True,46,39,46
+alimentador,ChimpuOcllo/Universitaria,Alimentador ChimpuOcllo/Universitaria (AN-11),derivado_osrm,True,22,14,22
+alimentador,LosIncas/Carabayllo,Alimentador LosIncas/Carabayllo (AN-09),derivado_osrm,True,29,52,29
+alimentador,LosIncas/Collique,Alimentador LosIncas/Collique (AN-04),derivado_osrm,True,20,65,20
+alimentador,LosIncas/TorreBlanca,Alimentador LosIncas/TorreBlanca (LosIncas/TorreBlanca),derivado_osrm,True,20,25,20
+alimentador,Norte/AntunezDeMayolo,Alimentador Norte/AntunezDeMayolo (AN-17),derivado_osrm,True,23,39,23
+alimentador,Norte/Belaunde,Alimentador Norte/Belaunde (AN-07),derivado_osrm,True,26,50,26
+alimentador,Norte/Bertello,Alimentador Norte/Bertello (AN-14),derivado_osrm,True,32,38,32
+alimentador,Norte/Carabayllo,Alimentador Norte/Carabayllo (AN-09),derivado_osrm,True,43,44,43
+alimentador,Norte/Collique,Alimentador Norte/Collique (AN-04),derivado_osrm,True,39,54,39
+alimentador,Norte/Izaguirre,Alimentador Norte/Izaguirre (AN-18),derivado_osrm,True,19,53,19
+alimentador,Norte/LaEnsenada,Alimentador Norte/LaEnsenada (AN-13),derivado_osrm,True,35,37,35
+alimentador,Norte/LosAlisos,Alimentador Norte/LosAlisos (AN-15),derivado_osrm,True,16,81,16
+alimentador,Norte/LosOlivos,Alimentador Norte/LosOlivos (AN-16),derivado_osrm,True,12,25,12
+alimentador,Norte/MilagroDeJesus,Alimentador Norte/MilagroDeJesus (AN-08),derivado_osrm,True,36,36,36
+alimentador,Norte/Naranjal,Alimentador Norte/Naranjal (Norte/Naranjal),derivado_osrm,True,22,36,22
+alimentador,Norte/Payet,Alimentador Norte/Payet (AN-05),derivado_osrm,True,20,35,20
+alimentador,Norte/PuentePiedra,Alimentador Norte/PuentePiedra (AN-12),derivado_osrm,True,17,59,17
+alimentador,Norte/Puno,Alimentador Norte/Puno (AN-06),derivado_osrm,True,23,39,23
+alimentador,Norte/SantoDomingo,Alimentador Norte/SantoDomingo (AN-10),derivado_osrm,True,51,33,51
+alimentador,Norte/Tahuantinsuyo,Alimentador Norte/Tahuantinsuyo (AN-01),derivado_osrm,True,16,69,16
+alimentador,Norte/Tungasuca,Alimentador Norte/Tungasuca (AN-02),derivado_osrm,True,38,32,38
+alimentador,Sur/America,Alimentador Sur/America (AS-07),derivado_osrm,True,24,54,24
+alimentador,Sur/CedrosDeVilla,Alimentador Sur/CedrosDeVilla (AS-02),derivado_osrm,True,17,76,17
+alimentador,Sur/LosProceres,Alimentador Sur/LosProceres (AS-08),derivado_osrm,True,17,53,17
+alimentador,Sur/VillaElSalvador,Alimentador Sur/VillaElSalvador (AS-04),derivado_osrm,True,22,64,22
+alimentador,Universidad/Trapiche,Alimentador Universidad/Trapiche (AN-10),derivado_osrm,True,27,48,27
+corredor,201,Corredor 201,derivado_osrm,True,,,92
+corredor,2011,Corredor 2011,,False,,,1
+corredor,2012,Corredor 2012,,False,,,1
+corredor,204,Corredor 204,derivado_osrm,True,,,131
+corredor,206,Corredor 206,derivado_osrm,True,,,91
+corredor,209,Corredor 209,derivado_osrm,True,,,92
+corredor,257,Corredor 257,,False,,,30
+corredor,3000,Corredor 3000,,False,,,19
+corredor,301,Corredor 301,derivado_osrm,True,,,89
+corredor,302,Corredor 302,derivado_osrm,True,,,61
+corredor,303,Corredor 303,derivado_osrm,True,,,40
+corredor,304,Corredor 304,,False,,,51
+corredor,305,Corredor 305,derivado_osrm,True,,,67
+corredor,306,Corredor 306,derivado_osrm,True,,,46
+corredor,3090,Corredor 3090,,False,,,18
+corredor,3100,Corredor 3100,,False,,,8
+corredor,3180,Corredor 3180,,False,,,1
+corredor,3200,Corredor 3200,,False,,,25
+corredor,336,Corredor 336,derivado_osrm,True,,,59
+corredor,357,Corredor 357,,False,,,47
+corredor,370,Corredor 370,derivado_osrm,True,,,35
+corredor,371,Corredor 371,derivado_osrm,True,,,8
+corredor,4006,Corredor 4006,,False,,,58
+corredor,401,Corredor 401,,False,,,64
+corredor,404,Corredor 404,derivado_osrm,True,,,92
+corredor,405,Corredor 405,derivado_osrm,True,,,84
+corredor,406,Corredor 406,derivado_osrm,True,,,96
+corredor,409,Corredor 409,,False,,,87
+corredor,412,Corredor 412,derivado_osrm,True,,,60
+metro_l1,metro_l1,Metro de Lima - Linea 1,shapefile_atu,True,,,26
+troncal,EX11-NS,Expreso 11,osm_relation,True,,,7
+troncal,EX13-NS,Expreso 13,osm_relation,True,,,4
+troncal,EX9-NS,Expreso 9,osm_relation,True,,,10
+troncal,Lechucero,Lechucero,osm_relation,True,,,11
+troncal,RegularA,Ruta A,osm_relation,True,,,12
+troncal,RegularB,Ruta B,osm_relation,True,,,18
+troncal,RegularC,Ruta C,osm_relation,True,,,20
+troncal,RegularD,Ruta D,osm_relation,True,,,13
+troncal,SX-M,Super Expreso M,osm_relation,True,,,6
+troncal,SXN-NS-M,Super Expreso Norte,osm_relation,True,,,8
+troncal,X1-M,Expreso 1,osm_relation,True,,,11
+troncal,X10,Expreso 10,osm_relation,True,,,5
+troncal,X12,Expreso 12,osm_relation,True,,,6
+troncal,X3-N,Expreso 3,osm_relation,True,,,3
+troncal,X5,Expreso 5,osm_relation,True,,,13
+troncal,X6,Expreso 6,osm_relation,True,,,6
+troncal,X7,Expreso 7,osm_relation,True,,,5
+troncal,X8,Expreso 8,osm_relation,True,,,9
+troncal,troncal,Metropolitano - Troncal,osm_relation,True,,,44

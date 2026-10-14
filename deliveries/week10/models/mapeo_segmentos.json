@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "estado": "supuesto geografico a validar con ATU/ProTransporte",
+  "nota": "Los 6 segmentos TomTom (pipeline/ingest_tomtom.SEGMENTOS) son ejes arteriales de referencia; la asociacion con cada sistema es manual y aproximada.",
+  "sistemas": {
+    "metro_l1": {"aplica_trafico": false, "segmentos": [], "motivo": "via exclusiva ferrea"},
+    "troncal": {"aplica_trafico": false, "segmentos": ["via_expresa_pardo", "evitamiento_norte", "panamericana_norte"], "motivo": "carril segregado; segmentos solo de referencia"},
+    "corredor": {"aplica_trafico": true, "segmentos": ["javier_prado_salaverry", "argentina_mexico", "brasil_28julio"], "motivo": "via mixta"},
+    "alimentador": {"aplica_trafico": true, "segmentos": ["evitamiento_norte", "panamericana_norte"], "motivo": "via mixta en zonas periféricas"}
+  }
+}

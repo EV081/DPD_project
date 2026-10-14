@@ -40,7 +40,7 @@ Los subcomandos disponibles son: **`init-db`, `demand`, `live`, `loop`,
 | `init-db` | Crea la base (si falta) y aplica `storage/schema.sql` |
 | `demand [--solo-verify]` | Ingresa las 7 tablas y verifica la vista `demanda_fiable` |
 | `live` | Un snapshot de tráfico (6 segmentos) |
-| `loop [--cada SEG]` | Snapshots periódicos (`LOOP_SECONDS`, default 60 s) |
+| `loop [--cada SEG]` | Snapshots periódicos (`LOOP_SECONDS`, default 300 s) |
 | `export` | Escribe los archivos en `EXPORT_DIR` |
 | `check` | Reporte de conteos de tablas, vista y archivos exportados |
 | `full` | `init-db` + `demand` + `live` + `export` + `check` |
@@ -63,7 +63,7 @@ docker compose run --rm pipeline check         # inventario rápido
 | `API_TOMTOM` / `TOMMTOM_KEY` | — | Key TomTom (basta con una; se aceptan ambas) |
 | `TOMTOM_TIMEOUT` | `4.0` | Timeout por llamada (segundos) |
 | `TOMTOM_SEGMENT` | `10` | Tamaño del segmento relativo de `flowSegmentData` |
-| `LOOP_SECONDS` | `60` | Intervalo por defecto de `loop` |
+| `LOOP_SECONDS` | `300` | Intervalo por defecto de `loop` |
 | `PGHOST` `PGPORT` `PGUSER` `PGPASSWORD` `PGDATABASE` | `localhost:5432` | Conexión (ver `storage/Guia.md`) |
 
 ## Regresión de datos
