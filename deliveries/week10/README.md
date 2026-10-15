@@ -67,7 +67,7 @@ docker compose run pipeline live       # 1 snapshot de tráfico
 docker compose run pipeline loop       # snapshots cada LOOP_SECONDS (300 por defecto)
 docker compose run pipeline export     # re-exporta a export/
 docker compose run pipeline check      # reporte de conteos
-docker compose run pipeline pytest     # suite de regresión/paridad
+docker compose run pipeline pytest     # suite de regresión/paridad (usa la base `urbansafe_test`, no toca `urbansafe`)
 
 docker compose down        # detiene (pgdata persiste)
 docker compose down -v     # detiene y borra la base
@@ -120,7 +120,7 @@ deliveries/week10/
 │   ├── tests/                 ← pytest (paridad, regresión, tomtom mock, export) + Guia.md
 │   └── entrypoint.sh
 ├── export/                    ← salidas del pipeline (commiteables)
-├── revision/                  ← visor de paradas (mapa_revision.html) y su guía
+├── docs/                      ← documentación; docs/visor/ = visor de paradas (mapa_revision.html)
 └── data_processed/            ← entradas del pipeline: clean/ y geo/ versionados, raw/ ignorado
 ```
 
@@ -299,6 +299,28 @@ resultados de Google Places; se elige uno por parada minimizando los saltos entr
 y vuelta caen a la derecha de su sentido de marcha; y, sin candidato, el punto de la calle homónima más
 cercano a sus vecinas. Si nada aplica, la parada queda **sin coordenada**.
 
+### Coordenadas derivadas de Google Places
+
+Parte de las coordenadas de `export/paraderos.csv`, `data_processed/geo/` y de la base cargada por
+`docker compose up` proviene de Google Places. El CSV con las respuestas crudas (`data/fuentes/google_*.csv`)
+**no** está en el repo, pero las coordenadas derivadas sí.
+
+| Origen de la coordenada | Filas de `paraderos.csv` (de 2 502) | Cómo reconocerlas |
+|---|---|---|
+| Alimentadores ubicados con Google | 134 de 712 | `metodo` = `google_places` o `google_places+lado` en `paradas_alimentadores.geojson` |
+| Estaciones del troncal ubicadas con Google | 32 (6 estaciones, por sentido) | `evidencia` = «Ubicada con Google Places por nombre de estacion» |
+| **Total con coordenada de Google** | **166** | |
+
+Las otras 578 paradas de alimentadores se ubicaron con OSM (nombre exacto o calle cercana). Ojo: en los
+alimentadores la columna `evidencia` (`nombre_google`, `parada_cercana_google`, `sin_parada_google`) es el
+**contraste** con lo que dice Google, no el origen de la coordenada; por eso aparece en las 712 filas. El origen
+exacto de cada punto solo está en `metodo` del GeoJSON, no en `paraderos.csv`.
+
+Consultas hechas el 14-oct-2026 (≈ 1 350 a Places API v1). Uso aceptado: prototipo académico, sin
+redistribución ni producción. Los términos de Google Maps Platform limitan cuánto tiempo se pueden conservar
+estas coordenadas y su uso fuera de un mapa de Google; para producción hay que reemplazarlas por datos
+oficiales de ATU.
+
 ### Atributos de calidad (alimentadores)
 
 | Atributo | Valores | Significado |
@@ -349,7 +371,7 @@ cerca, 137 sin parada en Google) y **45 sin coordenada**. Por ruta: 2 con ≥ 75
 | `consultar_google_paraderos.py` | Google Places: consultas guardadas en CSV (`--completar`, `--validar N`, `--contrastar-oficiales`) |
 | `corregir_troncal_con_google.py` | corrige estaciones de troncal fuera de la línea; aplica `correcciones_troncal.csv` |
 | `validar_georef.py`, `interpolar_por_imagen.py` | validación de los mapas PNG |
-| `generar_revision.py` | genera el visor `revision/mapa_revision.html` |
+| `generar_revision.py` | genera el visor `docs/visor/mapa_revision.html` |
 
 Orden de reproducción: `build_trazados.py` → `corregir_troncal_con_google.py` → `download_alimentadores.py` →
 `ocr_listas_alimentadores.py` → `consultar_google_paraderos.py` → `geocodificar_alimentadores.py` →
@@ -364,5 +386,5 @@ Orden de reproducción: `build_trazados.py` → `corregir_troncal_con_google.py`
 - 13 de 29 rutas de corredor tienen GPS pero **no orden de paradas ni trazado**.
 - Solo 12 de 29 rutas de corredor y 19 de 23 alimentadores modelados tienen demanda enlazada (`unidad_modelo`).
 - Sin horarios de paso reales: la consulta devuelve *qué rutas pasan*, no cuándo llega el bus.
-- El visor [`revision/mapa_revision.html`](revision/mapa_revision.html) permite ver y, opcionalmente,
-  corregir paradas; ver [`revision/LEEME.md`](revision/LEEME.md).
+- El visor [`docs/visor/mapa_revision.html`](docs/visor/mapa_revision.html) permite ver y, opcionalmente,
+  corregir paradas; ver [`docs/visor/README.md`](docs/visor/README.md).

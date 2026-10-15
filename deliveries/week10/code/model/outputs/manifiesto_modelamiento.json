@@ -1,0 +1,63 @@
+{
+  "fuente": "/home/evssz/UTEC/6to/DPD/DPD_project/deliveries/week08/data_processed/clean/demanda_consolidada_fiable.parquet",
+  "sistemas_mvp": [
+    "metro_l1",
+    "troncal"
+  ],
+  "split": "2025-10-31 23:00:00",
+  "dias_eval": [
+    "2025-11-04",
+    "2025-11-11",
+    "2025-11-18",
+    "2025-12-02",
+    "2025-12-09"
+  ],
+  "n_estaciones_ok": 71,
+  "chronos_model": "amazon/chronos-bolt-small",
+  "correcciones_vs_week07": [
+    "Aforo = proxy presión demanda (val/cap_hora), no ocupación a bordo",
+    "Headway desde frecuencias ATU/oficiales/referencia",
+    "Recomendación = regla U; ML solo check de fidelidad",
+    "MVP solo grano estacion (L1+troncal)",
+    "Clasificador aforo SIN Validaciones (anti-leakage)",
+    "Umbrales solo en train + walk-forward Chronos real",
+    "ETA sin inventar MAE sin ground-truth"
+  ],
+  "umbrales_aforo_train": {
+    "De_pie": 0.12628527020564323,
+    "Saturado": 0.5933464849354376
+  },
+  "capacidades": {
+    "metro_l1": 1200.0,
+    "troncal": 164.0
+  },
+  "headway_maps": {
+    "metro_l1": {
+      "LAB": 3.5,
+      "SAB": 6.5,
+      "DOM": 9.0
+    },
+    "troncal": {
+      "LAB": 9.558823529411764,
+      "SAB": 11.470588235294118,
+      "DOM": 17.205882352941178
+    }
+  },
+  "metricas": {
+    "MAE": {
+      "chronos": 95.0495,
+      "hora_media": 124.4386,
+      "naive_7d": 125.8237
+    },
+    "RMSE": {
+      "chronos": 230.2749,
+      "hora_media": 322.0008,
+      "naive_7d": 318.1575
+    },
+    "WMAPE": {
+      "chronos": 0.2027,
+      "hora_media": 0.2421,
+      "naive_7d": 0.2634
+    }
+  }
+}

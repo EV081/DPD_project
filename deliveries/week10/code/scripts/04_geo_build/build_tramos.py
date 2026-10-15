@@ -54,6 +54,27 @@ def osrm(a: tuple[float, float], b: tuple[float, float]) -> tuple[float, float] 
     return float(d["routes"][0]["distance"]), float(d["routes"][0]["duration"])
 
 
+def guardar(filas: list[dict]) -> None:
+    """Escribe el CSV completo (se llama a intervalos para que una corrida cortada se pueda reanudar)."""
+    SALIDA.parent.mkdir(parents=True, exist_ok=True)
+    tmp = SALIDA.with_suffix(".csv.tmp")
+    with tmp.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=CAMPOS)
+        w.writeheader()
+        w.writerows(filas)
+    tmp.replace(SALIDA)
+
+
+def _clave(r: dict) -> tuple:
+    return (r["sistema"], r["ruta"], int(r["direccion"]), int(r["orden_desde"]))
+
+
+def _unir(out: list[dict], hechos: dict) -> list[dict]:
+    """Lo calculado en esta corrida + lo previo que aun no se alcanzo (no se pierde si se corta antes)."""
+    vistos = {_clave(r) for r in out}
+    return out + [r for k, r in hechos.items() if k not in vistos]
+
+
 def main() -> None:
     conn = db.connect()
     filas = conn.execute(
@@ -77,7 +98,17 @@ def main() -> None:
             pares.append((ant, act))
     print(f"[tramos] {len(pares)} tramos, {len(hechos)} ya calculados", flush=True)
 
-    out, n_osrm, n_recta = [], 0, 0
+    out: list[dict] = []
+    try:
+        _calcular(pares, hechos, out)
+    finally:
+        # incluso con Ctrl+C o un error: lo calculado hasta aqui queda en el CSV y la proxima corrida sigue
+        guardar(_unir(out, hechos))
+    print(f"[tramos] {SALIDA}: {len(out)} filas")
+
+
+def _calcular(pares: list, hechos: dict, out: list[dict]) -> None:
+    n_osrm = n_recta = nuevos = 0
     for i, (a, b) in enumerate(pares, 1):
         k = (a["sistema"], a["ruta"], a["direccion"], a["orden"])
         if k in hechos:
@@ -97,15 +128,12 @@ def main() -> None:
         out.append({"sistema": a["sistema"], "ruta": a["ruta"], "direccion": a["direccion"],
                     "orden_desde": a["orden"], "orden_hasta": b["orden"], "dist_m": round(dist, 1),
                     "duracion_osrm_s": round(dur, 1) if dur != "" else "", "fuente": fuente})
+        nuevos += 1
+        if nuevos % 100 == 0:
+            guardar(_unir(out, hechos))
         if i % 200 == 0:
-            print(f"[tramos] {i}/{len(pares)}", flush=True)
-
-    SALIDA.parent.mkdir(parents=True, exist_ok=True)
-    with SALIDA.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=CAMPOS)
-        w.writeheader()
-        w.writerows(out)
-    print(f"[tramos] {SALIDA}: {len(out)} filas (osrm nuevos={n_osrm}, haversine nuevos={n_recta})")
+            print(f"[tramos] {i}/{len(pares)} (osrm nuevos={n_osrm}, haversine nuevos={n_recta})", flush=True)
+    print(f"[tramos] osrm nuevos={n_osrm}, haversine nuevos={n_recta}")
 
 
 if __name__ == "__main__":

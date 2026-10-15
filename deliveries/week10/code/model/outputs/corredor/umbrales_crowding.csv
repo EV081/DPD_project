@@ -1,0 +1,5 @@
+sistema,franja,thr_mid,thr_hi,n,alpha_upstream,k_upstream,n_orden_geo
+corredor,noche,0.15208333333333332,1.625,32832,0.3,2,0
+corredor,punta_am,2.9208333333333334,6.114166666666665,14592,0.3,2,0
+corredor,punta_pm,2.591666666666667,5.321041666666671,18240,0.3,2,0
+corredor,valle,2.046166666666665,4.04375,21888,0.3,2,0

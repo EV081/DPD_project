@@ -1,0 +1,5 @@
+sistema,franja,thr_mid,thr_hi,n,alpha_upstream,k_upstream,n_orden_geo
+alimentador,noche,0.015,0.16,62658,0.3,2,0
+alimentador,punta_am,0.23625,0.55125,27848,0.3,2,0
+alimentador,punta_pm,0.21875,0.5146250000000009,34810,0.3,2,0
+alimentador,valle,0.12166666666666667,0.28,41772,0.3,2,0

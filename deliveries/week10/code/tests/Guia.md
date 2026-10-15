@@ -37,6 +37,8 @@ python -m pytest tests/test_ingest.py -k paridad -q
 
 - `db`: verifica que el server responde (si no, falla con el comando a correr),
   crea la base y aplica el esquema una vez por sesión.
+  Los tests corren en la base `urbansafe_test` (variable `PGDATABASE_TEST`), nunca en `PGDATABASE`: recargan y
+  borran tablas y así no pisan los datos que dejó `docker compose up`.
 - `db_cargado`: sobre `db`, ejecuta `load_all` + `verify_vista`. **Es costoso
   (~2–4 min por los 14,6 M de filas)** y solo corre si algún test que lo pide se
   ejecuta; queda cacheado para toda la sesión.

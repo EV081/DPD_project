@@ -1,7 +1,7 @@
 # Visor de paradas y rutas
 
 `mapa_revision.html` es un **visor** para ver las paradas y rutas sobre un mapa. Revisar a mano es opcional: la
-entrega de datos es `../export/paraderos.csv` (con sus atributos `precision`, `evidencia` y `confianza`).
+entrega de datos es `../../export/paraderos.csv` (con sus atributos `precision`, `evidencia` y `confianza`).
 
 ## Uso
 1. Abrir `mapa_revision.html` en el navegador (necesita internet para los mosaicos del mapa).
@@ -22,7 +22,7 @@ Botones ✔ correcta · 📍 mover · ✖ no existe, o pegar un enlace de Google
 coordenada del enlace completo de la barra de direcciones, no del enlace corto). **▶ Modo auditoría** recorre
 una cola de paradas. Exporta el CSV al terminar (el navegador guarda las decisiones solo en ese equipo).
 
-Para aplicarlas: copiar el CSV a `../data/fuentes/correcciones_paradas.csv` y correr
+Para aplicarlas: copiar el CSV a `../../data/fuentes/correcciones_paradas.csv` y correr
 `geocodificar_alimentadores.py`, `pipeline.run paraderos` y `pipeline.run export`. Una parada corregida queda con
 `confianza = verificada` y `precision = exacta` (`evidencia = revision_humana`).
 

@@ -1,6 +1,6 @@
 """Genera el material de revision humana de paradas y rutas.
 
-Salida en deliveries/week10/revision/:
+Salida en deliveries/week10/docs/visor/:
   mapa_revision.html      visor interactivo (Leaflet): ver paradas, rutas y su precision; correccion opcional
   revision_paradas.csv    solo con --csv (la entrega de datos es export/paraderos.csv)
 Las correcciones se exportan desde el mapa a `correcciones_paradas.csv`, se guardan en
@@ -19,7 +19,7 @@ RAIZ = CODEDIR.parents[2]
 FUENTES = RAIZ / "data" / "fuentes"
 GEO = FUENTES / "geo"
 GEOJSON = RAIZ / "data_processed" / "geo"
-OUT = RAIZ / "revision"
+OUT = RAIZ / "docs" / "visor"
 PRIO = {"": 0, "baja": 1, "media": 2, "alta": 3, "verificada": 4, None: 0}
 
 
@@ -188,7 +188,7 @@ def enlaces(lat, lon) -> tuple[str, str]:
 
 
 def main() -> None:
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
     datos = construir()
     filas = []
     for sis, bloque in datos.items():

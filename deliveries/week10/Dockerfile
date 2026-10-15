@@ -18,6 +18,8 @@ COPY code/pipeline ./pipeline
 COPY code/storage ./storage
 COPY code/export ./export
 COPY code/tests ./tests
+# los tests de georreferenciacion (test_google, test_revision) importan estos modulos
+COPY code/scripts/03_georef ./scripts/03_georef
 # Inferencia del batch `predict`: MODEL_DIR.parents[1]/"models" -> /models (ver inferencia.py)
 COPY code/model/*.py ./model/
 COPY models /models

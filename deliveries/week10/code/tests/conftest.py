@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -7,13 +8,15 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # week10/code
 
+# Los tests recargan y borran tablas (paraderos, rutas, prediccion...): corren en una base aparte para no
+# pisar la que dejo `docker compose up`. Se crea sola (`ensure_database`). Cambiable con PGDATABASE_TEST.
+os.environ["PGDATABASE"] = os.getenv("PGDATABASE_TEST", "urbansafe_test")
+
 from pipeline import ingest_demand  # noqa: E402
 from storage import db as storagedb  # noqa: E402
 
 
 def _servidor_arriba() -> bool:
-    import os
-
     import psycopg
 
     try:

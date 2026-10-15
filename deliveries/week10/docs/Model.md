@@ -9,7 +9,7 @@ tipo de transporte (no un modelo Lima-global).
 | Datos | `data_processed/clean/demanda_consolidada_fiable.parquet` (≥ 90% cobertura) |
 | Split | train ≤ 2025-10-31 · eval: 2025-11-04, 11, 18 · 12-02, 12-09 |
 | Forecast | Chronos Bolt · LightGBM (lags) · AutoETS (`statsforecast`) · `hora_media` · `naive_7d` |
-| Código | `code/model/Modelamiento_*.ipynb` + `model_atu_common.py` |
+| Código | `code/model/notebooks/Modelamiento_*.ipynb` + `model_atu_common.py` |
 | Figuras | `docs/images/model/<sistema>/` |
 
 **Criterio de ganador:** menor **WMAPE** en el bakeoff. El pronóstico 24h operativo

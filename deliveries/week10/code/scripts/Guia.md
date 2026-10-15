@@ -38,7 +38,7 @@ entre sí por nombre (misma carpeta); `build_trazados` toma `osrm_snap` de `03_g
 | 4 | `prepare_parquet.py` | Excel → Parquet **crudo** (`data_processed/raw/`) | paso 1 |
 | 5 | EDA por sistema (4 notebooks) | Limpieza + EDA completo -> `clean/` | paso 4 |
 | 6 | `eda_comparativo_sistemas.ipynb` | Consolida + compara los 4 sistemas | paso 5 |
-| 7 | `code/model/modelamiento_atu.py` (+ `Modelamiento_ATU.ipynb`) | Pronóstico Chronos / aforo proxy / recomendación ATU | paso 6 |
+| 7 | `code/model/modelamiento_atu.py` (+ `notebooks/Modelamiento_ATU.ipynb`) | Pronóstico Chronos / aforo proxy / recomendación ATU | paso 6 |
 
 Los pasos 2 y 3 son independientes del 1 y entre sí: se pueden hacer en paralelo o
 saltarlos si los CSV ya existen.
