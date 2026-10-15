@@ -26,52 +26,52 @@ alimentador,Sur/CedrosDeVilla,Alimentador Sur/CedrosDeVilla (AS-02),derivado_osr
 alimentador,Sur/LosProceres,Alimentador Sur/LosProceres (AS-08),derivado_osrm,True,17,53,17
 alimentador,Sur/VillaElSalvador,Alimentador Sur/VillaElSalvador (AS-04),derivado_osrm,True,22,64,22
 alimentador,Universidad/Trapiche,Alimentador Universidad/Trapiche (AN-10),derivado_osrm,True,27,48,27
-corredor,201,Corredor 201,derivado_osrm,True,,,92
-corredor,2011,Corredor 2011,,False,,,1
-corredor,2012,Corredor 2012,,False,,,1
-corredor,204,Corredor 204,derivado_osrm,True,,,131
-corredor,206,Corredor 206,derivado_osrm,True,,,91
-corredor,209,Corredor 209,derivado_osrm,True,,,92
-corredor,257,Corredor 257,,False,,,30
-corredor,3000,Corredor 3000,,False,,,19
-corredor,301,Corredor 301,derivado_osrm,True,,,89
-corredor,302,Corredor 302,derivado_osrm,True,,,61
-corredor,303,Corredor 303,derivado_osrm,True,,,40
-corredor,304,Corredor 304,,False,,,51
-corredor,305,Corredor 305,derivado_osrm,True,,,67
-corredor,306,Corredor 306,derivado_osrm,True,,,46
-corredor,3090,Corredor 3090,,False,,,18
-corredor,3100,Corredor 3100,,False,,,8
-corredor,3180,Corredor 3180,,False,,,1
-corredor,3200,Corredor 3200,,False,,,25
-corredor,336,Corredor 336,derivado_osrm,True,,,59
-corredor,357,Corredor 357,,False,,,47
-corredor,370,Corredor 370,derivado_osrm,True,,,35
-corredor,371,Corredor 371,derivado_osrm,True,,,8
-corredor,4006,Corredor 4006,,False,,,58
-corredor,401,Corredor 401,,False,,,64
-corredor,404,Corredor 404,derivado_osrm,True,,,92
-corredor,405,Corredor 405,derivado_osrm,True,,,84
-corredor,406,Corredor 406,derivado_osrm,True,,,96
-corredor,409,Corredor 409,,False,,,87
-corredor,412,Corredor 412,derivado_osrm,True,,,60
-metro_l1,metro_l1,Metro de Lima - Linea 1,shapefile_atu,True,,,26
-troncal,EX11-NS,Expreso 11,osm_relation,True,,,7
-troncal,EX13-NS,Expreso 13,osm_relation,True,,,4
-troncal,EX9-NS,Expreso 9,osm_relation,True,,,10
-troncal,Lechucero,Lechucero,osm_relation,True,,,11
-troncal,RegularA,Ruta A,osm_relation,True,,,12
-troncal,RegularB,Ruta B,osm_relation,True,,,18
-troncal,RegularC,Ruta C,osm_relation,True,,,20
-troncal,RegularD,Ruta D,osm_relation,True,,,13
-troncal,SX-M,Super Expreso M,osm_relation,True,,,6
-troncal,SXN-NS-M,Super Expreso Norte,osm_relation,True,,,8
-troncal,X1-M,Expreso 1,osm_relation,True,,,11
-troncal,X10,Expreso 10,osm_relation,True,,,5
-troncal,X12,Expreso 12,osm_relation,True,,,6
-troncal,X3-N,Expreso 3,osm_relation,True,,,3
-troncal,X5,Expreso 5,osm_relation,True,,,13
-troncal,X6,Expreso 6,osm_relation,True,,,6
-troncal,X7,Expreso 7,osm_relation,True,,,5
-troncal,X8,Expreso 8,osm_relation,True,,,9
-troncal,troncal,Metropolitano - Troncal,osm_relation,True,,,44
+corredor,201,Corredor 201,derivado_osrm,True,92,100,92
+corredor,2011,Corredor 2011,sin_trazado,False,1,100,1
+corredor,2012,Corredor 2012,sin_trazado,False,1,100,1
+corredor,204,Corredor 204,derivado_osrm,True,131,100,131
+corredor,206,Corredor 206,derivado_osrm,True,91,100,91
+corredor,209,Corredor 209,derivado_osrm,True,92,100,92
+corredor,257,Corredor 257,sin_trazado,False,30,100,30
+corredor,3000,Corredor 3000,sin_trazado,False,19,100,19
+corredor,301,Corredor 301,derivado_osrm,True,89,100,89
+corredor,302,Corredor 302,derivado_osrm,True,61,100,61
+corredor,303,Corredor 303,derivado_osrm,True,40,100,40
+corredor,304,Corredor 304,sin_trazado,False,51,100,51
+corredor,305,Corredor 305,derivado_osrm,True,67,100,67
+corredor,306,Corredor 306,derivado_osrm,True,46,100,46
+corredor,3090,Corredor 3090,sin_trazado,False,18,100,18
+corredor,3100,Corredor 3100,sin_trazado,False,8,100,8
+corredor,3180,Corredor 3180,sin_trazado,False,1,100,1
+corredor,3200,Corredor 3200,sin_trazado,False,25,100,25
+corredor,336,Corredor 336,derivado_osrm,True,59,100,59
+corredor,357,Corredor 357,sin_trazado,False,47,100,47
+corredor,370,Corredor 370,derivado_osrm,True,35,100,35
+corredor,371,Corredor 371,derivado_osrm,True,8,100,8
+corredor,4006,Corredor 4006,sin_trazado,False,58,100,58
+corredor,401,Corredor 401,sin_trazado,False,64,100,64
+corredor,404,Corredor 404,derivado_osrm,True,92,100,92
+corredor,405,Corredor 405,derivado_osrm,True,84,100,84
+corredor,406,Corredor 406,derivado_osrm,True,96,100,96
+corredor,409,Corredor 409,sin_trazado,False,87,100,87
+corredor,412,Corredor 412,derivado_osrm,True,60,100,60
+metro_l1,metro_l1,Metro de Lima - Linea 1,shapefile_atu,True,26,100,26
+troncal,EX11-NS,Expreso 11,osm_relation,True,7,0,7
+troncal,EX13-NS,Expreso 13,osm_relation,True,4,0,4
+troncal,EX9-NS,Expreso 9,osm_relation,True,10,10,10
+troncal,Lechucero,Lechucero,osm_relation,True,11,0,11
+troncal,RegularA,Ruta A,osm_relation,True,12,0,12
+troncal,RegularB,Ruta B,osm_relation,True,18,6,18
+troncal,RegularC,Ruta C,osm_relation,True,20,10,20
+troncal,RegularD,Ruta D,osm_relation,True,13,8,13
+troncal,SX-M,Super Expreso M,osm_relation,True,6,17,6
+troncal,SXN-NS-M,Super Expreso Norte,osm_relation,True,8,12,8
+troncal,X1-M,Expreso 1,osm_relation,True,11,9,11
+troncal,X10,Expreso 10,osm_relation,True,5,0,5
+troncal,X12,Expreso 12,osm_relation,True,6,17,6
+troncal,X3-N,Expreso 3,osm_relation,True,3,33,3
+troncal,X5,Expreso 5,osm_relation,True,13,0,13
+troncal,X6,Expreso 6,osm_relation,True,6,17,6
+troncal,X7,Expreso 7,osm_relation,True,5,0,5
+troncal,X8,Expreso 8,osm_relation,True,9,11,9
+troncal,troncal,Metropolitano - Troncal,osm_relation,True,44,9,44

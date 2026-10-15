@@ -342,6 +342,19 @@ ALTER TABLE paradero ADD CONSTRAINT paradero_sistema_check
 ALTER TABLE paradero DROP CONSTRAINT IF EXISTS paradero_calidad_coord_check;
 ALTER TABLE paradero ADD CONSTRAINT paradero_calidad_coord_check
     CHECK (calidad_coord IN ('gps_atu', 'osm_nombre', 'osm_secuencia', 'shapefile', 'google_places', 'revision_humana'));
+-- Sin NULLs: se completa por fuente de la coordenada y se exige NOT NULL (ver ingest_paraderos).
+UPDATE paradero SET
+    confianza = coalesce(confianza, CASE calidad_coord
+        WHEN 'gps_atu' THEN 'alta' WHEN 'shapefile' THEN 'alta'
+        WHEN 'revision_humana' THEN 'verificada' ELSE 'media' END),
+    precision_coord = coalesce(precision_coord, CASE
+        WHEN calidad_coord IN ('gps_atu', 'shapefile', 'revision_humana') THEN 'exacta'
+        ELSE 'aproximada' END),
+    evidencia = coalesce(evidencia, 'Completado por fuente: ' || calidad_coord)
+WHERE confianza IS NULL OR precision_coord IS NULL OR evidencia IS NULL;
+ALTER TABLE paradero ALTER COLUMN confianza SET NOT NULL;
+ALTER TABLE paradero ALTER COLUMN precision_coord SET NOT NULL;
+ALTER TABLE paradero ALTER COLUMN evidencia SET NOT NULL;
 CREATE INDEX IF NOT EXISTS ix_paradero_geo ON paradero (lat, lon);
 
 CREATE TABLE IF NOT EXISTS ruta (
@@ -355,12 +368,17 @@ CREATE TABLE IF NOT EXISTS ruta (
     nota       TEXT,
     -- shapefile_atu: eje oficial L1; osm_relation: relacion OSM route=bus;
     -- derivado_osrm: calculado por calles entre paraderos (NO es el trazado oficial)
-    origen_trazado TEXT CHECK (origen_trazado IN ('shapefile_atu', 'osm_relation', 'derivado_osrm')),
+    origen_trazado TEXT,
     UNIQUE (sistema, codigo)
 );
 ALTER TABLE ruta ADD COLUMN IF NOT EXISTS origen_trazado TEXT;
 ALTER TABLE ruta ADD COLUMN IF NOT EXISTS n_paradas INTEGER;
 ALTER TABLE ruta ADD COLUMN IF NOT EXISTS pct_exactas SMALLINT;
+ALTER TABLE ruta ADD COLUMN IF NOT EXISTS tiene_trazado BOOLEAN NOT NULL DEFAULT false;
+-- 'sin_trazado': ATU no publica geometria para la ruta (trazado queda NULL; solo paradas)
+ALTER TABLE ruta DROP CONSTRAINT IF EXISTS ruta_origen_trazado_check;
+ALTER TABLE ruta ADD CONSTRAINT ruta_origen_trazado_check
+    CHECK (origen_trazado IN ('shapefile_atu', 'osm_relation', 'derivado_osrm', 'sin_trazado'));
 
 CREATE TABLE IF NOT EXISTS paradero_ruta (
     paradero_id    BIGINT NOT NULL REFERENCES paradero (id) ON DELETE CASCADE,

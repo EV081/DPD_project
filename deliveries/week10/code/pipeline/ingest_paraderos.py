@@ -10,6 +10,9 @@ Calidad de las coordenadas (campo ``calidad_coord``):
               en OSM (aproximadas). Los paraderos de alimentador que no son embarques en
               estacion NO tienen coordenada oficial y no se cargan
   shapefile   metro L1
+Ningun paradero queda con confianza/precision_coord/evidencia en NULL: si la fuente no los
+trae, se asignan por ``calidad_coord`` (DEFAULTS_CALIDAD). Las rutas sin geometria llevan
+``tiene_trazado = false`` y ``origen_trazado = 'sin_trazado'``.
 """
 from __future__ import annotations
 
@@ -72,6 +75,19 @@ def _multilinea(features: list[dict]) -> dict | None:
         return {"type": "LineString", "coordinates": lineas[0]}
     return {"type": "MultiLineString", "coordinates": lineas}
 
+
+# Valores por defecto segun la fuente de la coordenada: ningun paradero queda con NULL.
+# calidad_coord -> (confianza, precision_coord, evidencia). `{codigo}` se rellena por paradero.
+DEFAULTS_CALIDAD = {
+    "gps_atu": ("alta", "exacta", "Coordenada oficial del catalogo ATU (cod_paradero {codigo})"),
+    "shapefile": ("alta", "exacta", "Estacion del shapefile oficial ATU (Metro L1)"),
+    "osm_nombre": ("media", "aproximada", "Ubicada por nombre exacto de la estacion en OSM"),
+    "google_places": ("media", "aproximada", "Ubicada con Google Places por nombre de estacion"),
+    "revision_humana": ("verificada", "exacta", "Coordenada verificada manualmente"),
+    "osm_secuencia": ("media", "aproximada", "Candidato OSM elegido por secuencia de paradas ATU"),
+}
+COLOR_SISTEMA = {"metro_l1": "#c0392b", "troncal": "#1f4e79", "corredor": "#7f8c8d",
+                 "alimentador": "#16a085"}
 
 FUSION_M = 40.0  # mismo nombre a menos de esto = mismo paradero fisico
 
@@ -217,6 +233,20 @@ def construir(geo_dir: Path, unidades: dict[str, dict[str, str]]) -> dict:
 
     con_sentido = {(pk, rk) for (pk, rk, d) in enlaces if d}
     enlaces = {k: v for k, v in enlaces.items() if k[2] or (k[0], k[1]) not in con_sentido}
+    for p in paraderos.values():
+        conf, prec, evid = DEFAULTS_CALIDAD[p["calidad_coord"]]
+        p["confianza"] = p.get("confianza") or conf
+        p["precision_coord"] = p.get("precision_coord") or prec
+        p["evidencia"] = p.get("evidencia") or evid.format(codigo=p["codigo"])
+
+    for r in rutas.values():
+        r["tiene_trazado"] = bool(r["trazado"])
+        r["color_hex"] = r["color_hex"] or COLOR_SISTEMA[r["sistema"]]
+        if not r["trazado"]:
+            r["origen_trazado"] = "sin_trazado"
+            r["nota"] = r["nota"] or "Sin trazado publicado por ATU: solo se muestran las paradas"
+        else:
+            r["nota"] = r["nota"] or "Trazado oficial ATU"
     return {"paraderos": paraderos, "rutas": rutas, "enlaces": enlaces, "avisos": sin_enlace}
 
 
@@ -252,19 +282,18 @@ def cargar(conn, geo_dir: Path | None = None) -> dict:
         for k, r in datos["rutas"].items():
             ids_r[k] = conn.execute(
                 "INSERT INTO ruta (sistema, codigo, nombre, color_hex, trazado, nota, "
-                "origen_trazado) VALUES (%s,%s,%s,%s,%s,%s,%s) RETURNING id",
+                "origen_trazado, tiene_trazado) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id",
                 (r["sistema"], r["codigo"], r["nombre"], r["color_hex"],
                  Jsonb(r["trazado"]) if r["trazado"] else None, r["nota"],
-                 r["origen_trazado"] if r["trazado"] else None),
+                 r["origen_trazado"], r["tiene_trazado"]),
             ).fetchone()["id"]
-        # porcentaje de paradas con precision 'exacta' por ruta (solo donde se evalua: alimentadores)
+        # n_paradas y porcentaje de paradas con precision 'exacta' por ruta
         tot_r: dict = {}
         for (pk, rk, _d), _e in datos["enlaces"].items():
             pc = datos["paraderos"][pk].get("precision_coord")
-            if pc:
-                t = tot_r.setdefault(rk, [0, 0])
-                t[1] += 1
-                t[0] += pc == "exacta"
+            t = tot_r.setdefault(rk, [0, 0])
+            t[1] += 1
+            t[0] += pc == "exacta"
         for rk, (ex, n) in tot_r.items():
             conn.execute("UPDATE ruta SET n_paradas = %s, pct_exactas = %s WHERE id = %s",
                          (n, round(100 * ex / n), ids_r[rk]))
@@ -278,7 +307,7 @@ def cargar(conn, geo_dir: Path | None = None) -> dict:
         "paraderos": len(datos["paraderos"]), "rutas": len(datos["rutas"]),
         "enlaces": len(datos["enlaces"]),
         "con_unidad_modelo": sum(1 for e in datos["enlaces"].values() if e["unidad_modelo"]),
-        "rutas_con_trazado": sum(1 for r in datos["rutas"].values() if r["trazado"]),
+        "rutas_con_trazado": sum(1 for r in datos["rutas"].values() if r["tiene_trazado"]),
         **datos["avisos"],
     }
     return resumen

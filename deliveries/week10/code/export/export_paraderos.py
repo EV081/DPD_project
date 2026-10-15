@@ -23,7 +23,7 @@ ORDER BY r.sistema, r.codigo, pr.direccion, pr.orden NULLS LAST, p.nombre
 """
 SQL_RUTAS = """
 SELECT r.sistema, r.codigo AS ruta, r.nombre AS ruta_nombre, r.origen_trazado,
-       (r.trazado IS NOT NULL) AS tiene_trazado, r.n_paradas, r.pct_exactas,
+       r.tiene_trazado, r.n_paradas, r.pct_exactas,
        count(pr.paradero_id) AS enlaces
 FROM ruta r LEFT JOIN paradero_ruta pr ON pr.ruta_id = r.id
 GROUP BY r.id ORDER BY r.sistema, r.codigo

@@ -1,6 +1,6 @@
 {
-  "generado_en": "2026-10-14T15:37:52",
-  "fuente": "/home/evssz/UTEC/6to/DPD/DPD_project/deliveries/week10/data_processed/clean",
+  "generado_en": "2026-10-15T03:32:54",
+  "fuente": "/data/processed/clean",
   "limite_muestra": 100000,
   "conteos_bd": {
     "troncal_hora": 398928,
@@ -10,7 +10,7 @@
     "alimentador_hora": 4670304,
     "alimentador_tarifa": 804864,
     "cobertura_unidad": 125,
-    "trafico_en_vivo": 1,
+    "trafico_en_vivo": 6,
     "demanda_fiable": 12344159,
     "paraderos_csv": 2502,
     "rutas_csv": 76,
@@ -42,8 +42,8 @@
       "sha256": "24e20527daf5a531c57c36524bee08c4f2fade470ffb8b82ff367ad9bed75d88"
     },
     "paraderos.csv": {
-      "bytes": 294979,
-      "sha256": "e6aa3bded2d6a49cd39eb1f18b785dd669e615d6ad5b9e69262aa281586f3440"
+      "bytes": 420653,
+      "sha256": "15f99c3d6ed60b4fc4e07de6d561760c6a4cb05e7ecbdfab7cddf8702862c37f"
     },
     "perfil_horario.csv": {
       "bytes": 2623,
@@ -54,16 +54,16 @@
       "sha256": "6a5d0919394227805a2d7fec2a3362136bf09656ff12293e5fbce70e3ba5ad0d"
     },
     "rutas.csv": {
-      "bytes": 4992,
-      "sha256": "a89ccfb54b818fc85da3c568f039e99dc290d0e638ae658a9badb4bcd3aa5fc8"
+      "bytes": 5336,
+      "sha256": "674d088ec3134a14444e3d5b0288bbafcd63627608b2d2cf04c881e3bb13538b"
     },
     "rutas_trazados.geojson": {
       "bytes": 1383724,
       "sha256": "8a317cd17337f05fb76b8f23ee5f08fac0e01665122b1e01bd57dec61b13096b"
     },
     "trafico_tomtom.json": {
-      "bytes": 329,
-      "sha256": "02c5ea2311d09d1e46710ee2a87db66ae7330a1f4b37a64ba870037869a81d53"
+      "bytes": 1788,
+      "sha256": "73cfdaf6d5e0c0014f7ebb27c1b5ee8354cc33ce4685b2c0548cf235d0d31048"
     }
   }
 }

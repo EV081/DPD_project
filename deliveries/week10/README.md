@@ -250,6 +250,13 @@ cercano a sus vecinas. Si nada aplica, la parada queda **sin coordenada**.
 | | `revision_humana` | corregida a mano |
 | `confianza` | `alta` / `media` / `baja` / `verificada` | método de ubicación (ver tabla de validación) |
 | `ruta.pct_exactas` | 0–100 | porcentaje de paradas exactas de la ruta |
+| `ruta.tiene_trazado` | `true` / `false` | `false` = ATU no publica geometría; `trazado` queda NULL y solo se muestran las paradas |
+| `ruta.origen_trazado` | `shapefile_atu` / `osm_relation` / `derivado_osrm` / `sin_trazado` | procedencia de la línea dibujada |
+
+Los campos de `paradero` (`confianza`, `precision`, `evidencia`) no tienen NULL: fuera de los alimentadores se
+asignan según la fuente de la coordenada (`gps_atu` y `shapefile` → `alta`/`exacta`; `osm_nombre` y
+`google_places` → `media`/`aproximada`; `revision_humana` → `verificada`/`exacta`). `unidad_modelo` sí es NULL
+cuando la ruta no tiene demanda fiable para predecir (20 rutas: 3 alimentadores y 17 corredores).
 
 Resultado actual (757 paradas por sentido): **308 exactas (41 %)**, 404 aproximadas (267 con parada de Google
 cerca, 137 sin parada en Google) y **45 sin coordenada**. Por ruta: 2 con ≥ 75 % exactas, 10 con 50–74 %,
