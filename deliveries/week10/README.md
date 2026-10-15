@@ -5,7 +5,8 @@
 (week08) → PostgreSQL 17 → export representativo, con telemetría de tráfico en
 vivo (TomTom + fallback RF-05) y suite de regresión en pytest.
 
-> Los EDA y el modelado viven en `deliveries/week08/` (Alessandro/Juan David).
+> El EDA y el modelado se desarrollaron en `deliveries/week08/` (Alessandro/Juan David); sus notebooks están
+> copiados en `code/eda/` y `code/model/notebooks/`.
 > Esta semana solo consume sus salidas y las persiste en una base relacional con
 > contratos de integridad verificables. Las entradas mínimas viven versionadas en
 > [`data_processed/`](data_processed/) (`clean/` y `geo/`, ≈ 50 MB), de modo que un clon levanta todo con

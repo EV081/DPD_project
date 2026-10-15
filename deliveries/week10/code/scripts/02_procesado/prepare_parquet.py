@@ -4,10 +4,10 @@ Solo hace reshape (wide→long), renombra columnas, filtra el año pedido y
 colapsa filas exactamente idénticas (duplicados del propio Excel).
 La limpieza + EDA viven en los notebooks:
 
-    deliveries/week08/code/eda/eda_troncales_metropolitano.ipynb
-    deliveries/week08/code/eda/eda_alimentadores.ipynb
-    deliveries/week08/code/eda/eda_corredores.ipynb
-    deliveries/week08/code/eda/eda_metro_l1.ipynb
+    deliveries/week10/code/eda/eda_troncales_metropolitano.ipynb
+    deliveries/week10/code/eda/eda_alimentadores.ipynb
+    deliveries/week10/code/eda/eda_corredores.ipynb
+    deliveries/week10/code/eda/eda_metro_l1.ipynb
 
 Uso:
     .venv/bin/python deliveries/week10/code/scripts/02_procesado/prepare_parquet.py --anio 2025

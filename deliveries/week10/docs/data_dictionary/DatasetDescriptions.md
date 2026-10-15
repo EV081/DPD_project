@@ -111,13 +111,11 @@ Estos no son conclusiones del EDA para publicar, sino restricciones que la data 
 ## Cómo reproducir
 
 ```bash
-.venv/bin/python deliveries/week08/code/scripts/extract_zip_data.py
-.venv/bin/python deliveries/week08/code/scripts/download_transport_pages.py
-.venv/bin/python deliveries/week08/code/scripts/download_osm_lima.py
-.venv/bin/python deliveries/week08/code/scripts/prepare_parquet.py --anio 2025
-# luego: notebooks EDA por sistema → data_processed/clean/
-.venv/bin/python deliveries/week08/code/eda/_build_notebooks.py
-.venv/bin/python deliveries/week08/code/eda/_run_notebooks.py
+.venv/bin/python deliveries/week10/code/scripts/01_descarga/extract_zip_data.py
+.venv/bin/python deliveries/week10/code/scripts/01_descarga/download_transport_pages.py
+.venv/bin/python deliveries/week10/code/scripts/01_descarga/download_osm_lima.py
+.venv/bin/python deliveries/week10/code/scripts/02_procesado/prepare_parquet.py --anio 2025
+# luego: notebooks EDA por sistema (deliveries/week10/code/eda/) → data_processed/clean/
 ```
 
 Detalle paso a paso en `code/scripts/Guia.md`.
