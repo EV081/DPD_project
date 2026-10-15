@@ -1,9 +1,10 @@
 # Verificación de recarga — modelos v1.0.0
 
-Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
+Fecha: 2026-10-15T00:25:16 · Resultado: **OK** (197/197 checks)
 
 | Check | Estado | Detalle |
 |---|:---:|---|
+| sha256 ajuste_vivo_config.json | ✅ |  |
 | sha256 alimentador/aforo_histgb.joblib | ✅ |  |
 | sha256 alimentador/aforo_histgb_meta.json | ✅ |  |
 | sha256 alimentador/anomalias.json | ✅ |  |
@@ -70,6 +71,7 @@ Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
 | sha256 evaluacion/troncal/regla_u_test.csv | ✅ |  |
 | sha256 evaluacion/troncal/resumen.json | ✅ |  |
 | sha256 evaluacion/troncal/seleccion_validacion.csv | ✅ |  |
+| sha256 mapeo_segmentos.json | ✅ |  |
 | sha256 metro_l1/aforo_histgb.joblib | ✅ |  |
 | sha256 metro_l1/aforo_histgb_meta.json | ✅ |  |
 | sha256 metro_l1/anomalias.json | ✅ |  |
@@ -99,20 +101,20 @@ Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
 | sha256 troncal/referencia_contexto.csv | ✅ |  |
 | sha256 troncal/referencia_salida.csv | ✅ |  |
 | sha256 troncal/referencia_salida_ligero.csv | ✅ |  |
-| metro_l1 LightGBM recarga | ✅ | max |Δ| = 0.00e+00 |
-| metro_l1 HistGB recarga | ✅ | max |Δ| = 0.00e+00 |
-| metro_l1 IsolationForest recarga | ✅ | max |Δ| = 0.00e+00 |
+| metro_l1 LightGBM recarga | ✅ | max |Δ| = 5.68e-14 |
+| metro_l1 HistGB recarga | ✅ | max |Δ| = 1.11e-16 |
+| metro_l1 IsolationForest recarga | ✅ | max |Δ| = 1.11e-16 |
 | metro_l1 pronóstico principal: columnas y filas | ✅ | 624 filas |
-| metro_l1 pronóstico principal validaciones_pron | ✅ | max |Δ| = 4.55e-13 |
-| metro_l1 pronóstico principal banda80_lo | ✅ | max |Δ| = 2.27e-13 |
-| metro_l1 pronóstico principal banda80_hi | ✅ | max |Δ| = 4.55e-13 |
-| metro_l1 pronóstico principal crowding_index | ✅ | max |Δ| = 9.93e-17 |
+| metro_l1 pronóstico principal validaciones_pron | ✅ | max |Δ| = 5.70e-04 |
+| metro_l1 pronóstico principal banda80_lo | ✅ | max |Δ| = 5.70e-04 |
+| metro_l1 pronóstico principal banda80_hi | ✅ | max |Δ| = 5.70e-04 |
+| metro_l1 pronóstico principal crowding_index | ✅ | max |Δ| = 7.04e-08 |
 | metro_l1 pronóstico principal eta_min | ✅ | max |Δ| = 1.78e-15 |
 | metro_l1 pronóstico principal eta2_min | ✅ | max |Δ| = 0.00e+00 |
 | metro_l1 pronóstico principal aforo | ✅ | 100.00% idénticas |
 | metro_l1 pronóstico principal recomendacion | ✅ | 100.00% idénticas |
 | metro_l1 pronóstico principal modelo | ✅ | 100.00% idénticas |
-| metro_l1 pronóstico principal: latencia (informativa) | ✅ | 43.23 s con ensemble |
+| metro_l1 pronóstico principal: latencia (informativa) | ✅ | 11.14 s con ensemble |
 | metro_l1 pronóstico ligero: columnas y filas | ✅ | 624 filas |
 | metro_l1 pronóstico ligero validaciones_pron | ✅ | max |Δ| = 4.55e-13 |
 | metro_l1 pronóstico ligero banda80_lo | ✅ | max |Δ| = 4.55e-13 |
@@ -124,20 +126,20 @@ Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
 | metro_l1 pronóstico ligero recomendacion | ✅ | 100.00% idénticas |
 | metro_l1 pronóstico ligero modelo | ✅ | 100.00% idénticas |
 | metro_l1 pronóstico ligero: latencia (informativa) | ✅ | 0.01 s con lightgbm |
-| troncal LightGBM recarga | ✅ | max |Δ| = 0.00e+00 |
-| troncal HistGB recarga | ✅ | max |Δ| = 0.00e+00 |
-| troncal IsolationForest recarga | ✅ | max |Δ| = 0.00e+00 |
+| troncal LightGBM recarga | ✅ | max |Δ| = 5.68e-14 |
+| troncal HistGB recarga | ✅ | max |Δ| = 1.39e-17 |
+| troncal IsolationForest recarga | ✅ | max |Δ| = 1.11e-16 |
 | troncal pronóstico principal: columnas y filas | ✅ | 1080 filas |
-| troncal pronóstico principal validaciones_pron | ✅ | max |Δ| = 2.27e-13 |
-| troncal pronóstico principal banda80_lo | ✅ | max |Δ| = 5.68e-14 |
-| troncal pronóstico principal banda80_hi | ✅ | max |Δ| = 4.55e-13 |
-| troncal pronóstico principal crowding_index | ✅ | max |Δ| = 4.44e-16 |
+| troncal pronóstico principal validaciones_pron | ✅ | max |Δ| = 2.03e-04 |
+| troncal pronóstico principal banda80_lo | ✅ | max |Δ| = 2.03e-04 |
+| troncal pronóstico principal banda80_hi | ✅ | max |Δ| = 2.03e-04 |
+| troncal pronóstico principal crowding_index | ✅ | max |Δ| = 1.63e-07 |
 | troncal pronóstico principal eta_min | ✅ | max |Δ| = 0.00e+00 |
 | troncal pronóstico principal eta2_min | ✅ | max |Δ| = 0.00e+00 |
 | troncal pronóstico principal aforo | ✅ | 100.00% idénticas |
 | troncal pronóstico principal recomendacion | ✅ | 100.00% idénticas |
 | troncal pronóstico principal modelo | ✅ | 100.00% idénticas |
-| troncal pronóstico principal: latencia (informativa) | ✅ | 34.90 s con ensemble |
+| troncal pronóstico principal: latencia (informativa) | ✅ | 12.93 s con ensemble |
 | troncal pronóstico ligero: columnas y filas | ✅ | 1080 filas |
 | troncal pronóstico ligero validaciones_pron | ✅ | max |Δ| = 4.55e-13 |
 | troncal pronóstico ligero banda80_lo | ✅ | max |Δ| = 5.68e-14 |
@@ -148,21 +150,21 @@ Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
 | troncal pronóstico ligero aforo | ✅ | 100.00% idénticas |
 | troncal pronóstico ligero recomendacion | ✅ | 100.00% idénticas |
 | troncal pronóstico ligero modelo | ✅ | 100.00% idénticas |
-| troncal pronóstico ligero: latencia (informativa) | ✅ | 0.02 s con lightgbm |
-| corredor LightGBM recarga | ✅ | max |Δ| = 0.00e+00 |
-| corredor HistGB recarga | ✅ | max |Δ| = 0.00e+00 |
+| troncal pronóstico ligero: latencia (informativa) | ✅ | 0.01 s con lightgbm |
+| corredor LightGBM recarga | ✅ | max |Δ| = 5.68e-14 |
+| corredor HistGB recarga | ✅ | max |Δ| = 3.47e-18 |
 | corredor IsolationForest recarga | ✅ | max |Δ| = 0.00e+00 |
 | corredor pronóstico principal: columnas y filas | ✅ | 288 filas |
-| corredor pronóstico principal validaciones_pron | ✅ | max |Δ| = 2.27e-13 |
-| corredor pronóstico principal banda80_lo | ✅ | max |Δ| = 5.68e-14 |
-| corredor pronóstico principal banda80_hi | ✅ | max |Δ| = 2.27e-13 |
-| corredor pronóstico principal crowding_index | ✅ | max |Δ| = 4.44e-16 |
+| corredor pronóstico principal validaciones_pron | ✅ | max |Δ| = 3.46e-04 |
+| corredor pronóstico principal banda80_lo | ✅ | max |Δ| = 3.46e-04 |
+| corredor pronóstico principal banda80_hi | ✅ | max |Δ| = 3.46e-04 |
+| corredor pronóstico principal crowding_index | ✅ | max |Δ| = 8.65e-07 |
 | corredor pronóstico principal eta_min | ✅ | max |Δ| = 1.78e-15 |
 | corredor pronóstico principal eta2_min | ✅ | max |Δ| = 0.00e+00 |
 | corredor pronóstico principal aforo | ✅ | 100.00% idénticas |
 | corredor pronóstico principal recomendacion | ✅ | 100.00% idénticas |
 | corredor pronóstico principal modelo | ✅ | 100.00% idénticas |
-| corredor pronóstico principal: latencia (informativa) | ✅ | 2.02 s con ensemble |
+| corredor pronóstico principal: latencia (informativa) | ✅ | 1.96 s con ensemble |
 | corredor pronóstico ligero: columnas y filas | ✅ | 288 filas |
 | corredor pronóstico ligero validaciones_pron | ✅ | max |Δ| = 2.27e-13 |
 | corredor pronóstico ligero banda80_lo | ✅ | max |Δ| = 5.68e-14 |
@@ -174,8 +176,8 @@ Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
 | corredor pronóstico ligero recomendacion | ✅ | 100.00% idénticas |
 | corredor pronóstico ligero modelo | ✅ | 100.00% idénticas |
 | corredor pronóstico ligero: latencia (informativa) | ✅ | 0.01 s con lightgbm |
-| alimentador LightGBM recarga | ✅ | max |Δ| = 0.00e+00 |
-| alimentador HistGB recarga | ✅ | max |Δ| = 0.00e+00 |
+| alimentador LightGBM recarga | ✅ | max |Δ| = 1.42e-14 |
+| alimentador HistGB recarga | ✅ | max |Δ| = 8.67e-19 |
 | alimentador IsolationForest recarga | ✅ | max |Δ| = 0.00e+00 |
 | alimentador pronóstico principal: columnas y filas | ✅ | 552 filas |
 | alimentador pronóstico principal validaciones_pron | ✅ | max |Δ| = 2.84e-14 |
@@ -187,7 +189,7 @@ Fecha: 2026-10-12T05:19:08 · Resultado: **OK** (195/195 checks)
 | alimentador pronóstico principal aforo | ✅ | 100.00% idénticas |
 | alimentador pronóstico principal recomendacion | ✅ | 100.00% idénticas |
 | alimentador pronóstico principal modelo | ✅ | 100.00% idénticas |
-| alimentador pronóstico principal: latencia (informativa) | ✅ | 0.03 s con lightgbm |
+| alimentador pronóstico principal: latencia (informativa) | ✅ | 0.02 s con lightgbm |
 | alimentador pronóstico ligero: columnas y filas | ✅ | 552 filas |
 | alimentador pronóstico ligero validaciones_pron | ✅ | max |Δ| = 2.84e-14 |
 | alimentador pronóstico ligero banda80_lo | ✅ | max |Δ| = 1.78e-15 |

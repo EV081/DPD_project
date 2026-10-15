@@ -32,9 +32,17 @@ import model_atu_v2 as V  # noqa: E402
 DIAS_CONTEXTO = 28
 
 
+# Los artefactos de texto se hashean con saltos de línea normalizados a LF: el mismo manifiesto
+# vale en Windows (git con autocrlf -> CRLF) y en Linux/Docker (LF). Los binarios van tal cual.
+_EXT_TEXTO = {".json", ".csv", ".txt", ".md"}
+
+
 def sha256(ruta: Path) -> str:
+    ruta = Path(ruta)
+    if ruta.suffix.lower() in _EXT_TEXTO:
+        return hashlib.sha256(ruta.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
     h = hashlib.sha256()
-    with Path(ruta).open("rb") as fh:
+    with ruta.open("rb") as fh:
         for bloque in iter(lambda: fh.read(1 << 20), b""):
             h.update(bloque)
     return h.hexdigest()

@@ -104,7 +104,7 @@ misma versión de scikit-learn registrada en el manifiesto.
 | Corredores | ensemble (lightgbm + chronos2 + chronos_bolt) | 0.120 | 0.113 | media_4sem (0.167) | 0.927 | 97.6 % | ✅ | ✅ | ✅ |
 | Alimentadores | lightgbm | 0.405 | 0.405 | media_4sem (0.472) | 0.842 | 97.0 % | ✅ | ❌ | ✅ |
 
-Versión **1.0.0** · código en el commit `68fa26b` (sin cambios pendientes: sí) · datos sha256 `694c595f67f6…` (12,344,159 filas) · verificación de recarga: **OK** (195/195 checks, ver `verify_report.md`).
+Versión **1.0.0** · código en el commit `68fa26b` (sin cambios pendientes: sí) · datos sha256 `694c595f67f6…` (12,344,159 filas) · verificación de recarga: **OK** (197/197 checks, ver `verify_report.md`).
 
 AC-03 se cumple, pero también lo cumple «siempre abordar» (90–96 %). Por eso reportamos además la balanced accuracy (`evaluacion/<sistema>/regla_u_test.csv`).
 

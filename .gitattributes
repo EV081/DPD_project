@@ -1,0 +1,6 @@
+# modelos serializados: LF fijo en cualquier SO (el sha256 del manifiesto ignora CRLF de todos modos)
+deliveries/week10/models/**/*.json text eol=lf
+deliveries/week10/models/**/*.csv text eol=lf
+deliveries/week10/models/**/*.txt text eol=lf
+deliveries/week10/models/**/*.joblib binary
+deliveries/week10/models/**/*.npz binary

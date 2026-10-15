@@ -1,6 +1,6 @@
 # week10 · Pipeline de ingesta + PostgreSQL (Elmer Villegas)
 #
-#   docker compose up --build            # init-db + demanda + trafico + export
+#   docker compose up --build            # init-db + demanda + paraderos + predict + trafico + export
 #   docker compose run pipeline live     # solo un snapshot de trafico
 #   docker compose run pipeline loop     # snapshots periodicos (LOOP_SECONDS)
 #   docker compose run pipeline pytest   # suite de regresion/paridad

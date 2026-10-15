@@ -77,8 +77,9 @@ def verificar_sistema(models_dir: Path, sistema: str, dia_ref: str, rtol: float)
     ctx.columns = [str(c) for c in ctx.columns]
     # Chronos en CPU puede variar en el último decimal entre equipos: tolerancia relativa configurable
     tol = rtol if modelo.principal in ("chronos2", "chronos_bolt", "ensemble") else 1e-9
-    for modo, archivo, tol_modo in [("principal", "referencia_salida.csv", tol),
-                                    ("ligero", "referencia_salida_ligero.csv", 1e-9)]:
+    # atol absoluta: con volumenes de pocos pasajeros, 1e-4 relativo es < 1e-3 pasajeros (ruido de Chronos)
+    for modo, archivo, tol_modo, atol_modo in [("principal", "referencia_salida.csv", tol, 1e-3),
+                                               ("ligero", "referencia_salida_ligero.csv", 1e-9, 1e-6)]:
         t = time.time()
         nueva = modelo.pronosticar(ctx, dia_ref, modo=modo)
         seg = time.time() - t
@@ -89,7 +90,7 @@ def verificar_sistema(models_dir: Path, sistema: str, dia_ref: str, rtol: float)
         if ok_forma:
             for c in NUMERICAS:
                 a, b = nueva[c].to_numpy(float), esperada[c].to_numpy(float)
-                out.append(_check(f"{etiqueta} {c}", np.allclose(a, b, rtol=tol_modo, atol=1e-6),
+                out.append(_check(f"{etiqueta} {c}", np.allclose(a, b, rtol=tol_modo, atol=atol_modo),
                                   f"max |Δ| = {np.max(np.abs(a - b)):.2e}"))
             for c in CATEGORICAS:
                 igual = (nueva[c].astype(str).to_numpy() == esperada[c].astype(str).to_numpy()).mean()

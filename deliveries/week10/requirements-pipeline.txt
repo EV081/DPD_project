@@ -1,4 +1,5 @@
-# Dependencias del pipeline week10 (sin torch: el modelado corre en week08).
+# Dependencias del pipeline week10 (sin torch ni Chronos: el batch `predict` usa el modo ligero,
+# solo LightGBM; ver models/*/model_card.json -> modo_ligero).
 pandas>=2.2
 pyarrow>=17
 numpy>=1.26
@@ -6,3 +7,5 @@ httpx>=0.27
 psycopg[binary]>=3.1
 python-dotenv>=1.0
 pytest>=8.0
+lightgbm>=4.0
+scipy>=1.11

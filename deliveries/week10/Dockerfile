@@ -7,6 +7,10 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
+# LightGBM necesita OpenMP (libgomp); python:slim no lo trae y sin el cae a media_4sem en silencio
+RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
+ && rm -rf /var/lib/apt/lists/*
+
 COPY requirements-pipeline.txt .
 RUN pip install -r requirements-pipeline.txt
 
@@ -14,6 +18,9 @@ COPY code/pipeline ./pipeline
 COPY code/storage ./storage
 COPY code/export ./export
 COPY code/tests ./tests
+# Inferencia del batch `predict`: MODEL_DIR.parents[1]/"models" -> /models (ver inferencia.py)
+COPY code/model/*.py ./model/
+COPY models /models
 COPY code/entrypoint.sh ./entrypoint.sh
 RUN chmod +x entrypoint.sh
 

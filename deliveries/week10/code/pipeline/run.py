@@ -107,10 +107,19 @@ def _cmd_check() -> None:
         print(f"[check] export/ aun no existe ({export_dir})")
 
 
+def _cmd_predict_opcional() -> None:
+    """Pronostico del dia siguiente dentro de ``full``: un fallo avisa pero no corta el arranque."""
+    try:
+        _cmd_predict(None, "ligero", None)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[predict] omitido: {type(exc).__name__}: {exc}")
+
+
 def _cmd_full(argv: list[str]) -> None:
     _cmd_init_db()
     _cmd_demand(argv)
     _cmd_paraderos(opcional=True)
+    _cmd_predict_opcional()
     _cmd_live()
     _cmd_export()
     _cmd_check()
@@ -146,7 +155,7 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("export", help="exporta archivos a EXPORT_DIR")
     sub.add_parser("check", help="reporte de conteos")
-    sub.add_parser("full", help="init-db + demand + live + export")
+    sub.add_parser("full", help="init-db + demand + paraderos + predict + live + export")
 
     args = parser.parse_args(argv)
     rest: list[str] = []
