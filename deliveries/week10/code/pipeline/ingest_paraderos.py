@@ -1,4 +1,4 @@
-"""Carga paraderos, rutas y trazados (GeoJSON de ``scripts/build_trazados.py``) a PostgreSQL.
+"""Carga paraderos, rutas y trazados (GeoJSON de ``scripts/04_geo_build/build_trazados.py``) a PostgreSQL.
 
 Idempotente: recarga las tres tablas en una transaccion. El enlace con el modelo
 (``paradero_ruta.unidad_modelo``) sale de ``demanda_fiable``, la misma fuente que usa el
@@ -361,7 +361,7 @@ def _direccion_tramo(fila: dict) -> int:
 def _cargar_tramos(conn, datos: dict, geo_dir: Path) -> int:
     """Carga los tramos a ``tramo`` con la duracion estimada.
 
-    Entrada: ``geo/tramos_osrm.csv`` (scripts/build_tramos.py, local) o, en un clon sin ``data/``,
+    Entrada: ``geo/tramos_osrm.csv`` (scripts/04_geo_build/build_tramos.py, local) o, en un clon sin ``data/``,
     ``export/tramos.csv`` (versionado). La duracion se recalcula aqui con VELOCIDAD_KMH.
     """
     import csv
@@ -401,7 +401,7 @@ def cargar(conn, geo_dir: Path | None = None) -> dict:
     geo_dir = Path(geo_dir or config.GEO_DIR)
     if not geo_dir.exists():
         raise FileNotFoundError(
-            f"no existe {geo_dir}: genera los GeoJSON con scripts/build_trazados.py "
+            f"no existe {geo_dir}: genera los GeoJSON con scripts/04_geo_build/build_trazados.py "
             "o define GEO_DIR"
         )
     datos = construir(geo_dir, _unidades_modelo(conn))

@@ -43,9 +43,9 @@ services:
       MODELO_OUTPUTS_DIR: /app/model_outputs
       GEO_DIR: /data/geo
     volumes:
-      # entradas versionadas en el repo (week10/datos_entrada): un clon basta para levantar todo
-      - ./deliveries/week10/datos_entrada:/data/processed:ro
-      - ./deliveries/week10/datos_entrada/geo:/data/geo:ro
+      # entradas versionadas en el repo (week10/data_processed): un clon basta para levantar todo
+      - ./deliveries/week10/data_processed:/data/processed:ro
+      - ./deliveries/week10/data_processed/geo:/data/geo:ro
       - ./deliveries/week10/export:/app/out:rw
       - ./deliveries/week10/code/model/outputs:/app/model_outputs:ro
     command: ["full"]

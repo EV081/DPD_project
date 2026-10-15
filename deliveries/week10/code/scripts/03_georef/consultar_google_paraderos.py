@@ -6,9 +6,9 @@ de entrega para el resto del equipo). Una consulta ya registrada NO se vuelve a 
 Requiere GOOGLE_MAPS_API_KEY en el .env y facturacion activa en Google Cloud (el cupo gratuito
 es por SKU y mensual; revisarlo en la consola). Fija un tope de llamadas con --max-llamadas.
 
-    python scripts/consultar_google_paraderos.py --dry-run          # cuantas consultas serian
-    python scripts/consultar_google_paraderos.py --max-llamadas 800  # ejecuta
-    python scripts/consultar_google_paraderos.py --validar 100       # error vs GPS oficial de ATU
+    python scripts/03_georef/consultar_google_paraderos.py --dry-run          # cuantas consultas serian
+    python scripts/03_georef/consultar_google_paraderos.py --max-llamadas 800  # ejecuta
+    python scripts/03_georef/consultar_google_paraderos.py --validar 100       # error vs GPS oficial de ATU
 
 AVISO: los terminos de Google Maps Platform limitan cuanto tiempo se pueden conservar las
 coordenadas obtenidas y su uso fuera de un mapa de Google. Esta salida es para el prototipo del
@@ -46,7 +46,7 @@ COLUMNAS = ["servicio", "consulta", "rank", "place_id", "nombre_google", "lat", 
 def _env(clave: str) -> str | None:
     if os.getenv(clave):
         return os.getenv(clave)
-    p = CODEDIR.parents[3] / ".env"
+    p = CODEDIR.parents[4] / ".env"
     if p.exists():
         for linea in p.read_text(encoding="utf-8").splitlines():
             if linea.startswith(clave + "="):
@@ -299,7 +299,7 @@ def validar(n: int) -> None:
     key = _env("GOOGLE_MAPS_API_KEY")
     if not key:
         raise SystemExit("Falta GOOGLE_MAPS_API_KEY en el .env")
-    fc = json.loads((GA.GEO / "paradas_corredores.geojson").read_text(encoding="utf-8"))["features"]
+    fc = json.loads((GA.GEOJSON / "paradas_corredores.geojson").read_text(encoding="utf-8"))["features"]
     rng = np.random.default_rng(0)
     idx = rng.choice(len(fc), size=min(n, len(fc)), replace=False)
     errs, sin, fallos = [], 0, 0
@@ -339,7 +339,7 @@ def contrastar_oficiales(umbral_m: float = 50.0) -> None:
     casos = []
     for sis, arch, plantilla in (("troncal", "puntos_troncal", "Estación {} Metropolitano"),
                                  ("metro_l1", "puntos_metro_l1", "Estación {} Metro de Lima Línea 1")):
-        for f in json.loads((GA.GEO / f"{arch}.geojson").read_text(encoding="utf-8"))["features"]:
+        for f in json.loads((GA.GEOJSON / f"{arch}.geojson").read_text(encoding="utf-8"))["features"]:
             nombre = f["properties"].get("estacion") or f["properties"].get("unidad")
             casos.append((sis, nombre, f["geometry"]["coordinates"][1], f["geometry"]["coordinates"][0],
                           plantilla.format(nombre)))

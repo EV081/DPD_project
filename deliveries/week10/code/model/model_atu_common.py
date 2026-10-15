@@ -518,7 +518,7 @@ def _geo_puntos_path(fuentes: Path, sistema: str) -> Path | None:
         "corredor": "puntos_corredores.geojson",
         "alimentador": "puntos_alimentadores.geojson",
     }
-    p = Path(fuentes) / "geo" / nombres.get(sistema, "")
+    p = Path(fuentes).parents[1] / "data_processed" / "geo" / nombres.get(sistema, "")
     return p if p.exists() else None
 
 

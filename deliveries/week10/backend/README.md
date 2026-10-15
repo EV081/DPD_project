@@ -4,6 +4,11 @@ Diseño del flujo "estoy en un lugar y quiero ir a otro". La parte de datos **ya
 funciones SQL en la BD, ver abajo); este documento define qué debe hacer la aplicación backend, que **aún no
 existe**, con esos datos y con el modelo.
 
+> **Fuente de datos.** El backend consulta **PostgreSQL** (funciones SQL, `prediccion`, `trafico_en_vivo`) y
+> escribe `log_inferencia` y `feedback_usuario`. Los CSV de `export/` son un snapshot entregable para el
+> equipo y la evaluación (verificable con `manifiesto_export.json`); no son el canal de la app. El frontend
+> habla solo con el backend.
+
 ## Qué debe hacer el backend (resumen)
 
 | # | Responsabilidad | Detalle |

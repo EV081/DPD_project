@@ -1,6 +1,10 @@
 .venv/
 data/
-data_processed/
+# procesados: se versiona clean/ y geo/ (entrada del pipeline); raw/ y el consolidado completo son pesados
+deliveries/week10/data_processed/raw/
+deliveries/week10/data_processed/clean/demanda_consolidada.parquet
+deliveries/week08/data_processed/
+deliveries/week10/export/trafico_tomtom.json
 __pycache__/
 .env
 # Archives too large for GitHub (>100MB)
@@ -13,5 +17,3 @@ deliveries/week10/code/model/outputs
 deliveries/week10/code/model/outputs_v2
 
 Project___DPD_2026_2.pdf
-# snapshot en vivo generado por el export (cambia en cada ejecucion; no es entregable)
-deliveries/week10/export/trafico_tomtom.json

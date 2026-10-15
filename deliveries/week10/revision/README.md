@@ -28,6 +28,6 @@ Para aplicarlas: copiar el CSV a `../data/fuentes/correcciones_paradas.csv` y co
 
 ## Regenerar el visor
 ```bash
-.venv/bin/python deliveries/week10/code/scripts/generar_revision.py          # solo el HTML
-.venv/bin/python deliveries/week10/code/scripts/generar_revision.py --csv    # + revision_paradas.csv
+.venv/bin/python deliveries/week10/code/scripts/03_georef/generar_revision.py          # solo el HTML
+.venv/bin/python deliveries/week10/code/scripts/03_georef/generar_revision.py --csv    # + revision_paradas.csv
 ```

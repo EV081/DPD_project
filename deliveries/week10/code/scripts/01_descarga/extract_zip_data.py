@@ -4,7 +4,7 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 CODEDIR = Path(__file__).resolve().parent
-RAIZ = Path(__file__).resolve().parents[2]
+RAIZ = Path(__file__).resolve().parents[3]
 ENTRADA = RAIZ / "zip"
 SALIDA = RAIZ / "data"
 

@@ -19,7 +19,7 @@ import numpy as np
 from PIL import Image
 
 CODEDIR = Path(__file__).resolve().parent
-FUENTES = CODEDIR.parents[1] / "data" / "fuentes"
+FUENTES = CODEDIR.parents[2] / "data" / "fuentes"
 MAPAS = FUENTES / "geo" / "mapas_alimentadores"
 
 OBJETIVOS = {

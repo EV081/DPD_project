@@ -10,7 +10,7 @@ NOMBRE_PBF = "lima.osm.pbf"
 RECUPERAR_DATOS = False   # True = reprocesar POIs/transporte/red aunque ya existan
 
 CODEDIR = Path(__file__).resolve().parent
-RAIZ = Path(__file__).resolve().parents[2]   
+RAIZ = Path(__file__).resolve().parents[3]   
 SALIDA = RAIZ / "data" / "OSM"
 
 # Categorias de POIs de ciudad y sus etiquetas OSM.

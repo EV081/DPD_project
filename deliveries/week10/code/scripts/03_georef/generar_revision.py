@@ -15,15 +15,16 @@ from pathlib import Path
 from urllib.parse import quote
 
 CODEDIR = Path(__file__).resolve().parent
-RAIZ = CODEDIR.parents[1]
+RAIZ = CODEDIR.parents[2]
 FUENTES = RAIZ / "data" / "fuentes"
 GEO = FUENTES / "geo"
+GEOJSON = RAIZ / "data_processed" / "geo"
 OUT = RAIZ / "revision"
 PRIO = {"": 0, "baja": 1, "media": 2, "alta": 3, "verificada": 4, None: 0}
 
 
 def _fc(nombre: str) -> list[dict]:
-    p = GEO / f"{nombre}.geojson"
+    p = GEOJSON / f"{nombre}.geojson"
     return json.loads(p.read_text(encoding="utf-8"))["features"] if p.exists() else []
 
 

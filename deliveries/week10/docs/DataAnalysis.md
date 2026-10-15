@@ -53,9 +53,9 @@ Notebooks: `code/eda/eda_*.ipynb`. Figuras: `docs/images/`. Mapas Folium: output
 
 ### 1.2 Origen y proceso de construcción
 
-1. Excel/ZIP ATU -> `code/scripts/prepare_parquet.py` escribe **solo crudo** en `data_processed/raw/` (sin validar ni imputar; solo colapsa filas exactamente idénticas que trae el propio Excel — 517 en corredores 2025).
+1. Excel/ZIP ATU -> `code/scripts/02_procesado/prepare_parquet.py` escribe **solo crudo** en `data_processed/raw/` (sin validar ni imputar; solo colapsa filas exactamente idénticas que trae el propio Excel — 517 en corredores 2025).
 2. Cada notebook EDA lee su `raw/`, aplica calendario, tipado, política NA->0+flag, cobertura, IQR y figuras, y escribe `data_processed/clean/`.
-3. `build_trazados.py` (+ `download_atu_mapas.py` para inventario/imágenes ATU) arma GeoJSON en `data/fuentes/geo/`; los notebooks dibujan Folium inline.
+3. `build_trazados.py` (+ `download_atu_mapas.py` para inventario/imágenes ATU) arma GeoJSON en `data_processed/geo/`; los notebooks dibujan Folium inline.
 4. `eda_comparativo_sistemas.ipynb` une coberturas y arma `demanda_consolidada.parquet`
    (todas) + `demanda_consolidada_fiable.parquet` (≥90%; análisis) con columna `grano`.
 
@@ -135,7 +135,7 @@ No se decidio imputar por KNN o media, ya que esto inventaría demanda y sesgo e
 
 **Prep (una vez, scripts):**
 
-- `build_trazados.py` -> GeoJSON de puntos/trazados en `data/fuentes/geo/` (L1 shp; corredores OSRM; troncal OSM por servicio; alimentadores solo centroides).
+- `build_trazados.py` -> GeoJSON de puntos/trazados en `data_processed/geo/` (L1 shp; corredores OSRM; troncal OSM por servicio; alimentadores solo centroides).
 - `download_atu_mapas.py` -> JPG/PNG oficiales ATU + `estaciones_por_servicio_atu.csv` (inventario estación<->servicio; **no** entra al modelo).
 
 **Visualización (notebooks):** celdas Folium **interactivas** (zoom/pan) en el **output** de `code/eda/eda_*.ipynb` — burbujas = validaciones; línea = trazado elegido. Opcional: imagen oficial ATU en la misma sección. 
@@ -491,9 +491,9 @@ Mapa Folium interactivo (shp MTC–AATE): celda de mapa en [`eda_metro_l1.ipynb`
 
 | Script | Función |
 |---|---|
-| `code/scripts/prepare_parquet.py` | Excel/ZIP -> `data_processed/raw/` (sin limpieza) |
-| `code/scripts/build_trazados.py` | GeoJSON de ejes/puntos (prep geo) |
-| `code/scripts/download_atu_mapas.py` | JPG ATU + CSV estación <-> servicio (contexto) |
+| `code/scripts/02_procesado/prepare_parquet.py` | Excel/ZIP -> `data_processed/raw/` (sin limpieza) |
+| `code/scripts/04_geo_build/build_trazados.py` | GeoJSON de ejes/puntos (prep geo) |
+| `code/scripts/01_descarga/download_atu_mapas.py` | JPG ATU + CSV estación <-> servicio (contexto) |
 
 **Artefactos**
 

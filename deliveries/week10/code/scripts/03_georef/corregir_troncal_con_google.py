@@ -6,7 +6,7 @@ de UMBRAL_M de la linea y el resultado de Google (`contraste_google_oficiales.cs
 se usa el de Google. Las que ninguna fuente deja sobre la linea quedan marcadas para revision manual.
 
 Idempotente: guarda la coordenada original en la propiedad `coord_osm`. Reejecutar tras build_trazados.py.
-    python scripts/corregir_troncal_con_google.py
+    python scripts/03_georef/corregir_troncal_con_google.py
 """
 from __future__ import annotations
 
@@ -17,8 +17,9 @@ from pathlib import Path
 import numpy as np
 
 CODEDIR = Path(__file__).resolve().parent
-FUENTES = CODEDIR.parents[1] / "data" / "fuentes"
+FUENTES = CODEDIR.parents[2] / "data" / "fuentes"
 GEO = FUENTES / "geo"
+GEOJSON = CODEDIR.parents[2] / "data_processed" / "geo"
 UMBRAL_M = 150.0
 
 
@@ -58,7 +59,7 @@ def dist_a_lineas(lat: float, lon: float, lineas: list[np.ndarray]) -> float:
 
 def main() -> None:
     lineas = []
-    for f in json.loads((GEO / "trazados_metropolitano_servicios.geojson").read_text(encoding="utf-8"))["features"]:
+    for f in json.loads((GEOJSON / "trazados_metropolitano_servicios.geojson").read_text(encoding="utf-8"))["features"]:
         c = np.array(f["geometry"]["coordinates"])
         lineas.append(np.column_stack([c[:, 1], c[:, 0]]))
     contraste = {_norm(r["nombre"]): r for r in csv.DictReader(
@@ -71,7 +72,7 @@ def main() -> None:
         for r in csv.DictReader(mc.open(encoding="utf-8")):
             manual[_norm(r["estacion"])] = (float(r["lat"]), float(r["lon"]))
 
-    arch = GEO / "puntos_troncal.geojson"
+    arch = GEOJSON / "puntos_troncal.geojson"
     fc = json.loads(arch.read_text(encoding="utf-8"))
     cambios, pendientes = [], []
     nuevas: dict[str, tuple[float, float]] = {}
@@ -111,7 +112,7 @@ def main() -> None:
     arch.write_text(json.dumps(fc, ensure_ascii=False), encoding="utf-8")
 
     # los puntos por servicio heredan la coordenada de la estacion
-    arch2 = GEO / "puntos_metropolitano_servicios.geojson"
+    arch2 = GEOJSON / "puntos_metropolitano_servicios.geojson"
     if arch2.exists():
         sv = json.loads(arch2.read_text(encoding="utf-8"))
         n = 0

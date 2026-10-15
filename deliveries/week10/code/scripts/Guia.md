@@ -7,8 +7,24 @@ dependencia.
 Todos los comandos usan el entorno virtual del proyecto:
 
 ```bash
-.venv/bin/python deliveries/week08/code/scripts/<script>.py
+.venv/bin/python deliveries/week10/code/scripts/<carpeta>/<script>.py
 ```
+
+## Estructura (por etapa)
+
+```
+code/scripts/
+  01_descarga/    extract_zip_data, download_transport_pages, download_osm_lima,
+                  download_alimentadores, download_atu_mapas      → data/
+  02_procesado/   prepare_parquet                                  → data_processed/raw
+  03_georef/      georef_mapas, geocodificar_alimentadores, ocr_listas_alimentadores,
+                  interpolar_por_imagen, osrm_snap, consultar_google_paraderos,
+                  corregir_troncal_con_google, validar_georef, generar_revision
+  04_geo_build/   build_trazados, build_tramos                     → data_processed/geo
+```
+
+Cada script se ejecuta por ruta (`python code/scripts/<carpeta>/<script>.py`). Los de `03_georef/` se importan
+entre sí por nombre (misma carpeta); `build_trazados` toma `osrm_snap` de `03_georef/`.
 
 ---
 
@@ -35,10 +51,10 @@ Los ZIP **no** van en el repo (son pesados; `zip/` y `*.zip` están en `.gitigno
 Hay que crear la carpeta y bajarlos a mano:
 
 ```bash
-mkdir -p deliveries/week08/zip
+mkdir -p deliveries/week10/zip
 ```
 
-Descargar desde Drive y dejarlos en `deliveries/week08/zip/`:
+Descargar desde Drive y dejarlos en `deliveries/week10/zip/`:
 
 [ZIP de datos ATU (Drive)](https://drive.google.com/drive/folders/1qktczst2lUi7BqOt3Lr5ffcip9wqOSSw?usp=sharing)
 
@@ -50,10 +66,10 @@ Archivos esperados:
   corredores, catálogos de paraderos).
 
 ```bash
-.venv/bin/python deliveries/week08/code/scripts/extract_zip_data.py
+.venv/bin/python deliveries/week10/code/scripts/01_descarga/extract_zip_data.py
 ```
 
-**Salida:** `deliveries/week08/data/`
+**Salida:** `deliveries/week10/data/`
 
 ---
 
@@ -69,10 +85,10 @@ Descarga y parsea tres fuentes web:
 | Prensa (RPP / Radio Nacional, 2025) | Frecuencias puntuales de corredores (`frecuencias_corredores_prensa.csv`) |
 
 ```bash
-.venv/bin/python deliveries/week08/code/scripts/download_transport_pages.py
+.venv/bin/python deliveries/week10/code/scripts/01_descarga/download_transport_pages.py
 ```
 
-**Salida:** CSV en `deliveries/week08/data/fuentes/` (oficiales + referencia + prensa/apps):
+**Salida:** CSV en `deliveries/week10/data/fuentes/` (oficiales + referencia + prensa/apps):
 
 **Advertencia importante:** el scraper **distingue fuentes oficiales de fuentes de
 terceros**. `metrolima.info` no es un sitio de la ATU; sus frecuencias se marcan con
@@ -87,10 +103,10 @@ que TuRuta/Moovit no exportan headways estáticos.
 ## 3. `download_osm_lima.py`
 
 ```bash
-.venv/bin/python deliveries/week08/code/scripts/download_osm_lima.py
+.venv/bin/python deliveries/week10/code/scripts/01_descarga/download_osm_lima.py
 ```
 
-**Salida:** `deliveries/week08/data/OSM/`
+**Salida:** `deliveries/week10/data/OSM/`
 
 
 ---
@@ -101,7 +117,7 @@ Convierte Excel (~294 MB) a Parquet **crudo**. **No** limpia ni hace EDA: eso va
 en los notebooks del paso 5.
 
 ```bash
-.venv/bin/python deliveries/week08/code/scripts/prepare_parquet.py --anio 2025
+.venv/bin/python deliveries/week10/code/scripts/02_procesado/prepare_parquet.py --anio 2025
 ```
 
 Tarda ~**6 minutos** (leer 17 libros de Excel es lento).
@@ -129,12 +145,12 @@ IQR (marcados, no borrados), EDA y mapa Folium, y escribe en `clean/`.
 Estilo guía: `deliveries/week07/code/eda/eda_transmilenio.ipynb`.
 Reporte unificado (como week07): `docs/DataAnalysis.md`.
 
-Antes (una vez): `python code/scripts/build_trazados.py`  
+Antes (una vez): `python code/scripts/04_geo_build/build_trazados.py`  
 (Trazados de **corredores** van por **OSRM** entre paraderos. **Metropolitano** usa
 geometría OSM `route=bus`/`network=Metropolitano` vía Overpass — **no** OSRM car.
 Metro L1 usa shapefiles MTC–AATE. Alimentadores: solo centroides; Moovit no se usa.)
 Mapas oficiales ATU (corredores por ruta + Metropolitano por servicio):  
-`python code/scripts/download_atu_mapas.py`
+`python code/scripts/01_descarga/download_atu_mapas.py`
 
 Mapas Folium **inline** en cada notebook (estilo week07 TransMilenio: zoom/pan en el
 **output** de la celda; no se guardan HTML en `docs/`).

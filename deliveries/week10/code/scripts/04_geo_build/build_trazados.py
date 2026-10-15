@@ -12,14 +12,16 @@ try:
     from osrm_snap import snap_waypoints
 except ImportError:
     import sys
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "03_georef"))
     from osrm_snap import snap_waypoints
 
-RAIZ = Path(__file__).resolve().parents[2]
+RAIZ = Path(__file__).resolve().parents[3]
 DATA = RAIZ / "data"
 RAW = RAIZ / "data_processed" / "raw"
 FUENTES = DATA / "fuentes"
 GEO = FUENTES / "geo"
+GEOJSON = RAIZ / "data_processed" / "geo"   # GeoJSON finales (entrada del pipeline)
+GEOJSON.mkdir(parents=True, exist_ok=True)
 GEO.mkdir(parents=True, exist_ok=True)
 
 LIMA_CENTER = [-12.0464, -77.0428]
@@ -89,7 +91,7 @@ def build_metro_l1() -> None:
             },
             "geometry": {"type": "Point", "coordinates": [float(r["lon"]), float(r["lat"])]},
         })
-    write_geojson(GEO / "puntos_metro_l1.geojson", feats, "puntos_metro_l1")
+    write_geojson(GEOJSON / "puntos_metro_l1.geojson", feats, "puntos_metro_l1")
 
     if shp_eje.exists():
         eje = gpd.read_file(shp_eje)
@@ -117,7 +119,7 @@ def build_metro_l1() -> None:
                         "properties": {"sistema": "metro_l1"},
                         "geometry": {"type": "LineString", "coordinates": coords},
                     })
-        write_geojson(GEO / "trazado_metro_l1.geojson", feats_l, "trazado_metro_l1")
+        write_geojson(GEOJSON / "trazado_metro_l1.geojson", feats_l, "trazado_metro_l1")
     else:
         log(f"  [aviso] falta eje {shp_eje}")
 
@@ -146,7 +148,7 @@ def build_corredores() -> None:
                 "coordinates": [float(r["lon"]), float(r["lat"])],
             },
         })
-    write_geojson(GEO / "puntos_corredores.geojson", pts, "puntos_corredores")
+    write_geojson(GEOJSON / "puntos_corredores.geojson", pts, "puntos_corredores")
 
     orden_p = FUENTES / "paraderos_corredores.csv"
     if not orden_p.exists():
@@ -237,8 +239,8 @@ def build_corredores() -> None:
             },
             "geometry": {"type": "LineString", "coordinates": coords},
         })
-    write_geojson(GEO / "trazados_corredores.geojson", lines, "trazados_corredores")
-    write_geojson(GEO / "paradas_corredores.geojson", paradas, "paradas_corredores")
+    write_geojson(GEOJSON / "trazados_corredores.geojson", lines, "trazados_corredores")
+    write_geojson(GEOJSON / "paradas_corredores.geojson", paradas, "paradas_corredores")
     log(f"  {len(lines)} LineStrings | paraderos omitidos por salto > {MAX_SALTO_KM} km: {descartados}")
 
 
@@ -476,7 +478,7 @@ def build_troncal() -> None:
                     "coordinates": [float(r["lon"]), float(r["lat"])],
                 },
             })
-    write_geojson(GEO / "puntos_troncal.geojson", pts, "puntos_troncal")
+    write_geojson(GEOJSON / "puntos_troncal.geojson", pts, "puntos_troncal")
     log(f"  estaciones matched OSM: {matched}/{len(est)}")
 
     # Eje troncal = relación OSM Regular C (Matellini ↔ Castilla), no OSRM car
@@ -484,7 +486,7 @@ def build_troncal() -> None:
     trunk = routes.get("C")
     if trunk and len(trunk["coords"]) >= 2:
         write_geojson(
-            GEO / "trazado_troncal.geojson",
+            GEOJSON / "trazado_troncal.geojson",
             [{
                 "type": "Feature",
                 "properties": {
@@ -544,9 +546,9 @@ def build_alimentadores() -> None:
             },
             "geometry": {"type": "Point", "coordinates": [float(o["lon"]), float(o["lat"])]},
         })
-    write_geojson(GEO / "puntos_alimentadores.geojson", pts, "puntos_alimentadores")
+    write_geojson(GEOJSON / "puntos_alimentadores.geojson", pts, "puntos_alimentadores")
     log(f"  embarques con coordenada: {len(pts)}/{len(df)} (el resto no tiene coordenada oficial)")
-    write_geojson(GEO / "trazados_alimentadores.geojson", [], "trazados_alimentadores")
+    write_geojson(GEOJSON / "trazados_alimentadores.geojson", [], "trazados_alimentadores")
     log("  trazados_alimentadores: vacío (no hay waypoints fiables)")
 
 
@@ -568,7 +570,7 @@ def build_metro_servicios() -> None:
     """Puntos ATU por servicio + trazado OSM relation (ref A/B/C/EX…), sin OSRM car."""
     log("\n[5/5] Metropolitano por servicio — estaciones ATU + geometría OSM route=bus")
     est_p = FUENTES / "estaciones_por_servicio_atu.csv"
-    pts_p = GEO / "puntos_troncal.geojson"
+    pts_p = GEOJSON / "puntos_troncal.geojson"
     if not est_p.exists():
         log("  [aviso] falta estaciones_por_servicio_atu.csv (corre download_atu_mapas.py)")
         return
@@ -660,8 +662,8 @@ def build_metro_servicios() -> None:
         else:
             log(f"  [aviso] {slug}: sin geometría OSM (ref={osm_ref})")
 
-    write_geojson(GEO / "puntos_metropolitano_servicios.geojson", all_pts, "puntos_metropolitano_servicios")
-    write_geojson(GEO / "trazados_metropolitano_servicios.geojson", lines, "trazados_metropolitano_servicios")
+    write_geojson(GEOJSON / "puntos_metropolitano_servicios.geojson", all_pts, "puntos_metropolitano_servicios")
+    write_geojson(GEOJSON / "trazados_metropolitano_servicios.geojson", lines, "trazados_metropolitano_servicios")
     log(f"  servicios con trazado OSM: {len(lines)}/{est['servicio_slug'].nunique()}")
 
 

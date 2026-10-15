@@ -9,7 +9,7 @@ import urllib.request
 from pathlib import Path
 
 CODEDIR = Path(__file__).resolve().parent
-RAIZ = Path(__file__).resolve().parents[2]        
+RAIZ = Path(__file__).resolve().parents[3]        
 SALIDA = RAIZ / "data" / "fuentes"
 CACHE = RAIZ / "data" / "_cache_html"
 

@@ -23,9 +23,10 @@ import pandas as pd
 
 CODEDIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODEDIR))
-FUENTES = CODEDIR.parents[1] / "data" / "fuentes"
+FUENTES = CODEDIR.parents[2] / "data" / "fuentes"
 GEO = FUENTES / "geo"
-OSM = CODEDIR.parents[1] / "data" / "OSM" / "transporte.csv"
+GEOJSON = CODEDIR.parents[2] / "data_processed" / "geo"
+OSM = CODEDIR.parents[2] / "data" / "OSM" / "transporte.csv"
 
 MAX_HOP_M = 2000.0   # distancia maxima entre paradas consecutivas de un alimentador
 VENTANA = 6          # vecinas consideradas a cada lado
@@ -172,7 +173,7 @@ def resolver_secuencia(cands: list[list[tuple[float, float]]], max_hop: float = 
     return res, metodo, [len(c) for c in cands]
 
 
-CALLES = CODEDIR.parents[1] / "data" / "OSM" / "calles_nombradas.parquet"
+CALLES = CODEDIR.parents[2] / "data" / "OSM" / "calles_nombradas.parquet"
 TIPOS_VIA = {"avenida", "av", "jiron", "jr", "calle", "ca", "pasaje", "psje", "pje", "carretera",
              "paseo", "alameda", "malecon", "prolongacion", "prol", "camino", "autopista", "via"}
 MAX_A_TRAMO_M = 350.0     # distancia maxima de la calle al tramo entre vecinas resueltas
@@ -256,7 +257,7 @@ def completar_por_calle(nombres: list[str], res: list, calles: dict[str, np.ndar
 def validar() -> None:
     """Mismo algoritmo sobre corredores: se oculta el GPS de ATU y se compara."""
     osm = cargar_osm()
-    fc = json.loads((GEO / "paradas_corredores.geojson").read_text(encoding="utf-8"))["features"]
+    fc = json.loads((GEOJSON / "paradas_corredores.geojson").read_text(encoding="utf-8"))["features"]
     seqs: dict[tuple, list] = {}
     for f in fc:
         p = f["properties"]
@@ -549,7 +550,7 @@ def geocodificar() -> None:
                         "confianza": conf, "n_candidatos": k, "precision": prec, "evidencia": evid,
                         "fuente": "ATU (nombre, orden) + OSM/Google (coordenada)"},
                         "geometry": {"type": "Point", "coordinates": [c[1], c[0]]}})
-    (GEO / "paradas_alimentadores.geojson").write_text(
+    (GEOJSON / "paradas_alimentadores.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "name": "paradas_alimentadores", "features": feats},
                    ensure_ascii=False), encoding="utf-8")
     with (FUENTES / "alimentadores_paradas_geo.csv").open("w", newline="", encoding="utf-8") as fh:
@@ -567,7 +568,7 @@ def trazar() -> None:
     """Trazado derivado: OSRM entre paradas consecutivas geocodificadas (NO es el oficial)."""
     from osrm_snap import snap_waypoints
 
-    fc = json.loads((GEO / "paradas_alimentadores.geojson").read_text(encoding="utf-8"))["features"]
+    fc = json.loads((GEOJSON / "paradas_alimentadores.geojson").read_text(encoding="utf-8"))["features"]
     por: dict[tuple, list] = {}
     for f in fc:
         p = f["properties"]
@@ -586,7 +587,7 @@ def trazar() -> None:
             "nota": f"derivado: OSRM entre paradas geocodificadas por nombre OSM "
                     f"({meta['n_osrm_ok']} tramos ok, {meta['n_skipped']} en recta); no es el trazado oficial"},
             "geometry": {"type": "LineString", "coordinates": coords}})
-    (GEO / "trazados_alimentadores_atu.geojson").write_text(
+    (GEOJSON / "trazados_alimentadores_atu.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "name": "trazados_alimentadores_atu",
                     "features": lineas}, ensure_ascii=False), encoding="utf-8")
     print(f"trazados_alimentadores_atu.geojson: {len(lineas)} lineas")

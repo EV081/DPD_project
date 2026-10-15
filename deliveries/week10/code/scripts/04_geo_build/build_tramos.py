@@ -5,8 +5,8 @@ Offline (como ``build_trazados.py``): lee ``paradero_ruta`` de la BD ya cargada
 claves estables (sistema, ruta, direccion, orden). ``ingest_paraderos`` lo carga a la tabla
 ``tramo`` y calcula ahí la duración, de modo que ajustar velocidades no requiere volver a OSRM.
 
-  python -m scripts.build_tramos            # desde week10/code, con PG* del entorno
-Escribe en GEO_DIR (week10/datos_entrada/geo); export/tramos.csv es la copia versionada.
+  python scripts/04_geo_build/build_tramos.py   # desde week10/code, con PG* del entorno
+Escribe en GEO_DIR (week10/data_processed/geo); export/tramos.csv es la copia versionada.
 Reanuda: los tramos ya presentes en el CSV no se vuelven a consultar.
 """
 from __future__ import annotations
@@ -20,7 +20,7 @@ import urllib.request
 from math import asin, cos, radians, sin, sqrt
 from pathlib import Path
 
-CODE = Path(__file__).resolve().parents[1]
+CODE = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(CODE))
 
 from pipeline import config  # noqa: E402

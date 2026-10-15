@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts" / "03_georef"))
 pytest.importorskip("pandas")
 import consultar_google_paraderos as CG  # noqa: E402
 import geocodificar_alimentadores as GA  # noqa: E402

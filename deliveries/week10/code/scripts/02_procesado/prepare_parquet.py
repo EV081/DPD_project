@@ -10,7 +10,7 @@ La limpieza + EDA viven en los notebooks:
     deliveries/week08/code/eda/eda_metro_l1.ipynb
 
 Uso:
-    .venv/bin/python deliveries/week08/code/scripts/prepare_parquet.py --anio 2025
+    .venv/bin/python deliveries/week10/code/scripts/02_procesado/prepare_parquet.py --anio 2025
 """
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ from pathlib import Path
 import pandas as pd
 
 CODEDIR = Path(__file__).resolve().parent
-RAIZ = Path(__file__).resolve().parents[2]
+RAIZ = Path(__file__).resolve().parents[3]
 DATA = RAIZ / "data"
 SALIDA = RAIZ / "data_processed" / "raw"
 SALIDA.mkdir(parents=True, exist_ok=True)

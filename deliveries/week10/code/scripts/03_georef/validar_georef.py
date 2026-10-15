@@ -24,8 +24,9 @@ CODEDIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(CODEDIR))
 import georef_mapas as G  # noqa: E402
 
-FUENTES = CODEDIR.parents[1] / "data" / "fuentes"
+FUENTES = CODEDIR.parents[2] / "data" / "fuentes"
 GEO = FUENTES / "geo"
+GEOJSON = CODEDIR.parents[2] / "data_processed" / "geo"
 TO_M = Transformer.from_crs(4326, 32718, always_xy=True)
 
 
@@ -106,7 +107,7 @@ def detectar_anillos_verdes(ruta: Path) -> np.ndarray:
 
 def validar_l1() -> dict | None:
     img = GEO / "mapas_metro_l1" / "Mapa-Linea-1.png"
-    shp = json.loads((GEO / "puntos_metro_l1.geojson").read_text(encoding="utf-8"))["features"]
+    shp = json.loads((GEOJSON / "puntos_metro_l1.geojson").read_text(encoding="utf-8"))["features"]
     est = sorted(((f["geometry"]["coordinates"], f["properties"]["estacion"]) for f in shp),
                  key=lambda t: -t[0][1])  # norte -> sur (L1 es monotona en latitud)
     px = detectar_anillos_verdes(img)
@@ -121,7 +122,7 @@ def validar_l1() -> dict | None:
 
 # ── Corredores ──────────────────────────────────────────────────────────────
 def _truth_corredores() -> dict[tuple[str, int, int], tuple[float, float]]:
-    fc = json.loads((GEO / "paradas_corredores.geojson").read_text(encoding="utf-8"))["features"]
+    fc = json.loads((GEOJSON / "paradas_corredores.geojson").read_text(encoding="utf-8"))["features"]
     return {(f["properties"]["ruta"], int(f["properties"]["direccion"]), int(f["properties"]["orden"])):
             tuple(f["geometry"]["coordinates"]) for f in fc}
 

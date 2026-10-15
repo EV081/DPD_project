@@ -8,7 +8,7 @@ vivo (TomTom + fallback RF-05) y suite de regresión en pytest.
 > Los EDA y el modelado viven en `deliveries/week08/` (Alessandro/Juan David).
 > Esta semana solo consume sus salidas y las persiste en una base relacional con
 > contratos de integridad verificables. Las entradas mínimas viven versionadas en
-> [`datos_entrada/`](datos_entrada/) (41 MB), de modo que un clon levanta todo con
+> [`data_processed/`](data_processed/) (`clean/` y `geo/`, ≈ 50 MB), de modo que un clon levanta todo con
 > `docker compose up` sin copiar carpetas locales (ver "Entradas versionadas").
 
 ---
@@ -16,7 +16,7 @@ vivo (TomTom + fallback RF-05) y suite de regresión en pytest.
 ## 1. Qué hace el pipeline
 
 ```
-datos_entrada/clean/*.parquet (copia versionada de week08/data_processed/clean)
+data_processed/clean/*.parquet (versionado; origen: week08)
         │  ingest_demand.py  (COPY masivo + conteos esperados)
         ▼
 PostgreSQL 17 (contenedor docker `db`)
@@ -34,19 +34,18 @@ TomTom Flow Segment Data ──► ingest_tomtom.py ──► trafico_en_vivo
                                                   réplica de week07 congestion.py)
 ```
 
-### Entradas versionadas (`datos_entrada/`)
+### Datos: `data/` → `data_processed/` → `export/`
 
-`data_processed/` y `data/` están en `.gitignore` (crudos y fuentes pesados). Para que nadie dependa de tu
-máquina, el pipeline lee de `datos_entrada/`, que contiene solo lo que consume:
-
-| Carpeta | Contenido | Tamaño |
+| Carpeta | Qué es | Git |
 |---|---|---|
-| `datos_entrada/clean/` | 6 parquets de demanda, `calidad_cobertura.csv` y `demanda_consolidada_fiable.parquet` (paridad en tests) | ≈ 41 MB |
-| `datos_entrada/geo/` | 11 GeoJSON de paraderos, rutas y trazados | ≈ 2 MB |
+| `data/` | Fuentes crudas (zips, shapefiles, OSM, caché HTML, `fuentes/` con CSV curados y mapas) | ignorada |
+| `data_processed/` | Datos procesados que consume el pipeline: `clean/` (parquets limpios), `geo/` (GeoJSON de paraderos/rutas/trazados y `tramos_osrm.csv`) y `raw/` (intermedio) | `clean/` y `geo/` versionados; `raw/` y `demanda_consolidada.parquet` ignorados |
+| `export/` | Salidas del pipeline (snapshot entregable). El backend consulta la BD; estos archivos son para el equipo y la evaluación | versionada |
 
-Son copias: tras regenerar los originales (EDA, `build_trazados.py`) se refrescan con
-`python -m scripts.publicar_entradas` (desde `code/`). Cada versión nueva de un parquet añade su tamaño al
-historial de git; si crece, conviene pasarlos a Git LFS.
+`prepare_parquet.py` + EDA escriben `data_processed/raw` y `clean`; `build_trazados.py` y `build_tramos.py`
+escriben `data_processed/geo`. No hay copias intermedias: un clon levanta con `docker compose up` leyendo
+directamente `data_processed/`. Cada versión nueva de un parquet añade su tamaño al historial de git; si
+crece, conviene pasarlos a Git LFS.
 
 ## 2. Requisitos
 
@@ -92,7 +91,7 @@ python -m pytest tests -q                   # requiere el server arriba
 | `live` | Un snapshot de tráfico (6 segmentos, TomTom o fallback RF-05) |
 | `loop [--cada SEG]` | Snapshots periódicos cada `LOOP_SECONDS` (300 s por defecto) |
 | `predict [--dia] [--modo] [--sistemas]` | Batch diario: pronostica 24 h y llena `prediccion` (aforo, ETA, regla U) |
-| `paraderos` | Carga paraderos, rutas y trazados (GeoJSON de `scripts/build_trazados.py`) y habilita `paraderos_cercanos()` |
+| `paraderos` | Carga paraderos, rutas y trazados (GeoJSON de `scripts/04_geo_build/build_trazados.py`) y habilita `paraderos_cercanos()` |
 | `export` | Escribe la muestra, reportes y JSON en `export/` |
 | `check` | Reporte de conteos de tablas, vista y archivos exportados |
 | `full` | `init-db` + `demand` + `live` + `export` + `check` (es el `CMD` por defecto) |
@@ -117,12 +116,12 @@ deliveries/week10/
 │   ├── pipeline/              ← config.py, ingest_demand.py, ingest_tomtom.py, run.py + Guia.md
 │   ├── storage/               ← schema.sql, db.py (COPY), init_db.py + Guia.md
 │   ├── export/                ← export_data.py (CSV/JSON + manifiesto), export_paraderos.py + Guia.md
-│   ├── scripts/               ← paraderos, rutas, OCR, Google Places y validaciones (ver §10)
+│   ├── scripts/               ← 01_descarga · 02_procesado · 03_georef · 04_geo_build (ver §10 y Guia.md)
 │   ├── tests/                 ← pytest (paridad, regresión, tomtom mock, export) + Guia.md
 │   └── entrypoint.sh
 ├── export/                    ← salidas del pipeline (commiteables)
 ├── revision/                  ← visor de paradas (mapa_revision.html) y su guía
-└── data_processed/            ← espejo post-Fase 0 de week08 (gitignored)
+└── data_processed/            ← entradas del pipeline: clean/ y geo/ versionados, raw/ ignorado
 ```
 
 > Cada carpeta de `code/` incluye una `Guia.md` con su uso detallado (comandos,
@@ -261,8 +260,8 @@ secuencia ATU.
 Se entrega como `export/tramos.csv` (`sistema, ruta, sentido, orden_desde, orden_hasta, paradero_desde,
 paradero_hasta, dist_m, duracion_osrm_s, duracion_s, fuente, fiable`; `sentido` vacío = sin sentido, igual que en
 `paraderos.csv`). Está versionado y `ingest_paraderos` lo usa como entrada cuando no existe
-`data/fuentes/geo/tramos_osrm.csv`, así que **nadie necesita volver a consultar OSRM**. Ese CSV local lo genera
-`python -m scripts.build_tramos` (≈ 35 min con el OSRM público; reanuda lo ya calculado) solo si cambian los
+`data_processed/geo/tramos_osrm.csv`, así que **nadie necesita volver a consultar OSRM**. Ese CSV lo genera
+`python scripts/04_geo_build/build_tramos.py` (desde `code/`) (≈ 35 min con el OSRM público; reanuda lo ya calculado) solo si cambian los
 paraderos o su orden.
 
 **Tabla `feriado`** (`export/feriados.csv`): feriados nacionales de `models/calendario_eventos.json`, el mismo
