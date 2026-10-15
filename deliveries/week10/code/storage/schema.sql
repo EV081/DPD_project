@@ -388,6 +388,13 @@ CREATE TABLE IF NOT EXISTS paradero_ruta (
     unidad_modelo  TEXT,       -- unidad con prediccion (NULL si no hay demanda)
     PRIMARY KEY (paradero_id, ruta_id, direccion)
 );
+-- atu_secuencia: orden publicado por ATU (por sentido); catalogo_n_paradero: ranking del correlativo
+-- n_paradero del catalogo de la ruta (ida y vuelta, direccion 0): solo comparable con direccion 0;
+-- latitud_troncal: estaciones de la troncal ordenadas de sur a norte (aproximacion geografica).
+ALTER TABLE paradero_ruta ADD COLUMN IF NOT EXISTS orden_origen TEXT NOT NULL DEFAULT 'atu_secuencia';
+ALTER TABLE paradero_ruta DROP CONSTRAINT IF EXISTS paradero_ruta_orden_origen_check;
+ALTER TABLE paradero_ruta ADD CONSTRAINT paradero_ruta_orden_origen_check
+    CHECK (orden_origen IN ('atu_secuencia', 'catalogo_n_paradero', 'latitud_troncal'));
 ALTER TABLE ruta DROP CONSTRAINT IF EXISTS ruta_sistema_check;
 ALTER TABLE ruta ADD CONSTRAINT ruta_sistema_check
     CHECK (sistema IN ('metro_l1', 'troncal', 'corredor', 'alimentador'));
@@ -401,6 +408,30 @@ DO $$ BEGIN
     END IF;
 END $$;
 CREATE INDEX IF NOT EXISTS ix_paradero_ruta_ruta ON paradero_ruta (ruta_id);
+
+-- Tiempo de viaje entre paradas consecutivas de cada ruta y sentido (base del costo de un tramo).
+-- dist_m sale de OSRM por calles (fuente 'osrm') o de la distancia recta x 1.3 si no respondio
+-- ('haversine'; Metro L1 siempre recta). duracion_s es una ESTIMACION: dist_m / velocidad comercial
+-- del sistema + parada, con velocidades supuestas (ver VELOCIDAD_KMH en ingest_paraderos.py);
+-- duracion_osrm_s es la de OSRM en auto y solo se guarda como referencia.
+CREATE TABLE IF NOT EXISTS tramo (
+    ruta_id         BIGINT NOT NULL REFERENCES ruta (id) ON DELETE CASCADE,
+    direccion       SMALLINT NOT NULL,
+    orden_desde     INTEGER NOT NULL,
+    orden_hasta     INTEGER NOT NULL,
+    paradero_desde  BIGINT NOT NULL REFERENCES paradero (id) ON DELETE CASCADE,
+    paradero_hasta  BIGINT NOT NULL REFERENCES paradero (id) ON DELETE CASCADE,
+    dist_m          DOUBLE PRECISION NOT NULL,
+    duracion_osrm_s DOUBLE PRECISION,
+    duracion_s      DOUBLE PRECISION NOT NULL,
+    fuente          TEXT NOT NULL CHECK (fuente IN ('osrm', 'haversine')),
+    -- false: salto > 3 km entre paradas consecutivas (corredor/alimentador): casi siempre una parada del
+    -- catalogo fuera de la secuencia ATU, no un tramo real. En troncal los expresos saltan estaciones.
+    fiable          BOOLEAN NOT NULL DEFAULT true,
+    PRIMARY KEY (ruta_id, direccion, orden_desde)
+);
+ALTER TABLE tramo ADD COLUMN IF NOT EXISTS fiable BOOLEAN NOT NULL DEFAULT true;
+CREATE INDEX IF NOT EXISTS ix_tramo_paradero ON tramo (paradero_desde);
 
 CREATE OR REPLACE FUNCTION paraderos_cercanos(
     p_lat DOUBLE PRECISION, p_lon DOUBLE PRECISION,
@@ -440,7 +471,8 @@ $$;
 DROP VIEW IF EXISTS ruta_paradas;
 CREATE VIEW ruta_paradas AS
 SELECT r.id AS ruta_id, r.sistema, r.codigo AS ruta, pr.direccion, pr.orden,
-       p.id AS paradero_id, p.nombre, p.lat, p.lon, p.calidad_coord, pr.unidad_modelo
+       p.id AS paradero_id, p.nombre, p.lat, p.lon, p.calidad_coord, pr.unidad_modelo,
+       pr.orden_origen
 FROM paradero_ruta pr
 JOIN ruta r ON r.id = pr.ruta_id
 JOIN paradero p ON p.id = pr.paradero_id;

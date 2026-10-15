@@ -3,6 +3,8 @@
   paraderos.csv          una fila por parada de cada ruta y sentido (la entrega para el equipo)
   rutas.csv              una fila por ruta, con % de paradas exactas y origen del trazado
   rutas_trazados.geojson trazado de cada ruta (derivado u oficial segun `origen_trazado`)
+  tramos.csv             distancia y tiempo estimado entre paradas consecutivas (tabla `tramo`);
+                         tambien es la entrada de `ingest_paraderos` en un clon sin `data/`
 """
 from __future__ import annotations
 
@@ -13,13 +15,24 @@ import pandas as pd
 
 SQL_PARADAS = """
 SELECT r.sistema, r.codigo AS ruta, r.nombre AS ruta_nombre,
-       pr.direccion AS sentido, pr.orden, p.nombre AS paradero,
+       pr.direccion AS sentido, pr.orden, pr.orden_origen, p.nombre AS paradero,
        p.lat, p.lon, p.calidad_coord, p.confianza, p.precision_coord AS precision,
        p.evidencia, pr.unidad_modelo, r.origen_trazado
 FROM paradero_ruta pr
 JOIN ruta r ON r.id = pr.ruta_id
 JOIN paradero p ON p.id = pr.paradero_id
 ORDER BY r.sistema, r.codigo, pr.direccion, pr.orden NULLS LAST, p.nombre
+"""
+SQL_TRAMOS = """
+SELECT r.sistema, r.codigo AS ruta, t.direccion AS sentido, t.orden_desde, t.orden_hasta,
+       pa.nombre AS paradero_desde, pb.nombre AS paradero_hasta,
+       round(t.dist_m::numeric, 1) AS dist_m, round(t.duracion_osrm_s::numeric, 1) AS duracion_osrm_s,
+       round(t.duracion_s::numeric, 1) AS duracion_s, t.fuente, t.fiable
+FROM tramo t
+JOIN ruta r ON r.id = t.ruta_id
+JOIN paradero pa ON pa.id = t.paradero_desde
+JOIN paradero pb ON pb.id = t.paradero_hasta
+ORDER BY r.sistema, r.codigo, t.direccion, t.orden_desde
 """
 SQL_RUTAS = """
 SELECT r.sistema, r.codigo AS ruta, r.nombre AS ruta_nombre, r.origen_trazado,
@@ -51,6 +64,13 @@ def exportar(conn, out: Path) -> dict[str, int]:
         rutas[c] = rutas[c].astype("Int64")
     rutas.to_csv(out / "rutas.csv", index=False, encoding="utf-8")
 
+    tramos = _df(conn, SQL_TRAMOS)
+    tramos["sentido"] = tramos["sentido"].replace(0, pd.NA).astype("Int64")   # 0 = sin sentido
+    for c in ("orden_desde", "orden_hasta"):
+        tramos[c] = tramos[c].astype("Int64")
+    if len(tramos):   # sin filas no se pisa el tramos.csv versionado (entrada de ingest_paraderos)
+        tramos.to_csv(out / "tramos.csv", index=False, encoding="utf-8")
+
     cur = conn.cursor()
     try:
         cur.execute("SELECT sistema, codigo, nombre, origen_trazado, trazado FROM ruta "
@@ -64,4 +84,5 @@ def exportar(conn, out: Path) -> dict[str, int]:
         cur.close()
     (out / "rutas_trazados.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "features": feats}, ensure_ascii=False), encoding="utf-8")
-    return {"paraderos_csv": len(paradas), "rutas_csv": len(rutas), "trazados": len(feats)}
+    return {"paraderos_csv": len(paradas), "rutas_csv": len(rutas), "trazados": len(feats),
+            "tramos_csv": len(tramos)}

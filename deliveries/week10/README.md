@@ -208,7 +208,7 @@ con el calendario de 16 feriados).
 `python -m pipeline.run export` regenera los tres archivos de `export/`. Un compañero que solo necesite las
 paradas **no tiene que repetir nada**: le basta `export/paraderos.csv`.
 
-Columnas de `paraderos.csv`: `sistema, ruta, ruta_nombre, sentido, orden, paradero, lat, lon, calidad_coord,
+Columnas de `paraderos.csv`: `sistema, ruta, ruta_nombre, sentido, orden, orden_origen, paradero, lat, lon, calidad_coord,
 confianza, precision, evidencia, unidad_modelo, origen_trazado`.
 
 ### Consulta para el backend
@@ -222,6 +222,32 @@ WHERE sistema = 'corredor' AND ruta = '301' ORDER BY direccion, orden;
 ```
 
 El backend debe **geocodificar la dirección** del usuario a `lat/lon` antes de llamarla (no está en este pipeline).
+
+### `sentido`, `orden` y tiempos entre paradas
+
+| `sentido` | Sistema | `orden` | `orden_origen` |
+|---|---|---|---|
+| `1`, `2` | Corredores con secuencia y alimentadores | Posición en ese sentido, publicada por ATU | `atu_secuencia` |
+| `0` | Metro L1 (línea bidireccional) | Posición a lo largo de la línea | `atu_secuencia` |
+| `0` | Troncal y sus servicios (línea bidireccional) | Estaciones de sur a norte por latitud: el orden alfabético de la fuente no es geográfico | `latitud_troncal` (aproximación) |
+| `0` | Corredores sin sentido publicado (13 rutas sin secuencia ATU y paradas del catálogo fuera de ella) | Ranking del correlativo `n_paradero` del catálogo, que recorre ida y vuelta | `catalogo_n_paradero` |
+
+Ningún enlace queda sin `orden`. Los órdenes `catalogo_n_paradero` solo son comparables con otros enlaces de la
+**misma ruta y `sentido = 0`**; no deben mezclarse con el de los sentidos 1 y 2.
+
+**Tabla `tramo`**: distancia y tiempo entre paradas consecutivas (2 367 tramos). La distancia sale de OSRM por
+calles (Metro L1: línea recta) y la duración es una **estimación** = distancia / velocidad comercial + parada,
+con velocidades supuestas y no calibradas (Metro 32, troncal 22, corredor 15, alimentador 14 km/h; ver
+`VELOCIDAD_KMH` en `ingest_paraderos.py`). Los tramos de más de 3 km entre paradas consecutivas
+(corredores y alimentadores) quedan con `fiable = false`: casi siempre son paradas del catálogo fuera de la
+secuencia ATU.
+
+Se entrega como `export/tramos.csv` (`sistema, ruta, sentido, orden_desde, orden_hasta, paradero_desde,
+paradero_hasta, dist_m, duracion_osrm_s, duracion_s, fuente, fiable`; `sentido` vacío = sin sentido, igual que en
+`paraderos.csv`). Está versionado y `ingest_paraderos` lo usa como entrada cuando no existe
+`data/fuentes/geo/tramos_osrm.csv`, así que **nadie necesita volver a consultar OSRM**. Ese CSV local lo genera
+`python -m scripts.build_tramos` (≈ 35 min con el OSRM público; reanuda lo ya calculado) solo si cambian los
+paraderos o su orden.
 
 ### Origen de las coordenadas
 

@@ -1,5 +1,5 @@
 {
-  "generado_en": "2026-10-15T03:32:54",
+  "generado_en": "2026-10-15T06:10:37",
   "fuente": "/data/processed/clean",
   "limite_muestra": 100000,
   "conteos_bd": {
@@ -14,7 +14,8 @@
     "demanda_fiable": 12344159,
     "paraderos_csv": 2502,
     "rutas_csv": 76,
-    "trazados": 63
+    "trazados": 63,
+    "tramos_csv": 2367
   },
   "archivos": {
     ".gitkeep": {
@@ -42,8 +43,8 @@
       "sha256": "24e20527daf5a531c57c36524bee08c4f2fade470ffb8b82ff367ad9bed75d88"
     },
     "paraderos.csv": {
-      "bytes": 420653,
-      "sha256": "15f99c3d6ed60b4fc4e07de6d561760c6a4cb05e7ecbdfab7cddf8702862c37f"
+      "bytes": 460519,
+      "sha256": "96439915f076e85fe6d7d027fd83c57bd8472566385c3db94b5187f0c6da0026"
     },
     "perfil_horario.csv": {
       "bytes": 2623,
@@ -63,7 +64,11 @@
     },
     "trafico_tomtom.json": {
       "bytes": 1788,
-      "sha256": "73cfdaf6d5e0c0014f7ebb27c1b5ee8354cc33ce4685b2c0548cf235d0d31048"
+      "sha256": "0d5ed0cd932e9e0ab6107ac651ea6b311b1cd8f286a8bbe50ca7abe5b5a97ddf"
+    },
+    "tramos.csv": {
+      "bytes": 178261,
+      "sha256": "2343af0cec5b3bdad90ff004276e2175d62a50628d067e98f9446008eba2903f"
     }
   }
 }

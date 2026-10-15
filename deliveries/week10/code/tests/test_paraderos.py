@@ -99,3 +99,65 @@ def test_carga_idempotente(db, geo):
     b = IP.cargar(db, geo)
     assert a == b
     assert db.execute("SELECT count(*) AS n FROM paradero").fetchone()["n"] == a["paraderos"]
+
+
+def test_ningun_enlace_queda_sin_orden(geo):
+    d = IP.construir(geo, UNIDADES)
+    assert d["avisos"]["enlaces_sin_orden"] == 0
+    assert all(e["orden"] is not None for e in d["enlaces"].values())
+
+
+def test_corredor_sin_secuencia_usa_n_paradero_del_catalogo(geo):
+    d = IP.construir(geo, UNIDADES)
+    cor = {(rk[1], d["paraderos"][pk]["nombre"]): e for (pk, rk, dire), e in d["enlaces"].items()
+           if pk[0] == "corredor"}
+    # ruta 301: n_paradero 1 (QUILCA) y 9 (LEJOS) -> ranking 1 y 2 dentro de la ruta
+    assert cor[("301", "QUILCA")]["orden"] == 1 and cor[("301", "LEJOS")]["orden"] == 2
+    assert {e["orden_origen"] for e in cor.values()} == {"catalogo_n_paradero"}
+    # el resto conserva la secuencia publicada; la troncal se ordena geograficamente
+    otros = {pk[0]: e["orden_origen"] for (pk, _rk, _d), e in d["enlaces"].items() if pk[0] != "corredor"}
+    assert otros == {"metro_l1": "atu_secuencia", "troncal": "latitud_troncal",
+                     "alimentador": "atu_secuencia"}
+
+
+def test_paradero_fuera_de_la_secuencia_atu_queda_en_direccion_0_con_orden_de_catalogo(tmp_path):
+    g = tmp_path / "geo"
+    g.mkdir()
+    w = lambda n, f: (g / f"{n}.geojson").write_text(json.dumps(_pts(n, f)), encoding="utf-8")  # noqa: E731
+    w("puntos_corredores", [
+        _pt(-77.00, -12.00, cod_paradero="A", paradero="UNO", ruta="201", n_paradero=10),
+        _pt(-77.01, -12.00, cod_paradero="B", paradero="DOS", ruta="201", n_paradero=11),
+        _pt(-77.02, -12.00, cod_paradero="C", paradero="TRES", ruta="201", n_paradero=12),  # no esta en ATU
+    ])
+    w("paradas_corredores", [
+        _pt(-77.00, -12.00, ruta="201", direccion=1, orden=1, paradero="UNO"),
+        _pt(-77.01, -12.00, ruta="201", direccion=1, orden=2, paradero="DOS"),
+    ])
+    d = IP.construir(g, {"corredor": {}})
+    por_nombre = {d["paraderos"][pk]["nombre"]: (dire, e["orden"], e["orden_origen"])
+                  for (pk, _rk, dire), e in d["enlaces"].items()}
+    assert por_nombre["UNO"] == (1, 1, "atu_secuencia")
+    assert por_nombre["DOS"] == (1, 2, "atu_secuencia")
+    assert por_nombre["TRES"] == (0, 3, "catalogo_n_paradero")  # rank de n_paradero 12 entre 10, 11, 12
+
+
+def test_troncal_se_ordena_de_sur_a_norte_no_alfabeticamente(tmp_path):
+    g = tmp_path / "geo"
+    g.mkdir()
+    w = lambda n, f: (g / f"{n}.geojson").write_text(json.dumps(_pts(n, f)), encoding="utf-8")  # noqa: E731
+    w("puntos_troncal", [  # orden alfabetico en el archivo, latitudes N -> S distintas
+        _pt(-77.03, -12.00, estacion="Aaa Norte", unidad="Aaa Norte"),
+        _pt(-77.03, -12.10, estacion="Zzz Sur", unidad="Zzz Sur"),
+        _pt(-77.03, -12.05, estacion="Mmm Centro", unidad="Mmm Centro"),
+    ])
+    d = IP.construir(g, {"troncal": {}})
+    orden = {d["paraderos"][pk]["nombre"]: (e["orden"], e["orden_origen"]) for (pk, _rk, _d), e in d["enlaces"].items()}
+    assert orden == {"Zzz Sur": (1, "latitud_troncal"), "Mmm Centro": (2, "latitud_troncal"),
+                     "Aaa Norte": (3, "latitud_troncal")}
+
+
+def test_tramos_sentido_vacio_es_cero_y_acepta_ambos_encabezados():
+    assert IP._direccion_tramo({"direccion": "2"}) == 2          # geo/tramos_osrm.csv
+    assert IP._direccion_tramo({"sentido": "1"}) == 1            # export/tramos.csv
+    assert IP._direccion_tramo({"sentido": ""}) == 0             # sin sentido (como paraderos.csv)
+    assert IP._direccion_tramo({"direccion": "0"}) == 0

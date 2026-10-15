@@ -1,0 +1,2368 @@
+sistema,ruta,sentido,orden_desde,orden_hasta,paradero_desde,paradero_hasta,dist_m,duracion_osrm_s,duracion_s,fuente,fiable
+alimentador,ChimpuOcllo/SanJuanDeDios,1,1,2,Terminal Chimpu Ocllo,Chimpu Ocllo,32.7,14.1,28.4,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,2,3,Chimpu Ocllo,Mercado Frontera,546.5,54.5,160.5,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,3,4,Mercado Frontera,Chany,324.1,32.4,103.3,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,4,5,Chany,Paradero 39,1040.9,133.7,287.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,5,6,Paradero 39,Paradero Q,789.8,94.8,223.1,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,6,7,Paradero Q,Paradero U,902.3,105.9,252.0,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,7,8,Paradero U,Calle 5,434.5,58.9,131.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,8,9,Calle 5,Salamanca,490.4,47.5,146.1,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,9,10,Salamanca,Edén,641.4,53.8,184.9,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,10,11,Edén,Rinconada,690.1,46.2,197.5,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,11,12,Rinconada,Esmeralda,378.3,41.1,117.3,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,12,13,Esmeralda,Santa Rosa,535.0,56.8,157.6,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,13,14,Santa Rosa,San Pedro,555.1,69.1,162.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,14,15,San Pedro,Cooperativa,326.4,23.4,103.9,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,15,16,Cooperativa,El Pino,392.6,32.9,121.0,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,16,17,El Pino,San Antonio,419.7,29.3,127.9,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,17,18,San Antonio,Lark,522.0,34.1,154.2,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,18,19,Lark,Haras,493.3,36.9,146.8,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,19,20,Haras,Condominio Real,439.6,32.9,133.0,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,20,21,Condominio Real,Casuarinas,198.9,14.9,71.1,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,21,22,Casuarinas,Maestro,478.7,43.0,143.1,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,1,22,23,Maestro,Polos,438.2,54.4,132.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,23,24,Polos,Maestro,727.1,97.7,207.0,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,24,25,Maestro,Casuarinas,985.3,105.8,273.4,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,25,26,Casuarinas,Condominio Real,387.9,53.8,119.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,26,27,Condominio Real,Haras,514.4,33.6,152.3,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,27,28,Haras,Lark,483.5,33.8,144.3,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,28,29,Lark,San Antonio,1346.3,124.1,366.2,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,29,30,San Antonio,El Pino,470.8,35.4,141.1,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,30,31,El Pino,Cooperativa,354.5,32.8,111.2,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,31,32,Cooperativa,San Pedro,360.7,26.7,112.8,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,32,33,San Pedro,Santa Rosa,428.4,30.2,130.2,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,33,34,Santa Rosa,Esmeralda,393.3,37.0,121.1,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,34,35,Esmeralda,Rinconada,282.8,28.4,92.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,35,36,Rinconada,Edén,732.8,78.3,208.4,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,36,37,Edén,Salamanca,495.6,51.0,147.4,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,37,38,Salamanca,Calle 5,701.2,77.6,200.3,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,38,39,Calle 5,Paradero U,705.9,95.0,201.5,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,39,40,Paradero U,Paradero Q,274.7,40.7,90.6,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,40,41,Paradero Q,Paradero 39,980.6,150.0,272.2,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,41,42,Paradero 39,Chany,1230.6,153.6,336.4,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,42,43,Chany,Mercado Frontera,477.1,57.5,142.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,43,44,Mercado Frontera,Chimpu Ocllo,617.0,72.4,178.7,osrm,True
+alimentador,ChimpuOcllo/SanJuanDeDios,2,44,45,Chimpu Ocllo,Terminal Chimpu Ocllo,736.8,84.7,209.5,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,1,2,Chimpu Ocllo,Paucartambo,638.8,74.2,184.3,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,2,3,Paucartambo,Valle Chillón,431.2,44.8,130.9,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,3,4,Valle Chillón,Club Deportivo,399.7,47.6,122.8,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,4,5,Club Deportivo,Camino Real,892.5,99.4,249.5,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,5,6,Camino Real,Las Lomas,518.9,66.0,153.4,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,6,7,Las Lomas,Manuel Prado,478.3,68.8,143.0,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,7,9,Manuel Prado,Pacayal,3057.3,276.1,806.2,osrm,False
+alimentador,ChimpuOcllo/Universitaria,1,9,10,Pacayal,Calle 2,437.2,48.8,132.4,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,10,11,Calle 2,Calle 1,416.0,37.5,127.0,osrm,True
+alimentador,ChimpuOcllo/Universitaria,1,11,12,Calle 1,Periurbana,427.3,41.0,129.9,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,12,13,Periurbana,Calle 5,1773.3,218.6,476.0,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,13,14,Calle 5,Pacayal,1454.6,173.5,394.0,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,14,15,Pacayal,Calle 2,332.1,35.0,105.4,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,15,16,Calle 2,Manuel Prado,711.0,83.4,202.8,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,16,17,Manuel Prado,Santa Cruz,570.5,63.8,166.7,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,17,18,Santa Cruz,Camino Real,526.1,70.9,155.3,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,18,19,Camino Real,Manco Cápac,1011.4,100.7,280.1,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,19,20,Manco Cápac,Terminal,243.8,22.0,82.7,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,20,21,Terminal,Paucartambo,905.1,116.3,252.7,osrm,True
+alimentador,ChimpuOcllo/Universitaria,2,21,22,Paucartambo,Chimpu Ocllo,580.4,54.7,169.2,osrm,True
+alimentador,LosIncas/Carabayllo,1,1,2,Terminal Chimpu Ocllo,Chimpu Ocllo,291.3,35.0,94.9,osrm,True
+alimentador,LosIncas/Carabayllo,1,2,3,Chimpu Ocllo,La Flor,426.2,44.9,129.6,osrm,True
+alimentador,LosIncas/Carabayllo,1,3,4,La Flor,Caudivilla,1001.4,108.3,277.5,osrm,True
+alimentador,LosIncas/Carabayllo,1,4,5,Caudivilla,Manco Cápac,488.8,72.1,145.7,osrm,True
+alimentador,LosIncas/Carabayllo,1,5,6,Manco Cápac,José Pardo,397.3,30.7,122.2,osrm,True
+alimentador,LosIncas/Carabayllo,1,6,7,José Pardo,Villa Esperanza,319.3,41.3,102.1,osrm,True
+alimentador,LosIncas/Carabayllo,1,7,8,Villa Esperanza,Ciro Alegría,556.8,50.5,163.2,osrm,True
+alimentador,LosIncas/Carabayllo,1,8,9,Ciro Alegría,La Cumbre,537.3,50.7,158.2,osrm,True
+alimentador,LosIncas/Carabayllo,1,9,10,La Cumbre,Augusto B. Leguía,280.2,40.3,92.1,osrm,True
+alimentador,LosIncas/Carabayllo,1,10,11,Augusto B. Leguía,Plaza El Progreso,675.9,73.8,193.8,osrm,True
+alimentador,LosIncas/Carabayllo,1,11,12,Plaza El Progreso,Lenin,181.9,16.3,66.8,osrm,True
+alimentador,LosIncas/Carabayllo,1,12,13,Lenin,Santos Chocano,381.2,34.4,118.0,osrm,True
+alimentador,LosIncas/Carabayllo,1,13,14,Santos Chocano,Tokio,569.9,54.0,166.5,osrm,True
+alimentador,LosIncas/Carabayllo,2,14,16,Tokio,Lenin,1165.1,121.7,319.6,osrm,True
+alimentador,LosIncas/Carabayllo,2,16,17,Lenin,Plaza El Progreso,458.5,63.5,137.9,osrm,True
+alimentador,LosIncas/Carabayllo,2,17,18,Plaza El Progreso,Túpac Amaru,377.3,47.0,117.0,osrm,True
+alimentador,LosIncas/Carabayllo,2,18,19,Túpac Amaru,Augusto B. Leguía,290.1,48.2,94.6,osrm,True
+alimentador,LosIncas/Carabayllo,2,19,20,Augusto B. Leguía,La Cumbre,280.2,40.3,92.1,osrm,True
+alimentador,LosIncas/Carabayllo,2,20,21,La Cumbre,Ciro Alegría,1724.7,153.7,463.5,osrm,True
+alimentador,LosIncas/Carabayllo,2,21,22,Ciro Alegría,Cedros,405.0,43.7,124.1,osrm,True
+alimentador,LosIncas/Carabayllo,2,22,23,Cedros,Villa Esperanza,281.6,32.1,92.4,osrm,True
+alimentador,LosIncas/Carabayllo,2,23,24,Villa Esperanza,José Pardo,356.5,61.4,111.7,osrm,True
+alimentador,LosIncas/Carabayllo,2,24,25,José Pardo,Manco Cápac,232.0,19.9,79.7,osrm,True
+alimentador,LosIncas/Carabayllo,2,25,26,Manco Cápac,Caudivilla,625.2,57.4,180.8,osrm,True
+alimentador,LosIncas/Carabayllo,2,26,27,Caudivilla,La Flor,1370.2,136.1,372.3,osrm,True
+alimentador,LosIncas/Carabayllo,2,27,28,La Flor,Chimpu Ocllo,1349.5,114.4,367.0,osrm,True
+alimentador,LosIncas/Carabayllo,2,28,29,Chimpu Ocllo,Terminal Chimpu Ocllo,403.2,43.0,123.7,osrm,True
+alimentador,LosIncas/Collique,1,1,2,Universitaria,Fe y Alegría,867.6,95.8,243.1,osrm,True
+alimentador,LosIncas/Collique,1,2,3,Fe y Alegría,Sánchez Cerro,1677.2,150.8,451.3,osrm,True
+alimentador,LosIncas/Collique,1,3,4,Sánchez Cerro,Julio C. Tello,617.9,66.4,178.9,osrm,True
+alimentador,LosIncas/Collique,1,4,5,Julio C. Tello,Cerro de Pasco,402.8,50.5,123.6,osrm,True
+alimentador,LosIncas/Collique,1,5,6,Cerro de Pasco,Ramón Castilla,333.0,30.0,105.6,osrm,True
+alimentador,LosIncas/Collique,1,6,7,Ramón Castilla,Andahuaylas,539.6,52.5,158.8,osrm,True
+alimentador,LosIncas/Collique,1,7,8,Andahuaylas,Piura,349.4,31.4,109.8,osrm,True
+alimentador,LosIncas/Collique,1,8,9,Piura,Francisco de Zela,964.2,100.3,267.9,osrm,True
+alimentador,LosIncas/Collique,1,9,10,Francisco de Zela,Río Seco,664.0,73.7,190.7,osrm,True
+alimentador,LosIncas/Collique,2,10,11,Río Seco,Francisco de Zela,645.9,67.1,186.1,osrm,True
+alimentador,LosIncas/Collique,2,11,12,Francisco de Zela,Piura,776.0,80.5,219.5,osrm,True
+alimentador,LosIncas/Collique,2,12,13,Piura,Alcides Carrión,480.7,54.7,143.6,osrm,True
+alimentador,LosIncas/Collique,2,13,14,Alcides Carrión,Ramón Castilla,704.4,78.0,201.1,osrm,True
+alimentador,LosIncas/Collique,2,14,15,Ramón Castilla,Arica,478.1,56.1,142.9,osrm,True
+alimentador,LosIncas/Collique,2,15,16,Arica,Julio C. Tello,354.0,50.8,111.0,osrm,True
+alimentador,LosIncas/Collique,2,16,17,Julio C. Tello,Sánchez Cerro,859.8,106.7,241.1,osrm,True
+alimentador,LosIncas/Collique,2,17,18,Sánchez Cerro,Fe y Alegría,821.5,91.7,231.2,osrm,True
+alimentador,LosIncas/Collique,2,18,19,Fe y Alegría,Universitaria,1867.4,186.5,500.2,osrm,True
+alimentador,LosIncas/TorreBlanca,1,2,3,Machuca,21,770.8,82.3,218.2,osrm,True
+alimentador,LosIncas/TorreBlanca,1,3,4,21,Huascarán,703.9,76.5,201.0,osrm,True
+alimentador,LosIncas/TorreBlanca,1,4,5,Huascarán,Vega,612.2,70.1,177.4,osrm,True
+alimentador,LosIncas/TorreBlanca,1,5,6,Vega,San Antonio,364.6,43.2,113.8,osrm,True
+alimentador,LosIncas/TorreBlanca,1,6,7,San Antonio,Pisa,353.3,48.1,110.8,osrm,True
+alimentador,LosIncas/TorreBlanca,1,7,8,Pisa,Mercado,865.7,72.9,242.6,osrm,True
+alimentador,LosIncas/TorreBlanca,1,8,9,Mercado,El Carmen,220.7,16.5,76.8,osrm,True
+alimentador,LosIncas/TorreBlanca,1,9,10,El Carmen,Avenida 3,419.8,31.3,127.9,osrm,True
+alimentador,LosIncas/TorreBlanca,1,10,11,Avenida 3,Torre Blanca,417.7,41.6,127.4,osrm,True
+alimentador,LosIncas/TorreBlanca,2,11,12,Torre Blanca,Avenida 3,764.2,85.8,216.5,osrm,True
+alimentador,LosIncas/TorreBlanca,2,12,13,Avenida 3,El Carmen,439.7,43.6,133.1,osrm,True
+alimentador,LosIncas/TorreBlanca,2,13,14,El Carmen,Mercado,584.5,54.2,170.3,osrm,True
+alimentador,LosIncas/TorreBlanca,2,14,15,Mercado,Pisa,2118.3,161.7,564.7,osrm,True
+alimentador,LosIncas/TorreBlanca,2,15,16,Pisa,San Antonio,390.8,38.4,120.5,osrm,True
+alimentador,LosIncas/TorreBlanca,2,16,17,San Antonio,Vega,323.2,52.0,103.1,osrm,True
+alimentador,LosIncas/TorreBlanca,2,17,18,Vega,Progreso,451.0,35.9,136.0,osrm,True
+alimentador,LosIncas/TorreBlanca,2,18,19,Progreso,21,520.7,39.0,153.9,osrm,True
+alimentador,LosIncas/TorreBlanca,2,19,20,21,Machuca,451.9,33.9,136.2,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,2,3,Las Palmeras,Amarantos,1300.3,125.5,354.4,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,3,5,Amarantos,Plaza Vea,1230.3,122.5,336.4,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,5,6,Plaza Vea,Mercado Covida,1290.7,117.8,351.9,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,6,8,Mercado Covida,Universitaria,1291.9,154.2,352.2,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,8,9,Universitaria,San Francisco,877.5,89.1,245.6,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,9,10,San Francisco,12 de Octubre,480.6,45.3,143.6,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,10,11,12 de Octubre,Puente Camote,764.2,95.7,216.5,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,11,12,Puente Camote,Alcides Vigo,587.7,69.4,171.1,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,12,13,Alcides Vigo,Coopip,413.5,42.8,126.3,osrm,True
+alimentador,Norte/AntunezDeMayolo,1,13,14,Coopip,Nísperos,302.1,41.4,97.7,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,14,15,Nísperos,Coopip,1030.1,111.8,284.9,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,15,16,Coopip,Santa Rosa,1309.6,154.8,356.8,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,16,17,Santa Rosa,Puente Camote,809.2,103.2,228.1,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,17,18,Puente Camote,12 de Octubre,574.1,76.0,167.6,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,18,19,12 de Octubre,San Francisco,746.4,103.6,211.9,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,19,20,San Francisco,Río Santa,0.0,0.0,20.0,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,20,21,Río Santa,Telefónica,0.0,0.0,20.0,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,21,23,Telefónica,Plaza Vea,3125.7,281.5,823.8,osrm,False
+alimentador,Norte/AntunezDeMayolo,2,23,24,Plaza Vea,Acacias,1658.0,178.2,446.3,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,24,25,Acacias,Amarantos,735.1,95.5,209.0,osrm,True
+alimentador,Norte/AntunezDeMayolo,2,25,26,Amarantos,Las Palmeras,802.1,98.6,226.3,osrm,True
+alimentador,Norte/Belaunde,1,1,2,La Merced,Politécnico,668.1,63.2,191.8,osrm,True
+alimentador,Norte/Belaunde,1,2,3,Politécnico,Correo,765.3,61.2,216.8,osrm,True
+alimentador,Norte/Belaunde,1,3,4,Correo,Colegio Israel,1883.3,158.3,504.3,osrm,True
+alimentador,Norte/Belaunde,1,4,5,Colegio Israel,Banco de La Nación,958.2,86.9,266.4,osrm,True
+alimentador,Norte/Belaunde,1,5,6,Banco de La Nación,Cipreses,715.2,69.0,203.9,osrm,True
+alimentador,Norte/Belaunde,1,6,7,Cipreses,San Martín,313.2,37.7,100.5,osrm,True
+alimentador,Norte/Belaunde,1,7,8,San Martín,1 de Mayo,581.1,85.9,169.4,osrm,True
+alimentador,Norte/Belaunde,1,8,9,1 de Mayo,Larco Herrera,286.8,43.4,93.7,osrm,True
+alimentador,Norte/Belaunde,1,9,10,Larco Herrera,San Pablo,259.0,29.1,86.6,osrm,True
+alimentador,Norte/Belaunde,1,10,11,San Pablo,Huáscar,273.0,33.3,90.2,osrm,True
+alimentador,Norte/Belaunde,1,11,12,Huáscar,3 de Octubre,109.0,17.0,48.0,osrm,True
+alimentador,Norte/Belaunde,2,13,14,3 de Octubre,Talara,188.4,26.1,68.4,osrm,True
+alimentador,Norte/Belaunde,2,14,15,Talara,Carabayllo,242.9,35.9,82.5,osrm,True
+alimentador,Norte/Belaunde,2,15,16,Carabayllo,San Pablo,621.5,80.9,179.8,osrm,True
+alimentador,Norte/Belaunde,2,16,17,San Pablo,Larco Herrera,466.0,74.5,139.8,osrm,True
+alimentador,Norte/Belaunde,2,17,18,Larco Herrera,1 de Mayo,626.8,94.6,181.2,osrm,True
+alimentador,Norte/Belaunde,2,18,19,1 de Mayo,San Martín,353.3,57.5,110.8,osrm,True
+alimentador,Norte/Belaunde,2,19,20,San Martín,Cipreses,776.3,103.3,219.6,osrm,True
+alimentador,Norte/Belaunde,2,20,21,Cipreses,Belaunde,1372.2,169.3,372.9,osrm,True
+alimentador,Norte/Belaunde,2,21,22,Belaunde,Banco de la Nación,581.6,51.6,169.6,osrm,True
+alimentador,Norte/Belaunde,2,22,23,Banco de la Nación,Puno,879.9,70.1,246.3,osrm,True
+alimentador,Norte/Belaunde,2,23,24,Puno,Correo,830.4,83.7,233.5,osrm,True
+alimentador,Norte/Belaunde,2,24,25,Correo,Politécnico,3852.1,349.9,1010.5,osrm,False
+alimentador,Norte/Belaunde,2,25,26,Politécnico,La Merced,656.6,51.2,188.8,osrm,True
+alimentador,Norte/Bertello,1,1,2,Unger,Hospital Los Olivos,682.4,79.6,195.5,osrm,True
+alimentador,Norte/Bertello,1,2,3,Hospital Los Olivos,Marcará,632.6,57.4,182.7,osrm,True
+alimentador,Norte/Bertello,1,3,4,Marcará,Las Palmeras,323.7,36.4,103.2,osrm,True
+alimentador,Norte/Bertello,1,4,5,Las Palmeras,Universitaria,668.3,72.9,191.8,osrm,True
+alimentador,Norte/Bertello,1,5,6,Universitaria,Huandoy,1411.4,152.0,382.9,osrm,True
+alimentador,Norte/Bertello,1,6,7,Huandoy,Portales de Naranjal,414.1,34.3,126.5,osrm,True
+alimentador,Norte/Bertello,1,7,8,Portales de Naranjal,Santo Domingo,488.1,38.7,145.5,osrm,True
+alimentador,Norte/Bertello,1,8,9,Santo Domingo,Jardines de Naranjal,571.1,85.0,166.9,osrm,True
+alimentador,Norte/Bertello,1,9,10,Jardines de Naranjal,Los Alisos,573.3,70.9,167.4,osrm,True
+alimentador,Norte/Bertello,1,10,11,Los Alisos,Los Olivos,382.3,57.0,118.3,osrm,True
+alimentador,Norte/Bertello,1,11,12,Los Olivos,Izaguirre,1428.8,138.9,387.4,osrm,True
+alimentador,Norte/Bertello,1,12,13,Izaguirre,Dominicos,388.1,42.3,119.8,osrm,True
+alimentador,Norte/Bertello,1,13,14,Dominicos,Pacasmayo,512.9,40.2,151.9,osrm,True
+alimentador,Norte/Bertello,1,14,15,Pacasmayo,Bertello,323.1,24.2,103.1,osrm,True
+alimentador,Norte/Bertello,1,15,16,Bertello,Los Pinos,462.1,57.4,138.8,osrm,True
+alimentador,Norte/Bertello,2,16,17,Los Pinos,Bertello,839.4,101.2,235.8,osrm,True
+alimentador,Norte/Bertello,2,17,18,Bertello,Pacasmayo,553.0,66.5,162.2,osrm,True
+alimentador,Norte/Bertello,2,18,19,Pacasmayo,Dominicos,1413.5,135.0,383.5,osrm,True
+alimentador,Norte/Bertello,2,19,20,Dominicos,Izaguirre,1238.2,107.4,338.4,osrm,True
+alimentador,Norte/Bertello,2,20,21,Izaguirre,Los Olivos,1411.7,152.5,383.0,osrm,True
+alimentador,Norte/Bertello,2,21,22,Los Olivos,Los Alisos,1707.0,175.3,458.9,osrm,True
+alimentador,Norte/Bertello,2,22,23,Los Alisos,Jardines de Naranjal,886.5,131.6,248.0,osrm,True
+alimentador,Norte/Bertello,2,23,24,Jardines de Naranjal,Santo Domingo,1813.0,178.5,486.2,osrm,True
+alimentador,Norte/Bertello,2,24,25,Santo Domingo,Portales de Naranjal,1101.4,96.8,303.2,osrm,True
+alimentador,Norte/Bertello,2,25,26,Portales de Naranjal,Huandoy,988.8,76.0,274.3,osrm,True
+alimentador,Norte/Bertello,2,26,27,Huandoy,Universitaria,929.4,96.8,259.0,osrm,True
+alimentador,Norte/Bertello,2,27,28,Universitaria,Las Palmeras,995.0,134.4,275.9,osrm,True
+alimentador,Norte/Bertello,2,28,29,Las Palmeras,Marcará,686.4,82.2,196.5,osrm,True
+alimentador,Norte/Bertello,2,29,30,Marcará,Hospital Los Olivos,1906.2,207.0,510.2,osrm,True
+alimentador,Norte/Bertello,2,30,31,Hospital Los Olivos,Unger,1171.0,107.5,321.1,osrm,True
+alimentador,Norte/Carabayllo,1,1,2,Cueto Fernandini,España,822.4,92.6,231.5,osrm,True
+alimentador,Norte/Carabayllo,1,2,3,España,Santa Rosa,955.1,103.6,265.6,osrm,True
+alimentador,Norte/Carabayllo,1,3,4,Santa Rosa,Belaunde,836.3,81.7,235.0,osrm,True
+alimentador,Norte/Carabayllo,1,4,5,Belaunde,La Pascana,942.9,116.6,262.5,osrm,True
+alimentador,Norte/Carabayllo,1,5,6,La Pascana,Miguel Grau (Velasco),1154.4,105.6,316.8,osrm,True
+alimentador,Norte/Carabayllo,1,6,7,Miguel Grau (Velasco),Fe y Alegría,846.0,67.0,237.5,osrm,True
+alimentador,Norte/Carabayllo,1,7,9,Fe y Alegría,San Felipe,2261.2,183.3,601.5,osrm,True
+alimentador,Norte/Carabayllo,1,9,10,San Felipe,Santa Isabel,569.2,61.1,166.4,osrm,True
+alimentador,Norte/Carabayllo,1,10,11,Santa Isabel,Chimpu Ocllo,858.8,83.3,240.8,osrm,True
+alimentador,Norte/Carabayllo,1,11,12,Chimpu Ocllo,La Flor,409.4,44.0,125.3,osrm,True
+alimentador,Norte/Carabayllo,1,12,13,La Flor,Caudivilla,1001.4,108.3,277.5,osrm,True
+alimentador,Norte/Carabayllo,1,13,14,Caudivilla,Manco Cápac (Merino),488.8,72.1,145.7,osrm,True
+alimentador,Norte/Carabayllo,1,14,15,Manco Cápac (Merino),José Pardo,397.3,30.7,122.2,osrm,True
+alimentador,Norte/Carabayllo,1,15,16,José Pardo,Villa Esperanza,319.3,41.3,102.1,osrm,True
+alimentador,Norte/Carabayllo,1,16,17,Villa Esperanza,Ciro Alegría,556.8,50.5,163.2,osrm,True
+alimentador,Norte/Carabayllo,1,17,18,Ciro Alegría,La Cumbre,537.3,50.7,158.2,osrm,True
+alimentador,Norte/Carabayllo,1,18,19,La Cumbre,Augusto B. Leguía,280.2,40.3,92.1,osrm,True
+alimentador,Norte/Carabayllo,1,19,20,Augusto B. Leguía,Plaza El Progreso,675.9,73.8,193.8,osrm,True
+alimentador,Norte/Carabayllo,1,20,21,Plaza El Progreso,Lenin,181.9,16.3,66.8,osrm,True
+alimentador,Norte/Carabayllo,2,21,22,Lenin,Plaza El Progreso,458.5,63.5,137.9,osrm,True
+alimentador,Norte/Carabayllo,2,22,23,Plaza El Progreso,Túpac Amaru,377.3,47.0,117.0,osrm,True
+alimentador,Norte/Carabayllo,2,23,24,Túpac Amaru,Augusto B. Leguía,290.1,48.2,94.6,osrm,True
+alimentador,Norte/Carabayllo,2,24,25,Augusto B. Leguía,La Cumbre,280.2,40.3,92.1,osrm,True
+alimentador,Norte/Carabayllo,2,25,26,La Cumbre,Ciro Alegría,1724.7,153.7,463.5,osrm,True
+alimentador,Norte/Carabayllo,2,26,27,Ciro Alegría,Cedros,339.6,38.7,107.3,osrm,True
+alimentador,Norte/Carabayllo,2,27,28,Cedros,Villa Esperanza,401.6,42.9,123.3,osrm,True
+alimentador,Norte/Carabayllo,2,28,29,Villa Esperanza,José Pardo,446.8,73.0,134.9,osrm,True
+alimentador,Norte/Carabayllo,2,29,30,José Pardo,Manco Cápac (Merino),605.2,61.0,175.6,osrm,True
+alimentador,Norte/Carabayllo,2,30,31,Manco Cápac (Merino),Caudivilla,788.0,80.5,222.6,osrm,True
+alimentador,Norte/Carabayllo,2,31,32,Caudivilla,La Flor,1370.2,136.1,372.3,osrm,True
+alimentador,Norte/Carabayllo,2,32,33,La Flor,Chimpu Ocllo,1349.5,114.4,367.0,osrm,True
+alimentador,Norte/Carabayllo,2,33,34,Chimpu Ocllo,Santa Isabel,741.6,57.3,210.7,osrm,True
+alimentador,Norte/Carabayllo,2,34,35,Santa Isabel,San Felipe,485.8,36.4,144.9,osrm,True
+alimentador,Norte/Carabayllo,2,35,36,San Felipe,San Carlos,1145.5,118.6,314.6,osrm,True
+alimentador,Norte/Carabayllo,2,36,38,San Carlos,Fe y Alegría,2968.0,235.8,783.2,osrm,True
+alimentador,Norte/Carabayllo,2,38,39,Fe y Alegría,Miguel Grau (Velasco),1169.3,124.8,320.7,osrm,True
+alimentador,Norte/Carabayllo,2,39,40,Miguel Grau (Velasco),La Pascana,1965.4,166.6,525.4,osrm,True
+alimentador,Norte/Carabayllo,2,40,41,La Pascana,Belaunde,2697.0,240.0,713.5,osrm,True
+alimentador,Norte/Carabayllo,2,41,42,Belaunde,Reniec,814.4,71.4,229.4,osrm,True
+alimentador,Norte/Carabayllo,2,42,43,Reniec,España,1001.0,112.6,277.4,osrm,True
+alimentador,Norte/Carabayllo,2,43,44,España,Mega 80,816.4,91.8,229.9,osrm,True
+alimentador,Norte/Collique,1,1,2,La Merced,Correo,1433.3,124.4,388.6,osrm,True
+alimentador,Norte/Collique,1,2,3,Correo,España,1129.9,101.5,310.5,osrm,True
+alimentador,Norte/Collique,1,3,4,España,Colegio Israel,3883.7,368.1,1018.7,osrm,False
+alimentador,Norte/Collique,1,4,5,Colegio Israel,Santa Rosa,615.4,68.9,178.2,osrm,True
+alimentador,Norte/Collique,1,5,6,Santa Rosa,Banco de La Nación,362.4,44.0,113.2,osrm,True
+alimentador,Norte/Collique,1,6,7,Banco de La Nación,Belaunde,473.9,37.7,141.9,osrm,True
+alimentador,Norte/Collique,1,7,8,Belaunde,Mercado Chacra Cerro,519.5,40.0,153.6,osrm,True
+alimentador,Norte/Collique,1,8,9,Mercado Chacra Cerro,La Pascana,721.9,82.5,205.6,osrm,True
+alimentador,Norte/Collique,1,9,10,La Pascana,Cáceres (Jamaica),525.0,54.3,155.0,osrm,True
+alimentador,Norte/Collique,1,10,11,Cáceres (Jamaica),Miguel Grau (Velasco),629.5,51.3,181.9,osrm,True
+alimentador,Norte/Collique,1,11,12,Miguel Grau (Velasco),Francisco Bolognesi,406.8,32.6,124.6,osrm,True
+alimentador,Norte/Collique,1,12,13,Francisco Bolognesi,Fe y Alegría,1517.9,142.5,410.3,osrm,True
+alimentador,Norte/Collique,1,13,14,Fe y Alegría,Sánchez Cerro,857.6,105.4,240.5,osrm,True
+alimentador,Norte/Collique,1,14,15,Sánchez Cerro,Julio C. Tello,617.9,66.4,178.9,osrm,True
+alimentador,Norte/Collique,1,15,16,Julio C. Tello,Cerro de Pasco,402.8,50.5,123.6,osrm,True
+alimentador,Norte/Collique,1,16,17,Cerro de Pasco,Ramón Castilla,333.0,30.0,105.6,osrm,True
+alimentador,Norte/Collique,1,17,18,Ramón Castilla,Andahuaylas,539.6,52.5,158.8,osrm,True
+alimentador,Norte/Collique,1,18,19,Andahuaylas,Piura,349.4,31.4,109.8,osrm,True
+alimentador,Norte/Collique,1,19,20,Piura,Francisco de Zela,521.9,53.9,154.2,osrm,True
+alimentador,Norte/Collique,2,21,22,Francisco de Zela,Piura,776.0,80.5,219.5,osrm,True
+alimentador,Norte/Collique,2,22,24,Piura,Ramón Castilla,1185.2,132.7,324.8,osrm,True
+alimentador,Norte/Collique,2,24,25,Ramón Castilla,Arica,478.1,56.1,142.9,osrm,True
+alimentador,Norte/Collique,2,25,26,Arica,Julio C. Tello,354.0,50.8,111.0,osrm,True
+alimentador,Norte/Collique,2,26,27,Julio C. Tello,Sánchez Cerro,859.8,106.7,241.1,osrm,True
+alimentador,Norte/Collique,2,27,28,Sánchez Cerro,Fe y Alegría,1014.5,122.9,280.9,osrm,True
+alimentador,Norte/Collique,2,28,29,Fe y Alegría,Grifo Año Nuevo,591.7,57.7,172.2,osrm,True
+alimentador,Norte/Collique,2,29,30,Grifo Año Nuevo,Miguel Grau (Velasco),577.5,67.1,168.5,osrm,True
+alimentador,Norte/Collique,2,30,31,Miguel Grau (Velasco),Jamaica,1442.0,125.4,390.8,osrm,True
+alimentador,Norte/Collique,2,31,32,Jamaica,La Pascana,735.7,110.2,209.2,osrm,True
+alimentador,Norte/Collique,2,32,33,La Pascana,Mercado Chacra Cerro,1479.3,155.8,400.4,osrm,True
+alimentador,Norte/Collique,2,33,34,Mercado Chacra Cerro,Belaunde,2280.5,191.1,606.4,osrm,True
+alimentador,Norte/Collique,2,34,35,Belaunde,Banco de La Nación,1347.3,124.1,366.4,osrm,True
+alimentador,Norte/Collique,2,35,36,Banco de La Nación,Reniec,1288.3,109.1,351.3,osrm,True
+alimentador,Norte/Collique,2,36,37,Reniec,Puno,2474.2,261.5,656.2,osrm,True
+alimentador,Norte/Collique,2,37,38,Puno,España,356.0,30.6,111.5,osrm,True
+alimentador,Norte/Collique,2,38,39,España,Correo,474.4,53.1,142.0,osrm,True
+alimentador,Norte/Collique,2,39,40,Correo,La Merced,1390.6,141.9,377.6,osrm,True
+alimentador,Norte/Izaguirre,1,1,2,Daniel Fernández,Santos Chocano,255.8,28.2,85.8,osrm,True
+alimentador,Norte/Izaguirre,1,2,3,Santos Chocano,Las Palmeras,283.7,34.0,93.0,osrm,True
+alimentador,Norte/Izaguirre,1,3,4,Las Palmeras,El Amargón,395.1,41.7,121.6,osrm,True
+alimentador,Norte/Izaguirre,1,4,5,El Amargón,Estibina,520.6,59.8,153.9,osrm,True
+alimentador,Norte/Izaguirre,1,5,6,Estibina,San Francisco,1475.5,150.5,399.4,osrm,True
+alimentador,Norte/Izaguirre,1,6,7,San Francisco,12 de Octubre,1256.0,153.4,343.0,osrm,True
+alimentador,Norte/Izaguirre,1,7,8,12 de Octubre,Santa Rosa,493.7,56.9,147.0,osrm,True
+alimentador,Norte/Izaguirre,2,8,9,Santa Rosa,12 de Octubre,362.3,46.6,113.2,osrm,True
+alimentador,Norte/Izaguirre,2,9,10,12 de Octubre,San Francisco,493.5,52.5,146.9,osrm,True
+alimentador,Norte/Izaguirre,2,10,11,San Francisco,Universitaria,575.2,53.7,167.9,osrm,True
+alimentador,Norte/Izaguirre,2,11,12,Universitaria,Estibila,409.7,36.6,125.4,osrm,True
+alimentador,Norte/Izaguirre,2,12,13,Estibila,Conococha,485.5,53.2,144.8,osrm,True
+alimentador,Norte/Izaguirre,2,13,14,Conococha,Mayolo,364.0,48.9,113.6,osrm,True
+alimentador,Norte/Izaguirre,2,14,15,Mayolo,Santos Chocano,372.4,40.1,115.8,osrm,True
+alimentador,Norte/Izaguirre,2,15,16,Santos Chocano,Ignacio Merino,342.3,45.4,108.0,osrm,True
+alimentador,Norte/Izaguirre,2,16,17,Ignacio Merino,Plaza Vea,1216.9,152.1,332.9,osrm,True
+alimentador,Norte/Izaguirre,2,17,18,Plaza Vea,Túpac Amaru,1058.4,169.1,292.2,osrm,True
+alimentador,Norte/LaEnsenada,1,1,2,Hospital Los Olivos,Tres Postes,1339.6,90.5,364.5,osrm,True
+alimentador,Norte/LaEnsenada,1,2,3,Tres Postes,Universitaria,1293.6,98.7,352.6,osrm,True
+alimentador,Norte/LaEnsenada,1,3,4,Universitaria,Santa Elvira,571.0,60.4,166.8,osrm,True
+alimentador,Norte/LaEnsenada,1,4,5,Santa Elvira,Huandoy,962.5,89.5,267.5,osrm,True
+alimentador,Norte/LaEnsenada,1,5,6,Huandoy,San Martín,1249.9,111.3,341.4,osrm,True
+alimentador,Norte/LaEnsenada,1,6,7,San Martín,Los Rosales,386.9,39.6,119.5,osrm,True
+alimentador,Norte/LaEnsenada,1,7,8,Los Rosales,2 de Octubre,386.7,29.1,119.4,osrm,True
+alimentador,Norte/LaEnsenada,1,8,9,2 de Octubre,Los Portales,458.1,40.1,137.8,osrm,True
+alimentador,Norte/LaEnsenada,1,9,10,Los Portales,Coordialidad,449.1,33.5,135.5,osrm,True
+alimentador,Norte/LaEnsenada,1,10,11,Coordialidad,Honradez,314.1,34.1,100.8,osrm,True
+alimentador,Norte/LaEnsenada,1,11,12,Honradez,Calle 27,346.9,31.4,109.2,osrm,True
+alimentador,Norte/LaEnsenada,1,12,13,Calle 27,Parque Los Portales,725.8,88.6,206.6,osrm,True
+alimentador,Norte/LaEnsenada,1,13,15,Parque Los Portales,Rosedal,1712.1,217.8,460.3,osrm,True
+alimentador,Norte/LaEnsenada,1,15,16,Rosedal,Comisaría,199.9,34.4,71.4,osrm,True
+alimentador,Norte/LaEnsenada,1,16,17,Comisaría,Palmeras,354.5,40.8,111.2,osrm,True
+alimentador,Norte/LaEnsenada,1,17,18,Palmeras,Conquistadores,253.6,30.8,85.2,osrm,True
+alimentador,Norte/LaEnsenada,2,20,21,23 de Agosto,Botica,535.3,79.6,157.6,osrm,True
+alimentador,Norte/LaEnsenada,2,21,22,Botica,El Rosedal,519.2,59.2,153.5,osrm,True
+alimentador,Norte/LaEnsenada,2,22,23,El Rosedal,Las Granadas,45.1,4.0,31.6,osrm,True
+alimentador,Norte/LaEnsenada,2,23,25,Las Granadas,Parque Los Portales,1043.7,132.8,288.4,osrm,True
+alimentador,Norte/LaEnsenada,2,25,26,Parque Los Portales,Calle 2,239.5,23.0,81.6,osrm,True
+alimentador,Norte/LaEnsenada,2,26,27,Calle 2,Honradez,331.7,29.9,105.3,osrm,True
+alimentador,Norte/LaEnsenada,2,27,28,Honradez,Los Próceres,229.0,22.6,78.9,osrm,True
+alimentador,Norte/LaEnsenada,2,28,29,Los Próceres,Los Portales,1061.0,93.0,292.8,osrm,True
+alimentador,Norte/LaEnsenada,2,29,30,Los Portales,2 de Octubre,489.2,47.5,145.8,osrm,True
+alimentador,Norte/LaEnsenada,2,30,31,2 de Octubre,Los Rosales,1168.3,106.1,320.4,osrm,True
+alimentador,Norte/LaEnsenada,2,31,32,Los Rosales,San Martín,351.9,40.1,110.5,osrm,True
+alimentador,Norte/LaEnsenada,2,32,33,San Martín,Central,554.8,47.5,162.7,osrm,True
+alimentador,Norte/LaEnsenada,2,33,34,Central,Santa Elvira,390.3,41.8,120.4,osrm,True
+alimentador,Norte/LaEnsenada,2,34,35,Santa Elvira,Universitaria,2639.2,246.8,698.7,osrm,True
+alimentador,Norte/LaEnsenada,2,35,36,Universitaria,Tres Postes,969.7,73.8,269.4,osrm,True
+alimentador,Norte/LaEnsenada,2,36,37,Tres Postes,Marañón,174.0,9.8,64.7,osrm,True
+alimentador,Norte/LaEnsenada,2,37,38,Marañón,Hospital Los Olivos,1391.8,123.7,377.9,osrm,True
+alimentador,Norte/LosAlisos,1,1,3,Maracuyá,Las Palmeras,2939.5,263.4,775.9,osrm,True
+alimentador,Norte/LosAlisos,1,3,4,Las Palmeras,El Naranjal,863.1,99.5,241.9,osrm,True
+alimentador,Norte/LosAlisos,1,4,5,El Naranjal,Universitaria,1354.2,123.4,368.2,osrm,True
+alimentador,Norte/LosAlisos,1,5,6,Universitaria,Girasoles,1052.0,88.8,290.5,osrm,True
+alimentador,Norte/LosAlisos,1,6,7,Girasoles,Huandoy,357.0,32.0,111.8,osrm,True
+alimentador,Norte/LosAlisos,1,7,8,Huandoy,Las Malvas,462.7,41.3,139.0,osrm,True
+alimentador,Norte/LosAlisos,1,8,9,Las Malvas,Avenida C,550.7,61.0,161.6,osrm,True
+alimentador,Norte/LosAlisos,2,9,10,Avenida C,El Rosario,414.0,37.3,126.5,osrm,True
+alimentador,Norte/LosAlisos,2,10,11,El Rosario,Huandoy,504.2,45.5,149.7,osrm,True
+alimentador,Norte/LosAlisos,2,11,12,Huandoy,Avenida A,341.0,25.9,107.7,osrm,True
+alimentador,Norte/LosAlisos,2,12,13,Avenida A,Universitaria,1657.2,158.1,446.1,osrm,True
+alimentador,Norte/LosAlisos,2,13,14,Universitaria,El Naranjal,1250.0,108.4,341.4,osrm,True
+alimentador,Norte/LosAlisos,2,14,15,El Naranjal,Las Palmeras,474.9,39.3,142.1,osrm,True
+alimentador,Norte/LosAlisos,2,15,17,Las Palmeras,Maracuyá,1829.1,174.6,490.3,osrm,True
+alimentador,Norte/LosOlivos,1,1,2,Jade,Calle 9,225.0,25.2,77.9,osrm,True
+alimentador,Norte/LosOlivos,1,2,3,Calle 9,Calle 3,248.5,27.8,83.9,osrm,True
+alimentador,Norte/LosOlivos,1,3,4,Calle 3,Avenida B,414.6,46.4,126.6,osrm,True
+alimentador,Norte/LosOlivos,1,4,5,Avenida B,Santa Rosa,436.6,49.3,132.3,osrm,True
+alimentador,Norte/LosOlivos,1,5,6,Santa Rosa,Calle 2,542.6,49.8,159.5,osrm,True
+alimentador,Norte/LosOlivos,2,7,8,Canta,Santa Rosa,525.1,52.0,155.0,osrm,True
+alimentador,Norte/LosOlivos,2,8,9,Santa Rosa,Avenida B,464.3,51.5,139.4,osrm,True
+alimentador,Norte/LosOlivos,2,9,10,Avenida B,Kodak,419.1,46.9,127.8,osrm,True
+alimentador,Norte/LosOlivos,2,10,11,Kodak,Calle 9,298.7,33.6,96.8,osrm,True
+alimentador,Norte/LosOlivos,2,11,12,Calle 9,Jade,225.0,25.2,77.9,osrm,True
+alimentador,Norte/MilagroDeJesus,1,1,2,Politécnico,Cueto Fernandini,555.5,86.2,162.8,osrm,True
+alimentador,Norte/MilagroDeJesus,1,2,3,Cueto Fernandini,Santa Rosa,1777.6,196.2,477.1,osrm,True
+alimentador,Norte/MilagroDeJesus,1,3,4,Santa Rosa,Banco de La Nación,362.4,44.0,113.2,osrm,True
+alimentador,Norte/MilagroDeJesus,1,4,5,Banco de La Nación,Belaunde,473.9,37.7,141.9,osrm,True
+alimentador,Norte/MilagroDeJesus,1,5,6,Belaunde,Mercado Chacra Cerro,519.5,40.0,153.6,osrm,True
+alimentador,Norte/MilagroDeJesus,1,6,7,Mercado Chacra Cerro,La Pascana,721.9,82.5,205.6,osrm,True
+alimentador,Norte/MilagroDeJesus,1,7,8,La Pascana,Cáceres (Jamaica),525.0,54.3,155.0,osrm,True
+alimentador,Norte/MilagroDeJesus,1,8,9,Cáceres (Jamaica),Miguel Grau,1501.4,131.8,406.1,osrm,True
+alimentador,Norte/MilagroDeJesus,1,9,10,Miguel Grau,Francisco Bolognesi,502.5,61.7,149.2,osrm,True
+alimentador,Norte/MilagroDeJesus,1,10,11,Francisco Bolognesi,Fe y Alegría,1517.9,142.5,410.3,osrm,True
+alimentador,Norte/MilagroDeJesus,1,11,12,Fe y Alegría,José Olaya,541.0,77.0,159.1,osrm,True
+alimentador,Norte/MilagroDeJesus,1,12,13,José Olaya,Sánchez Cerro,316.7,28.4,101.4,osrm,True
+alimentador,Norte/MilagroDeJesus,1,13,14,Sánchez Cerro,Huascarán,312.9,30.4,100.5,osrm,True
+alimentador,Norte/MilagroDeJesus,1,14,15,Huascarán,Julio C. Tello,305.0,36.0,98.4,osrm,True
+alimentador,Norte/MilagroDeJesus,1,15,16,Julio C. Tello,Cañete,288.9,42.3,94.3,osrm,True
+alimentador,Norte/MilagroDeJesus,1,16,17,Cañete,Santa Rosa,236.9,22.9,80.9,osrm,True
+alimentador,Norte/MilagroDeJesus,1,17,18,Santa Rosa,San Pedro,272.0,27.5,89.9,osrm,True
+alimentador,Norte/MilagroDeJesus,2,18,19,San Pedro,San Miguel,162.7,24.2,61.8,osrm,True
+alimentador,Norte/MilagroDeJesus,2,19,20,San Miguel,Santa Clara,174.1,17.9,64.8,osrm,True
+alimentador,Norte/MilagroDeJesus,2,20,21,Santa Clara,Arnaldo Márquez,249.4,25.2,84.1,osrm,True
+alimentador,Norte/MilagroDeJesus,2,21,22,Arnaldo Márquez,Revolución,188.4,21.2,68.4,osrm,True
+alimentador,Norte/MilagroDeJesus,2,22,23,Revolución,La Mar,359.6,38.8,112.5,osrm,True
+alimentador,Norte/MilagroDeJesus,2,23,24,La Mar,Sánchez Cerro,521.9,72.4,154.2,osrm,True
+alimentador,Norte/MilagroDeJesus,2,24,25,Sánchez Cerro,Jorge Chávez,405.9,50.1,124.4,osrm,True
+alimentador,Norte/MilagroDeJesus,2,25,26,Jorge Chávez,Fe y Alegría,415.6,41.6,126.9,osrm,True
+alimentador,Norte/MilagroDeJesus,2,26,27,Fe y Alegría,Grifo Año Nuevo,1359.6,113.2,369.6,osrm,True
+alimentador,Norte/MilagroDeJesus,2,27,28,Grifo Año Nuevo,Miguel Grau (Velasco),577.5,67.1,168.5,osrm,True
+alimentador,Norte/MilagroDeJesus,2,28,29,Miguel Grau (Velasco),Jamaica,1442.0,125.4,390.8,osrm,True
+alimentador,Norte/MilagroDeJesus,2,29,30,Jamaica,La Pascana,735.7,110.2,209.2,osrm,True
+alimentador,Norte/MilagroDeJesus,2,30,31,La Pascana,Mercado Chacra Cerro,1939.4,190.2,518.7,osrm,True
+alimentador,Norte/MilagroDeJesus,2,31,32,Mercado Chacra Cerro,Banco de La Nación,2642.9,241.4,699.6,osrm,True
+alimentador,Norte/MilagroDeJesus,2,32,33,Banco de La Nación,Reniec,1288.3,109.1,351.3,osrm,True
+alimentador,Norte/MilagroDeJesus,2,33,34,Reniec,Mega 80,1817.4,204.4,487.3,osrm,True
+alimentador,Norte/MilagroDeJesus,2,34,35,Mega 80,Politécnico,3510.0,311.2,922.6,osrm,False
+alimentador,Norte/Naranjal,1,1,2,Terminal Naranjal,Marcará,2627.1,257.6,695.5,osrm,True
+alimentador,Norte/Naranjal,1,2,3,Marcará,Las Palmeras,323.7,36.4,103.2,osrm,True
+alimentador,Norte/Naranjal,1,3,4,Las Palmeras,Universitaria,668.3,72.9,191.8,osrm,True
+alimentador,Norte/Naranjal,1,4,5,Universitaria,Huandoy,1411.4,152.0,382.9,osrm,True
+alimentador,Norte/Naranjal,1,5,6,Huandoy,Portales de Naranjal,414.1,34.3,126.5,osrm,True
+alimentador,Norte/Naranjal,1,6,7,Portales de Naranjal,Jircan,1199.9,117.4,328.5,osrm,True
+alimentador,Norte/Naranjal,1,7,8,Jircan,Las Américas,674.7,101.9,193.5,osrm,True
+alimentador,Norte/Naranjal,1,8,9,Las Américas,Pacasmayo,979.6,127.0,271.9,osrm,True
+alimentador,Norte/Naranjal,1,9,10,Pacasmayo,Central,668.0,79.0,191.8,osrm,True
+alimentador,Norte/Naranjal,1,10,11,Central,Paramonga,505.5,66.0,150.0,osrm,True
+alimentador,Norte/Naranjal,2,11,12,Paramonga,Central,1127.0,111.8,309.8,osrm,True
+alimentador,Norte/Naranjal,2,12,13,Central,Pacasmayo,1114.3,121.9,306.5,osrm,True
+alimentador,Norte/Naranjal,2,13,14,Pacasmayo,Las Américas,822.0,96.5,231.4,osrm,True
+alimentador,Norte/Naranjal,2,14,15,Las Américas,Jircan,1450.2,139.2,392.9,osrm,True
+alimentador,Norte/Naranjal,2,15,16,Jircan,Portales de Naranjal,1595.2,152.1,430.2,osrm,True
+alimentador,Norte/Naranjal,2,16,17,Portales de Naranjal,Huandoy,988.8,76.0,274.3,osrm,True
+alimentador,Norte/Naranjal,2,17,18,Huandoy,Universitaria,929.4,96.8,259.0,osrm,True
+alimentador,Norte/Naranjal,2,18,19,Universitaria,Las Palmeras,995.0,134.4,275.9,osrm,True
+alimentador,Norte/Naranjal,2,19,20,Las Palmeras,Marcara,745.7,99.3,211.8,osrm,True
+alimentador,Norte/Naranjal,2,20,21,Marcara,Terminal Naranjal,1087.1,119.9,299.5,osrm,True
+alimentador,Norte/Payet,1,1,2,Huáscar,Calle 3,698.2,91.7,199.5,osrm,True
+alimentador,Norte/Payet,1,2,3,Calle 3,Río Sapi,696.7,88.9,199.2,osrm,True
+alimentador,Norte/Payet,1,3,4,Río Sapi,Antisuyo,677.5,76.2,194.2,osrm,True
+alimentador,Norte/Payet,1,4,5,Antisuyo,J. G. Condorcanqui,143.1,25.0,56.8,osrm,True
+alimentador,Norte/Payet,1,5,6,J. G. Condorcanqui,Posta,527.9,58.0,155.7,osrm,True
+alimentador,Norte/Payet,1,6,7,Posta,Progreso,309.7,32.1,99.6,osrm,True
+alimentador,Norte/Payet,1,7,8,Progreso,Alca,272.6,17.8,90.1,osrm,True
+alimentador,Norte/Payet,1,8,9,Alca,Real Felipe,532.7,55.8,157.0,osrm,True
+alimentador,Norte/Payet,1,9,10,Real Felipe,4 de Noviembre,165.1,24.9,62.5,osrm,True
+alimentador,Norte/Payet,2,10,11,4 de Noviembre,José Olaya,183.4,23.0,67.2,osrm,True
+alimentador,Norte/Payet,2,11,12,José Olaya,Huaytapampa,561.5,55.9,164.4,osrm,True
+alimentador,Norte/Payet,2,12,13,Huaytapampa,Progreso,579.5,49.4,169.0,osrm,True
+alimentador,Norte/Payet,2,13,14,Progreso,Posta,749.8,72.6,212.8,osrm,True
+alimentador,Norte/Payet,2,14,15,Posta,Calle Marco,359.2,43.2,112.4,osrm,True
+alimentador,Norte/Payet,2,15,16,Calle Marco,Calle 17,307.2,34.6,99.0,osrm,True
+alimentador,Norte/Payet,2,16,17,Calle 17,Huamachuco,359.3,40.5,112.4,osrm,True
+alimentador,Norte/Payet,2,17,18,Huamachuco,Calle 1,550.2,72.2,161.5,osrm,True
+alimentador,Norte/Payet,2,18,19,Calle 1,Túpac Amaru,921.3,116.7,256.9,osrm,True
+alimentador,Norte/PuentePiedra,1,2,3,Prolima,Acobamba,557.4,43.6,163.3,osrm,True
+alimentador,Norte/PuentePiedra,1,3,4,Acobamba,Shangri-la,1079.3,76.9,297.5,osrm,True
+alimentador,Norte/PuentePiedra,1,4,5,Shangri-la,Tres Ruedas(domingos) (*),1558.6,100.3,420.8,osrm,True
+alimentador,Norte/PuentePiedra,1,5,6,Tres Ruedas(domingos) (*),Establo,1180.8,80.5,323.6,osrm,True
+alimentador,Norte/PuentePiedra,1,6,7,Establo,Famesa,538.3,60.5,158.4,osrm,True
+alimentador,Norte/PuentePiedra,1,7,8,Famesa,Rosa Luz,560.3,48.8,164.1,osrm,True
+alimentador,Norte/PuentePiedra,1,8,10,Rosa Luz,Tottus,5151.6,366.0,1344.7,osrm,False
+alimentador,Norte/PuentePiedra,2,11,13,Tottus,Rosa Luz,4876.8,332.8,1274.0,osrm,False
+alimentador,Norte/PuentePiedra,2,13,14,Rosa Luz,Famesa,2309.6,158.8,613.9,osrm,True
+alimentador,Norte/PuentePiedra,2,14,15,Famesa,Establo,681.0,45.1,195.1,osrm,True
+alimentador,Norte/PuentePiedra,2,15,16,Establo,Tres Ruedas(domingos) (*),1433.4,105.2,388.6,osrm,True
+alimentador,Norte/PuentePiedra,2,16,17,Tres Ruedas(domingos) (*),Shangri-la,3819.3,319.8,1002.1,osrm,False
+alimentador,Norte/PuentePiedra,2,17,18,Shangri-la,Acobamba,4003.5,293.7,1049.5,osrm,False
+alimentador,Norte/PuentePiedra,2,18,19,Acobamba,Prolima,1154.9,104.3,317.0,osrm,True
+alimentador,Norte/PuentePiedra,2,19,20,Prolima,Primera de Pro,1682.8,121.3,452.7,osrm,True
+alimentador,Norte/Puno,1,1,2,La Cincuenta,La Merced,816.2,89.2,229.9,osrm,True
+alimentador,Norte/Puno,1,2,3,La Merced,Politécnico,636.1,49.6,183.6,osrm,True
+alimentador,Norte/Puno,1,3,4,Politécnico,Cueto Fernandini,392.8,45.7,121.0,osrm,True
+alimentador,Norte/Puno,1,4,5,Cueto Fernandini,Correo,1784.0,225.7,478.7,osrm,True
+alimentador,Norte/Puno,1,5,6,Correo,España,1487.9,162.0,402.6,osrm,True
+alimentador,Norte/Puno,1,6,8,España,Lima,787.5,90.9,222.5,osrm,True
+alimentador,Norte/Puno,1,8,9,Lima,Piura,445.7,55.8,134.6,osrm,True
+alimentador,Norte/Puno,1,9,10,Piura,La Habana,459.9,58.8,138.3,osrm,True
+alimentador,Norte/Puno,1,10,11,La Habana,Progreso,448.4,64.8,135.3,osrm,True
+alimentador,Norte/Puno,1,11,12,Progreso,Vallejo,256.9,44.8,86.1,osrm,True
+alimentador,Norte/Puno,2,12,13,Vallejo,24 de Agosto,283.1,46.1,92.8,osrm,True
+alimentador,Norte/Puno,2,13,14,24 de Agosto,La Habana,484.6,74.4,144.6,osrm,True
+alimentador,Norte/Puno,2,14,15,La Habana,Piura,532.9,64.5,157.0,osrm,True
+alimentador,Norte/Puno,2,15,16,Piura,Lima,352.0,39.7,110.5,osrm,True
+alimentador,Norte/Puno,2,16,17,Lima,Túpac Amaru,361.2,40.8,112.9,osrm,True
+alimentador,Norte/Puno,2,17,18,Túpac Amaru,España,608.5,87.8,176.5,osrm,True
+alimentador,Norte/Puno,2,18,19,España,Correo,1172.3,133.0,321.4,osrm,True
+alimentador,Norte/Puno,2,19,20,Correo,Mega 80,342.1,38.7,108.0,osrm,True
+alimentador,Norte/Puno,2,20,21,Mega 80,Politécnico,3510.0,311.2,922.6,osrm,False
+alimentador,Norte/Puno,2,21,22,Politécnico,La Merced,656.6,51.2,188.8,osrm,True
+alimentador,Norte/Puno,2,22,23,La Merced,La Cincuenta,585.3,45.6,170.5,osrm,True
+alimentador,Norte/SantoDomingo,1,1,2,Terminal Naranjal,Calle 20,860.8,108.6,241.3,osrm,True
+alimentador,Norte/SantoDomingo,1,2,3,Calle 20,Calle 21,584.1,62.3,170.2,osrm,True
+alimentador,Norte/SantoDomingo,1,3,4,Calle 21,Maestro Peruano,494.8,50.1,147.2,osrm,True
+alimentador,Norte/SantoDomingo,1,4,5,Maestro Peruano,Arcoíris,526.4,50.8,155.4,osrm,True
+alimentador,Norte/SantoDomingo,1,5,6,Arcoíris,México,720.1,68.1,205.2,osrm,True
+alimentador,Norte/SantoDomingo,1,6,7,México,Busano,539.2,62.5,158.7,osrm,True
+alimentador,Norte/SantoDomingo,1,7,8,Busano,22 de Agosto,902.8,113.3,252.1,osrm,True
+alimentador,Norte/SantoDomingo,1,8,9,22 de Agosto,Seguro,468.1,74.6,140.4,osrm,True
+alimentador,Norte/SantoDomingo,1,9,10,Seguro,Bulevar,360.2,40.5,112.6,osrm,True
+alimentador,Norte/SantoDomingo,1,10,11,Bulevar,Belaunde,1645.1,183.5,443.0,osrm,True
+alimentador,Norte/SantoDomingo,1,11,12,Belaunde,Micaela Bastidas,2278.8,232.5,606.0,osrm,True
+alimentador,Norte/SantoDomingo,1,12,13,Micaela Bastidas,Jamaica,1905.3,218.4,509.9,osrm,True
+alimentador,Norte/SantoDomingo,1,13,14,Jamaica,Parque Sinchi Roca,3776.5,366.1,991.1,osrm,False
+alimentador,Norte/SantoDomingo,1,14,15,Parque Sinchi Roca,Sangarará,333.3,28.9,105.7,osrm,True
+alimentador,Norte/SantoDomingo,1,15,16,Sangarará,Los Incas,293.6,37.0,95.5,osrm,True
+alimentador,Norte/SantoDomingo,1,16,17,Los Incas,La Alborada,793.6,101.4,224.1,osrm,True
+alimentador,Norte/SantoDomingo,1,17,18,La Alborada,El Paraíso,366.8,41.2,114.3,osrm,True
+alimentador,Norte/SantoDomingo,1,18,19,El Paraíso,San Carlos,381.5,47.8,118.1,osrm,True
+alimentador,Norte/SantoDomingo,1,19,20,San Carlos,San Felipe,893.4,89.4,249.7,osrm,True
+alimentador,Norte/SantoDomingo,1,20,21,San Felipe,Condorcanqui,701.3,84.6,200.3,osrm,True
+alimentador,Norte/SantoDomingo,1,21,23,Condorcanqui,Chimpu Ocllo,882.6,65.1,247.0,osrm,True
+alimentador,Norte/SantoDomingo,1,23,24,Chimpu Ocllo,Mercado Frontera,546.5,54.5,160.5,osrm,True
+alimentador,Norte/SantoDomingo,1,24,25,Mercado Frontera,Chany,560.8,66.0,164.2,osrm,True
+alimentador,Norte/SantoDomingo,1,25,26,Chany,Paradero 39,1277.6,168.6,348.5,osrm,True
+alimentador,Norte/SantoDomingo,1,26,27,Paradero 39,Paradero Q,789.8,94.8,223.1,osrm,True
+alimentador,Norte/SantoDomingo,1,27,28,Paradero Q,Paradero U,330.8,35.3,105.1,osrm,True
+alimentador,Norte/SantoDomingo,2,27,28,Paradero U,Paradero Q,377.3,55.5,117.0,osrm,True
+alimentador,Norte/SantoDomingo,2,28,29,Paradero Q,Paradero 39,980.6,150.0,272.2,osrm,True
+alimentador,Norte/SantoDomingo,2,29,30,Paradero 39,Chany,1230.6,153.6,336.4,osrm,True
+alimentador,Norte/SantoDomingo,2,30,31,Chany,Mercado Frontera,477.1,57.5,142.7,osrm,True
+alimentador,Norte/SantoDomingo,2,31,32,Mercado Frontera,Chimpu Ocllo,617.0,72.4,178.7,osrm,True
+alimentador,Norte/SantoDomingo,2,32,34,Chimpu Ocllo,Condorcanqui,1921.5,180.4,514.1,osrm,True
+alimentador,Norte/SantoDomingo,2,34,35,Condorcanqui,San Felipe,861.3,92.2,241.5,osrm,True
+alimentador,Norte/SantoDomingo,2,35,36,San Felipe,San Carlos,836.1,99.0,235.0,osrm,True
+alimentador,Norte/SantoDomingo,2,36,37,San Carlos,El Paraíso,925.0,139.6,257.9,osrm,True
+alimentador,Norte/SantoDomingo,2,37,38,El Paraíso,La Alborada,981.8,139.8,272.5,osrm,True
+alimentador,Norte/SantoDomingo,2,38,39,La Alborada,Los Incas,4099.7,429.8,1074.2,osrm,False
+alimentador,Norte/SantoDomingo,2,39,40,Los Incas,Sangarará,3093.1,283.7,815.4,osrm,False
+alimentador,Norte/SantoDomingo,2,40,41,Sangarará,Parque Sinchi Roca,3031.3,282.5,799.5,osrm,False
+alimentador,Norte/SantoDomingo,2,41,42,Parque Sinchi Roca,Cáceres,3267.7,301.5,860.3,osrm,False
+alimentador,Norte/SantoDomingo,2,42,43,Cáceres,Micaela Bastidas,624.9,76.8,180.7,osrm,True
+alimentador,Norte/SantoDomingo,2,43,44,Micaela Bastidas,Belaunde,3339.3,339.3,878.7,osrm,False
+alimentador,Norte/SantoDomingo,2,44,45,Belaunde,Bulevar,1874.5,217.2,502.0,osrm,True
+alimentador,Norte/SantoDomingo,2,45,46,Bulevar,Seguro,883.8,129.6,247.3,osrm,True
+alimentador,Norte/SantoDomingo,2,46,47,Seguro,22 de Agosto,1553.8,173.0,419.5,osrm,True
+alimentador,Norte/SantoDomingo,2,47,48,22 de Agosto,Busano,1556.1,191.3,420.1,osrm,True
+alimentador,Norte/SantoDomingo,2,48,49,Busano,México,1210.5,149.9,331.3,osrm,True
+alimentador,Norte/SantoDomingo,2,49,50,México,Metropolitana,1539.1,177.9,415.8,osrm,True
+alimentador,Norte/SantoDomingo,2,50,54,Metropolitana,Terminal Naranjal,4174.3,338.3,1093.4,osrm,False
+alimentador,Norte/Tahuantinsuyo,1,1,2,Huáscar,Paracas,628.0,77.8,181.5,osrm,True
+alimentador,Norte/Tahuantinsuyo,1,2,3,Paracas,Cahuide,267.3,35.7,88.7,osrm,True
+alimentador,Norte/Tahuantinsuyo,1,3,4,Cahuide,Pisac,461.6,54.3,138.7,osrm,True
+alimentador,Norte/Tahuantinsuyo,1,4,5,Pisac,Quipaypampa,254.8,30.3,85.5,osrm,True
+alimentador,Norte/Tahuantinsuyo,1,5,6,Quipaypampa,Yauri,514.5,59.1,152.3,osrm,True
+alimentador,Norte/Tahuantinsuyo,1,6,7,Yauri,Vilcanota,283.7,38.2,93.0,osrm,True
+alimentador,Norte/Tahuantinsuyo,1,7,8,Vilcanota,Mascaypacha,400.0,52.0,122.9,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,9,10,Mascaypacha,Cusihuallar,296.7,36.6,96.3,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,10,11,Cusihuallar,Yanaoca,446.3,50.5,134.8,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,11,12,Yanaoca,Huatanay,443.6,47.0,134.1,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,12,13,Huatanay,Muquiyauyos,353.1,45.1,110.8,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,13,14,Muquiyauyos,Indoamérica,417.3,48.7,127.3,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,14,15,Indoamérica,Tiahuanaco,211.5,23.8,74.4,osrm,True
+alimentador,Norte/Tahuantinsuyo,2,15,16,Tiahuanaco,Túpac Amaru,686.5,84.8,196.5,osrm,True
+alimentador,Norte/Tungasuca,1,1,2,Calle 20,Calle 21,584.1,62.3,170.2,osrm,True
+alimentador,Norte/Tungasuca,1,2,3,Calle 21,Maestro Peruano,494.8,50.1,147.2,osrm,True
+alimentador,Norte/Tungasuca,1,3,4,Maestro Peruano,Arcoíris,526.4,50.8,155.4,osrm,True
+alimentador,Norte/Tungasuca,1,4,5,Arcoíris,México,720.1,68.1,205.2,osrm,True
+alimentador,Norte/Tungasuca,1,5,6,México,Busano,539.2,62.5,158.7,osrm,True
+alimentador,Norte/Tungasuca,1,6,7,Busano,22 de Agosto,902.8,113.3,252.1,osrm,True
+alimentador,Norte/Tungasuca,1,7,8,22 de Agosto,Seguro,2596.2,279.4,687.6,osrm,True
+alimentador,Norte/Tungasuca,1,8,9,Seguro,Bulevar,1011.9,138.6,280.2,osrm,True
+alimentador,Norte/Tungasuca,1,9,10,Bulevar,Belaunde,1645.1,183.5,443.0,osrm,True
+alimentador,Norte/Tungasuca,1,10,11,Belaunde,Micaela Bastidas,2278.8,232.5,606.0,osrm,True
+alimentador,Norte/Tungasuca,1,11,12,Micaela Bastidas,Jamaica,1905.3,218.4,509.9,osrm,True
+alimentador,Norte/Tungasuca,1,12,13,Jamaica,Parque Sinchi Roca,3776.5,366.1,991.1,osrm,False
+alimentador,Norte/Tungasuca,1,13,14,Parque Sinchi Roca,Sangarará,333.3,28.9,105.7,osrm,True
+alimentador,Norte/Tungasuca,1,14,15,Sangarará,Los Incas,293.6,37.0,95.5,osrm,True
+alimentador,Norte/Tungasuca,1,15,16,Los Incas,La Alborada,793.6,101.4,224.1,osrm,True
+alimentador,Norte/Tungasuca,1,16,17,La Alborada,El Paraíso,366.8,41.2,114.3,osrm,True
+alimentador,Norte/Tungasuca,1,17,18,El Paraíso,San Carlos,381.5,47.8,118.1,osrm,True
+alimentador,Norte/Tungasuca,1,18,19,San Carlos,San Felipe,893.4,89.4,249.7,osrm,True
+alimentador,Norte/Tungasuca,1,19,20,San Felipe,Condorcanqui,701.3,84.6,200.3,osrm,True
+alimentador,Norte/Tungasuca,1,20,21,Condorcanqui,Río Nepeña,185.2,12.0,67.6,osrm,True
+alimentador,Norte/Tungasuca,2,24,26,Parque Pimentel,San Felipe,1886.6,180.7,505.1,osrm,True
+alimentador,Norte/Tungasuca,2,26,27,San Felipe,San Carlos,1326.6,146.5,361.1,osrm,True
+alimentador,Norte/Tungasuca,2,27,28,San Carlos,El Paraíso,2381.9,298.5,632.5,osrm,True
+alimentador,Norte/Tungasuca,2,28,29,El Paraíso,La Alborada,981.8,139.8,272.5,osrm,True
+alimentador,Norte/Tungasuca,2,29,30,La Alborada,Los Incas,4099.7,429.8,1074.2,osrm,False
+alimentador,Norte/Tungasuca,2,30,31,Los Incas,Sangarará,3093.1,283.7,815.4,osrm,False
+alimentador,Norte/Tungasuca,2,31,32,Sangarará,Parque Sinchi Roca,3031.3,282.5,799.5,osrm,False
+alimentador,Norte/Tungasuca,2,32,33,Parque Sinchi Roca,Cáceres,3267.7,301.5,860.3,osrm,False
+alimentador,Norte/Tungasuca,2,33,34,Cáceres,Micaela Bastidas,624.9,76.8,180.7,osrm,True
+alimentador,Norte/Tungasuca,2,34,35,Micaela Bastidas,Belaunde,3339.3,339.3,878.7,osrm,False
+alimentador,Norte/Tungasuca,2,35,36,Belaunde,Bulevar,1874.5,217.2,502.0,osrm,True
+alimentador,Norte/Tungasuca,2,36,37,Bulevar,Seguro,883.8,129.6,247.3,osrm,True
+alimentador,Norte/Tungasuca,2,37,38,Seguro,22 de Agosto,1553.8,173.0,419.5,osrm,True
+alimentador,Norte/Tungasuca,2,38,39,22 de Agosto,Busano,1556.1,191.3,420.1,osrm,True
+alimentador,Norte/Tungasuca,2,39,40,Busano,México,1210.5,149.9,331.3,osrm,True
+alimentador,Norte/Tungasuca,2,40,41,México,Metropolitana,1167.3,149.8,320.2,osrm,True
+alimentador,Sur/America,1,1,2,Óvalo La Curva,Guardia Peruana,1150.7,125.8,315.9,osrm,True
+alimentador,Sur/America,1,2,3,Guardia Peruana,El Sol,990.7,104.4,274.8,osrm,True
+alimentador,Sur/America,1,3,4,El Sol,Paradero C,959.9,101.1,266.8,osrm,True
+alimentador,Sur/America,1,4,5,Paradero C,Los Naranjos,739.5,77.7,210.2,osrm,True
+alimentador,Sur/America,1,5,6,Los Naranjos,Calle 3,734.1,77.8,208.8,osrm,True
+alimentador,Sur/America,1,6,7,Calle 3,Velasco Alvarado,307.4,39.8,99.0,osrm,True
+alimentador,Sur/America,1,7,8,Velasco Alvarado,Santa Rosa,473.9,45.4,141.9,osrm,True
+alimentador,Sur/America,1,8,9,Santa Rosa,Mártir Olaya,142.4,22.2,56.6,osrm,True
+alimentador,Sur/America,1,9,10,Mártir Olaya,Mártires,431.5,41.5,131.0,osrm,True
+alimentador,Sur/America,1,10,11,Mártires,Unión,308.3,27.9,99.3,osrm,True
+alimentador,Sur/America,1,11,12,Unión,Panamericana,559.7,50.5,163.9,osrm,True
+alimentador,Sur/America,2,13,14,Paradero E,Unión,557.0,56.9,163.2,osrm,True
+alimentador,Sur/America,2,14,15,Unión,Mártires,308.3,27.9,99.3,osrm,True
+alimentador,Sur/America,2,15,16,Mártires,Micaela Bastidas,408.3,37.3,125.0,osrm,True
+alimentador,Sur/America,2,16,17,Micaela Bastidas,Unanue,345.1,35.1,108.7,osrm,True
+alimentador,Sur/America,2,17,18,Unanue,Velasco Alvarado,298.0,32.7,96.6,osrm,True
+alimentador,Sur/America,2,18,19,Velasco Alvarado,Vista Alegre,484.0,41.6,144.5,osrm,True
+alimentador,Sur/America,2,19,20,Vista Alegre,Los Naranjos,465.1,48.2,139.6,osrm,True
+alimentador,Sur/America,2,20,21,Los Naranjos,Paradero B,405.3,60.6,124.2,osrm,True
+alimentador,Sur/America,2,21,22,Paradero B,Los Meteoros,1279.9,145.5,349.1,osrm,True
+alimentador,Sur/America,2,22,23,Los Meteoros,Guardia Peruana,678.0,68.8,194.3,osrm,True
+alimentador,Sur/America,2,23,24,Guardia Peruana,Óvalo La Curva,748.0,80.2,212.3,osrm,True
+alimentador,Sur/CedrosDeVilla,1,1,2,Huaylas,Alameda Sur,888.3,92.4,248.4,osrm,True
+alimentador,Sur/CedrosDeVilla,1,2,3,Alameda Sur,Los Pinos,1299.9,132.8,354.3,osrm,True
+alimentador,Sur/CedrosDeVilla,1,3,4,Los Pinos,Plaza Vea,1237.2,116.0,338.1,osrm,True
+alimentador,Sur/CedrosDeVilla,1,4,5,Plaza Vea,Las Camelias,322.8,26.3,103.0,osrm,True
+alimentador,Sur/CedrosDeVilla,1,5,6,Las Camelias,Cedros de Villa,453.2,34.0,136.5,osrm,True
+alimentador,Sur/CedrosDeVilla,1,6,7,Cedros de Villa,Ballestas,775.0,68.9,219.3,osrm,True
+alimentador,Sur/CedrosDeVilla,1,7,8,Ballestas,Isla Española,0.0,0.0,20.0,osrm,True
+alimentador,Sur/CedrosDeVilla,2,8,9,Isla Española,Aruba,516.6,50.6,152.8,osrm,True
+alimentador,Sur/CedrosDeVilla,2,9,10,Aruba,Las Tortugas,630.1,75.6,182.0,osrm,True
+alimentador,Sur/CedrosDeVilla,2,10,11,Las Tortugas,Cedros de Villa,368.3,44.4,114.7,osrm,True
+alimentador,Sur/CedrosDeVilla,2,11,12,Cedros de Villa,San Lorenzo,519.8,40.8,153.7,osrm,True
+alimentador,Sur/CedrosDeVilla,2,12,13,San Lorenzo,Plaza Vea,309.0,27.2,99.5,osrm,True
+alimentador,Sur/CedrosDeVilla,2,13,14,Plaza Vea,Machupicchu,535.1,51.6,157.6,osrm,True
+alimentador,Sur/CedrosDeVilla,2,14,15,Machupicchu,10 de Noviembre,487.0,55.3,145.2,osrm,True
+alimentador,Sur/CedrosDeVilla,2,15,16,10 de Noviembre,Santa Anita,227.7,20.5,78.6,osrm,True
+alimentador,Sur/LosProceres,1,1,2,Calango,Guardia Peruana,1633.9,171.2,440.1,osrm,True
+alimentador,Sur/LosProceres,1,2,3,Guardia Peruana,El Sol,645.0,75.0,185.9,osrm,True
+alimentador,Sur/LosProceres,1,3,4,El Sol,Alipio Ponce,570.0,55.2,166.6,osrm,True
+alimentador,Sur/LosProceres,1,4,5,Alipio Ponce,Los Incas,294.8,30.7,95.8,osrm,True
+alimentador,Sur/LosProceres,1,5,6,Los Incas,Vista Alegre,648.4,75.2,186.7,osrm,True
+alimentador,Sur/LosProceres,1,6,8,Vista Alegre,Alcides Vigo,1386.9,154.8,376.6,osrm,True
+alimentador,Sur/LosProceres,1,8,9,Alcides Vigo,Las Crucetas,554.1,80.6,162.5,osrm,True
+alimentador,Sur/LosProceres,1,9,10,Las Crucetas,D. Tristan y Moscoso,595.3,69.6,173.1,osrm,True
+alimentador,Sur/LosProceres,2,11,12,Las Crucetas,Alcides Vigo,628.7,75.6,181.7,osrm,True
+alimentador,Sur/LosProceres,2,12,13,Alcides Vigo,Parque Villa Alegre,911.2,115.0,254.3,osrm,True
+alimentador,Sur/LosProceres,2,13,14,Parque Villa Alegre,Los Incas,1634.9,193.8,440.4,osrm,True
+alimentador,Sur/LosProceres,2,14,16,Los Incas,Los Meteoros,1202.5,129.6,329.2,osrm,True
+alimentador,Sur/LosProceres,2,16,17,Los Meteoros,Guardia Peruana,288.1,25.9,94.1,osrm,True
+alimentador,Sur/LosProceres,2,17,18,Guardia Peruana,Calango,494.5,62.2,147.2,osrm,True
+alimentador,Sur/LosProceres,2,18,19,Calango,Óvalo La Curva,1270.6,134.1,346.7,osrm,True
+alimentador,Sur/VillaElSalvador,1,3,4,Pantanos de Villa,Santa Rosa,1884.2,139.1,504.5,osrm,True
+alimentador,Sur/VillaElSalvador,1,4,5,Santa Rosa,Panamericana Sur,3846.1,278.4,1009.0,osrm,False
+alimentador,Sur/VillaElSalvador,1,5,6,Panamericana Sur,Almacenes,1699.0,132.9,456.9,osrm,True
+alimentador,Sur/VillaElSalvador,1,6,7,Almacenes,Villa Panamericana,814.5,80.8,229.4,osrm,True
+alimentador,Sur/VillaElSalvador,1,7,8,Villa Panamericana,Pastor Sevilla,497.1,47.3,147.8,osrm,True
+alimentador,Sur/VillaElSalvador,1,8,9,Pastor Sevilla,Micaela Bastidas,518.6,44.8,153.4,osrm,True
+alimentador,Sur/VillaElSalvador,1,9,11,Micaela Bastidas,Velasco Alvarado,1002.8,96.2,277.9,osrm,True
+alimentador,Sur/VillaElSalvador,1,11,12,Velasco Alvarado,César Vallejo,660.4,59.4,189.8,osrm,True
+alimentador,Sur/VillaElSalvador,1,12,13,César Vallejo,José Carlos Mariategui,865.2,77.9,242.5,osrm,True
+alimentador,Sur/VillaElSalvador,1,13,14,José Carlos Mariategui,200 Millas,1475.8,148.3,399.5,osrm,True
+alimentador,Sur/VillaElSalvador,1,14,15,200 Millas,Parque Zonal Huascar,1795.5,204.9,481.7,osrm,True
+alimentador,Sur/VillaElSalvador,2,16,17,José Carlos Mariategui,César Vallejo,1175.9,127.8,322.4,osrm,True
+alimentador,Sur/VillaElSalvador,2,17,18,César Vallejo,Velasco Alvarado,1054.7,135.2,291.2,osrm,True
+alimentador,Sur/VillaElSalvador,2,18,20,Velasco Alvarado,Micaela Bastidas,1500.8,163.1,405.9,osrm,True
+alimentador,Sur/VillaElSalvador,2,20,21,Micaela Bastidas,Pastor Sevilla,459.1,40.5,138.1,osrm,True
+alimentador,Sur/VillaElSalvador,2,21,22,Pastor Sevilla,Villa Panamericana,508.1,49.2,150.7,osrm,True
+alimentador,Sur/VillaElSalvador,2,22,23,Villa Panamericana,Almacenes,925.9,78.6,258.1,osrm,True
+alimentador,Sur/VillaElSalvador,2,23,24,Almacenes,Panamericana Sur,1717.6,143.1,461.7,osrm,True
+alimentador,Sur/VillaElSalvador,2,24,25,Panamericana Sur,Santa Rosa,1331.6,95.9,362.4,osrm,True
+alimentador,Sur/VillaElSalvador,2,25,26,Santa Rosa,Pantanos de Villa,723.0,40.6,205.9,osrm,True
+alimentador,Universidad/Trapiche,1,1,2,Estacion Universidad,Villasol,4899.3,353.7,1279.8,osrm,False
+alimentador,Universidad/Trapiche,1,2,3,Villasol,Yanbal,2208.2,229.5,587.8,osrm,True
+alimentador,Universidad/Trapiche,1,3,5,Yanbal,El Alamo,5173.4,419.8,1350.3,osrm,False
+alimentador,Universidad/Trapiche,1,5,6,El Alamo,Botica,648.7,54.0,186.8,osrm,True
+alimentador,Universidad/Trapiche,1,6,7,Botica,El Pinar,600.7,45.2,174.5,osrm,True
+alimentador,Universidad/Trapiche,1,7,8,El Pinar,Kiosko,520.6,39.1,153.9,osrm,True
+alimentador,Universidad/Trapiche,1,8,9,Kiosko,Los Incas,707.0,58.4,201.8,osrm,True
+alimentador,Universidad/Trapiche,1,9,11,Los Incas,Oficina,1504.4,121.8,406.8,osrm,True
+alimentador,Universidad/Trapiche,1,11,12,Oficina,San Felipe,293.0,22.0,95.3,osrm,True
+alimentador,Universidad/Trapiche,1,12,13,San Felipe,Remanso,367.2,20.9,114.4,osrm,True
+alimentador,Universidad/Trapiche,1,13,14,Remanso,Peycar,356.7,27.9,111.7,osrm,True
+alimentador,Universidad/Trapiche,2,14,15,Peycar,Remanso,352.4,36.5,110.6,osrm,True
+alimentador,Universidad/Trapiche,2,15,16,Remanso,San Felipe,335.2,18.7,106.2,osrm,True
+alimentador,Universidad/Trapiche,2,16,17,San Felipe,Oficina,308.9,22.6,99.4,osrm,True
+alimentador,Universidad/Trapiche,2,17,19,Oficina,Los Incas,1589.1,128.5,428.6,osrm,True
+alimentador,Universidad/Trapiche,2,19,20,Los Incas,Kiosko,726.4,67.7,206.8,osrm,True
+alimentador,Universidad/Trapiche,2,20,21,Kiosko,El Pinar,816.6,73.8,230.0,osrm,True
+alimentador,Universidad/Trapiche,2,21,22,El Pinar,Botica,780.6,82.1,220.7,osrm,True
+alimentador,Universidad/Trapiche,2,22,23,Botica,El Alamo,657.9,71.8,189.2,osrm,True
+alimentador,Universidad/Trapiche,2,23,24,El Alamo,Segunda de Pro,862.7,86.6,241.8,osrm,True
+alimentador,Universidad/Trapiche,2,24,25,Segunda de Pro,La Amistad,284.4,17.1,93.1,osrm,True
+alimentador,Universidad/Trapiche,2,25,26,La Amistad,Plaza Vea,2008.9,151.1,536.6,osrm,True
+alimentador,Universidad/Trapiche,2,26,27,Plaza Vea,Yanbal,2388.6,195.0,634.2,osrm,True
+alimentador,Universidad/Trapiche,2,27,28,Yanbal,Villasol,1744.7,193.1,468.6,osrm,True
+alimentador,Universidad/Trapiche,2,28,29,Villasol,Estacion Universidad,1511.0,106.2,408.5,osrm,True
+corredor,201,,7,9,HUAROCHIRI,LOS INGENIEROS,1096.6,91.1,283.2,osrm,True
+corredor,201,,9,31,LOS INGENIEROS,PARQUE DE LAS LEYENDAS,16529.6,1305.7,3987.1,osrm,False
+corredor,201,,31,36,PARQUE DE LAS LEYENDAS,PARQUE DE LAS LEYENDAS,501.0,91.4,140.2,osrm,True
+corredor,201,,36,59,PARQUE DE LAS LEYENDAS,UNIVERSIDAD DE LIMA,13697.5,1133.5,3307.4,osrm,False
+corredor,201,,59,61,UNIVERSIDAD DE LIMA,LOS FRUTALES,1422.0,117.0,361.3,osrm,True
+corredor,201,,61,63,LOS FRUTALES,LOS INGENIEROS,1728.7,133.0,434.9,osrm,True
+corredor,201,,63,65,LOS INGENIEROS,HUAROCHIRI,1320.3,116.4,336.9,osrm,True
+corredor,201,1,1,2,CALLE 66,VENEZUELA,769.4,73.3,204.7,osrm,True
+corredor,201,1,2,3,VENEZUELA,OVALO LA PERLA,1031.1,106.1,267.5,osrm,True
+corredor,201,1,3,4,OVALO LA PERLA,BOMBEROS,691.9,75.1,186.1,osrm,True
+corredor,201,1,4,5,BOMBEROS,HAYA DE LA TORRE,1127.0,130.0,290.5,osrm,True
+corredor,201,1,5,6,HAYA DE LA TORRE,BASE NAVAL,487.4,40.5,137.0,osrm,True
+corredor,201,1,6,7,BASE NAVAL,LOS INSURGENTES,146.9,10.9,55.3,osrm,True
+corredor,201,1,7,8,LOS INSURGENTES,CANAMELARES,348.3,32.2,103.6,osrm,True
+corredor,201,1,8,9,CANAMELARES,HONDA,389.1,31.2,113.4,osrm,True
+corredor,201,1,9,10,HONDA,RAFAEL ESCARDO,716.0,58.3,191.8,osrm,True
+corredor,201,1,10,12,RAFAEL ESCARDO,UNIVERSITARIA,1286.7,114.6,328.8,osrm,True
+corredor,201,1,12,13,UNIVERSITARIA,BARTOLOME HERRERA,964.0,78.4,251.4,osrm,True
+corredor,201,1,13,14,BARTOLOME HERRERA,SUCRE,697.5,56.2,187.4,osrm,True
+corredor,201,1,14,15,SUCRE,HOSPITAL MILITAR,1524.2,166.3,385.8,osrm,True
+corredor,201,1,15,16,HOSPITAL MILITAR,GREGORIO ESCOBEDO,330.3,30.6,99.3,osrm,True
+corredor,201,1,16,17,GREGORIO ESCOBEDO,SALAVERRY,578.7,53.9,158.9,osrm,True
+corredor,201,1,17,18,SALAVERRY,JAVIER PRADO,391.8,37.3,114.0,osrm,True
+corredor,201,1,18,19,JAVIER PRADO,LAS FLORES,431.0,41.8,123.4,osrm,True
+corredor,201,1,19,20,LAS FLORES,LOS CEDROS,366.5,34.9,108.0,osrm,True
+corredor,201,1,20,21,LOS CEDROS,LAS PALMERAS,1940.7,214.6,485.8,osrm,True
+corredor,201,1,21,22,LAS PALMERAS,ARENALES,1290.0,131.5,329.6,osrm,True
+corredor,201,1,22,23,ARENALES,PETIT THOUARS,219.5,22.9,72.7,osrm,True
+corredor,201,1,23,24,PETIT THOUARS,PARODI,820.6,103.3,216.9,osrm,True
+corredor,201,1,24,25,PARODI,ORQUIDEAS,861.0,95.1,226.6,osrm,True
+corredor,201,1,25,26,ORQUIDEAS,MASIAS,1460.0,124.4,370.4,osrm,True
+corredor,201,1,26,27,MASIAS,CLINICA RICARDO PALMA,1256.5,105.5,321.6,osrm,True
+corredor,201,1,27,28,CLINICA RICARDO PALMA,GUARDIA CIVIL,1309.2,140.4,334.2,osrm,True
+corredor,201,1,28,29,GUARDIA CIVIL,AVIACION,352.8,28.5,104.7,osrm,True
+corredor,201,1,29,30,AVIACION,SAN LUIS,850.7,65.8,224.2,osrm,True
+corredor,201,1,30,31,SAN LUIS,ROSA TORO,438.1,34.8,125.1,osrm,True
+corredor,201,1,31,32,ROSA TORO,CIRCUNVALACION,2300.9,157.5,572.2,osrm,True
+corredor,201,1,32,33,CIRCUNVALACION,JOCKEY,2095.5,213.3,522.9,osrm,True
+corredor,201,1,33,35,JOCKEY,CAMACHO,1326.9,121.6,338.5,osrm,True
+corredor,201,1,35,36,CAMACHO,LOS FRUTALES,894.3,86.5,234.6,osrm,True
+corredor,201,1,36,37,LOS FRUTALES,LA MOLINA,1916.9,210.8,480.1,osrm,True
+corredor,201,1,37,39,LA MOLINA,FLORA TRISTAN,1505.0,120.4,381.2,osrm,True
+corredor,201,1,39,41,FLORA TRISTAN,MONUMENTAL,1695.3,146.5,426.9,osrm,True
+corredor,201,1,41,42,MONUMENTAL,PARIS,2723.4,209.5,673.6,osrm,True
+corredor,201,1,42,43,PARIS,VISTA ALEGRE,746.0,58.2,199.0,osrm,True
+corredor,201,1,43,44,VISTA ALEGRE,HOLANDA,1991.1,168.2,497.9,osrm,True
+corredor,201,1,44,45,HOLANDA,BERLIN,561.6,44.4,154.8,osrm,True
+corredor,201,1,45,46,BERLIN,CERES,763.9,71.0,203.3,osrm,True
+corredor,201,2,1,2,CERES,BERLIN,522.2,39.2,145.3,osrm,True
+corredor,201,2,2,3,BERLIN,HOLANDA,535.8,42.2,148.6,osrm,True
+corredor,201,2,3,4,HOLANDA,VISTA ALEGRE,491.8,38.8,138.0,osrm,True
+corredor,201,2,4,5,VISTA ALEGRE,PARIS,786.9,61.7,208.9,osrm,True
+corredor,201,2,5,6,PARIS,MONUMENTAL,2112.7,210.4,527.0,osrm,True
+corredor,201,2,6,8,MONUMENTAL,FLORA TRISTAN,1507.5,136.1,381.8,osrm,True
+corredor,201,2,8,10,FLORA TRISTAN,LA MOLINA,1383.2,111.9,352.0,osrm,True
+corredor,201,2,10,12,LA MOLINA,CAMACHO,1713.7,138.1,431.3,osrm,True
+corredor,201,2,12,13,CAMACHO,CLINICA,248.3,18.6,79.6,osrm,True
+corredor,201,2,13,14,CLINICA,LA FLORESTA,477.1,39.2,134.5,osrm,True
+corredor,201,2,14,15,LA FLORESTA,EVITAMIENTO,854.6,52.9,225.1,osrm,True
+corredor,201,2,15,16,EVITAMIENTO,CIRCUNVALACION,3101.6,210.3,764.4,osrm,False
+corredor,201,2,16,17,CIRCUNVALACION,J. BORJA,1855.8,156.3,465.4,osrm,True
+corredor,201,2,17,18,J. BORJA,ROSA TORO,361.9,32.3,106.9,osrm,True
+corredor,201,2,18,19,ROSA TORO,SAN LUIS,424.0,32.0,121.8,osrm,True
+corredor,201,2,19,20,SAN LUIS,AVIACION,769.2,60.1,204.6,osrm,True
+corredor,201,2,20,21,AVIACION,GUARDIA CIVIL,472.8,39.4,133.5,osrm,True
+corredor,201,2,21,22,GUARDIA CIVIL,QUIÑONES,1411.4,126.9,358.7,osrm,True
+corredor,201,2,22,23,QUIÑONES,MASIAS,1384.9,122.7,352.4,osrm,True
+corredor,201,2,23,24,MASIAS,ORQUIDEAS,279.4,25.0,87.1,osrm,True
+corredor,201,2,24,25,ORQUIDEAS,PETIT THOUARS,446.8,35.5,127.2,osrm,True
+corredor,201,2,25,26,PETIT THOUARS,ARENALES,205.9,19.4,69.4,osrm,True
+corredor,201,2,26,27,ARENALES,LAS PALMERAS,1433.3,147.4,364.0,osrm,True
+corredor,201,2,27,28,LAS PALMERAS,LOS NOGALES,1408.1,151.6,357.9,osrm,True
+corredor,201,2,28,29,LOS NOGALES,PERSHING,486.0,46.0,136.6,osrm,True
+corredor,201,2,29,30,PERSHING,SALAVERRY,466.0,44.1,131.8,osrm,True
+corredor,201,2,30,31,SALAVERRY,GREGORIO ESCOBEDO,573.9,53.6,157.7,osrm,True
+corredor,201,2,31,32,GREGORIO ESCOBEDO,HOSPITAL MILITAR,450.1,42.5,128.0,osrm,True
+corredor,201,2,32,33,HOSPITAL MILITAR,SUCRE,888.1,74.2,233.1,osrm,True
+corredor,201,2,33,34,SUCRE,BARTOLOME HERRERA,713.5,59.5,191.2,osrm,True
+corredor,201,2,34,35,BARTOLOME HERRERA,UNIVERSITARIA,893.5,70.0,234.4,osrm,True
+corredor,201,2,35,36,UNIVERSITARIA,PLAZA SAN MIGUEL,250.4,24.5,80.1,osrm,True
+corredor,201,2,36,38,PLAZA SAN MIGUEL,RAFAEL ESCARDO,1090.2,95.0,281.6,osrm,True
+corredor,201,2,38,39,RAFAEL ESCARDO,FAUCETT,900.2,71.6,236.0,osrm,True
+corredor,201,2,39,40,FAUCETT,JOSE MARTI,234.6,17.2,76.3,osrm,True
+corredor,201,2,40,41,JOSE MARTI,LOS INSURGENTES,214.5,18.1,71.5,osrm,True
+corredor,201,2,41,42,LOS INSURGENTES,HAYA DE LA TORRE,568.1,48.7,156.3,osrm,True
+corredor,201,2,42,43,HAYA DE LA TORRE,LOPEZ ALBUJAR,330.7,28.8,99.4,osrm,True
+corredor,201,2,43,44,LOPEZ ALBUJAR,BOMBEROS,248.4,18.6,79.6,osrm,True
+corredor,201,2,44,45,BOMBEROS,OVALO LA PERLA,292.8,21.8,90.3,osrm,True
+corredor,201,2,45,46,OVALO LA PERLA,VENEZUELA,395.7,36.9,115.0,osrm,True
+corredor,204,,4,23,MADRESELVA,UNIVERSIDAD DE LIMA,13794.7,1035.6,3330.7,osrm,False
+corredor,204,,23,55,UNIVERSIDAD DE LIMA,LAS PALMERAS,7931.2,574.2,1923.5,osrm,False
+corredor,204,,55,73,LAS PALMERAS,HUAROCHIRI,13528.0,1054.5,3266.7,osrm,False
+corredor,204,,73,75,HUAROCHIRI,LOS INGENIEROS,1096.6,91.1,283.2,osrm,True
+corredor,204,,75,77,LOS INGENIEROS,LA FLORESTA,3279.2,263.1,807.0,osrm,False
+corredor,204,,77,93,LA FLORESTA,BRASIL,11201.2,904.1,2708.3,osrm,False
+corredor,204,,93,97,BRASIL,HUERTOS,27580.4,2174.0,6639.3,osrm,False
+corredor,204,,97,110,HUERTOS,OV. SAN JUAN BAUTISTA,5219.4,404.2,1272.7,osrm,False
+corredor,204,,110,127,OV. SAN JUAN BAUTISTA,CARLOS BONDY,24339.2,1948.1,5861.4,osrm,False
+corredor,204,1,1,2,HUERTOS,GRIFO,443.8,44.3,126.5,osrm,True
+corredor,204,1,2,3,GRIFO,CA. 62,349.9,26.5,104.0,osrm,True
+corredor,204,1,3,4,CA. 62,TRES MARIAS,331.5,24.7,99.6,osrm,True
+corredor,204,1,4,5,TRES MARIAS,CA.39,517.6,38.8,144.2,osrm,True
+corredor,204,1,5,6,CA.39,UNION,273.4,20.5,85.6,osrm,True
+corredor,204,1,6,7,UNION,NARANJOS,412.0,30.9,118.9,osrm,True
+corredor,204,1,7,8,NARANJOS,UNO,415.7,31.2,119.8,osrm,True
+corredor,204,1,8,9,UNO,SAN CRISTOBAL,661.4,47.2,178.7,osrm,True
+corredor,204,1,9,10,SAN CRISTOBAL,ECOPARQUE,514.5,41.1,143.5,osrm,True
+corredor,204,1,10,11,ECOPARQUE,CA. 10,1475.7,116.9,374.2,osrm,True
+corredor,204,1,11,12,CA. 10,CA. 15,271.1,24.4,85.1,osrm,True
+corredor,204,1,12,13,CA. 15,ENRIQUE PALACIOS,433.2,39.0,124.0,osrm,True
+corredor,204,1,13,14,ENRIQUE PALACIOS,OVALO SAN JUAN BAUTISTA,487.1,55.6,136.9,osrm,True
+corredor,204,1,14,15,OVALO SAN JUAN BAUTISTA,ENSENADA,95.6,20.0,42.9,osrm,True
+corredor,204,1,15,16,ENSENADA,SAN JUAN BAUTISTA,256.4,37.1,81.5,osrm,True
+corredor,204,1,16,17,SAN JUAN BAUTISTA,PARADERO 1,355.5,40.3,105.3,osrm,True
+corredor,204,1,17,18,PARADERO 1,VICTOR MALASQUEZ,602.0,47.3,164.5,osrm,True
+corredor,204,1,18,19,VICTOR MALASQUEZ,LAS DUNAS,490.7,38.8,137.8,osrm,True
+corredor,204,1,19,20,LAS DUNAS,SAUCES,930.4,80.6,243.3,osrm,True
+corredor,204,1,20,22,SAUCES,NAPLO,1232.3,106.2,315.8,osrm,True
+corredor,204,1,22,23,NAPLO,LA PUNTA,433.8,34.6,124.1,osrm,True
+corredor,204,1,23,24,LA PUNTA,MONACO,776.8,62.2,206.4,osrm,True
+corredor,204,1,24,25,MONACO,EL SOL,596.5,46.8,163.2,osrm,True
+corredor,204,1,25,26,EL SOL,RINCONADA DEL LAGO,782.3,64.9,207.8,osrm,True
+corredor,204,1,26,27,RINCONADA DEL LAGO,LAGUNA GRANDE,437.6,32.9,125.0,osrm,True
+corredor,204,1,27,28,LAGUNA GRANDE,A. QUESADA,403.5,34.2,116.8,osrm,True
+corredor,204,1,28,29,A. QUESADA,MOLICENTRO,225.3,18.8,74.1,osrm,True
+corredor,204,1,29,30,MOLICENTRO,BELLO HORIZONTE,985.6,78.2,256.5,osrm,True
+corredor,204,1,30,31,BELLO HORIZONTE,CENTENARIO,905.8,55.6,237.4,osrm,True
+corredor,204,1,31,32,CENTENARIO,Huarochirí,556.3,36.0,153.5,osrm,True
+corredor,204,1,32,33,Huarochirí,FLORA TRISTAN,597.3,51.4,163.4,osrm,True
+corredor,204,1,33,35,FLORA TRISTAN,LA MOLINA,1383.2,111.9,352.0,osrm,True
+corredor,204,1,35,36,LA MOLINA,CAMACHO,1713.7,138.1,431.3,osrm,True
+corredor,204,1,36,37,CAMACHO,CLINICA,248.3,18.6,79.6,osrm,True
+corredor,204,1,37,39,CLINICA,EVITAMIENTO,1331.6,92.1,339.6,osrm,True
+corredor,204,1,39,40,EVITAMIENTO,CIRCUNVALACION,3101.6,210.3,764.4,osrm,False
+corredor,204,1,40,41,CIRCUNVALACION,J. BORJA,1855.8,156.3,465.4,osrm,True
+corredor,204,1,41,42,J. BORJA,ROSA TORO,361.9,32.3,106.9,osrm,True
+corredor,204,1,42,43,ROSA TORO,SAN LUIS,424.0,32.0,121.8,osrm,True
+corredor,204,1,43,44,SAN LUIS,AVIACION,769.2,60.1,204.6,osrm,True
+corredor,204,1,44,45,AVIACION,GUARDIA CIVIL,472.8,39.4,133.5,osrm,True
+corredor,204,1,45,46,GUARDIA CIVIL,QUIÑONES,1411.4,126.9,358.7,osrm,True
+corredor,204,1,46,47,QUIÑONES,MASIAS,1384.9,122.7,352.4,osrm,True
+corredor,204,1,47,48,MASIAS,ORQUIDEAS,279.4,25.0,87.1,osrm,True
+corredor,204,1,48,49,ORQUIDEAS,PETIT THOUARS,446.8,35.5,127.2,osrm,True
+corredor,204,1,49,50,PETIT THOUARS,ARENALES,205.9,19.4,69.4,osrm,True
+corredor,204,1,50,51,ARENALES,LAS PALMERAS,1433.3,147.4,364.0,osrm,True
+corredor,204,1,51,52,LAS PALMERAS,LOS NOGALES,1408.1,151.6,357.9,osrm,True
+corredor,204,1,52,53,LOS NOGALES,PERSHING,486.0,46.0,136.6,osrm,True
+corredor,204,1,53,54,PERSHING,EMBAJADA,529.7,49.8,147.1,osrm,True
+corredor,204,1,54,55,EMBAJADA,ALIAGA,590.7,57.2,161.8,osrm,True
+corredor,204,1,55,56,ALIAGA,GONZALES PRADA,576.5,55.8,158.4,osrm,True
+corredor,204,1,56,57,GONZALES PRADA,BRASIL,259.6,27.5,82.3,osrm,True
+corredor,204,1,57,59,BRASIL,SUCRE,1777.9,209.2,446.7,osrm,True
+corredor,204,1,59,60,SUCRE,BARTOLOME HERRERA,984.9,102.2,256.4,osrm,True
+corredor,204,1,60,61,BARTOLOME HERRERA,UNIVERSITARIA,893.5,70.0,234.4,osrm,True
+corredor,204,1,61,62,UNIVERSITARIA,PLAZA SAN MIGUEL,250.4,24.5,80.1,osrm,True
+corredor,204,1,62,63,PLAZA SAN MIGUEL,PARQUE DE LAS LEYENDAS,759.2,106.8,202.2,osrm,True
+corredor,204,1,63,64,PARQUE DE LAS LEYENDAS,RAFAEL ESCARDO,1210.3,164.9,310.5,osrm,True
+corredor,204,1,64,65,RAFAEL ESCARDO,CONTISUYO,1021.5,86.1,265.2,osrm,True
+corredor,204,2,1,2,LA MARINA,RAFAEL ESCARDO,818.8,67.7,216.5,osrm,True
+corredor,204,2,2,3,RAFAEL ESCARDO,PARQUE DE LAS LEYENDAS,902.1,90.7,236.5,osrm,True
+corredor,204,2,3,4,PARQUE DE LAS LEYENDAS,UNIVERSITARIA,802.8,89.2,212.7,osrm,True
+corredor,204,2,4,5,UNIVERSITARIA,BARTOLOME HERRERA,964.0,78.4,251.4,osrm,True
+corredor,204,2,5,6,BARTOLOME HERRERA,SUCRE,697.5,56.2,187.4,osrm,True
+corredor,204,2,6,8,SUCRE,GONZALES PRADA,1345.9,146.9,343.0,osrm,True
+corredor,204,2,8,9,GONZALES PRADA,ALIAGA,601.5,60.3,164.4,osrm,True
+corredor,204,2,9,10,ALIAGA,EMBAJADA,561.9,54.7,154.9,osrm,True
+corredor,204,2,10,11,EMBAJADA,LAS FLORES,787.7,75.6,209.0,osrm,True
+corredor,204,2,11,12,LAS FLORES,LOS CEDROS,366.5,34.9,108.0,osrm,True
+corredor,204,2,12,14,LOS CEDROS,ARENALES,1043.3,95.8,270.4,osrm,True
+corredor,204,2,14,15,ARENALES,PETIT THOUARS,219.5,22.9,72.7,osrm,True
+corredor,204,2,15,16,PETIT THOUARS,PARODI,820.6,103.3,216.9,osrm,True
+corredor,204,2,16,17,PARODI,ORQUIDEAS,861.0,95.1,226.6,osrm,True
+corredor,204,2,17,18,ORQUIDEAS,MASIAS,230.2,19.3,75.2,osrm,True
+corredor,204,2,18,19,MASIAS,CLINICA RICARDO PALMA,985.6,70.4,256.5,osrm,True
+corredor,204,2,19,20,CLINICA RICARDO PALMA,GUARDIA CIVIL,1309.2,140.4,334.2,osrm,True
+corredor,204,2,20,21,GUARDIA CIVIL,AVIACION,352.8,28.5,104.7,osrm,True
+corredor,204,2,21,22,AVIACION,SAN LUIS,850.7,65.8,224.2,osrm,True
+corredor,204,2,22,23,SAN LUIS,ROSA TORO,438.1,34.8,125.1,osrm,True
+corredor,204,2,23,24,ROSA TORO,CIRCUNVALACION,2300.9,157.5,572.2,osrm,True
+corredor,204,2,24,25,CIRCUNVALACION,JOCKEY,2095.5,213.3,522.9,osrm,True
+corredor,204,2,25,27,JOCKEY,CAMACHO,1326.9,121.6,338.5,osrm,True
+corredor,204,2,27,28,CAMACHO,LOS FRUTALES,797.2,65.9,211.3,osrm,True
+corredor,204,2,28,29,LOS FRUTALES,LA MOLINA,781.5,58.4,207.6,osrm,True
+corredor,204,2,29,30,LA MOLINA,LOS INGENIEROS,947.1,74.6,247.3,osrm,True
+corredor,204,2,30,31,LOS INGENIEROS,FLORA TRISTAN,557.9,45.8,153.9,osrm,True
+corredor,204,2,31,32,FLORA TRISTAN,ASUNCION,761.3,57.8,202.7,osrm,True
+corredor,204,2,32,33,ASUNCION,ARUBA,454.3,25.0,129.0,osrm,True
+corredor,204,2,33,34,ARUBA,BELLO HORIZONTE,1379.1,118.6,351.0,osrm,True
+corredor,204,2,34,35,BELLO HORIZONTE,MOLICENTRO,1036.0,101.2,268.6,osrm,True
+corredor,204,2,35,36,MOLICENTRO,PARQUE,406.9,35.6,117.7,osrm,True
+corredor,204,2,36,37,PARQUE,LAGUNA GRANDE,274.5,20.7,85.9,osrm,True
+corredor,204,2,37,38,LAGUNA GRANDE,RINCONADA DEL LAGO,607.2,76.4,165.7,osrm,True
+corredor,204,2,38,39,RINCONADA DEL LAGO,EL SOL,793.2,59.5,210.4,osrm,True
+corredor,204,2,39,40,EL SOL,MIAMI,610.7,47.8,166.6,osrm,True
+corredor,204,2,40,41,MIAMI,LA PUNTA,772.1,61.9,205.3,osrm,True
+corredor,204,2,41,42,LA PUNTA,NAPLO,1139.1,110.0,293.4,osrm,True
+corredor,204,2,42,43,NAPLO,MADRESELVA,1033.5,91.2,268.0,osrm,True
+corredor,204,2,43,44,MADRESELVA,SAUCES,872.7,79.3,229.4,osrm,True
+corredor,204,2,44,45,SAUCES,LAS DUNAS,1241.6,115.2,318.0,osrm,True
+corredor,204,2,45,46,LAS DUNAS,VICTOR MALASQUEZ,387.9,40.6,113.1,osrm,True
+corredor,204,2,46,47,VICTOR MALASQUEZ,PARADERO 1,997.2,103.0,259.3,osrm,True
+corredor,204,2,47,48,PARADERO 1,SAN JUAN BAUTISTA,542.0,78.2,150.1,osrm,True
+corredor,204,2,48,49,SAN JUAN BAUTISTA,SAN JUAN BAUTISTA 2,155.2,19.7,57.2,osrm,True
+corredor,204,2,49,50,SAN JUAN BAUTISTA 2,OVALO SAN JUAN BAUTISTA,161.1,14.5,58.7,osrm,True
+corredor,204,2,50,51,OVALO SAN JUAN BAUTISTA,ENRIQUE PALACIOS,408.0,48.6,117.9,osrm,True
+corredor,204,2,51,52,ENRIQUE PALACIOS,CA. 15,671.5,103.3,181.2,osrm,True
+corredor,204,2,52,53,CA. 15,CA. 08,345.5,42.1,102.9,osrm,True
+corredor,204,2,53,54,CA. 08,LOS FICUS,257.4,23.3,81.8,osrm,True
+corredor,204,2,54,55,LOS FICUS,SAN CRISTOBAL,831.3,76.2,219.5,osrm,True
+corredor,204,2,55,56,SAN CRISTOBAL,UNO,809.1,86.2,214.2,osrm,True
+corredor,204,2,56,57,UNO,NARANJOS,474.9,35.5,134.0,osrm,True
+corredor,204,2,57,58,NARANJOS,UNION,428.7,32.2,122.9,osrm,True
+corredor,204,2,58,59,UNION,CA.39,785.0,71.2,208.4,osrm,True
+corredor,204,2,59,60,CA.39,TRES MARIAS,526.0,51.8,146.2,osrm,True
+corredor,204,2,60,61,TRES MARIAS,CA. 63,487.4,36.6,137.0,osrm,True
+corredor,204,2,61,62,CA. 63,GRIFO,220.0,16.5,72.8,osrm,True
+corredor,204,2,62,63,GRIFO,HUERTOS,459.4,34.5,130.3,osrm,True
+corredor,206,,1,5,TEMPLO SANTA MARIA,FACULTAD DE DERECHO,2594.5,194.1,642.7,osrm,True
+corredor,206,,5,6,FACULTAD DE DERECHO,FACULTAD DE MEDICINA,503.2,47.3,140.8,osrm,True
+corredor,206,,6,7,FACULTAD DE MEDICINA,BAMBUES,573.4,51.8,157.6,osrm,True
+corredor,206,,7,8,BAMBUES,SAUCES,8347.5,703.2,2023.4,osrm,False
+corredor,206,,8,10,SAUCES,MINIST. DE AGRICULTURA,8475.4,715.5,2054.1,osrm,False
+corredor,206,,10,15,MINIST. DE AGRICULTURA,AVIACION,6285.8,461.6,1528.6,osrm,False
+corredor,206,,15,23,AVIACION,UNIVERSIDAD DE LIMA,3668.4,251.9,900.4,osrm,False
+corredor,206,,23,25,UNIVERSIDAD DE LIMA,MINIST. DE AGRICULTURA,2662.3,220.7,659.0,osrm,True
+corredor,206,,25,30,MINIST. DE AGRICULTURA,FACULTAD DE DERECHO,3299.9,291.4,812.0,osrm,False
+corredor,206,,30,33,FACULTAD DE DERECHO,LAS PALMERAS,12494.4,993.0,3018.7,osrm,False
+corredor,206,,33,48,LAS PALMERAS,LA MARINA /UNIV.,5344.4,485.1,1302.7,osrm,False
+corredor,206,,48,75,LA MARINA /UNIV.,LOS FRUTALES,13943.3,1083.0,3366.4,osrm,False
+corredor,206,1,1,2,SAN MARCOS,CATOLICA,650.8,60.7,176.2,osrm,True
+corredor,206,1,2,3,CATOLICA,LA MAR,822.0,78.1,217.3,osrm,True
+corredor,206,1,3,5,LA MAR,BARTOLOME HERRERA,1414.8,133.8,359.6,osrm,True
+corredor,206,1,5,6,BARTOLOME HERRERA,SUCRE,697.5,56.2,187.4,osrm,True
+corredor,206,1,6,7,SUCRE,HOSPITAL MILITAR,1524.2,166.3,385.8,osrm,True
+corredor,206,1,7,8,HOSPITAL MILITAR,GREGORIO ESCOBEDO,420.8,50.2,121.0,osrm,True
+corredor,206,1,8,9,GREGORIO ESCOBEDO,SALAVERRY,534.0,57.2,148.2,osrm,True
+corredor,206,1,9,10,SALAVERRY,JAVIER PRADO,391.8,37.3,114.0,osrm,True
+corredor,206,1,10,11,JAVIER PRADO,LAS FLORES,431.0,41.8,123.4,osrm,True
+corredor,206,1,11,12,LAS FLORES,LOS CEDROS,366.5,34.9,108.0,osrm,True
+corredor,206,1,12,14,LOS CEDROS,ARENALES,1043.3,95.8,270.4,osrm,True
+corredor,206,1,14,15,ARENALES,PETIT THOUARS,219.5,22.9,72.7,osrm,True
+corredor,206,1,15,16,PETIT THOUARS,PARODI,820.6,103.3,216.9,osrm,True
+corredor,206,1,16,17,PARODI,ORQUIDEAS,861.0,95.1,226.6,osrm,True
+corredor,206,1,17,18,ORQUIDEAS,MASIAS,230.2,19.3,75.2,osrm,True
+corredor,206,1,18,19,MASIAS,CLINICA RICARDO PALMA,985.6,70.4,256.5,osrm,True
+corredor,206,1,19,20,CLINICA RICARDO PALMA,GUARDIA CIVIL,1309.2,140.4,334.2,osrm,True
+corredor,206,1,20,21,GUARDIA CIVIL,AVIACION,352.8,28.5,104.7,osrm,True
+corredor,206,1,21,22,AVIACION,SAN LUIS,850.7,65.8,224.2,osrm,True
+corredor,206,1,22,23,SAN LUIS,ROSA TORO,438.1,34.8,125.1,osrm,True
+corredor,206,1,23,24,ROSA TORO,CIRCUNVALACION,2300.9,157.5,572.2,osrm,True
+corredor,206,1,24,25,CIRCUNVALACION,JOCKEY,2095.5,213.3,522.9,osrm,True
+corredor,206,1,25,27,JOCKEY,CAMACHO,1326.9,121.6,338.5,osrm,True
+corredor,206,1,27,28,CAMACHO,LOS FRUTALES,942.2,90.1,246.1,osrm,True
+corredor,206,1,28,29,LOS FRUTALES,LA MOLINA,2617.2,217.5,648.1,osrm,True
+corredor,206,1,29,31,LA MOLINA,ESCUELA PNP,1796.4,161.4,451.1,osrm,True
+corredor,206,1,31,32,ESCUELA PNP,LOS SAUCES,404.2,36.4,117.0,osrm,True
+corredor,206,1,32,33,LOS SAUCES,SECOYAS,614.6,57.3,167.5,osrm,True
+corredor,206,1,33,34,SECOYAS,CORDILLERA BLANCA,310.5,27.8,94.5,osrm,True
+corredor,206,1,34,35,CORDILLERA BLANCA,EL MONTE,446.6,39.3,127.2,osrm,True
+corredor,206,1,35,37,EL MONTE,EL PRADO,842.5,72.5,222.2,osrm,True
+corredor,206,1,37,38,EL PRADO,PASEO DE AGUAS,538.1,42.3,149.1,osrm,True
+corredor,206,1,38,39,PASEO DE AGUAS,CASTILLA,367.8,24.1,108.3,osrm,True
+corredor,206,1,39,40,CASTILLA,VASCONGADAS,221.3,14.4,73.1,osrm,True
+corredor,206,1,40,41,VASCONGADAS,CHAN CHAN,412.6,42.4,119.0,osrm,True
+corredor,206,1,41,42,CHAN CHAN,CORREGIDOR,1254.1,99.4,321.0,osrm,True
+corredor,206,1,42,43,CORREGIDOR,RIO MAGDALENA,373.8,33.6,109.7,osrm,True
+corredor,206,1,43,44,RIO MAGDALENA,CISNE,427.8,38.5,122.7,osrm,True
+corredor,206,1,44,45,CISNE,LUGO,180.2,16.3,63.2,osrm,True
+corredor,206,1,45,46,LUGO,LAS PALMAS,210.6,19.0,70.5,osrm,True
+corredor,206,1,46,47,LAS PALMAS,CALLE 2,207.0,18.6,69.7,osrm,True
+corredor,206,1,47,48,CALLE 2,RIO AMARILLO,1113.3,111.5,287.2,osrm,True
+corredor,206,2,2,3,CHAN CHAN,VASCONGADAS,302.5,19.7,92.6,osrm,True
+corredor,206,2,3,4,VASCONGADAS,CASTILLA,250.7,16.4,80.2,osrm,True
+corredor,206,2,4,5,CASTILLA,PASEO DE AGUAS,367.2,24.0,108.1,osrm,True
+corredor,206,2,5,6,PASEO DE AGUAS,EL BOSQUE,541.0,40.1,149.8,osrm,True
+corredor,206,2,6,10,EL BOSQUE,Los Sauces,2269.0,211.8,564.6,osrm,True
+corredor,206,2,10,11,Los Sauces,CIAM,493.1,44.6,138.3,osrm,True
+corredor,206,2,11,13,CIAM,LA MOLINA,1571.1,141.3,397.1,osrm,True
+corredor,206,2,13,15,LA MOLINA,CAMACHO,1766.7,149.2,444.0,osrm,True
+corredor,206,2,15,16,CAMACHO,CLINICA,248.3,18.6,79.6,osrm,True
+corredor,206,2,16,17,CLINICA,LA FLORESTA,477.1,39.2,134.5,osrm,True
+corredor,206,2,17,18,LA FLORESTA,EVITAMIENTO,854.6,52.9,225.1,osrm,True
+corredor,206,2,18,19,EVITAMIENTO,CIRCUNVALACION,3101.6,210.3,764.4,osrm,False
+corredor,206,2,19,20,CIRCUNVALACION,J. BORJA,1855.8,156.3,465.4,osrm,True
+corredor,206,2,20,21,J. BORJA,ROSA TORO,361.9,32.3,106.9,osrm,True
+corredor,206,2,21,22,ROSA TORO,SAN LUIS,424.0,32.0,121.8,osrm,True
+corredor,206,2,22,23,SAN LUIS,Aviación,617.8,55.7,168.3,osrm,True
+corredor,206,2,23,24,Aviación,GUARDIA CIVIL,627.7,56.5,170.6,osrm,True
+corredor,206,2,24,25,GUARDIA CIVIL,QUIÑONES,1411.4,126.9,358.7,osrm,True
+corredor,206,2,25,26,QUIÑONES,MASIAS,1384.9,122.7,352.4,osrm,True
+corredor,206,2,26,27,MASIAS,ORQUIDEAS,279.4,25.0,87.1,osrm,True
+corredor,206,2,27,28,ORQUIDEAS,PETIT THOUARS,446.8,35.5,127.2,osrm,True
+corredor,206,2,28,29,PETIT THOUARS,ARENALES,205.9,19.4,69.4,osrm,True
+corredor,206,2,29,30,ARENALES,LAS PALMERAS,1433.3,147.4,364.0,osrm,True
+corredor,206,2,30,31,LAS PALMERAS,LOS NOGALES,1408.1,151.6,357.9,osrm,True
+corredor,206,2,31,32,LOS NOGALES,PERSHING,486.0,46.0,136.6,osrm,True
+corredor,206,2,32,33,PERSHING,SALAVERRY,466.0,44.1,131.8,osrm,True
+corredor,206,2,33,34,SALAVERRY,GREGORIO ESCOBEDO,573.9,53.6,157.7,osrm,True
+corredor,206,2,34,35,GREGORIO ESCOBEDO,HOSPITAL MILITAR,450.1,42.5,128.0,osrm,True
+corredor,206,2,35,36,HOSPITAL MILITAR,SUCRE,888.1,74.2,233.1,osrm,True
+corredor,206,2,36,37,SUCRE,BARTOLOME HERRERA,713.5,59.5,191.2,osrm,True
+corredor,206,2,37,38,BARTOLOME HERRERA,UNIVERSITARIA,943.0,79.8,246.3,osrm,True
+corredor,206,2,38,39,UNIVERSITARIA,LA MAR,315.7,29.7,95.8,osrm,True
+corredor,206,2,39,40,LA MAR,CATOLICA,683.6,76.5,184.1,osrm,True
+corredor,206,2,40,41,CATOLICA,SAN MARCOS,860.3,88.8,226.5,osrm,True
+corredor,209,,11,16,AVIACION,LAS PALMERAS,3888.0,292.3,953.1,osrm,False
+corredor,209,,16,30,LAS PALMERAS,HOSPITAL MILITAR,3580.4,375.0,879.3,osrm,False
+corredor,209,,30,61,HOSPITAL MILITAR,HUAROCHIRI,15852.7,1237.0,3824.6,osrm,False
+corredor,209,,61,70,HUAROCHIRI,HUAROCHIRI,471.7,46.3,133.2,osrm,True
+corredor,209,,70,72,HUAROCHIRI,TAGORES,4650.5,373.7,1136.1,osrm,False
+corredor,209,1,1,2,SAN MARCOS,CATOLICA,650.8,60.7,176.2,osrm,True
+corredor,209,1,2,3,CATOLICA,LA MAR,822.0,78.1,217.3,osrm,True
+corredor,209,1,3,4,LA MAR,LA MARINA & UNIVERSITARIA,526.0,63.2,146.2,osrm,True
+corredor,209,1,4,5,LA MARINA & UNIVERSITARIA,BARTOLOME HERRERA,888.7,70.6,233.3,osrm,True
+corredor,209,1,5,6,BARTOLOME HERRERA,SUCRE,697.5,56.2,187.4,osrm,True
+corredor,209,1,6,7,SUCRE,HOSPITAL MILITAR,2343.4,248.7,582.4,osrm,True
+corredor,209,1,7,8,HOSPITAL MILITAR,GREGORIO ESCOBEDO,1447.7,190.1,367.4,osrm,True
+corredor,209,1,8,9,GREGORIO ESCOBEDO,SALAVERRY,534.0,57.2,148.2,osrm,True
+corredor,209,1,9,10,SALAVERRY,JAVIER PRADO,391.8,37.3,114.0,osrm,True
+corredor,209,1,10,11,JAVIER PRADO,LAS FLORES,431.0,41.8,123.4,osrm,True
+corredor,209,1,11,12,LAS FLORES,LOS CEDROS,366.5,34.9,108.0,osrm,True
+corredor,209,1,12,14,LOS CEDROS,ARENALES,1043.3,95.8,270.4,osrm,True
+corredor,209,1,14,15,ARENALES,PETIT THOUARS,219.5,22.9,72.7,osrm,True
+corredor,209,1,15,16,PETIT THOUARS,PARODI,820.6,103.3,216.9,osrm,True
+corredor,209,1,16,17,PARODI,ORQUIDEAS,861.0,95.1,226.6,osrm,True
+corredor,209,1,17,18,ORQUIDEAS,MASIAS,230.2,19.3,75.2,osrm,True
+corredor,209,1,18,19,MASIAS,CLINICA RICARDO PALMA,985.6,70.4,256.5,osrm,True
+corredor,209,1,19,20,CLINICA RICARDO PALMA,GUARDIA CIVIL,1309.2,140.4,334.2,osrm,True
+corredor,209,1,20,21,GUARDIA CIVIL,AVIACION,352.8,28.5,104.7,osrm,True
+corredor,209,1,21,22,AVIACION,SAN LUIS,850.7,65.8,224.2,osrm,True
+corredor,209,1,22,23,SAN LUIS,ROSA TORO,438.1,34.8,125.1,osrm,True
+corredor,209,1,23,24,ROSA TORO,CIRCUNVALACION,2300.9,157.5,572.2,osrm,True
+corredor,209,1,24,25,CIRCUNVALACION,JOCKEY,2095.5,213.3,522.9,osrm,True
+corredor,209,1,25,26,JOCKEY,UNIVERSIDAD DE LIMA,702.1,70.5,188.5,osrm,True
+corredor,209,1,26,27,UNIVERSIDAD DE LIMA,CAMACHO,624.8,51.1,170.0,osrm,True
+corredor,209,1,27,28,CAMACHO,LOS FRUTALES,894.3,86.5,234.6,osrm,True
+corredor,209,1,28,29,LOS FRUTALES,LA MOLINA,1916.9,210.8,480.1,osrm,True
+corredor,209,1,29,30,LA MOLINA,LA MOLINA (METRO),219.3,29.1,72.6,osrm,True
+corredor,209,1,30,31,LA MOLINA (METRO),LA MOLINA & CONST.,672.6,73.3,181.4,osrm,True
+corredor,209,1,31,32,LA MOLINA & CONST.,INDUSTRIALES,459.3,58.1,130.2,osrm,True
+corredor,209,1,32,33,INDUSTRIALES,INGENIEROS,549.1,53.1,151.8,osrm,True
+corredor,209,1,33,34,INGENIEROS,FLORA TRISTAN & CONST.,527.8,51.6,146.7,osrm,True
+corredor,209,1,34,35,FLORA TRISTAN & CONST.,Huarochirí,480.5,51.9,135.3,osrm,True
+corredor,209,1,35,36,Huarochirí,SEPARADORA INDUSTRIAL,486.8,49.6,136.8,osrm,True
+corredor,209,1,36,37,SEPARADORA INDUSTRIAL,MAYORAZGO,565.9,41.7,155.8,osrm,True
+corredor,209,1,37,38,MAYORAZGO,BACKUS,1313.9,100.6,335.3,osrm,True
+corredor,209,1,38,39,BACKUS,JOSFEL,2509.7,207.8,622.3,osrm,True
+corredor,209,1,39,40,JOSFEL,PURUCHUCO,444.8,38.7,126.8,osrm,True
+corredor,209,1,40,41,PURUCHUCO,PISTA NUEVA,403.0,37.4,116.7,osrm,True
+corredor,209,1,41,42,PISTA NUEVA,SOLDADURA,424.0,37.2,121.8,osrm,True
+corredor,209,1,42,43,SOLDADURA,LOS ÁNGELES,276.3,29.1,86.3,osrm,True
+corredor,209,1,43,44,LOS ÁNGELES,CERES,275.7,24.8,86.2,osrm,True
+corredor,209,1,44,45,CERES,TAGORE,609.2,62.0,166.2,osrm,True
+corredor,209,2,1,2,TAGORE,LOS ANGELES,920.4,75.0,240.9,osrm,True
+corredor,209,2,2,3,LOS ANGELES,SOLDADURA,303.1,34.1,92.7,osrm,True
+corredor,209,2,3,4,SOLDADURA,PISTA NUEVA,482.4,61.5,135.8,osrm,True
+corredor,209,2,4,5,PISTA NUEVA,JOSFEL,1513.9,145.8,383.3,osrm,True
+corredor,209,2,5,6,JOSFEL,BACKUS,573.5,69.7,157.6,osrm,True
+corredor,209,2,6,7,BACKUS,MAYORAZGO,1035.2,77.9,268.4,osrm,True
+corredor,209,2,7,8,MAYORAZGO,Huarochirí,615.5,66.9,167.7,osrm,True
+corredor,209,2,8,9,Huarochirí,CONSTRUCTORES,542.9,55.9,150.3,osrm,True
+corredor,209,2,9,10,CONSTRUCTORES,FLORA TRISTAN & CONST.,455.6,43.1,129.3,osrm,True
+corredor,209,2,10,11,FLORA TRISTAN & CONST.,INGENIEROS & CONST.,525.6,54.7,146.1,osrm,True
+corredor,209,2,11,12,INGENIEROS & CONST.,INDUSTRIALES,565.3,57.4,155.7,osrm,True
+corredor,209,2,12,13,INDUSTRIALES,LA MOLINA & CONST.,411.9,39.1,118.9,osrm,True
+corredor,209,2,13,14,LA MOLINA & CONST.,LA MOLINA,468.3,48.5,132.4,osrm,True
+corredor,209,2,14,15,LA MOLINA,LOS FRUTALES,1395.9,120.1,355.0,osrm,True
+corredor,209,2,15,16,LOS FRUTALES,CAMACHO,2463.7,208.8,611.3,osrm,True
+corredor,209,2,16,17,CAMACHO,CLINICA,248.3,18.6,79.6,osrm,True
+corredor,209,2,17,18,CLINICA,LA FLORESTA,477.1,39.2,134.5,osrm,True
+corredor,209,2,18,19,LA FLORESTA,EVITAMIENTO,854.6,52.9,225.1,osrm,True
+corredor,209,2,19,20,EVITAMIENTO,CIRCUNVALACION,3101.6,210.3,764.4,osrm,False
+corredor,209,2,20,21,CIRCUNVALACION,J. BORJA,1855.8,156.3,465.4,osrm,True
+corredor,209,2,21,22,J. BORJA,ROSA TORO,361.9,32.3,106.9,osrm,True
+corredor,209,2,22,23,ROSA TORO,SAN LUIS,424.0,32.0,121.8,osrm,True
+corredor,209,2,23,24,SAN LUIS,Aviación,617.8,55.7,168.3,osrm,True
+corredor,209,2,24,25,Aviación,GUARDIA CIVIL,627.7,56.5,170.6,osrm,True
+corredor,209,2,25,26,GUARDIA CIVIL,QUIÑONES,1411.4,126.9,358.7,osrm,True
+corredor,209,2,26,27,QUIÑONES,MASIAS,1384.9,122.7,352.4,osrm,True
+corredor,209,2,27,28,MASIAS,ORQUIDEAS,279.4,25.0,87.1,osrm,True
+corredor,209,2,28,29,ORQUIDEAS,PETIT THOUARS,446.8,35.5,127.2,osrm,True
+corredor,209,2,29,30,PETIT THOUARS,ARENALES,205.9,19.4,69.4,osrm,True
+corredor,209,2,30,31,ARENALES,LAS PALMERAS,1433.3,147.4,364.0,osrm,True
+corredor,209,2,31,32,LAS PALMERAS,LOS NOGALES,1408.1,151.6,357.9,osrm,True
+corredor,209,2,32,33,LOS NOGALES,PERSHING,486.0,46.0,136.6,osrm,True
+corredor,209,2,33,34,PERSHING,SALAVERRY,466.0,44.1,131.8,osrm,True
+corredor,209,2,34,35,SALAVERRY,GREGORIO ESCOBEDO,573.9,53.6,157.7,osrm,True
+corredor,209,2,35,36,GREGORIO ESCOBEDO,Hospital Militar,2145.2,197.0,534.8,osrm,True
+corredor,209,2,36,37,Hospital Militar,SUCRE,2239.6,238.3,557.5,osrm,True
+corredor,209,2,37,38,SUCRE,BARTOLOME HERRERA,713.5,59.5,191.2,osrm,True
+corredor,209,2,38,39,BARTOLOME HERRERA,UNIVERSITARIA,943.0,79.8,246.3,osrm,True
+corredor,209,2,39,40,UNIVERSITARIA,LA MAR,315.7,29.7,95.8,osrm,True
+corredor,209,2,40,41,LA MAR,CATOLICA,683.6,76.5,184.1,osrm,True
+corredor,209,2,41,42,CATOLICA,SAN MARCOS,860.3,88.8,226.5,osrm,True
+corredor,257,,1,2,JOSFEL,BACKUS,439.1,37.7,125.4,osrm,True
+corredor,257,,2,3,BACKUS,MAYORAZGO,644.2,48.4,174.6,osrm,True
+corredor,257,,3,4,MAYORAZGO,HUAROCHIRI & SEP INDUSTRIAL,620.9,67.5,169.0,osrm,True
+corredor,257,,4,5,HUAROCHIRI & SEP INDUSTRIAL,FLORA TRISTAN & CONST.,993.2,98.4,258.4,osrm,True
+corredor,257,,5,6,FLORA TRISTAN & CONST.,INGENIEROS & CONST.,525.6,54.7,146.1,osrm,True
+corredor,257,,6,7,INGENIEROS & CONST.,INDUSTRIALES,565.3,57.4,155.7,osrm,True
+corredor,257,,7,8,INDUSTRIALES,LA MOLINA & CONST.,411.9,39.1,118.9,osrm,True
+corredor,257,,8,9,LA MOLINA & CONST.,CERES,6699.3,525.5,1627.8,osrm,False
+corredor,257,,9,10,CERES,LOS ANGELES,1005.8,159.8,261.4,osrm,True
+corredor,257,,10,11,LOS ANGELES,SOLDADURA,303.1,34.1,92.7,osrm,True
+corredor,257,,11,12,SOLDADURA,PISTA NUEVA,482.4,61.5,135.8,osrm,True
+corredor,257,,12,13,PISTA NUEVA,CONSTRUCTORES,3116.7,278.1,768.0,osrm,False
+corredor,257,,13,14,CONSTRUCTORES,JAVIER PRADO ESTE,2438.6,243.9,605.3,osrm,True
+corredor,257,,14,15,JAVIER PRADO ESTE,JAVIER PRADO ESTE,696.8,63.5,187.2,osrm,True
+corredor,257,,15,16,JAVIER PRADO ESTE,LA MOLINA (METRO),178.2,18.5,62.8,osrm,True
+corredor,257,,16,17,LA MOLINA (METRO),CONSTRUCTORES,317.7,29.8,96.2,osrm,True
+corredor,257,,17,19,CONSTRUCTORES,INGENIEROS,914.9,86.2,239.6,osrm,True
+corredor,257,,19,20,INGENIEROS,FLORA TRISTAN & CONST.,527.8,51.6,146.7,osrm,True
+corredor,257,,20,21,FLORA TRISTAN & CONST.,HUAROCHIRI,1298.3,129.3,331.6,osrm,True
+corredor,257,,21,22,HUAROCHIRI,SEP. INDUSTRIAL,2253.1,207.9,560.7,osrm,True
+corredor,257,,22,23,SEP. INDUSTRIAL,MAYORAZGO,547.1,40.1,151.3,osrm,True
+corredor,257,,23,24,MAYORAZGO,TECNO PVC,741.9,59.7,198.1,osrm,True
+corredor,257,,24,25,TECNO PVC,CARRETERA CENTRAL,380.5,31.1,111.3,osrm,True
+corredor,257,,25,26,CARRETERA CENTRAL,JOSFEL,2584.7,204.3,640.3,osrm,True
+corredor,257,,26,27,JOSFEL,PURUCHUCO,214.0,16.0,71.4,osrm,True
+corredor,257,,27,28,PURUCHUCO,PISTA NUEVA,403.0,37.4,116.7,osrm,True
+corredor,257,,28,29,PISTA NUEVA,SOLDADURA,424.0,37.2,121.8,osrm,True
+corredor,257,,29,30,SOLDADURA,LOS ÁNGELES,276.3,29.1,86.3,osrm,True
+corredor,257,,30,31,LOS ÁNGELES,CERES,275.7,24.8,86.2,osrm,True
+corredor,3000,,1,2,BERLIN,28 DE JULIO,402.6,46.2,116.6,osrm,True
+corredor,3000,,2,3,28 DE JULIO,LARCO,419.4,49.8,120.7,osrm,True
+corredor,3000,,3,4,LARCO,ARMENDARIZ / LARCOMAR,496.5,58.8,139.2,osrm,True
+corredor,3000,,4,5,ARMENDARIZ / LARCOMAR,SAN IGNACIO DE LOYOLA,333.9,44.2,100.1,osrm,True
+corredor,3000,,5,6,SAN IGNACIO DE LOYOLA,LA PAZ,346.0,31.1,103.0,osrm,True
+corredor,3000,,6,7,LA PAZ,PLAYA LOS PAVOS,1647.4,130.3,415.4,osrm,True
+corredor,3000,,7,8,PLAYA LOS PAVOS,PLAYA LOS YUYOS,605.8,34.1,165.4,osrm,True
+corredor,3000,,8,9,PLAYA LOS YUYOS,PLAYA SOMBRILLAS,592.6,33.3,162.2,osrm,True
+corredor,3000,,9,10,PLAYA SOMBRILLAS,PLAYA AGUA DULCE 1,734.0,48.3,196.2,osrm,True
+corredor,3000,,10,11,PLAYA AGUA DULCE 1,PLAYA AGUA DULCE 2,263.7,23.8,83.3,osrm,True
+corredor,3000,,11,12,PLAYA AGUA DULCE 2,MANUEL CHIPOCO,4115.3,288.3,1007.7,osrm,False
+corredor,3000,,12,14,MANUEL CHIPOCO,LAS ACACIAS,876.1,83.2,230.3,osrm,True
+corredor,3000,,14,15,LAS ACACIAS,NUÑEZ DE BALBOA,863.9,87.0,227.3,osrm,True
+corredor,3000,,15,16,NUÑEZ DE BALBOA,JUAN FANNING,471.8,49.5,133.2,osrm,True
+corredor,3000,,16,17,JUAN FANNING,28 DE JULIO,325.8,38.8,98.2,osrm,True
+corredor,3000,,17,18,28 DE JULIO,BENAVIDES,242.2,21.8,78.1,osrm,True
+corredor,3000,,18,19,BENAVIDES,SCHELL,209.5,21.7,70.3,osrm,True
+corredor,3000,,19,20,SCHELL,RICARDO PALMA,345.0,35.2,102.8,osrm,True
+corredor,301,,5,15,G. REPUBLICANA,R. DAGNINO,4340.6,426.0,1061.7,osrm,False
+corredor,301,,15,19,R. DAGNINO,M. CANDAMO,1271.8,132.5,325.2,osrm,True
+corredor,301,,19,22,M. CANDAMO,M. BAÑON,1350.7,144.8,344.2,osrm,True
+corredor,301,,22,23,M. BAÑON,PAZ SOLDAN,250.3,26.5,80.1,osrm,True
+corredor,301,,23,25,PAZ SOLDAN,R. MORALES,694.6,68.4,186.7,osrm,True
+corredor,301,,25,31,R. MORALES,PARDO / R. PALMA,1782.7,178.5,447.8,osrm,True
+corredor,301,,31,35,PARDO / R. PALMA,ARMENDARIZ / LARCOMAR,1779.3,201.3,447.0,osrm,True
+corredor,301,,35,36,ARMENDARIZ / LARCOMAR,S. I. LOYOLA,333.4,44.1,100.0,osrm,True
+corredor,301,,36,37,S. I. LOYOLA,LA PAZ / ARMENDARIZ,347.4,31.3,103.4,osrm,True
+corredor,301,,37,42,LA PAZ / ARMENDARIZ,AV. EL SOL,1878.4,203.4,470.8,osrm,True
+corredor,301,,42,44,AV. EL SOL,LAS ACACIAS / REDUCTO,1310.8,113.2,334.6,osrm,True
+corredor,301,,44,45,LAS ACACIAS / REDUCTO,NUÑEZ DE BALBOA,863.9,87.0,227.3,osrm,True
+corredor,301,,45,50,NUÑEZ DE BALBOA,R. PALMA,1592.3,166.8,402.2,osrm,True
+corredor,301,,50,54,R. PALMA,CARLOS TENAUD,1231.7,130.5,315.6,osrm,True
+corredor,301,,54,60,CARLOS TENAUD,D. CASANOVA,2130.8,212.0,531.4,osrm,True
+corredor,301,,60,62,D. CASANOVA,M. CANDAMO,824.3,88.1,217.8,osrm,True
+corredor,301,,62,66,M. CANDAMO,R. DAGNINO,1261.1,133.3,322.7,osrm,True
+corredor,301,,66,78,R. DAGNINO,ARANCIBIA,5520.1,534.5,1344.8,osrm,False
+corredor,301,,78,88,ARANCIBIA,PUENTE SANTA ROSA,3208.9,371.1,790.1,osrm,False
+corredor,301,1,1,2,24 DE JUNIO,COMPLEJO DEPORTIVO,193.4,24.8,66.4,osrm,True
+corredor,301,1,2,3,COMPLEJO DEPORTIVO,EDUARDO DIBOS,444.5,46.0,126.7,osrm,True
+corredor,301,1,3,4,EDUARDO DIBOS,CARLOS VALDERRAMA,170.7,20.3,61.0,osrm,True
+corredor,301,1,4,5,CARLOS VALDERRAMA,CALLE 1,257.1,29.0,81.7,osrm,True
+corredor,301,1,5,6,CALLE 1,AMANCAES,477.0,45.6,134.5,osrm,True
+corredor,301,1,6,7,AMANCAES,LA COLONIA,292.9,26.5,90.3,osrm,True
+corredor,301,1,7,8,LA COLONIA,MADRID,209.5,17.6,70.3,osrm,True
+corredor,301,1,8,9,MADRID,LEONCIO PRADO,564.1,49.7,155.4,osrm,True
+corredor,301,1,9,11,LEONCIO PRADO,CHIRA,499.6,46.8,139.9,osrm,True
+corredor,301,1,11,12,CHIRA,VIRU,398.1,39.9,115.5,osrm,True
+corredor,301,1,12,13,VIRU,ICA,631.9,64.4,171.7,osrm,True
+corredor,301,1,13,14,ICA,MOQUEGUA,373.2,47.8,109.6,osrm,True
+corredor,301,1,14,15,MOQUEGUA,ILO,584.5,66.0,160.3,osrm,True
+corredor,301,1,15,16,ILO,BOLIVIA,414.8,39.4,119.6,osrm,True
+corredor,301,1,16,17,BOLIVIA,ESPAÑA,220.8,19.8,73.0,osrm,True
+corredor,301,1,17,18,ESPAÑA,TARMA,392.8,39.2,114.3,osrm,True
+corredor,301,1,18,19,TARMA,SACO OLIVEROS,721.8,66.9,193.2,osrm,True
+corredor,301,1,19,21,SACO OLIVEROS,CUBA,751.8,73.8,200.4,osrm,True
+corredor,301,1,21,22,CUBA,E. VILLAR,247.7,26.2,79.4,osrm,True
+corredor,301,1,22,23,E. VILLAR,MANUEL SEGURA,320.2,32.8,96.8,osrm,True
+corredor,301,1,23,25,MANUEL SEGURA,TOMAS GUIDO,826.1,90.3,218.3,osrm,True
+corredor,301,1,25,26,TOMAS GUIDO,SOLEDAD,415.8,45.6,119.8,osrm,True
+corredor,301,1,26,28,SOLEDAD,JUAN DE ARONA,947.0,111.5,247.3,osrm,True
+corredor,301,1,28,29,JUAN DE ARONA,CHOQUEHUANCA,214.4,36.5,71.5,osrm,True
+corredor,301,1,29,31,CHOQUEHUANCA,LOS ANGELES,886.9,81.7,232.9,osrm,True
+corredor,301,1,31,32,LOS ANGELES,ANDALUCIA,260.6,27.5,82.5,osrm,True
+corredor,301,1,32,33,ANDALUCIA,AYACUCHO,305.0,31.4,93.2,osrm,True
+corredor,301,1,33,34,AYACUCHO,ANGAMOS,222.0,22.0,73.3,osrm,True
+corredor,301,1,34,35,ANGAMOS,PIURA,249.3,26.5,79.8,osrm,True
+corredor,301,1,35,37,PIURA,BERLIN,794.7,80.5,210.7,osrm,True
+corredor,301,1,37,38,BERLIN,28 DE JULIO,402.6,46.2,116.6,osrm,True
+corredor,301,1,38,39,28 DE JULIO,LARCO,419.4,49.8,120.7,osrm,True
+corredor,301,1,39,43,LARCO,CHIPOCO,1721.5,184.2,433.2,osrm,True
+corredor,301,1,43,44,CHIPOCO,CENTENARIO,372.6,32.7,109.4,osrm,True
+corredor,301,1,44,45,CENTENARIO,BALTA,410.2,38.6,118.4,osrm,True
+corredor,301,1,45,46,BALTA,PLAZA BUTTERS,414.8,43.9,119.6,osrm,True
+corredor,301,2,2,5,CHIPOCO,JUAN FANNING,2211.9,219.7,550.9,osrm,True
+corredor,301,2,5,6,JUAN FANNING,28 DE JULIO,325.8,38.8,98.2,osrm,True
+corredor,301,2,6,7,28 DE JULIO,BENAVIDES,242.2,21.8,78.1,osrm,True
+corredor,301,2,7,8,BENAVIDES,SCHELL,209.5,21.7,70.3,osrm,True
+corredor,301,2,8,10,SCHELL,PIURA,773.6,83.2,205.7,osrm,True
+corredor,301,2,10,11,PIURA,ANGAMOS,261.4,23.6,82.7,osrm,True
+corredor,301,2,11,12,ANGAMOS,AYACUCHO,239.0,27.5,77.4,osrm,True
+corredor,301,2,12,14,AYACUCHO,RIO DE JANEIRO,663.4,67.8,179.2,osrm,True
+corredor,301,2,14,15,RIO DE JANEIRO,ARAMBURU,228.3,18.7,74.8,osrm,True
+corredor,301,2,15,16,ARAMBURU,LA HABANA,390.0,38.2,113.6,osrm,True
+corredor,301,2,16,17,LA HABANA,JUAN DE ARONA,335.4,34.2,100.5,osrm,True
+corredor,301,2,17,18,JUAN DE ARONA,OLAVIDE,387.4,41.2,113.0,osrm,True
+corredor,301,2,18,19,OLAVIDE,TOMAS GUIDO,737.4,75.0,197.0,osrm,True
+corredor,301,2,19,21,TOMAS GUIDO,MANUEL SEGURA,833.2,90.9,220.0,osrm,True
+corredor,301,2,21,22,MANUEL SEGURA,E. VILLAR,322.7,33.0,97.4,osrm,True
+corredor,301,2,22,23,E. VILLAR,E. FERNANDEZ,368.7,39.1,108.5,osrm,True
+corredor,301,2,23,25,E. FERNANDEZ,SACO OLIVEROS,547.9,53.5,151.5,osrm,True
+corredor,301,2,25,26,SACO OLIVEROS,ESPAÑA,1159.6,110.4,298.3,osrm,True
+corredor,301,2,26,28,ESPAÑA,BOLIVIA,246.4,24.2,79.1,osrm,True
+corredor,301,2,28,29,BOLIVIA,QUILCA,542.9,52.7,150.3,osrm,True
+corredor,301,2,29,30,QUILCA,EMANCIPACION,547.4,55.3,151.4,osrm,True
+corredor,301,2,30,31,EMANCIPACION,CALLAO,401.4,42.2,116.3,osrm,True
+corredor,301,2,31,32,CALLAO,PIZARRO,622.2,63.8,169.3,osrm,True
+corredor,301,2,32,33,PIZARRO,CHIRA,208.2,20.8,70.0,osrm,True
+corredor,301,2,33,34,CHIRA,G. REPUBLICANA,282.8,27.4,87.9,osrm,True
+corredor,301,2,34,35,G. REPUBLICANA,ALCAZAR,391.4,37.4,113.9,osrm,True
+corredor,301,2,35,36,ALCAZAR,LAS CALEZAS,510.7,48.0,142.6,osrm,True
+corredor,301,2,36,38,LAS CALEZAS,AMANCAES,469.4,36.4,132.7,osrm,True
+corredor,301,2,38,39,AMANCAES,CALLE 3,396.2,37.0,115.1,osrm,True
+corredor,301,2,39,41,CALLE 3,CALLE 10,697.3,75.8,187.4,osrm,True
+corredor,301,2,41,42,CALLE 10,24 DE JUNIO,242.1,27.2,78.1,osrm,True
+corredor,302,,13,15,TARMA,R. DAGNINO,1090.3,102.1,281.7,osrm,True
+corredor,302,,15,19,R. DAGNINO,M. CANDAMO,1271.8,132.5,325.2,osrm,True
+corredor,302,,19,25,M. CANDAMO,R. MORALES,2295.5,239.7,570.9,osrm,True
+corredor,302,,25,32,R. MORALES,PIURA,2460.3,236.2,610.5,osrm,True
+corredor,302,,32,35,PIURA,CARLOS TENAUD,801.0,82.3,212.2,osrm,True
+corredor,302,,35,43,CARLOS TENAUD,M. CANDAMO,2955.1,300.1,729.2,osrm,True
+corredor,302,,43,47,M. CANDAMO,R. DAGNINO,1261.1,133.3,322.7,osrm,True
+corredor,302,,47,59,R. DAGNINO,ARANCIBIA,5520.1,534.5,1344.8,osrm,False
+corredor,302,1,1,2,AMANCAES,LA COLONIA,292.9,26.5,90.3,osrm,True
+corredor,302,1,2,3,LA COLONIA,MADRID,209.5,17.6,70.3,osrm,True
+corredor,302,1,3,4,MADRID,LEONCIO PRADO,564.1,49.7,155.4,osrm,True
+corredor,302,1,4,5,LEONCIO PRADO,G. REPUBLICANA,255.1,22.9,81.2,osrm,True
+corredor,302,1,5,6,G. REPUBLICANA,CHIRA,244.5,23.9,78.7,osrm,True
+corredor,302,1,6,7,CHIRA,VIRU,398.1,39.9,115.5,osrm,True
+corredor,302,1,7,8,VIRU,ICA,631.9,64.4,171.7,osrm,True
+corredor,302,1,8,9,ICA,MOQUEGUA,373.2,47.8,109.6,osrm,True
+corredor,302,1,9,10,MOQUEGUA,ILO,584.5,66.0,160.3,osrm,True
+corredor,302,1,10,11,ILO,BOLIVIA,414.8,39.4,119.6,osrm,True
+corredor,302,1,11,12,BOLIVIA,ESPAÑA,220.8,19.8,73.0,osrm,True
+corredor,302,1,12,14,ESPAÑA,SACO OLIVEROS,1114.6,106.1,287.5,osrm,True
+corredor,302,1,14,16,SACO OLIVEROS,CUBA,751.8,73.8,200.4,osrm,True
+corredor,302,1,16,17,CUBA,E. VILLAR,247.7,26.2,79.4,osrm,True
+corredor,302,1,17,18,E. VILLAR,MANUEL SEGURA,320.2,32.8,96.8,osrm,True
+corredor,302,1,18,20,MANUEL SEGURA,TOMAS GUIDO,826.1,90.3,218.3,osrm,True
+corredor,302,1,20,21,TOMAS GUIDO,SOLEDAD,415.8,45.6,119.8,osrm,True
+corredor,302,1,21,22,SOLEDAD,M. BAÑON,429.3,43.8,123.0,osrm,True
+corredor,302,1,22,23,M. BAÑON,PAZ SOLDAN,250.3,26.5,80.1,osrm,True
+corredor,302,1,23,24,PAZ SOLDAN,CHOQUEHUANCA,219.7,23.8,72.7,osrm,True
+corredor,302,1,24,26,CHOQUEHUANCA,LOS ANGELES,886.9,81.7,232.9,osrm,True
+corredor,302,1,26,27,LOS ANGELES,ANDALUCIA,260.6,27.5,82.5,osrm,True
+corredor,302,1,27,28,ANDALUCIA,AYACUCHO,305.0,31.4,93.2,osrm,True
+corredor,302,1,28,29,AYACUCHO,ANGAMOS,222.0,22.0,73.3,osrm,True
+corredor,302,1,29,30,ANGAMOS,PIURA,249.3,26.5,79.8,osrm,True
+corredor,302,1,30,31,PIURA,2 DE MAYO,233.3,22.9,76.0,osrm,True
+corredor,302,2,1,2,PIURA,ANGAMOS,271.2,35.3,85.1,osrm,True
+corredor,302,2,2,3,ANGAMOS,AYACUCHO,239.0,27.5,77.4,osrm,True
+corredor,302,2,3,5,AYACUCHO,RIO DE JANEIRO,663.4,67.8,179.2,osrm,True
+corredor,302,2,5,6,RIO DE JANEIRO,ARAMBURU,228.3,18.7,74.8,osrm,True
+corredor,302,2,6,7,ARAMBURU,LA HABANA,390.0,38.2,113.6,osrm,True
+corredor,302,2,7,8,LA HABANA,JUAN DE ARONA,335.4,34.2,100.5,osrm,True
+corredor,302,2,8,9,JUAN DE ARONA,OLAVIDE,387.4,41.2,113.0,osrm,True
+corredor,302,2,9,10,OLAVIDE,D. CASANOVA,426.8,43.1,122.4,osrm,True
+corredor,302,2,10,11,D. CASANOVA,TOMAS GUIDO,310.6,31.9,94.5,osrm,True
+corredor,302,2,11,13,TOMAS GUIDO,MANUEL SEGURA,833.2,90.9,220.0,osrm,True
+corredor,302,2,13,14,MANUEL SEGURA,E. VILLAR,322.7,33.0,97.4,osrm,True
+corredor,302,2,14,15,E. VILLAR,E. FERNANDEZ,368.7,39.1,108.5,osrm,True
+corredor,302,2,15,17,E. FERNANDEZ,SACO OLIVEROS,547.9,53.5,151.5,osrm,True
+corredor,302,2,17,18,SACO OLIVEROS,ESPAÑA,1159.6,110.4,298.3,osrm,True
+corredor,302,2,18,19,ESPAÑA,BOLIVIA,246.4,24.2,79.1,osrm,True
+corredor,302,2,19,20,BOLIVIA,QUILCA,542.9,52.7,150.3,osrm,True
+corredor,302,2,20,21,QUILCA,EMANCIPACION,547.4,55.3,151.4,osrm,True
+corredor,302,2,21,22,EMANCIPACION,CALLAO,401.4,42.2,116.3,osrm,True
+corredor,302,2,22,23,CALLAO,PIZARRO,622.2,63.8,169.3,osrm,True
+corredor,302,2,23,24,PIZARRO,CHIRA,208.2,20.8,70.0,osrm,True
+corredor,302,2,24,25,CHIRA,G. REPUBLICANA,282.8,27.4,87.9,osrm,True
+corredor,302,2,25,26,G. REPUBLICANA,ALCAZAR,391.4,37.4,113.9,osrm,True
+corredor,302,2,26,27,ALCAZAR,LAS CALEZAS,510.7,48.0,142.6,osrm,True
+corredor,302,2,27,29,LAS CALEZAS,AMANCAES,469.4,36.4,132.7,osrm,True
+corredor,303,,1,7,CA. RIMAC / TUNEL,ESPAÑA,4485.4,433.0,1096.5,osrm,False
+corredor,303,,7,14,ESPAÑA,M. BAÑON,4105.6,418.6,1005.3,osrm,False
+corredor,303,,14,15,M. BAÑON,R. MORALES,944.9,94.9,246.8,osrm,True
+corredor,303,,15,25,R. MORALES,E. FERNANDEZ,3675.0,397.3,902.0,osrm,False
+corredor,303,1,1,2,LIMA,COMISARIA,373.0,35.6,109.5,osrm,True
+corredor,303,1,2,3,COMISARIA,LA LOSA,504.5,47.5,141.1,osrm,True
+corredor,303,1,3,5,LA LOSA,LEONCIO PRADO,1595.8,145.5,403.0,osrm,True
+corredor,303,1,5,6,LEONCIO PRADO,PIZARRO,762.3,72.5,203.0,osrm,True
+corredor,303,1,6,7,PIZARRO,HUANCAVELICA,896.5,92.3,235.2,osrm,True
+corredor,303,1,7,8,HUANCAVELICA,NICOLAS DE PIEROLA,416.8,43.4,120.0,osrm,True
+corredor,303,1,8,9,NICOLAS DE PIEROLA,VILLARAN,542.4,52.9,150.2,osrm,True
+corredor,303,1,9,10,VILLARAN,ESPAÑA,422.4,40.0,121.4,osrm,True
+corredor,303,1,10,11,ESPAÑA,HUANCAYO,550.0,53.3,152.0,osrm,True
+corredor,303,1,11,12,HUANCAYO,NATALIO SANCHEZ,912.9,86.2,239.1,osrm,True
+corredor,303,1,12,13,NATALIO SANCHEZ,CUBA,475.7,46.9,134.2,osrm,True
+corredor,303,1,13,14,CUBA,MANUEL SEGURA,567.9,59.0,156.3,osrm,True
+corredor,303,1,14,15,MANUEL SEGURA,RISSO,656.7,73.1,177.6,osrm,True
+corredor,303,1,15,16,RISSO,SOLEDAD,585.3,62.8,160.5,osrm,True
+corredor,303,1,16,19,SOLEDAD,TERUEL,1909.1,188.8,478.2,osrm,True
+corredor,303,1,19,20,TERUEL,ANGAMOS,664.7,67.9,179.5,osrm,True
+corredor,303,2,1,2,2 DE MAYO,ANGAMOS,844.2,93.6,222.6,osrm,True
+corredor,303,2,2,3,ANGAMOS,TERUEL,615.0,65.5,167.6,osrm,True
+corredor,303,2,3,4,TERUEL,ARAMBURU,515.7,48.5,143.8,osrm,True
+corredor,303,2,4,5,ARAMBURU,OLAVIDE,1112.8,113.6,287.1,osrm,True
+corredor,303,2,5,6,OLAVIDE,PEDRO CONDE,612.4,61.7,167.0,osrm,True
+corredor,303,2,6,7,PEDRO CONDE,BERNARDO ALCEDO,371.6,39.6,109.2,osrm,True
+corredor,303,2,7,8,BERNARDO ALCEDO,MANUEL SEGURA,531.3,59.6,147.5,osrm,True
+corredor,303,2,8,10,MANUEL SEGURA,SACO OLIVEROS,1294.7,130.6,330.7,osrm,True
+corredor,303,2,10,11,SACO OLIVEROS,ESPAÑA,1159.6,110.4,298.3,osrm,True
+corredor,303,2,11,13,ESPAÑA,BOLIVIA,155.8,15.9,57.4,osrm,True
+corredor,303,2,13,14,BOLIVIA,URUGUAY,272.6,26.6,85.4,osrm,True
+corredor,303,2,14,15,URUGUAY,MOQUEGUA,763.8,74.7,203.3,osrm,True
+corredor,303,2,15,16,MOQUEGUA,ICA,353.8,37.9,104.9,osrm,True
+corredor,303,2,16,17,ICA,PIZARRO,1160.0,150.5,298.4,osrm,True
+corredor,303,2,17,18,PIZARRO,ALCAZAR,1153.6,124.2,296.9,osrm,True
+corredor,303,2,18,19,ALCAZAR,TALARA,1382.2,126.1,351.7,osrm,True
+corredor,303,2,19,20,TALARA,PROCERES,563.9,52.8,155.3,osrm,True
+corredor,304,,1,2,LOS VIRREYES,LEONCIO PRADO,522.8,57.3,145.5,osrm,True
+corredor,304,,2,3,LEONCIO PRADO,VIRU,897.7,86.7,235.4,osrm,True
+corredor,304,,3,4,VIRU,HUANCAVELICA,761.1,78.1,202.7,osrm,True
+corredor,304,,4,5,HUANCAVELICA,NICOLAS DE PIEROLA,416.8,43.4,120.0,osrm,True
+corredor,304,,5,6,NICOLAS DE PIEROLA,VILLARAN,542.4,52.9,150.2,osrm,True
+corredor,304,,6,7,VILLARAN,ESPAÑA,494.6,46.5,138.7,osrm,True
+corredor,304,,7,8,ESPAÑA,HUANCAYO,477.7,46.8,134.6,osrm,True
+corredor,304,,8,9,HUANCAYO,NATALIO SANCHEZ,912.9,86.2,239.1,osrm,True
+corredor,304,,9,10,NATALIO SANCHEZ,CUBA,475.7,46.9,134.2,osrm,True
+corredor,304,,10,11,CUBA,MANUEL SEGURA,979.7,117.2,255.1,osrm,True
+corredor,304,,11,12,MANUEL SEGURA,MANUEL CANDAMO,729.0,88.1,195.0,osrm,True
+corredor,304,,12,13,MANUEL CANDAMO,TOMAS GUIDO,484.2,53.6,136.2,osrm,True
+corredor,304,,13,14,TOMAS GUIDO,SOLEDAD,471.0,50.5,133.0,osrm,True
+corredor,304,,14,15,SOLEDAD,MANUEL BAÑON,431.5,44.0,123.6,osrm,True
+corredor,304,,15,16,MANUEL BAÑON,PAZ SOLDAN,248.1,26.3,79.5,osrm,True
+corredor,304,,16,17,PAZ SOLDAN,RAYMUNDO MORALES,696.7,68.6,187.2,osrm,True
+corredor,304,,17,18,RAYMUNDO MORALES,ANDALUCIA,670.5,64.4,180.9,osrm,True
+corredor,304,,18,19,ANDALUCIA,ANGAMOS,527.0,53.4,146.5,osrm,True
+corredor,304,,19,20,ANGAMOS,PARDO,593.5,61.5,162.4,osrm,True
+corredor,304,,20,21,PARDO,BERLIN,450.4,45.5,128.1,osrm,True
+corredor,304,,21,22,BERLIN,28 DE JULIO,402.6,46.2,116.6,osrm,True
+corredor,304,,22,23,28 DE JULIO,LARCO,419.4,49.8,120.7,osrm,True
+corredor,304,,23,24,LARCO,ARMENDARIZ / LARCOMAR,496.5,58.8,139.2,osrm,True
+corredor,304,,24,25,ARMENDARIZ / LARCOMAR,SAN IGNACIO DE LOYOLA,333.9,44.2,100.1,osrm,True
+corredor,304,,25,26,SAN IGNACIO DE LOYOLA,LA PAZ,346.0,31.1,103.0,osrm,True
+corredor,304,,26,27,LA PAZ,LAS ACACIAS,209.4,20.7,70.3,osrm,True
+corredor,304,,27,28,LAS ACACIAS,NUÑEZ DE BALBOA,220.0,19.7,72.8,osrm,True
+corredor,304,,28,29,NUÑEZ DE BALBOA,JUAN FANNING,471.8,49.5,133.2,osrm,True
+corredor,304,,29,30,JUAN FANNING,28 DE JULIO,325.8,38.8,98.2,osrm,True
+corredor,304,,30,31,28 DE JULIO,BENAVIDES,242.2,21.8,78.1,osrm,True
+corredor,304,,31,32,BENAVIDES,SCHELL,209.5,21.7,70.3,osrm,True
+corredor,304,,32,33,SCHELL,RICARDO PALMA,345.0,35.2,102.8,osrm,True
+corredor,304,,33,34,RICARDO PALMA,ANGAMOS,690.1,71.6,185.6,osrm,True
+corredor,304,,34,35,ANGAMOS,CARLOS TENAUD,539.5,58.7,149.5,osrm,True
+corredor,304,,35,36,CARLOS TENAUD,ARAMBURU,591.2,55.3,161.9,osrm,True
+corredor,304,,36,37,ARAMBURU,JUAN DE ARONA,725.4,72.4,194.1,osrm,True
+corredor,304,,37,38,JUAN DE ARONA,OLAVIDE,387.4,41.2,113.0,osrm,True
+corredor,304,,38,39,OLAVIDE,D. CASANOVA,496.1,49.3,139.1,osrm,True
+corredor,304,,39,40,D. CASANOVA,TOMAS GUIDO,241.2,25.7,77.9,osrm,True
+corredor,304,,40,41,TOMAS GUIDO,MANUEL CANDAMO,513.2,56.1,143.2,osrm,True
+corredor,304,,41,42,MANUEL CANDAMO,MANUEL SEGURA,264.7,29.8,83.5,osrm,True
+corredor,304,,42,43,MANUEL SEGURA,EMILIO FERNANDEZ,690.9,72.1,185.8,osrm,True
+corredor,304,,43,44,EMILIO FERNANDEZ,SACO OLIVEROS,603.8,58.5,164.9,osrm,True
+corredor,304,,44,45,SACO OLIVEROS,ESPAÑA,1072.0,102.5,277.3,osrm,True
+corredor,304,,45,46,ESPAÑA,BOLIVIA,243.4,23.8,78.4,osrm,True
+corredor,304,,46,47,BOLIVIA,URUGUAY,272.6,26.6,85.4,osrm,True
+corredor,304,,47,48,URUGUAY,MOQUEGUA,763.8,74.7,203.3,osrm,True
+corredor,304,,48,49,MOQUEGUA,ICA,408.6,42.9,118.1,osrm,True
+corredor,304,,49,50,ICA,PIZARRO,759.4,78.1,202.3,osrm,True
+corredor,304,,50,51,PIZARRO,LEONCIO PRADO,871.5,84.6,229.2,osrm,True
+corredor,305,,17,21,R. DAGNINO,M. CANDAMO,1271.8,132.5,325.2,osrm,True
+corredor,305,,21,24,M. CANDAMO,M. BAÑON,1350.7,144.8,344.2,osrm,True
+corredor,305,,24,25,M. BAÑON,PAZ SOLDAN,250.3,26.5,80.1,osrm,True
+corredor,305,,25,27,PAZ SOLDAN,R. MORALES,694.6,68.4,186.7,osrm,True
+corredor,305,,27,33,R. MORALES,2 DE MAYO,1682.3,167.4,423.8,osrm,True
+corredor,305,,33,34,2 DE MAYO,PIURA,582.7,70.0,159.8,osrm,True
+corredor,305,,34,37,PIURA,TENAUD,807.0,82.9,213.7,osrm,True
+corredor,305,,37,44,TENAUD,M. CANDAMO,2949.1,299.5,727.8,osrm,True
+corredor,305,,44,48,M. CANDAMO,R. DAGNINO,1261.1,133.3,322.7,osrm,True
+corredor,305,,48,49,R. DAGNINO,S. OLIVEROS,297.9,27.0,91.5,osrm,True
+corredor,305,,49,60,S. OLIVEROS,ARANCIBIA,5222.2,507.5,1273.3,osrm,False
+corredor,305,,60,65,ARANCIBIA,PEDRO CONDE,7707.9,781.1,1869.9,osrm,False
+corredor,305,1,1,2,CONDOMINIOS,MORRO DE ARICA,1066.6,83.6,276.0,osrm,True
+corredor,305,1,2,3,MORRO DE ARICA,AMANCAES,422.5,38.1,121.4,osrm,True
+corredor,305,1,3,4,AMANCAES,LA COLONIA,282.9,19.7,87.9,osrm,True
+corredor,305,1,4,5,LA COLONIA,MADRID,209.5,17.6,70.3,osrm,True
+corredor,305,1,5,6,MADRID,LEONCIO PRADO,564.1,49.7,155.4,osrm,True
+corredor,305,1,6,7,LEONCIO PRADO,G. REPUBLICANA,255.1,22.9,81.2,osrm,True
+corredor,305,1,7,8,G. REPUBLICANA,CHIRA,244.5,23.9,78.7,osrm,True
+corredor,305,1,8,9,CHIRA,VIRU,398.1,39.9,115.5,osrm,True
+corredor,305,1,9,10,VIRU,ICA,631.9,64.4,171.7,osrm,True
+corredor,305,1,10,11,ICA,MOQUEGUA,373.2,47.8,109.6,osrm,True
+corredor,305,1,11,12,MOQUEGUA,ILO,584.5,66.0,160.3,osrm,True
+corredor,305,1,12,13,ILO,BOLIVIA,414.8,39.4,119.6,osrm,True
+corredor,305,1,13,14,BOLIVIA,ESPAÑA,220.8,19.8,73.0,osrm,True
+corredor,305,1,14,15,ESPAÑA,HUANCAYO,477.7,46.8,134.6,osrm,True
+corredor,305,1,15,16,HUANCAYO,SACO OLIVEROS,636.8,59.3,172.8,osrm,True
+corredor,305,1,16,18,SACO OLIVEROS,CUBA,751.8,73.8,200.4,osrm,True
+corredor,305,1,18,19,CUBA,E. VILLAR,247.7,26.2,79.4,osrm,True
+corredor,305,1,19,20,E. VILLAR,MANUEL SEGURA,320.2,32.8,96.8,osrm,True
+corredor,305,1,20,22,MANUEL SEGURA,TOMAS GUIDO,826.1,90.3,218.3,osrm,True
+corredor,305,1,22,23,TOMAS GUIDO,SOLEDAD,415.8,45.6,119.8,osrm,True
+corredor,305,1,23,25,SOLEDAD,JUAN DE ARONA,947.0,111.5,247.3,osrm,True
+corredor,305,1,25,26,JUAN DE ARONA,CHOQUEHUANCA,214.4,36.5,71.5,osrm,True
+corredor,305,1,26,28,CHOQUEHUANCA,LOS ANGELES,886.9,81.7,232.9,osrm,True
+corredor,305,1,28,29,LOS ANGELES,ANDALUCIA,260.6,27.5,82.5,osrm,True
+corredor,305,1,29,30,ANDALUCIA,AYACUCHO,305.0,31.4,93.2,osrm,True
+corredor,305,1,30,31,AYACUCHO,ANGAMOS,222.0,22.0,73.3,osrm,True
+corredor,305,1,31,32,ANGAMOS,PIURA,249.3,26.5,79.8,osrm,True
+corredor,305,2,2,3,PIURA,ANGAMOS,271.2,35.3,85.1,osrm,True
+corredor,305,2,3,4,ANGAMOS,AYACUCHO,239.0,27.5,77.4,osrm,True
+corredor,305,2,4,6,AYACUCHO,RIO DE JANEIRO,663.4,67.8,179.2,osrm,True
+corredor,305,2,6,7,RIO DE JANEIRO,ARAMBURU,228.3,18.7,74.8,osrm,True
+corredor,305,2,7,8,ARAMBURU,LA HABANA,390.0,38.2,113.6,osrm,True
+corredor,305,2,8,9,LA HABANA,JUAN DE ARONA,335.4,34.2,100.5,osrm,True
+corredor,305,2,9,10,JUAN DE ARONA,OLAVIDE,387.4,41.2,113.0,osrm,True
+corredor,305,2,10,11,OLAVIDE,TOMAS GUIDO,737.4,75.0,197.0,osrm,True
+corredor,305,2,11,13,TOMAS GUIDO,MANUEL SEGURA,833.2,90.9,220.0,osrm,True
+corredor,305,2,13,14,MANUEL SEGURA,E. VILLAR,322.7,33.0,97.4,osrm,True
+corredor,305,2,14,15,E. VILLAR,E. FERNANDEZ,368.7,39.1,108.5,osrm,True
+corredor,305,2,15,17,E. FERNANDEZ,SACO OLIVEROS,826.4,95.5,218.3,osrm,True
+corredor,305,2,17,18,SACO OLIVEROS,ESPAÑA,1207.8,128.5,309.9,osrm,True
+corredor,305,2,18,20,ESPAÑA,BOLIVIA,246.4,24.2,79.1,osrm,True
+corredor,305,2,20,21,BOLIVIA,QUILCA,542.9,52.7,150.3,osrm,True
+corredor,305,2,21,22,QUILCA,EMANCIPACION,547.4,55.3,151.4,osrm,True
+corredor,305,2,22,23,EMANCIPACION,CALLAO,401.4,42.2,116.3,osrm,True
+corredor,305,2,23,24,CALLAO,PIZARRO,622.2,63.8,169.3,osrm,True
+corredor,305,2,24,25,PIZARRO,CHIRA,208.2,20.8,70.0,osrm,True
+corredor,305,2,25,26,CHIRA,G. REPUBLICANA,282.8,27.4,87.9,osrm,True
+corredor,305,2,26,27,G. REPUBLICANA,ALCAZAR,391.4,37.4,113.9,osrm,True
+corredor,305,2,27,28,ALCAZAR,LAS CALEZAS,510.7,48.0,142.6,osrm,True
+corredor,305,2,28,30,LAS CALEZAS,AMANCAES,469.4,36.4,132.7,osrm,True
+corredor,305,2,30,31,AMANCAES,MORRO DE ARICA,639.2,55.5,173.4,osrm,True
+corredor,305,2,31,32,MORRO DE ARICA,CONDOMINIOS,1343.7,103.8,342.5,osrm,True
+corredor,306,,5,6,EDUARDO DIBOS,C. VALDERRAMA,169.1,20.1,60.6,osrm,True
+corredor,306,,6,8,C. VALDERRAMA,VIRU,2699.9,255.3,668.0,osrm,True
+corredor,306,,8,12,VIRU,ESPAÑA,2215.0,220.9,551.6,osrm,True
+corredor,306,,12,17,ESPAÑA,M. CANDAMO,2754.9,273.8,681.2,osrm,True
+corredor,306,,17,23,M. CANDAMO,M. CANDAMO,501.5,68.0,140.4,osrm,True
+corredor,306,,23,32,M. CANDAMO,PIZARRO,5424.4,576.3,1321.9,osrm,False
+corredor,306,,32,33,PIZARRO,LEONCIO PRADO,1142.6,123.2,294.2,osrm,True
+corredor,306,,33,42,LEONCIO PRADO,AGUILAR,1592.8,163.2,402.3,osrm,True
+corredor,306,,42,44,AGUILAR,PUENTE SANTA ROSA,3520.4,425.9,864.9,osrm,False
+corredor,306,1,1,2,MONACO,PASAJE 17,281.9,25.4,87.7,osrm,True
+corredor,306,1,2,3,PASAJE 17,CEREZOS,328.4,29.6,98.8,osrm,True
+corredor,306,1,3,4,CEREZOS,CLAVELES,292.5,28.8,90.2,osrm,True
+corredor,306,1,4,5,CLAVELES,24 de Junio,315.6,30.7,95.7,osrm,True
+corredor,306,1,5,9,24 de Junio,LEONCIO PRADO,2537.2,246.4,628.9,osrm,True
+corredor,306,1,9,10,LEONCIO PRADO,Virú,839.1,81.4,221.4,osrm,True
+corredor,306,1,10,11,Virú,HUANCAVELICA,819.7,83.4,216.7,osrm,True
+corredor,306,1,11,12,HUANCAVELICA,NICOLAS DE PIEROLA,416.8,43.4,120.0,osrm,True
+corredor,306,1,12,13,NICOLAS DE PIEROLA,VILLARAN,542.4,52.9,150.2,osrm,True
+corredor,306,1,13,14,VILLARAN,ESPAÑA,422.4,40.0,121.4,osrm,True
+corredor,306,1,14,15,ESPAÑA,HUANCAYO,550.0,53.3,152.0,osrm,True
+corredor,306,1,15,16,HUANCAYO,NATALIO SANCHEZ,912.9,86.2,239.1,osrm,True
+corredor,306,1,16,17,NATALIO SANCHEZ,CUBA,475.7,46.9,134.2,osrm,True
+corredor,306,1,17,18,CUBA,MANUEL SEGURA,979.7,117.2,255.1,osrm,True
+corredor,306,1,18,20,MANUEL SEGURA,TOMAS GUIDO,1213.2,141.7,311.2,osrm,True
+corredor,306,1,20,21,TOMAS GUIDO,JAVIER PRADO,744.8,93.6,198.8,osrm,True
+corredor,306,2,1,2,OLAVIDE,D. CASANOVA,496.1,49.3,139.1,osrm,True
+corredor,306,2,2,3,D. CASANOVA,TOMAS GUIDO,241.2,25.7,77.9,osrm,True
+corredor,306,2,3,5,TOMAS GUIDO,MANUEL SEGURA,777.8,85.9,206.7,osrm,True
+corredor,306,2,5,6,MANUEL SEGURA,E. FERNANDEZ,690.9,72.1,185.8,osrm,True
+corredor,306,2,6,7,E. FERNANDEZ,SACO OLIVEROS,603.8,58.5,164.9,osrm,True
+corredor,306,2,7,8,SACO OLIVEROS,ESPAÑA,1072.0,102.5,277.3,osrm,True
+corredor,306,2,8,9,ESPAÑA,BOLIVIA,243.4,23.8,78.4,osrm,True
+corredor,306,2,9,10,BOLIVIA,URUGUAY,272.6,26.6,85.4,osrm,True
+corredor,306,2,10,11,URUGUAY,MOQUEGUA,763.8,74.7,203.3,osrm,True
+corredor,306,2,11,12,MOQUEGUA,ICA,353.8,37.9,104.9,osrm,True
+corredor,306,2,12,15,ICA,AGUILAR,2630.0,268.4,651.2,osrm,True
+corredor,306,2,15,16,AGUILAR,EL SOL,708.6,69.0,190.1,osrm,True
+corredor,306,2,16,17,EL SOL,CALLE 10,344.0,38.7,102.6,osrm,True
+corredor,306,2,17,18,CALLE 10,24 DE JUNIO,242.1,27.2,78.1,osrm,True
+corredor,306,2,18,19,24 DE JUNIO,CLAVELES,431.9,51.3,123.7,osrm,True
+corredor,306,2,19,20,CLAVELES,CEREZOS,292.5,32.1,90.2,osrm,True
+corredor,306,2,20,21,CEREZOS,PASAJE 17,284.9,25.8,88.4,osrm,True
+corredor,306,2,21,22,PASAJE 17,MONACO,251.0,22.6,80.2,osrm,True
+corredor,3090,,1,2,COLEGIO 1,COLEGIO 2,49.1,17.8,31.8,osrm,True
+corredor,3090,,2,3,COLEGIO 2,VIRREYES,299.2,56.8,91.8,osrm,True
+corredor,3090,,3,4,VIRREYES,AGUILAR,517.3,54.4,144.2,osrm,True
+corredor,3090,,4,5,AGUILAR,PARQUE,584.8,55.1,160.4,osrm,True
+corredor,3090,,5,6,PARQUE,EL SOL,123.8,13.9,49.7,osrm,True
+corredor,3090,,6,7,EL SOL,FERREYROS,180.3,20.3,63.3,osrm,True
+corredor,3090,,7,8,FERREYROS,CALLE 10,163.7,18.4,59.3,osrm,True
+corredor,3090,,8,9,CALLE 10,24 DE JUNIO,242.1,27.2,78.1,osrm,True
+corredor,3090,,9,10,24 DE JUNIO,PARQUE ZONAL,311.5,35.0,94.8,osrm,True
+corredor,3090,,10,11,PARQUE ZONAL,CLAVELES,120.4,16.3,48.9,osrm,True
+corredor,3090,,11,12,CLAVELES,ROBLES,149.4,19.3,55.9,osrm,True
+corredor,3090,,12,13,ROBLES,CEREZOS,143.2,12.8,54.4,osrm,True
+corredor,3090,,13,14,CEREZOS,COMISARIA,203.9,18.5,68.9,osrm,True
+corredor,3090,,14,15,COMISARIA,PASAJE 17,81.0,7.3,39.4,osrm,True
+corredor,3090,,15,16,PASAJE 17,SALAMANCA,122.9,11.0,49.5,osrm,True
+corredor,3090,,16,17,SALAMANCA,MONACO,128.1,11.6,50.7,osrm,True
+corredor,3090,,17,18,MONACO,MEXICO,78.2,6.9,38.8,osrm,True
+corredor,3100,,1,2,LA LOSA,COMISARIA,1585.5,204.2,400.5,osrm,True
+corredor,3100,,2,3,COMISARIA,LEONCIO PRADO,2100.3,193.0,524.1,osrm,True
+corredor,3100,,3,4,LEONCIO PRADO,CA. RIMAC / TUNEL,2429.1,261.1,603.0,osrm,True
+corredor,3100,,4,5,CA. RIMAC / TUNEL,LIMA,1503.0,164.6,380.7,osrm,True
+corredor,3100,,5,6,LIMA,PROCERES,1458.7,192.4,370.1,osrm,True
+corredor,3100,,6,7,PROCERES,ALCAZAR,3043.4,305.1,750.4,osrm,False
+corredor,3100,,7,8,ALCAZAR,TALARA,1468.0,148.4,372.3,osrm,True
+corredor,3200,,1,2,AMANCAES,LEONCIO PRADO,1066.5,93.8,276.0,osrm,True
+corredor,3200,,2,3,LEONCIO PRADO,VIRU,897.7,86.7,235.4,osrm,True
+corredor,3200,,3,4,VIRU,ICA,631.9,64.4,171.7,osrm,True
+corredor,3200,,4,5,ICA,MOQUEGUA,373.2,47.8,109.6,osrm,True
+corredor,3200,,5,6,MOQUEGUA,ESPAÑA,1214.6,120.3,311.5,osrm,True
+corredor,3200,,6,7,ESPAÑA,TARMA,392.8,39.2,114.3,osrm,True
+corredor,3200,,7,8,TARMA,SACO OLIVEROS,721.8,66.9,193.2,osrm,True
+corredor,3200,,8,9,SACO OLIVEROS,R. DAGNINO,368.5,35.2,108.4,osrm,True
+corredor,3200,,9,10,R. DAGNINO,CUBA,383.3,38.6,112.0,osrm,True
+corredor,3200,,10,11,CUBA,E. VILLAR,247.7,26.2,79.4,osrm,True
+corredor,3200,,11,12,E. VILLAR,MANUEL SEGURA,320.2,32.8,96.8,osrm,True
+corredor,3200,,12,13,MANUEL SEGURA,M. CANDAMO,320.6,34.9,96.9,osrm,True
+corredor,3200,,13,14,M. CANDAMO,TOMAS GUIDO,505.5,55.4,141.3,osrm,True
+corredor,3200,,14,15,TOMAS GUIDO,SOLEDAD,415.8,45.6,119.8,osrm,True
+corredor,3200,,15,16,SOLEDAD,M. BAÑON,429.3,43.8,123.0,osrm,True
+corredor,3200,,16,17,M. BAÑON,PAZ SOLDAN,250.3,26.5,80.1,osrm,True
+corredor,3200,,17,18,PAZ SOLDAN,CHOQUEHUANCA,219.7,23.8,72.7,osrm,True
+corredor,3200,,18,19,CHOQUEHUANCA,R. MORALES,474.8,44.6,134.0,osrm,True
+corredor,3200,,19,20,R. MORALES,LOS ANGELES,412.0,37.1,118.9,osrm,True
+corredor,3200,,20,21,LOS ANGELES,ANDALUCIA,260.6,27.5,82.5,osrm,True
+corredor,3200,,21,22,ANDALUCIA,AYACUCHO,305.0,31.4,93.2,osrm,True
+corredor,3200,,22,23,AYACUCHO,ANGAMOS,222.0,22.0,73.3,osrm,True
+corredor,3200,,23,24,ANGAMOS,PIURA,249.3,26.5,79.8,osrm,True
+corredor,3200,,24,25,PIURA,PARDO / R. PALMA,333.8,34.0,100.1,osrm,True
+corredor,336,,5,11,VIRU,CUBA,4081.3,400.8,999.5,osrm,False
+corredor,336,,11,14,CUBA,D. CASANOVA,2189.3,261.6,545.4,osrm,True
+corredor,336,,14,35,D. CASANOVA,MANUEL BAÑON,908.9,130.5,238.1,osrm,True
+corredor,336,,35,41,MANUEL BAÑON,ANGAMOS,2342.6,243.9,582.2,osrm,True
+corredor,336,,41,42,ANGAMOS,PARDO / R. PALMA,583.0,60.5,159.9,osrm,True
+corredor,336,,42,44,PARDO / R. PALMA,ANGAMOS,743.8,82.5,198.5,osrm,True
+corredor,336,,44,47,ANGAMOS,PEDRO CONDE,2855.9,289.3,705.4,osrm,True
+corredor,336,1,1,2,24 DE JUNIO,COMPLEJO DEPORTIVO,193.4,24.8,66.4,osrm,True
+corredor,336,1,2,3,COMPLEJO DEPORTIVO,EDUARDO DIBOS,444.5,46.0,126.7,osrm,True
+corredor,336,1,3,4,EDUARDO DIBOS,CARLOS VALDERRAMA,170.7,20.3,61.0,osrm,True
+corredor,336,1,4,5,CARLOS VALDERRAMA,AGUILAR,447.5,46.7,127.4,osrm,True
+corredor,336,1,5,6,AGUILAR,LOS VIRREYES,797.5,92.8,211.4,osrm,True
+corredor,336,1,6,7,LOS VIRREYES,LEONCIO PRADO,522.8,57.3,145.5,osrm,True
+corredor,336,1,7,8,LEONCIO PRADO,Virú,839.1,81.4,221.4,osrm,True
+corredor,336,1,8,9,Virú,HUANCAVELICA,819.7,83.4,216.7,osrm,True
+corredor,336,1,9,10,HUANCAVELICA,NICOLAS DE PIEROLA,416.8,43.4,120.0,osrm,True
+corredor,336,1,10,11,NICOLAS DE PIEROLA,VILLARAN,542.4,52.9,150.2,osrm,True
+corredor,336,1,11,12,VILLARAN,ESPAÑA,422.4,40.0,121.4,osrm,True
+corredor,336,1,12,13,ESPAÑA,HUANCAYO,550.0,53.3,152.0,osrm,True
+corredor,336,1,13,14,HUANCAYO,SACO OLIVEROS,720.4,68.0,192.9,osrm,True
+corredor,336,1,14,15,SACO OLIVEROS,Cuba,684.9,67.9,184.4,osrm,True
+corredor,336,1,15,16,Cuba,MANUEL DEL PINO,467.5,51.9,132.2,osrm,True
+corredor,336,1,16,17,MANUEL DEL PINO,LEON VELARDE,389.1,41.0,113.4,osrm,True
+corredor,336,1,17,18,LEON VELARDE,JOAQUIN BERNAL,538.3,66.1,149.2,osrm,True
+corredor,336,1,18,19,JOAQUIN BERNAL,JAVIER PRADO,591.4,74.4,161.9,osrm,True
+corredor,336,1,19,21,JAVIER PRADO,PAZ SOLDÁN,471.5,62.6,133.2,osrm,True
+corredor,336,1,21,22,PAZ SOLDÁN,CHOQUEHUANCA,305.5,26.0,93.3,osrm,True
+corredor,336,1,22,23,CHOQUEHUANCA,PEZET,544.3,59.4,150.6,osrm,True
+corredor,336,1,23,24,PEZET,DASSO,412.5,35.0,119.0,osrm,True
+corredor,336,1,24,25,DASSO,OVALO GUTIERREZ,433.3,40.1,124.0,osrm,True
+corredor,336,1,25,26,OVALO GUTIERREZ,Angamos,462.3,66.9,131.0,osrm,True
+corredor,336,1,26,27,Angamos,PARDO,687.7,77.5,185.0,osrm,True
+corredor,336,2,1,2,Pardo,Angamos,571.1,65.2,157.1,osrm,True
+corredor,336,2,2,3,Angamos,OVALO GUTIERREZ,168.5,26.1,60.4,osrm,True
+corredor,336,2,3,4,OVALO GUTIERREZ,PARDO Y ALIAGA,635.1,83.7,172.4,osrm,True
+corredor,336,2,4,5,PARDO Y ALIAGA,Conde de la Monclava,486.6,44.0,136.8,osrm,True
+corredor,336,2,5,6,Conde de la Monclava,CHOQUEHUANCA,451.8,38.0,128.4,osrm,True
+corredor,336,2,6,7,CHOQUEHUANCA,PAZ SOLDAN,281.3,23.0,87.5,osrm,True
+corredor,336,2,7,8,PAZ SOLDAN,OLAVIDE,502.1,67.5,140.5,osrm,True
+corredor,336,2,8,10,OLAVIDE,RISSO,1001.5,109.9,260.4,osrm,True
+corredor,336,2,10,11,RISSO,MANUEL CANDAMO,372.2,41.3,109.3,osrm,True
+corredor,336,2,11,12,MANUEL CANDAMO,MANUEL SEGURA,301.4,33.0,92.3,osrm,True
+corredor,336,2,12,13,MANUEL SEGURA,ALEJANDRO TIRADO,577.5,71.9,158.6,osrm,True
+corredor,336,2,13,14,ALEJANDRO TIRADO,SACO OLIVEROS,687.6,67.9,185.0,osrm,True
+corredor,336,2,14,15,SACO OLIVEROS,ESPAÑA,1259.2,131.1,322.2,osrm,True
+corredor,336,2,15,17,ESPAÑA,BOLIVIA,155.8,15.9,57.4,osrm,True
+corredor,336,2,17,18,BOLIVIA,URUGUAY,272.6,26.6,85.4,osrm,True
+corredor,336,2,18,19,URUGUAY,MOQUEGUA,763.8,74.7,203.3,osrm,True
+corredor,336,2,19,20,MOQUEGUA,ICA,353.8,37.9,104.9,osrm,True
+corredor,336,2,20,21,ICA,PIZARRO,1160.0,150.5,298.4,osrm,True
+corredor,336,2,21,22,PIZARRO,ALCAZAR,1153.6,124.2,296.9,osrm,True
+corredor,336,2,22,23,ALCAZAR,LOS VIRREYES,416.1,45.3,119.9,osrm,True
+corredor,336,2,23,24,LOS VIRREYES,AGUILAR,517.3,54.4,144.2,osrm,True
+corredor,336,2,24,25,AGUILAR,EL SOL,708.6,69.0,190.1,osrm,True
+corredor,336,2,25,26,EL SOL,CALLE 10,344.0,38.7,102.6,osrm,True
+corredor,336,2,26,27,CALLE 10,24 DE JUNIO,242.1,27.2,78.1,osrm,True
+corredor,357,,1,2,ICA,NICOLAS DE PIEROLA,546.0,57.1,151.0,osrm,True
+corredor,357,,2,3,NICOLAS DE PIEROLA,VILLARAN,542.4,52.9,150.2,osrm,True
+corredor,357,,3,4,VILLARAN,CHOTA,339.7,41.4,101.5,osrm,True
+corredor,357,,4,5,CHOTA,IQUIQUE,346.7,54.2,103.2,osrm,True
+corredor,357,,5,6,IQUIQUE,JORGE CHÁVEZ,398.3,40.7,115.6,osrm,True
+corredor,357,,6,7,JORGE CHÁVEZ,AGUARICO,379.4,34.4,111.1,osrm,True
+corredor,357,,7,8,AGUARICO,TINGO MARIA,710.7,82.6,190.6,osrm,True
+corredor,357,,8,9,TINGO MARIA,NACIONES UNIDAS,472.7,49.1,133.4,osrm,True
+corredor,357,,9,10,NACIONES UNIDAS,ZORRITOS,638.2,69.8,173.2,osrm,True
+corredor,357,,10,11,ZORRITOS,GALDEANO Y MENDOZA,407.2,39.7,117.7,osrm,True
+corredor,357,,11,12,GALDEANO Y MENDOZA,DANSEY,397.4,33.1,115.4,osrm,True
+corredor,357,,12,13,DANSEY,ARGENTINA,342.9,34.4,102.3,osrm,True
+corredor,357,,13,14,ARGENTINA,PEDRO GAREZON,395.2,35.5,114.8,osrm,True
+corredor,357,,14,15,PEDRO GAREZON,DUAREZ,534.4,48.2,148.3,osrm,True
+corredor,357,,15,16,DUAREZ,PERU,475.2,41.1,134.0,osrm,True
+corredor,357,,16,17,PERU,SANTO DOMINGO,734.0,61.1,196.2,osrm,True
+corredor,357,,17,18,SANTO DOMINGO,VILLA RICA,309.9,23.2,94.4,osrm,True
+corredor,357,,18,19,VILLA RICA,CAMANA,731.4,56.6,195.5,osrm,True
+corredor,357,,19,20,CAMANA,IQUITOS,510.9,43.1,142.6,osrm,True
+corredor,357,,20,21,IQUITOS,HUANCAYO,462.9,34.6,131.1,osrm,True
+corredor,357,,21,22,HUANCAYO,SALAVERRY,467.5,34.9,132.2,osrm,True
+corredor,357,,22,23,SALAVERRY,CHICLAYO,203.6,34.0,68.9,osrm,True
+corredor,357,,23,24,CHICLAYO,HUANCAYO,398.3,30.0,115.6,osrm,True
+corredor,357,,24,25,HUANCAYO,PLAZA DE ARMAS,370.3,27.6,108.9,osrm,True
+corredor,357,,25,26,PLAZA DE ARMAS,ANDAHUAYLAS,391.9,33.4,114.1,osrm,True
+corredor,357,,26,27,ANDAHUAYLAS,ABANCAY,323.7,26.0,97.7,osrm,True
+corredor,357,,27,28,ABANCAY,VILLA RICA,578.4,44.9,158.8,osrm,True
+corredor,357,,28,29,VILLA RICA,SAN SALVADOR,505.8,40.8,141.4,osrm,True
+corredor,357,,29,30,SAN SALVADOR,SANTA FE,389.6,31.3,113.5,osrm,True
+corredor,357,,30,31,SANTA FE,PINAR DEL RIO,276.8,24.5,86.4,osrm,True
+corredor,357,,31,32,PINAR DEL RIO,PEREZ DE TUDELA,640.2,67.9,173.6,osrm,True
+corredor,357,,32,33,PEREZ DE TUDELA,MATERIALES,533.6,46.2,148.1,osrm,True
+corredor,357,,33,35,MATERIALES,NACIONES UNIDAS,1463.4,128.8,371.2,osrm,True
+corredor,357,,35,36,NACIONES UNIDAS,ZORRITOS,368.6,43.6,108.5,osrm,True
+corredor,357,,36,37,ZORRITOS,INO,622.0,67.0,169.3,osrm,True
+corredor,357,,37,38,INO,ARICA,531.9,59.7,147.7,osrm,True
+corredor,357,,38,39,ARICA,AGUARICO,935.7,131.4,244.6,osrm,True
+corredor,357,,39,40,AGUARICO,LORETO,466.2,75.1,131.9,osrm,True
+corredor,357,,40,41,LORETO,HUARAZ,412.9,39.0,119.1,osrm,True
+corredor,357,,41,42,HUARAZ,ALFONSO UGARTE,276.3,25.0,86.3,osrm,True
+corredor,357,,42,43,ALFONSO UGARTE,GARCILASO DE LA VEGA,407.4,51.8,117.8,osrm,True
+corredor,357,,43,44,GARCILASO DE LA VEGA,URUGUAY,195.2,26.9,66.8,osrm,True
+corredor,357,,44,45,URUGUAY,QUILCA,360.8,34.4,106.6,osrm,True
+corredor,357,,45,46,QUILCA,NICOLAS DE PIEROLA,232.8,23.1,75.9,osrm,True
+corredor,357,,46,47,NICOLAS DE PIEROLA,EMANCIPACION,314.6,32.2,95.5,osrm,True
+corredor,357,,47,48,EMANCIPACION,CALLAO,401.4,42.2,116.3,osrm,True
+corredor,370,,5,19,24 DE JUNIO,ACHO,4666.5,506.7,1140.0,osrm,False
+corredor,370,,19,22,ACHO,PROLONGACION TACNA,1629.6,214.6,411.1,osrm,True
+corredor,370,1,1,2,MONACO,PASAJE 17,281.9,25.4,87.7,osrm,True
+corredor,370,1,2,3,PASAJE 17,CEREZOS,328.4,29.6,98.8,osrm,True
+corredor,370,1,3,4,CEREZOS,CLAVELES,292.5,28.8,90.2,osrm,True
+corredor,370,1,4,5,CLAVELES,24 de Junio,315.6,30.7,95.7,osrm,True
+corredor,370,1,5,6,24 de Junio,COMPLEJO DEPORTIVO,108.7,13.9,46.1,osrm,True
+corredor,370,1,6,7,COMPLEJO DEPORTIVO,EDUARDO DIBOS,444.5,46.0,126.7,osrm,True
+corredor,370,1,7,8,EDUARDO DIBOS,CARLOS VALDERRAMA,170.7,20.3,61.0,osrm,True
+corredor,370,1,8,9,CARLOS VALDERRAMA,CALLE 1,257.1,29.0,81.7,osrm,True
+corredor,370,1,9,10,CALLE 1,AMANCAES,477.0,45.6,134.5,osrm,True
+corredor,370,1,10,11,AMANCAES,MADRID,502.4,44.1,140.6,osrm,True
+corredor,370,1,11,12,MADRID,ANTON SANCHEZ,151.2,11.4,56.3,osrm,True
+corredor,370,1,12,13,ANTON SANCHEZ,PROLONGACION TACNA,243.6,20.1,78.5,osrm,True
+corredor,370,1,13,14,PROLONGACION TACNA,22 DE AGOSTO,442.9,58.0,126.3,osrm,True
+corredor,370,1,14,15,22 DE AGOSTO,SECHURA,369.0,55.3,108.6,osrm,True
+corredor,370,1,15,16,SECHURA,CAJAMARCA,295.0,43.5,90.8,osrm,True
+corredor,370,1,16,17,CAJAMARCA,TRUJILLO,291.2,43.5,89.9,osrm,True
+corredor,370,1,17,18,TRUJILLO,ACHO,630.1,77.0,171.2,osrm,True
+corredor,370,2,1,2,ACHO,CHICLAYO,1003.8,137.7,260.9,osrm,True
+corredor,370,2,2,3,CHICLAYO,ALAMEDA DE LOS DESCALZOS,443.7,51.4,126.5,osrm,True
+corredor,370,2,3,5,ALAMEDA DE LOS DESCALZOS,ANTON SANCHEZ,734.7,81.0,196.3,osrm,True
+corredor,370,2,5,6,ANTON SANCHEZ,LAS CALEZAS,199.0,16.9,67.8,osrm,True
+corredor,370,2,6,7,LAS CALEZAS,AMANCAES,469.4,36.4,132.7,osrm,True
+corredor,370,2,7,8,AMANCAES,CALLE 3,396.2,37.0,115.1,osrm,True
+corredor,370,2,8,9,CALLE 3,EL SOL,353.4,37.1,104.8,osrm,True
+corredor,370,2,9,10,EL SOL,CALLE 10,344.0,38.7,102.6,osrm,True
+corredor,370,2,10,11,CALLE 10,24 DE JUNIO,297.0,33.3,91.3,osrm,True
+corredor,370,2,11,12,24 DE JUNIO,CLAVELES,376.9,45.2,110.5,osrm,True
+corredor,370,2,12,13,CLAVELES,CEREZOS,292.5,32.1,90.2,osrm,True
+corredor,370,2,13,14,CEREZOS,PASAJE 17,284.9,25.8,88.4,osrm,True
+corredor,370,2,14,15,PASAJE 17,MONACO,251.0,22.6,80.2,osrm,True
+corredor,371,1,1,2,LAS LOMAS,MORRO DE ARICA,1056.8,82.5,273.6,osrm,True
+corredor,371,1,2,3,MORRO DE ARICA,AMANCAES,422.5,38.1,121.4,osrm,True
+corredor,371,2,1,2,AMANCAES,MORRO DE ARICA,665.2,68.3,179.6,osrm,True
+corredor,371,2,2,3,MORRO DE ARICA,CONDOMINIOS,1079.8,86.0,279.2,osrm,True
+corredor,371,2,3,4,CONDOMINIOS,LAS LOMAS,315.5,32.9,95.7,osrm,True
+corredor,4006,,1,2,LA CAPILLA,MONTENEGRO,307.3,16.9,93.8,osrm,True
+corredor,4006,,2,3,MONTENEGRO,CENTRAL,475.5,40.1,134.1,osrm,True
+corredor,4006,,3,4,CENTRAL,LA POSTA,411.3,46.3,118.7,osrm,True
+corredor,4006,,4,5,LA POSTA,8 DE MARISCAL,357.8,40.3,105.9,osrm,True
+corredor,4006,,5,6,8 DE MARISCAL,7 DE MARISCAL,295.9,33.3,91.0,osrm,True
+corredor,4006,,6,7,7 DE MARISCAL,5 DE MARISCAL,567.2,63.7,156.1,osrm,True
+corredor,4006,,7,8,5 DE MARISCAL,RECABARREN,436.2,49.0,124.7,osrm,True
+corredor,4006,,8,9,RECABARREN,MERCADO H. DEL CENEPA,805.9,90.7,213.4,osrm,True
+corredor,4006,,9,10,MERCADO H. DEL CENEPA,BAYOVAR,595.2,65.2,162.8,osrm,True
+corredor,4006,,10,11,BAYOVAR,LA QUINCE,399.0,38.8,115.8,osrm,True
+corredor,4006,,11,12,LA QUINCE,SANTA ROSA,736.3,66.4,196.7,osrm,True
+corredor,4006,,12,13,SANTA ROSA,SAN MARTIN,523.7,48.0,145.7,osrm,True
+corredor,4006,,13,14,SAN MARTIN,LA OCHO,706.6,65.1,189.6,osrm,True
+corredor,4006,,14,15,LA OCHO,SEDAPAL,623.8,67.0,169.7,osrm,True
+corredor,4006,,15,16,SEDAPAL,SAN CARLOS,947.3,96.6,247.4,osrm,True
+corredor,4006,,16,17,SAN CARLOS,BASADRE,668.6,64.2,180.5,osrm,True
+corredor,4006,,17,18,BASADRE,LOS POSTES,896.8,85.5,235.2,osrm,True
+corredor,4006,,18,19,LOS POSTES,LA HACIENDA,1054.2,98.9,273.0,osrm,True
+corredor,4006,,19,20,LA HACIENDA,CELIMA,927.4,89.3,242.6,osrm,True
+corredor,4006,,20,21,CELIMA,PIRÁMIDES DEL SOL,371.4,35.4,109.1,osrm,True
+corredor,4006,,21,22,PIRÁMIDES DEL SOL,TUPAC AMARU,986.7,90.8,256.8,osrm,True
+corredor,4006,,22,23,TUPAC AMARU,LIMA,363.0,34.7,107.1,osrm,True
+corredor,4006,,23,24,LIMA,CONCEJO,1199.2,124.0,307.8,osrm,True
+corredor,4006,,24,25,CONCEJO,ACHO,3750.3,397.2,920.1,osrm,False
+corredor,4006,,25,26,ACHO,ÁNCASH,1240.4,137.0,317.7,osrm,True
+corredor,4006,,26,27,ÁNCASH,UCAYALI,398.7,41.9,115.7,osrm,True
+corredor,4006,,27,28,UCAYALI,CUZCO,250.7,26.6,80.2,osrm,True
+corredor,4006,,28,29,CUZCO,N. DE PIÉROLA,308.8,31.9,94.1,osrm,True
+corredor,4006,,29,30,N. DE PIÉROLA,GRAU,536.3,54.5,148.7,osrm,True
+corredor,4006,,30,31,GRAU,MONTEVIDEO,457.0,55.9,129.7,osrm,True
+corredor,4006,,31,32,MONTEVIDEO,N. DE PIEROLA,865.0,109.5,227.6,osrm,True
+corredor,4006,,32,33,N. DE PIEROLA,CUZCO,406.9,40.7,117.7,osrm,True
+corredor,4006,,33,34,CUZCO,UCAYALI,267.7,28.1,84.2,osrm,True
+corredor,4006,,34,35,UCAYALI,JUNÍN,256.6,26.9,81.6,osrm,True
+corredor,4006,,35,36,JUNÍN,ACHO,872.2,101.5,229.3,osrm,True
+corredor,4006,,36,38,ACHO,TUPAC AMARU,2800.0,307.0,692.0,osrm,True
+corredor,4006,,38,39,TUPAC AMARU,PIRÁMIDES DEL SOL,837.0,86.8,220.9,osrm,True
+corredor,4006,,39,40,PIRÁMIDES DEL SOL,ASCARRUZ,320.6,43.6,96.9,osrm,True
+corredor,4006,,40,41,ASCARRUZ,CELIMA,625.9,73.9,170.2,osrm,True
+corredor,4006,,41,42,CELIMA,LA HACIENDA,918.9,86.7,240.5,osrm,True
+corredor,4006,,42,43,LA HACIENDA,LOS POSTES,1057.8,99.2,273.9,osrm,True
+corredor,4006,,43,44,LOS POSTES,BASADRE,845.6,100.8,222.9,osrm,True
+corredor,4006,,44,45,BASADRE,SAN CARLOS,693.2,73.4,186.4,osrm,True
+corredor,4006,,45,46,SAN CARLOS,SEDAPAL,652.5,62.6,176.6,osrm,True
+corredor,4006,,46,47,SEDAPAL,LA OCHO,534.1,48.2,148.2,osrm,True
+corredor,4006,,47,48,LA OCHO,SAN MARTIN,684.2,61.6,184.2,osrm,True
+corredor,4006,,48,49,SAN MARTIN,SANTA ROSA,470.6,42.4,132.9,osrm,True
+corredor,4006,,49,50,SANTA ROSA,LA QUINCE,818.6,73.7,216.5,osrm,True
+corredor,4006,,50,51,LA QUINCE,BAYÓVAR,412.7,41.9,119.0,osrm,True
+corredor,4006,,51,52,BAYÓVAR,MERCADO H. DEL CENEPA,1052.5,148.3,272.6,osrm,True
+corredor,4006,,52,53,MERCADO H. DEL CENEPA,POZO SECO,952.0,115.2,248.5,osrm,True
+corredor,4006,,53,54,POZO SECO,5 DE MARISCAL,431.7,48.6,123.6,osrm,True
+corredor,4006,,54,55,5 DE MARISCAL,7 DE MARISCAL,525.0,59.1,146.0,osrm,True
+corredor,4006,,55,57,7 DE MARISCAL,LA POSTA,701.8,79.0,188.4,osrm,True
+corredor,4006,,57,58,LA POSTA,CENTRAL,309.3,34.9,94.2,osrm,True
+corredor,4006,,58,59,CENTRAL,MONTENEGRO,469.7,42.4,132.7,osrm,True
+corredor,4006,,59,60,MONTENEGRO,LA CAPILLA,321.6,17.8,97.2,osrm,True
+corredor,401,,1,2,LA CAPILLA,MOTUPE,1024.8,56.6,266.0,osrm,True
+corredor,401,,2,3,MOTUPE,MARIATEGUI,797.0,44.3,211.3,osrm,True
+corredor,401,,3,4,MARIATEGUI,LA CINCO,666.4,67.1,179.9,osrm,True
+corredor,401,,4,5,LA CINCO,LUBRICANTE,1251.5,92.9,320.4,osrm,True
+corredor,401,,5,6,LUBRICANTE,FARMACIA LEO,215.0,11.9,71.6,osrm,True
+corredor,401,,6,7,FARMACIA LEO,BAYÓVAR DC,833.9,77.2,220.1,osrm,True
+corredor,401,,7,8,BAYÓVAR DC,SANTA ROSA,1140.1,113.6,293.6,osrm,True
+corredor,401,,8,9,SANTA ROSA,LA OCHO,1230.3,113.1,315.3,osrm,True
+corredor,401,,9,10,LA OCHO,SAN CARLOS,1156.1,104.2,297.5,osrm,True
+corredor,401,,10,11,SAN CARLOS,BASADRE,668.6,64.2,180.5,osrm,True
+corredor,401,,11,12,BASADRE,LOS POSTES,896.8,85.5,235.2,osrm,True
+corredor,401,,12,13,LOS POSTES,LA HACIENDA,1054.2,98.9,273.0,osrm,True
+corredor,401,,13,14,LA HACIENDA,CELIMA,927.4,89.3,242.6,osrm,True
+corredor,401,,14,15,CELIMA,PIRÁMIDES DEL SOL,371.4,35.4,109.1,osrm,True
+corredor,401,,15,16,PIRÁMIDES DEL SOL,LIMA (LAS FLORES),1350.1,125.5,344.0,osrm,True
+corredor,401,,16,17,LIMA (LAS FLORES),CONCEJO,552.4,53.7,152.6,osrm,True
+corredor,401,,17,18,CONCEJO,MERCADO DE FLORES,1344.9,125.2,342.8,osrm,True
+corredor,401,,18,19,MERCADO DE FLORES,ACHO,664.5,61.8,179.5,osrm,True
+corredor,401,,19,20,ACHO,ÁNCASH,591.3,59.1,161.9,osrm,True
+corredor,401,,20,21,ÁNCASH,UCAYALI,398.7,41.9,115.7,osrm,True
+corredor,401,,21,22,UCAYALI,CUSCO,246.3,26.2,79.1,osrm,True
+corredor,401,,22,23,CUSCO,NICOLAS DE PIÉROLA,313.2,32.3,95.2,osrm,True
+corredor,401,,23,24,NICOLAS DE PIÉROLA,GRAU,536.3,54.5,148.7,osrm,True
+corredor,401,,24,25,GRAU,28 DE JULIO,461.5,53.7,130.8,osrm,True
+corredor,401,,25,26,28 DE JULIO,UNANUE,453.1,51.5,128.7,osrm,True
+corredor,401,,26,27,UNANUE,CATOLICA,297.8,31.7,91.5,osrm,True
+corredor,401,,27,28,CATOLICA,MEXICO,717.2,75.8,192.1,osrm,True
+corredor,401,,28,29,MEXICO,PARDO DE ZELA,842.7,97.2,222.2,osrm,True
+corredor,401,,29,30,PARDO DE ZELA,TOMAS GUIDO,451.2,46.8,128.3,osrm,True
+corredor,401,,30,31,TOMAS GUIDO,JAVIER PRADO,541.8,50.6,150.0,osrm,True
+corredor,401,,31,32,JAVIER PRADO,CANAVAL Y MOREYRA,1208.4,105.3,310.0,osrm,True
+corredor,401,,32,33,CANAVAL Y MOREYRA,CANAVAL Y MOREYRA,234.3,19.6,76.2,osrm,True
+corredor,401,,33,34,CANAVAL Y MOREYRA,JAVIER PRADO,1181.2,123.4,303.5,osrm,True
+corredor,401,,34,35,JAVIER PRADO,TORRE UGARTE,411.1,40.6,118.7,osrm,True
+corredor,401,,35,36,TORRE UGARTE,RISSO,373.6,39.3,109.7,osrm,True
+corredor,401,,36,37,RISSO,CANDAMO,366.9,40.8,108.1,osrm,True
+corredor,401,,37,38,CANDAMO,SEGURA,315.6,34.3,95.7,osrm,True
+corredor,401,,38,39,SEGURA,ESTACION MEXICO,621.7,75.7,169.2,osrm,True
+corredor,401,,39,41,ESTACION MEXICO,CATOLICA,1229.4,143.7,315.1,osrm,True
+corredor,401,,41,42,CATOLICA,UNANUE,332.6,35.0,99.8,osrm,True
+corredor,401,,42,43,UNANUE,BAUZATE Y MEZA,290.8,33.2,89.8,osrm,True
+corredor,401,,43,44,BAUZATE Y MEZA,GRAU,600.8,68.0,164.2,osrm,True
+corredor,401,,44,45,GRAU,NICOLAS DE PIÉROLA,442.3,48.3,126.2,osrm,True
+corredor,401,,45,46,NICOLAS DE PIÉROLA,CUSCO,412.1,41.1,118.9,osrm,True
+corredor,401,,46,47,CUSCO,JR SANTA ROSA,118.2,12.7,48.4,osrm,True
+corredor,401,,47,48,JR SANTA ROSA,HUALLAGA,264.1,27.7,83.4,osrm,True
+corredor,401,,48,49,HUALLAGA,ACHO,1009.8,115.7,262.4,osrm,True
+corredor,401,,49,50,ACHO,MERCADO DE FLORES,477.2,56.5,134.5,osrm,True
+corredor,401,,50,51,MERCADO DE FLORES,CONCEJO,1565.9,147.6,395.8,osrm,True
+corredor,401,,51,52,CONCEJO,PIRÁMIDES DEL SOL,1573.0,149.6,397.5,osrm,True
+corredor,401,,52,53,PIRÁMIDES DEL SOL,CELIMA,547.5,51.3,151.4,osrm,True
+corredor,401,,53,54,CELIMA,LA HACIENDA,918.9,86.7,240.5,osrm,True
+corredor,401,,54,55,LA HACIENDA,LOS POSTES,1057.8,99.2,273.9,osrm,True
+corredor,401,,55,56,LOS POSTES,BASADRE,845.6,100.8,222.9,osrm,True
+corredor,401,,56,57,BASADRE,SAN CARLOS,693.2,73.4,186.4,osrm,True
+corredor,401,,57,58,SAN CARLOS,LA OCHO,1186.6,110.8,304.8,osrm,True
+corredor,401,,58,59,LA OCHO,SANTA ROSA,1154.7,104.0,297.1,osrm,True
+corredor,401,,59,60,SANTA ROSA,BAYÓVAR,1231.3,115.6,315.5,osrm,True
+corredor,401,,60,61,BAYÓVAR,FARMACIA LEO,762.0,75.0,202.9,osrm,True
+corredor,401,,61,63,FARMACIA LEO,LA CINCO,1133.5,68.9,292.0,osrm,True
+corredor,401,,63,64,LA CINCO,MARIÁTEGUI,562.7,39.0,155.0,osrm,True
+corredor,401,,64,65,MARIÁTEGUI,MOTUPE,803.6,52.9,212.9,osrm,True
+corredor,401,,65,66,MOTUPE,LA CAPILLA,1066.5,58.9,276.0,osrm,True
+corredor,404,,8,10,BAYÓVAR DC,SANTA ROSA,1140.1,113.6,293.6,osrm,True
+corredor,404,,10,13,SANTA ROSA,SEDAPAL / DEL PARQUE,1765.3,161.3,443.7,osrm,True
+corredor,404,,13,23,SEDAPAL / DEL PARQUE,MDO DE FLORES,7786.9,733.7,1888.9,osrm,False
+corredor,404,,23,28,MDO DE FLORES,N. DE PIÉROLA,2214.0,221.3,551.4,osrm,True
+corredor,404,,28,34,N. DE PIÉROLA,LA NUEVE (BRASIL),3566.0,422.7,875.8,osrm,False
+corredor,404,,34,35,LA NUEVE (BRASIL),LA DOCE (BRASIL),433.7,36.6,124.1,osrm,True
+corredor,404,,35,37,LA DOCE (BRASIL),LA DIECIOCHO (BRASIL),1562.3,166.8,395.0,osrm,True
+corredor,404,,37,38,LA DIECIOCHO (BRASIL),ÓVALO (BRASIL),299.3,26.5,91.8,osrm,True
+corredor,404,,38,41,ÓVALO (BRASIL),JAVIER PRADO (BRASIL),1309.5,114.7,334.3,osrm,True
+corredor,404,,41,44,JAVIER PRADO (BRASIL),JAVIER PRADO (BRASIL),828.3,118.2,218.8,osrm,True
+corredor,404,,44,47,JAVIER PRADO (BRASIL),ÓVALO (BRASIL),1308.9,125.4,334.1,osrm,True
+corredor,404,,47,48,ÓVALO (BRASIL),LA DIECIOCHO (BRASIL),547.8,70.3,151.5,osrm,True
+corredor,404,,48,50,LA DIECIOCHO (BRASIL),LA DOCE (BRASIL),932.7,75.9,243.8,osrm,True
+corredor,404,,50,51,LA DOCE (BRASIL),LA NUEVE (BRASIL),419.7,35.6,120.7,osrm,True
+corredor,404,,51,53,LA NUEVE (BRASIL),BOLOGNESI,1232.1,145.2,315.7,osrm,True
+corredor,404,,53,55,BOLOGNESI,N. DE PIEROLA,2743.2,301.3,678.4,osrm,True
+corredor,404,,55,58,N. DE PIEROLA,MDO DE FLORES,2283.9,232.1,568.1,osrm,True
+corredor,404,,58,82,MDO DE FLORES,ENCINAS,2930.9,287.7,723.4,osrm,True
+corredor,404,,82,85,ENCINAS,GARCILAZO,7157.4,761.7,1737.8,osrm,False
+corredor,404,,85,86,GARCILAZO,HUALLAGA,3015.3,331.3,743.7,osrm,False
+corredor,404,1,1,2,LA CAPILLA,MONTENEGRO,307.3,16.9,93.8,osrm,True
+corredor,404,1,2,3,MONTENEGRO,MOTUPE,717.5,39.7,192.2,osrm,True
+corredor,404,1,3,4,MOTUPE,8 DE MARISCAL,493.6,27.5,138.5,osrm,True
+corredor,404,1,4,5,8 DE MARISCAL,MARIATEGUI,303.4,16.8,92.8,osrm,True
+corredor,404,1,5,6,MARIATEGUI,LA CINCO,666.4,67.1,179.9,osrm,True
+corredor,404,1,6,7,LA CINCO,LA CUATRO,1037.0,94.7,268.9,osrm,True
+corredor,404,1,7,8,LA CUATRO,BAYÓVAR,2284.1,223.9,568.2,osrm,True
+corredor,404,1,8,9,BAYÓVAR,LA QUINCE,706.6,78.9,189.6,osrm,True
+corredor,404,1,9,10,LA QUINCE,SAN MARTIN,1259.9,114.4,322.4,osrm,True
+corredor,404,1,10,11,SAN MARTIN,LA OCHO,706.6,65.1,189.6,osrm,True
+corredor,404,1,11,12,LA OCHO,SEDAPAL,623.8,67.0,169.7,osrm,True
+corredor,404,1,12,13,SEDAPAL,SAN CARLOS,947.3,96.6,247.4,osrm,True
+corredor,404,1,13,14,SAN CARLOS,BASADRE,668.6,64.2,180.5,osrm,True
+corredor,404,1,14,15,BASADRE,LOS POSTES,896.8,85.5,235.2,osrm,True
+corredor,404,1,15,16,LOS POSTES,LA HACIENDA,1054.2,98.9,273.0,osrm,True
+corredor,404,1,16,17,LA HACIENDA,CELIMA,927.4,89.3,242.6,osrm,True
+corredor,404,1,17,18,CELIMA,PIRÁMIDES DEL SOL,371.4,35.4,109.1,osrm,True
+corredor,404,1,18,20,PIRÁMIDES DEL SOL,TUPAC AMARU,986.7,90.8,256.8,osrm,True
+corredor,404,1,20,21,TUPAC AMARU,LIMA (LAS FLORES),363.4,34.7,107.2,osrm,True
+corredor,404,1,21,22,LIMA (LAS FLORES),CONCEJO,1198.8,124.0,307.7,osrm,True
+corredor,404,1,22,24,CONCEJO,ACHO,3715.7,406.3,911.8,osrm,False
+corredor,404,1,24,25,ACHO,ÁNCASH,1279.0,150.2,327.0,osrm,True
+corredor,404,1,25,26,ÁNCASH,UCAYALI,398.7,41.9,115.7,osrm,True
+corredor,404,1,26,27,UCAYALI,CUZCO,250.7,26.6,80.2,osrm,True
+corredor,404,1,27,29,CUZCO,GRAU,845.1,86.4,222.8,osrm,True
+corredor,404,1,29,30,GRAU,COTABAMBAS,490.1,50.3,137.6,osrm,True
+corredor,404,1,30,31,COTABAMBAS,GARCILASO,306.2,37.0,93.5,osrm,True
+corredor,404,1,31,32,GARCILASO,BOLOGNESI,1646.7,203.6,415.2,osrm,True
+corredor,404,1,32,33,BOLOGNESI,DON BOSCO,510.6,63.8,142.5,osrm,True
+corredor,404,1,33,34,DON BOSCO,HOSPITAL DEL NIÑO,360.8,40.6,106.6,osrm,True
+corredor,404,1,34,37,HOSPITAL DEL NIÑO,BOLIVAR,2139.0,251.7,533.4,osrm,True
+corredor,404,1,37,40,BOLIVAR,COLEGIO,1526.0,206.4,386.2,osrm,True
+corredor,404,1,40,41,COLEGIO,HOSPITAL PNP,265.4,21.9,83.7,osrm,True
+corredor,404,1,41,43,HOSPITAL PNP,VENUS,1366.3,143.7,347.9,osrm,True
+corredor,404,1,43,44,VENUS,LA VIRGEN,589.5,86.1,161.5,osrm,True
+corredor,404,2,1,3,VENUS,HOSPITAL PNP,1331.4,145.7,339.5,osrm,True
+corredor,404,2,3,4,HOSPITAL PNP,COLEGIO,284.4,23.3,88.3,osrm,True
+corredor,404,2,4,7,COLEGIO,BOLIVAR,1055.4,85.0,273.3,osrm,True
+corredor,404,2,7,10,BOLIVAR,HOSPITAL DEL NIÑO,1403.6,119.4,356.9,osrm,True
+corredor,404,2,10,12,HOSPITAL DEL NIÑO,CHOTA,1920.7,248.3,481.0,osrm,True
+corredor,404,2,12,13,CHOTA,GARCILASO,1405.0,195.8,357.2,osrm,True
+corredor,404,2,13,14,GARCILASO,JOSE GALVEZ,339.5,37.6,101.5,osrm,True
+corredor,404,2,14,15,JOSE GALVEZ,MONTEVIDEO,514.1,61.7,143.4,osrm,True
+corredor,404,2,15,17,MONTEVIDEO,CUZCO,1271.9,150.2,325.3,osrm,True
+corredor,404,2,17,18,CUZCO,UCAYALI,993.3,139.2,258.4,osrm,True
+corredor,404,2,18,20,UCAYALI,ACHO,1578.3,179.5,398.8,osrm,True
+corredor,404,2,20,22,ACHO,CONCEJO,3745.4,401.1,918.9,osrm,False
+corredor,404,2,22,23,CONCEJO,TUPAC AMARU,1403.2,173.2,356.8,osrm,True
+corredor,404,2,23,24,TUPAC AMARU,ENCINAS,293.4,37.9,90.4,osrm,True
+corredor,404,2,24,25,ENCINAS,PIRÁMIDES DEL SOL,543.6,48.9,150.5,osrm,True
+corredor,404,2,25,26,PIRÁMIDES DEL SOL,ASCARRUZ,320.6,43.6,96.9,osrm,True
+corredor,404,2,26,27,ASCARRUZ,CELIMA,625.9,73.9,170.2,osrm,True
+corredor,404,2,27,28,CELIMA,LA HACIENDA,918.9,86.7,240.5,osrm,True
+corredor,404,2,28,29,LA HACIENDA,LOS POSTES,1057.8,99.2,273.9,osrm,True
+corredor,404,2,29,30,LOS POSTES,BASADRE,845.6,100.8,222.9,osrm,True
+corredor,404,2,30,31,BASADRE,SAN CARLOS,693.2,73.4,186.4,osrm,True
+corredor,404,2,31,32,SAN CARLOS,SEDAPAL,728.3,69.5,194.8,osrm,True
+corredor,404,2,32,33,SEDAPAL,LA OCHO,458.3,41.3,130.0,osrm,True
+corredor,404,2,33,34,LA OCHO,SAN MARTIN,684.2,61.6,184.2,osrm,True
+corredor,404,2,34,35,SAN MARTIN,SANTA ROSA,470.6,42.4,132.9,osrm,True
+corredor,404,2,35,36,SANTA ROSA,LA QUINCE,818.6,73.7,216.5,osrm,True
+corredor,404,2,36,37,LA QUINCE,BAYÓVAR,412.7,41.9,119.0,osrm,True
+corredor,404,2,37,38,BAYÓVAR,LA CUATRO,1139.3,101.5,293.4,osrm,True
+corredor,404,2,38,39,LA CUATRO,LA CINCO,399.5,26.1,115.9,osrm,True
+corredor,404,2,39,40,LA CINCO,MARIÁTEGUI,562.7,39.0,155.0,osrm,True
+corredor,404,2,40,41,MARIÁTEGUI,8 DE MARISCAL,334.9,27.0,100.4,osrm,True
+corredor,404,2,41,42,8 DE MARISCAL,MOTUPE,468.8,25.9,132.5,osrm,True
+corredor,404,2,42,43,MOTUPE,MONTENEGRO,744.9,41.1,198.8,osrm,True
+corredor,404,2,43,44,MONTENEGRO,LA CAPILLA,321.6,17.8,97.2,osrm,True
+corredor,405,,16,22,LOS POSTES,CONCEJO,4255.5,402.8,1041.3,osrm,False
+corredor,405,,22,23,CONCEJO,MDO DE FLORES,1344.9,125.2,342.8,osrm,True
+corredor,405,,23,28,MDO DE FLORES,N. DE PIÉROLA,2214.0,221.3,551.4,osrm,True
+corredor,405,,28,41,N. DE PIÉROLA,MEXICO,2751.5,318.9,680.4,osrm,True
+corredor,405,,41,42,MEXICO,LA CATOLICA,720.5,76.6,192.9,osrm,True
+corredor,405,,42,73,LA CATOLICA,N. DE PIEROLA,1667.2,184.5,420.1,osrm,True
+corredor,405,,73,79,N. DE PIEROLA,JAVIER PRADO,5359.2,505.8,1306.2,osrm,False
+corredor,405,1,1,2,LA CAPILLA,MONTENEGRO,307.3,16.9,93.8,osrm,True
+corredor,405,1,2,3,MONTENEGRO,MOTUPE,717.5,39.7,192.2,osrm,True
+corredor,405,1,3,4,MOTUPE,8 DE MARISCAL,493.6,27.5,138.5,osrm,True
+corredor,405,1,4,5,8 DE MARISCAL,MARIATEGUI,303.4,16.8,92.8,osrm,True
+corredor,405,1,5,6,MARIATEGUI,LA CINCO,666.4,67.1,179.9,osrm,True
+corredor,405,1,6,7,LA CINCO,LA CUATRO,1037.0,94.7,268.9,osrm,True
+corredor,405,1,7,8,LA CUATRO,SEOANE,1492.5,134.0,378.2,osrm,True
+corredor,405,1,8,9,SEOANE,BAYOVAR DC,436.8,39.1,124.8,osrm,True
+corredor,405,1,9,10,BAYOVAR DC,LA QUINCE,442.4,43.2,126.2,osrm,True
+corredor,405,1,10,11,LA QUINCE,SANTA ROSA,736.3,66.4,196.7,osrm,True
+corredor,405,1,11,12,SANTA ROSA,SAN MARTIN,523.7,48.0,145.7,osrm,True
+corredor,405,1,12,13,SAN MARTIN,LA OCHO,706.6,65.1,189.6,osrm,True
+corredor,405,1,13,14,LA OCHO,SEDAPAL,623.8,67.0,169.7,osrm,True
+corredor,405,1,14,15,SEDAPAL,SAN CARLOS,947.3,96.6,247.4,osrm,True
+corredor,405,1,15,16,SAN CARLOS,BASADRE,668.6,64.2,180.5,osrm,True
+corredor,405,1,16,17,BASADRE,Los Postes,813.1,97.8,215.1,osrm,True
+corredor,405,1,17,18,Los Postes,LA HACIENDA,1157.9,123.6,297.9,osrm,True
+corredor,405,1,18,19,LA HACIENDA,CELIMA,927.4,89.3,242.6,osrm,True
+corredor,405,1,19,20,CELIMA,PIRÁMIDES DEL SOL,371.4,35.4,109.1,osrm,True
+corredor,405,1,20,21,PIRÁMIDES DEL SOL,ENCINAS,729.2,67.5,195.0,osrm,True
+corredor,405,1,21,22,ENCINAS,TUPAC AMARU,257.4,23.3,81.8,osrm,True
+corredor,405,1,22,23,TUPAC AMARU,LIMA (LAS FLORES),363.4,34.7,107.2,osrm,True
+corredor,405,1,23,24,LIMA (LAS FLORES),CONCEJO,1198.8,124.0,307.7,osrm,True
+corredor,405,1,24,26,CONCEJO,ACHO,3715.7,406.3,911.8,osrm,False
+corredor,405,1,26,27,ACHO,ÁNCASH,1279.0,150.2,327.0,osrm,True
+corredor,405,1,27,28,ÁNCASH,UCAYALI,398.7,41.9,115.7,osrm,True
+corredor,405,1,28,29,UCAYALI,CUZCO,250.7,26.6,80.2,osrm,True
+corredor,405,1,29,31,CUZCO,GRAU,845.1,86.4,222.8,osrm,True
+corredor,405,1,31,32,GRAU,28 DE JULIO,461.5,53.7,130.8,osrm,True
+corredor,405,1,32,33,28 DE JULIO,UNANUE,453.1,51.5,128.7,osrm,True
+corredor,405,1,33,34,UNANUE,CATOLICA,342.1,36.2,102.1,osrm,True
+corredor,405,1,34,35,CATOLICA,MEXICO,672.9,71.3,181.5,osrm,True
+corredor,405,1,35,36,MEXICO,PARDO DE ZELA,842.7,97.2,222.2,osrm,True
+corredor,405,1,36,37,PARDO DE ZELA,TOMAS GUIDO,451.2,46.8,128.3,osrm,True
+corredor,405,1,37,38,TOMAS GUIDO,JAVIER PRADO,541.8,50.6,150.0,osrm,True
+corredor,405,1,38,39,JAVIER PRADO,CANAVAL Y MOREYRA,1208.4,105.3,310.0,osrm,True
+corredor,405,2,1,2,CANAVAL Y MOREYRA,JAVIER PRADO,1850.3,194.4,464.1,osrm,True
+corredor,405,2,2,3,JAVIER PRADO,TORRE UGARTE,626.4,61.7,170.3,osrm,True
+corredor,405,2,3,4,TORRE UGARTE,RISSO,373.6,39.3,109.7,osrm,True
+corredor,405,2,4,5,RISSO,CANDAMO,366.9,40.8,108.1,osrm,True
+corredor,405,2,5,6,CANDAMO,SEGURA,315.6,34.3,95.7,osrm,True
+corredor,405,2,6,7,SEGURA,ESTACION MEXICO,621.7,75.7,169.2,osrm,True
+corredor,405,2,7,8,ESTACION MEXICO,MEXICO,937.9,126.5,245.1,osrm,True
+corredor,405,2,8,9,MEXICO,CATOLICA,1218.6,134.4,312.5,osrm,True
+corredor,405,2,9,10,CATOLICA,UNANUE,357.1,48.7,105.7,osrm,True
+corredor,405,2,10,11,UNANUE,BAUZATE Y MEZA,290.8,33.2,89.8,osrm,True
+corredor,405,2,11,12,BAUZATE Y MEZA,GRAU,600.8,68.0,164.2,osrm,True
+corredor,405,2,12,14,GRAU,CUZCO,849.9,89.0,224.0,osrm,True
+corredor,405,2,14,16,CUZCO,HUALLAGA,386.7,40.8,112.8,osrm,True
+corredor,405,2,16,17,HUALLAGA,ACHO,1165.0,124.9,299.6,osrm,True
+corredor,405,2,17,18,ACHO,MDO DE FLORES,1233.6,149.1,316.1,osrm,True
+corredor,405,2,18,20,MDO DE FLORES,TUPAC AMARU,2315.4,249.8,575.7,osrm,True
+corredor,405,2,20,21,TUPAC AMARU,ENCINAS,293.4,37.9,90.4,osrm,True
+corredor,405,2,21,22,ENCINAS,PIRÁMIDES DEL SOL,543.6,48.9,150.5,osrm,True
+corredor,405,2,22,23,PIRÁMIDES DEL SOL,ASCARRUZ,320.6,43.6,96.9,osrm,True
+corredor,405,2,23,24,ASCARRUZ,CELIMA,625.9,73.9,170.2,osrm,True
+corredor,405,2,24,25,CELIMA,LA HACIENDA,918.9,86.7,240.5,osrm,True
+corredor,405,2,25,26,LA HACIENDA,LOS POSTES,1057.8,99.2,273.9,osrm,True
+corredor,405,2,26,27,LOS POSTES,BASADRE,845.6,100.8,222.9,osrm,True
+corredor,405,2,27,28,BASADRE,SAN CARLOS,693.2,73.4,186.4,osrm,True
+corredor,405,2,28,29,SAN CARLOS,SEDAPAL,652.5,62.6,176.6,osrm,True
+corredor,405,2,29,30,SEDAPAL,LA OCHO,534.1,48.2,148.2,osrm,True
+corredor,405,2,30,31,LA OCHO,SAN MARTIN,684.2,61.6,184.2,osrm,True
+corredor,405,2,31,32,SAN MARTIN,SANTA ROSA,470.6,42.4,132.9,osrm,True
+corredor,405,2,32,33,SANTA ROSA,LA QUINCE,818.6,73.7,216.5,osrm,True
+corredor,405,2,33,34,LA QUINCE,BAYÓVAR,412.7,41.9,119.0,osrm,True
+corredor,405,2,34,35,BAYÓVAR,SEOANE,1300.2,126.9,332.0,osrm,True
+corredor,405,2,35,36,SEOANE,LA CUATRO,1668.5,128.8,420.4,osrm,True
+corredor,405,2,36,37,LA CUATRO,LA CINCO,399.5,26.1,115.9,osrm,True
+corredor,405,2,37,38,LA CINCO,MARIÁTEGUI,562.7,39.0,155.0,osrm,True
+corredor,405,2,38,39,MARIÁTEGUI,8 DE MARISCAL,334.9,27.0,100.4,osrm,True
+corredor,405,2,39,40,8 DE MARISCAL,MOTUPE,468.8,25.9,132.5,osrm,True
+corredor,405,2,40,41,MOTUPE,MONTENEGRO,744.9,41.1,198.8,osrm,True
+corredor,405,2,41,42,MONTENEGRO,LA CAPILLA,321.6,17.8,97.2,osrm,True
+corredor,406,,10,17,MERCADO HÉROES DEL CENEPA,LOS POSTES,5680.2,537.2,1383.2,osrm,False
+corredor,406,,17,20,LOS POSTES,PIRÁMIDES DEL SOL,2353.0,223.6,584.7,osrm,True
+corredor,406,,20,28,PIRÁMIDES DEL SOL,CUZCO,5152.6,493.8,1256.6,osrm,False
+corredor,406,,28,35,CUZCO,CUZCO,1130.1,156.3,291.2,osrm,True
+corredor,406,,35,40,CUZCO,PIRÁMIDES DEL SOL,5008.5,487.9,1222.0,osrm,False
+corredor,406,,40,71,PIRÁMIDES DEL SOL,LOS EBANOS,2263.1,228.0,563.1,osrm,True
+corredor,406,,71,76,LOS EBANOS,LOS EBANOS,815.1,86.0,215.6,osrm,True
+corredor,406,,76,77,LOS EBANOS,LAS AMATISTAS,362.5,34.6,107.0,osrm,True
+corredor,406,,77,86,LAS AMATISTAS,PLAZA GRAU,9377.1,916.8,2270.5,osrm,False
+corredor,406,,86,87,PLAZA GRAU,JR SANTA ROSA,1783.1,195.4,447.9,osrm,True
+corredor,406,,87,88,JR SANTA ROSA,HUALLAGA,264.1,27.7,83.4,osrm,True
+corredor,406,,88,90,HUALLAGA,BAYOVAR DC,12517.4,1195.0,3024.2,osrm,False
+corredor,406,1,1,2,LA CAPILLA,MONTENEGRO,307.3,16.9,93.8,osrm,True
+corredor,406,1,2,3,MONTENEGRO,CENTRAL,475.5,40.1,134.1,osrm,True
+corredor,406,1,3,4,CENTRAL,LA POSTA,411.3,46.3,118.7,osrm,True
+corredor,406,1,4,5,LA POSTA,SANTA MARIA,118.2,13.3,48.4,osrm,True
+corredor,406,1,5,6,SANTA MARIA,CALLE 3,114.9,13.0,47.6,osrm,True
+corredor,406,1,6,7,CALLE 3,8 DE MARISCAL,124.7,14.0,49.9,osrm,True
+corredor,406,1,7,8,8 DE MARISCAL,7 DE MARISCAL,295.9,33.3,91.0,osrm,True
+corredor,406,1,8,9,7 DE MARISCAL,DEL CRUCE ESTE,308.1,34.6,93.9,osrm,True
+corredor,406,1,9,10,DEL CRUCE ESTE,AUGUSTO B. LEGUIA,153.4,17.3,56.8,osrm,True
+corredor,406,1,10,11,AUGUSTO B. LEGUIA,5 DE MARISCAL,105.7,11.8,45.4,osrm,True
+corredor,406,1,11,12,5 DE MARISCAL,CIRO ALEGRIA,219.6,24.7,72.7,osrm,True
+corredor,406,1,12,13,CIRO ALEGRIA,CARCAMO,114.2,12.9,47.4,osrm,True
+corredor,406,1,13,14,CARCAMO,RECABARREN,102.4,11.4,44.6,osrm,True
+corredor,406,1,14,16,RECABARREN,ESTACION,891.2,116.9,233.9,osrm,True
+corredor,406,1,16,17,ESTACION,BAYOVAR,178.6,22.0,62.9,osrm,True
+corredor,406,1,17,18,BAYOVAR,LA QUINCE,399.0,38.8,115.8,osrm,True
+corredor,406,1,18,19,LA QUINCE,SANTA ROSA,736.3,66.4,196.7,osrm,True
+corredor,406,1,19,20,SANTA ROSA,SAN MARTIN,523.7,48.0,145.7,osrm,True
+corredor,406,1,20,21,SAN MARTIN,LA OCHO,706.6,65.1,189.6,osrm,True
+corredor,406,1,21,22,LA OCHO,DEL PARQUE,346.9,31.2,103.3,osrm,True
+corredor,406,1,22,23,DEL PARQUE,SEDAPAL,276.9,35.8,86.5,osrm,True
+corredor,406,1,23,24,SEDAPAL,LOS CIRUELOS,738.5,77.7,197.2,osrm,True
+corredor,406,1,24,25,LOS CIRUELOS,SAN CARLOS,208.7,18.9,70.1,osrm,True
+corredor,406,1,25,26,SAN CARLOS,BASADRE,668.6,64.2,180.5,osrm,True
+corredor,406,1,26,27,BASADRE,SAN HILARION,473.6,46.7,133.7,osrm,True
+corredor,406,1,27,28,SAN HILARION,Los Postes,339.5,51.1,101.5,osrm,True
+corredor,406,1,28,29,Los Postes,LAS SABILAS,418.9,55.1,120.5,osrm,True
+corredor,406,1,29,31,LAS SABILAS,LA HACIENDA,739.0,68.5,197.4,osrm,True
+corredor,406,1,31,32,LA HACIENDA,BRITANICO,1584.3,162.6,400.2,osrm,True
+corredor,406,1,32,33,BRITANICO,PARQUE ZONAL,998.1,108.6,259.5,osrm,True
+corredor,406,1,33,34,PARQUE ZONAL,CELIMA,252.2,22.5,80.5,osrm,True
+corredor,406,1,34,36,CELIMA,ENCINAS,1100.6,102.9,284.1,osrm,True
+corredor,406,1,36,37,ENCINAS,TUPAC AMARU,257.4,23.3,81.8,osrm,True
+corredor,406,1,37,38,TUPAC AMARU,LIMA,363.0,34.7,107.1,osrm,True
+corredor,406,1,38,39,LIMA,CONCEJO,1199.2,124.0,307.8,osrm,True
+corredor,406,1,39,40,CONCEJO,MERCADO DE FLORES,2298.1,230.3,571.5,osrm,True
+corredor,406,1,40,41,MERCADO DE FLORES,ACHO,1417.7,176.0,360.2,osrm,True
+corredor,406,1,41,42,ACHO,ÁNCASH,1279.0,150.2,327.0,osrm,True
+corredor,406,1,42,43,ÁNCASH,UCAYALI,398.7,41.9,115.7,osrm,True
+corredor,406,1,43,45,UCAYALI,NICOLAS DE PIÉROLA,559.5,58.5,154.3,osrm,True
+corredor,406,1,45,46,NICOLAS DE PIÉROLA,GRAU,536.3,54.5,148.7,osrm,True
+corredor,406,1,46,47,GRAU,COTABAMBAS,490.1,50.3,137.6,osrm,True
+corredor,406,2,3,4,JOSE GALVEZ,MONTEVIDEO,514.1,61.7,143.4,osrm,True
+corredor,406,2,4,5,MONTEVIDEO,NICOLAS DE PIÉROLA,864.2,109.5,227.4,osrm,True
+corredor,406,2,5,7,NICOLAS DE PIÉROLA,ACHO,1959.4,206.4,490.3,osrm,True
+corredor,406,2,7,8,ACHO,MERCADO DE FLORES,1226.2,148.4,314.3,osrm,True
+corredor,406,2,8,9,MERCADO DE FLORES,CONCEJO,2519.1,252.7,624.6,osrm,True
+corredor,406,2,9,10,CONCEJO,TUPAC AMARU,1403.2,173.2,356.8,osrm,True
+corredor,406,2,10,11,TUPAC AMARU,ENCINAS,293.4,37.9,90.4,osrm,True
+corredor,406,2,11,13,ENCINAS,ASCARRUZ,864.2,92.5,227.4,osrm,True
+corredor,406,2,13,14,ASCARRUZ,CELIMA,625.9,73.9,170.2,osrm,True
+corredor,406,2,14,15,CELIMA,PARQUE ZONAL,1635.5,167.9,412.5,osrm,True
+corredor,406,2,15,16,PARQUE ZONAL,BRITANICO,1398.7,187.3,355.7,osrm,True
+corredor,406,2,16,17,BRITANICO,LA HACIENDA,1525.2,193.0,386.0,osrm,True
+corredor,406,2,17,20,LA HACIENDA,LOS POSTES,1057.8,99.2,273.9,osrm,True
+corredor,406,2,20,21,LOS POSTES,SAN HILARION,453.1,43.4,128.7,osrm,True
+corredor,406,2,21,22,SAN HILARION,BASADRE,392.5,57.4,114.2,osrm,True
+corredor,406,2,22,23,BASADRE,SAN CARLOS,693.2,73.4,186.4,osrm,True
+corredor,406,2,23,24,SAN CARLOS,LOS CIRUELOS,260.8,27.3,82.6,osrm,True
+corredor,406,2,24,25,LOS CIRUELOS,SEDAPAL,391.7,35.3,114.0,osrm,True
+corredor,406,2,25,26,SEDAPAL,DEL PARQUE,192.6,17.4,66.2,osrm,True
+corredor,406,2,26,27,DEL PARQUE,LA OCHO,341.4,30.8,101.9,osrm,True
+corredor,406,2,27,28,LA OCHO,SAN MARTIN,684.2,61.6,184.2,osrm,True
+corredor,406,2,28,29,SAN MARTIN,SANTA ROSA,470.6,42.4,132.9,osrm,True
+corredor,406,2,29,30,SANTA ROSA,LA QUINCE,818.6,73.7,216.5,osrm,True
+corredor,406,2,30,31,LA QUINCE,BAYÓVAR,412.7,41.9,119.0,osrm,True
+corredor,406,2,31,32,BAYÓVAR,HEROES DEL CENEPA,479.0,45.5,135.0,osrm,True
+corredor,406,2,32,33,HEROES DEL CENEPA,POZO SECO,900.4,106.0,236.1,osrm,True
+corredor,406,2,33,34,POZO SECO,CARCAMO,789.2,99.6,209.4,osrm,True
+corredor,406,2,34,35,CARCAMO,CIRO ALEGRIA,654.5,93.1,177.1,osrm,True
+corredor,406,2,35,36,CIRO ALEGRIA,5 DE MARISCAL,723.2,91.0,193.6,osrm,True
+corredor,406,2,36,37,5 DE MARISCAL,AUGUSTO B. LEGUIA,468.1,63.8,132.3,osrm,True
+corredor,406,2,37,38,AUGUSTO B. LEGUIA,DEL CRUCE ESTE,695.3,96.6,186.9,osrm,True
+corredor,406,2,38,39,DEL CRUCE ESTE,7 DE MARISCAL,240.9,38.3,77.8,osrm,True
+corredor,406,2,39,40,7 DE MARISCAL,8 DE MARISCAL,619.4,80.8,168.7,osrm,True
+corredor,406,2,40,41,8 DE MARISCAL,CALLE 15,123.6,24.3,49.7,osrm,True
+corredor,406,2,41,42,CALLE 15,SANTA MARIA,118.0,13.3,48.3,osrm,True
+corredor,406,2,42,43,SANTA MARIA,LA POSTA,107.6,12.1,45.8,osrm,True
+corredor,406,2,43,44,LA POSTA,CENTRAL,309.3,34.9,94.2,osrm,True
+corredor,406,2,44,45,CENTRAL,MONTENEGRO,469.7,42.4,132.7,osrm,True
+corredor,406,2,45,46,MONTENEGRO,LA CAPILLA,321.6,17.8,97.2,osrm,True
+corredor,409,,1,2,LA CAPILLA,MONTENEGRO,335.3,31.2,100.5,osrm,True
+corredor,409,,2,3,MONTENEGRO,MOTUPE,717.5,39.7,192.2,osrm,True
+corredor,409,,3,4,MOTUPE,8 DE MARISCAL,493.6,27.5,138.5,osrm,True
+corredor,409,,4,5,8 DE MARISCAL,MARIATEGUI,303.4,16.8,92.8,osrm,True
+corredor,409,,5,6,MARIATEGUI,LA CINCO,666.4,67.1,179.9,osrm,True
+corredor,409,,6,7,LA CINCO,LA CUATRO,1037.0,94.7,268.9,osrm,True
+corredor,409,,7,8,LA CUATRO,LUBRICANTES,1319.7,103.4,336.7,osrm,True
+corredor,409,,8,9,LUBRICANTES,FARMACIA LEO,215.0,11.9,71.6,osrm,True
+corredor,409,,9,10,FARMACIA LEO,CATORCE,388.0,34.4,113.1,osrm,True
+corredor,409,,10,11,CATORCE,DIECISÉIS,519.0,46.7,144.6,osrm,True
+corredor,409,,11,12,DIECISÉIS,TRECE,623.2,46.9,169.6,osrm,True
+corredor,409,,12,13,TRECE,DOCE,263.2,26.3,83.2,osrm,True
+corredor,409,,13,14,DOCE,DIEZ,416.7,41.8,120.0,osrm,True
+corredor,409,,14,15,DIEZ,OCHO,289.1,33.0,89.4,osrm,True
+corredor,409,,15,16,OCHO,LA CINCO,662.9,66.5,179.1,osrm,True
+corredor,409,,16,17,LA CINCO,DOS,723.6,74.5,193.7,osrm,True
+corredor,409,,17,18,DOS,COMISARÍA (CANTO GRANDE),360.4,36.2,106.5,osrm,True
+corredor,409,,18,19,COMISARÍA (CANTO GRANDE),VEINTIUNO,434.4,44.6,124.3,osrm,True
+corredor,409,,19,20,VEINTIUNO,DIECINUEVE,372.7,33.5,109.4,osrm,True
+corredor,409,,20,21,DIECINUEVE,DIECIOCHO,430.2,45.8,123.2,osrm,True
+corredor,409,,21,22,DIECIOCHO,DIECISIETE,212.1,24.2,70.9,osrm,True
+corredor,409,,22,23,DIECISIETE,DOCE (LAS FLORES),1028.9,111.9,266.9,osrm,True
+corredor,409,,23,24,DOCE (LAS FLORES),DIEZ (LAS FLORES),795.9,80.8,211.0,osrm,True
+corredor,409,,24,25,DIEZ (LAS FLORES),SIETE (LAS FLORES),567.0,55.1,156.1,osrm,True
+corredor,409,,25,26,SIETE (LAS FLORES),CUATRO (LAS FLORES),597.5,55.8,163.4,osrm,True
+corredor,409,,26,27,CUATRO (LAS FLORES),DOS (LAS FLORES),308.8,29.8,94.1,osrm,True
+corredor,409,,27,28,DOS (LAS FLORES),UNO (LAS FLORES),276.2,24.7,86.3,osrm,True
+corredor,409,,28,29,UNO (LAS FLORES),LA CURVA,264.6,23.8,83.5,osrm,True
+corredor,409,,29,30,LA CURVA,CONCEJO,725.3,78.9,194.1,osrm,True
+corredor,409,,30,31,CONCEJO,MDO DE FLORES,1344.9,125.2,342.8,osrm,True
+corredor,409,,31,32,MDO DE FLORES,ACHO,1452.2,166.9,368.5,osrm,True
+corredor,409,,32,33,ACHO,ÁNCASH,1240.4,137.0,317.7,osrm,True
+corredor,409,,33,34,ÁNCASH,UCAYALI,398.7,41.9,115.7,osrm,True
+corredor,409,,34,35,UCAYALI,CUZCO,250.7,26.6,80.2,osrm,True
+corredor,409,,35,36,CUZCO,N. DE PIÉROLA,308.8,31.9,94.1,osrm,True
+corredor,409,,36,37,N. DE PIÉROLA,GRAU,536.3,54.5,148.7,osrm,True
+corredor,409,,37,38,GRAU,28 DE JULIO,461.5,53.7,130.8,osrm,True
+corredor,409,,38,39,28 DE JULIO,UNANUE,453.1,51.5,128.7,osrm,True
+corredor,409,,39,40,UNANUE,CATOLICA,342.1,36.2,102.1,osrm,True
+corredor,409,,40,41,CATOLICA,MEXICO,672.9,71.3,181.5,osrm,True
+corredor,409,,41,42,MEXICO,PARDO DE ZELA,842.7,97.2,222.2,osrm,True
+corredor,409,,42,43,PARDO DE ZELA,TOMAS GUIDO,451.2,46.8,128.3,osrm,True
+corredor,409,,43,44,TOMAS GUIDO,JAVIER PRADO,541.8,50.6,150.0,osrm,True
+corredor,409,,44,45,JAVIER PRADO,CANAVAL Y MOREYRA,1442.7,124.9,366.2,osrm,True
+corredor,409,,45,46,CANAVAL Y MOREYRA,JAVIER PRADO,798.9,103.4,211.7,osrm,True
+corredor,409,,46,47,JAVIER PRADO,LILAS,1511.9,160.0,382.9,osrm,True
+corredor,409,,47,48,LILAS,PARDO DE ZELA,367.8,38.1,108.3,osrm,True
+corredor,409,,48,49,PARDO DE ZELA,MEXICO,1228.6,150.5,314.9,osrm,True
+corredor,409,,49,50,MEXICO,LA CATOLICA,720.5,76.6,192.9,osrm,True
+corredor,409,,50,51,LA CATOLICA,UNANUE,332.6,35.0,99.8,osrm,True
+corredor,409,,51,52,UNANUE,BAUZATE Y MEZA,290.8,33.2,89.8,osrm,True
+corredor,409,,52,53,BAUZATE Y MEZA,GRAU,600.8,68.0,164.2,osrm,True
+corredor,409,,53,54,GRAU,CUZCO,849.9,89.0,224.0,osrm,True
+corredor,409,,54,55,CUZCO,UCAYALI,267.7,28.1,84.2,osrm,True
+corredor,409,,55,56,UCAYALI,JUNÍN,256.6,26.9,81.6,osrm,True
+corredor,409,,56,57,JUNÍN,ACHO,872.2,101.5,229.3,osrm,True
+corredor,409,,57,58,ACHO,MDO DE FLORES,484.6,57.2,136.3,osrm,True
+corredor,409,,58,59,MDO DE FLORES,LIMA,2185.1,215.5,544.4,osrm,True
+corredor,409,,59,61,LIMA,DOS (LAS FLORES),484.7,47.5,136.3,osrm,True
+corredor,409,,61,62,DOS (LAS FLORES),CUATRO (LAS FLORES),368.3,33.2,108.4,osrm,True
+corredor,409,,62,63,CUATRO (LAS FLORES),SIETE (LAS FLORES),534.4,50.1,148.3,osrm,True
+corredor,409,,63,64,SIETE (LAS FLORES),DOCE (LAS FLORES),1014.4,97.4,263.5,osrm,True
+corredor,409,,64,65,DOCE (LAS FLORES),QUINCE (LAS FLORES),542.8,48.9,150.3,osrm,True
+corredor,409,,65,66,QUINCE (LAS FLORES),DIECIOCHO,675.8,68.5,182.2,osrm,True
+corredor,409,,66,67,DIECIOCHO,DIECINUEVE,394.0,39.4,114.6,osrm,True
+corredor,409,,67,69,DIECINUEVE,VEINTIDOS,966.2,100.5,251.9,osrm,True
+corredor,409,,69,71,VEINTIDOS,LA CINCO,919.7,92.0,240.7,osrm,True
+corredor,409,,71,72,LA CINCO,OCHO,629.1,65.0,171.0,osrm,True
+corredor,409,,72,73,OCHO,DIEZ,298.9,29.7,91.7,osrm,True
+corredor,409,,73,74,DIEZ,DOCE,522.6,56.1,145.4,osrm,True
+corredor,409,,74,75,DOCE,DIECISÉIS,800.6,80.1,212.1,osrm,True
+corredor,409,,75,76,DIECISÉIS,CATORCE,464.1,44.3,131.4,osrm,True
+corredor,409,,76,77,CATORCE,FARMACIA LEO,385.6,33.5,112.5,osrm,True
+corredor,409,,77,79,FARMACIA LEO,LA CUATRO,733.5,41.3,196.0,osrm,True
+corredor,409,,79,80,LA CUATRO,LA CINCO,399.5,26.1,115.9,osrm,True
+corredor,409,,80,81,LA CINCO,MARIÁTEGUI,562.7,39.0,155.0,osrm,True
+corredor,409,,81,82,MARIÁTEGUI,8 DE MARISCAL,334.9,27.0,100.4,osrm,True
+corredor,409,,82,83,8 DE MARISCAL,MOTUPE,468.8,25.9,132.5,osrm,True
+corredor,409,,83,84,MOTUPE,MONTENEGRO,744.9,41.1,198.8,osrm,True
+corredor,409,,84,86,MONTENEGRO,LA QUINCE,4101.6,314.4,1004.4,osrm,False
+corredor,409,,86,87,LA QUINCE,CANAVAL Y MOREYRA,17919.5,1674.5,4320.7,osrm,False
+corredor,409,,87,88,CANAVAL Y MOREYRA,EST. MEXICO,2663.9,302.0,659.3,osrm,True
+corredor,409,,88,89,EST. MEXICO,N. DE PIEROLA,2874.3,328.5,709.8,osrm,True
+corredor,409,,89,90,N. DE PIEROLA,CONCEJO,3842.4,379.0,942.2,osrm,False
+corredor,409,,90,91,CONCEJO,NUEVE-LF,3119.6,314.4,768.7,osrm,False
+corredor,409,,91,92,NUEVE-LF,ÓVALO ZARATE,6171.4,597.9,1501.1,osrm,False
+corredor,412,,8,13,BAYOVAR DC,SEDAPAL / CANTO REY,2756.2,253.9,681.5,osrm,True
+corredor,412,,13,20,SEDAPAL / CANTO REY,PIRÁMIDES DEL SOL,4727.3,446.3,1154.6,osrm,False
+corredor,412,,20,36,PIRÁMIDES DEL SOL,PIRÁMIDES DEL SOL,961.2,98.0,250.7,osrm,True
+corredor,412,,36,38,PIRÁMIDES DEL SOL,LA HACIENDA,1466.4,138.0,371.9,osrm,True
+corredor,412,,38,43,LA HACIENDA,SEDAPAL / CANTO REY,3436.0,323.6,844.6,osrm,False
+corredor,412,1,1,2,LA CAPILLA,MONTENEGRO,307.3,16.9,93.8,osrm,True
+corredor,412,1,2,3,MONTENEGRO,MOTUPE,717.5,39.7,192.2,osrm,True
+corredor,412,1,3,4,MOTUPE,8 DE MARISCAL,493.6,27.5,138.5,osrm,True
+corredor,412,1,4,5,8 DE MARISCAL,MARIATEGUI,303.4,16.8,92.8,osrm,True
+corredor,412,1,5,6,MARIATEGUI,LA CINCO,666.4,67.1,179.9,osrm,True
+corredor,412,1,6,7,LA CINCO,LA CUATRO,1037.0,94.7,268.9,osrm,True
+corredor,412,1,7,8,LA CUATRO,BAYÓVAR,2284.1,223.9,568.2,osrm,True
+corredor,412,1,8,9,BAYÓVAR,LA QUINCE,706.6,78.9,189.6,osrm,True
+corredor,412,1,9,10,LA QUINCE,SANTA ROSA,736.3,66.4,196.7,osrm,True
+corredor,412,1,10,11,SANTA ROSA,SAN MARTIN,523.7,48.0,145.7,osrm,True
+corredor,412,1,11,12,SAN MARTIN,LA OCHO,706.6,65.1,189.6,osrm,True
+corredor,412,1,12,14,LA OCHO,SAN CARLOS,1156.1,104.2,297.5,osrm,True
+corredor,412,1,14,15,SAN CARLOS,BASADRE,668.6,64.2,180.5,osrm,True
+corredor,412,1,15,16,BASADRE,Los Postes,813.1,97.8,215.1,osrm,True
+corredor,412,1,16,17,Los Postes,LA DOCE,805.6,91.9,213.3,osrm,True
+corredor,412,1,17,19,LA DOCE,CELIMA,1279.7,121.0,327.1,osrm,True
+corredor,412,1,19,21,CELIMA,ENCINAS,1100.6,102.9,284.1,osrm,True
+corredor,412,1,21,22,ENCINAS,TUPAC AMARU,257.4,23.3,81.8,osrm,True
+corredor,412,1,22,23,TUPAC AMARU,LIMA AUX. (LAS FLORES),370.7,40.1,109.0,osrm,True
+corredor,412,1,23,24,LIMA AUX. (LAS FLORES),COMISARIA,586.0,60.9,160.6,osrm,True
+corredor,412,1,24,25,COMISARIA,LA LOSA,504.5,47.5,141.1,osrm,True
+corredor,412,1,25,26,LA LOSA,TUNEL,216.4,19.5,71.9,osrm,True
+corredor,412,1,26,27,TUNEL,ALCAZAR,1658.9,163.0,418.1,osrm,True
+corredor,412,1,27,28,ALCAZAR,PIZARRO,1687.6,193.5,425.0,osrm,True
+corredor,412,1,28,29,PIZARRO,ICA,1424.5,152.9,361.9,osrm,True
+corredor,412,1,29,30,ICA,NICOLAS DE PIEROLA,546.0,57.1,151.0,osrm,True
+corredor,412,2,1,2,MOQUEGUA,ICA,408.6,42.9,118.1,osrm,True
+corredor,412,2,2,3,ICA,PIZARRO,1105.2,145.5,285.2,osrm,True
+corredor,412,2,3,4,PIZARRO,ALCAZAR,1900.6,206.4,476.1,osrm,True
+corredor,412,2,4,5,ALCAZAR,LA 15 DE CAJA DE AGUA,1597.3,154.1,403.4,osrm,True
+corredor,412,2,5,6,LA 15 DE CAJA DE AGUA,TALARA,256.2,26.2,81.5,osrm,True
+corredor,412,2,6,7,TALARA,PROCERES,374.8,35.9,110.0,osrm,True
+corredor,412,2,7,8,PROCERES,TUPAC AMARU,746.3,104.8,199.1,osrm,True
+corredor,412,2,8,9,TUPAC AMARU,ENCINAS,293.4,37.9,90.4,osrm,True
+corredor,412,2,9,11,ENCINAS,CELIMA,1091.1,100.2,281.9,osrm,True
+corredor,412,2,11,12,CELIMA,LA HACIENDA,1131.4,120.5,291.5,osrm,True
+corredor,412,2,12,13,LA HACIENDA,LA DOCE,2495.2,260.9,618.8,osrm,True
+corredor,412,2,13,14,LA DOCE,LOS POSTES,2359.9,240.3,586.4,osrm,True
+corredor,412,2,14,15,LOS POSTES,BASADRE,881.9,113.9,231.7,osrm,True
+corredor,412,2,15,16,BASADRE,SAN CARLOS,693.2,73.4,186.4,osrm,True
+corredor,412,2,16,18,SAN CARLOS,LA OCHO,1186.6,110.8,304.8,osrm,True
+corredor,412,2,18,19,LA OCHO,SAN MARTIN,684.2,61.6,184.2,osrm,True
+corredor,412,2,19,20,SAN MARTIN,SANTA ROSA,470.6,42.4,132.9,osrm,True
+corredor,412,2,20,21,SANTA ROSA,LA QUINCE,818.6,73.7,216.5,osrm,True
+corredor,412,2,21,22,LA QUINCE,BAYÓVAR,412.7,41.9,119.0,osrm,True
+corredor,412,2,22,23,BAYÓVAR,LA CUATRO,1139.3,101.5,293.4,osrm,True
+corredor,412,2,23,24,LA CUATRO,LA CINCO,399.5,26.1,115.9,osrm,True
+corredor,412,2,24,25,LA CINCO,MARIÁTEGUI,562.7,39.0,155.0,osrm,True
+corredor,412,2,25,26,MARIÁTEGUI,8 DE MARISCAL,334.9,27.0,100.4,osrm,True
+corredor,412,2,26,27,8 DE MARISCAL,MOTUPE,468.8,25.9,132.5,osrm,True
+corredor,412,2,27,28,MOTUPE,MONTENEGRO,744.9,41.1,198.8,osrm,True
+corredor,412,2,28,29,MONTENEGRO,LA CAPILLA,321.6,17.8,97.2,osrm,True
+metro_l1,metro_l1,,1,2,Villa El Salvador,Parque Industrial,1414.8,,189.2,haversine,True
+metro_l1,metro_l1,,2,3,Parque Industrial,Pumacahua,1804.0,,233.0,haversine,True
+metro_l1,metro_l1,,3,4,Pumacahua,Villa Maria,1438.4,,191.8,haversine,True
+metro_l1,metro_l1,,4,5,Villa Maria,Maria Auxiliadora,1089.0,,152.5,haversine,True
+metro_l1,metro_l1,,5,6,Maria Auxiliadora,San Juan,1170.4,,161.7,haversine,True
+metro_l1,metro_l1,,6,7,San Juan,Atocongo,1622.6,,212.5,haversine,True
+metro_l1,metro_l1,,7,8,Atocongo,Jorge Chavez,1543.4,,203.6,haversine,True
+metro_l1,metro_l1,,8,9,Jorge Chavez,Ayacucho,1083.8,,151.9,haversine,True
+metro_l1,metro_l1,,9,10,Ayacucho,Cabitos,919.3,,133.4,haversine,True
+metro_l1,metro_l1,,10,11,Cabitos,Angamos,1881.3,,241.6,haversine,True
+metro_l1,metro_l1,,11,12,Angamos,San Borja Sur,1109.9,,154.9,haversine,True
+metro_l1,metro_l1,,12,13,San Borja Sur,La Cultura,1544.7,,203.8,haversine,True
+metro_l1,metro_l1,,13,14,La Cultura,Nicolas Arriola,1541.6,,203.4,haversine,True
+metro_l1,metro_l1,,14,15,Nicolas Arriola,Gamarra,1014.5,,144.1,haversine,True
+metro_l1,metro_l1,,15,16,Gamarra,Miguel Grau,1282.3,,174.3,haversine,True
+metro_l1,metro_l1,,16,17,Miguel Grau,El Angel,959.6,,138.0,haversine,True
+metro_l1,metro_l1,,17,18,El Angel,Presbitero Maestro,549.5,,91.8,haversine,True
+metro_l1,metro_l1,,18,19,Presbitero Maestro,Caja De Agua,1550.8,,204.5,haversine,True
+metro_l1,metro_l1,,19,20,Caja De Agua,Piramides Del Sol,1402.5,,187.8,haversine,True
+metro_l1,metro_l1,,20,21,Piramides Del Sol,Los Jardines,1278.3,,173.8,haversine,True
+metro_l1,metro_l1,,21,22,Los Jardines,Los Postes,1290.6,,175.2,haversine,True
+metro_l1,metro_l1,,22,23,Los Postes,San Carlos,1302.0,,176.5,haversine,True
+metro_l1,metro_l1,,23,24,San Carlos,San Martin,1351.4,,182.0,haversine,True
+metro_l1,metro_l1,,24,25,San Martin,Santa Rosa,1034.6,,146.4,haversine,True
+metro_l1,metro_l1,,25,26,Santa Rosa,Bayovar,1110.1,,154.9,haversine,True
+troncal,EX11-NS,,1,2,Estacion Central,Naranjal,13284.6,1211.3,2198.8,osrm,True
+troncal,EX11-NS,,2,3,Naranjal,Universidad,2201.3,218.4,385.2,osrm,True
+troncal,EX11-NS,,3,4,Universidad,Las Vegas,1810.4,210.2,321.2,osrm,True
+troncal,EX11-NS,,4,5,Las Vegas,22 De Agosto,2017.3,228.5,355.1,osrm,True
+troncal,EX11-NS,,5,6,22 De Agosto,Andres Belaunde,1783.6,215.0,316.9,osrm,True
+troncal,EX11-NS,,6,7,Andres Belaunde,Los Incas,4836.9,425.6,816.5,osrm,True
+troncal,EX13-NS,,1,2,Estacion Central,Uni,9392.5,881.7,1562.0,osrm,True
+troncal,EX13-NS,,2,3,Uni,Andres Belaunde,12888.9,1034.9,2134.1,osrm,True
+troncal,EX13-NS,,3,4,Andres Belaunde,Los Incas,4836.9,425.6,816.5,osrm,True
+troncal,EX9-NS,,1,2,Plaza de Flores,Benavides,5269.9,371.3,887.3,osrm,True
+troncal,EX9-NS,,2,3,Benavides,Angamos,4511.4,360.7,763.2,osrm,True
+troncal,EX9-NS,,3,4,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,EX9-NS,,4,5,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,EX9-NS,,5,6,Javier Prado,Canadá,2934.6,289.7,505.2,osrm,True
+troncal,EX9-NS,,6,7,Canadá,Estacion Central,6070.2,432.2,1018.3,osrm,True
+troncal,EX9-NS,,7,8,Estacion Central,España,4846.5,505.3,818.1,osrm,True
+troncal,EX9-NS,,8,9,España,Caqueta,4110.5,427.2,697.6,osrm,True
+troncal,EX9-NS,,9,10,Caqueta,Uni,2945.3,214.5,507.0,osrm,True
+troncal,Lechucero,,1,2,Matellini,Balta,5705.9,589.2,958.7,osrm,True
+troncal,Lechucero,,2,3,Balta,Ricardo Palma,4205.8,302.2,713.2,osrm,True
+troncal,Lechucero,,3,4,Ricardo Palma,Angamos,2061.9,197.7,362.4,osrm,True
+troncal,Lechucero,,4,5,Angamos,Canadá,4791.1,404.9,809.0,osrm,True
+troncal,Lechucero,,5,6,Canadá,Jiron de la Unión,6667.4,519.9,1116.0,osrm,True
+troncal,Lechucero,,6,7,Jiron de la Unión,Ramon Castilla,1690.4,221.6,301.6,osrm,True
+troncal,Lechucero,,7,8,Ramon Castilla,Uni,3767.4,385.1,641.5,osrm,True
+troncal,Lechucero,,8,9,Uni,Tomas Valle,4098.5,424.6,695.7,osrm,True
+troncal,Lechucero,,9,10,Tomas Valle,Naranjal,3531.0,337.1,602.8,osrm,True
+troncal,Lechucero,,10,11,Naranjal,Bulevar,5073.7,487.5,855.2,osrm,True
+troncal,RegularA,,1,2,Estacion Central,Jiron de la Unión,4780.6,499.6,807.3,osrm,True
+troncal,RegularA,,2,3,Jiron de la Unión,Ramon Castilla,1690.4,221.6,301.6,osrm,True
+troncal,RegularA,,3,4,Ramon Castilla,Caqueta,3252.2,354.6,557.2,osrm,True
+troncal,RegularA,,4,5,Caqueta,Parque del Trabajo,2758.9,253.0,476.5,osrm,True
+troncal,RegularA,,5,6,Parque del Trabajo,Uni,1981.9,197.8,349.3,osrm,True
+troncal,RegularA,,6,7,Uni,Honorio Delgado,2789.4,332.2,481.4,osrm,True
+troncal,RegularA,,7,8,Honorio Delgado,El Milagro,1745.2,166.6,310.6,osrm,True
+troncal,RegularA,,8,9,El Milagro,Tomas Valle,2972.0,303.9,511.3,osrm,True
+troncal,RegularA,,9,10,Tomas Valle,Los jazmines,1244.7,131.3,228.7,osrm,True
+troncal,RegularA,,10,11,Los jazmines,Izaguirre,1412.1,133.7,256.1,osrm,True
+troncal,RegularA,,11,12,Izaguirre,Naranjal,960.6,99.9,182.2,osrm,True
+troncal,RegularB,,1,2,Estacion Central,España,4846.5,505.3,818.1,osrm,True
+troncal,RegularB,,2,3,España,Quilca,1067.0,133.5,199.6,osrm,True
+troncal,RegularB,,3,4,Quilca,2 de Mayo,3750.1,317.4,638.7,osrm,True
+troncal,RegularB,,4,5,2 de Mayo,Caqueta,5141.2,444.2,866.3,osrm,True
+troncal,RegularB,,5,6,Caqueta,Parque del Trabajo,2758.9,253.0,476.5,osrm,True
+troncal,RegularB,,6,7,Parque del Trabajo,Uni,1981.9,197.8,349.3,osrm,True
+troncal,RegularB,,7,8,Uni,Honorio Delgado,2789.4,332.2,481.4,osrm,True
+troncal,RegularB,,8,9,Honorio Delgado,El Milagro,1745.2,166.6,310.6,osrm,True
+troncal,RegularB,,9,10,El Milagro,Tomas Valle,2972.0,303.9,511.3,osrm,True
+troncal,RegularB,,10,11,Tomas Valle,Los jazmines,1244.7,131.3,228.7,osrm,True
+troncal,RegularB,,11,12,Los jazmines,Izaguirre,1412.1,133.7,256.1,osrm,True
+troncal,RegularB,,12,13,Izaguirre,Naranjal,960.6,99.9,182.2,osrm,True
+troncal,RegularB,,13,14,Naranjal,Universidad,2201.3,218.4,385.2,osrm,True
+troncal,RegularB,,14,15,Universidad,Las Vegas,1810.4,210.2,321.2,osrm,True
+troncal,RegularB,,15,16,Las Vegas,22 De Agosto,2017.3,228.5,355.1,osrm,True
+troncal,RegularB,,16,17,22 De Agosto,Andres Belaunde,1783.6,215.0,316.9,osrm,True
+troncal,RegularB,,17,18,Andres Belaunde,Los Incas,4836.9,425.6,816.5,osrm,True
+troncal,RegularC,,1,2,Matellini,Terán,2452.9,262.2,426.4,osrm,True
+troncal,RegularC,,2,3,Terán,Union,3406.2,409.7,582.4,osrm,True
+troncal,RegularC,,3,4,Union,Balta,1727.0,180.4,307.6,osrm,True
+troncal,RegularC,,4,5,Balta,Plaza de Flores,1716.0,155.8,305.8,osrm,True
+troncal,RegularC,,5,6,Plaza de Flores,28 de Julio,2030.6,177.9,357.3,osrm,True
+troncal,RegularC,,6,7,28 de Julio,Benavides,3696.9,298.6,629.9,osrm,True
+troncal,RegularC,,7,8,Benavides,Ricardo Palma,4554.0,358.1,770.2,osrm,True
+troncal,RegularC,,8,9,Ricardo Palma,Angamos,2061.9,197.7,362.4,osrm,True
+troncal,RegularC,,9,10,Angamos,Domingo Orué,625.9,77.5,127.4,osrm,True
+troncal,RegularC,,10,11,Domingo Orué,Aramburu,4054.1,345.3,688.4,osrm,True
+troncal,RegularC,,11,12,Aramburu,Canaval y Moreyra,2684.4,268.0,464.3,osrm,True
+troncal,RegularC,,12,13,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,RegularC,,13,14,Javier Prado,Canadá,2934.6,289.7,505.2,osrm,True
+troncal,RegularC,,14,15,Canadá,México,2297.4,251.4,400.9,osrm,True
+troncal,RegularC,,15,16,México,Estadio Nacional,2539.9,223.3,440.6,osrm,True
+troncal,RegularC,,16,17,Estadio Nacional,Estacion Central,1727.5,154.3,307.7,osrm,True
+troncal,RegularC,,17,18,Estacion Central,Jiron de la Unión,4780.6,499.6,807.3,osrm,True
+troncal,RegularC,,18,19,Jiron de la Unión,Ramon Castilla,1690.4,221.6,301.6,osrm,True
+troncal,RegularC,,19,20,Ramon Castilla,Bulevar,14180.0,1077.5,2345.4,osrm,True
+troncal,RegularD,,1,2,Estacion Central,España,4846.5,505.3,818.1,osrm,True
+troncal,RegularD,,2,3,España,Quilca,1067.0,133.5,199.6,osrm,True
+troncal,RegularD,,3,4,Quilca,2 de Mayo,3750.1,317.4,638.7,osrm,True
+troncal,RegularD,,4,5,2 de Mayo,Caqueta,5141.2,444.2,866.3,osrm,True
+troncal,RegularD,,5,6,Caqueta,Parque del Trabajo,2758.9,253.0,476.5,osrm,True
+troncal,RegularD,,6,7,Parque del Trabajo,Uni,1981.9,197.8,349.3,osrm,True
+troncal,RegularD,,7,8,Uni,Honorio Delgado,2789.4,332.2,481.4,osrm,True
+troncal,RegularD,,8,9,Honorio Delgado,El Milagro,1745.2,166.6,310.6,osrm,True
+troncal,RegularD,,9,10,El Milagro,Tomas Valle,2972.0,303.9,511.3,osrm,True
+troncal,RegularD,,10,11,Tomas Valle,Los jazmines,1244.7,131.3,228.7,osrm,True
+troncal,RegularD,,11,12,Los jazmines,Izaguirre,1412.1,133.7,256.1,osrm,True
+troncal,RegularD,,12,13,Izaguirre,Naranjal,960.6,99.9,182.2,osrm,True
+troncal,SX-M,,1,2,28 de Julio,Benavides,3696.9,298.6,629.9,osrm,True
+troncal,SX-M,,2,3,Benavides,Aramburu,8344.3,557.1,1390.4,osrm,True
+troncal,SX-M,,3,4,Aramburu,Canaval y Moreyra,2684.4,268.0,464.3,osrm,True
+troncal,SX-M,,4,5,Canaval y Moreyra,Naranjal,14634.3,1291.0,2419.7,osrm,True
+troncal,SX-M,,5,6,Naranjal,Universidad,2201.3,218.4,385.2,osrm,True
+troncal,SXN-NS-M,,1,2,Estacion Central,España,4846.5,505.3,818.1,osrm,True
+troncal,SXN-NS-M,,2,3,España,Quilca,1067.0,133.5,199.6,osrm,True
+troncal,SXN-NS-M,,3,4,Quilca,2 de Mayo,3750.1,317.4,638.7,osrm,True
+troncal,SXN-NS-M,,4,5,2 de Mayo,Naranjal,8950.5,803.0,1489.6,osrm,True
+troncal,SXN-NS-M,,5,6,Naranjal,Universidad,2201.3,218.4,385.2,osrm,True
+troncal,SXN-NS-M,,6,7,Universidad,Las Vegas,1810.4,210.2,321.2,osrm,True
+troncal,SXN-NS-M,,7,8,Las Vegas,22 De Agosto,2017.3,228.5,355.1,osrm,True
+troncal,X1-M,,1,2,Matellini,Terán,2452.9,262.2,426.4,osrm,True
+troncal,X1-M,,2,3,Terán,Union,3406.2,409.7,582.4,osrm,True
+troncal,X1-M,,3,4,Union,Balta,1727.0,180.4,307.6,osrm,True
+troncal,X1-M,,4,5,Balta,28 de Julio,1679.3,148.9,299.8,osrm,True
+troncal,X1-M,,5,6,28 de Julio,Angamos,2941.5,261.1,506.3,osrm,True
+troncal,X1-M,,6,7,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,X1-M,,7,8,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,X1-M,,8,9,Javier Prado,Estadio Nacional,3479.2,229.3,594.3,osrm,True
+troncal,X1-M,,9,10,Estadio Nacional,Estacion Central,1727.5,154.3,307.7,osrm,True
+troncal,X1-M,,10,11,Estacion Central,Naranjal,13284.6,1211.3,2198.8,osrm,True
+troncal,X10,,1,2,Estacion Central,Jiron de la Unión,4780.6,499.6,807.3,osrm,True
+troncal,X10,,2,3,Jiron de la Unión,Ramon Castilla,1690.4,221.6,301.6,osrm,True
+troncal,X10,,3,4,Ramon Castilla,Caqueta,3252.2,354.6,557.2,osrm,True
+troncal,X10,,4,5,Caqueta,Naranjal,7710.3,566.2,1286.7,osrm,True
+troncal,X12,,1,2,Benavides,Angamos,4511.4,360.7,763.2,osrm,True
+troncal,X12,,2,3,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,X12,,3,4,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,X12,,4,5,Javier Prado,Estadio Nacional,3479.2,229.3,594.3,osrm,True
+troncal,X12,,5,6,Estadio Nacional,Estacion Central,1727.5,154.3,307.7,osrm,True
+troncal,X3-N,,1,2,Benavides,Angamos,4511.4,360.7,763.2,osrm,True
+troncal,X3-N,,2,3,Angamos,Naranjal,16168.6,1341.0,2670.8,osrm,True
+troncal,X5,,1,2,Plaza de Flores,Ricardo Palma,4557.1,331.2,770.7,osrm,True
+troncal,X5,,2,3,Ricardo Palma,Angamos,2061.9,197.7,362.4,osrm,True
+troncal,X5,,3,4,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,X5,,4,5,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,X5,,5,6,Javier Prado,Canadá,2934.6,289.7,505.2,osrm,True
+troncal,X5,,6,7,Canadá,Estacion Central,6070.2,432.2,1018.3,osrm,True
+troncal,X5,,7,8,Estacion Central,España,4846.5,505.3,818.1,osrm,True
+troncal,X5,,8,9,España,Caqueta,4110.5,427.2,697.6,osrm,True
+troncal,X5,,9,10,Caqueta,Uni,2945.3,214.5,507.0,osrm,True
+troncal,X5,,10,11,Uni,Tomas Valle,4098.5,424.6,695.7,osrm,True
+troncal,X5,,11,12,Tomas Valle,Izaguirre,2656.8,265.0,459.7,osrm,True
+troncal,X5,,12,13,Izaguirre,Naranjal,960.6,99.9,182.2,osrm,True
+troncal,X6,,1,2,Benavides,Angamos,4511.4,360.7,763.2,osrm,True
+troncal,X6,,2,3,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,X6,,3,4,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,X6,,4,5,Javier Prado,Estacion Central,5206.7,383.6,877.0,osrm,True
+troncal,X6,,5,6,Estacion Central,Izaguirre,12410.3,1139.2,2055.8,osrm,True
+troncal,X7,,1,2,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,X7,,2,3,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,X7,,3,4,Javier Prado,Estacion Central,5206.7,383.6,877.0,osrm,True
+troncal,X7,,4,5,Estacion Central,Tomas Valle,12373.0,1074.6,2049.7,osrm,True
+troncal,X8,,1,2,Plaza de Flores,Benavides,5269.9,371.3,887.3,osrm,True
+troncal,X8,,2,3,Benavides,Angamos,4511.4,360.7,763.2,osrm,True
+troncal,X8,,3,4,Angamos,Canaval y Moreyra,2470.4,194.0,429.2,osrm,True
+troncal,X8,,4,5,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,X8,,5,6,Javier Prado,Estacion Central,5206.7,383.6,877.0,osrm,True
+troncal,X8,,6,7,Estacion Central,Uni,9392.5,881.7,1562.0,osrm,True
+troncal,X8,,7,8,Uni,Tomas Valle,4098.5,424.6,695.7,osrm,True
+troncal,X8,,8,9,Tomas Valle,Izaguirre,2656.8,265.0,459.7,osrm,True
+troncal,troncal,,1,2,Matellini,Rosario de Villa,1564.9,167.3,281.1,osrm,True
+troncal,troncal,,2,3,Rosario de Villa,Terán,888.0,94.9,170.3,osrm,True
+troncal,troncal,,3,4,Terán,Escuela Militar,2665.6,308.1,461.2,osrm,True
+troncal,troncal,,4,5,Escuela Militar,Union,740.6,101.6,146.2,osrm,True
+troncal,troncal,,5,6,Union,Balta,1727.0,180.4,307.6,osrm,True
+troncal,troncal,,6,7,Balta,Plaza de Flores,1716.0,155.8,305.8,osrm,True
+troncal,troncal,,7,8,Plaza de Flores,28 de Julio,2030.6,177.9,357.3,osrm,True
+troncal,troncal,,8,9,28 de Julio,Benavides,3696.9,298.6,629.9,osrm,True
+troncal,troncal,,9,10,Benavides,Ricardo Palma,4554.0,358.1,770.2,osrm,True
+troncal,troncal,,10,11,Ricardo Palma,Angamos,2061.9,197.7,362.4,osrm,True
+troncal,troncal,,11,12,Angamos,Domingo Orué,625.9,77.5,127.4,osrm,True
+troncal,troncal,,12,13,Domingo Orué,Aramburu,4054.1,345.3,688.4,osrm,True
+troncal,troncal,,13,14,Aramburu,Canaval y Moreyra,2684.4,268.0,464.3,osrm,True
+troncal,troncal,,14,15,Canaval y Moreyra,Javier Prado,2655.3,269.2,459.5,osrm,True
+troncal,troncal,,15,16,Javier Prado,Canadá,2934.6,289.7,505.2,osrm,True
+troncal,troncal,,16,17,Canadá,México,2297.4,251.4,400.9,osrm,True
+troncal,troncal,,17,18,México,Estadio Nacional,2539.9,223.3,440.6,osrm,True
+troncal,troncal,,18,19,Estadio Nacional,Estacion Central,1727.5,154.3,307.7,osrm,True
+troncal,troncal,,19,20,Estacion Central,España,4846.5,505.3,818.1,osrm,True
+troncal,troncal,,20,21,España,Colmena,2030.7,287.4,357.3,osrm,True
+troncal,troncal,,21,22,Colmena,Quilca,1918.1,292.1,338.9,osrm,True
+troncal,troncal,,22,23,Quilca,Jiron de la Unión,1713.4,260.5,305.4,osrm,True
+troncal,troncal,,23,24,Jiron de la Unión,2 de Mayo,4040.5,443.7,686.2,osrm,True
+troncal,troncal,,24,25,2 de Mayo,Tacna,1958.7,284.7,345.5,osrm,True
+troncal,troncal,,25,26,Tacna,Ramon Castilla,1029.0,117.4,193.4,osrm,True
+troncal,troncal,,26,27,Ramon Castilla,Caqueta,3252.2,354.6,557.2,osrm,True
+troncal,troncal,,27,28,Caqueta,Parque del Trabajo,2758.9,253.0,476.5,osrm,True
+troncal,troncal,,28,29,Parque del Trabajo,Uni,1981.9,197.8,349.3,osrm,True
+troncal,troncal,,29,30,Uni,Honorio Delgado,2789.4,332.2,481.4,osrm,True
+troncal,troncal,,30,31,Honorio Delgado,El Milagro,1745.2,166.6,310.6,osrm,True
+troncal,troncal,,31,32,El Milagro,Tomas Valle,2972.0,303.9,511.3,osrm,True
+troncal,troncal,,32,33,Tomas Valle,Los jazmines,1244.7,131.3,228.7,osrm,True
+troncal,troncal,,33,34,Los jazmines,Independencia,388.6,37.0,88.6,osrm,True
+troncal,troncal,,34,35,Independencia,Pacifico,406.3,38.8,91.5,osrm,True
+troncal,troncal,,35,36,Pacifico,Izaguirre,617.3,57.9,126.0,osrm,True
+troncal,troncal,,36,37,Izaguirre,Naranjal,960.6,99.9,182.2,osrm,True
+troncal,troncal,,37,38,Naranjal,Universidad,2201.3,218.4,385.2,osrm,True
+troncal,troncal,,38,39,Universidad,Las Vegas,1810.4,210.2,321.2,osrm,True
+troncal,troncal,,39,40,Las Vegas,22 De Agosto,2017.3,228.5,355.1,osrm,True
+troncal,troncal,,40,41,22 De Agosto,Bulevar,826.3,111.4,160.2,osrm,True
+troncal,troncal,,41,42,Bulevar,Andres Belaunde,915.5,131.5,174.8,osrm,True
+troncal,troncal,,42,43,Andres Belaunde,Los Incas,4836.9,425.6,816.5,osrm,True
+troncal,troncal,,43,44,Los Incas,Chimpu Ocllo,6632.9,568.1,1110.4,osrm,True

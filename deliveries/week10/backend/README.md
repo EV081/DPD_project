@@ -46,6 +46,20 @@ Columnas esperadas: `ruta_id`, `sistema`, `codigo`, `direccion`, `paradero_subid
 
 Se apoya en lo que ya existe: `paraderos_cercanos()`, `paradero_ruta`, `ruta` y la vista `ruta_paradas`.
 
+Cómo leer `direccion` y `orden` (ver `orden_origen` en `paradero_ruta`):
+
+| Caso | Regla para validar el sentido |
+|---|---|
+| `direccion` 1 o 2 (`atu_secuencia`) | `orden_subida < orden_bajada` en la misma `direccion` |
+| `metro_l1` (`atu_secuencia`) y `troncal` (`latitud_troncal`), `direccion = 0` | Línea bidireccional: vale cualquier par de estaciones; el sentido es el signo de `orden_bajada − orden_subida` |
+| corredores con `direccion = 0` (`catalogo_n_paradero`) | El orden recorre ida y vuelta: exigir `orden_subida < orden_bajada` y compararlo solo con enlaces `direccion = 0` de la misma ruta |
+
+Ningún enlace tiene `orden` NULL. Los enlaces `catalogo_n_paradero` y `latitud_troncal` son menos fiables que los
+de ATU: conviene mostrarlos con menor prioridad en el ranking.
+
+El tiempo de un tramo sale de la tabla `tramo` (`duracion_s`, estimada; ver el README de la semana) o, sin BD,
+de `export/tramos.csv`. Al sumar tramos entre dos paradas hay que excluir los `fiable = false`.
+
 Limitación: solo viajes **directos**, sin transbordos. Barranco → San Miguel probablemente requiera
 combinar Metropolitano o Metro con un alimentador; eso queda como mejora futura.
 

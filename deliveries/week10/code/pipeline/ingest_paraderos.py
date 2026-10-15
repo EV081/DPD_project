@@ -89,6 +89,12 @@ DEFAULTS_CALIDAD = {
 COLOR_SISTEMA = {"metro_l1": "#c0392b", "troncal": "#1f4e79", "corredor": "#7f8c8d",
                  "alimentador": "#16a085"}
 
+# Duracion de un tramo = distancia / velocidad comercial + parada. SUPUESTOS no calibrados: no hay
+# tiempos de recorrido publicados en las fuentes (los horarios ATU son solo primera/ultima salida).
+VELOCIDAD_KMH = {"metro_l1": 32.0, "troncal": 22.0, "corredor": 15.0, "alimentador": 14.0}
+SALTO_MAX_M = 3000.0   # mas que esto entre paradas consecutivas (no troncal) = tramo no fiable
+PARADA_S = {"metro_l1": 30.0, "troncal": 25.0, "corredor": 20.0, "alimentador": 20.0}
+
 FUSION_M = 40.0  # mismo nombre a menos de esto = mismo paradero fisico
 
 
@@ -147,9 +153,14 @@ def construir(geo_dir: Path, unidades: dict[str, dict[str, str]]) -> dict:
                              "origen_trazado": None})
         return k
 
+    n_cat: dict[tuple, int] = {}   # (pk, rk) -> n_paradero minimo del catalogo (corredores)
+    n_ruta: dict[tuple, set] = {}  # rk -> todos los n_paradero del catalogo de la ruta
+
     def enlazar(pk, rk, orden, unidad, direccion=0):
         if pk in paraderos:
-            enlaces.setdefault((pk, rk, direccion), {"orden": orden, "unidad_modelo": unidad})
+            enlaces.setdefault((pk, rk, direccion),
+                               {"orden": orden, "unidad_modelo": unidad,
+                                "orden_origen": "atu_secuencia"})
 
     # metro L1 y troncal: una estacion = un paradero, todas sobre una ruta unica
     for sistema, archivo, ruta_cod, ruta_nom in (
@@ -174,6 +185,10 @@ def construir(geo_dir: Path, unidades: dict[str, dict[str, str]]) -> dict:
         pk = add_paradero("corredor", p["cod_paradero"], p["paradero"], _punto(f), "gps_atu",
                           fusionar=True)
         enlazar(pk, rk, None, unidad_de("corredor", p["ruta"]))
+        n = p.get("n_paradero")
+        if n is not None:
+            n_ruta.setdefault(rk, set()).add(int(n))
+            n_cat[(pk, rk)] = min(int(n), n_cat.get((pk, rk), int(n)))
 
     # orden real por ruta y sentido (ATU) con la coordenada resuelta por build_trazados
     for f in _features(geo_dir, "paradas_corredores"):
@@ -247,6 +262,28 @@ def construir(geo_dir: Path, unidades: dict[str, dict[str, str]]) -> dict:
             r["nota"] = r["nota"] or "Sin trazado publicado por ATU: solo se muestran las paradas"
         else:
             r["nota"] = r["nota"] or "Trazado oficial ATU"
+    # Troncal: el `orden` de los puntos viene alfabetico por estacion, no geografico. La troncal es
+    # una linea casi N-S (Matellini -> Chimpu Ocllo): se ordena por latitud creciente. Comprobado:
+    # 44 estaciones, 37 km acumulados, salto maximo 2.5 km entre vecinas. Aproximacion, no ATU.
+    por_ruta: dict[tuple, list] = {}
+    for (pk, rk, d), e in enlaces.items():
+        if rk[0] == "troncal":
+            por_ruta.setdefault(rk, []).append(((paraderos[pk]["lat"], paraderos[pk]["nombre"]), (pk, rk, d)))
+    for lst in por_ruta.values():
+        for i, (_, k) in enumerate(sorted(lst), 1):
+            enlaces[k]["orden"] = i
+            enlaces[k]["orden_origen"] = "latitud_troncal"
+
+    # Orden de respaldo: los puntos del catalogo no traen secuencia ATU, pero `n_paradero` es el
+    # correlativo del paradero en el recorrido de la ruta (ida y vuelta, sin sentido publicado).
+    # Su ranking dentro de la ruta da un `orden` comparable solo con otros enlaces direccion 0.
+    rank = {rk: {n: i for i, n in enumerate(sorted(ns), 1)} for rk, ns in n_ruta.items()}
+    for (pk, rk, d), e in enlaces.items():
+        if e["orden"] is None and (pk, rk) in n_cat:
+            e["orden"] = rank[rk][n_cat[(pk, rk)]]
+            e["orden_origen"] = "catalogo_n_paradero"
+    sin_orden = sum(1 for e in enlaces.values() if e["orden"] is None)
+    sin_enlace["enlaces_sin_orden"] = sin_orden
     return {"paraderos": paraderos, "rutas": rutas, "enlaces": enlaces, "avisos": sin_enlace}
 
 
@@ -259,6 +296,50 @@ def _unidades_modelo(conn) -> dict[str, dict[str, str]]:
     for f in filas:
         out.setdefault(f["sistema"], {})[norm(f["unidad"])] = f["unidad"]
     return out
+
+
+def _direccion_tramo(fila: dict) -> int:
+    """`direccion` (geo/tramos_osrm.csv) o `sentido` (export/tramos.csv, vacio = sin sentido -> 0)."""
+    return int(fila.get("direccion") or fila.get("sentido") or 0)
+
+
+def _cargar_tramos(conn, datos: dict, geo_dir: Path) -> int:
+    """Carga los tramos a ``tramo`` con la duracion estimada.
+
+    Entrada: ``geo/tramos_osrm.csv`` (scripts/build_tramos.py, local) o, en un clon sin ``data/``,
+    ``export/tramos.csv`` (versionado). La duracion se recalcula aqui con VELOCIDAD_KMH.
+    """
+    import csv
+
+    f = next((c for c in (geo_dir / "tramos_osrm.csv", config.EXPORT_DIR / "tramos.csv") if c.exists()), None)
+    if f is None:
+        return 0
+    filas = conn.execute(
+        "SELECT r.sistema, r.codigo, pr.direccion, pr.orden, pr.paradero_id, pr.ruta_id "
+        "FROM paradero_ruta pr JOIN ruta r ON r.id = pr.ruta_id WHERE pr.orden IS NOT NULL"
+    ).fetchall()
+    idx = {(x["sistema"], x["codigo"], x["direccion"], x["orden"]): (x["paradero_id"], x["ruta_id"])
+           for x in filas}
+    n = 0
+    with f.open(encoding="utf-8", newline="") as fh, conn.transaction():
+        for r in csv.DictReader(fh):
+            sis, cod, d = r["sistema"], r["ruta"], _direccion_tramo(r)
+            o1, o2 = int(r["orden_desde"]), int(r["orden_hasta"])
+            a, b = idx.get((sis, cod, d, o1)), idx.get((sis, cod, d, o2))
+            if not a or not b or sis not in VELOCIDAD_KMH:
+                continue
+            dist = float(r["dist_m"])
+            dur = dist / (VELOCIDAD_KMH[sis] / 3.6) + PARADA_S[sis]
+            conn.execute(
+                "INSERT INTO tramo (ruta_id, direccion, orden_desde, orden_hasta, paradero_desde, "
+                "paradero_hasta, dist_m, duracion_osrm_s, duracion_s, fuente, fiable) "
+                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT DO NOTHING",
+                (a[1], d, o1, o2, a[0], b[0], dist,
+                 float(r["duracion_osrm_s"]) if r["duracion_osrm_s"] else None, dur, r["fuente"],
+                 sis == "troncal" or dist <= SALTO_MAX_M),
+            )
+            n += 1
+    return n
 
 
 def cargar(conn, geo_dir: Path | None = None) -> dict:
@@ -299,15 +380,18 @@ def cargar(conn, geo_dir: Path | None = None) -> dict:
                          (n, round(100 * ex / n), ids_r[rk]))
         for (pk, rk, direccion), e in datos["enlaces"].items():
             conn.execute(
-                "INSERT INTO paradero_ruta (paradero_id, ruta_id, direccion, orden, unidad_modelo) "
-                "VALUES (%s,%s,%s,%s,%s)",
-                (ids_p[pk], ids_r[rk], direccion, e["orden"], e["unidad_modelo"]),
+                "INSERT INTO paradero_ruta (paradero_id, ruta_id, direccion, orden, unidad_modelo, "
+                "orden_origen) VALUES (%s,%s,%s,%s,%s,%s)",
+                (ids_p[pk], ids_r[rk], direccion, e["orden"], e["unidad_modelo"],
+                 e["orden_origen"]),
             )
+    n_tramos = _cargar_tramos(conn, datos, geo_dir)
     resumen = {
         "paraderos": len(datos["paraderos"]), "rutas": len(datos["rutas"]),
         "enlaces": len(datos["enlaces"]),
         "con_unidad_modelo": sum(1 for e in datos["enlaces"].values() if e["unidad_modelo"]),
         "rutas_con_trazado": sum(1 for r in datos["rutas"].values() if r["tiene_trazado"]),
+        "tramos": n_tramos,
         **datos["avisos"],
     }
     return resumen
