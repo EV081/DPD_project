@@ -8,7 +8,7 @@ tráfico y export. Para el panorama general ver `deliveries/week10/README.md`.
 | Archivo | Rol |
 | :--- | :--- |
 | `config.py` | Configuración y constantes de regresión (`FILAS_ESPERADAS`, `FIABLE_ESPERADO`) |
-| `ingest_demand.py` | Carga granular de los parquets de `data_processed/clean/` a PostgreSQL |
+| `ingest_demand.py` | Carga granular de los parquets de `datos_entrada/clean/` a PostgreSQL |
 | `ingest_tomtom.py` | Snapshot de tráfico (TomTom) con fallback RF-05 sintético |
 | `run.py` | Orquestador con subcomandos (entrypoint del contenedor) |
 
@@ -57,7 +57,8 @@ docker compose run --rm pipeline check         # inventario rápido
 
 | Variable | Default | Uso |
 | :--- | :--- | :--- |
-| `DATA_DIR` | `week10/data_processed` | Raíz de datos (los parquets van en `DATA_DIR/clean/`) |
+| `DATA_DIR` | `week10/datos_entrada` | Raíz de datos (los parquets van en `DATA_DIR/clean/`) |
+| `GEO_DIR` | `week10/datos_entrada/geo` | GeoJSON de paraderos, rutas y trazados |
 | `EXPORT_DIR` | `week10/export` | Destino de `export_data` |
 | `MODELO_OUTPUTS_DIR` | `code/model/outputs` | Outputs de week08 que se copian al export |
 | `API_TOMTOM` / `TOMMTOM_KEY` | — | Key TomTom (basta con una; se aceptan ambas) |

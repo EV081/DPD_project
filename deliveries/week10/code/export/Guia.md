@@ -32,7 +32,7 @@ Requiere la base cargada (si no, la vista está vacía): corre antes
 | `muestra_demanda_fiable.csv` | Muestra determinista de `MUESTRA_LIMITE` (100.000) filas de `demanda_fiable`, ordenada por fecha/hora/sistema/unidad/sentido |
 | `resumen_por_sistema.csv` | `sistema, grano, filas, unidades, validaciones, fecha_min, fecha_max` |
 | `perfil_horario.csv` | `sistema, hora, promedio, total` — 90 filas (metro L1 opera 5–22 h; el resto 24 h) |
-| `trafico_tomtom.json` | Snapshot de `trafico_en_vivo` (`generado_en` + `segmentos[]` con velocidad, ratio y `fuente`) |
+| `trafico_tomtom.json` | Snapshot de `trafico_en_vivo` (`generado_en` + `segmentos[]` con velocidad, ratio y `fuente`). Se genera en cada export; no está versionado |
 | `modelo/` | Copia de los outputs de week08: `manifiesto_modelamiento.json`, `metricas_modelos.csv`, `bakeoff_wmape_todos.csv`, `eval_walkforward_modelos.csv` |
 | `manifiesto_export.json` | Inventario: `generado_en`, `fuente`, `limite_muestra`, `conteos_bd` y `archivos` (bytes + sha256) |
 

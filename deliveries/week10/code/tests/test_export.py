@@ -97,6 +97,9 @@ def test_export_manifiesto_sha256_y_conteos(export_tmp):
 
     archivos = manifiesto["archivos"]
     assert "muestra_demanda_fiable.csv" in archivos
+    # el snapshot de trafico se genera pero no se lista (volatil, no versionado)
+    assert (export_tmp / "trafico_tomtom.json").exists()
+    assert "trafico_tomtom.json" not in archivos
     ruta = export_tmp / "muestra_demanda_fiable.csv"
     sha = hashlib.sha256(ruta.read_bytes()).hexdigest()
     assert archivos["muestra_demanda_fiable.csv"]["sha256"] == sha

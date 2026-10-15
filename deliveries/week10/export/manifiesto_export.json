@@ -1,5 +1,5 @@
 {
-  "generado_en": "2026-10-15T06:26:25",
+  "generado_en": "2026-10-15T06:33:02",
   "fuente": "/data/processed/clean",
   "limite_muestra": 100000,
   "conteos_bd": {
@@ -71,10 +71,6 @@
     "rutas_trazados.geojson": {
       "bytes": 1383724,
       "sha256": "8a317cd17337f05fb76b8f23ee5f08fac0e01665122b1e01bd57dec61b13096b"
-    },
-    "trafico_tomtom.json": {
-      "bytes": 1788,
-      "sha256": "9bc712ea23d3fa7ae5d09ef3478dee30ac4aa84f16eda670e3b0e7b65bc390c3"
     },
     "tramos.csv": {
       "bytes": 178261,

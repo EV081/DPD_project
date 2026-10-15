@@ -6,6 +6,7 @@ claves estables (sistema, ruta, direccion, orden). ``ingest_paraderos`` lo carga
 ``tramo`` y calcula ahí la duración, de modo que ajustar velocidades no requiere volver a OSRM.
 
   python -m scripts.build_tramos            # desde week10/code, con PG* del entorno
+Escribe en GEO_DIR (week10/datos_entrada/geo); export/tramos.csv es la copia versionada.
 Reanuda: los tramos ya presentes en el CSV no se vuelven a consultar.
 """
 from __future__ import annotations

@@ -6,15 +6,17 @@
 vivo (TomTom + fallback RF-05) y suite de regresión en pytest.
 
 > Los EDA y el modelado viven en `deliveries/week08/` (Alessandro/Juan David).
-> Esta semana solo consume sus salidas (`data_processed/clean/`) y las persiste
-> en una base relacional con contratos de integridad verificables.
+> Esta semana solo consume sus salidas y las persiste en una base relacional con
+> contratos de integridad verificables. Las entradas mínimas viven versionadas en
+> [`datos_entrada/`](datos_entrada/) (41 MB), de modo que un clon levanta todo con
+> `docker compose up` sin copiar carpetas locales (ver "Entradas versionadas").
 
 ---
 
 ## 1. Qué hace el pipeline
 
 ```
-data_processed/clean/*.parquet (week08, post-Fase 0)
+datos_entrada/clean/*.parquet (copia versionada de week08/data_processed/clean)
         │  ingest_demand.py  (COPY masivo + conteos esperados)
         ▼
 PostgreSQL 17 (contenedor docker `db`)
@@ -31,6 +33,20 @@ TomTom Flow Segment Data ──► ingest_tomtom.py ──► trafico_en_vivo
         (si falla / no hay key)  fallback RF-05  (patrón horario determinista,
                                                   réplica de week07 congestion.py)
 ```
+
+### Entradas versionadas (`datos_entrada/`)
+
+`data_processed/` y `data/` están en `.gitignore` (crudos y fuentes pesados). Para que nadie dependa de tu
+máquina, el pipeline lee de `datos_entrada/`, que contiene solo lo que consume:
+
+| Carpeta | Contenido | Tamaño |
+|---|---|---|
+| `datos_entrada/clean/` | 6 parquets de demanda, `calidad_cobertura.csv` y `demanda_consolidada_fiable.parquet` (paridad en tests) | ≈ 41 MB |
+| `datos_entrada/geo/` | 11 GeoJSON de paraderos, rutas y trazados | ≈ 2 MB |
+
+Son copias: tras regenerar los originales (EDA, `build_trazados.py`) se refrescan con
+`python -m scripts.publicar_entradas` (desde `code/`). Cada versión nueva de un parquet añade su tamaño al
+historial de git; si crece, conviene pasarlos a Git LFS.
 
 ## 2. Requisitos
 
@@ -169,7 +185,7 @@ deliveries/week10/
 | `muestra_demanda_fiable.csv` | muestra determinista de 100.000 filas de la vista |
 | `resumen_por_sistema.csv` | filas, unidades y suma de validaciones por sistema |
 | `perfil_horario.csv` | promedio/total por sistema × hora (90 filas: metro L1 opera 5–22 h) |
-| `trafico_tomtom.json` | snapshot de `trafico_en_vivo` |
+| `trafico_tomtom.json` | snapshot de `trafico_en_vivo`; **se genera en cada export y no se versiona** (`.gitignore`) |
 | `paraderos.csv`, `rutas.csv`, `rutas_trazados.geojson` | paradas por ruta y sentido, rutas y trazados (ver §10) |
 | `modelo/` | manifiesto + métricas de los modelos de week08 |
 | `manifiesto_export.json` | inventario con sha256 de cada archivo + conteos de la BD |

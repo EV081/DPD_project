@@ -21,6 +21,11 @@ ARCHIVOS_MODELO = [
 ]
 
 
+# Fuera del manifiesto: el propio manifiesto y el snapshot de trafico (cambia en cada export y
+# no se versiona, ver .gitignore), de modo que el manifiesto solo lista entregables estables.
+EXCLUIDOS_MANIFIESTO = {"manifiesto_export.json", "trafico_tomtom.json"}
+
+
 def _query(conn, sql: str) -> pd.DataFrame:
     cur = conn.cursor()
     try:
@@ -129,7 +134,7 @@ def run() -> Path:
 
     archivos: dict[str, dict] = {}
     for ruta in sorted(out.rglob("*")):
-        if ruta.is_file() and ruta.name != "manifiesto_export.json":
+        if ruta.is_file() and ruta.name not in EXCLUIDOS_MANIFIESTO:
             archivos[str(ruta.relative_to(out))] = {
                 "bytes": ruta.stat().st_size,
                 "sha256": _sha256(ruta),

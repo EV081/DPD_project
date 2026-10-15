@@ -13,9 +13,12 @@ except Exception:
 _CODE_DIR = Path(__file__).resolve().parents[1]
 _WEEK10_DIR = _CODE_DIR.parent
 
-DATA_DIR = Path(os.getenv("DATA_DIR", str(_WEEK10_DIR / "data_processed")))
+# Entradas versionadas (week10/datos_entrada): `clean/` con los parquets y `geo/` con los GeoJSON que
+# consume el pipeline. Se refrescan con `python -m scripts.publicar_entradas`.
+ENTRADA_DIR = _WEEK10_DIR / "datos_entrada"
+DATA_DIR = Path(os.getenv("DATA_DIR", str(ENTRADA_DIR)))
 CLEAN_DIR = DATA_DIR / "clean"
-GEO_DIR = Path(os.getenv("GEO_DIR", str(_WEEK10_DIR / "data" / "fuentes" / "geo")))
+GEO_DIR = Path(os.getenv("GEO_DIR", str(ENTRADA_DIR / "geo")))
 EXPORT_DIR = Path(os.getenv("EXPORT_DIR", str(_WEEK10_DIR / "export")))
 MODELS_DIR = Path(os.getenv("MODELS_DIR", str(_WEEK10_DIR / "models")))  # en la imagen: /models
 MODELO_OUTPUTS_DIR = Path(
