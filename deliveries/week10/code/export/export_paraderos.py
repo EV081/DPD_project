@@ -3,6 +3,8 @@
   paraderos.csv          una fila por parada de cada ruta y sentido (la entrega para el equipo)
   rutas.csv              una fila por ruta, con % de paradas exactas y origen del trazado
   rutas_trazados.geojson trazado de cada ruta (derivado u oficial segun `origen_trazado`)
+  headway_sistema.csv    intervalo entre buses por sistema y tipo de dia (el mismo que usa el modelo)
+  feriados.csv           feriados nacionales (tipo de dia DOM en las funciones de viaje)
   tramos.csv             distancia y tiempo estimado entre paradas consecutivas (tabla `tramo`);
                          tambien es la entrada de `ingest_paraderos` en un clon sin `data/`
 """
@@ -33,6 +35,13 @@ JOIN ruta r ON r.id = t.ruta_id
 JOIN paradero pa ON pa.id = t.paradero_desde
 JOIN paradero pb ON pb.id = t.paradero_hasta
 ORDER BY r.sistema, r.codigo, t.direccion, t.orden_desde
+"""
+SQL_HEADWAY = """
+SELECT sistema, bucket, headway_min, cap_vehiculo, fuente FROM headway_sistema
+ORDER BY sistema, bucket
+"""
+SQL_FERIADOS = """
+SELECT fecha, nombre FROM feriado ORDER BY fecha
 """
 SQL_RUTAS = """
 SELECT r.sistema, r.codigo AS ruta, r.nombre AS ruta_nombre, r.origen_trazado,
@@ -71,6 +80,14 @@ def exportar(conn, out: Path) -> dict[str, int]:
     if len(tramos):   # sin filas no se pisa el tramos.csv versionado (entrada de ingest_paraderos)
         tramos.to_csv(out / "tramos.csv", index=False, encoding="utf-8")
 
+    headway = _df(conn, SQL_HEADWAY)
+    if len(headway):
+        headway.to_csv(out / "headway_sistema.csv", index=False, encoding="utf-8")
+
+    feriados = _df(conn, SQL_FERIADOS)
+    if len(feriados):
+        feriados.to_csv(out / "feriados.csv", index=False, encoding="utf-8")
+
     cur = conn.cursor()
     try:
         cur.execute("SELECT sistema, codigo, nombre, origen_trazado, trazado FROM ruta "
@@ -85,4 +102,4 @@ def exportar(conn, out: Path) -> dict[str, int]:
     (out / "rutas_trazados.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "features": feats}, ensure_ascii=False), encoding="utf-8")
     return {"paraderos_csv": len(paradas), "rutas_csv": len(rutas), "trazados": len(feats),
-            "tramos_csv": len(tramos)}
+            "tramos_csv": len(tramos), "headway_csv": len(headway), "feriados_csv": len(feriados)}

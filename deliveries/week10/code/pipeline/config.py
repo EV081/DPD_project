@@ -17,6 +17,7 @@ DATA_DIR = Path(os.getenv("DATA_DIR", str(_WEEK10_DIR / "data_processed")))
 CLEAN_DIR = DATA_DIR / "clean"
 GEO_DIR = Path(os.getenv("GEO_DIR", str(_WEEK10_DIR / "data" / "fuentes" / "geo")))
 EXPORT_DIR = Path(os.getenv("EXPORT_DIR", str(_WEEK10_DIR / "export")))
+MODELS_DIR = Path(os.getenv("MODELS_DIR", str(_WEEK10_DIR / "models")))  # en la imagen: /models
 MODELO_OUTPUTS_DIR = Path(
     os.getenv("MODELO_OUTPUTS_DIR", str(_CODE_DIR / "model" / "outputs"))
 )

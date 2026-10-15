@@ -1,0 +1,13 @@
+sistema,bucket,headway_min,cap_vehiculo,fuente
+alimentador,DOM,10.0,80.0,supuesto_modelo
+alimentador,LAB,6.0,80.0,supuesto_modelo
+alimentador,SAB,8.0,80.0,supuesto_modelo
+corredor,DOM,12.0,80.0,supuesto_modelo
+corredor,LAB,10.0,80.0,supuesto_modelo
+corredor,SAB,12.0,80.0,supuesto_modelo
+metro_l1,DOM,9.0,1200.0,atu_punto_medio
+metro_l1,LAB,3.5,1200.0,atu_punto_medio
+metro_l1,SAB,6.5,1200.0,atu_punto_medio
+troncal,DOM,8.0,164.0,supuesto_modelo
+troncal,LAB,4.0,164.0,supuesto_modelo
+troncal,SAB,5.0,164.0,supuesto_modelo

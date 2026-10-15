@@ -161,3 +161,107 @@ def test_tramos_sentido_vacio_es_cero_y_acepta_ambos_encabezados():
     assert IP._direccion_tramo({"sentido": "1"}) == 1            # export/tramos.csv
     assert IP._direccion_tramo({"sentido": ""}) == 0             # sin sentido (como paraderos.csv)
     assert IP._direccion_tramo({"direccion": "0"}) == 0
+
+
+def test_headway_sistema_replica_la_config_del_modelo():
+    import json
+    from pathlib import Path
+
+    from pipeline import config
+
+    for sistema in IP.SISTEMAS:
+        cfg = json.loads((Path(config.MODELS_DIR) / sistema / "crowding_config.json").read_text(encoding="utf-8"))
+        assert set(cfg["headway_min"]) == {"LAB", "SAB", "DOM"}      # buckets que admite la tabla
+        assert all(float(v) > 0 for v in cfg["headway_min"].values())
+
+
+@pytest.fixture()
+def geo_viaje(tmp_path):
+    """Dos corredores de un solo sentido: 100 (A-B-C) y 200 (D-E-F), con C y D a ~33 m (transbordo)."""
+    g = tmp_path / "geo"
+    g.mkdir()
+    w = lambda n, f: (g / f"{n}.geojson").write_text(json.dumps(_pts(n, f)), encoding="utf-8")  # noqa: E731
+    w("paradas_corredores", [
+        _pt(-77.0000, -12.000, ruta="100", direccion=1, orden=1, paradero="Aaa"),
+        _pt(-77.0000, -12.010, ruta="100", direccion=1, orden=2, paradero="Bbb"),
+        _pt(-77.0000, -12.020, ruta="100", direccion=1, orden=3, paradero="Ccc"),
+        _pt(-77.0003, -12.020, ruta="200", direccion=1, orden=1, paradero="Ddd"),
+        _pt(-77.0000, -12.030, ruta="200", direccion=1, orden=2, paradero="Eee"),
+        _pt(-77.0000, -12.040, ruta="200", direccion=1, orden=3, paradero="Fff"),
+    ])
+    w("puntos_metro_l1", [_pt(-77.10, -12.00, estacion="M Norte", unidad="M Norte"),
+                          _pt(-77.10, -12.05, estacion="M Sur", unidad="M Sur")])
+    return g
+
+
+def _con_tramos(db, geo):
+    IP.cargar(db, geo)
+    db.execute("DELETE FROM tramo")
+    db.execute(
+        """
+        INSERT INTO tramo (ruta_id, direccion, orden_desde, orden_hasta, paradero_desde, paradero_hasta,
+                           dist_m, duracion_s, fuente, fiable)
+        SELECT ruta_id, direccion, orden, sig, paradero_id, sig_p, 1000, 180, 'osrm', true
+        FROM (SELECT ruta_id, direccion, orden, paradero_id,
+                     lead(orden) OVER w AS sig, lead(paradero_id) OVER w AS sig_p
+              FROM paradero_ruta WINDOW w AS (PARTITION BY ruta_id, direccion ORDER BY orden)) x
+        WHERE sig IS NOT NULL
+        """
+    )
+
+
+AHORA = "2026-01-01 08:00"
+
+
+def test_directa_solo_hacia_adelante_y_metro_bidireccional(db, geo_viaje):
+    _con_tramos(db, geo_viaje)
+    ida = db.execute("SELECT ruta, viaje_s, espera_fuente FROM rutas_directas(%s,%s,%s,%s,300,%s,'LAB')",
+                     (-12.000, -77.0, -12.020, -77.0, AHORA)).fetchall()
+    assert [r["ruta"] for r in ida] == ["100"] and ida[0]["viaje_s"] == 360    # 2 tramos x 180 s
+    assert ida[0]["espera_fuente"] == "headway"                                 # sin prediccion
+    vuelta = db.execute("SELECT * FROM rutas_directas(%s,%s,%s,%s,300,%s,'LAB')",
+                        (-12.020, -77.0, -12.000, -77.0, AHORA)).fetchall()
+    assert vuelta == []                                                         # corredor: orden creciente
+    for o, d in (((-12.00, -77.10), (-12.05, -77.10)), ((-12.05, -77.10), (-12.00, -77.10))):
+        m = db.execute("SELECT ruta FROM rutas_directas(%s,%s,%s,%s,300,%s,'LAB')",
+                       (*o, *d, AHORA)).fetchall()
+        assert [r["ruta"] for r in m] == ["metro_l1"]                           # metro: ambos sentidos
+
+
+def test_transbordo_une_dos_rutas_y_solo_en_el_sentido_correcto(db, geo_viaje):
+    _con_tramos(db, geo_viaje)
+    q = "SELECT * FROM rutas_transbordo(%s,%s,%s,%s,300,300,%s,'LAB')"
+    assert db.execute("SELECT * FROM rutas_directas(%s,%s,%s,%s,300,%s,'LAB')",
+                      (-12.000, -77.0, -12.040, -77.0, AHORA)).fetchall() == []   # no hay ruta directa
+    filas = db.execute(q, (-12.000, -77.0, -12.040, -77.0, AHORA)).fetchall()
+    assert len(filas) == 1
+    f = filas[0]
+    assert (f["ruta1"], f["paradero_subida1"], f["paradero_bajada1"]) == ("100", "Aaa", "Ccc")
+    assert (f["ruta2"], f["paradero_subida2"], f["paradero_bajada2"]) == ("200", "Ddd", "Fff")
+    assert 25 < f["dist_transbordo_m"] < 40 and f["viaje1_s"] == f["viaje2_s"] == 360
+    # espera 2 = headway/2 del corredor (LAB 10 min -> 300 s) + 300 s de penalizacion
+    assert f["espera2_s"] == 600
+    assert db.execute(q, (-12.040, -77.0, -12.000, -77.0, AHORA)).fetchall() == []  # sentido contrario
+
+
+def test_tramos_no_fiables_se_excluyen_salvo_que_se_pida(db, geo_viaje):
+    _con_tramos(db, geo_viaje)
+    db.execute("UPDATE tramo SET fiable = false WHERE orden_desde = 1 AND "
+               "ruta_id = (SELECT id FROM ruta WHERE codigo = '100')")
+    args = (-12.000, -77.0, -12.020, -77.0, AHORA)
+    assert db.execute("SELECT * FROM rutas_directas(%s,%s,%s,%s,300,%s,'LAB')", args).fetchall() == []
+    con = db.execute("SELECT tramos_no_fiables FROM rutas_directas(%s,%s,%s,%s,300,%s,'LAB',false)",
+                     args).fetchall()
+    assert [c["tramos_no_fiables"] for c in con] == [1]
+
+
+def test_feriado_usa_headway_de_domingo_sin_pasar_bucket(db, geo_viaje):
+    _con_tramos(db, geo_viaje)
+    db.execute("DELETE FROM feriado")
+    db.execute("INSERT INTO feriado VALUES ('2026-05-01', 'Dia del Trabajo')")
+    args = (-12.000, -77.0, -12.020, -77.0)
+    sql = "SELECT espera_s FROM rutas_directas(%s,%s,%s,%s,300,%s)"
+    laboral = db.execute(sql, (*args, "2026-05-04 08:00")).fetchone()["espera_s"]   # lunes
+    feriado = db.execute(sql, (*args, "2026-05-01 08:00")).fetchone()["espera_s"]   # viernes feriado
+    domingo = db.execute(sql, (*args, "2026-05-03 08:00")).fetchone()["espera_s"]
+    assert laboral == 300 and feriado == domingo == 360   # corredor: LAB 10 min, DOM 12 min -> /2

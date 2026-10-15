@@ -298,6 +298,61 @@ def _unidades_modelo(conn) -> dict[str, dict[str, str]]:
     return out
 
 
+def _cargar_feriados(conn, models_dir: Path | None = None) -> int:
+    """Feriados nacionales de ``models/calendario_eventos.json`` (mismo calendario que usa el modelo)."""
+    f = Path(models_dir or config.MODELS_DIR) / "calendario_eventos.json"
+    if not f.exists():
+        return 0
+    feriados = json.loads(f.read_text(encoding="utf-8")).get("feriados", {})
+    with conn.transaction():
+        conn.execute("DELETE FROM feriado")
+        for fecha, nombre in sorted(feriados.items()):
+            conn.execute("INSERT INTO feriado (fecha, nombre) VALUES (%s, %s)", (fecha, nombre))
+    return len(feriados)
+
+
+def _cargar_headway(conn, models_dir: Path | None = None) -> int:
+    """Headway por sistema y tipo de dia, tal como lo usa el modelo (crowding_config.json)."""
+    models_dir = Path(models_dir or config.MODELS_DIR)
+    filas = []
+    for sistema in SISTEMAS:
+        f = models_dir / sistema / "crowding_config.json"
+        if not f.exists():
+            continue
+        cfg = json.loads(f.read_text(encoding="utf-8"))
+        for bucket, hw in cfg["headway_min"].items():
+            fuente = "atu_punto_medio" if sistema == "metro_l1" else "supuesto_modelo"
+            filas.append((sistema, bucket, float(hw), float(cfg["cap_vehiculo"]), fuente))
+    with conn.transaction():
+        conn.execute("DELETE FROM headway_sistema")
+        for fila in filas:
+            conn.execute("INSERT INTO headway_sistema (sistema, bucket, headway_min, cap_vehiculo, "
+                         "fuente) VALUES (%s,%s,%s,%s,%s)", fila)
+    return len(filas)
+
+
+TRANSBORDO_M = 300.0   # radio maximo de caminata entre dos paraderos para transbordar
+
+
+def _cargar_transbordo_cercano(conn) -> int:
+    """Pares de paraderos a <= TRANSBORDO_M (incluye cada uno consigo mismo): candidatos a transbordo."""
+    dlat = TRANSBORDO_M / 111_320.0
+    with conn.transaction():
+        conn.execute("DELETE FROM transbordo_cercano")
+        conn.execute(
+            """
+            INSERT INTO transbordo_cercano (paradero_a, paradero_b, dist_m)
+            SELECT a.id, b.id, distancia_m(a.lat, a.lon, b.lat, b.lon)
+            FROM paradero a
+            JOIN paradero b ON b.lat BETWEEN a.lat - %(dlat)s AND a.lat + %(dlat)s
+                           AND b.lon BETWEEN a.lon - %(dlat)s * 1.1 AND a.lon + %(dlat)s * 1.1
+            WHERE distancia_m(a.lat, a.lon, b.lat, b.lon) <= %(m)s
+            """,
+            {"dlat": dlat, "m": TRANSBORDO_M},
+        )
+    return conn.execute("SELECT count(*) AS n FROM transbordo_cercano").fetchone()["n"]
+
+
 def _direccion_tramo(fila: dict) -> int:
     """`direccion` (geo/tramos_osrm.csv) o `sentido` (export/tramos.csv, vacio = sin sentido -> 0)."""
     return int(fila.get("direccion") or fila.get("sentido") or 0)
@@ -386,12 +441,15 @@ def cargar(conn, geo_dir: Path | None = None) -> dict:
                  e["orden_origen"]),
             )
     n_tramos = _cargar_tramos(conn, datos, geo_dir)
+    n_headway = _cargar_headway(conn)
+    n_feriados = _cargar_feriados(conn)
+    n_transbordo = _cargar_transbordo_cercano(conn)
     resumen = {
         "paraderos": len(datos["paraderos"]), "rutas": len(datos["rutas"]),
         "enlaces": len(datos["enlaces"]),
         "con_unidad_modelo": sum(1 for e in datos["enlaces"].values() if e["unidad_modelo"]),
         "rutas_con_trazado": sum(1 for r in datos["rutas"].values() if r["tiene_trazado"]),
-        "tramos": n_tramos,
+        "tramos": n_tramos, "headway": n_headway, "feriados": n_feriados, "transbordo_cercano": n_transbordo,
         **datos["avisos"],
     }
     return resumen

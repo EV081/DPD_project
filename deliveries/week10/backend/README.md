@@ -1,7 +1,21 @@
 # Backend: flujo de recomendación de paraderos
 
-Diseño del flujo "estoy en un lugar y quiero ir a otro". **Aún no está implementado**: este documento
-define qué debe hacer el backend con los datos y el modelo que ya existen.
+Diseño del flujo "estoy en un lugar y quiero ir a otro". La parte de datos **ya está implementada** (tablas y
+funciones SQL en la BD, ver abajo); este documento define qué debe hacer la aplicación backend, que **aún no
+existe**, con esos datos y con el modelo.
+
+## Qué debe hacer el backend (resumen)
+
+| # | Responsabilidad | Detalle |
+|---|---|---|
+| 1 | Geocodificar el destino | Texto → `lat, lon`; zonas amplias se resuelven con un pin |
+| 2 | Tipo de día | La BD lo deduce de `p_ahora`: sábado `SAB`, domingo y **feriados** (tabla `feriado`, 2025-2026) `DOM`. Solo pasar `p_bucket` para forzarlo (p. ej. un feriado extraordinario) |
+| 3 | Llamar a `rutas_directas()` y `rutas_transbordo()` | Con la hora de Lima en `p_ahora` |
+| 4 | Ajustar el ETA con tráfico | `ajustar_en_vivo()` sobre `eta_min`/`eta2_min` de cada opción |
+| 5 | Caminata real | OSRM `foot` para los mejores candidatos |
+| 6 | Ranking final y respuesta | Penalizar aforo y transbordo, ordenar y construir el JSON |
+| 7 | Degradar con claridad | Rutas sin predicción, tráfico caído, sin opciones |
+| 8 | Registrar uso | `log_inferencia` y `feedback_usuario` (ya existen las tablas) |
 
 ## Objetivo
 
@@ -18,7 +32,7 @@ Ejemplo: el paradero 1 tiene un bus próximo pero lleno y el siguiente llega en 
 Frontend → Backend  GET /recomendar?lat_o&lon_o&destino
                       │
                       ├─ 1. Geocodifica el destino (si es texto) → lat_d, lon_d
-                      ├─ 2. SQL: rutas_origen_destino(lat_o, lon_o, lat_d, lon_d)
+                      ├─ 2. SQL: rutas_directas(...) y rutas_transbordo(...)
                       ├─ 3. Une con prediccion (aforo, eta_min, eta2_min) y trafico_en_vivo
                       ├─ 4. OSRM perfil foot: caminata real a los mejores candidatos
                       └─ 5. Ranking → JSON
@@ -33,18 +47,43 @@ Frontend → Backend  GET /recomendar?lat_o&lon_o&destino
 
 ### 2. Rutas que conectan origen y destino
 
-Función SQL pendiente: `rutas_origen_destino(lat_o, lon_o, lat_d, lon_d, radio_m DEFAULT 800)`.
+**Implementado en la BD** ([schema.sql](../code/storage/schema.sql), sección 7). El backend solo las llama:
 
-Para cada ruta devuelve una fila si cumple:
+```sql
+-- una sola ruta
+SELECT * FROM rutas_directas(lat_o, lon_o, lat_d, lon_d,
+       p_radio_m := 800, p_ahora := now_lima, p_bucket := NULL, p_solo_fiables := true,
+       p_vel_mps := 1.33, p_limite := 10);
+-- dos rutas con un transbordo a pie
+SELECT * FROM rutas_transbordo(lat_o, lon_o, lat_d, lon_d,
+       p_radio_m := 800, p_transbordo_m := 300, p_ahora := now_lima, p_bucket := NULL,
+       p_solo_fiables := true, p_vel_mps := 1.33, p_penal_s := 300, p_limite := 10);
+```
 
-1. Tiene un paradero a ≤ `radio_m` del origen y otro a ≤ `radio_m` del destino.
-2. En `paradero_ruta`, ambos paraderos tienen la misma `direccion` y `orden` del origen < `orden` del
-   destino (garantiza el sentido correcto).
+| Parámetro | Significado |
+|---|---|
+| `p_ahora` | Hora de Lima (`timestamp`); decide la hora de `prediccion` y el tipo de día |
+| `p_bucket` | `LAB`/`SAB`/`DOM`. Si es NULL se deduce del día y de la tabla `feriado`: sábado `SAB`, domingo o feriado `DOM` |
+| `p_solo_fiables` | Excluye opciones con algún tramo `fiable = false` (ver `tramo`); con `false` las devuelve y marca `tramos_no_fiables` |
+| `p_vel_mps` | Velocidad de caminata en línea recta (1.33 m/s ≈ 80 m/min); el backend la afina con OSRM `foot` |
+| `p_penal_s` | Penalización fija por transbordar |
 
-Columnas esperadas: `ruta_id`, `sistema`, `codigo`, `direccion`, `paradero_subida`, `paradero_bajada`,
-`orden_subida`, `orden_bajada`, `dist_origen_m`, `dist_destino_m`, `unidad_modelo`.
+`rutas_directas` devuelve, por ruta y sentido, la mejor pareja subida/bajada: `ruta`, `sistema`, `direccion`,
+`paradero_subida`, `paradero_bajada`, `orden_*`, `dist_origen_m`, `dist_destino_m`, `viaje_s`, `aforo`, `eta_min`,
+`eta2_min`, `recomendacion`, `espera_s`, `espera_fuente` (`prediccion` o `headway`) y `tiempo_total_s`.
+`rutas_transbordo` devuelve lo mismo por tramo (`*1`, `*2`) más `dist_transbordo_m`, `espera1_s`, `espera2_s`
+y `tiempo_total_s`. El aforo del segundo tramo usa la hora estimada de llegada al transbordo.
 
-Se apoya en lo que ya existe: `paraderos_cercanos()`, `paradero_ruta`, `ruta` y la vista `ruta_paradas`.
+Reglas que aplican las funciones:
+
+1. Paraderos de subida y bajada a ≤ `p_radio_m` del origen y del destino.
+2. Misma ruta y `direccion`; el sentido se valida con `sentido_valido()` (tabla de abajo).
+3. Los tiempos de viaje suman los `tramo` entre ambos órdenes.
+4. Transbordo entre paraderos a ≤ `p_transbordo_m` (≤ 300 m, tabla `transbordo_cercano`) y rutas distintas.
+5. Si una ruta no tiene predicción para esa hora, la espera es `headway / 2` del sistema.
+
+`tiempo_total_s` es un orden de magnitud para ordenar: usa velocidades supuestas y la caminata es en línea
+recta. El ranking final con la penalización por aforo queda en el backend.
 
 Cómo leer `direccion` y `orden` (ver `orden_origen` en `paradero_ruta`):
 
@@ -57,17 +96,25 @@ Cómo leer `direccion` y `orden` (ver `orden_origen` en `paradero_ruta`):
 Ningún enlace tiene `orden` NULL. Los enlaces `catalogo_n_paradero` y `latitud_troncal` son menos fiables que los
 de ATU: conviene mostrarlos con menor prioridad en el ranking.
 
-El tiempo de un tramo sale de la tabla `tramo` (`duracion_s`, estimada; ver el README de la semana) o, sin BD,
-de `export/tramos.csv`. Al sumar tramos entre dos paradas hay que excluir los `fiable = false`.
+Espera en un transbordo: `headway_sistema.headway_min / 2` del sistema de la segunda ruta, según el tipo de día
+(`LAB`/`SAB`/`DOM`; feriado = `DOM`). Son los mismos valores con que el modelo calcula `eta_min`, así que no hay
+que recalcular nada. En el primer tramo se usa `eta_min` de `prediccion`, que ya incluye el factor de aforo.
+No hay headway por ruta ni por hora; solo Metro L1 tiene fuente oficial (ver el README de la semana).
 
-Limitación: solo viajes **directos**, sin transbordos. Barranco → San Miguel probablemente requiera
-combinar Metropolitano o Metro con un alimentador; eso queda como mejora futura.
+El tiempo de un tramo sale de la tabla `tramo` (`duracion_s`, estimada; ver el README de la semana) o, sin BD,
+de `export/tramos.csv`. Las funciones SQL ya los suman y excluyen los `fiable = false` por defecto.
+
+Limitaciones: máximo **un** transbordo, siempre a pie y a ≤ 300 m; no considera horarios reales de los
+servicios (solo headway) ni transbordos dentro de la misma ruta. Una ruta sin tramos calculados no se ofrece.
 
 ### 3. Aforo, ETA y tráfico
 
+Las funciones SQL ya unen cada opción con `prediccion` (aforo, `eta_min`, `eta2_min`, `recomendacion`) y con
+`headway_sistema`; el backend no consulta `prediccion` por su cuenta. Lo que le falta es el tráfico en vivo:
+
 | Dato | Fuente | Notas |
 |---|---|---|
-| `aforo`, `eta_min`, `eta2_min`, `recomendacion` | tabla `prediccion` (unida por `unidad_modelo`) | Por ruta, sentido y hora |
+| `aforo`, `eta_min`, `eta2_min`, `recomendacion` | Columnas de `rutas_directas` / `rutas_transbordo` | Por ruta, sentido y hora |
 | Congestión en vivo | `trafico_en_vivo` | El backend ajusta el ETA con `ajustar_en_vivo()` (ver abajo) |
 
 #### Ajuste del ETA con tráfico (responsabilidad del backend)
@@ -119,50 +166,82 @@ Reglas:
 
 ### 4. Caminata real
 
-La distancia de `paraderos_cercanos()` es en línea recta y subestima. Para los 3-5 mejores candidatos se
-consulta OSRM con perfil `foot`. Aproximación si OSRM no responde: 80 m/min sobre la distancia en línea recta.
+La caminata de las funciones SQL es en línea recta a 1.33 m/s y subestima. Para las 3-5 mejores opciones se
+consulta OSRM con perfil `foot` (origen → paradero de subida, bajada → destino y, en transbordos, paradero de
+bajada → paradero de subida). Si OSRM no responde se conserva la estimación en línea recta.
 
 ### 5. Ranking
 
-Puntaje propuesto (menor es mejor), por opción:
+`tiempo_total_s` de la BD ordena las opciones de forma preliminar. El backend lo recalcula con lo que la BD no
+sabe y ordena por el resultado (menor es mejor):
 
 ```
-puntaje = t_caminata_origen + t_espera + penalización_aforo + t_caminata_destino
-t_espera = eta_min              (o eta2_min si el aforo es "Saturado")
+puntaje = caminata_real + espera_ajustada + viaje + (caminata_transbordo + penalización_transbordo)
+          + penalización_aforo
+espera_ajustada = ajustar_en_vivo(eta_min)      (o eta2_min si el aforo de la primera unidad es "Saturado")
 ```
 
-La penalización por aforo debe calibrarse; el modelo ya produce una `recomendacion` por clase de aforo
-(ver `V.recomendaciones` en `code/model`).
+- La penalización por aforo debe calibrarse; el modelo ya produce una `recomendacion` por clase de aforo
+  (ver `V.recomendaciones` en `code/model`).
+- Un viaje directo razonable debe quedar por encima de uno con transbordo, salvo que el transbordo ahorre
+  tiempo claramente.
+- Las rutas sin predicción (`espera_fuente = 'headway'`) se muestran como "sin estimación de aforo" y no se
+  ocultan.
+
+### 6. Fallos y degradación
+
+| Situación | Comportamiento |
+|---|---|
+| Sin predicción para la hora o la ruta | `espera_fuente = 'headway'`; sin aforo |
+| TomTom caído o snapshot viejo | `ajustar_en_vivo` devuelve `modo_datos = 'historico'` y no ajusta |
+| OSRM no responde | Caminata en línea recta, marcada como estimada |
+| Ninguna opción en el radio | Ampliar a 1.5 km una vez; si sigue vacío, informar que no hay transporte cercano |
+| `tramos_no_fiables > 0` | Solo con `p_solo_fiables = false`; mostrar como menos confiable |
+
+### 7. Registro
+
+Cada recomendación puede registrarse en `log_inferencia` (fuente `tomtom` o `fallback`, latencia, estado) y el
+botón "Ya abordé" escribe en `feedback_usuario` (`t_consulta`, `t_aborde`, `eta_mostrado_min`). Ver
+`code/pipeline/feedback.py`.
 
 ## Respuesta esperada (borrador)
 
 ```json
 {
-  "origen": {"lat": -12.140, "lon": -77.021},
-  "destino": {"lat": -12.077, "lon": -77.083, "texto": "San Miguel"},
+  "origen": {"lat": -12.135, "lon": -77.0225},
+  "destino": {"lat": -12.0773, "lon": -77.0825, "texto": "San Miguel"},
+  "generado_en": "2026-10-15T08:00:00-05:00",
   "opciones": [
     {
-      "paradero": "Nombre del paradero",
-      "sistema": "corredor",
-      "ruta": "201",
-      "sentido": 1,
-      "caminata_min": 9,
-      "eta_min": 8,
-      "aforo": "Asientos",
-      "recomendacion": "...",
-      "fuente_trafico": "tomtom",
-      "confianza_coord": "alta"
+      "tipo": "transbordo",
+      "tiempo_total_min": 82,
+      "tramos": [
+        {"sistema": "corredor", "ruta": "304", "sentido": 1,
+         "sube": "LAS ACACIAS", "baja": "OLAVIDE",
+         "caminata_min": 5, "espera_min": 8, "viaje_min": 23,
+         "aforo": null, "recomendacion": null, "espera_fuente": "headway"},
+        {"sistema": "corredor", "ruta": "206", "sentido": 1,
+         "sube": "ARENALES", "baja": "UNIVERSITARIA",
+         "caminata_min": 3, "espera_min": 10, "viaje_min": 32,
+         "aforo": "Asientos", "recomendacion": "...", "espera_fuente": "prediccion"}
+      ],
+      "caminata_final_min": 2,
+      "modo_datos": "en_vivo",
+      "confianza_coord": "alta",
+      "advertencias": ["sin estimación de aforo en el primer tramo"]
     }
   ]
 }
 ```
+
+Un viaje directo es el mismo objeto con `tipo = "directo"` y un solo elemento en `tramos`.
 
 ## Fuera de alcance por ahora
 
 - **Aforo por paradero**: requiere bajadas por paradero, que no existen (solo hay validaciones de subida).
   Se podría aproximar con trip-chaining (Barry et al. 2002; Munizaga y Palma 2012) o simetría de sentidos,
   pero no tendría ground truth para validarlo.
-- **Transbordos**: requiere un grafo de la red, no solo `paradero_ruta`.
+- **Más de un transbordo** y transbordos con trayectos largos a pie: requieren un grafo de la red.
 - **Posición real de buses**: no hay fuente.
 
 ## Datos de referencia
@@ -175,3 +254,9 @@ La penalización por aforo debe calibrarse; el modelo ya produce una `recomendac
 | `prediccion` | Aforo y ETA del modelo |
 | `trafico_en_vivo` | Congestión en tiempo real (TomTom o fallback) |
 | `paraderos_cercanos()` | Paraderos por radio con sus rutas |
+| `tramo` | Distancia y tiempo estimado entre paradas consecutivas (`fiable`) |
+| `headway_sistema` | Intervalo entre buses por sistema y tipo de día |
+| `feriado` | Feriados nacionales 2025-2026 (tipo de día `DOM`) |
+| `transbordo_cercano` | Pares de paraderos a ≤ 300 m |
+| `rutas_directas()`, `rutas_transbordo()` | Opciones de viaje origen → destino |
+| `log_inferencia`, `feedback_usuario` | Registro de uso y de feedback |

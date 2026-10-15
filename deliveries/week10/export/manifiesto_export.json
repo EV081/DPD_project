@@ -1,5 +1,5 @@
 {
-  "generado_en": "2026-10-15T06:10:37",
+  "generado_en": "2026-10-15T06:26:25",
   "fuente": "/data/processed/clean",
   "limite_muestra": 100000,
   "conteos_bd": {
@@ -15,12 +15,22 @@
     "paraderos_csv": 2502,
     "rutas_csv": 76,
     "trazados": 63,
-    "tramos_csv": 2367
+    "tramos_csv": 2367,
+    "headway_csv": 12,
+    "feriados_csv": 32
   },
   "archivos": {
     ".gitkeep": {
       "bytes": 217,
       "sha256": "ccd192b3507cbcb2026574702e2f1da9b89304b803b4a1be7783acccae4b6bf3"
+    },
+    "feriados.csv": {
+      "bytes": 977,
+      "sha256": "ffe6ec73486ea7b7cbc5cfb1aa7c807a08cf985eaf845ea91833f1a3be4c4cf5"
+    },
+    "headway_sistema.csv": {
+      "bytes": 522,
+      "sha256": "4fd754bc2e847806399b6219e2a78e4069c13fcd0162531dd2b998677a96a862"
     },
     "modelo/bakeoff_wmape_todos.csv": {
       "bytes": 1144,
@@ -64,7 +74,7 @@
     },
     "trafico_tomtom.json": {
       "bytes": 1788,
-      "sha256": "0d5ed0cd932e9e0ab6107ac651ea6b311b1cd8f286a8bbe50ca7abe5b5a97ddf"
+      "sha256": "9bc712ea23d3fa7ae5d09ef3478dee30ac4aa84f16eda670e3b0e7b65bc390c3"
     },
     "tramos.csv": {
       "bytes": 178261,

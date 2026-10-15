@@ -249,6 +249,26 @@ paradero_hasta, dist_m, duracion_osrm_s, duracion_s, fuente, fiable`; `sentido` 
 `python -m scripts.build_tramos` (≈ 35 min con el OSRM público; reanuda lo ya calculado) solo si cambian los
 paraderos o su orden.
 
+**Tabla `feriado`** (`export/feriados.csv`): feriados nacionales de `models/calendario_eventos.json`, el mismo
+calendario con que se entrenó el modelo. En las funciones de viaje un feriado cuenta como `DOM`. Feriados 2026
+(16): 1-ene, 2 y 3-abr (Jueves y Viernes Santo), 1-may, 7-jun, 29-jun, 23-jul, 28 y 29-jul, 6-ago, 30-ago, 8-oct,
+1-nov, 8 y 9-dic y 25-dic. No incluye días no laborables ni feriados puente que se decreten después.
+
+**Tabla `headway_sistema`** (`export/headway_sistema.csv`): intervalo entre buses por sistema y tipo de día
+(`LAB`, `SAB`, `DOM`; feriado = `DOM`), con la capacidad del vehículo. Replica `models/<sistema>/crowding_config.json`,
+de modo que el backend usa los mismos valores con que el modelo calcula el ETA y el aforo.
+
+| Sistema | LAB | SAB | DOM | Fuente |
+|---|---|---|---|---|
+| metro_l1 | 3.5 | 6.5 | 9.0 | `atu_punto_medio`: punto medio del rango oficial ATU (3–4, 3–10 y 6–12 min) |
+| troncal | 4.0 | 5.0 | 8.0 | `supuesto_modelo` |
+| corredor | 10.0 | 12.0 | 12.0 | `supuesto_modelo` |
+| alimentador | 6.0 | 8.0 | 10.0 | `supuesto_modelo` |
+
+Solo Metro L1 tiene fuente oficial. **No existe headway por ruta ni por hora**: el modelo trabaja por sistema y
+tipo de día, y las frecuencias por servicio que hay en `data/fuentes` son de prensa o de un sitio no oficial y
+solo describen la hora punta.
+
 ### Origen de las coordenadas
 
 | Sistema | Paradas | Coordenada | Trazado |
