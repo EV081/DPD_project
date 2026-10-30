@@ -2,12 +2,13 @@
 
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, MapPin, Info, CalendarX, CircleAlert, Activity } from 'lucide-react';
+import { ArrowLeft, MapPin, Map, Info, CalendarX, CircleAlert, Activity } from 'lucide-react';
 import SystemBadge from '@/components/SystemBadge';
 import PredictionCard from '@/components/PredictionCard';
 import FeedbackBox from '@/components/FeedbackBox';
 import { Spinner, EmptyState } from '@/components/Spinner';
 import { getStation, getStationPrediction } from '@/lib/services';
+import { FOCUS_STORAGE_KEY } from '@/lib/constants';
 import { etiquetaClase, claseAforo, textoEspera } from '@/lib/aforo';
 import { Station, StationPrediction } from '@/lib/types';
 
@@ -70,9 +71,17 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
         </div>
         <h1 className="mt-3 text-2xl font-bold tracking-tight text-fg">{station.name}</h1>
         <p className="mt-1 text-sm text-muted">{station.avenida || 'Sin referencia'}</p>
-        <p className="mt-4 flex items-center gap-2 border-t border-line pt-4 text-sm text-muted">
-          <MapPin size={15} /> {station.latitude.toFixed(5)}, {station.longitude.toFixed(5)}
-        </p>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
+          <p className="flex items-center gap-2 text-sm text-muted">
+            <MapPin size={15} /> {station.latitude.toFixed(5)}, {station.longitude.toFixed(5)}
+          </p>
+          <button
+            className="btn btn-secondary !py-2"
+            onClick={() => { sessionStorage.setItem(FOCUS_STORAGE_KEY, station.id); router.push('/map'); }}
+          >
+            <Map size={16} /> Ver en el mapa
+          </button>
+        </div>
       </header>
 
       <section className="mt-8" aria-label="Pronóstico de aforo">

@@ -13,6 +13,10 @@ interface Props {
   stations: Station[];
   /** Si viene, solo se dibujan estas estaciones (subida y bajada del viaje). */
   filterIds: string[] | null;
+  /** Dibuja todos los paraderos visibles (apagado por defecto: solo se muestran los del viaje o el enfocado). */
+  showAll: boolean;
+  /** Centra el mapa en este punto (p. ej. un paradero elegido desde su detalle). */
+  focus: Coords | null;
   routeGeoJson: any | null;
   destination: Destination | null;
   onStationClick: (station: Station) => void;
@@ -30,7 +34,7 @@ const userDot = `<div style="position:relative;width:18px;height:18px">
   <span style="position:absolute;inset:0;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.45)"></span>
 </div>`;
 
-export default function LeafletMap({ center, stations, filterIds, routeGeoJson, destination, onStationClick }: Props) {
+export default function LeafletMap({ center, stations, filterIds, showAll, focus, routeGeoJson, destination, onStationClick }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const L = useRef<typeof LType | null>(null);
   const map = useRef<LType.Map | null>(null);
@@ -40,10 +44,11 @@ export default function LeafletMap({ center, stations, filterIds, routeGeoJson, 
   const userMarker = useRef<LType.Marker | null>(null);
   const render = useRef<() => void>(() => {});
   const [ready, setReady] = useState(false);
+  const hadDestination = useRef(false);
 
   // El callback y los datos vigentes se leen vía ref para no reconstruir el mapa
-  const latest = useRef({ stations, filterIds, onStationClick });
-  latest.current = { stations, filterIds, onStationClick };
+  const latest = useRef({ stations, filterIds, showAll, onStationClick });
+  latest.current = { stations, filterIds, showAll, onStationClick };
 
   useEffect(() => {
     let cancelled = false;
@@ -67,8 +72,9 @@ export default function LeafletMap({ center, stations, filterIds, routeGeoJson, 
       markers.current = leaflet.layerGroup().addTo(m);
 
       render.current = () => {
-        const { stations: all, filterIds: ids, onStationClick: click } = latest.current;
+        const { stations: all, filterIds: ids, showAll: todos, onStationClick: click } = latest.current;
         markers.current!.clearLayers();
+        if (!ids && !todos) return;
         const zoom = m.getZoom();
         const bounds = m.getBounds();
         all.forEach((st) => {
@@ -116,7 +122,11 @@ export default function LeafletMap({ center, stations, filterIds, routeGeoJson, 
     userMarker.current?.setLatLng([center.lat, center.lon]);
   }, [center, ready]);
 
-  useEffect(() => { render.current(); }, [stations, filterIds, ready]);
+  useEffect(() => { render.current(); }, [stations, filterIds, showAll, ready]);
+
+  useEffect(() => {
+    if (focus) map.current?.setView([focus.lat, focus.lon], 16);
+  }, [focus, ready]);
 
   useEffect(() => {
     const leaflet = L.current;
@@ -152,7 +162,10 @@ export default function LeafletMap({ center, stations, filterIds, routeGeoJson, 
         if (latest.current.filterIds?.includes(s.id)) pts.push([s.latitude, s.longitude]);
       });
       m.fitBounds(leaflet.latLngBounds(pts), { padding: [50, 50] });
-    } else {
+      hadDestination.current = true;
+    } else if (hadDestination.current) {
+      // Se cerró el viaje: volver a mi ubicación (no al montar, para no pisar un paradero enfocado)
+      hadDestination.current = false;
       m.setView([center.lat, center.lon], 15);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { X, MapPinOff } from 'lucide-react';
+import { X, MapPinOff, MapPin } from 'lucide-react';
 import { Spinner } from '@/components/Spinner';
 import MapView from '@/components/MapView';
 import { SYSTEMS } from '@/lib/systems';
@@ -13,7 +13,7 @@ import FeedbackBox from '@/components/FeedbackBox';
 import { getStations, getRouteGeoJson, getRouteCodeFromStation, matchTrip, getStationPrediction } from '@/lib/services';
 import { rutasOfrecibles } from '@/lib/aforo';
 import { tramoEntre } from '@/lib/route';
-import { TRIP_STORAGE_KEY } from '@/lib/constants';
+import { TRIP_STORAGE_KEY, FOCUS_STORAGE_KEY } from '@/lib/constants';
 import { getUserLocation, LIMA_CENTER, Coords } from '@/lib/geolocation';
 import { Station, TripMatchResponse, MatchedRoute, AutocompleteSuggestion, ForecastView } from '@/lib/types';
 
@@ -32,6 +32,8 @@ export default function MapPage() {
   const [selectedRoute, setSelectedRoute] = useState<MatchedRoute | null>(null);
   const [filterIds, setFilterIds] = useState<string[] | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [showStations, setShowStations] = useState(false);   // apagado: el mapa solo muestra lo que se usa
+  const [focus, setFocus] = useState<Coords | null>(null);
 
   // Ubicación + red de estaciones
   useEffect(() => {
@@ -116,6 +118,19 @@ export default function MapPage() {
     }
   }, [location, stations, showRoute, loadStation]);
 
+  // Paradero elegido desde su detalle ("Ver en el mapa"): se muestra solo ese paradero y su ficha
+  useEffect(() => {
+    if (stations.length === 0) return;
+    const id = sessionStorage.getItem(FOCUS_STORAGE_KEY);
+    if (!id) return;
+    sessionStorage.removeItem(FOCUS_STORAGE_KEY);
+    const st = stations.find((s) => s.id === id);
+    if (!st) return;
+    setFilterIds([st.id]);
+    setFocus({ lat: st.latitude, lon: st.longitude });
+    loadStation(st);
+  }, [stations, loadStation]);
+
   const handleSearchDestination = async (input: string | AutocompleteSuggestion) => {
     if (!location) return;
     setNotice(null);
@@ -165,6 +180,8 @@ export default function MapPage() {
         center={location}
         stations={stations}
         filterIds={filterIds}
+        showAll={showStations}
+        focus={focus}
         routeGeoJson={routeGeoJson}
         destination={tripData ? { lat: tripData.destination.lat, lon: tripData.destination.lon, name: tripData.destination.resolved_name } : null}
         onStationClick={(s) => { if (!tripData) loadStation(s); }}
@@ -173,6 +190,20 @@ export default function MapPage() {
       {/* Buscador: ancho completo en móvil, tarjeta lateral en pantallas grandes */}
       <div className="absolute left-3 right-3 top-3 z-[1000] md:right-auto md:left-4 md:top-4 md:w-[26rem]">
         <SearchAutocomplete variant="float" onSelectDestination={handleSearchDestination} onSearchSubmit={handleSearchDestination} />
+        {!tripData && (
+          <button
+            type="button"
+            className="chip float-panel mt-2 inline-flex items-center gap-1.5 !rounded-full"
+            data-active={showStations}
+            aria-pressed={showStations}
+            onClick={() => {
+              setShowStations((v) => !v);
+              if (filterIds) setFilterIds(null);   // salir del paradero enfocado
+            }}
+          >
+            <MapPin size={14} /> Mostrar paraderos
+          </button>
+        )}
         {locationDenied && (
           <p className="float-panel mt-2 flex items-start gap-2 px-3.5 py-2.5 text-sm text-muted">
             <MapPinOff size={16} className="mt-0.5 shrink-0 text-amber-600" />
@@ -183,7 +214,7 @@ export default function MapPage() {
       </div>
 
       {/* Leyenda de sistemas (solo pantallas grandes) */}
-      <div className="float-panel absolute bottom-7 right-4 z-[900] hidden px-3.5 py-3 md:block">
+      <div className={`float-panel absolute bottom-7 right-4 z-[900] hidden px-3.5 py-3 ${showStations || filterIds ? 'md:block' : ''}`}>
         <ul className="space-y-1.5">
           {Object.values(SYSTEMS).map((s) => (
             <li key={s.id} className="flex items-center gap-2 text-xs text-muted">
@@ -210,7 +241,7 @@ export default function MapPage() {
                 <h3 className="mt-2 truncate text-lg font-semibold text-fg">{selectedStation.name}</h3>
                 <p className="truncate text-sm text-muted">{selectedStation.avenida || 'Sin referencia'}</p>
               </div>
-              <button onClick={() => { setSelectedStation(null); setRouteGeoJson(null); }} aria-label="Cerrar" className="btn btn-ghost !p-1.5">
+              <button onClick={() => { setSelectedStation(null); setRouteGeoJson(null); setFilterIds(null); }} aria-label="Cerrar" className="btn btn-ghost !p-1.5">
                 <X size={18} />
               </button>
             </header>
