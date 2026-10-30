@@ -4,7 +4,7 @@
 > Las secciones de producto, usabilidad y rutas seguras se integran en este mismo documento.
 
 **Código evaluado:** repositorio `Alessandromg18/Backend_UrbanSafe`, rama `feat/aforo-od-ocupacion`,
-modelos **v1.2.0** (`models/manifest.json`). La documentación técnica completa está en
+modelos **v1.3.0** (`models/manifest.json`). La documentación técnica completa está en
 `docs/MODELO_OCUPACION.md` del backend.
 
 ## 1. Qué se evalúa
@@ -120,6 +120,32 @@ El v1 marcaba "Saturado" por percentiles **dentro de cada franja**, así que el 
 más saturado que la punta. La v2 mide la ocupación contra la capacidad del vehículo y concentra la
 saturación en la punta.
 
+### 4.5 Recomendación (abordar / esperar el siguiente / cambiar de paradero)
+
+**Antes.** La regla v1 comparaba la hora actual con la siguiente. Con un vehículo cada 1,5–3
+minutos, el siguiente cae en la misma hora, así que decía "abordar" en el 95–99 % de las horas.
+
+**Ahora (v1.3.0).** Cada opción se valora por **costo generalizado** en minutos equivalentes
+(Ortúzar y Willumsen, ec. 10.18):
+
+    2 · caminata + 2 · espera + multiplicador de hacinamiento · tiempo a bordo
+
+El multiplicador de hacinamiento es el de Whelan y Crockett: sentado 1,00 → 1,63 y de pie
+1,53 → 2,04. Con eso:
+
+- **"Esperar el siguiente"** si P(el vehículo que te toca llega lleno) ≥ 0,5. Esa probabilidad
+  modela la irregularidad del servicio: los buses atrasados llegan más llenos.
+- **"Cambiar de paradero"** si subir en un paradero anterior (≤ 600 m) ahorra ≥ 3 minutos
+  equivalentes.
+- En la búsqueda por destino, las rutas se **ordenan por costo generalizado** y se descartan los
+  paraderos en sentido contrario.
+
+| Medición | Resultado |
+|---|---|
+| 40 viajes de corredores en hora punta | La opción vieja (menor caminata) estaba **en sentido contrario en el 70 %**; la nueva nunca. En 9 viajes recomienda otra ruta o paradero (ahorro mediano: 6 min equivalentes) |
+| "Esperar el siguiente" en hora punta (observado) | Troncal 15 %, alimentadores 6 %, corredores 0,2 %, Metro 0 % (los trenes van en promedio al 75–85 %) |
+| AC-03 (recomendación pronosticada = observada, fuera de muestra) | Metro 99,8 %, troncal 96,8 %, corredores 99,1 %, alimentadores 97,7 %. Solo en el troncal supera claramente a "siempre abordar" (89,4 %; balanced accuracy 0,91) |
+
 ## 5. Caso de estudio
 
 **Usuaria:** trabaja en Gamarra y vive en Villa El Salvador. Es miércoles 4 de noviembre de 2026,
@@ -169,11 +195,11 @@ Otros ejemplos de la misma fecha:
 ```bash
 # backend (Alessandromg18/Backend_UrbanSafe, rama feat/aforo-od-ocupacion)
 pip install -r requirements.txt pytest shapely
-python -m pytest tests                               # 39 tests: Furness, calendario, API, latencia, recarga
+python -m pytest tests                               # 44 tests: Furness, calendario, API, recomendación, latencia, recarga
 python scripts/evaluar_ocupacion.py                  # sección 4.2 (fuera de muestra)
 python scripts/evaluar_od_metro_l1.py                # sección 4.3
 python scripts/entrenar_alimentador_sentido.py --datos <DPD_project>/deliveries/week10/data_processed/clean
-python scripts/serializar_modelos.py 1.2.0 "<cambios>"   # manifiesto sha256 + salidas de referencia
+python scripts/serializar_modelos.py 1.3.0 "<cambios>"   # manifiesto sha256 + salidas de referencia
 ```
 
 Los datos limpios de entrada vienen del pipeline de `deliveries/week10` de este repositorio.
