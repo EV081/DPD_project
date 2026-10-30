@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Search, X, MapPin } from 'lucide-react';
 import { getAutocompleteSuggestions } from '@/lib/services';
 import { AutocompleteSuggestion } from '@/lib/types';
@@ -23,29 +23,35 @@ export default function SearchAutocomplete({
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const listId = useId();
+  // Texto puesto al elegir una sugerencia o al enviar: no debe disparar otra búsqueda de sugerencias
+  const settled = useRef<string | null>(null);
 
   // Sugerencias con debounce mientras se escribe
   useEffect(() => {
-    if (query.trim().length < 3) {
+    if (query === settled.current || query.trim().length < 3) {
       setSuggestions([]);
       setOpen(false);
       return;
     }
+    let cancelled = false;
     const timer = setTimeout(async () => {
       setLoading(true);
       try {
-        setSuggestions(await getAutocompleteSuggestions(query));
+        const results = await getAutocompleteSuggestions(query);
+        if (cancelled) return;   // el texto cambió o se eligió algo mientras se esperaba la respuesta
+        setSuggestions(results);
         setOpen(true);
       } catch (error) {
         console.error('Error en autocompletado:', error);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     }, 400);
-    return () => clearTimeout(timer);
+    return () => { cancelled = true; clearTimeout(timer); setLoading(false); };
   }, [query]);
 
   const select = (item: AutocompleteSuggestion) => {
+    settled.current = item.display_name;
     setQuery(item.display_name);
     setOpen(false);
     onSelectDestination(item);
@@ -57,7 +63,9 @@ export default function SearchAutocomplete({
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
+          settled.current = query;
           setOpen(false);
+          setSuggestions([]);
           if (query.trim()) onSearchSubmit(query);
         }}
         className={`flex items-center gap-2.5 rounded-xl border border-line bg-surface px-3.5 py-2.5 transition-shadow focus-within:border-brand focus-within:ring-[3px] focus-within:ring-[var(--ring)] ${
