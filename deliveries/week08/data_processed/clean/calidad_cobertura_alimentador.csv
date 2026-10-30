@@ -1,0 +1,28 @@
+unidad,dias_con_datos,dias_esperados,pct_cobertura,fiable,sistema
+Alisos,364,365,99.7,True,alimentador
+Antúnez de Mayolo,364,365,99.7,True,alimentador
+Belaunde,363,365,99.5,True,alimentador
+Bertello,364,365,99.7,True,alimentador
+Carabayllo,364,365,99.7,True,alimentador
+Cedros de Villa,364,365,99.7,True,alimentador
+Circuito de Playas,24,365,6.6,False,alimentador
+Collique,363,365,99.5,True,alimentador
+Ensenada,364,365,99.7,True,alimentador
+Expreso 1,1,365,0.3,False,alimentador
+Izaguirre,364,365,99.7,True,alimentador
+Las Américas,364,365,99.7,True,alimentador
+Los Olivos,364,365,99.7,True,alimentador
+Los Próceres,364,365,99.7,True,alimentador
+Milagro de Jesús,364,365,99.7,True,alimentador
+Naranjal,363,365,99.5,True,alimentador
+Payet,359,365,98.4,True,alimentador
+Puente Piedra,364,365,99.7,True,alimentador
+Puno,364,365,99.7,True,alimentador
+Regular C,1,365,0.3,False,alimentador
+San Juan de Dios,363,365,99.5,True,alimentador
+Santo Domingo,1,365,0.3,False,alimentador
+Tahuantinsuyo,362,365,99.2,True,alimentador
+Torre Blanca,364,365,99.7,True,alimentador
+Trapiche,361,365,98.9,True,alimentador
+Universitaria,363,365,99.5,True,alimentador
+Villa El Salvador,364,365,99.7,True,alimentador

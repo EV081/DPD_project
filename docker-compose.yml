@@ -1,11 +1,12 @@
-# week10 · Pipeline de ingesta + PostgreSQL (Elmer Villegas)
+# UrbanSafe · stack de la aplicacion (Elmer Villegas)
 #
-#   docker compose up --build            # init-db + demanda + paraderos + predict + trafico + export
-#   docker compose run pipeline live     # solo un snapshot de trafico
-#   docker compose run pipeline loop     # snapshots periodicos (LOOP_SECONDS)
-#   docker compose run pipeline pytest   # suite de regresion/paridad
+#   docker compose up --build            # db (solo usuarios) + backend (:5000) + frontend (:3000)
 #   docker compose down                  # detiene (el volumen pgdata persiste)
 #   docker compose down -v               # detiene y borra la base
+#
+# El pipeline de ingesta de week10 ya no forma parte del arranque: el backend no lee datos de
+# Postgres (modelos y datos viajan en backend/models y backend/data). Sigue disponible a demanda:
+#   docker compose --profile pipeline run --rm pipeline full|live|loop|pytest
 services:
   db:
     image: postgres:17-alpine
@@ -23,7 +24,40 @@ services:
       timeout: 3s
       retries: 12
 
+  # API Flask: los usuarios van a Postgres (tabla users, create_all al arrancar)
+  backend:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${PGUSER:-urbansafe}:${PGPASSWORD:-urbansafe_dev}@db:5432/${PGDATABASE:-urbansafe}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-dev_secret_key}
+      LOCATIONIQ_TOKEN: ${LOCATIONIQ_TOKEN:-}
+      API_TOMTOM: ${API_TOMTOM:-}
+      PORT: "5000"
+    ports:
+      - "${BACKEND_PORT:-5000}:5000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+
+  # Next.js: el navegador llama a la API por el puerto publicado del backend
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:5000/api}
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+
   pipeline:
+    profiles: ["pipeline"]   # no arranca con `up`; ver cabecera
     build: ./deliveries/week10
     depends_on:
       db:

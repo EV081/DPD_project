@@ -1,0 +1,27 @@
+unidad,dias_con_datos,dias_esperados,pct_cobertura,fiable,sistema
+Angamos,365,365,100.0,True,metro_l1
+Atocongo,365,365,100.0,True,metro_l1
+Ayacucho,365,365,100.0,True,metro_l1
+Bayóvar,365,365,100.0,True,metro_l1
+Cabitos,365,365,100.0,True,metro_l1
+Caja de Agua,365,365,100.0,True,metro_l1
+El Ángel,365,365,100.0,True,metro_l1
+Gamarra,365,365,100.0,True,metro_l1
+Jorge Chavez,365,365,100.0,True,metro_l1
+La Cultura,365,365,100.0,True,metro_l1
+Los Jardines,365,365,100.0,True,metro_l1
+Los Postes,365,365,100.0,True,metro_l1
+Maria Auxiliadora,365,365,100.0,True,metro_l1
+Miguel Grau,365,365,100.0,True,metro_l1
+Nicolas Arriola,365,365,100.0,True,metro_l1
+Parque Industrial,365,365,100.0,True,metro_l1
+Piramides del Sol,365,365,100.0,True,metro_l1
+Presbitero Maestro,365,365,100.0,True,metro_l1
+Pumacahua,365,365,100.0,True,metro_l1
+San Borja Sur,365,365,100.0,True,metro_l1
+San Carlos,365,365,100.0,True,metro_l1
+San Juan,365,365,100.0,True,metro_l1
+San Martin,365,365,100.0,True,metro_l1
+Santa Rosa,365,365,100.0,True,metro_l1
+Villa El Salvador,365,365,100.0,True,metro_l1
+Villa Maria,365,365,100.0,True,metro_l1

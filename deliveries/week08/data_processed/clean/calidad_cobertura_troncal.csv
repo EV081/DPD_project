@@ -1,0 +1,47 @@
+sistema,unidad,dias_con_datos,dias_esperados,pct_cobertura,fiable
+troncal,2 de Mayo,365,365,100.0,True
+troncal,22 De Agosto,365,365,100.0,True
+troncal,28 de Julio,365,365,100.0,True
+troncal,Andres Belaunde,365,365,100.0,True
+troncal,Andrés Reyes,365,365,100.0,True
+troncal,Angamos,365,365,100.0,True
+troncal,Aramburu,365,365,100.0,True
+troncal,Balta,365,365,100.0,True
+troncal,Benavides,365,365,100.0,True
+troncal,Bulevar,365,365,100.0,True
+troncal,Canadá,365,365,100.0,True
+troncal,Canaval y Moreyra,365,365,100.0,True
+troncal,Caqueta,365,365,100.0,True
+troncal,Chimpu Ocllo,365,365,100.0,True
+troncal,Colmena,365,365,100.0,True
+troncal,Domingo Orué,365,365,100.0,True
+troncal,El Milagro,365,365,100.0,True
+troncal,Escuela Militar,365,365,100.0,True
+troncal,España,365,365,100.0,True
+troncal,Estacion Central,365,365,100.0,True
+troncal,Estadio Nacional,365,365,100.0,True
+troncal,Honorio Delgado,365,365,100.0,True
+troncal,Independencia,365,365,100.0,True
+troncal,Izaguirre,365,365,100.0,True
+troncal,Javier Prado,365,365,100.0,True
+troncal,Jiron de la Unión,365,365,100.0,True
+troncal,Las Vegas,197,365,54.0,False
+troncal,Los Incas,365,365,100.0,True
+troncal,Los jazmines,365,365,100.0,True
+troncal,Matellini,365,365,100.0,True
+troncal,México,365,365,100.0,True
+troncal,Naranjal,365,365,100.0,True
+troncal,Naranjal Alimentador,365,365,100.0,True
+troncal,Pacifico,365,365,100.0,True
+troncal,Parque del Trabajo,365,365,100.0,True
+troncal,Plaza de Flores,365,365,100.0,True
+troncal,Quilca,365,365,100.0,True
+troncal,Ramon Castilla,365,365,100.0,True
+troncal,Ricardo Palma,365,365,100.0,True
+troncal,Rosario de Villa,365,365,100.0,True
+troncal,Tacna,365,365,100.0,True
+troncal,Terán,365,365,100.0,True
+troncal,Tomas Valle,365,365,100.0,True
+troncal,Uni,365,365,100.0,True
+troncal,Union,365,365,100.0,True
+troncal,Universidad,365,365,100.0,True
