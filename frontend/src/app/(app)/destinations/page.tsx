@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MapPin, Map, Bus, ChevronRight, TriangleAlert, Footprints, Lightbulb, Clock } from 'lucide-react';
 import SearchAutocomplete from '@/components/SearchAutocomplete';
 import SystemBadge from '@/components/SystemBadge';
-import { Spinner, EmptyState } from '@/components/Spinner';
+import { Skeleton, EmptyState } from '@/components/Spinner';
 import { matchTrip } from '@/lib/services';
 import { rutasOfrecibles, etiquetaClase, claseAforo, textoOcupacion } from '@/lib/aforo';
 import { getUserLocation, LIMA_CENTER, Coords } from '@/lib/geolocation';
@@ -53,9 +53,10 @@ export default function DestinationsPage() {
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-6 md:px-8 md:py-10">
-      <header>
-        <h1 className="text-2xl font-bold tracking-tight text-fg">Planificar viaje</h1>
-        <p className="mt-1 text-sm text-muted">Indica tu destino y compara las rutas directas con su aforo y tiempo de espera.</p>
+      <header className="hero p-6 md:p-8">
+        <div className="pointer-events-none absolute -right-10 -top-16 h-56 w-56 rounded-full bg-sky-400/30 blur-3xl" />
+        <h1 className="relative text-3xl font-bold tracking-tight">¿A dónde vas hoy?</h1>
+        <p className="relative mt-1.5 max-w-xl text-sm text-blue-100/90">Compara rutas directas con su aforo y tiempo de espera, y elige la que mejor te conviene.</p>
       </header>
 
       <SearchAutocomplete className="relative z-20 mt-6" placeholder="¿A qué lugar o avenida te diriges?"
@@ -63,7 +64,9 @@ export default function DestinationsPage() {
       {locationNote && <p className="mt-2 text-xs text-muted">{locationNote}</p>}
 
       {loading && (
-        <div className="flex items-center justify-center gap-2.5 py-20 text-sm text-muted"><Spinner size={18} /> Buscando las mejores rutas…</div>
+        <div className="mt-8 grid gap-4 lg:grid-cols-2" role="status" aria-label="Buscando rutas">
+          <Skeleton className="h-52 !rounded-2xl" /><Skeleton className="h-52 !rounded-2xl" />
+        </div>
       )}
 
       {!loading && message && (
@@ -105,7 +108,7 @@ export default function DestinationsPage() {
                     sessionStorage.setItem(TRIP_STORAGE_KEY, JSON.stringify({ selectedRoute: item, destination: tripData.destination }));
                     router.push('/map');
                   }}
-                  className={`card group relative p-5 text-left transition-colors hover:border-brand/60 ${best ? '!border-brand ring-1 ring-brand/30' : ''}`}
+                  className={`card group relative p-5 text-left ${best ? '!border-brand ring-1 ring-brand/30' : ''}`}
                 >
                   {best && (
                     <span className="absolute -top-2.5 left-4 rounded-full bg-brand px-2.5 py-0.5 text-xs font-semibold text-white dark:text-[#06101f]">
@@ -129,14 +132,19 @@ export default function DestinationsPage() {
                   </ul>
 
                   {item.aforo?.clase && (
-                    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line pt-3 text-sm">
-                      <span className={`font-semibold ${claseAforo(item.aforo.clase)}`}>
-                        {etiquetaClase(item.aforo.clase)} · {textoOcupacion(item.aforo.ocupacion)}
-                      </span>
-                      {item.espera_min != null && (
-                        <span className="flex items-center gap-1.5 text-muted"><Clock size={14} /> Espera ~{item.espera_min} min</span>
-                      )}
-                      {item.viaje_min != null && <span className="text-muted">Viaje ~{Math.round(item.viaje_min)} min</span>}
+                    <div className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center">
+                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
+                        <p className={`text-sm font-bold ${claseAforo(item.aforo.clase)}`}>{etiquetaClase(item.aforo.clase)}</p>
+                        <p className="text-xs text-muted">{textoOcupacion(item.aforo.ocupacion)} ocupado</p>
+                      </div>
+                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
+                        <p className="flex items-center justify-center gap-1 text-sm font-bold tabular-nums text-fg"><Clock size={13} />{item.espera_min != null ? `${item.espera_min} min` : '—'}</p>
+                        <p className="text-xs text-muted">Espera</p>
+                      </div>
+                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
+                        <p className="text-sm font-bold tabular-nums text-fg">{item.viaje_min != null ? `${Math.round(item.viaje_min)} min` : '—'}</p>
+                        <p className="text-xs text-muted">Viaje</p>
+                      </div>
                     </div>
                   )}
                 </button>

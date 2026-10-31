@@ -4,6 +4,10 @@ export function Spinner({ size = 20, className = '' }: { size?: number; classNam
   return <Loader2 size={size} className={`animate-spin text-brand ${className}`} aria-label="Cargando" />;
 }
 
+export function Skeleton({ className = '' }: { className?: string }) {
+  return <div aria-hidden className={`skeleton ${className}`} />;
+}
+
 export function EmptyState({ icon: Icon, title, text }: { icon: React.ComponentType<{ size?: number; className?: string }>; title: string; text?: string }) {
   return (
     <div className="flex flex-col items-center px-6 py-16 text-center">

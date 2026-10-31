@@ -1,14 +1,20 @@
 import Link from 'next/link';
-import { MapPin, ChevronRight } from 'lucide-react';
+import { MapPin, ChevronRight, Bus, TrainFront } from 'lucide-react';
+import { systemInfo } from '@/lib/systems';
 import SystemBadge from './SystemBadge';
 import { Station } from '@/lib/types';
 
 export default function StationCard({ station }: { station: Station }) {
+  const info = systemInfo(station.system);
+  const Icon = station.system === 'metropolitano' || station.system === 'metro_l1' ? TrainFront : Bus;
   return (
     <Link
       href={`/station/${encodeURIComponent(station.id)}`}
-      className="card group flex items-center gap-3 p-4 transition-colors hover:border-brand/60"
+      className="card group flex items-center gap-3.5 p-4"
     >
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white" style={{ backgroundColor: info.color }}>
+        <Icon size={22} />
+      </span>
       <div className="min-w-0 flex-1">
         <SystemBadge system={station.system} />
         <p className="mt-2 truncate text-base font-semibold text-fg">{station.name}</p>

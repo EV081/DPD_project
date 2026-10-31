@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { X, MapPinOff, MapPin } from 'lucide-react';
+import { X, MapPinOff } from 'lucide-react';
 import { Spinner } from '@/components/Spinner';
 import MapView from '@/components/MapView';
 import { SYSTEMS } from '@/lib/systems';
@@ -10,6 +10,10 @@ import TripSummaryCard from '@/components/TripSummaryCard';
 import ForecastPanel from '@/components/ForecastPanel';
 import SystemBadge from '@/components/SystemBadge';
 import FeedbackBox from '@/components/FeedbackBox';
+import BottomSheet from '@/components/BottomSheet';
+import HomeSheet from '@/components/HomeSheet';
+import { useAuth } from '@/context/AuthContext';
+import { getRecents, addRecent, RecentDestination } from '@/lib/recents';
 import { getStations, getRouteGeoJson, getRouteCodeFromStation, matchTrip, getStationPrediction } from '@/lib/services';
 import { rutasOfrecibles } from '@/lib/aforo';
 import { tramoEntre } from '@/lib/route';
@@ -18,6 +22,8 @@ import { getUserLocation, LIMA_CENTER, Coords } from '@/lib/geolocation';
 import { Station, TripMatchResponse, MatchedRoute, AutocompleteSuggestion, ForecastView } from '@/lib/types';
 
 export default function MapPage() {
+  const { user } = useAuth();
+  const [recents, setRecents] = useState<RecentDestination[]>([]);
   const [location, setLocation] = useState<Coords | null>(null);
   const [locationDenied, setLocationDenied] = useState(false);
   const [stations, setStations] = useState<Station[]>([]);
@@ -34,6 +40,8 @@ export default function MapPage() {
   const [notice, setNotice] = useState<string | null>(null);
   const [showStations, setShowStations] = useState(false);   // apagado: el mapa solo muestra lo que se usa
   const [focus, setFocus] = useState<Coords | null>(null);
+
+  useEffect(() => { setRecents(getRecents()); }, []);
 
   // Ubicación + red de estaciones
   useEffect(() => {
@@ -143,6 +151,11 @@ export default function MapPage() {
         return;
       }
       const best = ofrecibles[0]; // la de menor costo generalizado
+      setRecents(addRecent(
+        typeof input === 'string'
+          ? { label: input }
+          : { label: input.display_name, lat: input.lat, lon: input.lon },
+      ));
       showRoute(response, best);
       const boarding = stations.find((s) => s.id === best.boarding_id);
       if (boarding) loadStation(boarding, false, best.leaving_id);
@@ -190,20 +203,6 @@ export default function MapPage() {
       {/* Buscador: ancho completo en móvil, tarjeta lateral en pantallas grandes */}
       <div className="absolute left-3 right-3 top-3 z-[1000] md:right-auto md:left-4 md:top-4 md:w-[26rem]">
         <SearchAutocomplete variant="float" onSelectDestination={handleSearchDestination} onSearchSubmit={handleSearchDestination} />
-        {!tripData && (
-          <button
-            type="button"
-            className="chip float-panel mt-2 inline-flex items-center gap-1.5 !rounded-full"
-            data-active={showStations}
-            aria-pressed={showStations}
-            onClick={() => {
-              setShowStations((v) => !v);
-              if (filterIds) setFilterIds(null);   // salir del paradero enfocado
-            }}
-          >
-            <MapPin size={14} /> Mostrar paraderos
-          </button>
-        )}
         {locationDenied && (
           <p className="float-panel mt-2 flex items-start gap-2 px-3.5 py-2.5 text-sm text-muted">
             <MapPinOff size={16} className="mt-0.5 shrink-0 text-amber-600" />
@@ -234,22 +233,41 @@ export default function MapPage() {
         )}
 
         {!tripData && selectedStation && (
-          <div className="float-panel max-h-[55dvh] overflow-y-auto md:max-h-[calc(100dvh-8rem)]">
-            <header className="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-line bg-surface px-5 py-4">
-              <div className="min-w-0">
-                <SystemBadge system={selectedStation.system} />
-                <h3 className="mt-2 truncate text-lg font-semibold text-fg">{selectedStation.name}</h3>
-                <p className="truncate text-sm text-muted">{selectedStation.avenida || 'Sin referencia'}</p>
-              </div>
-              <button onClick={() => { setSelectedStation(null); setRouteGeoJson(null); setFilterIds(null); }} aria-label="Cerrar" className="btn btn-ghost !p-1.5">
-                <X size={18} />
-              </button>
-            </header>
-            <div className="p-5">
+          <BottomSheet
+            key={selectedStation.id}
+            header={
+              <header className="flex items-start justify-between gap-3 px-5 pb-3 pt-1">
+                <div className="min-w-0">
+                  <SystemBadge system={selectedStation.system} />
+                  <h3 className="mt-2 truncate text-lg font-bold text-fg">{selectedStation.name}</h3>
+                  <p className="truncate text-sm text-muted">{selectedStation.avenida || 'Sin referencia'}</p>
+                </div>
+                <button onClick={() => { setSelectedStation(null); setRouteGeoJson(null); setFilterIds(null); }} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2">
+                  <X size={18} />
+                </button>
+              </header>
+            }
+          >
+            <div className="px-5 pb-5">
               <ForecastPanel forecast={forecast} loading={loadingForecast} />
               {feedbackBox}
             </div>
-          </div>
+          </BottomSheet>
+        )}
+
+        {!tripData && !selectedStation && (
+          <HomeSheet
+            name={user?.name}
+            recents={recents}
+            showStations={showStations}
+            onToggleStations={() => {
+              setShowStations((v) => !v);
+              if (filterIds) setFilterIds(null);   // salir del paradero enfocado
+            }}
+            onPickRecent={(r) =>
+              handleSearchDestination(r.lat != null && r.lon != null ? { display_name: r.label, lat: r.lat, lon: r.lon } : r.label)
+            }
+          />
         )}
       </div>
     </div>

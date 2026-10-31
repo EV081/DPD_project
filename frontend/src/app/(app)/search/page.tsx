@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search, X, SearchX } from 'lucide-react';
 import StationCard from '@/components/StationCard';
-import { Spinner, EmptyState } from '@/components/Spinner';
+import { Skeleton, EmptyState } from '@/components/Spinner';
 import { getStations } from '@/lib/services';
 import { SYSTEMS } from '@/lib/systems';
 import { Station } from '@/lib/types';
@@ -45,7 +45,7 @@ function SearchContent() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-6 md:px-8 md:py-10">
       <header>
-        <h1 className="text-2xl font-bold tracking-tight text-fg">Paraderos y estaciones</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-fg">Paraderos y estaciones</h1>
         <p className="mt-1 text-sm text-muted">Busca por nombre o avenida y consulta el aforo previsto.</p>
       </header>
 
@@ -56,7 +56,7 @@ function SearchContent() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Ej: Naranjal, Angamos, Plaza Butters…"
           aria-label="Buscar paradero"
-          className="input !pl-11 !pr-10 !py-3"
+          className="input !pl-11 !pr-10 !py-4 !text-base shadow-[var(--shadow-card)]"
         />
         {query && (
           <button onClick={() => setQuery('')} aria-label="Limpiar" className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted hover:bg-surface-2 hover:text-fg">
@@ -75,7 +75,9 @@ function SearchContent() {
 
       <div className="mt-6" aria-live="polite">
         {loading ? (
-          <div className="flex items-center justify-center gap-2.5 py-20 text-sm text-muted"><Spinner size={18} /> Buscando paraderos…</div>
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3" role="status" aria-label="Buscando paraderos">
+            {Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-[5.5rem] !rounded-2xl" />)}
+          </div>
         ) : stations.length === 0 ? (
           <EmptyState icon={SearchX} title="Sin resultados" text="No encontramos paraderos que coincidan. Prueba con otro nombre o avenida." />
         ) : (

@@ -84,15 +84,16 @@ export default function AccountPage() {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-6 md:px-8 md:py-10">
-      <h1 className="text-2xl font-bold tracking-tight text-fg">Mi cuenta</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-fg">Mi cuenta</h1>
 
-      <section className="card mt-6 flex items-center gap-4 p-5" aria-label="Perfil">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-soft text-lg font-bold text-brand">
+      <section className="hero mt-6 flex items-center gap-4 p-6" aria-label="Perfil">
+        <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-sky-400/30 blur-2xl" />
+        <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white/20 text-xl font-bold ring-2 ring-white/40">
           {iniciales(user?.name)}
         </span>
-        <div className="min-w-0">
-          <p className="truncate text-lg font-semibold text-fg">{user?.name}</p>
-          <p className="truncate text-sm text-muted">{user?.email}</p>
+        <div className="relative min-w-0">
+          <p className="truncate text-xl font-bold">{user?.name}</p>
+          <p className="truncate text-sm text-white/80">{user?.email}</p>
         </div>
       </section>
 
@@ -109,15 +110,15 @@ export default function AccountPage() {
       <h2 className="eyebrow mb-2 mt-8 px-1">Seguridad y perfil</h2>
       <section className="card divide-y divide-line overflow-hidden">
         <button onClick={() => open('profile')} className={row}>
-          <span className="flex items-center gap-3 text-sm font-medium text-fg"><User size={18} className="text-muted" /> Editar datos personales</span>
+          <span className="flex items-center gap-3 text-sm font-medium text-fg"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-2 text-muted"><User size={17} /></span> Editar datos personales</span>
           <ChevronRight size={17} className="text-muted" />
         </button>
         <button onClick={() => open('password')} className={row}>
-          <span className="flex items-center gap-3 text-sm font-medium text-fg"><KeyRound size={18} className="text-muted" /> Cambiar contraseña</span>
+          <span className="flex items-center gap-3 text-sm font-medium text-fg"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-2 text-muted"><KeyRound size={17} /></span> Cambiar contraseña</span>
           <ChevronRight size={17} className="text-muted" />
         </button>
         <button onClick={() => open('delete')} className={row}>
-          <span className="flex items-center gap-3 text-sm font-medium text-rose-600 dark:text-rose-400"><Trash2 size={18} /> Eliminar cuenta</span>
+          <span className="flex items-center gap-3 text-sm font-medium text-rose-600 dark:text-rose-400"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-500/12"><Trash2 size={17} /></span> Eliminar cuenta</span>
           <ChevronRight size={17} className="text-muted" />
         </button>
       </section>

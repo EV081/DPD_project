@@ -68,7 +68,7 @@ export default function SearchAutocomplete({
           setSuggestions([]);
           if (query.trim()) onSearchSubmit(query);
         }}
-        className={`flex items-center gap-2.5 rounded-xl border border-line bg-surface px-3.5 py-2.5 transition-shadow focus-within:border-brand focus-within:ring-[3px] focus-within:ring-[var(--ring)] ${
+        className={`flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3.5 transition-shadow focus-within:border-brand focus-within:ring-[3px] focus-within:ring-[var(--ring)] ${
           variant === 'float' ? 'shadow-[var(--shadow-float)]' : 'shadow-[var(--shadow-card)]'
         }`}
       >

@@ -53,7 +53,11 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
       <main className="relative flex flex-col justify-center px-5 py-10 sm:px-10">
         <div className="absolute right-4 top-4"><ThemeToggle /></div>
         <div className="mx-auto w-full max-w-sm">
-          <div className="mb-8 lg:hidden"><Logo size={34} /></div>
+          <div className="hero mb-8 p-6 lg:hidden">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sky-400/30 blur-2xl" />
+            <div className="relative flex items-center gap-2.5"><Logo size={34} showText={false} /><span className="text-xl font-bold tracking-tight">UrbanSafe</span></div>
+            <p className="relative mt-4 text-lg font-semibold leading-snug">Viaja por Lima sabiendo cómo viene el bus.</p>
+          </div>
           {children}
         </div>
       </main>
