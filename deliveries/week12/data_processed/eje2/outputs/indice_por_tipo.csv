@@ -1,0 +1,5 @@
+tipo,n,seguridad_mediana,base,ancho_intervalo_medio,pct_conf_alta,pct_conf_baja
+alimentador,712,95.2,95.2,6.3,44.7,7.3
+corredor,993,68.0,68.0,19.8,96.6,0.0
+metro_l1,26,71.2,71.2,20.5,100.0,0.0
+troncal,44,54.5,54.5,19.4,88.6,0.0

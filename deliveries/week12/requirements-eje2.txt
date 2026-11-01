@@ -1,0 +1,19 @@
+# Dependencias del Eje 2 (notebooks y scripts de week12). Versiones con las que se ejecutó.
+pandas==2.3.3
+numpy==2.5.3
+pyarrow==25.0.1
+geopandas==1.1.4
+shapely==2.1.2
+scipy==1.18.1
+scikit-learn==1.9.0
+lightgbm==4.7.0
+networkx==3.6.1
+matplotlib==3.11.1
+joblib==1.6.0
+requests==2.34.2
+# Solo para descargar el grafo y los POIs offline (scripts/02_descarga_osm.py). NO se usa en producción.
+osmnx==2.1.1
+# Para ejecutar los notebooks
+nbformat==5.11.1
+nbclient==0.11.0
+ipykernel==7.3.0

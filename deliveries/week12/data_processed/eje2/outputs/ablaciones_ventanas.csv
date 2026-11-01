@@ -1,0 +1,6 @@
+,deviance_media,v2021,v2022,v2023,cambio_vs_completo,se_conserva_el_bloque
+completo,0.78634,0.58626,0.71735,1.05541,0.0,False
+sin POIs,0.78673,0.59082,0.71524,1.05412,0.00039,True
+sin vecindad,0.81206,0.61415,0.73758,1.08443,0.02572,True
+sin largo,0.80389,0.60599,0.73208,1.07362,0.01756,True
+solo historial propio,0.8356,0.64643,0.75277,1.10761,0.04926,True

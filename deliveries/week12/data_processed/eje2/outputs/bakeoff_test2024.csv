@@ -1,0 +1,6 @@
+modelo,deviance,MAE_conteo,spearman,captura_top5%,captura_top10%,eventos_pred/obs
+B0 constante,2.2915,0.4845,,0.036,0.083,0.62
+B1 historial del segmento,0.9875,0.3127,0.46,0.671,0.785,0.674
+B2 Empirical Bayes (K=0.5),0.9921,0.4078,0.362,0.617,0.729,0.997
+M1 GLM Poisson,0.7683,0.3539,0.394,0.675,0.782,1.003
+M2 LightGBM Poisson,0.7012,0.3291,0.407,0.702,0.803,1.107

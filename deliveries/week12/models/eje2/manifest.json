@@ -1,0 +1,68 @@
+{
+  "version": "eje2-v1.0",
+  "objetivo": "eventos callejeros por segmento y año, corregidos por cobertura",
+  "modelo": "M2",
+  "features": [
+    "tasa_all",
+    "tasa_prev",
+    "decay",
+    "tasa_pat",
+    "tasa_per",
+    "frac_noche",
+    "vec1",
+    "vec2",
+    "n_vec1",
+    "prior_vec",
+    "length_m",
+    "poi_banco",
+    "poi_bar_ocio",
+    "poi_comercio",
+    "poi_educacion",
+    "poi_mercado",
+    "poi_paradero_bus",
+    "poi_parque",
+    "poi_restaurante",
+    "poi_salud",
+    "via"
+  ],
+  "params": {
+    "objective": "poisson",
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "min_data_in_leaf": 200,
+    "feature_fraction": 0.8,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 1,
+    "lambda_l2": 5.0,
+    "seed": 0,
+    "verbose": -1,
+    "num_threads": 4
+  },
+  "iteraciones": 403,
+  "ref_p99_densidad": {
+    "total": 55.5519951711986,
+    "noche": 26.122195410528285,
+    "dia": 29.45160263754218,
+    "persona": 7.8916674425096165
+  },
+  "entrenado_con": "objetivos 2019-2023 y enero-agosto 2024",
+  "features_de": "eventos hasta agosto de 2024",
+  "K_EB": 0.5,
+  "meses_baja_cobertura": [
+    "2019-09",
+    "2019-10",
+    "2019-11",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12"
+  ],
+  "metricas_test_2024": {
+    "deviance": 0.7012,
+    "MAE_conteo": 0.3291,
+    "spearman": 0.407,
+    "captura_top5%": 0.702,
+    "captura_top10%": 0.803,
+    "eventos_pred/obs": 1.107
+  }
+}
