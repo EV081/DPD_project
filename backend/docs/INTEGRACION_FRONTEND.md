@@ -85,3 +85,38 @@ en el frontend.
 - Cada hora de predicción trae `probabilidad_no_subir`, que es la probabilidad de que el vehículo
   que le toca al usuario llegue lleno. En corredores, si `recommendation = cambiar_paradero`, el
   campo `alternativa` dice en qué paradero anterior subir, a cuántos metros y cuánto ahorra.
+
+---
+
+# Eje 2: ruta segura, índice de seguridad y reportes (contrato para el frontend)
+
+Detalle completo, ejemplos y reglas en `docs/EJE2_RUTA_SEGURA.md`. Resumen de lo que debe hacer la pantalla:
+
+## Ruta normal o segura (`POST /api/eje2/ruta`)
+- Enviar `origen {lat, lon}` (la ubicación del usuario) y `destino {station_id, sistema}` (el `id` y `system` de `/api/stations`) o `{acceso_id}`. Opcional: `preferencia` (`"segura"` por defecto), `salida` (hora ISO) y `franja`.
+- La respuesta trae **las dos rutas** (`rutas.normal` y `rutas.segura`, cada una con `geojson` LineString para dibujar, `distancia_m`, `minutos`, `banda_riesgo` y `tramos`). Mostrar un **selector Normal / Segura** con la segura preseleccionada
+  cuando `recomendada === "segura"`; si `recomendada === "normal"` preseleccionar la normal; si es `"misma"` mostrar una sola ruta.
+- Mostrar `explicacion.resumen` (por qué es más larga o por qué no se recomienda) y, al abrir "¿Por qué?", `explicacion.motivos`, `tramos_evitados` y `condiciones` (franja, datos hasta cuándo, si hay reportes recientes).
+  Resaltar en el mapa los `tramos` con `desvio: true`.
+- Mostrar siempre `explicacion.aviso` (denuncias registradas, subregistro) y **un botón de llamar al 105**.
+- Errores: `422` = el usuario está fuera de la cobertura (mostrar el mensaje; sugerir acercarse a una estación/paradero) · `404` destino inexistente · `400` entrada inválida.
+- La mayoría de estaciones de `/api/stations` se mapean a un punto de acceso; si `destino` en la respuesta es `null`, la ruta es válida pero no hay índice de seguridad para ese paradero.
+
+## Índice de seguridad de estaciones y paraderos
+`GET /api/eje2/accesos/por-estacion/{station_id}?sistema=...` o `GET /api/eje2/accesos/cercanos?lat&lon&radius`. Mostrar **"Seguridad 62 % (48–75 %), base 68 % para corredores"** junto con `confianza`
+(alta/media/baja) y `aviso`. No mostrarlo como probabilidad de ser víctima. Los alimentadores salen más "seguros" sobre todo por menos registro: no presentarlos como "los más seguros".
+
+## Botón "Reportar" (`POST /api/eje2/reportes`, requiere sesión)
+- Cuerpo: `{ tipo: "acoso" | "seguimiento" | "robo", lat, lon, ocurrido_en? }`. **Sin campo de texto libre.** Ajustar la ubicación a una calle cercana a una estación o paradero (si no, `422`).
+- `201`: mostrar `mensaje` y **siempre ofrecer llamar al 105** (`llamar_105: true`, `aviso`). `429`: mostrar el mensaje (límite por hora/día o calle ya reportada). `401`: pedir iniciar sesión.
+- "Mis reportes": `GET /api/eje2/reportes/mios`; retirar uno: `DELETE /api/eje2/reportes/{id}`. Los reportes de otras personas nunca se muestran.
+
+## ETA del Eje 1 con calibración
+El ítem de predicción de la hora actual puede traer `factor_calibracion` (≈ 1,0 salvo que el campeón de la semana lo haya ajustado) y `eta_base_min` (ETA del modelo antes de ajustes).
+Al enviar el "Ya abordé" (`POST /api/feedback`) **reenviar `eta_base_min`, `factor_trafico` y `eta_mostrado_min`** tal como llegaron: con eso se mide el error y se calibra el ETA cada semana.
+
+
+## Sesión (JWT)
+
+El token de acceso dura 7 días (`JWT_EXPIRA_HORAS`, por omisión 168; antes eran los 15 min de flask-jwt-extended y no hay refresh token).
+El frontend cierra la sesión solo ante un 401 (interceptor en `src/lib/client.ts`); un fallo de red o el arranque en frío de Render se reintenta y muestra "Reintentar" sin perder la sesión.

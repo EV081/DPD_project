@@ -7,6 +7,8 @@ import SystemBadge from '@/components/SystemBadge';
 import PredictionCard from '@/components/PredictionCard';
 import FeedbackBox from '@/components/FeedbackBox';
 import { Spinner, Skeleton, EmptyState } from '@/components/Spinner';
+import SeguridadAcceso from '@/components/SeguridadAcceso';
+import Alert from '@/components/Alert';
 import { getStation, getStationPrediction } from '@/lib/services';
 import { FOCUS_STORAGE_KEY } from '@/lib/constants';
 import { etiquetaClase, claseAforo, textoEspera } from '@/lib/aforo';
@@ -20,27 +22,39 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
   const [forecast, setForecast] = useState<StationPrediction | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [predError, setPredError] = useState(false);
+  const [reload, setReload] = useState(0);
   const [consultedAt, setConsultedAt] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      setLoading(true);
+      setPredError(false);
+      let st: Station;
       try {
-        const st = await getStation(decodeURIComponent(id));
-        if (cancelled) return;
-        setStation(st);
+        st = await getStation(decodeURIComponent(id));
+      } catch (err: any) {
+        console.error('Error al cargar la estación:', err);
+        if (!cancelled) { setNotFound(true); setLoading(false); }
+        return;
+      }
+      if (cancelled) return;
+      setStation(st);
+      setNotFound(false);
+      try {
         // Una llamada por id de estación; fecha y hora las pone el backend (hora de Lima)
         const pred = await getStationPrediction(st);
         if (!cancelled) { setForecast(pred); setConsultedAt(Date.now()); }
       } catch (err) {
-        console.error('Error al cargar la estación:', err);
-        if (!cancelled) setNotFound(true);
+        console.error('Error al cargar el pronóstico:', err);
+        if (!cancelled) setPredError(true);   // la estación existe: solo falló el pronóstico
       } finally {
         if (!cancelled) setLoading(false);
       }
     })();
     return () => { cancelled = true; };
-  }, [id]);
+  }, [id, reload]);
 
   if (loading && !station) {
     return <div className="mx-auto max-w-5xl space-y-4 px-4 py-10 md:px-8" role="status" aria-label="Cargando"><Skeleton className="h-40 !rounded-2xl" /><Skeleton className="h-28 !rounded-2xl" /></div>;
@@ -86,6 +100,8 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
         </div>
       </header>
 
+      <section className="mt-6" aria-label="Seguridad del acceso"><SeguridadAcceso station={station} /></section>
+
       <section className="mt-8" aria-label="Pronóstico de aforo">
         <h2 className="text-lg font-semibold text-fg">Pronóstico de aforo</h2>
         <p className="mt-0.5 text-sm text-muted">Ocupación estimada a bordo con demanda pronosticada (LightGBM) y matriz origen-destino.</p>
@@ -104,7 +120,7 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
                 <p className="mt-0.5 text-2xl font-bold tabular-nums text-fg">{textoEspera(cur)}</p>
               </div>
               {extraTrafico !== null && (
-                <p className="flex items-center gap-2 text-sm text-amber-700 dark:text-amber-300">
+                <p className="flex items-center gap-2 text-sm text-warn">
                   <Activity size={16} /> Incluye +{extraTrafico} min por tráfico en vivo
                 </p>
               )}
@@ -123,9 +139,13 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
               <p className="text-sm leading-relaxed text-fg">
                 La ocupación es la de los vehículos al salir de este paradero. La recomendación
                 (<b>Abordar</b>, <b>Esperar el siguiente</b> o <b>Cambiar de paradero</b>) considera el aforo de esta hora y de la siguiente.
-                {forecast.referencia ? ` Estimado con datos ATU del ${forecast.referencia.fecha_referencia_datos} (día equivalente).` : ''}
               </p>
             </div>
+          </div>
+        ) : predError ? (
+          <div className="mt-4 space-y-3">
+            <Alert tono="warn">No se pudo calcular el pronóstico. Puede ser tu conexión o el servidor.</Alert>
+            <button onClick={() => setReload((n) => n + 1)} className="btn btn-secondary">Reintentar</button>
           </div>
         ) : (
           <EmptyState icon={CalendarX} title="Sin pronóstico" text="Este paradero no tiene datos de validaciones ATU propios, así que no se muestra una predicción." />

@@ -23,7 +23,7 @@ export const Field = forwardRef<HTMLInputElement, Props>(function Field({ label,
 
 export function ErrorNote({ children }: { children: React.ReactNode }) {
   return (
-    <p role="alert" className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2.5 text-sm text-rose-700 dark:text-rose-300">
+    <p role="alert" className="rounded-lg bg-danger/12 px-3 py-2.5 text-sm text-danger">
       {children}
     </p>
   );

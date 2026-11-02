@@ -71,6 +71,8 @@ def crear_feedback():
     )
     db.session.add(fila)
     db.session.commit()
+    from services.monitoreo import registrar_validacion_app     # import local: monitoreo importa FeedbackViaje de este módulo
+    registrar_validacion_app(sistema, station_id)                # +1 abordaje de la app en esa hora (nunca rompe el feedback)
     return jsonify({"message": "Gracias por tu feedback", "id": fila.id}), 201
 
 

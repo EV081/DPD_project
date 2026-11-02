@@ -7,6 +7,7 @@ import { Coords } from '@/lib/geolocation';
 import { systemInfo } from '@/lib/systems';
 
 interface Destination { lat: number; lon: number; name: string }
+interface Caminata { normal: any; segura: any | null; seleccionada: 'normal' | 'segura' }
 
 interface Props {
   center: Coords;
@@ -19,6 +20,8 @@ interface Props {
   focus: Coords | null;
   routeGeoJson: any | null;
   destination: Destination | null;
+  /** Ruta a pie hasta el paradero: la elegida va continua y la otra punteada. */
+  walk: Caminata | null;
   onStationClick: (station: Station) => void;
 }
 
@@ -34,17 +37,19 @@ const userDot = `<div style="position:relative;width:18px;height:18px">
   <span style="position:absolute;inset:0;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.45)"></span>
 </div>`;
 
-export default function LeafletMap({ center, stations, filterIds, showAll, focus, routeGeoJson, destination, onStationClick }: Props) {
+export default function LeafletMap({ center, stations, filterIds, showAll, focus, routeGeoJson, destination, walk, onStationClick }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const L = useRef<typeof LType | null>(null);
   const map = useRef<LType.Map | null>(null);
   const markers = useRef<LType.LayerGroup | null>(null);
   const routeLayer = useRef<LType.GeoJSON | null>(null);
+  const walkLayer = useRef<LType.LayerGroup | null>(null);
   const destMarker = useRef<LType.Marker | null>(null);
   const userMarker = useRef<LType.Marker | null>(null);
   const render = useRef<() => void>(() => {});
   const [ready, setReady] = useState(false);
   const hadDestination = useRef(false);
+  const walkFit = useRef(false);
 
   // El callback y los datos vigentes se leen vía ref para no reconstruir el mapa
   const latest = useRef({ stations, filterIds, showAll, onStationClick });
@@ -139,6 +144,38 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
       }).addTo(m);
     }
   }, [routeGeoJson, ready]);
+
+  useEffect(() => {
+    const leaflet = L.current;
+    const m = map.current;
+    if (!leaflet || !m) return;
+    if (walkLayer.current) { m.removeLayer(walkLayer.current); walkLayer.current = null; }
+    if (!walk) return;
+    const grupo = leaflet.layerGroup();
+    const dibujar = (geo: any, activa: boolean, tipo: 'normal' | 'segura') => {
+      if (!geo) return null;
+      return leaflet.geoJSON(geo, {
+        style: () => ({
+          color: tipo === 'segura' ? '#16a34a' : '#2563eb',
+          weight: activa ? 6 : 4,
+          opacity: activa ? 0.95 : 0.55,
+          dashArray: activa ? undefined : '6 8',
+          lineCap: 'round', lineJoin: 'round',
+        }),
+      });
+    };
+    const otra = walk.seleccionada === 'segura' ? 'normal' : 'segura';
+    dibujar(walk[otra], false, otra)?.addTo(grupo);
+    const activa = dibujar(walk[walk.seleccionada], true, walk.seleccionada);
+    activa?.addTo(grupo);
+    grupo.addTo(m);
+    walkLayer.current = grupo;
+    // Encuadra la caminata solo cuando aparece (no al alternar entre normal y segura)
+    if (activa && !walkFit.current) { m.fitBounds(activa.getBounds(), { padding: [60, 60], maxZoom: 17 }); }
+    walkFit.current = true;
+  }, [walk, ready]);
+
+  useEffect(() => { if (!walk) walkFit.current = false; }, [walk]);
 
   useEffect(() => {
     const leaflet = L.current;

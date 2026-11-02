@@ -22,6 +22,7 @@ export default function SearchAutocomplete({
   const [suggestions, setSuggestions] = useState<AutocompleteSuggestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
   const listId = useId();
   // Texto puesto al elegir una sugerencia o al enviar: no debe disparar otra búsqueda de sugerencias
   const settled = useRef<string | null>(null);
@@ -40,6 +41,7 @@ export default function SearchAutocomplete({
         const results = await getAutocompleteSuggestions(query);
         if (cancelled) return;   // el texto cambió o se eligió algo mientras se esperaba la respuesta
         setSuggestions(results);
+        setActive(-1);
         setOpen(true);
       } catch (error) {
         console.error('Error en autocompletado:', error);
@@ -77,12 +79,24 @@ export default function SearchAutocomplete({
           className="min-w-0 flex-1 bg-transparent text-[0.9375rem] text-fg outline-none placeholder:text-muted"
           placeholder={placeholder}
           aria-label={placeholder}
+          role="combobox"
+          aria-autocomplete="list"
           aria-controls={listId}
           aria-expanded={open}
+          aria-activedescendant={open && active >= 0 ? `${listId}-${active}` : undefined}
+          autoComplete="off"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (!open || suggestions.length === 0) return;
+            if (e.key === 'ArrowDown') { e.preventDefault(); setActive((i) => (i + 1) % suggestions.length); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((i) => (i <= 0 ? suggestions.length - 1 : i - 1)); }
+            else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); select(suggestions[active]); }
+            else if (e.key === 'Escape') setOpen(false);
+          }}
         />
         {loading && <Spinner size={16} />}
+        <span className="sr-only" aria-live="polite">{open ? `${suggestions.length} sugerencias` : ''}</span>
         {query.length > 0 && !loading && (
           <button type="button" onClick={() => { setQuery(''); setSuggestions([]); }} aria-label="Limpiar búsqueda"
             className="rounded-md p-1 text-muted hover:bg-surface-2 hover:text-fg">
@@ -95,9 +109,9 @@ export default function SearchAutocomplete({
         <ul id={listId} role="listbox"
           className="float-panel absolute left-0 right-0 z-[1100] mt-2 max-h-72 overflow-y-auto py-1">
           {suggestions.map((item, i) => (
-            <li key={i} role="option" aria-selected={false}>
-              <button type="button" onClick={() => select(item)}
-                className="flex w-full items-start gap-3 px-3.5 py-2.5 text-left hover:bg-surface-2">
+            <li key={i} id={`${listId}-${i}`} role="option" aria-selected={i === active}>
+              <button type="button" tabIndex={-1} onClick={() => select(item)}
+                className={`flex w-full items-start gap-3 px-3.5 py-2.5 text-left hover:bg-surface-2 ${i === active ? 'bg-surface-2' : ''}`}>
                 <MapPin size={16} className="mt-0.5 shrink-0 text-muted" />
                 <span className="line-clamp-2 text-sm text-fg">{item.display_name}</span>
               </button>

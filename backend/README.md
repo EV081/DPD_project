@@ -21,6 +21,13 @@ API REST y motor de inferencia analítica desarrollado para **UrbanSafe**, respo
 
 - **Integración con el frontend:** [docs/INTEGRACION_FRONTEND.md](docs/INTEGRACION_FRONTEND.md) (implementada en la rama `feat/aforo-v2-integracion` del frontend).
 
+## Eje 2: ruta peatonal segura y reportes
+
+`/api/eje2` responde "si estoy a ~10 min de una estación o paradero, ¿qué camino es más seguro?" (ruta normal y segura con la recomendada y su explicación), muestra el índice de seguridad de
+estaciones/paraderos y recibe **reportes de usuarios** (acoso, seguimiento, robo) que recalibran el riesgo de forma acotada. Las tablas que crecen (`reporte_seguridad`, `validacion_hora`) son
+**particionadas por mes en Postgres**, y hay pipelines diario y semanal (`flask --app app pipeline-diario | pipeline-semanal`, pensados para Cron Jobs). Todo está en
+[`docs/EJE2_RUTA_SEGURA.md`](docs/EJE2_RUTA_SEGURA.md); el contrato para el frontend, en [`docs/INTEGRACION_FRONTEND.md`](docs/INTEGRACION_FRONTEND.md).
+
 ## Arquitectura
 
 Esta API (Flask, desplegada en Render) es **la arquitectura del producto**. No hay base de datos de
@@ -42,7 +49,8 @@ flujo con PostgreSQL (`rutas_directas()`, tabla `prediccion`, ajuste con TomTom,
 y el pipeline de ingesta y entrenamiento. **La app no usa ese flujo de base de datos**: lo reemplaza
 esta API con archivos versionados. El pipeline de entrenamiento y los datos limpios del repo del
 curso sí son la fuente de los artefactos de `models/` y de `data/context/`.
-- **Tests:** `pip install pytest && python -m pytest tests` (algoritmo de Furness contra la Tabla 5.7 de Ortúzar y Willumsen, calendario, API y latencia P95).
+- **Tests:** 196 pruebas (algoritmo de Furness contra la Tabla 5.7 de Ortúzar y Willumsen, calendario, API, latencia P95, Eje 2). Usan un **Postgres de pruebas aparte** (nunca la base de desarrollo):
+  `docker compose --profile test up -d db-test` y luego `cd backend && pip install pytest && python -m pytest`. Ver `docs/EJE2_RUTA_SEGURA.md` (sección 8).
 - **Versión de modelos: 1.3.0** (`models/manifest.json`; la API verifica los sha256 al cargar).
 - **Regenerar o evaluar:** `python scripts/construir_linea_metro_l1.py`, `python scripts/construir_linea_troncal.py`, `python scripts/construir_rutas_bus.py --datos <DPD_project>/deliveries/week10/data_processed/clean`, `python scripts/entrenar_alimentador_sentido.py --datos <...>/clean`, `python scripts/evaluar_od_metro_l1.py`, `python scripts/evaluar_ocupacion.py` y `python scripts/serializar_modelos.py <versión> "<cambios>"`.
 
@@ -105,7 +113,19 @@ El repositorio incluye un archivo `Procfile` en la raíz que indica a Render có
 ### 3. Variables de Entorno en Producción
 
 En el panel de Render (**Environment**) define `JWT_SECRET_KEY`, `LOCATIONIQ_TOKEN` y `DATABASE_URL`
-(la URL de tu Postgres). Sin `DATABASE_URL` se usa SQLite, que se borra en cada redeploy.
+(la URL de tu Postgres). Sin `DATABASE_URL` se usa SQLite, que se borra en cada redeploy y **no soporta** las tablas particionadas ni el pipeline del Eje 2: usa Postgres.
+Cada worker carga su copia de los modelos y del grafo del Eje 2 (~100 MB): en servidores de 512 MB usa `WEB_CONCURRENCY=1`.
+
+### 3.1. Jobs programados (Render → Cron Jobs)
+
+Crea dos Cron Jobs con el mismo repositorio, `DATABASE_URL` y variables que el servicio web:
+
+| Job | Comando | Programación (UTC) |
+|---|---|---|
+| Diario | `flask --app app pipeline-diario` | `0 8 * * *` (03:00 Lima) |
+| Semanal | `flask --app app pipeline-semanal` | `0 7 * * 1` (lunes 02:00 Lima) |
+
+Cada corrida queda registrada en la tabla `pipeline_ejecucion` (`ok`, `sin_datos` o `error`) y `GET /api/eje2/estado` muestra el último job.
 
 ### 4. Despliegue Automático
 

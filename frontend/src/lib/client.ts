@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 export const TOKEN_KEY = 'urbansafe_token';
+/** Evento que se emite cuando el servidor rechaza el token (401): AuthContext cierra la sesión. */
+export const UNAUTHORIZED_EVENT = 'urbansafe:unauthorized';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://backend-urbansafe.onrender.com/api';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000,
+  timeout: 30000,   // la instancia gratuita de Render puede tardar en despertar
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -17,6 +19,17 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// 401 con sesión iniciada = token vencido o inválido. El login (credenciales incorrectas) no lleva token.
+api.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    if (typeof window !== 'undefined' && error?.response?.status === 401 && error.config?.headers?.Authorization) {
+      window.dispatchEvent(new Event(UNAUTHORIZED_EVENT));
+    }
+    return Promise.reject(error);
+  },
+);
 
 export const errorMessage = (error: any, fallback: string): string =>
   error?.response?.data?.error || (error?.response ? fallback : 'No se pudo comunicar con el servidor.');

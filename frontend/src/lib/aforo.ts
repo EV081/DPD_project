@@ -45,13 +45,13 @@ export const anchoBarra = (crowding?: number | null): number =>
 export const colorOcupacion = (clase?: ClaseAforo | string | null): string => {
   switch (clase) {
     case 'Saturado':
-      return '#ef4444';
+      return 'var(--danger)';
     case 'De_pie':
-      return '#f59e0b';
+      return 'var(--warn)';
     case 'Asientos':
-      return '#10b981';
+      return 'var(--ok)';
     default:
-      return '#94a3b8';
+      return 'var(--muted)';
   }
 };
 
@@ -79,13 +79,13 @@ export const textoProbabilidadLleno = (p?: number | null): string | null =>
 export const claseRecomendacion = (rec?: Recomendacion | string | null): string => {
   switch (rec) {
     case 'abordar':
-      return 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300';
+      return 'bg-ok/15 text-ok';
     case 'esperar_siguiente':
-      return 'bg-amber-500/15 text-amber-700 dark:text-amber-300';
+      return 'bg-warn/15 text-warn';
     case 'cambiar_paradero':
-      return 'bg-rose-500/15 text-rose-700 dark:text-rose-300';
+      return 'bg-danger/15 text-danger';
     default:
-      return 'bg-slate-500/15 text-slate-600 dark:text-slate-300';
+      return 'bg-surface-2 text-muted';
   }
 };
 
@@ -93,11 +93,11 @@ export const claseRecomendacion = (rec?: Recomendacion | string | null): string 
 export const claseAforo = (clase?: ClaseAforo | string | null): string => {
   switch (clase) {
     case 'Saturado':
-      return 'text-rose-600 dark:text-rose-400';
+      return 'text-danger';
     case 'De_pie':
-      return 'text-amber-600 dark:text-amber-400';
+      return 'text-warn';
     case 'Asientos':
-      return 'text-emerald-600 dark:text-emerald-400';
+      return 'text-ok';
     default:
       return 'text-muted';
   }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Clock, MapPin, Navigation, Search } from 'lucide-react';
+import { Clock, MapPin, Navigation, Search, Siren } from 'lucide-react';
 import Link from 'next/link';
 import BottomSheet from './BottomSheet';
 import { RecentDestination } from '@/lib/recents';
@@ -10,6 +10,7 @@ interface Props {
   recents: RecentDestination[];
   showStations: boolean;
   onToggleStations: () => void;
+  onReport: () => void;
   onPickRecent: (item: RecentDestination) => void;
 }
 
@@ -19,7 +20,7 @@ const saludo = () => {
 };
 
 // Pantalla de inicio del mapa: saludo, accesos rápidos y destinos recientes
-export default function HomeSheet({ name, recents, showStations, onToggleStations, onPickRecent }: Props) {
+export default function HomeSheet({ name, recents, showStations, onToggleStations, onReport, onPickRecent }: Props) {
   const first = name?.split(/\s+/)[0];
 
   return (
@@ -47,6 +48,11 @@ export default function HomeSheet({ name, recents, showStations, onToggleStation
             <MapPin size={18} /> {showStations ? 'Ocultar paraderos' : 'Ver paraderos'}
           </button>
         </div>
+
+        <button type="button" onClick={onReport} className="flex w-full items-center gap-2.5 rounded-xl bg-surface-2 p-3 text-sm font-semibold text-fg transition-transform active:scale-[.98]">
+          <Siren size={18} className="text-danger" /> Reportar un incidente
+          <span className="ml-auto text-xs font-normal text-muted">anónimo · ayuda a tu zona</span>
+        </button>
 
         <div>
           <p className="eyebrow mb-1.5">Recientes</p>

@@ -1,6 +1,9 @@
 import pytest
 
 
+pytestmark = pytest.mark.bd
+
+
 @pytest.fixture(scope="module")
 def auth():
     from app import app

@@ -9,6 +9,10 @@ interface Props {
   selectedRoute: MatchedRoute;
   forecast: ForecastView | null;
   loadingForecast: boolean;
+  forecastError?: boolean;
+  onRetry?: () => void;
+  /** Cómo llegar caminando al paradero (ruta segura e índice de seguridad). */
+  walkSlot?: React.ReactNode;
   onClose: () => void;
   children?: React.ReactNode;
 }
@@ -33,7 +37,7 @@ function Step({ color, last, children }: { color: string; last?: boolean; childr
   );
 }
 
-export default function TripSummaryCard({ tripData, selectedRoute, forecast, loadingForecast, onClose, children }: Props) {
+export default function TripSummaryCard({ tripData, selectedRoute, forecast, loadingForecast, forecastError, onRetry, walkSlot, onClose, children }: Props) {
   const totalWalk = Math.round(selectedRoute.origin_walk_m + selectedRoute.dest_walk_m);
   const Icon = selectedRoute.system === 'metropolitano' || selectedRoute.system === 'metro_l1' ? TrainFront : Bus;
   const color = systemInfo(selectedRoute.system).color;
@@ -62,7 +66,7 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
         </div>
 
         <ol aria-label="Itinerario" className="px-1">
-          <Step color="#64748b">
+          <Step color="var(--muted)">
             <p className="font-semibold text-fg">Camina {Math.round(selectedRoute.origin_walk_m)} m</p>
             <p className="text-muted">hasta el paradero</p>
           </Step>
@@ -74,21 +78,28 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
             <p className="font-semibold text-fg">Bájate en {selectedRoute.leaving_station}</p>
             <p className="text-muted">y camina {Math.round(selectedRoute.dest_walk_m)} m</p>
           </Step>
-          <Step color="#16a34a" last>
+          <Step color="var(--ok)" last>
             <p className="font-semibold text-fg">Llegas a tu destino</p>
           </Step>
         </ol>
 
         {tripData.recomendacion_viaje?.mensaje && (
-          <p className="flex gap-2.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-3 text-sm text-emerald-800 dark:text-emerald-300">
+          <p className="flex gap-2.5 rounded-xl bg-ok/12 px-3.5 py-3 text-sm text-ok">
             <Lightbulb size={16} className="mt-0.5 shrink-0" />
             {tripData.recomendacion_viaje.mensaje}
           </p>
         )}
 
+        {walkSlot && (
+          <div className="border-t border-line pt-4">
+            <h4 className="mb-3 text-sm font-semibold text-fg">Cómo llegar a {selectedRoute.boarding_station}</h4>
+            {walkSlot}
+          </div>
+        )}
+
         <div className="border-t border-line pt-4">
           <h4 className="mb-3 text-sm font-semibold text-fg">Aforo en {selectedRoute.boarding_station}</h4>
-          <ForecastPanel forecast={forecast} loading={loadingForecast} />
+          <ForecastPanel forecast={forecast} loading={loadingForecast} error={forecastError} onRetry={onRetry} />
           {children}
         </div>
       </div>

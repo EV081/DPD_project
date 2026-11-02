@@ -4,6 +4,9 @@ import numpy as np
 import pytest
 
 
+pytestmark = pytest.mark.bd
+
+
 @pytest.fixture(scope="module")
 def client():
     from app import app

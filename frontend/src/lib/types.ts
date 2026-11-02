@@ -53,6 +53,7 @@ export interface PredictionItem {
   eta_base_min?: number | null;     // ETA antes de aplicar el tráfico
   factor_trafico?: number | null;
   modo_datos?: 'en_vivo' | 'reciente' | 'historico';
+  factor_calibracion?: number;      // Eje 1: ajuste del ETA según las esperas reales reportadas (1 = sin ajuste)
   alternativa?: { paradero: string; codigo: string; distancia_m: number; ahorro_min: number; ocupacion: number } | null;
 }
 

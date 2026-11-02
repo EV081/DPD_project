@@ -5,18 +5,29 @@ import {
   anchoBarra, colorOcupacion, formatoHora, textoProbabilidadLleno,
 } from '@/lib/aforo';
 import { Spinner } from './Spinner';
+import Alert from './Alert';
 
 interface Props {
   forecast: ForecastView | null;
   loading: boolean;
+  error?: boolean;
+  onRetry?: () => void;
 }
 
 // Estado actual del paradero + pronóstico desde ahora (tarjeta del mapa y del planificador)
-export default function ForecastPanel({ forecast, loading }: Props) {
+export default function ForecastPanel({ forecast, loading, error, onRetry }: Props) {
   if (loading) {
     return (
       <div className="flex items-center justify-center gap-2.5 py-6 text-sm text-muted">
         <Spinner size={18} /> Calculando aforo…
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="space-y-2 py-2">
+        <Alert tono="warn">No se pudo calcular el aforo. Puede ser tu conexión o el servidor.</Alert>
+        {onRetry && <button type="button" onClick={onRetry} className="btn btn-secondary w-full">Reintentar</button>}
       </div>
     );
   }
@@ -31,7 +42,7 @@ export default function ForecastPanel({ forecast, loading }: Props) {
     );
   }
 
-  const { current, referencia } = forecast;
+  const { current } = forecast;
   // Solo de la hora consultada en adelante: las horas pasadas ya no ayudan a decidir
   const predictions = forecast.predictions.filter((p) => p.datetime > current.datetime);
   const lleno = textoProbabilidadLleno(current.probabilidad_no_subir);
@@ -78,7 +89,7 @@ export default function ForecastPanel({ forecast, loading }: Props) {
         {(extraTrafico !== null || lleno || (current.recommendation === 'cambiar_paradero' && current.alternativa)) && (
           <ul className="mt-4 space-y-2 border-t border-line pt-3 text-sm">
             {extraTrafico !== null && (
-              <li className="flex items-center gap-2 text-amber-700 dark:text-amber-300">
+              <li className="flex items-center gap-2 text-warn">
                 <Activity size={15} className="shrink-0" /> Tráfico en vivo: +{extraTrafico} min de espera
               </li>
             )}
@@ -86,7 +97,7 @@ export default function ForecastPanel({ forecast, loading }: Props) {
               <li className="flex items-center gap-2 text-muted"><TriangleAlert size={15} className="shrink-0" /> {lleno}</li>
             )}
             {current.recommendation === 'cambiar_paradero' && current.alternativa && (
-              <li className="text-rose-700 dark:text-rose-300">
+              <li className="text-danger">
                 Sube en <b>{current.alternativa.paradero}</b> ({current.alternativa.distancia_m} m antes): el bus viene
                 más vacío y ahorras ~{Math.round(current.alternativa.ahorro_min)} min.
               </li>
@@ -117,9 +128,11 @@ export default function ForecastPanel({ forecast, loading }: Props) {
         </section>
       )}
 
-      {referencia && (
-        <p className="text-xs text-muted">Estimado con datos ATU del {referencia.fecha_referencia_datos} (día equivalente).</p>
-      )}
+      <div className="space-y-1 text-xs text-muted">
+        {current.factor_calibracion != null && Math.abs(current.factor_calibracion - 1) >= 0.03 && (
+          <p>La espera se ajustó con lo que contaron otras personas que usaron este servicio.</p>
+        )}
+      </div>
     </div>
   );
 }

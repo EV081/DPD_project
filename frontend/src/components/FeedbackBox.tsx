@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { sendFeedback } from '@/lib/services';
+import { errorMessage } from '@/lib/client';
 import { etiquetaClase } from '@/lib/aforo';
 import { PredictionItem, Station } from '@/lib/types';
 import { Spinner } from './Spinner';
@@ -19,6 +20,7 @@ const CLASES = ['Asientos', 'De_pie', 'Saturado'] as const;
 // "Ya abordé": mide cuánto esperó de verdad el usuario frente al ETA mostrado
 export default function FeedbackBox({ station, current, consultedAt }: Props) {
   const [step, setStep] = useState<'idle' | 'aforo' | 'sending' | 'done' | 'error'>('idle');
+  const [mensaje, setMensaje] = useState('');
 
   // Otra predicción u otro paradero: el feedback anterior ya no aplica
   useEffect(() => setStep('idle'), [station.id, consultedAt]);
@@ -38,8 +40,9 @@ export default function FeedbackBox({ station, current, consultedAt }: Props) {
         aforo_percibido: aforoPercibido,
       });
       setStep('done');
-    } catch (e) {
+    } catch (e: any) {
       console.error('Error al enviar feedback:', e);
+      setMensaje(e?.response?.status === 401 ? 'Tu sesión venció. Inicia sesión de nuevo.' : errorMessage(e, 'No se pudo enviar. Inténtalo de nuevo.'));
       setStep('error');
     }
   };
@@ -48,7 +51,7 @@ export default function FeedbackBox({ station, current, consultedAt }: Props) {
 
   if (step === 'done') {
     return (
-      <p className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2.5 text-sm font-medium text-emerald-700 dark:text-emerald-300">
+      <p className="mt-4 flex items-center gap-2 rounded-lg bg-ok/12 px-3 py-2.5 text-sm font-medium text-ok">
         <CheckCircle2 size={16} /> Gracias, tu aporte mejora las estimaciones.
       </p>
     );
@@ -75,7 +78,7 @@ export default function FeedbackBox({ station, current, consultedAt }: Props) {
   return (
     <div className="mt-4">
       <button onClick={() => setStep('aforo')} className="btn btn-primary w-full">Ya abordé</button>
-      {step === 'error' && <p className="mt-2 text-center text-sm text-rose-600 dark:text-rose-400">No se pudo enviar. Inténtalo de nuevo.</p>}
+      {step === 'error' && <p className="mt-2 text-center text-sm text-danger">{mensaje}</p>}
     </div>
   );
 }

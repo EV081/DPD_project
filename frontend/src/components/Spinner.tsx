@@ -1,7 +1,7 @@
 import { Loader2 } from 'lucide-react';
 
 export function Spinner({ size = 20, className = '' }: { size?: number; className?: string }) {
-  return <Loader2 size={size} className={`animate-spin text-brand ${className}`} aria-label="Cargando" />;
+  return <Loader2 size={size} role="status" aria-label="Cargando" className={`animate-spin text-brand ${className}`} />;
 }
 
 export function Skeleton({ className = '' }: { className?: string }) {

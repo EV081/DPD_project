@@ -16,5 +16,6 @@ RUN pip install -r requirements.txt
 COPY . .
 
 EXPOSE 5000
-# Render define PORT; en compose queda 5000. --timeout alto: el primer pedido carga los modelos
-CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:${PORT:-5000} --workers 2 --timeout 120"]
+# Render define PORT; en compose queda 5000. --timeout alto: el primer pedido carga los modelos.
+# WEB_CONCURRENCY = nº de workers; cada uno carga su copia de los modelos y del grafo del Eje 2 (usa 1 en servidores de 512 MB).
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:${PORT:-5000} --workers ${WEB_CONCURRENCY:-2} --timeout 120"]

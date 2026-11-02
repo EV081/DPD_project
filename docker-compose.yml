@@ -24,6 +24,26 @@ services:
       timeout: 3s
       retries: 12
 
+  # Base SOLO para las pruebas del backend (backend/tests): distinta de `db`, vive en memoria (tmpfs) y se
+  # borra al apagarla, así las pruebas nunca tocan los datos de desarrollo:
+  #   docker compose --profile test up -d db-test   &&   cd backend && pytest
+  db-test:
+    profiles: ["test"]
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: urbansafe_test
+    ports:
+      - "${PGTESTPORT:-5433}:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d urbansafe_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
   # API Flask: los usuarios van a Postgres (tabla users, create_all al arrancar)
   backend:
     build: ./backend
@@ -36,6 +56,8 @@ services:
       LOCATIONIQ_TOKEN: ${LOCATIONIQ_TOKEN:-}
       API_TOMTOM: ${API_TOMTOM:-}
       PORT: "5000"
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-2}
+      EJE2_PRECALENTAR: ${EJE2_PRECALENTAR:-1}
     ports:
       - "${BACKEND_PORT:-5000}:5000"
     healthcheck:
@@ -44,6 +66,22 @@ services:
       timeout: 5s
       retries: 6
       start_period: 20s
+
+  # Jobs del backend (Eje 1 y Eje 2). En producción se programan como Cron Jobs; aquí, a demanda:
+  #   docker compose --profile backend-pipeline run --rm backend-pipeline pipeline-diario
+  #   docker compose --profile backend-pipeline run --rm backend-pipeline pipeline-semanal
+  #   (también: db-particiones, eje2-recalibrar, monitoreo-semanal, calibrar-eta, monitoreo-resumen)
+  backend-pipeline:
+    profiles: ["backend-pipeline"]
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${PGUSER:-urbansafe}:${PGPASSWORD:-urbansafe_dev}@db:5432/${PGDATABASE:-urbansafe}
+      EJE2_PRECALENTAR: "0"
+    entrypoint: ["flask", "--app", "app"]
+    command: ["pipeline-diario"]
 
   # Next.js: el navegador llama a la API por el puerto publicado del backend
   frontend:
@@ -54,7 +92,7 @@ services:
     depends_on:
       - backend
     ports:
-      - "${FRONTEND_PORT:-3000}:3000"
+      - "${FRONTEND_PORT:-3002}:3000"
 
   pipeline:
     profiles: ["pipeline"]   # no arranca con `up`; ver cabecera

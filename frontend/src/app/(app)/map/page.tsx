@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-import { X, MapPinOff } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { X, MapPinOff, RefreshCw } from 'lucide-react';
 import { Spinner } from '@/components/Spinner';
 import MapView from '@/components/MapView';
 import { SYSTEMS } from '@/lib/systems';
@@ -11,6 +11,11 @@ import ForecastPanel from '@/components/ForecastPanel';
 import SystemBadge from '@/components/SystemBadge';
 import FeedbackBox from '@/components/FeedbackBox';
 import BottomSheet from '@/components/BottomSheet';
+import SosButton from '@/components/SosButton';
+import ReportarModal from '@/components/ReportarModal';
+import SeguridadAcceso from '@/components/SeguridadAcceso';
+import RutaSegura, { CaminataMapa } from '@/components/RutaSegura';
+import Alert from '@/components/Alert';
 import HomeSheet from '@/components/HomeSheet';
 import { useAuth } from '@/context/AuthContext';
 import { getRecents, addRecent, RecentDestination } from '@/lib/recents';
@@ -40,32 +45,44 @@ export default function MapPage() {
   const [notice, setNotice] = useState<string | null>(null);
   const [showStations, setShowStations] = useState(false);   // apagado: el mapa solo muestra lo que se usa
   const [focus, setFocus] = useState<Coords | null>(null);
+  const [forecastError, setForecastError] = useState(false);
+  const [stationsError, setStationsError] = useState(false);
+  const [walk, setWalk] = useState<CaminataMapa | null>(null);
+  const [reportOpen, setReportOpen] = useState(false);
+  const lastLoad = useRef(0);                               // descarta respuestas de un paradero anterior
+  const lastRequest = useRef<{ station: Station; haciaId?: string } | null>(null);
 
   useEffect(() => { setRecents(getRecents()); }, []);
 
   // Ubicación + red de estaciones
-  useEffect(() => {
-    (async () => {
-      const [loc, all] = await Promise.all([
-        getUserLocation().catch(() => null),
-        getStations().catch((e) => { console.error('Error cargando estaciones:', e); return [] as Station[]; }),
-      ]);
-      if (!loc) setLocationDenied(true);
-      setLocation(loc ?? LIMA_CENTER);
-      setStations(all);
-      setLoadingMap(false);
-    })();
+  const loadNetwork = useCallback(async () => {
+    setStationsError(false);
+    const [loc, all] = await Promise.all([
+      getUserLocation().catch(() => null),
+      getStations().catch((e) => { console.error('Error cargando estaciones:', e); setStationsError(true); return [] as Station[]; }),
+    ]);
+    setLocationDenied(!loc);
+    setLocation((prev) => (loc ? loc : prev ?? LIMA_CENTER));
+    setStations(all);
+    setLoadingMap(false);
   }, []);
 
+  useEffect(() => { loadNetwork(); }, [loadNetwork]);
+
   const loadStation = useCallback(async (station: Station, openCard = true, haciaId?: string) => {
+    const mine = ++lastLoad.current;
+    const vigente = () => mine === lastLoad.current;
+    lastRequest.current = { station, haciaId };
     if (openCard) setSelectedStation(station);
     setLoadingForecast(true);
+    setForecastError(false);
     setForecast(null);
     setRouteGeoJson(null);
 
     try {
       const routeCode = getRouteCodeFromStation(station);
       const geo = await getRouteGeoJson(station.system, routeCode);
+      if (!vigente()) return;
       let features: any[] = Array.isArray(geo) ? geo : geo?.features || [];
       if (routeCode && features.length > 0) {
         const matched = features.filter((f) => {
@@ -93,13 +110,15 @@ export default function MapPage() {
     try {
       // Una sola llamada: estado actual + pronóstico del día (sentido según el destino, si hay)
       const data = await getStationPrediction(station, haciaId);
+      if (!vigente()) return;
       setForecastStation(station);
       setForecastAt(Date.now());
       setForecast(data ? { current: data.current, predictions: data.forecast, referencia: data.referencia } : { sinDatos: true });
     } catch (error) {
       console.error('Error al obtener predicciones:', error);
+      if (vigente()) setForecastError(true);
     } finally {
-      setLoadingForecast(false);
+      if (vigente()) setLoadingForecast(false);
     }
   }, [stations]);
 
@@ -165,7 +184,11 @@ export default function MapPage() {
     }
   };
 
+  const retryForecast = () => { if (lastRequest.current) loadStation(lastRequest.current.station, false, lastRequest.current.haciaId); };
+
   const closeTrip = () => {
+    lastLoad.current++;
+    setWalk(null);
     setTripData(null);
     setSelectedRoute(null);
     setFilterIds(null);
@@ -196,18 +219,28 @@ export default function MapPage() {
         showAll={showStations}
         focus={focus}
         routeGeoJson={routeGeoJson}
+        walk={walk}
         destination={tripData ? { lat: tripData.destination.lat, lon: tripData.destination.lon, name: tripData.destination.resolved_name } : null}
         onStationClick={(s) => { if (!tripData) loadStation(s); }}
       />
 
       {/* Buscador: ancho completo en móvil, tarjeta lateral en pantallas grandes */}
       <div className="absolute left-3 right-3 top-3 z-[1000] md:right-auto md:left-4 md:top-4 md:w-[26rem]">
-        <SearchAutocomplete variant="float" onSelectDestination={handleSearchDestination} onSearchSubmit={handleSearchDestination} />
+        <div className="flex items-start gap-2">
+          <SearchAutocomplete className="min-w-0 flex-1" variant="float" onSelectDestination={handleSearchDestination} onSearchSubmit={handleSearchDestination} />
+          <SosButton className="!h-[3.375rem] shrink-0" onReport={() => setReportOpen(true)} />
+        </div>
         {locationDenied && (
           <p className="float-panel mt-2 flex items-start gap-2 px-3.5 py-2.5 text-sm text-muted">
-            <MapPinOff size={16} className="mt-0.5 shrink-0 text-amber-600" />
+            <MapPinOff size={16} className="mt-0.5 shrink-0 text-warn" />
             Sin acceso a tu ubicación: se usa el centro de Lima como punto de partida.
           </p>
+        )}
+        {stationsError && (
+          <div className="float-panel mt-2 flex items-center gap-3 px-3.5 py-2.5 text-sm text-fg">
+            <span className="min-w-0 flex-1">No se pudo cargar la red de paraderos.</span>
+            <button onClick={loadNetwork} className="btn btn-secondary !px-3 !py-1.5 !text-[0.8125rem]"><RefreshCw size={14} /> Reintentar</button>
+          </div>
         )}
         {notice && <p className="float-panel mt-2 px-3.5 py-2.5 text-sm text-fg">{notice}</p>}
       </div>
@@ -217,7 +250,7 @@ export default function MapPage() {
         <ul className="space-y-1.5">
           {Object.values(SYSTEMS).map((s) => (
             <li key={s.id} className="flex items-center gap-2 text-xs text-muted">
-              <span className="h-2.5 w-2.5 rounded-full ring-2 ring-white dark:ring-[#111a2c]" style={{ backgroundColor: s.color }} />
+              <span className="h-2.5 w-2.5 rounded-full ring-2 ring-surface" style={{ backgroundColor: s.color }} />
               {s.label}
             </li>
           ))}
@@ -227,7 +260,18 @@ export default function MapPage() {
       {/* Panel: hoja inferior en móvil, tarjeta flotante a la izquierda en escritorio */}
       <div className="absolute inset-x-3 bottom-3 z-[1000] md:inset-x-auto md:bottom-4 md:left-4 md:w-[26rem]">
         {tripData && selectedRoute && (
-          <TripSummaryCard tripData={tripData} selectedRoute={selectedRoute} forecast={forecast} loadingForecast={loadingForecast} onClose={closeTrip}>
+          <TripSummaryCard
+            tripData={tripData} selectedRoute={selectedRoute} forecast={forecast} loadingForecast={loadingForecast} forecastError={forecastError} onRetry={retryForecast} onClose={closeTrip}
+            walkSlot={(() => {
+              const boarding = stations.find((st) => st.id === selectedRoute.boarding_id);
+              return boarding ? (
+                <div className="space-y-4">
+                  <RutaSegura station={boarding} origen={location} origenReal={!locationDenied} auto onChange={setWalk} />
+                  <SeguridadAcceso station={boarding} />
+                </div>
+              ) : null;
+            })()}
+          >
             {feedbackBox}
           </TripSummaryCard>
         )}
@@ -242,15 +286,19 @@ export default function MapPage() {
                   <h3 className="mt-2 truncate text-lg font-bold text-fg">{selectedStation.name}</h3>
                   <p className="truncate text-sm text-muted">{selectedStation.avenida || 'Sin referencia'}</p>
                 </div>
-                <button onClick={() => { setSelectedStation(null); setRouteGeoJson(null); setFilterIds(null); }} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2">
+                <button onClick={() => { lastLoad.current++; setSelectedStation(null); setRouteGeoJson(null); setFilterIds(null); setWalk(null); setForecast(null); }} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2">
                   <X size={18} />
                 </button>
               </header>
             }
           >
             <div className="px-5 pb-5">
-              <ForecastPanel forecast={forecast} loading={loadingForecast} />
+              <ForecastPanel forecast={forecast} loading={loadingForecast} error={forecastError} onRetry={retryForecast} />
               {feedbackBox}
+              <div className="mt-5 space-y-4 border-t border-line pt-4">
+                <SeguridadAcceso station={selectedStation} />
+                <RutaSegura station={selectedStation} origen={location} origenReal={!locationDenied} onChange={setWalk} />
+              </div>
             </div>
           </BottomSheet>
         )}
@@ -260,6 +308,7 @@ export default function MapPage() {
             name={user?.name}
             recents={recents}
             showStations={showStations}
+            onReport={() => setReportOpen(true)}
             onToggleStations={() => {
               setShowStations((v) => !v);
               if (filterIds) setFilterIds(null);   // salir del paradero enfocado
@@ -270,6 +319,7 @@ export default function MapPage() {
           />
         )}
       </div>
+      {reportOpen && <ReportarModal ubicacion={location} ubicacionReal={!locationDenied} onClose={() => setReportOpen(false)} />}
     </div>
   );
 }

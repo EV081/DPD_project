@@ -8,8 +8,11 @@ import { updateProfileApi, updatePasswordApi, deleteAccountApi, errorMessage } f
 import { ThemeSelector } from '@/components/ThemeToggle';
 import { Field, ErrorNote } from '@/components/Field';
 import { Spinner } from '@/components/Spinner';
+import Modal from '@/components/Modal';
+import Alert from '@/components/Alert';
+import MisReportes from '@/components/MisReportes';
 
-type Modal = 'profile' | 'password' | 'delete' | null;
+type ModalKind = 'profile' | 'password' | 'delete' | null;
 
 const iniciales = (name?: string) =>
   (name || '?').split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0]!.toUpperCase()).join('');
@@ -17,7 +20,7 @@ const iniciales = (name?: string) =>
 export default function AccountPage() {
   const { user, setUser, logout } = useAuth();
   const router = useRouter();
-  const [modal, setModal] = useState<Modal>(null);
+  const [modal, setModal] = useState<ModalKind>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -30,20 +33,12 @@ export default function AccountPage() {
     if (user) { setName(user.name || ''); setEmail(user.email || ''); }
   }, [user]);
 
-  // Cerrar el diálogo con Escape
-  useEffect(() => {
-    if (!modal) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setModal(null);
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [modal]);
-
   const handleLogout = () => {
     logout();
     router.replace('/login');
   };
 
-  const open = (m: Modal) => { setError(null); setSuccess(null); setModal(m); };
+  const open = (m: ModalKind) => { setError(null); setSuccess(null); setModal(m); };
 
   const run = async (fn: () => Promise<void>, fallback: string) => {
     setLoading(true);
@@ -87,7 +82,7 @@ export default function AccountPage() {
       <h1 className="text-3xl font-bold tracking-tight text-fg">Mi cuenta</h1>
 
       <section className="hero mt-6 flex items-center gap-4 p-6" aria-label="Perfil">
-        <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-sky-400/30 blur-2xl" />
+        <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-white/20 blur-2xl" />
         <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white/20 text-xl font-bold ring-2 ring-white/40">
           {iniciales(user?.name)}
         </span>
@@ -97,14 +92,17 @@ export default function AccountPage() {
         </div>
       </section>
 
-      {success && (
-        <p role="status" className="mt-4 rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-800 dark:text-emerald-300">{success}</p>
-      )}
+      {success && <Alert tono="ok" className="mt-4">{success}</Alert>}
 
       <h2 className="eyebrow mb-2 mt-8 px-1">Apariencia</h2>
       <section className="card p-5" aria-label="Apariencia">
         <p className="mb-3 flex items-center gap-2 text-sm text-muted"><Palette size={16} /> Elige el tema de la aplicación.</p>
         <ThemeSelector />
+      </section>
+
+      <h2 className="eyebrow mb-2 mt-8 px-1">Mis reportes de seguridad</h2>
+      <section className="card overflow-hidden" aria-label="Mis reportes">
+        <MisReportes />
       </section>
 
       <h2 className="eyebrow mb-2 mt-8 px-1">Seguridad y perfil</h2>
@@ -118,7 +116,7 @@ export default function AccountPage() {
           <ChevronRight size={17} className="text-muted" />
         </button>
         <button onClick={() => open('delete')} className={row}>
-          <span className="flex items-center gap-3 text-sm font-medium text-rose-600 dark:text-rose-400"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-500/12"><Trash2 size={17} /></span> Eliminar cuenta</span>
+          <span className="flex items-center gap-3 text-sm font-medium text-danger"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-danger/12"><Trash2 size={17} /></span> Eliminar cuenta</span>
           <ChevronRight size={17} className="text-muted" />
         </button>
       </section>
@@ -128,49 +126,36 @@ export default function AccountPage() {
       </button>
 
       {modal && (
-        <div className="fixed inset-0 z-[2000] flex items-end justify-center bg-slate-950/60 p-4 backdrop-blur-sm sm:items-center" onClick={() => setModal(null)}>
-          <div role="dialog" aria-modal="true" className="float-panel w-full max-w-md p-6" onClick={(e) => e.stopPropagation()}>
-            {modal === 'profile' && (
-              <>
-                <h3 className="text-lg font-semibold text-fg">Editar datos personales</h3>
-                <div className="mt-5 space-y-4">
-                  <Field label="Nombre completo" value={name} onChange={(e) => setName(e.target.value)} autoFocus />
-                  <Field label="Correo electrónico" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-              </>
-            )}
-            {modal === 'password' && (
-              <>
-                <h3 className="text-lg font-semibold text-fg">Cambiar contraseña</h3>
-                <div className="mt-5 space-y-4">
-                  <Field label="Contraseña actual" type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} autoComplete="current-password" autoFocus />
-                  <Field label="Nueva contraseña" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} autoComplete="new-password" hint="Mínimo 6 caracteres." />
-                </div>
-              </>
-            )}
-            {modal === 'delete' && (
-              <>
-                <h3 className="text-lg font-semibold text-fg">¿Eliminar tu cuenta?</h3>
-                <p className="mt-2 text-sm text-muted">Esta acción no se puede deshacer. Tus datos se borrarán del sistema.</p>
-              </>
-            )}
-
-            {error && <div className="mt-4"><ErrorNote>{error}</ErrorNote></div>}
-
-            <div className="mt-6 flex gap-3">
-              <button onClick={() => setModal(null)} className="btn btn-secondary flex-1">Cancelar</button>
-              {modal === 'delete' ? (
-                <button onClick={deleteAccount} disabled={loading} className="btn flex-1 bg-rose-600 text-white hover:bg-rose-700">
-                  {loading ? <Spinner size={16} className="!text-white" /> : 'Sí, eliminar'}
-                </button>
-              ) : (
-                <button onClick={modal === 'profile' ? saveProfile : savePassword} disabled={loading} className="btn btn-primary flex-1">
-                  {loading ? <Spinner size={16} className="!text-current" /> : modal === 'profile' ? 'Guardar' : 'Actualizar'}
-                </button>
-              )}
+        <Modal title={modal === 'profile' ? 'Editar datos personales' : modal === 'password' ? 'Cambiar contraseña' : '¿Eliminar tu cuenta?'} onClose={() => setModal(null)}>
+          {modal === 'profile' && (
+            <div className="space-y-4">
+              <Field label="Nombre completo" value={name} onChange={(e) => setName(e.target.value)} />
+              <Field label="Correo electrónico" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
+          )}
+          {modal === 'password' && (
+            <div className="space-y-4">
+              <Field label="Contraseña actual" type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} autoComplete="current-password" />
+              <Field label="Nueva contraseña" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} autoComplete="new-password" hint="Mínimo 6 caracteres." />
+            </div>
+          )}
+          {modal === 'delete' && <p className="text-sm text-muted">Esta acción no se puede deshacer. Tus datos se borrarán del sistema.</p>}
+
+          {error && <div className="mt-4"><ErrorNote>{error}</ErrorNote></div>}
+
+          <div className="mt-6 flex gap-3">
+            <button onClick={() => setModal(null)} className="btn btn-secondary flex-1">Cancelar</button>
+            {modal === 'delete' ? (
+              <button onClick={deleteAccount} disabled={loading} className="btn btn-sos flex-1">
+                {loading ? <Spinner size={16} className="!text-white" /> : 'Sí, eliminar'}
+              </button>
+            ) : (
+              <button onClick={modal === 'profile' ? saveProfile : savePassword} disabled={loading} className="btn btn-primary flex-1">
+                {loading ? <Spinner size={16} className="!text-current" /> : modal === 'profile' ? 'Guardar' : 'Actualizar'}
+              </button>
+            )}
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

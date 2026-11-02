@@ -70,7 +70,7 @@ export default function DestinationsPage() {
       )}
 
       {!loading && message && (
-        <p role="status" className="mt-8 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-200">
+        <p role="status" className="mt-8 flex items-start gap-3 rounded-xl bg-warn/12 px-4 py-3 text-sm text-warn">
           <TriangleAlert size={18} className="mt-0.5 shrink-0" /> {message}
         </p>
       )}
@@ -78,7 +78,7 @@ export default function DestinationsPage() {
       {!loading && tripData && routes.length > 0 && (
         <section className="mt-8" aria-label="Resultados">
           <div className="card flex items-center gap-3 p-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-500/12 text-rose-600 dark:text-rose-300">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-danger/12 text-danger">
               <MapPin size={19} />
             </span>
             <div className="min-w-0 flex-1">
@@ -91,7 +91,7 @@ export default function DestinationsPage() {
           </div>
 
           {tripData.recomendacion_viaje?.mensaje && (
-            <p className="mt-3 flex gap-2.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-800 dark:text-emerald-300">
+            <p className="mt-3 flex gap-2.5 rounded-xl bg-ok/12 px-4 py-3 text-sm text-ok">
               <Lightbulb size={17} className="mt-0.5 shrink-0" /> {tripData.recomendacion_viaje.mensaje}
             </p>
           )}

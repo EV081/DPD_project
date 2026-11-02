@@ -20,13 +20,23 @@ const iniciales = (name?: string) =>
   (name || '?').split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0]!.toUpperCase()).join('');
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
+  const { user, loading, connectionError, retry } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!loading && !user) router.replace('/login');
-  }, [loading, user, router]);
+    if (!loading && !user && !connectionError) router.replace('/login');
+  }, [loading, user, connectionError, router]);
+
+  if (connectionError) {
+    return (
+      <div className="flex h-dvh flex-col items-center justify-center gap-4 px-6 text-center">
+        <p className="text-base font-semibold text-fg">No pudimos conectar con el servidor</p>
+        <p className="max-w-sm text-sm text-muted">Puede estar despertando o tu conexión falló. Tu sesión sigue guardada.</p>
+        <button onClick={retry} className="btn btn-primary">Reintentar</button>
+      </div>
+    );
+  }
 
   if (loading || !user) {
     return <div className="flex h-dvh items-center justify-center"><Spinner size={28} /></div>;

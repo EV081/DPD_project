@@ -113,17 +113,28 @@ def estado(sistema: str, ahora: dt.datetime | None = None) -> dict:
 
 
 def ajustar_item(item: dict, sistema: str, ahora: dt.datetime | None = None) -> dict:
-    """Aplica el factor de tráfico al ETA de un ítem de predicción (solo la hora actual)."""
+    """Aplica al ETA de un ítem (solo la hora actual) el factor de tráfico y el factor de calibración con el feedback de usuarios.
+
+    ETA mostrado = ETA del modelo × factor de calibración × factor de tráfico. ``eta_base_min`` queda con el ETA del modelo
+    (el que reenvía el cliente en el feedback) para poder seguir calibrando sin contar dos veces los ajustes.
+    """
     est = estado(sistema, ahora)
     item["modo_datos"] = est["modo_datos"]
     item["factor_trafico"] = round(est["factor"], 3)
     item["edad_snapshot_s"] = est["edad_snapshot_s"]
-    if est["factor"] <= 1.0 or item.get("eta_min") is None:
+    try:
+        from services import calibracion
+        k = calibracion.factor_eta(sistema)
+    except Exception:  # noqa: BLE001 - la calibración nunca debe romper el ETA
+        k = 1.0
+    item["factor_calibracion"] = round(k, 3)
+    if (est["factor"] <= 1.0 and k == 1.0) or item.get("eta_min") is None:
         return item
+    factor = est["factor"] * k
     item["eta_base_min"] = item["eta_min"]
-    item["eta_min"] = round(item["eta_min"] * est["factor"], 1)
+    item["eta_min"] = round(item["eta_min"] * factor, 1)
     if item.get("eta2_min") is not None:
-        item["eta2_min"] = round(item["eta2_min"] * est["factor"], 1)
+        item["eta2_min"] = round(item["eta2_min"] * factor, 1)
     # regla U: con aforo saturado, esperar más de 10 min deja de ser razonable
     if item.get("recommendation") == "esperar_siguiente" and item["eta_min"] > 10.0:
         item["recommendation"] = "cambiar_paradero"

@@ -8,6 +8,7 @@ import { Skeleton, EmptyState } from '@/components/Spinner';
 import { getStations } from '@/lib/services';
 import { SYSTEMS } from '@/lib/systems';
 import { Station } from '@/lib/types';
+import Alert from '@/components/Alert';
 
 const FILTERS = [{ id: undefined, label: 'Todos' }, ...Object.values(SYSTEMS).map((s) => ({ id: s.id as string | undefined, label: s.label }))];
 
@@ -16,20 +17,27 @@ function SearchContent() {
   const [query, setQuery] = useState('');
   const [stations, setStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const pedido = useRef(0);
   const [system, setSystem] = useState<string | undefined>(params.get('system') || undefined);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const first = useRef(true);
   const [visible, setVisible] = useState(60);   // evita pintar miles de tarjetas de una vez
 
   const fetchStations = async (text: string, filter?: string) => {
+    const n = ++pedido.current;   // una respuesta vieja no pisa a la más reciente
     setLoading(true);
+    setError(false);
     try {
-      setStations(await getStations(filter, text));
+      const res = await getStations(filter, text);
+      if (n !== pedido.current) return;
+      setStations(res);
       setVisible(60);
-    } catch (error) {
-      console.error('Error al buscar estaciones:', error);
+    } catch (e) {
+      console.error('Error al buscar estaciones:', e);
+      if (n === pedido.current) { setError(true); setStations([]); }
     } finally {
-      setLoading(false);
+      if (n === pedido.current) setLoading(false);
     }
   };
 
@@ -77,6 +85,11 @@ function SearchContent() {
         {loading ? (
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3" role="status" aria-label="Buscando paraderos">
             {Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-[5.5rem] !rounded-2xl" />)}
+          </div>
+        ) : error ? (
+          <div className="space-y-3 py-8 text-center">
+            <Alert tono="warn" className="mx-auto max-w-md text-left">No se pudo cargar la lista. Puede ser tu conexión o el servidor.</Alert>
+            <button className="btn btn-secondary" onClick={() => fetchStations(query, system)}>Reintentar</button>
           </div>
         ) : stations.length === 0 ? (
           <EmptyState icon={SearchX} title="Sin resultados" text="No encontramos paraderos que coincidan. Prueba con otro nombre o avenida." />

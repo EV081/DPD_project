@@ -1,0 +1,46 @@
+{
+  "version": "eje2-ruta-v1.0",
+  "generado": "2026-11-01T23:39:35+00:00",
+  "modelo_riesgo": "eje2-v1.0",
+  "datos_hasta": "2024-08-31",
+  "entrenado_con": "objetivos 2019-2023 y enero-agosto 2024",
+  "forma_costo": "lineal",
+  "lambda": 12.0,
+  "topes_recomendacion": {
+    "reduccion_min": 0.1,
+    "desvio_pct_max": 0.3,
+    "desvio_m_max": 250
+  },
+  "bandas_riesgo": {
+    "bajo_hasta": 0.2,
+    "alto_desde": 0.5
+  },
+  "ref_p99_densidad": {
+    "total": 55.5519951711986,
+    "noche": 26.122195410528285,
+    "dia": 29.45160263754218,
+    "persona": 7.8916674425096165
+  },
+  "velocidad_caminata_m_min": 80,
+  "n_segmentos": 146607,
+  "n_nodos": 101205,
+  "n_accesos": 1775,
+  "archivos": {
+    "grafo.parquet": {
+      "bytes": 3103701,
+      "sha256": "5391b8a9d4e6a39f5aaf013cfb9128403f91f47a1726c562e9739c860bf50ddd"
+    },
+    "nodos.parquet": {
+      "bytes": 2136367,
+      "sha256": "4bf173c837985396a38f369de6abe970a545c6ac0be38b5baee7ff7f9ccd012a"
+    },
+    "geometrias.parquet": {
+      "bytes": 2143061,
+      "sha256": "908dcffd4ed3b88bd898f62946735eff0583e08e5eae4284f89b136af2ea23c2"
+    },
+    "accesos.parquet": {
+      "bytes": 127288,
+      "sha256": "6520ef2df8a9f4bcc00892c88ba9a4957fdb4a448912bbbd8796c884a86429d3"
+    }
+  }
+}
