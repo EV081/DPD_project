@@ -3,8 +3,10 @@ import os
 import json
 import math
 from routes.stations import load_all_stations_into_memory
+from services import lugares
 import urllib.request
 import urllib.parse
+import urllib.error
 
 LOCATIONIQ_TOKEN = os.getenv("LOCATIONIQ_TOKEN", "TU_ACCESS_TOKEN_AQUI")
 geo_bp = Blueprint("geo", __name__)
@@ -78,6 +80,12 @@ def geocode_destination(query):
     
     # Creamos una lista de variaciones para intentar encontrar el lugar
     clean_q = query.strip()
+
+    # Lugares conocidos (p. ej. "UTEC"): el geocodificador no los resuelve bien
+    conocidos = lugares.buscar_alias(clean_q)
+    if conocidos:
+        return conocidos[0]["lat"], conocidos[0]["lon"], conocidos[0]["display_name"]
+
     queries_to_try = [
         f"{clean_q}, Lima, Peru",
         f"{clean_q}, Lima"
@@ -100,7 +108,10 @@ def geocode_destination(query):
                 "q": q_str,
                 "format": "json",
                 "limit": 1,
-                "countrycodes": "pe"
+                "countrycodes": "pe",
+                "viewbox": lugares.viewbox_param(),   # solo Lima Metropolitana y Callao
+                "bounded": 1,
+                "accept-language": "es",
             }
             url = f"{base_url}?{urllib.parse.urlencode(params)}"
             
@@ -242,12 +253,25 @@ def match_trip():
         if len(unique_routes) == 0 and "warning" not in debug_info:
             debug_info["warning"] = "Se encontraron paraderos en ambos extremos, pero ninguna ruta directa conecta ambos puntos sin transbordo."
 
+        # Sin ruta directa (o si se pide con ?transbordos=1): viajes de dos tramos con un transbordo
+        transfers = []
+        if len(unique_routes) == 0 or request.args.get("transbordos") == "1":
+            try:
+                from services import transbordos
+                transfers = transbordos.buscar_transbordos(
+                    transbordos.servicios_en_memoria(all_stations),
+                    (origin_lat, origin_lon), (dest_lat, dest_lon), radio_m=radius,
+                )
+            except Exception as e:   # un fallo aquí no debe tumbar la búsqueda de rutas directas
+                print(f"Error buscando transbordos: {e}")
+
         return jsonify({
             "origin": {"lat": origin_lat, "lon": origin_lon},
             "destination": {"lat": dest_lat, "lon": dest_lon, "resolved_name": dest_name},
             "radius_meters": radius,
             "diagnostic": debug_info,
             "found_routes": unique_routes,
+            "found_transfers": transfers,
             "recomendacion_viaje": recomendacion_viaje
         }), 200
 
@@ -272,7 +296,11 @@ def autocomplete_locations():
             "format": "json",
             "limit": 5,
             "countrycodes": "pe",
-            "addressdetails": 1
+            "addressdetails": 1,
+            "viewbox": lugares.viewbox_param(),   # solo Lima Metropolitana y Callao...
+            "bounded": 1,                         # ...y nada fuera de ese recuadro
+            "accept-language": "es",
+            "dedupe": 1,
         }
         
         url = f"{base_url}?{urllib.parse.urlencode(params)}"
@@ -282,13 +310,23 @@ def autocomplete_locations():
         
         with urllib.request.urlopen(req) as response:
             data = json.loads(response.read().decode())
-            suggestions = []
+            # Primero los lugares conocidos (UTEC...), luego lo que halle el geocodificador, sin repetir
+            suggestions = lugares.buscar_alias(query)
+            favoritos = list(suggestions)
             for item in data:
+                # No repetir el mismo lugar: el favorito ya cubre lo que esté a menos de 150 m
+                if any(calculate_distance(f["lat"], f["lon"], float(item.get("lat")), float(item.get("lon"))) < 150
+                       for f in favoritos):
+                    continue
                 suggestions.append({
                     "display_name": item.get("display_name"),
                     "lat": float(item.get("lat")),
                     "lon": float(item.get("lon"))
                 })
-            return jsonify(suggestions), 200
+            return jsonify(suggestions[:6]), 200
+    except urllib.error.HTTPError as e:
+        if e.code == 404:   # LocationIQ responde 404 cuando no hay coincidencias: es una lista vacía, no un error
+            return jsonify(lugares.buscar_alias(query)), 200
+        return jsonify({"error": f"El buscador de lugares respondió {e.code}"}), 502
     except Exception as e:
         return jsonify({"error": str(e)}), 500

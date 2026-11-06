@@ -15,6 +15,14 @@ interface Props {
   variant?: 'float' | 'inline';
 }
 
+// "Miraflores, Provincia de Lima, Área Metropolitana de Lima, Lima, 15074, Perú" -> título y detalle cortos
+const RUIDO = /^(province of lima|provincia de lima|lima metropolitana|lima metropolitan area|[áa]rea metropolitana de lima|per[uú]|peru|\d{5})$/i;
+const partir = (nombre: string) => {
+  const [titulo, ...resto] = nombre.split(',').map((p) => p.trim()).filter(Boolean);
+  const detalle = resto.filter((p) => !RUIDO.test(p));
+  return { titulo: titulo ?? nombre, detalle: detalle.slice(0, 3).join(', ') };
+};
+
 export default function SearchAutocomplete({
   onSelectDestination, onSearchSubmit, placeholder = '¿A dónde quieres ir?', className = '', variant = 'inline',
 }: Props) {
@@ -84,6 +92,10 @@ export default function SearchAutocomplete({
           aria-controls={listId}
           aria-expanded={open}
           aria-activedescendant={open && active >= 0 ? `${listId}-${active}` : undefined}
+          name="destino"
+          type="search"
+          enterKeyHint="search"
+          spellCheck={false}
           autoComplete="off"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -99,7 +111,7 @@ export default function SearchAutocomplete({
         <span className="sr-only" aria-live="polite">{open ? `${suggestions.length} sugerencias` : ''}</span>
         {query.length > 0 && !loading && (
           <button type="button" onClick={() => { setQuery(''); setSuggestions([]); }} aria-label="Limpiar búsqueda"
-            className="rounded-md p-1 text-muted hover:bg-surface-2 hover:text-fg">
+            className="-mr-1.5 rounded-lg p-2 text-muted hover:bg-surface-2 hover:text-fg">
             <X size={16} />
           </button>
         )}
@@ -113,7 +125,10 @@ export default function SearchAutocomplete({
               <button type="button" tabIndex={-1} onClick={() => select(item)}
                 className={`flex w-full items-start gap-3 px-3.5 py-2.5 text-left hover:bg-surface-2 ${i === active ? 'bg-surface-2' : ''}`}>
                 <MapPin size={16} className="mt-0.5 shrink-0 text-muted" />
-                <span className="line-clamp-2 text-sm text-fg">{item.display_name}</span>
+                <span className="min-w-0">
+                  <span className="block truncate text-sm font-medium text-fg">{partir(item.display_name).titulo}</span>
+                  {partir(item.display_name).detalle && <span className="block truncate text-xs text-muted">{partir(item.display_name).detalle}</span>}
+                </span>
               </button>
             </li>
           ))}

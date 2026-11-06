@@ -56,7 +56,7 @@ export default function ReportarModal({ ubicacion, ubicacionReal, onClose }: { u
           </>
         )}
         <p className="mt-4 text-xs text-muted">{hecho.aviso}</p>
-        <button onClick={onClose} className="btn btn-secondary mt-4 w-full">Listo</button>
+        <button type="button" onClick={onClose} className="btn btn-secondary mt-4 w-full">Listo</button>
       </Modal>
     );
   }
@@ -90,8 +90,8 @@ export default function ReportarModal({ ubicacion, ubicacionReal, onClose }: { u
       {!ubicacionReal && <Alert tono="warn" className="mt-4">No tenemos tu ubicación: se usaría el centro de Lima. Activa el GPS para reportar.</Alert>}
       {error && <Alert tono="danger" className="mt-4">{error}</Alert>}
 
-      <button onClick={enviar} disabled={!tipo || enviando || !ubicacionReal} className="btn btn-primary mt-5 w-full">
-        {enviando ? <Spinner size={16} className="!text-white dark:!text-[#06101f]" /> : 'Enviar reporte'}
+      <button type="button" onClick={enviar} disabled={!tipo || enviando || !ubicacionReal} className="btn btn-primary mt-5 w-full">
+        {enviando ? <><Spinner size={16} className="!text-white dark:!text-[#06101f]" /> Enviando…</> : 'Enviar reporte'}
       </button>
       <p className="mt-3 text-xs text-muted">Los reportes son testimonios no verificados. Un reporte no reemplaza la denuncia ante la Policía.</p>
     </Modal>

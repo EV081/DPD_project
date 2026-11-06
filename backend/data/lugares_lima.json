@@ -1,0 +1,757 @@
+[
+ {
+  "nombre": "UTEC · Universidad de Ingeniería y Tecnología",
+  "distrito": "Barranco",
+  "claves": [
+   "utec",
+   "utec barranco",
+   "u tec",
+   "universidad utec",
+   "universidad de ingenieria y tecnologia"
+  ],
+  "lat": -12.1351351,
+  "lon": -77.0221296
+ },
+ {
+  "nombre": "Parque Kennedy",
+  "distrito": "Miraflores",
+  "claves": [
+   "kennedy",
+   "parque kennedy",
+   "parque john f kennedy",
+   "parque john kennedy",
+   "john f kennedy park",
+   "kennedy park",
+   "parque central de miraflores"
+  ],
+  "lat": -12.1218,
+  "lon": -77.0304
+ },
+ {
+  "nombre": "Plaza Mayor de Lima (Plaza de Armas)",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "plaza de armas",
+   "plaza mayor",
+   "plaza de armas de lima",
+   "plaza mayor de lima"
+  ],
+  "lat": -12.045934,
+  "lon": -77.030566
+ },
+ {
+  "nombre": "Catedral de Lima",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "catedral de lima",
+   "catedral"
+  ],
+  "lat": -12.046765,
+  "lon": -77.029702
+ },
+ {
+  "nombre": "Palacio de Gobierno",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "palacio de gobierno",
+   "casa de pizarro"
+  ],
+  "lat": -12.044913,
+  "lon": -77.0298
+ },
+ {
+  "nombre": "Plaza San Martín",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "plaza san martin"
+  ],
+  "lat": -12.05074,
+  "lon": -77.034816
+ },
+ {
+  "nombre": "Plaza Dos de Mayo",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "plaza dos de mayo",
+   "plaza 2 de mayo"
+  ],
+  "lat": -12.046367,
+  "lon": -77.042771
+ },
+ {
+  "nombre": "Parque de la Exposición",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "parque de la exposicion",
+   "parque de la exposición"
+  ],
+  "lat": -12.062318,
+  "lon": -77.036157
+ },
+ {
+  "nombre": "Parque de la Reserva (Circuito Mágico del Agua)",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "parque de la reserva",
+   "circuito magico del agua",
+   "fuentes de agua"
+  ],
+  "lat": -12.071096,
+  "lon": -77.033698
+ },
+ {
+  "nombre": "Museo de Arte de Lima (MALI)",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "mali",
+   "museo de arte de lima"
+  ],
+  "lat": -12.060486,
+  "lon": -77.037023
+ },
+ {
+  "nombre": "Convento de San Francisco",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "convento de san francisco",
+   "catacumbas"
+  ],
+  "lat": -12.045416,
+  "lon": -77.027075
+ },
+ {
+  "nombre": "Mercado Central de Lima",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "mercado central"
+  ],
+  "lat": -12.052679,
+  "lon": -77.027573
+ },
+ {
+  "nombre": "Barrio Chino (Capón)",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "barrio chino",
+   "capon"
+  ],
+  "lat": -12.051518,
+  "lon": -77.024784
+ },
+ {
+  "nombre": "Congreso de la República",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "congreso",
+   "congreso de la republica"
+  ],
+  "lat": -12.048201,
+  "lon": -77.025415
+ },
+ {
+  "nombre": "Palacio de Justicia",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "palacio de justicia"
+  ],
+  "lat": -12.05766,
+  "lon": -77.034969
+ },
+ {
+  "nombre": "Estación Central (Metropolitano)",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "estacion central"
+  ],
+  "lat": -12.057956,
+  "lon": -77.036141
+ },
+ {
+  "nombre": "Larcomar",
+  "distrito": "Miraflores",
+  "claves": [
+   "larcomar"
+  ],
+  "lat": -12.132218,
+  "lon": -77.030226
+ },
+ {
+  "nombre": "Huaca Pucllana",
+  "distrito": "Miraflores",
+  "claves": [
+   "huaca pucllana",
+   "pucllana"
+  ],
+  "lat": -12.111487,
+  "lon": -77.033953
+ },
+ {
+  "nombre": "Parque del Amor",
+  "distrito": "Miraflores",
+  "claves": [
+   "parque del amor",
+   "malecon de miraflores"
+  ],
+  "lat": -12.126736,
+  "lon": -77.036513
+ },
+ {
+  "nombre": "Óvalo Miraflores",
+  "distrito": "Miraflores",
+  "claves": [
+   "ovalo miraflores",
+   "ovalo de miraflores"
+  ],
+  "lat": -12.119226,
+  "lon": -77.029067
+ },
+ {
+  "nombre": "Parque El Olivar",
+  "distrito": "San Isidro",
+  "claves": [
+   "el olivar",
+   "parque el olivar",
+   "olivar de san isidro"
+  ],
+  "lat": -12.101203,
+  "lon": -77.034758
+ },
+ {
+  "nombre": "Huaca Huallamarca",
+  "distrito": "San Isidro",
+  "claves": [
+   "huaca huallamarca",
+   "huallamarca"
+  ],
+  "lat": -12.097404,
+  "lon": -77.040492
+ },
+ {
+  "nombre": "Puente de los Suspiros",
+  "distrito": "Barranco",
+  "claves": [
+   "puente de los suspiros",
+   "suspiros"
+  ],
+  "lat": -12.149173,
+  "lon": -77.022594
+ },
+ {
+  "nombre": "Parque Municipal de Barranco",
+  "distrito": "Barranco",
+  "claves": [
+   "parque municipal de barranco",
+   "plaza de barranco",
+   "parque de barranco"
+  ],
+  "lat": -12.149481,
+  "lon": -77.021197
+ },
+ {
+  "nombre": "Bajada de Baños (Barranco)",
+  "distrito": "Barranco",
+  "claves": [
+   "bajada de banos",
+   "bajada de baños"
+  ],
+  "lat": -12.14871,
+  "lon": -77.02236
+ },
+ {
+  "nombre": "MATE Museo Mario Testino",
+  "distrito": "Barranco",
+  "claves": [
+   "mate",
+   "museo mate",
+   "mario testino"
+  ],
+  "lat": -12.154173,
+  "lon": -77.023097
+ },
+ {
+  "nombre": "Jockey Plaza",
+  "distrito": "Santiago de Surco",
+  "claves": [
+   "jockey plaza",
+   "jockey"
+  ],
+  "lat": -12.086204,
+  "lon": -76.975382
+ },
+ {
+  "nombre": "Universidad de Lima",
+  "distrito": "Santiago de Surco",
+  "claves": [
+   "universidad de lima",
+   "ulima",
+   "u de lima"
+  ],
+  "lat": -12.085534,
+  "lon": -76.9707
+ },
+ {
+  "nombre": "Parque de la Amistad (Surco)",
+  "distrito": "Santiago de Surco",
+  "claves": [
+   "parque de la amistad"
+  ],
+  "lat": -12.13176,
+  "lon": -76.981687
+ },
+ {
+  "nombre": "Real Plaza Primavera",
+  "distrito": "Santiago de Surco",
+  "claves": [
+   "real plaza primavera",
+   "plaza primavera"
+  ],
+  "lat": -12.110117,
+  "lon": -77.001654
+ },
+ {
+  "nombre": "Museo de la Nación",
+  "distrito": "San Borja",
+  "claves": [
+   "museo de la nacion"
+  ],
+  "lat": -12.08674,
+  "lon": -77.001884
+ },
+ {
+  "nombre": "Gran Teatro Nacional",
+  "distrito": "San Borja",
+  "claves": [
+   "gran teatro nacional"
+  ],
+  "lat": -12.086631,
+  "lon": -77.003169
+ },
+ {
+  "nombre": "Universidad Nacional Agraria La Molina",
+  "distrito": "La Molina",
+  "claves": [
+   "la molina universidad",
+   "agraria",
+   "unalm",
+   "universidad agraria"
+  ],
+  "lat": -12.088069,
+  "lon": -76.946613
+ },
+ {
+  "nombre": "PUCP · Pontificia Universidad Católica del Perú",
+  "distrito": "San Miguel",
+  "claves": [
+   "pucp",
+   "universidad catolica",
+   "la catolica",
+   "pontificia universidad catolica"
+  ],
+  "lat": -12.069166,
+  "lon": -77.079935
+ },
+ {
+  "nombre": "UNMSM · Universidad Nacional Mayor de San Marcos",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "san marcos",
+   "unmsm",
+   "universidad de san marcos",
+   "ciudad universitaria"
+  ],
+  "lat": -12.060907,
+  "lon": -77.086002
+ },
+ {
+  "nombre": "UNI · Universidad Nacional de Ingeniería",
+  "distrito": "Rímac",
+  "claves": [
+   "uni",
+   "universidad nacional de ingenieria"
+  ],
+  "lat": -12.020379,
+  "lon": -77.048169
+ },
+ {
+  "nombre": "Universidad del Pacífico",
+  "distrito": "Jesús María",
+  "claves": [
+   "universidad del pacifico",
+   "up"
+  ],
+  "lat": -12.083883,
+  "lon": -77.048319
+ },
+ {
+  "nombre": "UPC · Universidad Peruana de Ciencias Aplicadas (Monterrico)",
+  "distrito": "Santiago de Surco",
+  "claves": [
+   "upc",
+   "upc monterrico"
+  ],
+  "lat": -12.104031,
+  "lon": -76.962975
+ },
+ {
+  "nombre": "ESAN",
+  "distrito": "Santiago de Surco",
+  "claves": [
+   "esan"
+  ],
+  "lat": -12.105663,
+  "lon": -76.960651
+ },
+ {
+  "nombre": "Universidad Cayetano Heredia",
+  "distrito": "San Martín de Porres",
+  "claves": [
+   "cayetano heredia",
+   "upch"
+  ],
+  "lat": -12.023682,
+  "lon": -77.056712
+ },
+ {
+  "nombre": "Aeropuerto Internacional Jorge Chávez",
+  "distrito": "Callao",
+  "claves": [
+   "aeropuerto",
+   "aeropuerto jorge chavez",
+   "jorge chavez",
+   "aeropuerto de lima"
+  ],
+  "lat": -12.019515,
+  "lon": -77.118373
+ },
+ {
+  "nombre": "Terminal Terrapuerto Plaza Norte",
+  "distrito": "Independencia",
+  "claves": [
+   "terminal plaza norte"
+  ],
+  "lat": -12.004986,
+  "lon": -77.055592
+ },
+ {
+  "nombre": "Terminal Atocongo",
+  "distrito": "San Juan de Miraflores",
+  "claves": [
+   "terminal atocongo",
+   "terrapuerto atocongo"
+  ],
+  "lat": -12.156558,
+  "lon": -76.984264
+ },
+ {
+  "nombre": "Plaza Norte",
+  "distrito": "Independencia",
+  "claves": [
+   "plaza norte",
+   "mall plaza norte"
+  ],
+  "lat": -12.00625,
+  "lon": -77.05881
+ },
+ {
+  "nombre": "MegaPlaza",
+  "distrito": "Independencia",
+  "claves": [
+   "megaplaza",
+   "mega plaza"
+  ],
+  "lat": -11.994592,
+  "lon": -77.063118
+ },
+ {
+  "nombre": "San Miguel Plaza (Plaza San Miguel)",
+  "distrito": "San Miguel",
+  "claves": [
+   "plaza san miguel",
+   "san miguel plaza"
+  ],
+  "lat": -12.07694,
+  "lon": -77.082718
+ },
+ {
+  "nombre": "Real Plaza Salaverry",
+  "distrito": "Jesús María",
+  "claves": [
+   "real plaza salaverry",
+   "plaza salaverry"
+  ],
+  "lat": -12.089885,
+  "lon": -77.052716
+ },
+ {
+  "nombre": "Real Plaza Centro Cívico",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "real plaza centro civico",
+   "centro civico"
+  ],
+  "lat": -12.056441,
+  "lon": -77.03733
+ },
+ {
+  "nombre": "Open Plaza Angamos",
+  "distrito": "Lima",
+  "claves": [
+   "open plaza angamos"
+  ],
+  "lat": -12.111551,
+  "lon": -77.011798
+ },
+ {
+  "nombre": "Mall del Sur",
+  "distrito": "San Juan de Miraflores",
+  "claves": [
+   "mall del sur"
+  ],
+  "lat": -12.154872,
+  "lon": -76.982269
+ },
+ {
+  "nombre": "Mall Aventura Santa Anita",
+  "distrito": "Santa Anita",
+  "claves": [
+   "mall aventura santa anita",
+   "aventura santa anita"
+  ],
+  "lat": -12.056291,
+  "lon": -76.971054
+ },
+ {
+  "nombre": "Real Plaza Puruchuco",
+  "distrito": "Ate",
+  "claves": [
+   "real plaza puruchuco",
+   "puruchuco"
+  ],
+  "lat": -12.040852,
+  "lon": -76.932244
+ },
+ {
+  "nombre": "Minka (Callao)",
+  "distrito": "Callao",
+  "claves": [
+   "minka"
+  ],
+  "lat": -12.047951,
+  "lon": -77.111368
+ },
+ {
+  "nombre": "Gamarra",
+  "distrito": "La Victoria",
+  "claves": [
+   "gamarra",
+   "emporio comercial de gamarra"
+  ],
+  "lat": -12.06528,
+  "lon": -77.012384
+ },
+ {
+  "nombre": "Parque de las Leyendas",
+  "distrito": "San Miguel",
+  "claves": [
+   "parque de las leyendas",
+   "zoologico",
+   "zoologico de lima"
+  ],
+  "lat": -12.069498,
+  "lon": -77.086106
+ },
+ {
+  "nombre": "Museo Larco",
+  "distrito": "Pueblo Libre",
+  "claves": [
+   "museo larco",
+   "larco"
+  ],
+  "lat": -12.072738,
+  "lon": -77.070916
+ },
+ {
+  "nombre": "Museo Nacional de Arqueología, Antropología e Historia",
+  "distrito": "Pueblo Libre",
+  "claves": [
+   "museo nacional de arqueologia",
+   "museo de antropologia"
+  ],
+  "lat": -12.077367,
+  "lon": -77.06228
+ },
+ {
+  "nombre": "Campo de Marte",
+  "distrito": "Jesús María",
+  "claves": [
+   "campo de marte"
+  ],
+  "lat": -12.068118,
+  "lon": -77.041894
+ },
+ {
+  "nombre": "Cristo del Pacífico (Morro Solar)",
+  "distrito": "Chorrillos",
+  "claves": [
+   "cristo del pacifico",
+   "morro solar",
+   "cristo de chorrillos"
+  ],
+  "lat": -12.174259,
+  "lon": -77.028772
+ },
+ {
+  "nombre": "Pachacámac · Santuario Arqueológico",
+  "distrito": "Lurín",
+  "claves": [
+   "pachacamac"
+  ],
+  "lat": -12.255694,
+  "lon": -76.906841
+ },
+ {
+  "nombre": "Real Felipe (Callao)",
+  "distrito": "Callao",
+  "claves": [
+   "real felipe",
+   "fortaleza del real felipe"
+  ],
+  "lat": -12.062748,
+  "lon": -77.149328
+ },
+ {
+  "nombre": "Playa Agua Dulce (Chorrillos)",
+  "distrito": "Chorrillos",
+  "claves": [
+   "playa agua dulce",
+   "agua dulce"
+  ],
+  "lat": -12.16233,
+  "lon": -77.026952
+ },
+ {
+  "nombre": "Costa Verde",
+  "distrito": "Lima",
+  "claves": [
+   "costa verde"
+  ],
+  "lat": -12.079782,
+  "lon": -77.1105
+ },
+ {
+  "nombre": "Estadio Nacional",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "estadio nacional"
+  ],
+  "lat": -12.067661,
+  "lon": -77.033611
+ },
+ {
+  "nombre": "Estadio Monumental (Universitario)",
+  "distrito": "Ate",
+  "claves": [
+   "estadio monumental",
+   "monumental"
+  ],
+  "lat": -12.055647,
+  "lon": -76.935334
+ },
+ {
+  "nombre": "Estadio Alejandro Villanueva (Matute)",
+  "distrito": "La Victoria",
+  "claves": [
+   "matute",
+   "estadio matute",
+   "estadio alejandro villanueva"
+  ],
+  "lat": -12.068504,
+  "lon": -77.022927
+ },
+ {
+  "nombre": "Hospital Rebagliati",
+  "distrito": "Jesús María",
+  "claves": [
+   "rebagliati",
+   "hospital rebagliati"
+  ],
+  "lat": -12.078206,
+  "lon": -77.039986
+ },
+ {
+  "nombre": "Hospital Almenara",
+  "distrito": "La Victoria",
+  "claves": [
+   "almenara",
+   "hospital almenara"
+  ],
+  "lat": -12.059631,
+  "lon": -77.022345
+ },
+ {
+  "nombre": "Hospital Loayza",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "loayza",
+   "hospital loayza"
+  ],
+  "lat": -12.049578,
+  "lon": -77.04427
+ },
+ {
+  "nombre": "Hospital Dos de Mayo",
+  "distrito": "Cercado de Lima",
+  "claves": [
+   "hospital dos de mayo"
+  ],
+  "lat": -12.055924,
+  "lon": -77.015691
+ },
+ {
+  "nombre": "INEN · Instituto Nacional de Enfermedades Neoplásicas",
+  "distrito": "Surquillo",
+  "claves": [
+   "inen"
+  ],
+  "lat": -12.112388,
+  "lon": -76.99864
+ },
+ {
+  "nombre": "Clínica Anglo Americana",
+  "distrito": "San Isidro",
+  "claves": [
+   "clinica anglo americana",
+   "anglo americana"
+  ],
+  "lat": -12.109215,
+  "lon": -77.039135
+ },
+ {
+  "nombre": "Clínica Ricardo Palma",
+  "distrito": "San Isidro",
+  "claves": [
+   "clinica ricardo palma"
+  ],
+  "lat": -12.090712,
+  "lon": -77.018301
+ },
+ {
+  "nombre": "Hospital del Niño (San Borja)",
+  "distrito": "San Borja",
+  "claves": [
+   "hospital del nino",
+   "hospital del niño"
+  ],
+  "lat": -12.085639,
+  "lon": -76.992184
+ },
+ {
+  "nombre": "Plaza de la Bandera",
+  "distrito": "Breña",
+  "claves": [
+   "plaza de la bandera"
+  ],
+  "lat": -12.067501,
+  "lon": -77.061208
+ }
+]

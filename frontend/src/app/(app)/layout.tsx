@@ -62,10 +62,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 href={href}
                 title={label}
                 aria-current={active ? 'page' : undefined}
-                className={`flex items-center justify-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors lg:justify-start ${
+                className={`relative flex items-center justify-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors lg:justify-start ${
                   active ? 'bg-brand-soft text-brand' : 'text-muted hover:bg-surface-2 hover:text-fg'
                 }`}
               >
+                {active && <span aria-hidden className="absolute -left-3 top-2 bottom-2 w-1 rounded-r-full bg-brand" />}
                 <Icon size={19} strokeWidth={active ? 2.25 : 2} />
                 <span className="hidden lg:block">{label}</span>
               </Link>
@@ -87,7 +88,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <main className="min-h-0 min-w-0 flex-1 overflow-y-auto">{children}</main>
+      <main className="min-h-0 min-w-0 flex-1 overflow-y-auto"><div key={pathname} className="page-in h-full">{children}</div></main>
 
       {/* Barra inferior: móvil */}
       <nav
@@ -101,9 +102,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               key={href}
               href={href}
               aria-current={active ? 'page' : undefined}
-              className={`flex flex-col items-center gap-1 py-2.5 text-xs font-medium ${active ? 'text-brand' : 'text-muted'}`}
+              className={`flex flex-col items-center gap-0.5 py-2 text-xs font-medium transition-colors active:scale-95 ${active ? 'text-brand' : 'text-muted'}`}
             >
-              <Icon size={20} strokeWidth={active ? 2.25 : 2} />
+              <span className={`flex h-7 w-14 items-center justify-center rounded-full transition-colors duration-300 ${active ? 'bg-brand-soft' : ''}`}>
+                <Icon size={20} strokeWidth={active ? 2.25 : 2} />
+              </span>
               {label}
             </Link>
           );

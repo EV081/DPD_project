@@ -88,8 +88,21 @@ export interface AutocompleteSuggestion {
 }
 
 // Estructura de cada ruta encontrada por match-trip
+// Segundo tramo de un viaje con transbordo: se baja del primer servicio, se camina `caminata_m` y se sube a este
+export interface TramoTransbordo {
+  route_code: string;
+  system: string;
+  caminata_m: number;
+  boarding_station: string;
+  boarding_id: string;
+  leaving_station: string;
+  leaving_id: string;
+}
+
 export interface MatchedRoute {
-  type: 'DIRECTO_POR_RUTA' | 'DIRECTO_POR_SISTEMA';
+  type: 'DIRECTO_POR_RUTA' | 'DIRECTO_POR_SISTEMA' | 'TRANSBORDO';
+  /** Solo en viajes con transbordo: el segundo servicio. Los campos de arriba describen el primero. */
+  transbordo?: TramoTransbordo;
   route_code: string;
   system: string;
   boarding_station: string;
@@ -128,6 +141,8 @@ export interface TripMatchResponse {
     warning?: string;
   };
   found_routes: MatchedRoute[];
+  /** Viajes con un transbordo (el backend los calcula cuando no hay ruta directa). */
+  found_transfers?: MatchedRoute[];
   recomendacion_viaje?: RecomendacionViaje | null;
 }
 // Vista del pronóstico en el mapa: estado actual + 24 h, o "sin datos ATU" para ese paradero

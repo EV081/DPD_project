@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Search, X, SearchX } from 'lucide-react';
+import { Search, X, SearchX, MapPinned } from 'lucide-react';
 import StationCard from '@/components/StationCard';
 import { Skeleton, EmptyState } from '@/components/Spinner';
 import { getStations } from '@/lib/services';
@@ -52,12 +52,15 @@ function SearchContent() {
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-6 md:px-8 md:py-10">
-      <header>
-        <h1 className="text-3xl font-bold tracking-tight text-fg">Paraderos y estaciones</h1>
-        <p className="mt-1 text-sm text-muted">Busca por nombre o avenida y consulta el aforo previsto.</p>
+      <header className="rise flex items-center gap-4">
+        <span aria-hidden className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand"><MapPinned size={26} /></span>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-fg">Paraderos y estaciones</h1>
+          <p className="mt-1 text-sm text-muted">Busca por nombre o avenida y consulta el aforo previsto.</p>
+        </div>
       </header>
 
-      <div className="relative mt-6">
+      <div className="rise relative mt-6" style={{ '--i': 1 } as React.CSSProperties}>
         <Search size={18} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
         <input
           value={query}
@@ -67,7 +70,7 @@ function SearchContent() {
           className="input !pl-11 !pr-10 !py-4 !text-base shadow-[var(--shadow-card)]"
         />
         {query && (
-          <button onClick={() => setQuery('')} aria-label="Limpiar" className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted hover:bg-surface-2 hover:text-fg">
+          <button type="button" onClick={() => setQuery('')} aria-label="Limpiar búsqueda" className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-lg p-2.5 text-muted hover:bg-surface-2 hover:text-fg">
             <X size={16} />
           </button>
         )}
@@ -75,7 +78,7 @@ function SearchContent() {
 
       <div className="scroll-thin -mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1" role="group" aria-label="Filtrar por sistema">
         {FILTERS.map((f) => (
-          <button key={f.label} className="chip" data-active={system === f.id} aria-pressed={system === f.id} onClick={() => setSystem(f.id)}>
+          <button key={f.label} type="button" className="chip" data-active={system === f.id} aria-pressed={system === f.id} onClick={() => setSystem(f.id)}>
             {f.label}
           </button>
         ))}
@@ -97,7 +100,7 @@ function SearchContent() {
           <>
             <p className="mb-3 text-sm text-muted">{stations.length} resultado{stations.length === 1 ? '' : 's'}</p>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {stations.slice(0, visible).map((s, i) => <StationCard key={`${s.id}-${i}`} station={s} />)}
+              {stations.slice(0, visible).map((s, i) => <StationCard key={`${s.id}-${i}`} station={s} index={i} />)}
             </div>
             {visible < stations.length && (
               <div className="mt-6 text-center">

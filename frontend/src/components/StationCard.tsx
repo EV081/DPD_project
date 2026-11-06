@@ -4,15 +4,17 @@ import { systemInfo } from '@/lib/systems';
 import SystemBadge from './SystemBadge';
 import { Station } from '@/lib/types';
 
-export default function StationCard({ station }: { station: Station }) {
+export default function StationCard({ station, index = 0 }: { station: Station; index?: number }) {
   const info = systemInfo(station.system);
   const Icon = station.system === 'metropolitano' || station.system === 'metro_l1' ? TrainFront : Bus;
   return (
     <Link
       href={`/station/${encodeURIComponent(station.id)}`}
-      className="card group flex items-center gap-3.5 p-4"
+      className="card rise group relative flex items-center gap-3.5 overflow-hidden p-4"
+      style={{ '--i': index } as React.CSSProperties}
     >
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white" style={{ backgroundColor: info.color }}>
+      <span aria-hidden className="absolute inset-y-0 left-0 w-1" style={{ backgroundColor: info.color }} />
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3" style={{ background: `linear-gradient(135deg, ${info.color}, color-mix(in srgb, ${info.color} 75%, #000))` }}>
         <Icon size={22} />
       </span>
       <div className="min-w-0 flex-1">

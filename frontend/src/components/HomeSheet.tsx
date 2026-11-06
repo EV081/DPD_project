@@ -32,26 +32,28 @@ export default function HomeSheet({ name, recents, showStations, onToggleStation
         </div>
       }
     >
-      <div className="space-y-4 px-5 pb-5">
-        <div className="grid grid-cols-2 gap-2.5">
-          <Link href="/destinations" className="flex items-center gap-2.5 rounded-xl bg-brand-soft p-3 text-sm font-semibold text-brand transition-transform active:scale-[.98]">
-            <Navigation size={18} /> Planificar viaje
+      <div className="space-y-4 px-5 pb-5 pt-2">
+        <div className="stagger grid grid-cols-2 items-stretch gap-2.5">
+          <Link href="/destinations" className="group flex h-full flex-col gap-2.5 rounded-2xl border border-brand/25 bg-brand-soft p-3.5 text-sm font-semibold text-fg transition-[transform,background-color,border-color] hover:-translate-y-0.5 hover:border-brand/50 active:scale-[.97]">
+            <Navigation size={20} className="text-brand transition-transform duration-300 group-hover:rotate-12" />
+            Planificar viaje
           </Link>
           <button
             type="button"
             aria-pressed={showStations}
             onClick={onToggleStations}
-            className={`flex items-center gap-2.5 rounded-xl p-3 text-sm font-semibold transition-all active:scale-[.98] ${
-              showStations ? 'bg-brand text-white dark:text-[#06101f]' : 'bg-surface-2 text-fg'
+            className={`group flex h-full flex-col items-start gap-2.5 rounded-2xl border p-3.5 text-left text-sm font-semibold text-fg transition-[transform,background-color,border-color] hover:-translate-y-0.5 active:scale-[.97] ${
+              showStations ? 'border-brand/50 bg-brand-soft' : 'border-line bg-surface-2 hover:border-brand/30'
             }`}
           >
-            <MapPin size={18} /> {showStations ? 'Ocultar paraderos' : 'Ver paraderos'}
+            <MapPin size={20} className={`transition-colors ${showStations ? 'text-brand' : 'text-muted group-hover:text-brand'}`} />
+            {showStations ? 'Ocultar paraderos' : 'Ver paraderos'}
           </button>
         </div>
 
-        <button type="button" onClick={onReport} className="flex w-full items-center gap-2.5 rounded-xl bg-surface-2 p-3 text-sm font-semibold text-fg transition-transform active:scale-[.98]">
-          <Siren size={18} className="text-danger" /> Reportar un incidente
-          <span className="ml-auto text-xs font-normal text-muted">anónimo · ayuda a tu zona</span>
+        <button type="button" onClick={onReport} className="group flex w-full items-center gap-3 rounded-2xl border border-line bg-surface-2 p-3.5 text-left text-sm font-semibold text-fg transition-[transform,border-color] hover:border-danger/40 active:scale-[.98]">
+          <Siren size={20} className="shrink-0 text-danger" />
+          <span>Reportar un incidente<span className="block text-xs font-normal text-muted">Es anónimo y ayuda a tu zona</span></span>
         </button>
 
         <div>
@@ -62,8 +64,8 @@ export default function HomeSheet({ name, recents, showStations, onToggleStation
             </p>
           ) : (
             <ul className="-mx-2">
-              {recents.map((r) => (
-                <li key={r.label}>
+              {recents.map((r, i) => (
+                <li key={r.label} className="rise" style={{ '--i': i + 2 } as React.CSSProperties}>
                   <button
                     type="button"
                     onClick={() => onPickRecent(r)}

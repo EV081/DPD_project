@@ -34,12 +34,12 @@ export default function Modal({ title, onClose, children, className = '' }: Prop
   }, [onClose]);
 
   return (
-    <div className={`fixed inset-0 z-[2000] flex items-end justify-center bg-black/50 p-3 sm:items-center ${className}`} onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className={`fixed inset-0 z-[2000] flex items-end justify-center overscroll-contain bg-black/50 p-3 sm:items-center ${className}`} onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}
-        className="float-panel animate-sheet-in max-h-[90dvh] w-full max-w-md overflow-y-auto outline-none">
+        className="float-panel animate-sheet-in max-h-[90dvh] w-full max-w-md overflow-y-auto overscroll-contain outline-none">
         <div className="flex items-start justify-between gap-3 px-5 pb-2 pt-5">
           <h2 id={titleId} className="text-lg font-bold text-fg">{title}</h2>
-          <button onClick={onClose} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2"><X size={18} /></button>
+          <button type="button" onClick={onClose} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2"><X size={18} /></button>
         </div>
         <div className="px-5 pb-5">{children}</div>
       </div>

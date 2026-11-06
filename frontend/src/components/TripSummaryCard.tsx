@@ -1,4 +1,4 @@
-import { Bus, TrainFront, X, Lightbulb } from 'lucide-react';
+import { Bus, TrainFront, X, Lightbulb, Info } from 'lucide-react';
 import { TripMatchResponse, MatchedRoute, ForecastView } from '@/lib/types';
 import ForecastPanel from './ForecastPanel';
 import BottomSheet from './BottomSheet';
@@ -17,14 +17,15 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const nombreServicio = (route: MatchedRoute): string => {
-  switch (route.system) {
-    case 'metropolitano': return 'Metropolitano';
+const nombreDe = (sistema: string, codigo: string): string => {
+  switch (sistema) {
+    case 'metropolitano': return !codigo || codigo.toUpperCase() === 'METROPOLITANO' ? 'Metropolitano' : `Metropolitano · ${codigo}`;
     case 'metro_l1': return 'Metro Línea 1';
-    case 'alimentadores': return `Alimentador ${route.route_code}`;
-    default: return `Corredor ${route.route_code}`;
+    case 'alimentadores': return `Alimentador ${codigo}`;
+    default: return `Corredor ${codigo}`;
   }
 };
+const nombreServicio = (route: MatchedRoute): string => nombreDe(route.system, route.route_code);
 
 // Paso de la línea de tiempo: punto de color + línea que lo une con el siguiente
 function Step({ color, last, children }: { color: string; last?: boolean; children: React.ReactNode }) {
@@ -38,9 +39,11 @@ function Step({ color, last, children }: { color: string; last?: boolean; childr
 }
 
 export default function TripSummaryCard({ tripData, selectedRoute, forecast, loadingForecast, forecastError, onRetry, walkSlot, onClose, children }: Props) {
-  const totalWalk = Math.round(selectedRoute.origin_walk_m + selectedRoute.dest_walk_m);
+  const t = selectedRoute.transbordo;
+  const totalWalk = Math.round(selectedRoute.origin_walk_m + selectedRoute.dest_walk_m + (t?.caminata_m ?? 0));
   const Icon = selectedRoute.system === 'metropolitano' || selectedRoute.system === 'metro_l1' ? TrainFront : Bus;
   const color = systemInfo(selectedRoute.system).color;
+  const color2 = t ? systemInfo(t.system).color : color;
 
   return (
     <BottomSheet
@@ -60,8 +63,11 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
             <Icon size={24} />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="text-base font-bold">{nombreServicio(selectedRoute)}</p>
-            <p className="text-sm text-white/85">Caminata total · {totalWalk} m</p>
+            <p className="text-base font-bold">{t ? `${nombreServicio(selectedRoute)} + ${nombreDe(t.system, t.route_code)}` : nombreServicio(selectedRoute)}</p>
+            <p className="text-sm text-white/85">
+              {t ? 'Con transbordo · ' : ''}Caminata total · {totalWalk} m
+              {t && selectedRoute.costo_generalizado_min != null ? ` · ≈ ${Math.round(selectedRoute.costo_generalizado_min)} min` : ''}
+            </p>
           </div>
         </div>
 
@@ -76,12 +82,33 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
           </Step>
           <Step color={color}>
             <p className="font-semibold text-fg">Bájate en {selectedRoute.leaving_station}</p>
-            <p className="text-muted">y camina {Math.round(selectedRoute.dest_walk_m)} m</p>
+            <p className="text-muted">
+              {t ? `y camina ${Math.round(t.caminata_m)} m hasta ${t.boarding_station}` : `y camina ${Math.round(selectedRoute.dest_walk_m)} m`}
+            </p>
           </Step>
+          {t && (
+            <>
+              <Step color={color2}>
+                <p className="font-semibold text-fg">Sube en {t.boarding_station}</p>
+                <p className="text-muted">{nombreDe(t.system, t.route_code)}</p>
+              </Step>
+              <Step color={color2}>
+                <p className="font-semibold text-fg">Bájate en {t.leaving_station}</p>
+                <p className="text-muted">y camina {Math.round(selectedRoute.dest_walk_m)} m</p>
+              </Step>
+            </>
+          )}
           <Step color="var(--ok)" last>
             <p className="font-semibold text-fg">Llegas a tu destino</p>
           </Step>
         </ol>
+
+        {t && (
+          <p className="flex gap-2.5 rounded-xl bg-surface-2 px-3.5 py-3 text-sm text-muted">
+            <Info size={16} className="mt-0.5 shrink-0" />
+            <span>No hay ruta directa. Los tiempos del transbordo son estimados (caminata, espera y viaje típicos) y el aforo de abajo es del primer paradero.</span>
+          </p>
+        )}
 
         {tripData.recomendacion_viaje?.mensaje && (
           <p className="flex gap-2.5 rounded-xl bg-ok/12 px-3.5 py-3 text-sm text-ok">

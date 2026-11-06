@@ -5,6 +5,7 @@ import type * as LType from 'leaflet';
 import { Station } from '@/lib/types';
 import { Coords } from '@/lib/geolocation';
 import { systemInfo } from '@/lib/systems';
+import { useTheme } from '@/context/ThemeContext';
 
 interface Destination { lat: number; lon: number; name: string }
 interface Caminata { normal: any; segura: any | null; seleccionada: 'normal' | 'segura' }
@@ -25,9 +26,22 @@ interface Props {
   onStationClick: (station: Station) => void;
 }
 
-// Teselas de OpenStreetMap (sin clave). El modo oscuro se logra con un filtro CSS (globals.css)
-const TILES_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-const ATTRIBUTION = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+// Lienzos grises de Esri (sin clave), sobrios como los de Uber/inDrive: base + etiquetas, en claro y oscuro.
+// (Los mosaicos de CARTO ya piden clave de API.) Nota: Esri sirve {z}/{y}/{x}; su nivel nativo máximo es 16.
+const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
+// Lienzos grises de Esri en ambos temas, estilo Uber. Ojo: dibujan pocas calles menores, así que una ruta puede
+// parecer ir por una manzana aunque siga una calle de OSM (el grafo de rutas sale de OSM).
+const TILES = {
+  light: { base: `${ESRI}/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, labels: `${ESRI}/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}` as string | null, nativo: 16 },
+  dark: { base: `${ESRI}/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}`, labels: `${ESRI}/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}` as string | null, nativo: 16 },
+};
+const ATTRIBUTION = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · Esri, HERE, Garmin';
+
+// Trazo con borde blanco (o casi negro en oscuro) para que la ruta resalte sobre las calles
+// Simplifica el trazo según el zoom (px de pantalla): quita zigzags de pocos metros (plazas, cruces) sin alejar la línea de la calle
+const SUAVIZADO = 5;
+const CASING_LIGHT = '#ffffff';
+const CASING_DARK = '#0a101c';
 
 const dot = (color: string, size: number) =>
   `<div style="background:${color};width:${size}px;height:${size}px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>`;
@@ -42,7 +56,10 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
   const L = useRef<typeof LType | null>(null);
   const map = useRef<LType.Map | null>(null);
   const markers = useRef<LType.LayerGroup | null>(null);
-  const routeLayer = useRef<LType.GeoJSON | null>(null);
+  const routeLayer = useRef<LType.LayerGroup | null>(null);
+  const tiles = useRef<{ base: LType.TileLayer; labels: LType.TileLayer } | null>(null);
+  const { resolved } = useTheme();
+  const casing = resolved === 'dark' ? CASING_DARK : CASING_LIGHT;
   const walkLayer = useRef<LType.LayerGroup | null>(null);
   const destMarker = useRef<LType.Marker | null>(null);
   const userMarker = useRef<LType.Marker | null>(null);
@@ -65,7 +82,18 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
       const m = leaflet.map(el.current, { zoomControl: false }).setView([center.lat, center.lon], 15);
       map.current = m;
       leaflet.control.zoom({ position: 'topright' }).addTo(m);
-      leaflet.tileLayer(TILES_URL, { maxZoom: 19, attribution: ATTRIBUTION }).addTo(m);
+      const t = TILES[document.documentElement.classList.contains('dark') ? 'dark' : 'light'];
+      // Esri solo tiene detalle hasta el zoom 16: se amplía hasta 18 y las etiquetas se ocultan desde el 18 (si no, salen gigantes y borrosas)
+      const opts = { maxZoom: 17 };
+      // Etiquetas sobre los mosaicos pero debajo de las rutas (overlayPane = 400)
+      const etiquetas = m.createPane('etiquetas');
+      etiquetas.style.zIndex = '250';
+      etiquetas.style.pointerEvents = 'none';
+      tiles.current = {
+        base: leaflet.tileLayer(t.base, { ...opts, maxNativeZoom: t.nativo, className: 'tiles-base', attribution: ATTRIBUTION }).addTo(m),
+        labels: leaflet.tileLayer(t.labels ?? '', { ...opts, maxZoom: 16, maxNativeZoom: 16, pane: 'etiquetas' }),
+      };
+      if (t.labels) tiles.current.labels.addTo(m);
 
       userMarker.current = leaflet
         .marker([center.lat, center.lon], {
@@ -115,6 +143,17 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Cambia de mosaicos al alternar claro/oscuro
+  useEffect(() => {
+    const t = tiles.current, m = map.current;
+    if (!t || !m) return;
+    const cfg = TILES[resolved];
+    t.base.options.maxNativeZoom = cfg.nativo;
+    t.base.setUrl(cfg.base);
+    if (cfg.labels) { t.labels.setUrl(cfg.labels); if (!m.hasLayer(t.labels)) t.labels.addTo(m); }
+    else m.removeLayer(t.labels);
+  }, [resolved, ready]);
+
   // Se adapta si cambia el tamaño de la ventana o del panel contenedor
   useEffect(() => {
     if (!el.current) return;
@@ -139,11 +178,17 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
     if (!leaflet || !m) return;
     if (routeLayer.current) { m.removeLayer(routeLayer.current); routeLayer.current = null; }
     if (routeGeoJson) {
-      routeLayer.current = leaflet.geoJSON(routeGeoJson, {
-        style: (f) => ({ color: f?.properties?.color_hex || '#2563eb', weight: 5, opacity: 0.9, lineCap: 'round', lineJoin: 'round' }),
-      }).addTo(m);
+      const g = leaflet.layerGroup();
+      // Los tramos a pie (punteados) no llevan borde: se verían como una banda sólida
+      leaflet.geoJSON(routeGeoJson, { filter: (f) => !f.properties?.punteada, style: () => ({ color: casing, weight: 10, opacity: 1, lineCap: 'round', lineJoin: 'round', smoothFactor: SUAVIZADO }) }).addTo(g);
+      leaflet.geoJSON(routeGeoJson, {
+        style: (f) => f?.properties?.punteada
+          ? { color: f.properties.color_hex, weight: 4, opacity: 0.9, dashArray: '2 8', lineCap: 'round', lineJoin: 'round' }
+          : { color: f?.properties?.color_hex || '#2563eb', weight: 6, opacity: 1, lineCap: 'round', lineJoin: 'round', smoothFactor: SUAVIZADO },
+      }).addTo(g);
+      routeLayer.current = g.addTo(m);
     }
-  }, [routeGeoJson, ready]);
+  }, [routeGeoJson, ready, casing]);
 
   useEffect(() => {
     const leaflet = L.current;
@@ -158,14 +203,18 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
         style: () => ({
           color: tipo === 'segura' ? '#16a34a' : '#2563eb',
           weight: activa ? 6 : 4,
-          opacity: activa ? 0.95 : 0.55,
+          opacity: activa ? 1 : 0.6,
           dashArray: activa ? undefined : '6 8',
-          lineCap: 'round', lineJoin: 'round',
+          lineCap: 'round', lineJoin: 'round', smoothFactor: SUAVIZADO,
         }),
       });
     };
     const otra = walk.seleccionada === 'segura' ? 'normal' : 'segura';
     dibujar(walk[otra], false, otra)?.addTo(grupo);
+    // Borde blanco bajo la ruta elegida
+    if (walk[walk.seleccionada]) {
+      leaflet.geoJSON(walk[walk.seleccionada], { style: () => ({ color: casing, weight: 11, opacity: 1, lineCap: 'round', lineJoin: 'round', smoothFactor: SUAVIZADO }) }).addTo(grupo);
+    }
     const activa = dibujar(walk[walk.seleccionada], true, walk.seleccionada);
     activa?.addTo(grupo);
     grupo.addTo(m);
@@ -173,7 +222,7 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
     // Encuadra la caminata solo cuando aparece (no al alternar entre normal y segura)
     if (activa && !walkFit.current) { m.fitBounds(activa.getBounds(), { padding: [60, 60], maxZoom: 17 }); }
     walkFit.current = true;
-  }, [walk, ready]);
+  }, [walk, ready, casing]);
 
   useEffect(() => { if (!walk) walkFit.current = false; }, [walk]);
 

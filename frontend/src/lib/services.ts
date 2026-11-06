@@ -68,8 +68,15 @@ export const getNearbyStations = async (lat: number, lng: number, radius = 1500)
   return res.data;
 };
 
-export const getRouteGeoJson = async (systemName: string, routeCode?: string | number) => {
-  const mappedSystem = mapSystemToBackendModel(systemName);
+/**
+ * Trazado de un sistema. En el Metropolitano, `porServicio` pide el archivo con los 18 servicios (Expresos, Rutas A-D,
+ * Lechucero…) en vez de la línea única de la troncal: un viaje solo se puede recortar bien si algún servicio pasa por
+ * ambos paraderos (la troncal es un solo servicio y no llega, por ejemplo, hasta la UNI).
+ */
+export const getRouteGeoJson = async (systemName: string, routeCode?: string | number, porServicio = false) => {
+  const mappedSystem = porServicio && systemName?.toLowerCase().trim() === 'metropolitano'
+    ? 'metropolitano'
+    : mapSystemToBackendModel(systemName);
   
   const params: any = {};
   if (routeCode) {

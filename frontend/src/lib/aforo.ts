@@ -72,6 +72,17 @@ export const formatoHora = (fechaHora?: string): string => {
 export const rutasOfrecibles = (rutas: MatchedRoute[] = []): MatchedRoute[] =>
   rutas.filter((r) => !r.sentido_contrario);
 
+/**
+ * Opciones de viaje: las rutas directas; y si no hay ninguna, los viajes con un transbordo.
+ * `conTransbordo` avisa a la pantalla para que lo explique ("no hay ruta directa, pero…").
+ */
+export const opcionesDeViaje = (resp: { found_routes?: MatchedRoute[]; found_transfers?: MatchedRoute[] }): { rutas: MatchedRoute[]; conTransbordo: boolean } => {
+  const directas = rutasOfrecibles(resp.found_routes);
+  if (directas.length > 0) return { rutas: directas, conTransbordo: false };
+  const transbordos = resp.found_transfers ?? [];
+  return { rutas: transbordos, conTransbordo: transbordos.length > 0 };
+};
+
 export const textoProbabilidadLleno = (p?: number | null): string | null =>
   p !== null && p !== undefined && p >= 0.2 ? `${Math.round(p * 100)}% de que llegue lleno` : null;
 

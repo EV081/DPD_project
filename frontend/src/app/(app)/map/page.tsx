@@ -20,11 +20,27 @@ import HomeSheet from '@/components/HomeSheet';
 import { useAuth } from '@/context/AuthContext';
 import { getRecents, addRecent, RecentDestination } from '@/lib/recents';
 import { getStations, getRouteGeoJson, getRouteCodeFromStation, matchTrip, getStationPrediction } from '@/lib/services';
-import { rutasOfrecibles } from '@/lib/aforo';
+import { opcionesDeViaje } from '@/lib/aforo';
 import { tramoEntre } from '@/lib/route';
 import { TRIP_STORAGE_KEY, FOCUS_STORAGE_KEY } from '@/lib/constants';
 import { getUserLocation, LIMA_CENTER, Coords } from '@/lib/geolocation';
-import { Station, TripMatchResponse, MatchedRoute, AutocompleteSuggestion, ForecastView } from '@/lib/types';
+import { Station, TripMatchResponse, MatchedRoute, TramoTransbordo, AutocompleteSuggestion, ForecastView } from '@/lib/types';
+
+// Trazado recortado entre un paradero de subida y uno de bajada (sin tocar el estado), o null si no hay trazado que cubra ambos
+async function trazoDeTramo(subida: Station, bajada: Station): Promise<any | null> {
+  const code = getRouteCodeFromStation(subida);
+  const geo = await getRouteGeoJson(subida.system, code, true);
+  let features: any[] = Array.isArray(geo) ? geo : geo?.features || [];
+  if (code && features.length > 0) {
+    const matched = features.filter((f) => {
+      const p = f.properties || {};
+      const v = p.ruta || p.servicio || p.osm_ref || p.codigo || p.estacion;
+      return String(v).toLowerCase() === String(code).toLowerCase();
+    });
+    if (matched.length > 0) features = matched;
+  }
+  return tramoEntre(features, { lat: subida.latitude, lon: subida.longitude }, { lat: bajada.latitude, lon: bajada.longitude });
+}
 
 export default function MapPage() {
   const { user } = useAuth();
@@ -50,7 +66,7 @@ export default function MapPage() {
   const [walk, setWalk] = useState<CaminataMapa | null>(null);
   const [reportOpen, setReportOpen] = useState(false);
   const lastLoad = useRef(0);                               // descarta respuestas de un paradero anterior
-  const lastRequest = useRef<{ station: Station; haciaId?: string } | null>(null);
+  const lastRequest = useRef<{ station: Station; haciaId?: string; tramo2?: TramoTransbordo } | null>(null);
 
   useEffect(() => { setRecents(getRecents()); }, []);
 
@@ -69,10 +85,10 @@ export default function MapPage() {
 
   useEffect(() => { loadNetwork(); }, [loadNetwork]);
 
-  const loadStation = useCallback(async (station: Station, openCard = true, haciaId?: string) => {
+  const loadStation = useCallback(async (station: Station, openCard = true, haciaId?: string, tramo2?: TramoTransbordo) => {
     const mine = ++lastLoad.current;
     const vigente = () => mine === lastLoad.current;
-    lastRequest.current = { station, haciaId };
+    lastRequest.current = { station, haciaId, tramo2 };
     if (openCard) setSelectedStation(station);
     setLoadingForecast(true);
     setForecastError(false);
@@ -81,7 +97,7 @@ export default function MapPage() {
 
     try {
       const routeCode = getRouteCodeFromStation(station);
-      const geo = await getRouteGeoJson(station.system, routeCode);
+      const geo = await getRouteGeoJson(station.system, routeCode, !!haciaId);
       if (!vigente()) return;
       let features: any[] = Array.isArray(geo) ? geo : geo?.features || [];
       if (routeCode && features.length > 0) {
@@ -100,7 +116,25 @@ export default function MapPage() {
           { lat: station.latitude, lon: station.longitude },
           { lat: bajada.latitude, lon: bajada.longitude },
         );
-        if (tramo) features = [tramo];
+        // Si ningún trazado pasa cerca de ambos paraderos no se dibuja otra línea (una ruta equivocada confunde más que ninguna)
+        features = tramo ? [tramo] : [];
+      }
+      // Viaje con transbordo: se dibuja también el segundo tramo
+      if (tramo2) {
+        const sube2 = stations.find((s) => s.id === tramo2.boarding_id);
+        const baja2 = stations.find((s) => s.id === tramo2.leaving_id);
+        if (sube2 && baja2) {
+          const t2 = await trazoDeTramo(sube2, baja2);
+          if (!vigente()) return;
+          if (t2) {
+            const baja1 = haciaId ? stations.find((s) => s.id === haciaId) : undefined;
+            const aPie = baja1
+              ? [{ type: 'Feature', properties: { color_hex: '#64748b', punteada: true },
+                   geometry: { type: 'LineString', coordinates: [[baja1.longitude, baja1.latitude], [sube2.longitude, sube2.latitude]] } }]
+              : [];
+            features = [...features, ...aPie, t2];
+          }
+        }
       }
       if (features.length > 0) setRouteGeoJson({ type: 'FeatureCollection', features });
     } catch (error) {
@@ -126,7 +160,7 @@ export default function MapPage() {
     setTripData(trip);
     setSelectedRoute(route);
     setSelectedStation(null);
-    setFilterIds([route.boarding_id, route.leaving_id]);
+    setFilterIds([route.boarding_id, route.leaving_id, ...(route.transbordo ? [route.transbordo.boarding_id, route.transbordo.leaving_id] : [])]);
   }, []);
 
   // Ruta elegida en /destinations: llega por sessionStorage y se consume una vez
@@ -139,7 +173,7 @@ export default function MapPage() {
       const { selectedRoute: route, destination } = JSON.parse(raw);
       showRoute({ origin: location, destination, radius_meters: 1000, found_routes: [route] }, route);
       const boarding = stations.find((s) => s.id === route.boarding_id);
-      if (boarding) loadStation(boarding, false, route.leaving_id);
+      if (boarding) loadStation(boarding, false, route.leaving_id, route.transbordo);
     } catch (e) {
       console.error(e);
     }
@@ -161,12 +195,15 @@ export default function MapPage() {
   const handleSearchDestination = async (input: string | AutocompleteSuggestion) => {
     if (!location) return;
     setNotice(null);
+    closeTrip();   // una búsqueda nueva no deja la ruta anterior dibujada (si no hay ruta, el mapa queda limpio)
     const dest = typeof input === 'string' ? input : { lat: input.lat, lon: input.lon };
     try {
-      const response = await matchTrip(location.lat, location.lon, dest);
-      const ofrecibles = rutasOfrecibles(response.found_routes);
+      const respuesta = await matchTrip(location.lat, location.lon, dest);
+      const response = typeof input === 'string' ? respuesta
+        : { ...respuesta, destination: { ...respuesta.destination, resolved_name: input.display_name } };
+      const { rutas: ofrecibles } = opcionesDeViaje(response);   // sin ruta directa llegan los transbordos; la tarjeta lo explica
       if (ofrecibles.length === 0) {
-        setNotice('No se encontró una ruta directa a ese destino dentro del radio de búsqueda.');
+        setNotice('No se encontró una ruta a ese destino, ni directa ni con un transbordo, dentro del radio de búsqueda.');
         return;
       }
       const best = ofrecibles[0]; // la de menor costo generalizado
@@ -177,14 +214,14 @@ export default function MapPage() {
       ));
       showRoute(response, best);
       const boarding = stations.find((s) => s.id === best.boarding_id);
-      if (boarding) loadStation(boarding, false, best.leaving_id);
+      if (boarding) loadStation(boarding, false, best.leaving_id, best.transbordo);
     } catch (error) {
       console.error('Error al planificar el viaje:', error);
       setNotice('No se pudo planificar el viaje. Inténtalo de nuevo.');
     }
   };
 
-  const retryForecast = () => { if (lastRequest.current) loadStation(lastRequest.current.station, false, lastRequest.current.haciaId); };
+  const retryForecast = () => { if (lastRequest.current) loadStation(lastRequest.current.station, false, lastRequest.current.haciaId, lastRequest.current.tramo2); };
 
   const closeTrip = () => {
     lastLoad.current++;

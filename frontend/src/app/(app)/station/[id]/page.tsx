@@ -75,11 +75,11 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-6 md:px-8 md:py-10">
-      <button onClick={() => router.back()} className="btn btn-ghost -ml-3 mb-4 !px-3">
+      <button type="button" onClick={() => router.back()} className="btn btn-ghost -ml-3 mb-4 !px-3">
         <ArrowLeft size={16} /> Volver
       </button>
 
-      <header className="card relative overflow-hidden p-6 pt-7">
+      <header className="card rise relative overflow-hidden p-6 pt-7" style={{ backgroundImage: `linear-gradient(160deg, color-mix(in srgb, ${systemInfo(station.system).color} 14%, var(--surface)), var(--surface) 55%)` }}>
         <div aria-hidden className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundColor: systemInfo(station.system).color }} />
         <div className="flex flex-wrap items-center justify-between gap-2">
           <SystemBadge system={station.system} />
@@ -100,9 +100,9 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
         </div>
       </header>
 
-      <section className="mt-6" aria-label="Seguridad del acceso"><SeguridadAcceso station={station} /></section>
+      <section className="rise mt-6" style={{ '--i': 1 } as React.CSSProperties} aria-label="Seguridad del acceso"><SeguridadAcceso station={station} /></section>
 
-      <section className="mt-8" aria-label="Pronóstico de aforo">
+      <section className="rise mt-8" style={{ '--i': 2 } as React.CSSProperties} aria-label="Pronóstico de aforo">
         <h2 className="text-lg font-semibold text-fg">Pronóstico de aforo</h2>
         <p className="mt-0.5 text-sm text-muted">Ocupación estimada a bordo con demanda pronosticada (LightGBM) y matriz origen-destino.</p>
 
@@ -110,14 +110,14 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
           <div className="flex items-center justify-center gap-2.5 py-16 text-sm text-muted"><Spinner size={18} /> Calculando predicciones…</div>
         ) : forecast && cur ? (
           <div className="mt-4 space-y-5">
-            <div className="card flex flex-wrap items-center gap-x-8 gap-y-3 p-5">
+            <div className="card rise flex flex-wrap items-center gap-x-8 gap-y-3 p-5">
               <div>
                 <p className="eyebrow">Ahora</p>
-                <p className={`mt-0.5 text-2xl font-bold ${claseAforo(cur.class)}`}>{etiquetaClase(cur.class)}</p>
+                <p className={`mt-0.5 text-3xl font-bold tracking-tight ${claseAforo(cur.class)}`}>{etiquetaClase(cur.class)}</p>
               </div>
               <div>
                 <p className="eyebrow">Espera estimada</p>
-                <p className="mt-0.5 text-2xl font-bold tabular-nums text-fg">{textoEspera(cur)}</p>
+                <p className="mt-0.5 text-3xl font-bold tracking-tight tabular-nums text-fg">{textoEspera(cur)}</p>
               </div>
               {extraTrafico !== null && (
                 <p className="flex items-center gap-2 text-sm text-warn">
@@ -130,7 +130,7 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
             <div>
               <h3 className="mb-3 text-sm font-semibold text-fg">Próximas horas</h3>
               <div className="scroll-thin -mx-1 flex gap-3 overflow-x-auto px-1 pb-3">
-                {forecast.forecast.filter((p) => p.datetime >= cur.datetime).map((p, i) => <PredictionCard key={i} prediction={p} />)}
+                {forecast.forecast.filter((p) => p.datetime >= cur.datetime).map((p, i) => <PredictionCard key={i} prediction={p} index={i} />)}
               </div>
             </div>
 

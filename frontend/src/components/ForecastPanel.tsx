@@ -83,7 +83,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry }: Pro
         </dl>
 
         <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
-          <div className="h-full rounded-full transition-all" style={{ width: `${anchoBarra(current.crowding)}%`, backgroundColor: colorOcupacion(current.class) }} />
+          <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(current.crowding)}%`, backgroundColor: colorOcupacion(current.class) }} />
         </div>
 
         {(extraTrafico !== null || lleno || (current.recommendation === 'cambiar_paradero' && current.alternativa)) && (
