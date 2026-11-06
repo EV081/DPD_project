@@ -194,3 +194,10 @@ export interface FeedbackPayload {
 export const sendFeedback = async (payload: FeedbackPayload): Promise<void> => {
   await api.post('/feedback', payload);
 };
+
+// Trayecto a pie por calles entre dos paraderos (transbordo). Lanza si el servicio no encuentra ruta.
+export const getCaminata = async (
+  desde: { latitude: number; longitude: number },
+  hasta: { latitude: number; longitude: number },
+): Promise<{ distancia_m: number; minutos: number; geojson: any }> =>
+  (await api.get('/geo/caminata', { params: { lat1: desde.latitude, lon1: desde.longitude, lat2: hasta.latitude, lon2: hasta.longitude } })).data;

@@ -1,8 +1,10 @@
-import { Bus, TrainFront, X, Lightbulb, Info } from 'lucide-react';
+import { useId, useState } from 'react';
+import { Bus, TrainFront, X, Lightbulb, TriangleAlert, ChevronDown } from 'lucide-react';
 import { TripMatchResponse, MatchedRoute, ForecastView } from '@/lib/types';
 import ForecastPanel from './ForecastPanel';
 import BottomSheet from './BottomSheet';
 import { systemInfo } from '@/lib/systems';
+import { etiquetaClase, claseAforo, colorOcupacion, textoEspera } from '@/lib/aforo';
 
 interface Props {
   tripData: TripMatchResponse;
@@ -38,40 +40,72 @@ function Step({ color, last, children }: { color: string; last?: boolean; childr
   );
 }
 
+// Sección plegable: solo una abierta a la vez para que la hoja no se vuelva una columna larga
+function Seccion({ titulo, abierta, onToggle, children }: { titulo: string; abierta: boolean; onToggle: () => void; children: React.ReactNode }) {
+  const id = useId();
+  return (
+    <section className="border-t border-line">
+      <h4>
+        <button type="button" onClick={onToggle} aria-expanded={abierta} aria-controls={id} className="flex w-full items-center justify-between gap-3 py-3.5 text-left text-sm font-semibold text-fg outline-none focus-visible:text-brand">
+          <span className="min-w-0 truncate">{titulo}</span>
+          <ChevronDown size={18} aria-hidden className={`shrink-0 text-muted transition-transform ${abierta ? 'rotate-180' : ''}`} />
+        </button>
+      </h4>
+      <div id={id} hidden={!abierta} className="pb-4">{children}</div>
+    </section>
+  );
+}
+
 export default function TripSummaryCard({ tripData, selectedRoute, forecast, loadingForecast, forecastError, onRetry, walkSlot, onClose, children }: Props) {
+  const [abierta, setAbierta] = useState<'aforo' | 'camino' | null>('aforo');
+  const alternar = (k: 'aforo' | 'camino') => setAbierta((a) => (a === k ? null : k));
   const t = selectedRoute.transbordo;
-  const totalWalk = Math.round(selectedRoute.origin_walk_m + selectedRoute.dest_walk_m + (t?.caminata_m ?? 0));
   const Icon = selectedRoute.system === 'metropolitano' || selectedRoute.system === 'metro_l1' ? TrainFront : Bus;
   const color = systemInfo(selectedRoute.system).color;
   const color2 = t ? systemInfo(t.system).color : color;
+  const actual = forecast && !forecast.sinDatos ? forecast.current : null;
+  const servicio = t ? `${nombreServicio(selectedRoute)} + ${nombreDe(t.system, t.route_code)}` : nombreServicio(selectedRoute);
+
+  // Un solo aviso, el más accionable: cambiar de paradero > recomendación del viaje
+  const alternativa = actual?.recommendation === 'cambiar_paradero' ? actual.alternativa : null;
+  const mensaje = tripData.recomendacion_viaje?.mensaje;
 
   return (
     <BottomSheet
       header={
-        <header className="flex items-start justify-between gap-3 px-5 pb-3 pt-1">
-          <div className="min-w-0">
-            <p className="eyebrow">Ruta recomendada</p>
-            <h3 className="mt-0.5 truncate text-lg font-bold text-fg">{tripData.destination.resolved_name}</h3>
+        <header className="px-5 pb-3 pt-1">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="eyebrow">Ruta recomendada</p>
+              <h3 className="mt-0.5 truncate text-lg font-bold text-fg">{tripData.destination.resolved_name}</h3>
+            </div>
+            <button onClick={onClose} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2"><X size={18} /></button>
           </div>
-          <button onClick={onClose} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2"><X size={18} /></button>
+          {/* Resumen siempre visible, incluso con la hoja plegada */}
+          <div className="mt-2.5 flex items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-white" style={{ backgroundColor: color }}>
+              <Icon size={18} aria-hidden />
+            </span>
+            <div className="min-w-0 flex-1 text-sm">
+              <p className="truncate font-semibold text-fg">{servicio}</p>
+              <p className="flex items-center gap-1.5 truncate text-muted">
+                <span className="truncate">Sube en {selectedRoute.boarding_station}</span>
+                {actual && actual.class !== 'Sin_servicio' && (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span aria-hidden className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: colorOcupacion(actual.class) }} />
+                    <span className={`shrink-0 font-medium ${claseAforo(actual.class)}`}>{etiquetaClase(actual.class)}</span>
+                    <span className="shrink-0">· {textoEspera(actual)}</span>
+                  </>
+                )}
+              </p>
+            </div>
+          </div>
         </header>
       }
     >
-      <div className="space-y-5 px-5 pb-5">
-        <div className="flex items-center gap-3.5 rounded-2xl p-3.5 text-white" style={{ background: `linear-gradient(135deg, ${color}, color-mix(in srgb, ${color} 70%, #000))` }}>
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/20 backdrop-blur">
-            <Icon size={24} />
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="text-base font-bold">{t ? `${nombreServicio(selectedRoute)} + ${nombreDe(t.system, t.route_code)}` : nombreServicio(selectedRoute)}</p>
-            <p className="text-sm text-white/85">
-              {t ? 'Con transbordo · ' : ''}Caminata total · {totalWalk} m
-              {t && selectedRoute.costo_generalizado_min != null ? ` · ≈ ${Math.round(selectedRoute.costo_generalizado_min)} min` : ''}
-            </p>
-          </div>
-        </div>
-
-        <ol aria-label="Itinerario" className="px-1">
+      <div className="px-5 pb-2">
+        <ol aria-label="Itinerario" className="px-1 pb-4">
           <Step color="var(--muted)">
             <p className="font-semibold text-fg">Camina {Math.round(selectedRoute.origin_walk_m)} m</p>
             <p className="text-muted">hasta el paradero</p>
@@ -90,7 +124,7 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
             <>
               <Step color={color2}>
                 <p className="font-semibold text-fg">Sube en {t.boarding_station}</p>
-                <p className="text-muted">{nombreDe(t.system, t.route_code)}</p>
+                <p className="text-muted">{nombreDe(t.system, t.route_code)} · tiempos estimados</p>
               </Step>
               <Step color={color2}>
                 <p className="font-semibold text-fg">Bájate en {t.leaving_station}</p>
@@ -103,32 +137,30 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
           </Step>
         </ol>
 
-        {t && (
-          <p className="flex gap-2.5 rounded-xl bg-surface-2 px-3.5 py-3 text-sm text-muted">
-            <Info size={16} className="mt-0.5 shrink-0" />
-            <span>No hay ruta directa. Los tiempos del transbordo son estimados (caminata, espera y viaje típicos) y el aforo de abajo es del primer paradero.</span>
+        {alternativa ? (
+          <p className="mb-4 flex gap-2.5 rounded-xl bg-danger/10 px-3.5 py-3 text-sm text-danger">
+            <TriangleAlert size={16} className="mt-0.5 shrink-0" />
+            <span>
+              Sube en <b>{alternativa.paradero}</b> ({alternativa.distancia_m} m antes): el bus viene más vacío y ahorras ~{Math.round(alternativa.ahorro_min)} min.
+            </span>
           </p>
-        )}
-
-        {tripData.recomendacion_viaje?.mensaje && (
-          <p className="flex gap-2.5 rounded-xl bg-ok/12 px-3.5 py-3 text-sm text-ok">
+        ) : mensaje ? (
+          <p className="mb-4 flex gap-2.5 rounded-xl bg-ok/12 px-3.5 py-3 text-sm text-ok">
             <Lightbulb size={16} className="mt-0.5 shrink-0" />
-            {tripData.recomendacion_viaje.mensaje}
+            {mensaje}
           </p>
-        )}
+        ) : null}
+
+        <Seccion titulo={t ? `Aforo en ${selectedRoute.boarding_station} (primer paradero)` : `Aforo en ${selectedRoute.boarding_station}`} abierta={abierta === 'aforo'} onToggle={() => alternar('aforo')}>
+          <ForecastPanel compact forecast={forecast} loading={loadingForecast} error={forecastError} onRetry={onRetry} />
+          {children}
+        </Seccion>
 
         {walkSlot && (
-          <div className="border-t border-line pt-4">
-            <h4 className="mb-3 text-sm font-semibold text-fg">Cómo llegar a {selectedRoute.boarding_station}</h4>
+          <Seccion titulo={`Cómo llegar a ${selectedRoute.boarding_station}`} abierta={abierta === 'camino'} onToggle={() => alternar('camino')}>
             {walkSlot}
-          </div>
+          </Seccion>
         )}
-
-        <div className="border-t border-line pt-4">
-          <h4 className="mb-3 text-sm font-semibold text-fg">Aforo en {selectedRoute.boarding_station}</h4>
-          <ForecastPanel forecast={forecast} loading={loadingForecast} error={forecastError} onRetry={onRetry} />
-          {children}
-        </div>
       </div>
     </BottomSheet>
   );

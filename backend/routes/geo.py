@@ -4,6 +4,7 @@ import json
 import math
 from routes.stations import load_all_stations_into_memory
 from services import lugares
+from services import caminata as caminata_svc
 import urllib.request
 import urllib.parse
 import urllib.error
@@ -330,3 +331,20 @@ def autocomplete_locations():
         return jsonify({"error": f"El buscador de lugares respondió {e.code}"}), 502
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@geo_bp.route("/caminata", methods=["GET"])
+def caminata():
+    """Trayecto a pie por calles entre dos puntos (p. ej. entre paraderos de un transbordo)."""
+    try:
+        lat1, lon1, lat2, lon2 = (request.args.get(k, type=float) for k in ("lat1", "lon1", "lat2", "lon2"))
+    except Exception:
+        lat1 = None
+    if None in (lat1, lon1, lat2, lon2):
+        return jsonify({"error": "Faltan lat1, lon1, lat2 y lon2"}), 400
+    if calculate_distance(lat1, lon1, lat2, lon2) > 2000:
+        return jsonify({"error": "Los puntos están a más de 2 km: no es una caminata de transbordo"}), 422
+    try:
+        return jsonify(caminata_svc.ruta_a_pie(lat1, lon1, lat2, lon2)), 200
+    except caminata_svc.CaminataError as e:
+        return jsonify({"error": str(e)}), 502

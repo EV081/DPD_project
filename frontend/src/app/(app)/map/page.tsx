@@ -19,7 +19,7 @@ import Alert from '@/components/Alert';
 import HomeSheet from '@/components/HomeSheet';
 import { useAuth } from '@/context/AuthContext';
 import { getRecents, addRecent, RecentDestination } from '@/lib/recents';
-import { getStations, getRouteGeoJson, getRouteCodeFromStation, matchTrip, getStationPrediction } from '@/lib/services';
+import { getStations, getRouteGeoJson, getCaminata, getRouteCodeFromStation, matchTrip, getStationPrediction } from '@/lib/services';
 import { opcionesDeViaje } from '@/lib/aforo';
 import { tramoEntre } from '@/lib/route';
 import { TRIP_STORAGE_KEY, FOCUS_STORAGE_KEY } from '@/lib/constants';
@@ -128,10 +128,17 @@ export default function MapPage() {
           if (!vigente()) return;
           if (t2) {
             const baja1 = haciaId ? stations.find((s) => s.id === haciaId) : undefined;
-            const aPie = baja1
-              ? [{ type: 'Feature', properties: { color_hex: '#64748b', punteada: true },
-                   geometry: { type: 'LineString', coordinates: [[baja1.longitude, baja1.latitude], [sube2.longitude, sube2.latitude]] } }]
-              : [];
+            // Caminata entre paraderos por las calles; si el servicio falla, línea recta
+            let aPie: any[] = [];
+            if (baja1) {
+              let coordenadas: number[][] = [[baja1.longitude, baja1.latitude], [sube2.longitude, sube2.latitude]];
+              try {
+                const calle = (await getCaminata(baja1, sube2))?.geojson?.geometry?.coordinates;
+                if (Array.isArray(calle) && calle.length > 1) coordenadas = [[baja1.longitude, baja1.latitude], ...calle, [sube2.longitude, sube2.latitude]];
+              } catch { /* sin servicio de rutas a pie: se deja la línea recta */ }
+              if (!vigente()) return;
+              aPie = [{ type: 'Feature', properties: { color_hex: '#64748b', punteada: true }, geometry: { type: 'LineString', coordinates: coordenadas } }];
+            }
             features = [...features, ...aPie, t2];
           }
         }

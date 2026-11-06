@@ -12,10 +12,12 @@ interface Props {
   loading: boolean;
   error?: boolean;
   onRetry?: () => void;
+  /** Versión resumida: estado, espera, ocupación y próximas horas; el resto queda bajo «Más detalle». */
+  compact?: boolean;
 }
 
 // Estado actual del paradero + pronóstico desde ahora (tarjeta del mapa y del planificador)
-export default function ForecastPanel({ forecast, loading, error, onRetry }: Props) {
+export default function ForecastPanel({ forecast, loading, error, onRetry, compact }: Props) {
   if (loading) {
     return (
       <div className="flex items-center justify-center gap-2.5 py-6 text-sm text-muted">
@@ -50,6 +52,84 @@ export default function ForecastPanel({ forecast, loading, error, onRetry }: Pro
     current.eta_base_min != null && current.eta_min != null && current.eta_min - current.eta_base_min >= 0.5
       ? Math.round(current.eta_min - current.eta_base_min)
       : null;
+
+  const proximas = predictions.length > 0 && (
+      <section aria-label="Próximas horas">
+        <h4 className="mb-2 text-sm font-semibold text-fg">Próximas horas</h4>
+        <div className="scroll-thin -mx-1 flex gap-2 overflow-x-auto px-1 pb-2">
+          {predictions.map((item, i) => (
+            <div key={i} className={`w-[7.5rem] shrink-0 rounded-lg border border-line bg-surface p-3 ${item.class === 'Sin_servicio' ? 'opacity-55' : ''}`}>
+              <p className="text-sm font-semibold tabular-nums text-fg">{formatoHora(item.datetime)}</p>
+              <p className={`mt-1 truncate text-sm font-medium ${claseAforo(item.class)}`}>{etiquetaClase(item.class)}</p>
+              {item.class === 'Sin_servicio' ? (
+                <p className="mt-0.5 text-xs text-muted">—</p>
+              ) : (
+                <>
+                  <p className="mt-0.5 text-xs tabular-nums text-muted">{textoOcupacion(item.crowding)} ocupado</p>
+                  <p className="text-xs tabular-nums text-muted">Espera {textoEspera(item)}</p>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+  );
+
+  if (compact) {
+    return (
+      <div className="space-y-4">
+        <div>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className={`text-xl font-semibold ${claseAforo(current.class)}`}>{etiquetaClase(current.class)}</p>
+              {current.sentido && <p className="truncate text-sm text-muted">{current.sentido}</p>}
+            </div>
+            <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${claseRecomendacion(current.recommendation)}`}>
+              {etiquetaRecomendacion(current.recommendation)}
+            </span>
+          </div>
+          <dl className="mt-3 grid grid-cols-2 gap-3">
+            <div>
+              <dt className="text-xs text-muted">Espera</dt>
+              <dd className="text-lg font-semibold tabular-nums text-fg">{textoEspera(current)}</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-muted">Ocupación</dt>
+              <dd className="text-lg font-semibold tabular-nums text-fg">{textoOcupacion(current.crowding)}</dd>
+            </div>
+          </dl>
+          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
+            <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(current.crowding)}%`, backgroundColor: colorOcupacion(current.class) }} />
+          </div>
+        </div>
+
+        {proximas}
+
+        <details className="group rounded-xl border border-line px-3.5 py-2.5 text-sm">
+          <summary className="cursor-pointer list-none font-medium text-fg outline-none focus-visible:text-brand">
+            Más detalle
+          </summary>
+          <dl className="mt-3 space-y-2">
+            <div className="flex justify-between gap-3">
+              <dt className="text-muted">Pasajeros a bordo</dt>
+              <dd className="font-semibold tabular-nums text-fg">{current.pasajeros_por_tren != null ? `≈ ${current.pasajeros_por_tren}` : '—'}</dd>
+            </div>
+            {extraTrafico !== null && (
+              <div className="flex items-center gap-2 text-warn">
+                <Activity size={15} className="shrink-0" /> Tráfico en vivo: +{extraTrafico} min de espera
+              </div>
+            )}
+            {lleno && (
+              <div className="flex items-center gap-2 text-muted"><TriangleAlert size={15} className="shrink-0" /> {lleno}</div>
+            )}
+            {current.factor_calibracion != null && Math.abs(current.factor_calibracion - 1) >= 0.03 && (
+              <p className="text-xs text-muted">La espera se ajustó con lo que contaron otras personas que usaron este servicio.</p>
+            )}
+          </dl>
+        </details>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">
@@ -106,27 +186,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry }: Pro
         )}
       </section>
 
-      {predictions.length > 0 && (
-        <section aria-label="Próximas horas">
-          <h4 className="mb-2 text-sm font-semibold text-fg">Próximas horas</h4>
-          <div className="scroll-thin -mx-1 flex gap-2 overflow-x-auto px-1 pb-2">
-            {predictions.map((item, i) => (
-              <div key={i} className={`w-[7.5rem] shrink-0 rounded-lg border border-line bg-surface p-3 ${item.class === 'Sin_servicio' ? 'opacity-55' : ''}`}>
-                <p className="text-sm font-semibold tabular-nums text-fg">{formatoHora(item.datetime)}</p>
-                <p className={`mt-1 truncate text-sm font-medium ${claseAforo(item.class)}`}>{etiquetaClase(item.class)}</p>
-                {item.class === 'Sin_servicio' ? (
-                  <p className="mt-0.5 text-xs text-muted">—</p>
-                ) : (
-                  <>
-                    <p className="mt-0.5 text-xs tabular-nums text-muted">{textoOcupacion(item.crowding)} ocupado</p>
-                    <p className="text-xs tabular-nums text-muted">Espera {textoEspera(item)}</p>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      {proximas}
 
       <div className="space-y-1 text-xs text-muted">
         {current.factor_calibracion != null && Math.abs(current.factor_calibracion - 1) >= 0.03 && (
