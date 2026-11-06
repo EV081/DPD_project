@@ -111,6 +111,7 @@ def accesos_cercanos():
                     "aviso": E.AVISO.format(datos_hasta=E.grafo().manifest["datos_hasta"])}), 200
 
 
+@eje2_bp.route("/accesos/por-estacion", methods=["GET"], defaults={"station_id": None})   # ?id=...: ids con espacios no pasan por API Gateway en la ruta
 @eje2_bp.route("/accesos/por-estacion/<path:station_id>", methods=["GET"])
 def acceso_por_estacion(station_id):
     """Índice de seguridad del punto de acceso que corresponde a una estación/paradero de /api/stations.
@@ -121,6 +122,7 @@ def acceso_por_estacion(station_id):
       - {in: path, name: station_id, type: string, required: true}
       - {in: query, name: sistema, type: string, description: "metropolitano | corredores | metro_l1 | alimentadores"}
     """
+    station_id = station_id or request.args.get("id", "")
     try:
         fila = E.acceso_de_estacion(E.grafo(), station_id, request.args.get("sistema"))
     except E.Eje2Error as e:

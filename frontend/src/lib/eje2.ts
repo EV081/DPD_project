@@ -84,7 +84,7 @@ export const getRutaPeatonal = async (
 
 export const getIndiceEstacion = async (estacion: Station): Promise<IndiceAcceso | null> => {
   try {
-    const res = await api.get(`/eje2/accesos/por-estacion/${encodeURIComponent(estacion.id)}`, { params: { sistema: estacion.system } });
+    const res = await api.get('/eje2/accesos/por-estacion', { params: { id: estacion.id, sistema: estacion.system } });
     return res.data;
   } catch (e: any) {
     const status = e?.response?.status;

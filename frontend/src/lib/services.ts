@@ -104,12 +104,12 @@ export const getStationPrediction = async (
   haciaId?: string
 ): Promise<StationPrediction | null> => {
   if (station.model_series === null) return null;   // el backend ya sabe que no hay datos
-  const params: Record<string, string> = {};
+  const params: Record<string, string> = { id: station.id };   // por query: un id con espacios no atraviesa API Gateway en la ruta
   if (haciaId) params.hacia_id = haciaId;
   const ruta = station.raw_properties?.ruta;
   if (station.system === 'corredores' && ruta) params.ruta = String(ruta);
   try {
-    const res = await api.get(`/predictions/estacion/${encodeURIComponent(station.id)}`, {
+    const res = await api.get('/predictions/estacion', {
       params,
       timeout: 60000, // el primer pedido puede despertar la instancia de Render
     });
@@ -175,7 +175,7 @@ export const matchTrip = async (
 
 
 export const getStation = async (id: string): Promise<Station> => {
-  const res = await api.get(`/stations/${encodeURIComponent(id)}`);
+  const res = await api.get('/stations/por-id', { params: { id } });
   return res.data;
 };
 

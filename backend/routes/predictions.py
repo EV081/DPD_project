@@ -128,6 +128,7 @@ def _buscar_estacion(station_id, ruta: str | None = None):
     return candidatas[0] if candidatas else None
 
 
+@predictions_bp.route("/estacion", methods=["GET"], defaults={"station_id": None})   # ?id=...: ids con espacios no pasan por API Gateway en la ruta
 @predictions_bp.route("/estacion/<path:station_id>", methods=["GET"])
 def get_station_prediction(station_id):
     """Estado actual + pronóstico del día de una estación/paradero (una sola llamada).
@@ -139,6 +140,7 @@ def get_station_prediction(station_id):
     tags:
       - Predictions
     """
+    station_id = station_id or request.args.get("id", "")
     try:
         est = _buscar_estacion(station_id, request.args.get("ruta"))
         if est is None:

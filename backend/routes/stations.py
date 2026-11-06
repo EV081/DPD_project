@@ -135,12 +135,14 @@ def get_stations():
     return jsonify(stations), 200
 
 
+@stations_bp.route("/por-id", methods=["GET"], defaults={"station_id": None})   # ?id=...: ids con espacios no pasan por API Gateway en la ruta
 @stations_bp.route("/<path:station_id>", methods=["GET"])
 def get_station(station_id):
     """
     Obtiene el detalle de una estación específica por su ID de forma flexible.
     Usamos <path:station_id> en lugar de <string:station_id> por si el ID incluye barras u otros caracteres.
     """
+    station_id = station_id or request.args.get("id", "")
     stations = load_all_stations_into_memory()
     
     # Limpiamos el ID que viene en la URL para buscarlo de forma segura
