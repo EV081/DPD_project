@@ -4,7 +4,7 @@ export const TOKEN_KEY = 'urbansafe_token';
 /** Evento que se emite cuando el servidor rechaza el token (401): AuthContext cierra la sesión. */
 export const UNAUTHORIZED_EVENT = 'urbansafe:unauthorized';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://backend-urbansafe.onrender.com/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://urbansafe-api.onrender.com/api';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
