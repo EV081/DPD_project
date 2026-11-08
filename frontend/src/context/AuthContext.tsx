@@ -10,13 +10,13 @@ interface AuthContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   loading: boolean;
-  /** Hay sesión guardada pero el servidor no respondió (arranque en frío, sin red): se puede reintentar. */
   connectionError: boolean;
   retry: () => void;
   login: (email: string, pass: string) => Promise<void>;
   register: (name: string, email: string, pass: string) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
+  updateProfile: (data: { name?: string; email?: string; password?: string }) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -36,8 +36,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
-  // Sesión guardada: se valida con /auth/me. Solo un 401 cierra la sesión; un fallo de red o un
-  // arranque en frío del servidor se reintenta y, si persiste, se ofrece "Reintentar" sin perder el token.
   useEffect(() => {
     const stored = localStorage.getItem(TOKEN_KEY);
     if (!stored) {
@@ -65,7 +63,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => { cancelled = true; };
   }, [attempt, clearSession]);
 
-  // Token vencido en cualquier llamada posterior
   useEffect(() => {
     window.addEventListener(UNAUTHORIZED_EVENT, clearSession);
     return () => window.removeEventListener(UNAUTHORIZED_EVENT, clearSession);
@@ -84,10 +81,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await login(email, password);
   };
 
+  const updateProfile = async (data: { name?: string; email?: string; password?: string }) => {
+    const res = await api.put('/auth/profile', data);
+    setUser(res.data.user || res.data);
+  };
+
   const logout = clearSession;
 
   return (
-    <AuthContext.Provider value={{ token, user, setUser, loading, connectionError, retry: () => setAttempt((n) => n + 1), login, register, logout, isAuthenticated: !!token }}>
+    <AuthContext.Provider value={{ token, user, setUser, loading, connectionError, retry: () => setAttempt((n) => n + 1), login, register, logout, isAuthenticated: !!token, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );
