@@ -193,9 +193,11 @@ Otros ejemplos de la misma fecha:
 ## 7. Reproducibilidad
 
 ```bash
-# backend (Alessandromg18/Backend_UrbanSafe, rama feat/aforo-od-ocupacion)
-pip install -r requirements.txt pytest shapely
-python -m pytest tests                               # 44 tests: Furness, calendario, API, recomendación, latencia, recarga
+# backend/ de este repositorio (Python 3.12)
+cd backend
+pip install -r requirements.txt pytest
+docker compose --profile test up -d db-test          # Postgres de pruebas (puerto 5433, en memoria)
+python -m pytest                                     # 217 tests: Furness, calendario, API, recomendación, latencia, recarga, Eje 2
 python scripts/evaluar_ocupacion.py                  # sección 4.2 (fuera de muestra)
 python scripts/evaluar_od_metro_l1.py                # sección 4.3
 python scripts/entrenar_alimentador_sentido.py --datos <DPD_project>/deliveries/week10/data_processed/clean
