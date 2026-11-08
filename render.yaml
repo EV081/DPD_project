@@ -1,0 +1,22 @@
+# Blueprint de Render: New + > Blueprint > selecciona este repo.
+# Las variables con sync:false se piden en el panel al crear el servicio (no se guardan en git).
+services:
+  - type: web
+    name: urbansafe-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: WEB_CONCURRENCY      # 1 worker: el plan free tiene 512 MB
+        value: "1"
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL         # URL del pooler de Supabase/Neon (ver abajo)
+        sync: false
+      - key: LOCATIONIQ_TOKEN
+        sync: false
+      - key: API_TOMTOM
+        sync: false
