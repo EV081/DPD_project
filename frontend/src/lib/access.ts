@@ -1,5 +1,6 @@
 // Pantallas reservadas a la cuenta administradora (la API también lo exige: esto solo decide qué se muestra).
-export const ADMIN_ROUTES = ['/simulacion', '/dashboard'] as const;
+// La simulación es para cualquier usuario con sesión.
+export const ADMIN_ROUTES = ['/dashboard'] as const;
 
 export const isAdminRoute = (pathname: string) =>
   ADMIN_ROUTES.some((ruta) => pathname === ruta || pathname.startsWith(`${ruta}/`));

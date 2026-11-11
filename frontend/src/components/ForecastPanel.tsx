@@ -61,6 +61,33 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
   const lleno = textoProbabilidadLleno(current.probabilidad_no_subir);
   const ajusteEspera = textoAjusteEspera(current);
 
+  // Aforo del minuto de la consulta (interpolado entre horas vecinas) cuando el backend lo envía
+  const ahora = current.class !== 'Sin_servicio' ? forecast.ahora : null;
+  const clase = ahora?.class ?? current.class;
+  const ocupacion = ahora?.crowding ?? current.crowding;
+  const salidas = forecast.proximas ?? [];
+
+  const proximasSalidas = salidas.length > 0 && (
+      <section aria-label="Próximas salidas">
+        <h4 className="text-sm font-semibold text-fg">Próximas salidas</h4>
+        <p className="mb-2 mt-0.5 text-xs leading-relaxed text-muted">
+          Si subes a esa hora. Pasa cada {Math.max(1, Math.round(salidas[0].intervalo_min))} min aprox.; no es la hora exacta del vehículo.
+        </p>
+        <ul className="scroll-thin -mx-1 flex gap-2 overflow-x-auto px-1 pb-2">
+          {salidas.map((salida) => (
+            <li key={salida.salida} className="w-[8.25rem] shrink-0 rounded-lg border border-line bg-surface p-3">
+              <p className="text-sm font-semibold tabular-nums text-fg">{salida.salida}</p>
+              <p className={`mt-1 truncate text-sm font-medium ${claseAforo(salida.clase)}`}>{etiquetaClase(salida.clase)}</p>
+              <p className="mt-0.5 text-xs tabular-nums text-muted">{textoOcupacion(salida.ocupacion)} ocupado</p>
+              <p className="text-xs tabular-nums text-muted">Espera {Math.max(1, Math.round(salida.espera_min))} min</p>
+              {salida.llegada && <p className="mt-1 text-xs font-medium tabular-nums text-fg">Llegas {salida.llegada}</p>}
+              {salida.tramos && <p className="truncate text-xs text-muted" title={salida.tramos.map((t) => t.servicio).join(' + ')}>{salida.tramos.map((t) => t.servicio).join(' + ')}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+  );
+
   const proximas = predictions.length > 0 && (
       <section aria-label="Próximas horas">
         <h4 className="mb-2 text-sm font-semibold text-fg">Próximas horas</h4>
@@ -90,7 +117,8 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
         <div>
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className={`text-xl font-semibold ${claseAforo(current.class)}`}>{etiquetaClase(current.class)}</p>
+              {ahora && <p className="eyebrow">Ahora · {ahora.hora}</p>}
+              <p className={`text-xl font-semibold ${claseAforo(clase)}`}>{etiquetaClase(clase)}</p>
               {current.sentido && <p className="truncate text-sm text-muted">{current.sentido}</p>}
             </div>
             <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${claseRecomendacion(current.recommendation)}`}>
@@ -103,15 +131,16 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
               <dd className="text-lg font-semibold tabular-nums text-fg">{textoEspera(current)}</dd>
             </div>
             <div>
-              <dt className="text-xs text-muted">Ocupación</dt>
-              <dd className="text-lg font-semibold tabular-nums text-fg">{textoOcupacion(current.crowding)}</dd>
+              <dt className="text-xs text-muted">Ocupación{ahora ? ' (aprox.)' : ''}</dt>
+              <dd className="text-lg font-semibold tabular-nums text-fg">{textoOcupacion(ocupacion)}</dd>
             </div>
           </dl>
           <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
-            <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(current.crowding)}%`, backgroundColor: colorOcupacion(current.class) }} />
+            <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(ocupacion)}%`, backgroundColor: colorOcupacion(clase) }} />
           </div>
         </div>
 
+        {proximasSalidas}
         {proximas}
 
         <details className="group rounded-xl border border-line px-3.5 py-2.5 text-sm">
@@ -146,8 +175,8 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
       <section aria-label="Estado actual" className="rounded-xl border border-line bg-surface-2/60 p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="eyebrow">Ahora · {formatoHora(current.datetime)}</p>
-            <p className={`mt-1 text-xl font-semibold ${claseAforo(current.class)}`}>{etiquetaClase(current.class)}</p>
+            <p className="eyebrow">Ahora · {ahora?.hora ?? formatoHora(current.datetime)}</p>
+            <p className={`mt-1 text-xl font-semibold ${claseAforo(clase)}`}>{etiquetaClase(clase)}</p>
             {current.sentido && <p className="text-sm text-muted">{current.sentido}</p>}
           </div>
           <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${claseRecomendacion(current.recommendation)}`}>
@@ -161,8 +190,8 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
             <dd className="text-lg font-semibold tabular-nums text-fg">{textoEspera(current)}</dd>
           </div>
           <div>
-            <dt className="text-xs text-muted">Ocupación</dt>
-            <dd className="text-lg font-semibold tabular-nums text-fg">{textoOcupacion(current.crowding)}</dd>
+            <dt className="text-xs text-muted">Ocupación{ahora ? ' (aprox.)' : ''}</dt>
+            <dd className="text-lg font-semibold tabular-nums text-fg">{textoOcupacion(ocupacion)}</dd>
           </div>
           <div>
             <dt className="text-xs text-muted">A bordo</dt>
@@ -173,7 +202,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
         </dl>
 
         <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
-          <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(current.crowding)}%`, backgroundColor: colorOcupacion(current.class) }} />
+          <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(ocupacion)}%`, backgroundColor: colorOcupacion(clase) }} />
         </div>
 
         {(ajusteEspera !== null || lleno || (current.recommendation === 'cambiar_paradero' && current.alternativa)) && (
@@ -196,6 +225,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
         )}
       </section>
 
+      {proximasSalidas}
       {proximas}
 
       <div className="space-y-1 text-xs text-muted">

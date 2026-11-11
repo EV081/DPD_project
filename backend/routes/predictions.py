@@ -9,7 +9,7 @@ import pandas as pd
 from flask import Blueprint, jsonify, request
 
 from routes.stations import load_all_stations_into_memory
-from services import calendario, trafico
+from services import calendario, planificador_salida, trafico
 from services import model_service as MS
 from services.mapeo_estaciones import serie_de_estacion
 
@@ -123,15 +123,31 @@ def _error(e: Exception):
     return jsonify({"error": f"Error interno: {e}"}), 500
 
 
-def _buscar_estacion(station_id, ruta: str | None = None):
+def _buscar_estacion(station_id, ruta: str | None = None, nombre: str | None = None):
     """Estación por id. Un paradero de corredor puede servir a varias rutas con el mismo código:
-    ``ruta`` elige la del marcador que tocó el usuario (si no, la primera)."""
+    ``ruta`` elige la del marcador que tocó el usuario (si no, la primera). Los paraderos de un
+    alimentador comparten el id de su ruta: ``nombre`` elige el paradero."""
     objetivo = str(station_id).strip().lower()
     candidatas = [s for s in load_all_stations_into_memory() if str(s["id"]).strip().lower() == objetivo]
     if ruta:
         con_ruta = [s for s in candidatas if str((s.get("raw_properties") or {}).get("ruta")) == str(ruta)]
         candidatas = con_ruta
+    if nombre:
+        candidatas = [s for s in candidatas if str(s["name"]).strip().lower() == nombre.strip().lower()]
     return candidatas[0] if candidatas else None
+
+
+def _proximas(est: dict, hacia_id: str | None, ruta: str | None, hora: int, actual: dict) -> dict:
+    """Aforo interpolado de este minuto y próximas salidas cada 10 min (con llegada si hay destino)."""
+    ahora = calendario.ahora_lima()
+    esperas = {hora: actual["eta_min"]} if actual.get("eta_min") is not None else None   # espera ya corregida por tráfico
+    destino = _buscar_estacion(hacia_id, ruta) if hacia_id else None
+    for dest in ([destino, None] if destino else [None]):
+        try:
+            return planificador_salida.proximas_salidas(est, dest, ahora, esperas=esperas)
+        except MS.PrediccionError:
+            continue           # el par no admite viaje directo: se informa solo el paradero
+    return {}
 
 
 @predictions_bp.route("/estacion", methods=["GET"], defaults={"station_id": None})   # ?id=...: ids con espacios no pasan por API Gateway en la ruta
@@ -167,9 +183,34 @@ def get_station_prediction(station_id):
         hora = _hora_param()
         items = [_item(f, res["sentido"], res["sentidos"]) for f in res["filas"]]
         actual = next(i for i, f in zip(items, res["filas"]) if pd.Timestamp(f["fecha_hora"]).hour == hora)
+        extra = {}
         if _es_ahora(res, hora):   # el tráfico en vivo solo corrige la hora de este momento
             actual = trafico.ajustar_item(dict(actual), sistema)
-        return jsonify({**_meta(res), "station": est["name"], "current": actual, "forecast": items}), 200
+            extra = _proximas(est, request.args.get("hacia_id"), request.args.get("ruta"), hora, actual)
+        return jsonify({**_meta(res), "station": est["name"], "current": actual, "forecast": items, **extra}), 200
+    except Exception as e:  # noqa: BLE001
+        return _error(e)
+
+
+@predictions_bp.route("/viaje", methods=["GET"])
+def get_trip_plan():
+    """¿A qué hora salgo para llegar a tiempo? Viaje directo entre dos paraderos del mismo sistema.
+
+    Query: ``origen_id`` y ``destino_id`` (ids de estación), ``llegada`` (HH:MM, hora límite de
+    llegada en Lima), ``dia`` (YYYY-MM-DD, por defecto hoy), ``ruta`` (corredores: ruta de los
+    paraderos), ``origen_nombre`` y ``destino_nombre`` (alimentadores: sus paraderos comparten id).
+    Devuelve las salidas evaluadas cada 10 minutos, la recomendada y los servicios que unen ambos puntos.
+    ---
+    tags:
+      - Predictions
+    """
+    try:
+        if not request.args.get("origen_id") or not request.args.get("destino_id") or not request.args.get("llegada"):
+            raise MS.PrediccionError("Se requieren origen_id, destino_id y llegada (HH:MM)")
+        ruta = request.args.get("ruta")
+        origen = _buscar_estacion(request.args["origen_id"], ruta, request.args.get("origen_nombre"))
+        destino = _buscar_estacion(request.args["destino_id"], ruta, request.args.get("destino_nombre"))
+        return jsonify(planificador_salida.planificar(origen, destino, request.args.get("dia"), request.args["llegada"])), 200
     except Exception as e:  # noqa: BLE001
         return _error(e)
 

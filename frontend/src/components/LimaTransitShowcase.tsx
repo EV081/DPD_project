@@ -143,7 +143,7 @@ export default function LimaTransitShowcase() {
           <p className={styles.decision}><Clock3 size={15} aria-hidden /> {etiquetaRecomendacion(fila.recomendacion)}</p>
         </div>
         <p className={styles.small}>Escenario del modelo LightGBM con validaciones ATU de 2025. La estimación corresponde a la estación de salida.</p>
-        <Link href="/simulacion" className={styles.full}>Simulador completo · acceso administrador <ArrowUpRight size={16} aria-hidden /></Link>
+        <Link href="/simulacion" className={styles.full}>Simulador completo <ArrowUpRight size={16} aria-hidden /></Link>
       </div>
       <figure className={styles.figure}>
         <div className={styles.figureTop}><span>Lima Sur · Línea 1</span><span>Esquema isométrico</span></div>

@@ -91,9 +91,12 @@ def load_all_stations_into_memory():
             print(f"Error leyendo {filename}: {e}")
 
     # Serie del modelo de cada estación (None = sin datos ATU propios: la app no debe inventarla)
-    from services.mapeo_estaciones import serie_de_estacion
+    from services.mapeo_estaciones import orden_paraderos_corredor, serie_de_estacion
+    orden = orden_paraderos_corredor()
     for s in stations:
         s["model_system"], s["model_series"] = serie_de_estacion(s)
+        if s["model_system"] == "corredor":   # posición en el recorrido: permite ofrecer solo destinos posteriores
+            s["route_order"] = orden.get((str(s["model_series"]), str(s["raw_properties"].get("cod_paradero"))))
 
     _STATIONS_CACHE = stations
     return _STATIONS_CACHE
