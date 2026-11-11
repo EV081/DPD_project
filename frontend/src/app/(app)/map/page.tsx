@@ -167,7 +167,9 @@ export default function MapPage() {
       if (!vigente()) return;
       setForecastStation(station);
       setForecastAt(Date.now());
-      setForecast(data ? { current: data.current, predictions: data.forecast, referencia: data.referencia } : { sinDatos: true });
+      setForecast(data
+        ? { current: data.current, predictions: data.forecast, referencia: data.referencia, ahora: data.ahora, proximas: data.proximas_salidas }
+        : { sinDatos: true });
     } catch (error) {
       console.error('Error al obtener predicciones:', error);
       if (vigente()) setForecastError(true);

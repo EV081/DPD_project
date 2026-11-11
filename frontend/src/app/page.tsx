@@ -8,8 +8,8 @@ import styles from './home.module.css';
 const CAPACIDADES = [
   {
     numero: '01', icono: ChartNoAxesCombined, titulo: 'La hora también cambia el viaje.',
-    texto: 'Elige una estación y un día de 2025. Compara la ocupación estimada y la espera en dos horarios, y revisa el día completo.',
-    enlace: '/simulacion', accion: 'Simulador (acceso administrador)',
+    texto: 'Elige de dónde sales, a dónde vas y a qué hora quieres llegar. Te sugerimos cuándo salir y te mostramos la ocupación estimada del día.',
+    enlace: '/simulacion', accion: 'Abrir el simulador',
   },
   {
     numero: '02', icono: Route, titulo: 'Más contexto para elegir tu ruta.',

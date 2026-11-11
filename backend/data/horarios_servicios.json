@@ -1,0 +1,3047 @@
+{
+ "fuente": {
+  "nombre": "metrolima.info",
+  "url": "https://metrolima.info/",
+  "consultado": "2026-11-11",
+  "aviso": "Horarios y frecuencias referenciales de un sitio no oficial; pueden cambiar por disposición de la ATU. En feriados nacionales rige el horario de domingo."
+ },
+ "tipos_dia": {
+  "LAB": "lunes a viernes",
+  "SAB": "sábado",
+  "DOM": "domingo y feriados"
+ },
+ "sentidos": "asc/desc son los sentidos del modelo de cada sistema (troncal: asc = hacia el norte)",
+ "servicios": {
+  "metropolitano": {
+   "Ruta A": {
+    "url": "https://metrolima.info/metropolitano/ruta-a/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Izaguirre",
+      "Pacifico",
+      "Independencia",
+      "Los jazmines",
+      "Tomas Valle",
+      "El Milagro",
+      "Honorio Delgado",
+      "Uni",
+      "Parque del Trabajo",
+      "Caqueta",
+      "Ramon Castilla",
+      "Tacna",
+      "Jiron de la Unión",
+      "Colmena",
+      "Estacion Central"
+     ],
+     "asc": [
+      "Estacion Central",
+      "Colmena",
+      "Jiron de la Unión",
+      "Tacna",
+      "Ramon Castilla",
+      "Caqueta",
+      "Parque del Trabajo",
+      "Uni",
+      "Honorio Delgado",
+      "El Milagro",
+      "Tomas Valle",
+      "Los jazmines",
+      "Independencia",
+      "Pacifico",
+      "Izaguirre",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:35",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:35",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:35",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "frecuencia_texto": null,
+    "notas": [
+     "La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo."
+    ]
+   },
+   "Ruta B": {
+    "url": "https://metrolima.info/metropolitano/ruta-b/",
+    "paradas": {
+     "desc": [
+      "Chimpu Ocllo",
+      "Los Incas",
+      "Andres Belaunde",
+      "22 De Agosto",
+      "Universidad",
+      "Naranjal",
+      "Izaguirre",
+      "Pacifico",
+      "Independencia",
+      "Los jazmines",
+      "Tomas Valle",
+      "El Milagro",
+      "Honorio Delgado",
+      "Uni",
+      "Parque del Trabajo",
+      "Caqueta",
+      "2 de Mayo",
+      "Quilca",
+      "España",
+      "Estacion Central"
+     ],
+     "asc": [
+      "Estacion Central",
+      "España",
+      "Quilca",
+      "2 de Mayo",
+      "Caqueta",
+      "Parque del Trabajo",
+      "Uni",
+      "Honorio Delgado",
+      "El Milagro",
+      "Tomas Valle",
+      "Los jazmines",
+      "Independencia",
+      "Pacifico",
+      "Izaguirre",
+      "Naranjal",
+      "Universidad",
+      "22 De Agosto",
+      "Andres Belaunde",
+      "Los Incas",
+      "Chimpu Ocllo"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "10:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "10:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 4.0,
+      "valle": null
+     },
+     "SAB": {
+      "punta": 4.0,
+      "valle": null
+     },
+     "DOM": {
+      "punta": 4.0,
+      "valle": null
+     }
+    },
+    "frecuencia_texto": "De lunes a viernes la Ruta B opera de 10:00 a.m. a 11:00 p.m. Los sábados y domingos el servicio comienza a las 5:00 a.m. y finaliza a las 11:00 p.m. (10:00 p.m. los domingos). La frecuencia es de 3 a 5 minutos en hora punta.",
+    "notas": []
+   },
+   "Ruta C": {
+    "url": "https://metrolima.info/metropolitano/ruta-c/",
+    "paradas": {
+     "desc": [
+      "Ramon Castilla",
+      "Tacna",
+      "Jiron de la Unión",
+      "Colmena",
+      "Estacion Central",
+      "Estadio Nacional",
+      "México",
+      "Canadá",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Aramburu",
+      "Domingo Orué",
+      "Angamos",
+      "Ricardo Palma",
+      "Benavides",
+      "28 de Julio",
+      "Plaza de Flores",
+      "Balta",
+      "Bulevar",
+      "Union",
+      "Escuela Militar",
+      "Terán",
+      "Rosario de Villa",
+      "Matellini"
+     ],
+     "asc": [
+      "Matellini",
+      "Rosario de Villa",
+      "Terán",
+      "Escuela Militar",
+      "Union",
+      "Bulevar",
+      "Balta",
+      "Plaza de Flores",
+      "28 de Julio",
+      "Benavides",
+      "Ricardo Palma",
+      "Angamos",
+      "Domingo Orué",
+      "Aramburu",
+      "Canaval y Moreyra",
+      "Javier Prado",
+      "Canadá",
+      "México",
+      "Estadio Nacional",
+      "Estacion Central",
+      "Colmena",
+      "Jiron de la Unión",
+      "Tacna",
+      "Ramon Castilla"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "frecuencia_texto": null,
+    "notas": [
+     "La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo."
+    ]
+   },
+   "Ruta D": {
+    "url": "https://metrolima.info/metropolitano/ruta-d/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Izaguirre",
+      "Pacifico",
+      "Independencia",
+      "Los jazmines",
+      "Tomas Valle",
+      "El Milagro",
+      "Honorio Delgado",
+      "Uni",
+      "Parque del Trabajo",
+      "Caqueta",
+      "2 de Mayo",
+      "Quilca",
+      "España",
+      "Estacion Central"
+     ],
+     "asc": [
+      "Estacion Central",
+      "España",
+      "Quilca",
+      "2 de Mayo",
+      "Caqueta",
+      "Parque del Trabajo",
+      "Uni",
+      "Honorio Delgado",
+      "El Milagro",
+      "Tomas Valle",
+      "Los jazmines",
+      "Independencia",
+      "Pacifico",
+      "Izaguirre",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "10:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "10:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "SAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "DOM": {
+      "punta": 5.0,
+      "valle": 5.0
+     }
+    },
+    "frecuencia_texto": "La Ruta D opera de lunes a viernes en un único turno, de 5:00 a.m. a 10:30 a.m. en ambos sentidos, con una frecuencia de 5 minutos.",
+    "notas": []
+   },
+   "Expreso 1": {
+    "url": "https://metrolima.info/metropolitano/expreso-1/",
+    "paradas": {
+     "desc": [
+      "Estacion Central",
+      "Estadio Nacional",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Angamos",
+      "28 de Julio",
+      "Balta",
+      "Union",
+      "Terán",
+      "Matellini"
+     ],
+     "asc": [
+      "Matellini",
+      "Terán",
+      "Union",
+      "Balta",
+      "28 de Julio",
+      "Angamos",
+      "Canaval y Moreyra",
+      "Javier Prado",
+      "Estadio Nacional",
+      "Estacion Central"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "21:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "06:30",
+        "21:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:30",
+        "21:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "21:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "06:00",
+        "21:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "21:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 5.0,
+      "valle": null
+     },
+     "SAB": {
+      "punta": 8.0,
+      "valle": 8.0
+     },
+     "DOM": {
+      "punta": 8.0,
+      "valle": 8.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 1 opera todos los días: lunes a viernes de 5:00 a.m. a 9:00 p.m. (cada 5 minutos en hora punta) y sábados y domingos de 6:00 a.m. a 9:00 p.m. (cada 8 minutos).",
+    "notas": []
+   },
+   "Expreso 2": {
+    "url": "https://metrolima.info/metropolitano/expreso-2/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Canadá",
+      "Javier Prado",
+      "Ricardo Palma",
+      "28 de Julio"
+     ],
+     "asc": [
+      "Ricardo Palma",
+      "Javier Prado",
+      "Canadá",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "17:00",
+        "21:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "12:30",
+        "15:30"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "09:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "06:00",
+        "09:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 2 opera de lunes a viernes en dos turnos (5:00 a. m. a 9:00 a. m. y 5:00 p. m. a 9:00 p. m., cada 10 minutos) y sábados de 6:00 a. m. a 9:00 a. m., también cada 10 minutos.",
+    "notas": []
+   },
+   "Expreso 3": {
+    "url": "https://metrolima.info/metropolitano/expreso-3/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Angamos",
+      "Benavides",
+      "28 de Julio"
+     ],
+     "asc": [
+      "Benavides",
+      "Angamos",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "17:00",
+        "21:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "12:30",
+        "15:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 3 opera solo en sentido Sur a Norte: lunes a viernes de 5:00 p. m. a 9:00 p. m. y sábados de 12:30 p. m. a 3:30 p. m., ambos con frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 5": {
+    "url": "https://metrolima.info/metropolitano/expreso-5/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Izaguirre",
+      "Tomas Valle",
+      "Uni",
+      "Caqueta",
+      "España",
+      "Estacion Central",
+      "Canadá",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Angamos",
+      "Ricardo Palma",
+      "Plaza de Flores"
+     ],
+     "asc": [
+      "Plaza de Flores",
+      "Ricardo Palma",
+      "Angamos",
+      "Canaval y Moreyra",
+      "Javier Prado",
+      "Canadá",
+      "Estacion Central",
+      "España",
+      "Caqueta",
+      "Uni",
+      "Tomas Valle",
+      "Izaguirre",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "09:00",
+        "17:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:15",
+        "20:20"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "09:00",
+        "17:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:15",
+        "20:20"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "frecuencia_texto": null,
+    "notas": [
+     "La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo."
+    ]
+   },
+   "Expreso 6": {
+    "url": "https://metrolima.info/metropolitano/expreso-6/",
+    "paradas": {
+     "desc": [
+      "Izaguirre",
+      "Independencia",
+      "Estacion Central",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Angamos",
+      "Benavides"
+     ]
+    },
+    "horario": {
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "10:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 6 opera de lunes a viernes, en sentido Norte a Sur, de 5:30 a. m. a 10:00 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 7": {
+    "url": "https://metrolima.info/metropolitano/expreso-7/",
+    "paradas": {
+     "desc": [
+      "Tomas Valle",
+      "Estacion Central",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Angamos"
+     ]
+    },
+    "horario": {
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "09:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 7 opera de lunes a viernes, en sentido Norte a Sur, de 5:30 a. m. a 9:00 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 8": {
+    "url": "https://metrolima.info/metropolitano/expreso-8/",
+    "paradas": {
+     "desc": [
+      "Izaguirre",
+      "Independencia",
+      "Tomas Valle",
+      "Uni",
+      "Estacion Central",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Angamos",
+      "Benavides",
+      "Plaza de Flores"
+     ],
+     "asc": [
+      "Plaza de Flores",
+      "Benavides",
+      "Angamos",
+      "Canaval y Moreyra",
+      "Javier Prado",
+      "Estacion Central",
+      "Uni",
+      "Tomas Valle",
+      "Independencia",
+      "Izaguirre"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "17:00",
+        "21:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "17:00",
+        "20:20"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 8 opera de lunes a viernes, en ambos sentidos, de 5:00 p. m. a 9:00 p. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 9": {
+    "url": "https://metrolima.info/metropolitano/expreso-9/",
+    "paradas": {
+     "desc": [
+      "Uni",
+      "Caqueta",
+      "Canadá",
+      "Canaval y Moreyra",
+      "Angamos",
+      "Benavides"
+     ],
+     "asc": [
+      "Plaza de Flores",
+      "Benavides",
+      "Angamos",
+      "Canaval y Moreyra",
+      "Javier Prado",
+      "Estacion Central",
+      "España",
+      "Caqueta",
+      "Uni"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "09:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "09:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 9 opera de lunes a viernes, en ambos sentidos, de 5:30 a. m. a 9:00 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 10": {
+    "url": "https://metrolima.info/metropolitano/expreso-10/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Caqueta",
+      "Ramon Castilla",
+      "Tacna",
+      "Jiron de la Unión",
+      "Colmena",
+      "España",
+      "Estacion Central"
+     ]
+    },
+    "horario": {
+     "desc": {
+      "LAB": [
+       [
+        "06:00",
+        "09:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 10 opera de lunes a viernes, en sentido Norte a Sur, de 6:00 a. m. a 9:00 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 11": {
+    "url": "https://metrolima.info/metropolitano/expreso-11/",
+    "paradas": {
+     "desc": [
+      "Los Incas",
+      "Andres Belaunde",
+      "22 De Agosto",
+      "Universidad",
+      "Naranjal",
+      "Pacifico",
+      "Estacion Central"
+     ],
+     "asc": [
+      "Estacion Central",
+      "Pacifico",
+      "Naranjal",
+      "Universidad",
+      "22 De Agosto",
+      "Andres Belaunde",
+      "Los Incas"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:45",
+        "10:45"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "10:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 11 opera de lunes a viernes, en ambos sentidos, de 5:00 a. m. a 10:45 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 12": {
+    "url": "https://metrolima.info/metropolitano/expreso-12/",
+    "paradas": {
+     "desc": [
+      "Estacion Central",
+      "Estadio Nacional",
+      "Javier Prado",
+      "Canaval y Moreyra",
+      "Angamos",
+      "Benavides"
+     ]
+    },
+    "horario": {
+     "desc": {
+      "LAB": [
+       [
+        "05:45",
+        "10:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 12 opera de lunes a viernes, en sentido Norte a Sur, de 5:45 a. m. a 10:00 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Expreso 13": {
+    "url": "https://metrolima.info/metropolitano/expreso-13/",
+    "paradas": {
+     "desc": [
+      "Chimpu Ocllo",
+      "Andres Belaunde",
+      "Uni",
+      "Estacion Central"
+     ],
+     "asc": [
+      "Estacion Central",
+      "Los Incas",
+      "Chimpu Ocllo"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:50",
+        "10:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "10:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 10.0,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 10.0,
+      "valle": 10.0
+     }
+    },
+    "frecuencia_texto": "El Expreso 13 opera de lunes a viernes, en ambos sentidos, de 5:00 a. m. a 10:00 a. m., con una frecuencia de 10 minutos.",
+    "notas": []
+   },
+   "Super Expreso": {
+    "url": "https://metrolima.info/metropolitano/super-expreso/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Canaval y Moreyra",
+      "Aramburu",
+      "Angamos",
+      "Benavides",
+      "28 de Julio"
+     ],
+     "asc": [
+      "28 de Julio",
+      "Benavides",
+      "Angamos",
+      "Aramburu",
+      "Canaval y Moreyra",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "09:00"
+       ],
+       [
+        "17:00",
+        "21:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "06:00",
+        "09:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "09:00"
+       ],
+       [
+        "17:00",
+        "21:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "06:00",
+        "09:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "SAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "DOM": {
+      "punta": 5.0,
+      "valle": 5.0
+     }
+    },
+    "frecuencia_texto": "El Súper Expreso opera de lunes a viernes en dos turnos (5:30 a. m. a 9:00 a. m. y 5:00 p. m. a 9:00 p. m.) y sábados de 6:00 a. m. a 9:00 a. m., siempre con una frecuencia de 5 minutos.",
+    "notas": [
+     "Dos turnos (05:30-09:00 y 17:00-21:00; sábados 06:00-09:00) según la página del servicio, que no indica el sentido de cada turno: se aplican a los dos. La tabla general solo lista 05:30-09:00."
+    ]
+   },
+   "Super Expreso Norte": {
+    "url": "https://metrolima.info/metropolitano/super-expreso-norte/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Estacion Central"
+     ],
+     "asc": [
+      "Estacion Central",
+      "España",
+      "Quilca",
+      "2 de Mayo",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "10:00"
+       ],
+       [
+        "16:30",
+        "21:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "10:00"
+       ],
+       [
+        "16:30",
+        "21:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 8.0,
+      "valle": 8.0
+     },
+     "SAB": {
+      "punta": 8.0,
+      "valle": 8.0
+     },
+     "DOM": {
+      "punta": 8.0,
+      "valle": 8.0
+     }
+    },
+    "frecuencia_texto": "El Súper Expreso Norte opera de lunes a viernes en dos turnos (5:00 a. m. a 10:00 a. m. y 4:30 p. m. a 9:00 p. m.), ambos con una frecuencia de 8 minutos.",
+    "notas": [
+     "Dos turnos (05:00-10:00 y 16:30-21:00) según la página del servicio, que no indica el sentido de cada turno: se aplican a los dos. La tabla general lista 16:00-22:00."
+    ]
+   },
+   "Lechucero": {
+    "url": "https://metrolima.info/metropolitano/lechucero/",
+    "paradas": {
+     "desc": [
+      "Naranjal",
+      "Izaguirre",
+      "Tomas Valle",
+      "Uni",
+      "Ramon Castilla",
+      "Jiron de la Unión",
+      "Canadá",
+      "Angamos",
+      "Ricardo Palma",
+      "Balta",
+      "Bulevar",
+      "Matellini"
+     ],
+     "asc": [
+      "Matellini",
+      "Bulevar",
+      "Balta",
+      "Ricardo Palma",
+      "Angamos",
+      "Canadá",
+      "Jiron de la Unión",
+      "Ramon Castilla",
+      "Uni",
+      "Tomas Valle",
+      "Izaguirre",
+      "Naranjal"
+     ]
+    },
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "23:30",
+        "04:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "23:30",
+        "04:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "23:30",
+        "04:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "23:30",
+        "04:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 30.0,
+      "valle": 30.0
+     },
+     "SAB": {
+      "punta": 30.0,
+      "valle": 30.0
+     },
+     "DOM": {
+      "punta": 30.0,
+      "valle": 30.0
+     }
+    },
+    "frecuencia_texto": "El Lechucero opera jueves, viernes y sábado, en ambos sentidos, de 11:30 p. m. a 4:00 a. m., con una frecuencia de 30 minutos.",
+    "notas": [
+     "Servicio nocturno de jueves, viernes y sábado (23:30-04:00) según la página del servicio; la tabla general dice 22:00-05:00."
+    ],
+    "dias_semana": [
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "metro_l1": {
+   "Línea 1": {
+    "url": "https://metrolima.info/metro/linea-1/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:30",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "22:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:30",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 3.0,
+      "valle": 10.0
+     },
+     "SAB": {
+      "punta": 3.5,
+      "valle": 10.0
+     },
+     "DOM": {
+      "punta": 6.5,
+      "valle": 12.0
+     }
+    },
+    "notas": []
+   }
+  },
+  "corredor": {
+   "201": {
+    "url": "https://metrolima.info/corredor-rojo/ruta-201/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "04:45",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "04:45",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "04:45",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "04:45",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "204": {
+    "url": "https://metrolima.info/corredor-rojo/ruta-204/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "206": {
+    "url": "https://metrolima.info/corredor-rojo/ruta-206/",
+    "horario": {},
+    "intervalo_min": {},
+    "notas": [
+     "La fuente no publica el horario de esta ruta."
+    ]
+   },
+   "209": {
+    "url": "https://metrolima.info/corredor-rojo/ruta-209/",
+    "horario": {},
+    "intervalo_min": {},
+    "notas": [
+     "La fuente no publica el horario de esta ruta."
+    ]
+   },
+   "301": {
+    "url": "https://metrolima.info/corredor-azul/ruta-301/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "04:30",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "04:30",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        null
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "04:30",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "04:30",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        null
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": [
+     "La fuente no publica la hora de cierre de algún día."
+    ]
+   },
+   "305": {
+    "url": "https://metrolima.info/corredor-azul/ruta-305/",
+    "horario": {},
+    "intervalo_min": {},
+    "notas": [
+     "La fuente no publica el horario de esta ruta."
+    ]
+   },
+   "370": {
+    "url": "https://metrolima.info/corredor-azul/ruta-370/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "371": {
+    "url": "https://metrolima.info/corredor-azul/ruta-371/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "404": {
+    "url": "https://metrolima.info/corredor-morado/ruta-404/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "04:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "04:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "04:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "04:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "405": {
+    "url": "https://metrolima.info/corredor-morado/ruta-405/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "406": {
+    "url": "https://metrolima.info/corredor-morado/ruta-406/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "412": {
+    "url": "https://metrolima.info/corredor-morado/ruta-412/",
+    "horario": {},
+    "intervalo_min": {},
+    "notas": [
+     "La fuente no publica el horario de esta ruta."
+    ]
+   }
+  },
+  "alimentador": {
+   "Las Américas": {
+    "url": "https://metrolima.info/metropolitano/alimentador-america/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Antúnez de Mayolo": {
+    "url": "https://metrolima.info/metropolitano/alimentador-antunez-de-mayolo/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "Belaunde": {
+    "url": "https://metrolima.info/metropolitano/alimentador-belaunde/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "Bertello": {
+    "url": "https://metrolima.info/metropolitano/alimentador-bertello/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Carabayllo": {
+    "url": "https://metrolima.info/metropolitano/alimentador-carabayllo/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Cedros de Villa": {
+    "url": "https://metrolima.info/metropolitano/alimentador-cedros-de-villa/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "Collique": {
+    "url": "https://metrolima.info/metropolitano/alimentador-collique/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Izaguirre": {
+    "url": "https://metrolima.info/metropolitano/alimentador-izaguirre/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Ensenada": {
+    "url": "https://metrolima.info/metropolitano/alimentador-la-ensenada/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Alisos": {
+    "url": "https://metrolima.info/metropolitano/alimentador-los-alisos/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Los Olivos": {
+    "url": "https://metrolima.info/metropolitano/alimentador-los-olivos/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Los Próceres": {
+    "url": "https://metrolima.info/metropolitano/alimentador-los-proceres/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Milagro de Jesús": {
+    "url": "https://metrolima.info/metropolitano/alimentador-milagro-de-jesus/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Naranjal": {
+    "url": "https://metrolima.info/metropolitano/alimentador-naranjal/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:00",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "23:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   },
+   "Payet": {
+    "url": "https://metrolima.info/metropolitano/alimentador-payet/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Puente Piedra": {
+    "url": "https://metrolima.info/metropolitano/alimentador-puente-piedra/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Puno": {
+    "url": "https://metrolima.info/metropolitano/alimentador-puno/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "San Juan de Dios": {
+    "url": "https://metrolima.info/metropolitano/alimentador-san-juan-de-dios/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Tahuantinsuyo": {
+    "url": "https://metrolima.info/metropolitano/alimentador-tahuantinsuyo/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Torre Blanca": {
+    "url": "https://metrolima.info/metropolitano/alimentador-torre-blanca/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Trapiche": {
+    "url": "https://metrolima.info/metropolitano/alimentador-trapiche/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Universitaria": {
+    "url": "https://metrolima.info/metropolitano/alimentador-universitaria/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "06:00",
+        "22:00"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {
+     "LAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "SAB": {
+      "punta": 7.5,
+      "valle": 16.0
+     },
+     "DOM": {
+      "punta": 17.5,
+      "valle": 17.5
+     }
+    },
+    "notas": []
+   },
+   "Villa El Salvador": {
+    "url": "https://metrolima.info/metropolitano/alimentador-villa-el-salvador/",
+    "horario": {
+     "asc": {
+      "LAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:30",
+        "00:00"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:30",
+        "23:00"
+       ]
+      ]
+     },
+     "desc": {
+      "LAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "SAB": [
+       [
+        "05:00",
+        "23:30"
+       ]
+      ],
+      "DOM": [
+       [
+        "05:00",
+        "22:30"
+       ]
+      ]
+     }
+    },
+    "intervalo_min": {},
+    "notas": []
+   }
+  }
+ }
+}

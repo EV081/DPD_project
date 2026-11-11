@@ -1,18 +1,20 @@
 'use client';
 
-import { useEffect, useState, type FormEvent, type CSSProperties } from 'react';
+import { useEffect, useMemo, useState, type FormEvent, type CSSProperties } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, ChartColumn, Download, MapPin } from 'lucide-react';
 import Alert from '@/components/Alert';
 import MobilityIllustration from '@/components/MobilityIllustration';
+import PlanSalida from '@/components/PlanSalida';
 import { Spinner } from '@/components/Spinner';
 import { claseAforo, etiquetaClase, etiquetaRecomendacion, formatoHora } from '@/lib/aforo';
-import { getStationPrediction, getStations, mapSystemToBackendApi } from '@/lib/services';
+import { getStationPrediction, getStations, getTripPlan, mapSystemToBackendApi } from '@/lib/services';
+import { destinosDe, etiquetaEstacion, hoyLima, lineasDe, origenesDe, seleccion, sumarDias, usaRuta } from '@/lib/simulacion';
 import { systemInfo } from '@/lib/systems';
-import type { PredictionItem, Station, StationPrediction } from '@/lib/types';
+import type { PlanSalida as Plan, PredictionItem, Station, StationPrediction } from '@/lib/types';
 
-const PRIMER_DIA = '2025-01-29';
-const ULTIMO_DIA = '2025-12-31';
+const PRIMER_DIA = '2025-01-29';   // primer día con 28 días de historia ATU
+const DIAS_ADELANTE = 60;          // los días posteriores a 2025 se estiman con su día homólogo
 const SISTEMAS: Station['system'][] = ['metro_l1', 'metropolitano', 'corredores', 'alimentadores'];
 const CAMPO = 'mt-1.5 block w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-fg focus-visible:outline-2 focus-visible:outline-brand';
 const NUMERO = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
@@ -24,12 +26,6 @@ function espera(item: PredictionItem) {
 
 function ocupacion(item: PredictionItem) {
   return item.class === 'Sin_servicio' || item.crowding == null ? '—' : `${NUMERO.format(item.crowding * 100)} %`;
-}
-
-function nombreEstacion(estacion: Station) {
-  if (estacion.system === 'corredores') return `${estacion.name} · ${estacion.model_series} · ${estacion.id}`;
-  if (estacion.system === 'alimentadores') return `${estacion.name} · ${estacion.model_series}`;
-  return estacion.name;
 }
 
 function descargarDia(resultado: StationPrediction) {
@@ -61,10 +57,10 @@ function descargarDia(resultado: StationPrediction) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-function Comparacion({ resultado }: { resultado: StationPrediction }) {
+function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction; horaInicial?: string }) {
   const horas = resultado.forecast;
-  const [primera, setPrimera] = useState('07:00');
-  const [segunda, setSegunda] = useState('18:00');
+  const [primera, setPrimera] = useState(horaInicial ?? '07:00');
+  const [segunda, setSegunda] = useState(horaInicial === '18:00' ? '07:00' : '18:00');
   const maxima = Math.max(100, ...horas.map((item) =>
     item.class === 'Sin_servicio' ? 0 : Math.ceil((item.crowding ?? 0) * 4) * 25
   ));
@@ -75,10 +71,11 @@ function Comparacion({ resultado }: { resultado: StationPrediction }) {
       <div className="card p-5 sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="eyebrow">Tu escenario · 24 horas</p>
+            <p className="eyebrow">El día completo · 24 horas</p>
             <h2 id="escenario-titulo" className="mt-1 text-xl font-bold text-fg">{resultado.station}</h2>
             <p className="mt-1 text-sm text-muted">
-              {referencia.fecha_objetivo} · {systemInfo(mapSystemToBackendApi(resultado.system)).label} · Hora de Lima
+              {[referencia.fecha_objetivo, systemInfo(mapSystemToBackendApi(resultado.system)).label,
+                resultado.sentido && resultado.sentidos?.[resultado.sentido], 'Hora de Lima'].filter(Boolean).join(' · ')}
             </p>
           </div>
           <button type="button" className="btn btn-secondary" onClick={() => descargarDia(resultado)}>
@@ -183,14 +180,33 @@ function Comparacion({ resultado }: { resultado: StationPrediction }) {
 export default function SimulacionPage() {
   const [estaciones, setEstaciones] = useState<Station[]>([]);
   const [sistema, setSistema] = useState<Station['system']>('metro_l1');
-  const [estacionIndice, setEstacionIndice] = useState(-1);
-  const [dia, setDia] = useState('2025-11-17');
+  const [linea, setLinea] = useState('');
+  const [origenIndice, setOrigenIndice] = useState(-1);
+  const [destinoIndice, setDestinoIndice] = useState(-1);
+  const [hoy, setHoy] = useState('');
+  const [dia, setDia] = useState('');
+  const [llegada, setLlegada] = useState('08:00');
   const [cargaCatalogo, setCargaCatalogo] = useState(true);
   const [errorCatalogo, setErrorCatalogo] = useState(false);
   const [intento, setIntento] = useState(0);
   const [calculando, setCalculando] = useState(false);
   const [error, setError] = useState('');
+  const [plan, setPlan] = useState<Plan | null>(null);
   const [resultado, setResultado] = useState<StationPrediction | null>(null);
+
+  useEffect(() => {   // la fecha de Lima se fija en el navegador para no desfasar el HTML del servidor
+    const fecha = hoyLima();
+    setHoy(fecha);
+    setDia(fecha);
+  }, []);
+
+  const aplicar = (catalogo: Station[], nuevo: Station['system'], previa: Parameters<typeof seleccion>[2] = {}) => {
+    const elegido = seleccion(catalogo, nuevo, previa);
+    setSistema(nuevo);
+    setLinea(elegido.linea);
+    setOrigenIndice(elegido.origen);
+    setDestinoIndice(elegido.destino);
+  };
 
   useEffect(() => {
     let vigente = true;
@@ -198,8 +214,10 @@ export default function SimulacionPage() {
       if (!vigente) return;
       const disponibles = catalogo.filter((estacion) => Boolean(estacion.model_series));
       setEstaciones(disponibles);
-      const inicio = disponibles.findIndex((estacion) => estacion.id === 'Villa El Salvador' && estacion.system === 'metro_l1');
-      setEstacionIndice(inicio >= 0 ? inicio : disponibles.findIndex((estacion) => estacion.system === 'metro_l1'));
+      aplicar(disponibles, 'metro_l1', {
+        origen: disponibles.findIndex((e) => e.system === 'metro_l1' && e.id === 'Villa El Salvador'),
+        destino: disponibles.findIndex((e) => e.system === 'metro_l1' && e.id === 'Gamarra'),
+      });
     }).catch(() => {
       if (vigente) setErrorCatalogo(true);
     }).finally(() => {
@@ -208,23 +226,37 @@ export default function SimulacionPage() {
     return () => { vigente = false; };
   }, [intento]);
 
+  const lineas = useMemo(() => lineasDe(estaciones, sistema), [estaciones, sistema]);
+  const origenes = useMemo(() => origenesDe(estaciones, sistema, linea), [estaciones, sistema, linea]);
+  const origen = estaciones[origenIndice];
+  const destino = estaciones[destinoIndice];
+  const destinos = useMemo(() => destinosDe(origenes, origen), [origenes, origen]);
+
   async function simular(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
-    const estacion = estaciones[estacionIndice];
-    if (!estacion || calculando) return;
+    if (!origen || !destino || calculando) return;
     setCalculando(true);
+    setPlan(null);
     setResultado(null);
     setError('');
     try {
-      const datos = await getStationPrediction(estacion, undefined, { dia, hora: 7 });
-      if (datos) setResultado(datos);
-      else setError('Este paradero no tiene pronóstico disponible. Prueba con otra estación.');
-    } catch {
-      setError('No se pudo calcular este escenario. Comprueba la conexión con la API o prueba otra fecha.');
+      const hora = Number(llegada.slice(0, 2));
+      const troncal = sistema === 'metro_l1' || sistema === 'metropolitano';   // el destino fija el sentido
+      const [nuevoPlan, datos] = await Promise.all([
+        getTripPlan(origen, destino, dia, llegada),
+        getStationPrediction(origen, troncal ? destino.id : undefined, { dia, hora }).catch(() => null),
+      ]);
+      setPlan(nuevoPlan);
+      setResultado(datos);
+    } catch (fallo: any) {
+      setError(fallo?.response?.data?.error
+        ?? 'No se pudo calcular este viaje. Comprueba la conexión con la API o prueba otra fecha.');
     } finally {
       setCalculando(false);
     }
   }
+
+  const horaSalida = plan?.recomendada ?? plan?.ultima_puntual;
 
   return (
     <div className="mobility-workspace">
@@ -233,16 +265,16 @@ export default function SimulacionPage() {
         <div>
           <p className="mobility-kicker"><span /> Laboratorio de movilidad</p>
           <h1>Un mismo viaje.<br /><em>Distintas horas.</em></h1>
-          <p>Elige una estación y un día de 2025. Compara dos horas para entender cómo cambian el aforo, la espera y la recomendación.</p>
+          <p>Dinos de dónde sales, a dónde vas y a qué hora quieres llegar. Te sugerimos cuándo salir según la puntualidad, la espera y el aforo.</p>
         </div>
         <MobilityIllustration className="mobility-sim-visual" />
       </header>
-      <div className="mobility-process" aria-label="Pasos de la simulación"><span><b>1</b> Prepara el escenario</span><span><b>2</b> Compara dos horas</span><span><b>3</b> Revisa y descarga</span></div>
+      <div className="mobility-process" aria-label="Pasos de la simulación"><span><b>1</b> Arma tu viaje</span><span><b>2</b> Elige tu salida</span><span><b>3</b> Revisa el día</span></div>
 
       <div className="mobility-sim-grid">
       <form onSubmit={simular} className="card mobility-sim-form">
         <div className="mb-3 flex items-center gap-2"><span className="mobility-section-number">01</span><MapPin size={17} className="text-muted" /></div>
-        <h2 className="text-lg font-semibold tracking-tight text-fg">Tu escenario</h2>
+        <h2 className="text-lg font-semibold tracking-tight text-fg">Tu viaje</h2>
         <p className="mt-1.5 text-xs leading-relaxed text-muted">Usa los modelos del proyecto y datos históricos ATU. No muestra el aforo en vivo.</p>
         {errorCatalogo ? (
           <div className="mt-4 space-y-3">
@@ -257,43 +289,66 @@ export default function SimulacionPage() {
           <fieldset disabled={cargaCatalogo || calculando} className="mt-5 grid gap-4">
             <label className="min-w-0 text-sm font-medium text-fg">
               Sistema
-              <select className={CAMPO} value={sistema} onChange={(e) => {
-                const elegido = e.target.value as Station['system'];
-                setSistema(elegido);
-                setEstacionIndice(estaciones.findIndex((estacion) => estacion.system === elegido));
-              }}>
+              <select className={CAMPO} value={sistema} onChange={(e) => aplicar(estaciones, e.target.value as Station['system'])}>
                 {SISTEMAS.map((valor) => <option key={valor} value={valor}>{systemInfo(valor).label}</option>)}
               </select>
             </label>
+            {usaRuta(sistema) && (
+              <label className="min-w-0 text-sm font-medium text-fg">
+                Ruta
+                <select className={CAMPO} value={linea} onChange={(e) => aplicar(estaciones, sistema, { linea: e.target.value })}>
+                  {lineas.map((valor) => <option key={valor} value={valor}>{valor}</option>)}
+                </select>
+              </label>
+            )}
             <label className="min-w-0 text-sm font-medium text-fg">
-              Estación o paradero
-              <select className={CAMPO} value={estacionIndice} onChange={(e) => setEstacionIndice(Number(e.target.value))}>
-                {estacionIndice < 0 && <option value={-1}>{cargaCatalogo ? 'Cargando…' : 'Sin estaciones disponibles'}</option>}
-                {estaciones.map((estacion, indice) => estacion.system === sistema && (
-                  <option key={indice} value={indice}>{nombreEstacion(estacion)}</option>
-                ))}
+              Subes en
+              <select className={CAMPO} value={origenIndice}
+                onChange={(e) => aplicar(estaciones, sistema, { linea, origen: Number(e.target.value), destino: destinoIndice })}>
+                {origenIndice < 0 && <option value={-1}>{cargaCatalogo ? 'Cargando…' : 'Sin estaciones disponibles'}</option>}
+                {origenes.map(({ estacion, indice }) => <option key={indice} value={indice}>{etiquetaEstacion(estacion)}</option>)}
               </select>
             </label>
             <label className="min-w-0 text-sm font-medium text-fg">
-              Día de 2025
-              <input type="date" className={CAMPO} min={PRIMER_DIA} max={ULTIMO_DIA} required
+              Bajas en
+              <select className={CAMPO} value={destinoIndice} onChange={(e) => setDestinoIndice(Number(e.target.value))}>
+                {destinoIndice < 0 && <option value={-1}>{cargaCatalogo ? 'Cargando…' : 'Sin paraderos posteriores'}</option>}
+                {destinos.map(({ estacion, indice }) => <option key={indice} value={indice}>{etiquetaEstacion(estacion)}</option>)}
+              </select>
+            </label>
+            <label className="min-w-0 text-sm font-medium text-fg">
+              Día
+              <input type="date" className={CAMPO} min={PRIMER_DIA} max={hoy ? sumarDias(hoy, DIAS_ADELANTE) : undefined} required
                 value={dia} onChange={(e) => setDia(e.target.value)} />
             </label>
-            <button type="submit" className="btn btn-primary mt-1" disabled={estacionIndice < 0}>
+            <label className="min-w-0 text-sm font-medium text-fg">
+              Quiero llegar a las
+              <input type="time" className={CAMPO} required value={llegada} onChange={(e) => setLlegada(e.target.value)} />
+            </label>
+            <button type="submit" className="btn btn-primary mt-1" disabled={origenIndice < 0 || destinoIndice < 0 || !dia}>
               {calculando && <Spinner size={16} />}
-              {calculando ? 'Calculando…' : 'Simular el día'}
+              {calculando ? 'Calculando…' : 'Calcular mi salida'}
             </button>
           </fieldset>
         )}
-        {calculando && <p role="status" className="sr-only">Calculando escenario histórico</p>}
+        {!cargaCatalogo && origenIndice >= 0 && destinoIndice < 0 && (
+          <p className="mt-3 text-xs leading-relaxed text-muted">Ese paradero es el último de su sentido: elige otro punto de subida.</p>
+        )}
+        {calculando && <p role="status" className="sr-only">Calculando tu salida</p>}
         {error && <Alert tono="danger" className="mt-4">{error}</Alert>}
       </form>
 
-      {resultado ? <Comparacion resultado={resultado} /> : (
+      {plan ? (
+        <div className="min-w-0 space-y-5">
+          <PlanSalida key={`${plan.origen.id}-${plan.destino.id}-${plan.dia}-${plan.llegada_limite}`} plan={plan} />
+          {resultado && <Comparacion key={`${resultado.station}-${plan.dia}-${horaSalida}`} resultado={resultado}
+            horaInicial={horaSalida ? `${horaSalida.slice(0, 2)}:00` : undefined} />}
+        </div>
+      ) : (
         <section className="mobility-sim-empty" aria-label="Cómo comenzar">
           <span className="mobility-sim-empty-icon"><ChartColumn size={38} strokeWidth={1.3} aria-hidden="true" /></span>
-          <h2>{calculando ? 'Estamos leyendo el día.' : 'Un día completo, hora por hora.'}</h2>
-          <p>{calculando ? 'Calculando el escenario con los modelos y datos disponibles del proyecto.' : 'Prepara el escenario y pulsa «Simular el día». Aquí verás dos horarios, la gráfica de ocupación y la tabla completa.'}</p>
+          <h2>{calculando ? 'Estamos armando tu viaje.' : '¿A qué hora te conviene salir?'}</h2>
+          <p>{calculando ? 'Calculando salidas, esperas y aforo con los modelos y datos disponibles del proyecto.' : 'Arma tu viaje y pulsa «Calcular mi salida». Verás la hora recomendada, las alternativas, los servicios que te llevan y la ocupación del día.'}</p>
           <span className="mt-5 rounded-full border border-line px-3 py-1.5 text-xs text-muted">Estimaciones con datos ATU de 2025</span>
         </section>
       )}

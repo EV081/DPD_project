@@ -11,14 +11,13 @@ async function loadHelper(relativePath) {
 
 const { isAdminRoute, destinoAdmin } = await loadHelper('../src/lib/access.ts');
 
-test('simulación y panel son rutas de administración; el resto no', () => {
-  for (const ruta of ['/simulacion', '/dashboard', '/dashboard/extra']) assert.equal(isAdminRoute(ruta), true, ruta);
-  for (const ruta of ['/map', '/account', '/destinations', '/simulacionx', '/']) assert.equal(isAdminRoute(ruta), false, ruta);
+test('el panel es ruta de administración; la simulación y el resto no', () => {
+  for (const ruta of ['/dashboard', '/dashboard/extra']) assert.equal(isAdminRoute(ruta), true, ruta);
+  for (const ruta of ['/map', '/account', '/destinations', '/simulacion', '/dashboardx', '/']) assert.equal(isAdminRoute(ruta), false, ruta);
 });
 
 test('?continuar solo acepta destinos de administración conocidos', () => {
-  assert.equal(destinoAdmin('simulacion'), '/simulacion');
   assert.equal(destinoAdmin('dashboard'), '/dashboard');
   assert.equal(destinoAdmin('/dashboard'), '/dashboard');
-  for (const malo of [null, '', 'map', 'https://evil.example', '//evil.example', '../account', 'simulacion/../x']) assert.equal(destinoAdmin(malo), null, String(malo));
+  for (const malo of [null, '', 'map', 'simulacion', 'https://evil.example', '//evil.example', '../account', 'simulacion/../x']) assert.equal(destinoAdmin(malo), null, String(malo));
 });

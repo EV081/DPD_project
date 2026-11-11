@@ -14,7 +14,7 @@ const NAV: { href: string; label: string; icon: typeof Map; admin?: boolean }[] 
   { href: '/map', label: 'Mapa', icon: Map },
   { href: '/search', label: 'Paraderos', icon: Search },
   { href: '/destinations', label: 'Destinos', icon: Navigation },
-  { href: '/simulacion', label: 'Simulación', icon: ChartColumn, admin: true },
+  { href: '/simulacion', label: 'Simulación', icon: ChartColumn },
   { href: '/dashboard', label: 'Panel', icon: LayoutDashboard, admin: true },
   { href: '/account', label: 'Cuenta', icon: User },
 ];
@@ -78,7 +78,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           })}
         </nav>
 
-        {isAdmin && <div className="mobility-nav-note hidden lg:block"><strong>Prueba antes de salir.</strong><p>Compara un día histórico y descubre cómo cambia el aforo.</p><Link href="/simulacion" className="mt-3 inline-flex items-center gap-1.5 font-semibold">Abrir simulación <ArrowUpRight size={14} /></Link></div>}
+        <div className="mobility-nav-note hidden lg:block"><strong>Prueba antes de salir.</strong><p>Dinos a qué hora quieres llegar y te sugerimos cuándo salir.</p><Link href="/simulacion" className="mt-3 inline-flex items-center gap-1.5 font-semibold">Abrir simulación <ArrowUpRight size={14} /></Link></div>
 
         <div className="mobility-nav-user flex items-center justify-center gap-2 border-t p-3 lg:justify-between">
           <Link href="/account" className="flex min-w-0 items-center gap-2.5 rounded-lg p-1 hover:bg-surface-2" title={user.name}>
@@ -130,7 +130,7 @@ function AccesoRestringido() {
     <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center">
       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-2 text-muted"><ShieldAlert size={22} aria-hidden /></span>
       <h1 className="text-lg font-bold text-fg">Acceso restringido</h1>
-      <p className="max-w-sm text-sm text-muted">Esta sección es solo para la cuenta de administración. Tu cuenta puede usar el mapa, los paraderos y los destinos.</p>
+      <p className="max-w-sm text-sm text-muted">Esta sección es solo para la cuenta de administración. Tu cuenta puede usar el mapa, los paraderos, los destinos y la simulación.</p>
       <Link href="/map" className="btn btn-primary mt-2">Volver al mapa</Link>
     </div>
   );

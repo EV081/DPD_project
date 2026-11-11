@@ -18,6 +18,8 @@ export interface Station {
   // propios: la app muestra "sin predicción" en vez de usar la de otra estación.
   model_system?: string | null;
   model_series?: string | null;
+  // Corredores: posición del paradero en el recorrido de su sentido (para ofrecer solo destinos posteriores)
+  route_order?: number | null;
 }
 
 export type ClaseAforo = 'Asientos' | 'De_pie' | 'Saturado' | 'Sin_servicio';
@@ -79,6 +81,82 @@ export interface StationPrediction {
   referencia: ReferenciaDatos;
   current: PredictionItem;
   forecast: PredictionItem[];
+  // Solo cuando la consulta es del momento actual
+  ahora?: AforoAhora | null;
+  proximas_salidas?: ProximaSalida[];
+}
+
+// Respuesta de GET /api/predictions/viaje: ¿a qué hora salgo para llegar a tiempo?
+export interface TramoPlan {
+  servicio: string;                 // p. ej. "Expreso 5"
+  sube: string;
+  baja: string;
+  viaje_min: number;
+  espera_min: number;
+  intervalo_min: number;
+  paradas_intermedias: number;
+  frecuencia_publicada: boolean;    // false: la espera usa el intervalo típico del modelo
+}
+
+// Una salida desde el paradero (mapa): sin destino no hay llegada, tiempo a bordo ni servicio
+export interface ProximaSalida {
+  salida: string;                   // HH:MM en que hay que estar en el paradero
+  llegada: string | null;           // HH:MM estimada de llegada
+  espera_min: number;
+  viaje_min: number | null;
+  intervalo_min: number;
+  ocupacion: number;                // interpolada dentro de la hora (aproximada)
+  clase: ClaseAforo;
+  franja: 'dia' | 'noche';
+  tramos: TramoPlan[] | null;       // Metropolitano: servicio(s) a tomar; null en los demás sistemas
+}
+
+/** Aforo interpolado al minuto de la consulta (aproximado). */
+export interface AforoAhora {
+  hora: string;
+  crowding: number;
+  class: ClaseAforo;
+}
+
+// Una salida de la simulación: siempre con destino y hora límite
+export interface OpcionSalida extends ProximaSalida {
+  llegada: string;
+  viaje_min: number;
+  margen_min: number;               // minutos antes de la hora límite (negativo: tarde)
+  estado: 'con_margen' | 'justo' | 'tarde';
+  costo_min: number;
+}
+
+export interface ServicioPlan {
+  nombre: string;
+  opera: boolean | null;            // null: la fuente no publica el horario
+  horario: string | null;
+  intervalo_min: number | null;
+  url?: string | null;
+  notas: string[];
+  viaje_min?: number;
+  paradas_intermedias?: number;
+}
+
+export interface PlanSalida {
+  origen: { id: string; name: string };
+  destino: { id: string; name: string };
+  system: string;
+  series: string;
+  sentido: string | null;
+  dia: string;
+  tipo_dia: 'LAB' | 'SAB' | 'DOM';
+  llegada_limite: string;
+  referencia: ReferenciaDatos;
+  opciones: OpcionSalida[];
+  recomendada: string | null;
+  ultima_puntual: string | null;
+  mas_comoda: string | null;
+  motivo: string;
+  servicios: ServicioPlan[];
+  seguridad: { franja_salida: 'dia' | 'noche'; franja_llegada: 'dia' | 'noche'; nota: string } | null;
+  supuestos: string[];
+  fuente_horarios: { nombre: string; url: string; consultado: string; aviso: string };
 }
 
 // Para la sugerencia de ubicaciones en tiempo real
@@ -149,4 +227,5 @@ export interface TripMatchResponse {
 // Vista del pronóstico en el mapa: estado actual + 24 h, o "sin datos ATU" para ese paradero
 export type ForecastView =
   | { sinDatos: true }
-  | { sinDatos?: false; current: PredictionItem; predictions: PredictionItem[]; referencia: ReferenciaDatos };
+  | { sinDatos?: false; current: PredictionItem; predictions: PredictionItem[]; referencia: ReferenciaDatos;
+      ahora?: AforoAhora | null; proximas?: ProximaSalida[] };

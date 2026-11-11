@@ -260,6 +260,7 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .mobility-process b { display: inline-flex; align-items: center; justify-content: center; width: 1.4rem; height: 1.4rem; border: 1px solid var(--line); border-radius: 50%; font-size: .65rem; color: var(--fg); }
 .mobility-sim-grid { display: grid; grid-template-columns: 16.5rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
 .mobility-sim-form { position: sticky; top: 1.5rem; padding: 1.4rem; }
+@media (max-height: 860px) { .mobility-sim-form { position: static; } }   /* el formulario no cabe fijo en pantallas bajas */
 .mobility-section-number { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-size: .65rem; font-weight: 700; }
 .mobility-sim-form label { font-size: .73rem; }
 .mobility-sim-form select, .mobility-sim-form input { font-size: .78rem; min-height: 2.7rem; }

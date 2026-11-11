@@ -55,6 +55,14 @@ def _mapeo_alimentadores() -> dict[str, str | None]:
     return d["servicio_a_serie"]
 
 
+@lru_cache(maxsize=None)
+def orden_paraderos_corredor() -> dict[tuple[str, str], int]:
+    """(ruta, código de paradero) -> posición del paradero en el recorrido de su sentido."""
+    rutas = json.loads((MODELS_DIR / "corredor" / "rutas_config.json").read_text(encoding="utf-8"))["rutas"]
+    return {(ruta, cod): i for ruta, r in rutas.items() for sen in r["sentidos"].values()
+            for i, cod in enumerate(sen.get("paradas", []))}
+
+
 def serie_de_estacion(estacion: dict) -> tuple[str | None, str | None]:
     """(sistema_modelo, serie) de una estación de ``routes.stations``; serie None si no hay datos."""
     sistema = sistema_modelo(estacion.get("system", ""))

@@ -1,5 +1,5 @@
 import { api } from './client';
-import { System, Station, StationPrediction } from './types';
+import { PlanSalida, System, Station, StationPrediction } from './types';
 import { AutocompleteSuggestion, TripMatchResponse } from './types';
 
 // 1. Mapeador para llamadas a endpoints de Backend (p. ej. GET /api/stations?system=...)
@@ -124,6 +124,26 @@ export const getStationPrediction = async (
     if (error?.response?.status === 404) return null;
     throw error;
   }
+};
+
+/**
+ * Salidas posibles para llegar de `origen` a `destino` antes de `llegada` (HH:MM, hora de Lima).
+ * Los errores 4xx traen un mensaje para el usuario en `error.response.data.error`.
+ */
+export const getTripPlan = async (
+  origen: Station,
+  destino: Station,
+  dia: string,
+  llegada: string
+): Promise<PlanSalida> => {
+  const params: Record<string, string> = { origen_id: origen.id, destino_id: destino.id, dia, llegada };
+  if (origen.system === 'corredores' && origen.raw_properties?.ruta) params.ruta = String(origen.raw_properties.ruta);
+  if (origen.system === 'alimentadores') {   // los paraderos de un alimentador comparten id
+    params.origen_nombre = origen.name;
+    params.destino_nombre = destino.name;
+  }
+  const res = await api.get('/predictions/viaje', { params, timeout: 60000 });
+  return res.data;
 };
 
 // Extrae el código o servicio de la ruta según el tipo de sistema del paradero

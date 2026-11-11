@@ -64,6 +64,8 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
   const color = systemInfo(selectedRoute.system).color;
   const color2 = t ? systemInfo(t.system).color : color;
   const actual = forecast && !forecast.sinDatos ? forecast.current : null;
+  // Misma clase que el panel: la del minuto actual (interpolada) si el backend la envía
+  const claseAhora = (forecast && !forecast.sinDatos && forecast.ahora?.class) || actual?.class;
   const servicio = t ? `${nombreServicio(selectedRoute)} + ${nombreDe(t.system, t.route_code)}` : nombreServicio(selectedRoute);
 
   // Un solo aviso, el más accionable: cambiar de paradero > recomendación del viaje
@@ -93,8 +95,8 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
                 {actual && actual.class !== 'Sin_servicio' && (
                   <>
                     <span aria-hidden>·</span>
-                    <span aria-hidden className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: colorOcupacion(actual.class) }} />
-                    <span className={`shrink-0 font-medium ${claseAforo(actual.class)}`}>{etiquetaClase(actual.class)}</span>
+                    <span aria-hidden className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: colorOcupacion(claseAhora) }} />
+                    <span className={`shrink-0 font-medium ${claseAforo(claseAhora)}`}>{etiquetaClase(claseAhora)}</span>
                     <span className="shrink-0">· {textoEspera(actual)}</span>
                   </>
                 )}
