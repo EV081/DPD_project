@@ -4,3 +4,7 @@ deliveries/week10/models/**/*.csv text eol=lf
 deliveries/week10/models/**/*.txt text eol=lf
 deliveries/week10/models/**/*.joblib binary
 deliveries/week10/models/**/*.npz binary
+
+# artefactos del backend: bytes idénticos a git en cualquier SO (manifest.json guarda su sha256 exacto;
+# con autocrlf=true en Windows saldrían con CRLF y la API rechazaría los modelos)
+backend/models/** -text
