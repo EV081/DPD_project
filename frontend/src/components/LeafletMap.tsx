@@ -12,6 +12,7 @@ interface Caminata { normal: any; segura: any | null; seleccionada: 'normal' | '
 
 interface Props {
   center: Coords;
+  centerIsReference: boolean;
   stations: Station[];
   /** Si viene, solo se dibujan estas estaciones (subida y bajada del viaje). */
   filterIds: string[] | null;
@@ -51,11 +52,18 @@ const userDot = `<div style="position:relative;width:18px;height:18px">
   <span style="position:absolute;inset:0;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.45)"></span>
 </div>`;
 
-export default function LeafletMap({ center, stations, filterIds, showAll, focus, routeGeoJson, destination, walk, onStationClick }: Props) {
+function popupTexto(titulo: string, detalle: string) {
+  const contenido = document.createElement('div');
+  const nombre = document.createElement('b');
+  nombre.textContent = titulo;
+  contenido.append(nombre, document.createElement('br'), detalle);
+  return contenido;
+}
+
+export default function LeafletMap({ center, centerIsReference, stations, filterIds, showAll, focus, routeGeoJson, destination, walk, onStationClick }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const L = useRef<typeof LType | null>(null);
   const map = useRef<LType.Map | null>(null);
-  const markers = useRef<LType.LayerGroup | null>(null);
   const routeLayer = useRef<LType.LayerGroup | null>(null);
   const tiles = useRef<{ base: LType.TileLayer; labels: LType.TileLayer } | null>(null);
   const { resolved } = useTheme();
@@ -74,6 +82,8 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
 
   useEffect(() => {
     let cancelled = false;
+    let resizeTimer: ReturnType<typeof setTimeout> | undefined;
+    let actualizarMarcadores: (() => void) | undefined;
     (async () => {
       const leaflet = (await import('leaflet')).default;
       if (cancelled || !el.current || map.current) return;
@@ -99,14 +109,14 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
         .marker([center.lat, center.lon], {
           icon: leaflet.divIcon({ className: 'custom-marker', html: userDot, iconSize: [18, 18] }),
         })
-        .addTo(m)
-        .bindPopup('Mi ubicación');
+        .addTo(m);
 
-      markers.current = leaflet.layerGroup().addTo(m);
+      const grupoMarcadores = leaflet.layerGroup().addTo(m);
 
-      render.current = () => {
+      actualizarMarcadores = () => {
+        if (map.current !== m) return;
         const { stations: all, filterIds: ids, showAll: todos, onStationClick: click } = latest.current;
-        markers.current!.clearLayers();
+        grupoMarcadores.clearLayers();
         if (!ids && !todos) return;
         const zoom = m.getZoom();
         const bounds = m.getBounds();
@@ -122,22 +132,36 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
               iconSize: [14, 14],
             }),
           });
-          marker.bindPopup(`<b>${st.name}</b><br>${systemInfo(st.system).label}`);
+          marker.bindPopup(popupTexto(st.name, systemInfo(st.system).label));
           marker.on('click', () => click(st));
-          markers.current!.addLayer(marker);
+          grupoMarcadores.addLayer(marker);
         });
       };
-      m.on('moveend zoomend', () => render.current());
+      render.current = actualizarMarcadores;
+      m.on('moveend zoomend', actualizarMarcadores);
       render.current();
       // El contenedor puede haber cambiado de tamaño al montarse (layout responsive)
-      setTimeout(() => m.invalidateSize(), 0);
+      resizeTimer = setTimeout(() => {
+        if (map.current === m) m.invalidateSize();
+      }, 0);
       setReady(true);
     })();
 
     return () => {
       cancelled = true;
-      map.current?.remove();
+      clearTimeout(resizeTimer);
+      const instancia = map.current;
       map.current = null;
+      render.current = () => {};
+      if (instancia && actualizarMarcadores) instancia.off('moveend zoomend', actualizarMarcadores);
+      instancia?.remove();
+      tiles.current = null;
+      routeLayer.current = null;
+      walkLayer.current = null;
+      userMarker.current = null;
+      destMarker.current = null;
+      hadDestination.current = false;
+      walkFit.current = false;
       setReady(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -164,7 +188,8 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
 
   useEffect(() => {
     userMarker.current?.setLatLng([center.lat, center.lon]);
-  }, [center, ready]);
+    userMarker.current?.bindPopup(centerIsReference ? 'Origen de referencia' : 'Mi ubicación');
+  }, [center, centerIsReference, ready]);
 
   useEffect(() => { render.current(); }, [stations, filterIds, showAll, ready]);
 
@@ -242,7 +267,7 @@ export default function LeafletMap({ center, stations, filterIds, showAll, focus
           }),
         })
         .addTo(m)
-        .bindPopup(`<b>Destino:</b><br>${destination.name}`);
+        .bindPopup(popupTexto('Destino', destination.name));
       const pts: LType.LatLngExpression[] = [[center.lat, center.lon], [destination.lat, destination.lon]];
       latest.current.stations.forEach((s) => {
         if (latest.current.filterIds?.includes(s.id)) pts.push([s.latitude, s.longitude]);

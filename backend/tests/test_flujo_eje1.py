@@ -11,7 +11,7 @@ from sqlalchemy import text
 from eje2_real import registrar_y_entrar
 from services import calendario, calibracion, monitoreo
 
-pytestmark = pytest.mark.bd
+pytestmark = [pytest.mark.bd, pytest.mark.postgres]
 
 
 @pytest.fixture(scope="module")

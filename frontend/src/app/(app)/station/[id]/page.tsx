@@ -6,13 +6,14 @@ import { ArrowLeft, MapPin, Map, Info, CalendarX, CircleAlert, Activity } from '
 import dynamic from 'next/dynamic';
 import SystemBadge from '@/components/SystemBadge';
 import PredictionCard from '@/components/PredictionCard';
+import { ForecastScopeNote } from '@/components/ForecastPanel';
 import FeedbackBox from '@/components/FeedbackBox';
 import { Spinner, Skeleton, EmptyState } from '@/components/Spinner';
 import SeguridadAcceso from '@/components/SeguridadAcceso';
 import Alert from '@/components/Alert';
 import { getStation, getStationPrediction } from '@/lib/services';
 import { FOCUS_STORAGE_KEY } from '@/lib/constants';
-import { etiquetaClase, claseAforo, textoEspera } from '@/lib/aforo';
+import { etiquetaClase, claseAforo, textoEspera, textoAjusteEspera } from '@/lib/aforo';
 import { systemInfo } from '@/lib/systems';
 import { Station, StationPrediction } from '@/lib/types';
 
@@ -37,6 +38,8 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
     let cancelled = false;
     (async () => {
       setLoading(true);
+      setForecast(null);
+      setConsultedAt(0);
       setPredError(false);
       let st: Station;
       try {
@@ -54,7 +57,7 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
         if (!cancelled) { setForecast(pred); setConsultedAt(Date.now()); }
       } catch (err) {
         console.error('Error al cargar el pronóstico:', err);
-        if (!cancelled) setPredError(true);
+        if (!cancelled) { setForecast(null); setPredError(true); }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -81,8 +84,7 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
   }
 
   const cur = forecast?.current;
-  const extraTrafico = cur?.eta_base_min != null && cur.eta_min != null && cur.eta_min - cur.eta_base_min >= 0.5
-    ? Math.round(cur.eta_min - cur.eta_base_min) : null;
+  const ajusteEspera = textoAjusteEspera(cur);
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-6 md:px-8 md:py-10">
@@ -118,6 +120,7 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
       <section className="rise mt-8" style={{ '--i': 2 } as React.CSSProperties} aria-label="Pronóstico de aforo">
         <h2 className="text-lg font-semibold text-fg">Pronóstico de aforo</h2>
         <p className="mt-0.5 text-sm text-muted">Ocupación estimada a bordo con demanda pronosticada (LightGBM) y matriz origen-destino.</p>
+        <ForecastScopeNote referenceDate={forecast?.referencia?.fecha_referencia_datos} />
 
         {loading ? (
           <div className="flex items-center justify-center gap-2.5 py-16 text-sm text-muted">
@@ -134,9 +137,9 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
                 <p className="eyebrow">Espera estimada</p>
                 <p className="mt-0.5 text-3xl font-bold tracking-tight tabular-nums text-fg">{textoEspera(cur)}</p>
               </div>
-              {extraTrafico !== null && (
+              {ajusteEspera !== null && (
                 <p className="flex items-center gap-2 text-sm text-warn">
-                  <Activity size={16} /> Incluye +{extraTrafico} min por tráfico en vivo
+                  <Activity size={16} /> {ajusteEspera}
                 </p>
               )}
               <div className="w-full sm:ml-auto sm:w-56">

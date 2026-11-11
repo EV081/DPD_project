@@ -5,6 +5,7 @@ Pensados para correr desde un Cron Job (Render) o el servicio `pipeline` de dock
     db-particiones     crea las particiones de los próximos meses y retira las muy viejas
     eje2-recalibrar    reportes de usuarios -> ajuste del riesgo de las calles (tabla ajuste_riesgo_segmento)
     pipeline-diario    db-particiones + eje2-recalibrar
+    seed-admin         crea/actualiza el administrador con las variables SEED_ADMIN_* del .env
     monitoreo-semanal  métricas de la semana con el feedback de la app (ETA, aforo, abordajes) y alertas
     calibrar-eta       calibración semanal del ETA con los "Ya abordé" (campeón vs retador)
     monitoreo-resumen  imprime las últimas métricas guardadas
@@ -60,6 +61,18 @@ def registrar_comandos(app) -> None:
             if not r["ajustes"]:
                 r["estado"] = "sin_datos"
         click.echo(f"reportes considerados: {r['reportes_considerados']} · ajustes: {r['ajustes']} en {r['segmentos_distintos']} calles")
+
+    @app.cli.command("seed-admin")
+    def seed_admin():
+        """Crea o actualiza al administrador con SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD / SEED_ADMIN_NAME del .env."""
+        from services import usuarios
+        try:
+            r = usuarios.sembrar_admin()
+        except usuarios.SeedError as exc:
+            raise click.ClickException(str(exc))
+        if r["estado"] == "omitido":
+            raise click.ClickException(r["motivo"])
+        click.echo(f"seed-admin: {r['estado']} ({r['email']})")
 
     @app.cli.command("pipeline-diario")
     def pipeline_diario():

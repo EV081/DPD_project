@@ -425,10 +425,9 @@ def _explicar(g, franja, lam, corta, segura, segs_c, segs_s, r, deltas, recomend
     motivos = []
     if len(evitados):
         riesgo_ev = banda(float(np.sum(g.largo[evitados] * r[evitados]) / g.largo[evitados].sum()), bandas)
-        cuanto = {"alto": "muchas", "medio": "varias", "bajo": "algunas"}[riesgo_ev]
         cuando = "de noche" if franja == "noche" else "de día"
         donde = f"{', '.join(principales)} ({round(float(g.largo[evitados].sum()))} m)" if principales else f"un tramo de {round(float(g.largo[evitados].sum()))} m"
-        motivos.append(f"Evita {donde}: ahí hay {cuanto} denuncias registradas {cuando}.")
+        motivos.append(f"Evita {donde}, con un nivel {riesgo_ev} en el indicador de denuncias {cuando}.")
     if con_reportes:
         motivos.append("Hay reportes recientes de otras personas en esa zona.")
     return {
@@ -451,15 +450,26 @@ def _explicar(g, franja, lam, corta, segura, segs_c, segs_s, r, deltas, recomend
 
 def rutas(origen: dict, destino: dict, preferencia: str = "segura", franja: str | None = None,
           salida: dt.datetime | None = None, lam: float | None = None, deltas: dict | None = None,
-          g: GrafoEje2 | None = None) -> dict:
+          g: GrafoEje2 | None = None, max_minutos_extra: float | None = None) -> dict:
     """Calcula la ruta normal y la segura entre un punto cualquiera y una estación/paradero.
 
     origen: {lat, lon}; destino: {acceso_id | station_id[, sistema] | lat, lon}; preferencia: 'segura' (defecto) | 'normal';
     franja: 'dia' | 'noche' (por defecto la de la hora de salida en Lima); lam: λ (por defecto el del manifest).
+    max_minutos_extra: límite opcional respecto a la ruta corta. Filtra la candidata segura ya calculada;
+    no busca todas las rutas posibles que podrían cumplir el límite. Sin valor conserva los topes anteriores.
     """
     g = g or grafo()
     if preferencia not in ("segura", "normal"):
         raise Eje2Error("preferencia debe ser 'segura' o 'normal'")
+    if max_minutos_extra is not None:
+        if isinstance(max_minutos_extra, bool):
+            raise Eje2Error("max_minutos_extra debe ser un número finito mayor o igual que cero")
+        try:
+            max_minutos_extra = float(max_minutos_extra)
+        except (TypeError, ValueError):
+            raise Eje2Error("max_minutos_extra debe ser un número finito mayor o igual que cero") from None
+        if not math.isfinite(max_minutos_extra) or max_minutos_extra < 0:
+            raise Eje2Error("max_minutos_extra debe ser un número finito mayor o igual que cero")
     if franja is None:
         franja = franja_de(salida)
     if franja not in FRANJAS:
@@ -490,22 +500,29 @@ def rutas(origen: dict, destino: dict, preferencia: str = "segura", franja: str 
     extra_pct = extra_m / m_c["distancia_m"] if m_c["distancia_m"] > 0 else 0.0
     reduccion = 1 - m_s["densidad_media"] / m_c["densidad_media"] if m_c["densidad_media"] > 0 else 0.0
     t = g.manifest["topes_recomendacion"]
-    vale = reduccion >= t["reduccion_min"] and extra_m <= max(t["desvio_pct_max"] * m_c["distancia_m"], t["desvio_m_max"])
     minutos = extra_m / g.manifest["velocidad_caminata_m_min"]
+    cumple_tolerancia = max_minutos_extra is None or minutos <= max_minutos_extra + 1e-9
+    desvio_aceptable = (extra_m <= max(t["desvio_pct_max"] * m_c["distancia_m"], t["desvio_m_max"])
+                       if max_minutos_extra is None else cumple_tolerancia)
+    vale = reduccion >= t["reduccion_min"] and desvio_aceptable
     mas_tiempo = "menos de 1 minuto más" if minutos < 1 else f"unos {round(minutos)} minutos más"
-    menos = f"{max(reduccion, 0):.0%} menos denuncias registradas"
+    menos = f"un indicador estimado de denuncias por kilómetro {max(reduccion, 0):.0%} menor"
     if iguales:
-        recomendada, razon = "misma", "La ruta más corta ya es la más segura."
+        recomendada, razon = "misma", "El camino corto y la ruta segura coinciden."
+    elif not cumple_tolerancia:
+        recomendada = "normal"
+        razon = (f"La ruta segura añade {minutos:.2f} min y supera tu límite de "
+                 f"{max_minutos_extra:g} min adicionales. Seleccionamos el camino corto.")
     elif vale:
         recomendada = "segura"
-        razon = f"Te recomendamos la ruta segura: caminas {mas_tiempo} ({extra_m:.0f} m más) y pasas por calles con {menos}."
+        razon = f"Recomendamos la ruta segura. Caminas {mas_tiempo} ({extra_m:.0f} m más) y el trayecto tiene {menos}."
     elif reduccion >= t["reduccion_min"]:
         recomendada = "normal"
-        razon = (f"La ruta segura tiene {menos}, pero te haría caminar {mas_tiempo} ({extra_m:.0f} m más). "
+        razon = (f"La ruta segura tiene {menos}, pero añade {extra_m:.0f} m. "
                  f"Elige la que prefieras.")
     else:
         recomendada = "normal"
-        razon = f"La ruta segura casi no cambia el riesgo y caminarías {mas_tiempo}. Elige la que prefieras."
+        razon = f"La ruta segura cambia poco el indicador y añade {extra_m:.0f} m. Elige la que prefieras."
 
     compartidos = set(map(int, segs_c)) & set(map(int, segs_s))
     bandas = g.manifest["bandas_riesgo"]
@@ -522,8 +539,10 @@ def rutas(origen: dict, destino: dict, preferencia: str = "segura", franja: str 
         }
 
     seleccionada = preferencia if recomendada != "misma" else "normal"
+    if not cumple_tolerancia:
+        seleccionada = "normal"
     explicacion = _explicar(g, franja, lam, m_c, m_s, segs_c, segs_s, r, deltas, recomendada, None, razon)
-    return {
+    respuesta = {
         "seleccionada": seleccionada,
         "recomendada": recomendada,
         "preferencia": preferencia,
@@ -536,6 +555,19 @@ def rutas(origen: dict, destino: dict, preferencia: str = "segura", franja: str 
         "rutas": {"normal": armar("normal", segs_c, nodos_c, m_c), "segura": armar("segura", segs_s, nodos_s, m_s)},
         "explicacion": explicacion,
     }
+    if max_minutos_extra is not None:
+        respuesta["tolerancia_caminata"] = {
+            "max_minutos_extra": max_minutos_extra,
+            "minutos_extra_segura": round(max(0.0, minutos), 3),
+            "cumple_segura": cumple_tolerancia,
+            "metodo": "comparacion_de_dos_rutas",
+            "aviso": "Se comparan el camino corto y la ruta segura (ponderada por denuncias). No se buscan todas las rutas posibles que podrían cumplir tu límite.",
+        }
+        explicacion["condiciones"]["max_minutos_extra"] = max_minutos_extra
+        explicacion["condiciones"]["recomendacion_si"] = (
+            f"la alternativa calculada reduce el riesgo por metro ≥ {t['reduccion_min']:.0%} "
+            f"y añade como máximo {max_minutos_extra:g} min respecto a la ruta normal")
+    return respuesta
 
 
 # --------------------------------------------------------------------------- ajustes por reportes (se llenan desde la base)

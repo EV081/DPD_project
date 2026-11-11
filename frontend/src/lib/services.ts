@@ -94,18 +94,24 @@ export const getRouteGeoJson = async (systemName: string, routeCode?: string | n
  * - El backend resuelve qué serie del modelo corresponde al paradero (ya no hay reglas de texto
  *   ni series "por defecto"). Si el paradero no tiene datos ATU propios responde 404 y aquí se
  *   devuelve null: la app muestra "sin predicción" en vez de la de otra estación.
- * - No se envían fecha ni hora: el backend usa la fecha y la hora de Lima.
+ * - Sin escenario, el backend usa la fecha y la hora de Lima.
+ * - El simulador envía una fecha y una hora explícitas para repetir el resultado.
  * - `haciaId` (estación de bajada) fija el sentido de viaje en Metro L1 y Metropolitano; en
  *   corredores el código del paradero ya trae el sentido. `ruta` desambigua paraderos de
  *   corredor compartidos por varias rutas.
  */
 export const getStationPrediction = async (
   station: Station,
-  haciaId?: string
+  haciaId?: string,
+  escenario?: { dia: string; hora: number }
 ): Promise<StationPrediction | null> => {
   if (station.model_series === null) return null;   // el backend ya sabe que no hay datos
   const params: Record<string, string> = { id: station.id };   // por query: un id con espacios no atraviesa API Gateway en la ruta
   if (haciaId) params.hacia_id = haciaId;
+  if (escenario) {
+    params.dia = escenario.dia;
+    params.hour = String(escenario.hora);
+  }
   const ruta = station.raw_properties?.ruta;
   if (station.system === 'corredores' && ruta) params.ruta = String(ruta);
   try {

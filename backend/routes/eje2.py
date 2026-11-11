@@ -12,6 +12,8 @@ from db.tablas import AjusteRiesgoSegmento, PipelineEjecucion, ReporteSeguridad
 from services import calendario
 from services import eje2_reportes as R
 from services import eje2_service as E
+from routes.validation import coordinates, json_object, number
+from werkzeug.exceptions import BadRequest
 
 eje2_bp = Blueprint("eje2", __name__)
 
@@ -21,7 +23,7 @@ def _error(e: E.Eje2Error):
 
 
 def _json() -> dict:
-    return request.get_json(silent=True) or {}
+    return json_object()
 
 
 def _flotante(nombre: str, defecto: float, minimo: float, maximo: float) -> float:
@@ -59,6 +61,7 @@ def ruta():
             franja: {type: string, enum: [dia, noche], description: "por defecto la de la hora de salida en Lima"}
             salida: {type: string, description: "ISO 8601; por defecto ahora"}
             lambda: {type: number, description: "0 a 50; por defecto el valor validado"}
+            max_minutos_extra: {type: number, minimum: 0, description: "Opcional: minutos adicionales máximos respecto a la ruta normal; se comparan las dos rutas calculadas"}
     responses:
       200:
         description: Ambas rutas (GeoJSON), comparación, recomendación y explicación
@@ -68,6 +71,18 @@ def ruta():
         description: Origen fuera de la cobertura o demasiado lejos del destino
     """
     d = _json()
+    origen, destino = d.get("origen"), d.get("destino")
+    if not isinstance(origen, dict) or not isinstance(destino, dict):
+        raise BadRequest("origen y destino deben ser objetos JSON")
+    coordinates(origen.get("lat"), origen.get("lon"))
+    if "lat" in destino or "lon" in destino:
+        coordinates(destino.get("lat"), destino.get("lon"))
+    if d.get("lambda") is not None:
+        d["lambda"] = number(d["lambda"], "lambda", 0, 50)
+    if d.get("max_minutos_extra") is not None:
+        d["max_minutos_extra"] = number(d["max_minutos_extra"], "max_minutos_extra", 0)
+    if d.get("franja") is not None and d["franja"] not in ("dia", "noche"):
+        raise BadRequest("franja debe ser 'dia' o 'noche'")
     salida = None
     if d.get("salida"):
         try:
@@ -80,7 +95,8 @@ def ruta():
     try:
         g = E.grafo()
         out = E.rutas(d.get("origen") or {}, d.get("destino") or {}, preferencia=d.get("preferencia") or "segura",
-                      franja=d.get("franja"), salida=salida, lam=d.get("lambda"), deltas=R.ajustes.obtener(g), g=g)
+                      franja=d.get("franja"), salida=salida, lam=d.get("lambda"), deltas=R.ajustes.obtener(g), g=g,
+                      max_minutos_extra=d.get("max_minutos_extra"))
     except E.Eje2Error as e:
         return _error(e)
     return jsonify(out), 200
@@ -101,8 +117,12 @@ def accesos_cercanos():
     """
     try:
         lat, lon = float(request.args["lat"]), float(request.args["lon"])
+        lat, lon = coordinates(lat, lon)
         radio = _flotante("radius", 800, 50, 3000)
-        limite = int(_flotante("limit", 20, 1, 100))
+        limite = _flotante("limit", 20, 1, 100)
+        if not limite.is_integer():
+            raise E.Eje2Error("limit debe ser un número entero")
+        limite = int(limite)
     except (KeyError, ValueError):
         return jsonify({"error": "lat y lon son obligatorios y numéricos"}), 400
     except E.Eje2Error as e:

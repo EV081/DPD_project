@@ -117,6 +117,7 @@ def test_el_interruptor_apaga_el_efecto_de_los_reportes_sin_perderlos(client, ap
     assert ruta(client, origen, acc, "noche")["rutas"]["normal"]["riesgo_medio"] == con                 # los ajustes no se perdieron
 
 
+@pytest.mark.postgres
 def test_pipeline_diario_deja_particiones_y_bitacora(app_ctx):
     from db.connection import db
     res = app_ctx.test_cli_runner().invoke(args=["pipeline-diario"])

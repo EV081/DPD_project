@@ -1,7 +1,8 @@
 """Configuración común de las pruebas.
 
-Las pruebas con base de datos corren contra un Postgres **dedicado** (servicio `db-test` de docker-compose,
-puerto 5433, en memoria), nunca contra la base de desarrollo ni de producción:
+Por defecto las pruebas usan Postgres dedicado (`db-test`, puerto 5433). También se puede definir
+TEST_DATABASE_URL con un archivo SQLite terminado en `_test.db`: las pruebas de particiones y
+concurrencia se omiten. Nunca elijas una base que quieras conservar:
 
     docker compose --profile test up -d db-test
     cd backend && pytest
@@ -25,8 +26,10 @@ from sqlalchemy.engine import make_url
 TEST_URL = os.environ.get(
     "TEST_DATABASE_URL", "postgresql+psycopg2://postgres:postgres@localhost:5433/urbansafe_test")
 
+TEST_DIALECT = make_url(TEST_URL).get_backend_name()
 _nombre_bd = make_url(TEST_URL).database or ""
-if not _nombre_bd.endswith("_test"):
+_nombre_seguro = Path(_nombre_bd).stem if TEST_DIALECT == "sqlite" else _nombre_bd
+if not _nombre_seguro.endswith("_test"):
     raise RuntimeError(
         f"TEST_DATABASE_URL apunta a '{_nombre_bd}': por seguridad la base de pruebas debe terminar en '_test'.")
 
@@ -34,6 +37,8 @@ if not _nombre_bd.endswith("_test"):
 os.environ["DATABASE_URL"] = TEST_URL           # sobrescribe cualquier DATABASE_URL del entorno o del .env
 os.environ["API_TOMTOM"] = ""
 os.environ["TOMMTOM_KEY"] = ""
+os.environ["LOCATIONIQ_TOKEN"] = ""
+os.environ["JWT_SECRET_KEY"] = "urbansafe-test-key-not-for-production-0000000000000000000000000000"
 
 RAIZ = Path(__file__).resolve().parents[1]
 for p in (RAIZ, RAIZ / "model"):
@@ -53,17 +58,25 @@ def pytest_configure(config):
 
 
 def pytest_sessionstart(session):
-    """Reinicia el esquema de la base de pruebas (solo ahí) antes de importar la app."""
+    """Comprueba la base de pruebas y reinicia el esquema de Postgres antes de importar la app."""
     session.config._bd_ok = False
     try:
         engine = create_engine(TEST_URL, pool_pre_ping=True)
         with engine.begin() as con:
-            con.execute(text("DROP SCHEMA IF EXISTS public CASCADE"))
-            con.execute(text("CREATE SCHEMA public"))
+            if TEST_DIALECT == "postgresql":
+                con.execute(text("DROP SCHEMA IF EXISTS public CASCADE"))
+                con.execute(text("CREATE SCHEMA public"))
         engine.dispose()
         session.config._bd_ok = True
     except Exception as exc:                                    # sin Docker: las pruebas puras siguen funcionando
         session.config._bd_error = str(exc).splitlines()[0]
+
+
+def pytest_collection_modifyitems(items):
+    if TEST_DIALECT != "postgresql":
+        for item in items:
+            if item.get_closest_marker("postgres"):
+                item.add_marker(pytest.mark.skip(reason="Esta prueba necesita Postgres y sus particiones nativas"))
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -77,8 +90,13 @@ def _bd_limpia_por_modulo(request):
     from app import app
     from db.connection import db
     with app.app_context():
-        tablas = ", ".join(f'"{t.name}"' for t in db.metadata.sorted_tables)
-        if tablas:
-            db.session.execute(text(f"TRUNCATE TABLE {tablas} RESTART IDENTITY CASCADE"))
+        if TEST_DIALECT == "sqlite":
+            for tabla in reversed(db.metadata.sorted_tables):
+                db.session.execute(tabla.delete())
             db.session.commit()
+        else:
+            tablas = ", ".join(f'"{t.name}"' for t in db.metadata.sorted_tables)
+            if tablas:
+                db.session.execute(text(f"TRUNCATE TABLE {tablas} RESTART IDENTITY CASCADE"))
+                db.session.commit()
     yield

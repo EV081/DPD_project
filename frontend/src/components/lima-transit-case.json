@@ -1,0 +1,174 @@
+{
+  "fuente": "revision_noviembre/demostracion/escenario_villa_el_salvador.csv",
+  "fecha_atu": "2025-11-17",
+  "horas": [
+    {
+      "hora": "00:00",
+      "clase": "Sin_servicio",
+      "ocupacion": null,
+      "espera": null,
+      "recomendacion": "sin_servicio"
+    },
+    {
+      "hora": "01:00",
+      "clase": "Sin_servicio",
+      "ocupacion": null,
+      "espera": null,
+      "recomendacion": "sin_servicio"
+    },
+    {
+      "hora": "02:00",
+      "clase": "Sin_servicio",
+      "ocupacion": null,
+      "espera": null,
+      "recomendacion": "sin_servicio"
+    },
+    {
+      "hora": "03:00",
+      "clase": "Sin_servicio",
+      "ocupacion": null,
+      "espera": null,
+      "recomendacion": "sin_servicio"
+    },
+    {
+      "hora": "04:00",
+      "clase": "Sin_servicio",
+      "ocupacion": null,
+      "espera": null,
+      "recomendacion": "sin_servicio"
+    },
+    {
+      "hora": "05:00",
+      "clase": "De_pie",
+      "ocupacion": 0.25,
+      "espera": 4.0,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "06:00",
+      "clase": "De_pie",
+      "ocupacion": 0.226,
+      "espera": 1.6,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "07:00",
+      "clase": "De_pie",
+      "ocupacion": 0.248,
+      "espera": 1.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "08:00",
+      "clase": "De_pie",
+      "ocupacion": 0.221,
+      "espera": 1.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "09:00",
+      "clase": "De_pie",
+      "ocupacion": 0.173,
+      "espera": 1.9,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "10:00",
+      "clase": "De_pie",
+      "ocupacion": 0.162,
+      "espera": 2.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "11:00",
+      "clase": "Asientos",
+      "ocupacion": 0.131,
+      "espera": 2.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "12:00",
+      "clase": "Asientos",
+      "ocupacion": 0.124,
+      "espera": 2.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "13:00",
+      "clase": "Asientos",
+      "ocupacion": 0.124,
+      "espera": 2.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "14:00",
+      "clase": "Asientos",
+      "ocupacion": 0.118,
+      "espera": 2.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "15:00",
+      "clase": "Asientos",
+      "ocupacion": 0.106,
+      "espera": 2.3,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "16:00",
+      "clase": "Asientos",
+      "ocupacion": 0.077,
+      "espera": 1.7,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "17:00",
+      "clase": "Asientos",
+      "ocupacion": 0.088,
+      "espera": 1.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "18:00",
+      "clase": "Asientos",
+      "ocupacion": 0.077,
+      "espera": 1.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "19:00",
+      "clase": "Asientos",
+      "ocupacion": 0.06,
+      "espera": 1.5,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "20:00",
+      "clase": "Asientos",
+      "ocupacion": 0.043,
+      "espera": 1.9,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "21:00",
+      "clase": "Asientos",
+      "ocupacion": 0.046,
+      "espera": 2.7,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "22:00",
+      "clase": "Asientos",
+      "ocupacion": 0.0,
+      "espera": 3.0,
+      "recomendacion": "abordar"
+    },
+    {
+      "hora": "23:00",
+      "clase": "Sin_servicio",
+      "ocupacion": null,
+      "espera": null,
+      "recomendacion": "sin_servicio"
+    }
+  ]
+}

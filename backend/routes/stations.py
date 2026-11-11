@@ -173,7 +173,8 @@ def get_nearby_stations():
     """
     latitude = request.args.get("latitude", type=float)
     longitude = request.args.get("longitude", type=float)
-    radius = request.args.get("radius", default=1500, type=float)
+    from routes.validation import number
+    radius = number(request.args.get("radius", 1500), "radius", 0)
 
     if latitude is None or longitude is None:
         return jsonify({"error": "latitude y longitude son obligatorios"}), 400

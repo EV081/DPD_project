@@ -2,7 +2,7 @@ import { Activity, TriangleAlert } from 'lucide-react';
 import { ForecastView } from '@/lib/types';
 import {
   etiquetaClase, etiquetaRecomendacion, claseRecomendacion, claseAforo, textoOcupacion, textoEspera,
-  anchoBarra, colorOcupacion, formatoHora, textoProbabilidadLleno,
+  anchoBarra, colorOcupacion, formatoHora, textoProbabilidadLleno, textoAjusteEspera,
 } from '@/lib/aforo';
 import { Spinner } from './Spinner';
 import Alert from './Alert';
@@ -14,6 +14,17 @@ interface Props {
   onRetry?: () => void;
   /** Versión resumida: estado, espera, ocupación y próximas horas; el resto queda bajo «Más detalle». */
   compact?: boolean;
+}
+
+export function ForecastScopeNote({ referenceDate }: { referenceDate?: string }) {
+  const date = referenceDate && /^\d{4}-\d{2}-\d{2}$/.test(referenceDate)
+    ? referenceDate.split('-').reverse().join('/') : null;
+  return (
+    <p className="mt-2 text-xs leading-relaxed text-muted">
+      Aforo estimado con datos ATU de 2025; no es un conteo en vivo.
+      {date && ` Día de referencia utilizado: ${date}.`}
+    </p>
+  );
 }
 
 // Estado actual del paradero + pronóstico desde ahora (tarjeta del mapa y del planificador)
@@ -48,10 +59,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
   // Solo de la hora consultada en adelante: las horas pasadas ya no ayudan a decidir
   const predictions = forecast.predictions.filter((p) => p.datetime > current.datetime);
   const lleno = textoProbabilidadLleno(current.probabilidad_no_subir);
-  const extraTrafico =
-    current.eta_base_min != null && current.eta_min != null && current.eta_min - current.eta_base_min >= 0.5
-      ? Math.round(current.eta_min - current.eta_base_min)
-      : null;
+  const ajusteEspera = textoAjusteEspera(current);
 
   const proximas = predictions.length > 0 && (
       <section aria-label="Próximas horas">
@@ -78,6 +86,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
   if (compact) {
     return (
       <div className="space-y-4">
+        <ForecastScopeNote referenceDate={forecast.referencia?.fecha_referencia_datos} />
         <div>
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -114,9 +123,9 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
               <dt className="text-muted">Pasajeros a bordo</dt>
               <dd className="font-semibold tabular-nums text-fg">{current.pasajeros_por_tren != null ? `≈ ${current.pasajeros_por_tren}` : '—'}</dd>
             </div>
-            {extraTrafico !== null && (
+            {ajusteEspera !== null && (
               <div className="flex items-center gap-2 text-warn">
-                <Activity size={15} className="shrink-0" /> Tráfico en vivo: +{extraTrafico} min de espera
+                <Activity size={15} className="shrink-0" /> {ajusteEspera}
               </div>
             )}
             {lleno && (
@@ -133,6 +142,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
 
   return (
     <div className="space-y-4">
+      <ForecastScopeNote referenceDate={forecast.referencia?.fecha_referencia_datos} />
       <section aria-label="Estado actual" className="rounded-xl border border-line bg-surface-2/60 p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -166,11 +176,11 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
           <div className="bar-fill h-full rounded-full" style={{ width: `${anchoBarra(current.crowding)}%`, backgroundColor: colorOcupacion(current.class) }} />
         </div>
 
-        {(extraTrafico !== null || lleno || (current.recommendation === 'cambiar_paradero' && current.alternativa)) && (
+        {(ajusteEspera !== null || lleno || (current.recommendation === 'cambiar_paradero' && current.alternativa)) && (
           <ul className="mt-4 space-y-2 border-t border-line pt-3 text-sm">
-            {extraTrafico !== null && (
+            {ajusteEspera !== null && (
               <li className="flex items-center gap-2 text-warn">
-                <Activity size={15} className="shrink-0" /> Tráfico en vivo: +{extraTrafico} min de espera
+                <Activity size={15} className="shrink-0" /> {ajusteEspera}
               </li>
             )}
             {lleno && (

@@ -12,6 +12,7 @@ import { Spinner } from '@/components/Spinner';
 import Modal from '@/components/Modal';
 import Alert from '@/components/Alert';
 import MisReportes from '@/components/MisReportes';
+import { getUserLocation } from '@/lib/geolocation';
 
 // Carga dinámica del MiniMapa sin SSR para la ubicación del usuario
 const MiniMap = dynamic(() => import('@/components/MiniMap'), {
@@ -151,24 +152,17 @@ export default function AccountPage() {
 
   // Estado de geolocalización para el mini mapa
   const [coords, setCoords] = useState<{ latitude: number; longitude: number } | null>(null);
+  const [locationError, setLocationError] = useState(false);
 
   // Obtener la ubicación actual del dispositivo
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCoords({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        () => {
-          setCoords({ latitude: -12.1355, longitude: -77.0215 });
-        }
-      );
-    } else {
-      setCoords({ latitude: -12.1355, longitude: -77.0215 });
-    }
+    let active = true;
+    getUserLocation()
+      .then((position) => {
+        if (active) setCoords({ latitude: position.lat, longitude: position.lon });
+      })
+      .catch(() => { if (active) setLocationError(true); });
+    return () => { active = false; };
   }, []);
 
   const handleLogout = () => {
@@ -262,7 +256,8 @@ export default function AccountPage() {
       <h2 className="eyebrow mb-2 mt-8 px-1">Ubicación actual</h2>
       <section className="card p-5" aria-label="Ubicación actual">
         <p className="mb-3 flex items-center gap-2 text-sm text-muted">
-          <MapPin size={16} className="text-brand" /> Posición detectada desde tu dispositivo en tiempo real.
+          <MapPin size={16} className="text-brand" />
+          {coords ? 'Ubicación obtenida desde tu dispositivo al abrir esta pantalla.' : locationError ? 'No se pudo obtener tu ubicación. No mostramos un punto de referencia como si fuera tu posición.' : 'Consultando la ubicación de tu dispositivo…'}
         </p>
         <div className="overflow-hidden rounded-2xl border border-line shadow-sm">
           {coords ? (
@@ -274,7 +269,7 @@ export default function AccountPage() {
             />
           ) : (
             <div className="h-48 w-full flex items-center justify-center bg-surface-2 text-sm text-muted">
-              Obteniendo ubicación...
+              {locationError ? 'Ubicación no disponible. Revisa los permisos del navegador.' : 'Obteniendo ubicación…'}
             </div>
           )}
         </div>

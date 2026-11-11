@@ -5,6 +5,7 @@ import { Search, X, MapPin } from 'lucide-react';
 import { getAutocompleteSuggestions } from '@/lib/services';
 import { AutocompleteSuggestion } from '@/lib/types';
 import { Spinner } from './Spinner';
+import { createRequestGate } from '@/lib/ui-state';
 
 interface Props {
   onSelectDestination: (suggestion: AutocompleteSuggestion) => void;
@@ -34,9 +35,11 @@ export default function SearchAutocomplete({
   const listId = useId();
   // Texto puesto al elegir una sugerencia o al enviar: no debe disparar otra búsqueda de sugerencias
   const settled = useRef<string | null>(null);
+  const requests = useRef(createRequestGate());
 
   // Sugerencias con debounce mientras se escribe
   useEffect(() => {
+    const vigente = requests.current.begin();
     if (query === settled.current || query.trim().length < 3) {
       setSuggestions([]);
       setOpen(false);
@@ -44,23 +47,26 @@ export default function SearchAutocomplete({
     }
     let cancelled = false;
     const timer = setTimeout(async () => {
+      if (cancelled || !vigente()) return;
       setLoading(true);
       try {
         const results = await getAutocompleteSuggestions(query);
-        if (cancelled) return;   // el texto cambió o se eligió algo mientras se esperaba la respuesta
+        if (cancelled || !vigente()) return;   // el texto cambió, se eligió o ya se envió el destino
         setSuggestions(results);
         setActive(-1);
         setOpen(true);
       } catch (error) {
         console.error('Error en autocompletado:', error);
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled && vigente()) setLoading(false);
       }
     }, 400);
     return () => { cancelled = true; clearTimeout(timer); setLoading(false); };
   }, [query]);
 
   const select = (item: AutocompleteSuggestion) => {
+    requests.current.cancel();
+    setLoading(false);
     settled.current = item.display_name;
     setQuery(item.display_name);
     setOpen(false);
@@ -73,6 +79,8 @@ export default function SearchAutocomplete({
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
+          requests.current.cancel();
+          setLoading(false);
           settled.current = query;
           setOpen(false);
           setSuggestions([]);

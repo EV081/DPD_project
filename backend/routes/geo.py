@@ -8,6 +8,10 @@ from services import caminata as caminata_svc
 import urllib.request
 import urllib.parse
 import urllib.error
+from werkzeug.exceptions import BadRequest
+from routes.validation import coordinates, number
+
+GEOCODING_TIMEOUT_S = 3
 
 LOCATIONIQ_TOKEN = os.getenv("LOCATIONIQ_TOKEN", "TU_ACCESS_TOKEN_AQUI")
 geo_bp = Blueprint("geo", __name__)
@@ -72,6 +76,7 @@ def calculate_distance(lat1, lon1, lat2, lon2):
         * math.cos(math.radians(lat2))
         * math.sin(d_lon / 2) ** 2
     )
+    a = min(1.0, max(0.0, a))
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
@@ -120,7 +125,7 @@ def geocode_destination(query):
                 url, 
                 headers={'User-Agent': 'UrbanSafe-Backend/1.0'}
             )
-            with urllib.request.urlopen(req) as response:
+            with urllib.request.urlopen(req, timeout=GEOCODING_TIMEOUT_S) as response:
                 data = json.loads(response.read().decode())
                 if data and len(data) > 0:
                     return float(data[0]["lat"]), float(data[0]["lon"]), data[0].get("display_name")
@@ -147,6 +152,11 @@ def match_trip():
         if origin_lat is None or origin_lon is None:
             return jsonify({"error": "Se requieren 'origin_lat' y 'origin_lon' de tu ubicación actual"}), 400
 
+        origin_lat, origin_lon = coordinates(origin_lat, origin_lon)
+        radius = number(request.args.get("radius", 500), "radius", 0)
+        if radius == 0:
+            raise BadRequest("radius debe ser mayor que cero")
+
         dest_name = "Coordenadas directas"
         
         if dest_query:
@@ -160,6 +170,7 @@ def match_trip():
             dest_name = d_display
         elif dest_lat is None or dest_lon is None:
             return jsonify({"error": "Debes proporcionar 'destination' (texto) o 'dest_lat'/'dest_lon'"}), 400
+        dest_lat, dest_lon = coordinates(dest_lat, dest_lon)
 
         # Cargamos estaciones en memoria
         all_stations = load_all_stations_into_memory()
@@ -276,6 +287,8 @@ def match_trip():
             "recomendacion_viaje": recomendacion_viaje
         }), 200
 
+    except BadRequest:
+        raise
     except Exception as e:
         return jsonify({"error": f"Error al procesar el match de viaje: {str(e)}"}), 500
 
@@ -286,13 +299,18 @@ def autocomplete_locations():
     if not query or len(query.strip()) < 3:
         return jsonify([]), 200
 
+    locales = lugares.buscar_alias(query)
+    token = os.getenv("LOCATIONIQ_TOKEN", "").strip()
+    if locales or not token or token in ("TU_TOKEN_AQUI", "TU_ACCESS_TOKEN_AQUI"):
+        return jsonify(locales), 200
+
     try:
         # CAMBIO 1: Nueva URL base de LocationIQ
         base_url = "https://us1.locationiq.com/v1/search"
         
         params = {
             # CAMBIO 2: Agregar tu API Key (lee de variables de entorno de Render)
-            "key": os.getenv("LOCATIONIQ_TOKEN", "TU_TOKEN_AQUI"),
+            "key": token,
             "q": f"{query}, Lima, Peru",
             "format": "json",
             "limit": 5,
@@ -309,7 +327,7 @@ def autocomplete_locations():
         # Con LocationIQ ya no se requiere el User-Agent de OSM
         req = urllib.request.Request(url)
         
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, timeout=GEOCODING_TIMEOUT_S) as response:
             data = json.loads(response.read().decode())
             # Primero los lugares conocidos (UTEC...), luego lo que halle el geocodificador, sin repetir
             suggestions = lugares.buscar_alias(query)
@@ -329,8 +347,10 @@ def autocomplete_locations():
         if e.code == 404:   # LocationIQ responde 404 cuando no hay coincidencias: es una lista vacía, no un error
             return jsonify(lugares.buscar_alias(query)), 200
         return jsonify({"error": f"El buscador de lugares respondió {e.code}"}), 502
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return jsonify({"error": "El buscador de lugares no respondió. Intenta de nuevo o usa un punto conocido."}), 502
+    except (TypeError, ValueError, KeyError):
+        return jsonify({"error": "El buscador de lugares devolvió una respuesta no válida"}), 502
 
 
 @geo_bp.route("/caminata", methods=["GET"])
@@ -342,6 +362,8 @@ def caminata():
         lat1 = None
     if None in (lat1, lon1, lat2, lon2):
         return jsonify({"error": "Faltan lat1, lon1, lat2 y lon2"}), 400
+    lat1, lon1 = coordinates(lat1, lon1)
+    lat2, lon2 = coordinates(lat2, lon2)
     if calculate_distance(lat1, lon1, lat2, lon2) > 2000:
         return jsonify({"error": "Los puntos están a más de 2 km: no es una caminata de transbordo"}), 422
     try:
