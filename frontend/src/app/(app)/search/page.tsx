@@ -1,19 +1,29 @@
 'use client';
 
+import { ActionIcon, SegmentedControl, TextInput } from '@mantine/core';
+import DataTable, { type DataColumn } from '@/components/DataTable';
+import Link from 'next/link';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search, X, SearchX, MapPinned } from 'lucide-react';
 import StationCard from '@/components/StationCard';
 import { Skeleton, EmptyState } from '@/components/Spinner';
 import { getStations } from '@/lib/services';
-import { SYSTEMS } from '@/lib/systems';
+import { SYSTEMS, systemInfo } from '@/lib/systems';
 import { Station } from '@/lib/types';
 import Alert from '@/components/Alert';
 
 const FILTERS = [{ id: undefined, label: 'Todos' }, ...Object.values(SYSTEMS).map((s) => ({ id: s.id as string | undefined, label: s.label }))];
 
+const stationColumns: DataColumn<Station>[] = [
+  { id: 'name', label: 'Paradero', value: (s) => s.name, render: (s) => <Link className="font-semibold text-brand hover:underline" href={`/station/${encodeURIComponent(s.id)}`}>{s.name}</Link> },
+  { id: 'system', label: 'Sistema', value: (s) => systemInfo(s.system).label },
+  { id: 'avenida', label: 'Avenida', value: (s) => s.avenida || 'Sin referencia' },
+];
+
 function SearchContent() {
   const params = useSearchParams();
+  const [view, setView] = useState('cards');
   const [query, setQuery] = useState('');
   const [stations, setStations] = useState<Station[]>([]);
   const [loading, setLoading] = useState(false);
@@ -60,22 +70,10 @@ function SearchContent() {
         </div>
       </header>
 
-      <div className="rise relative mt-6" style={{ '--i': 1 } as React.CSSProperties}>
-        <Search size={18} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ej: Naranjal, Angamos, Plaza Butters…"
-          aria-label="Buscar paradero"
-          className="input !pl-11 !pr-10 !py-4 !text-base shadow-[var(--shadow-card)]"
-        />
-        {query && (
-          <button type="button" onClick={() => setQuery('')} aria-label="Limpiar búsqueda" className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-lg p-2.5 text-muted hover:bg-surface-2 hover:text-fg">
-            <X size={16} />
-          </button>
-        )}
-      </div>
-
+      <div className="card mt-6 p-4 sm:p-5">
+        <TextInput size="lg" value={query} onChange={(e) => setQuery(e.currentTarget.value)} type="search"
+          placeholder="Ej: Naranjal, Angamos, Plaza Butters…" aria-label="Buscar paradero"
+          leftSection={<Search size={20} />} rightSection={query ? <ActionIcon variant="subtle" aria-label="Limpiar búsqueda" onClick={() => setQuery('')}><X size={16} /></ActionIcon> : undefined} />
       <div className="scroll-thin -mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1" role="group" aria-label="Filtrar por sistema">
         {FILTERS.map((f) => (
           <button key={f.label} type="button" className="chip" data-active={system === f.id} aria-pressed={system === f.id} onClick={() => setSystem(f.id)}>
@@ -84,6 +82,7 @@ function SearchContent() {
         ))}
       </div>
 
+      </div>
       <div className="mt-6" aria-live="polite">
         {loading ? (
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3" role="status" aria-label="Buscando paraderos">
@@ -98,7 +97,12 @@ function SearchContent() {
           <EmptyState icon={SearchX} title="Sin resultados" text="No encontramos paraderos que coincidan. Prueba con otro nombre o avenida." />
         ) : (
           <>
-            <p className="mb-3 text-sm text-muted">{stations.length} resultado{stations.length === 1 ? '' : 's'}</p>
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm text-muted"><strong className="text-fg">{stations.length}</strong> resultado{stations.length === 1 ? '' : 's'}</p>
+              <SegmentedControl size="xs" value={view} onChange={setView} aria-label="Vista de paraderos"
+                data={[{ value: 'cards', label: 'Tarjetas' }, { value: 'table', label: 'Tabla' }]} />
+            </div>
+            {view === 'table' ? <div className="card p-4"><DataTable rows={stations} columns={stationColumns} title="Paraderos y estaciones" searchable={false} /></div> : <>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {stations.slice(0, visible).map((s, i) => <StationCard key={`${s.id}-${i}`} station={s} index={i} />)}
             </div>
@@ -107,6 +111,7 @@ function SearchContent() {
                 <button className="btn btn-secondary" onClick={() => setVisible((v) => v + 60)}>Mostrar más</button>
               </div>
             )}
+            </> }
           </>
         )}
       </div>

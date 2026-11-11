@@ -1,5 +1,7 @@
 'use client';
 
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -94,33 +96,20 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <main className="min-h-0 min-w-0 flex-1 overflow-y-auto">
+      <a href="#contenido" className="us-skip-link">Saltar al contenido</a>
+      <main id="contenido" tabIndex={-1} className="min-h-0 min-w-0 flex-1 overflow-y-auto">
         <div key={pathname} className="page-in h-full">{restringida ? <AccesoRestringido /> : children}</div>
       </main>
 
       {/* Barra inferior: móvil */}
-      <nav
-        aria-label="Principal"
-        style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }}
-        className="grid shrink-0 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
-      >
-        {items.map(({ href, label, icon: Icon }) => {
-          const active = isActive(href);
-          return (
-            <Link
-              key={href}
-              href={href}
-              aria-current={active ? 'page' : undefined}
-              className={`flex flex-col items-center gap-0.5 py-2 text-xs font-medium transition-colors active:scale-95 ${active ? 'text-brand' : 'text-muted'}`}
-            >
-              <span className={`flex h-7 w-14 items-center justify-center rounded-full transition-colors duration-300 ${active ? 'bg-brand-soft' : ''}`}>
-                <Icon size={20} strokeWidth={active ? 2.25 : 2} />
-              </span>
-              {label}
-            </Link>
-          );
-        })}
-      </nav>
+      <div className="us-mobile-nav md:hidden">
+        <BottomNavigation component="nav" aria-label="Principal" showLabels value={items.find((item) => isActive(item.href))?.href ?? false}
+          sx={{ background: 'var(--surface)', height: 68, '& .MuiBottomNavigationAction-root': { minWidth: 0, padding: '6px 2px', color: 'var(--muted)' },
+            '& .Mui-selected': { color: 'var(--brand)' }, '& .MuiBottomNavigationAction-label': { fontSize: '0.65rem', marginTop: '4px', '&.Mui-selected': { fontSize: '0.65rem', fontWeight: 700 } } }}>
+          {items.map(({ href, label, icon: Icon }) => <BottomNavigationAction component={Link} key={href} href={href}
+            value={href} label={label} icon={<Icon size={20} />} aria-current={isActive(href) ? 'page' : undefined} />)}
+        </BottomNavigation>
+      </div>
     </div>
   );
 }

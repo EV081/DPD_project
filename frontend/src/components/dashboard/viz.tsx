@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useState, type ReactNode } from 'react';
-import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import DataTable from '@/components/DataTable';
+import { SegmentedControl } from '@mantine/core';
+import { useEffect, useId, useState, type ReactNode } from 'react';
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { CheckCircle2, Minus, Table2, TriangleAlert, XCircle, BarChart3 } from 'lucide-react';
 
 /* Piezas del panel: tarjeta de gráfico con vista de tabla, gráficos con la paleta validada y estados con ícono + texto. */
@@ -51,12 +53,11 @@ export function ChartCard({ titulo, descripcion, tabla, vacio, children, classNa
           <h3 className="text-sm font-semibold text-fg">{titulo}</h3>
           {descripcion && <p className="mt-0.5 text-xs text-muted">{descripcion}</p>}
         </div>
-        <button type="button" onClick={() => setVerTabla((v) => !v)} aria-pressed={verTabla}
-          aria-label={verTabla ? `Ver gráfico: ${titulo}` : `Ver tabla: ${titulo}`}
-          className="chip shrink-0" data-active={verTabla}>
-          {verTabla ? <BarChart3 size={14} aria-hidden /> : <Table2 size={14} aria-hidden />}
-          <span className="hidden sm:inline">{verTabla ? 'Gráfico' : 'Tabla'}</span>
-        </button>
+        <SegmentedControl size="xs" value={verTabla ? 'tabla' : 'grafico'} onChange={(v) => setVerTabla(v === 'tabla')}
+          aria-label={`Vista de ${titulo}`} data={[
+            { value: 'grafico', label: <span className="flex items-center gap-1"><BarChart3 size={14} /> Gráfico</span> },
+            { value: 'tabla', label: <span className="flex items-center gap-1"><Table2 size={14} /> Tabla</span> },
+          ]} />
       </header>
       <div className="mt-3 min-h-0 flex-1">
         {vacio ? <p className="flex h-40 items-center justify-center rounded-xl bg-surface-2 px-4 text-center text-sm text-muted">{vacio}</p>
@@ -67,23 +68,8 @@ export function ChartCard({ titulo, descripcion, tabla, vacio, children, classNa
 }
 
 export function TablaDatos({ tabla, titulo }: { tabla: Tabla; titulo: string }) {
-  return (
-    <div className="max-h-64 overflow-auto rounded-xl border border-line">
-      <table className="w-full text-left text-xs">
-        <caption className="sr-only">{titulo}</caption>
-        <thead className="sticky top-0 bg-surface-2 text-muted">
-          <tr>{tabla.cabeceras.map((h) => <th key={h} scope="col" className="px-3 py-2 font-semibold">{h}</th>)}</tr>
-        </thead>
-        <tbody>
-          {tabla.filas.map((fila, i) => (
-            <tr key={i} className="border-t border-line">
-              {fila.map((c, j) => <td key={j} className={`px-3 py-1.5 ${j > 0 ? 'tabular-nums' : ''} text-fg`}>{c}</td>)}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+  const columns = tabla.cabeceras.map((label, i) => ({ id: String(i), label, value: (row: (string | number)[]) => row[i] }));
+  return <DataTable rows={tabla.filas} columns={columns} title={titulo} />;
 }
 
 /* ---------- Tooltip: valor primero, nombre después, clave con trazo corto ---------- */
@@ -218,4 +204,25 @@ export function Cifra({ etiqueta, valor, detalle, nivel }: { etiqueta: string; v
       {detalle && <p className="mt-1 text-xs text-muted">{nivel ? <Estado nivel={nivel}>{detalle}</Estado> : detalle}</p>}
     </div>
   );
+}
+
+/** Tendencia temporal con relleno ligero, datos reales y tabla alternativa. */
+export function Tendencia({ datos, x, nombre, formatoX, formatoTip }: {
+  datos: Record<string, unknown>[]; x: string; nombre: string;
+  formatoX?: (value: string | number) => string; formatoTip?: (value: string | number) => string;
+}) {
+  const reducido = useReducedMotion();
+  const gradient = useId().replace(/:/g, '');
+  return <div style={{ height: 220 }} role="img" aria-label={`Tendencia de ${nombre}. Valores disponibles en la vista de tabla.`}>
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={datos} margin={{ top: 12, right: 12, bottom: 0, left: -12 }} accessibilityLayer>
+        <defs><linearGradient id={gradient} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--viz-1)" stopOpacity={0.25} /><stop offset="100%" stopColor="var(--viz-1)" stopOpacity={0.02} /></linearGradient></defs>
+        <CartesianGrid vertical={false} stroke="var(--viz-grid)" strokeDasharray="3 3" />
+        <XAxis dataKey={x} {...EJES} tickFormatter={formatoX} minTickGap={24} />
+        <YAxis {...EJES} axisLine={false} allowDecimals={false} width={44} />
+        <Tooltip content={<Tip formato={(v) => ENTERO.format(v)} titulo={formatoTip} />} />
+        <Area type="monotone" dataKey="n" name={nombre} stroke="var(--viz-1)" strokeWidth={2.5} fill={`url(#${gradient})`} isAnimationActive={!reducido} />
+      </AreaChart>
+    </ResponsiveContainer>
+  </div>;
 }

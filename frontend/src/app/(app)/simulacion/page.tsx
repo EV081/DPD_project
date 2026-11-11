@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState, type FormEvent, type CSSProperties } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, ChartColumn, Download, MapPin } from 'lucide-react';
+import OccupancyChart from '@/components/OccupancyChart';
+import { NativeSelect } from '@mantine/core';
 import Alert from '@/components/Alert';
 import MobilityIllustration from '@/components/MobilityIllustration';
 import PlanSalida from '@/components/PlanSalida';
@@ -61,9 +63,6 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
   const horas = resultado.forecast;
   const [primera, setPrimera] = useState(horaInicial ?? '07:00');
   const [segunda, setSegunda] = useState(horaInicial === '18:00' ? '07:00' : '18:00');
-  const maxima = Math.max(100, ...horas.map((item) =>
-    item.class === 'Sin_servicio' ? 0 : Math.ceil((item.crowding ?? 0) * 4) * 25
-  ));
   const referencia = resultado.referencia;
 
   return (
@@ -96,12 +95,12 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
               <div key={etiqueta} className="mobility-compare-card" style={{ '--compare-color': indice === 0 ? '#3c69ce' : '#88a53d' } as CSSProperties}>
                 <label className="block text-sm font-semibold text-fg">
                   <span className="mobility-compare-dot" />{etiqueta}
-                  <select className={CAMPO} value={seleccion} onChange={(e) => cambiar(e.target.value)}>
+                  <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={seleccion} onChange={(e) => cambiar(e.target.value)}>
                     {horas.map((fila) => {
                       const hora = formatoHora(fila.datetime);
                       return <option key={fila.datetime} value={hora}>{hora}</option>;
                     })}
-                  </select>
+                  </NativeSelect>
                 </label>
                 {item && (
                   <>
@@ -131,47 +130,7 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
           <div className="flex gap-3 text-xs text-muted"><span><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#3c69ce]" />Hora A</span><span><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#88a53d]" />Hora B</span></div>
         </div>
         <p className="mt-2 text-xs leading-relaxed text-muted">Porcentaje de la capacidad al salir del paradero. Las dos horas elegidas se destacan; una raya indica falta de servicio o estimación.</p>
-        <div className="mt-5" aria-hidden="true">
-          <div className="flex justify-between text-xs text-muted"><span>{maxima}%</span><span>Hora de Lima</span></div>
-          <div className="mobility-chart">
-            <div className="mobility-chart-grid"><span /><span /><span /></div>
-            <div className="mobility-chart-bars">
-            {horas.map((item) => {
-              const hora = formatoHora(item.datetime);
-              const marcado = hora === primera && hora === segunda ? 'both' : hora === primera ? 'a' : hora === segunda ? 'b' : undefined;
-              const tieneDato = item.class !== 'Sin_servicio' && item.crowding != null;
-              const alto = tieneDato ? Math.max(1, item.crowding! * 100 / maxima * 100) : 0;
-              return (
-                <div key={item.datetime} title={`${hora} · ${ocupacion(item)}`}
-                  className="mobility-chart-bar" data-hour={marcado} data-empty={!tieneDato}
-                  style={tieneDato ? { height: `${alto}%` } : undefined}
-                />
-              );
-            })}
-            </div>
-          </div>
-          <div className="mt-1 flex justify-between text-xs tabular-nums text-muted">
-            <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span>
-          </div>
-        </div>
-        <details className="mt-4 border-t border-line pt-3">
-          <summary className="cursor-pointer text-sm font-semibold text-brand">Ver tabla de las 24 horas</summary>
-          <div className="mt-3 overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead><tr className="border-b border-line text-muted">
-                <th scope="col" className="py-2 pr-3">Hora</th><th scope="col" className="pr-3">Aforo</th>
-                <th scope="col" className="pr-3">Ocupación</th><th scope="col">Espera</th>
-              </tr></thead>
-              <tbody>{horas.map((item) => (
-                <tr key={item.datetime} className="border-b border-line/60 text-fg">
-                  <th scope="row" className="py-2 pr-3 font-medium">{formatoHora(item.datetime)}</th>
-                  <td className="pr-3">{etiquetaClase(item.class)}</td>
-                  <td className="pr-3">{ocupacion(item)}</td><td>{espera(item)}</td>
-                </tr>
-              ))}</tbody>
-            </table>
-          </div>
-        </details>
+        <OccupancyChart hours={horas} first={primera} second={segunda} />
       </div>
     </section>
   );
@@ -289,32 +248,32 @@ export default function SimulacionPage() {
           <fieldset disabled={cargaCatalogo || calculando} className="mt-5 grid gap-4">
             <label className="min-w-0 text-sm font-medium text-fg">
               Sistema
-              <select className={CAMPO} value={sistema} onChange={(e) => aplicar(estaciones, e.target.value as Station['system'])}>
+              <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={sistema} onChange={(e) => aplicar(estaciones, e.target.value as Station['system'])}>
                 {SISTEMAS.map((valor) => <option key={valor} value={valor}>{systemInfo(valor).label}</option>)}
-              </select>
+              </NativeSelect>
             </label>
             {usaRuta(sistema) && (
               <label className="min-w-0 text-sm font-medium text-fg">
                 Ruta
-                <select className={CAMPO} value={linea} onChange={(e) => aplicar(estaciones, sistema, { linea: e.target.value })}>
+                <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={linea} onChange={(e) => aplicar(estaciones, sistema, { linea: e.target.value })}>
                   {lineas.map((valor) => <option key={valor} value={valor}>{valor}</option>)}
-                </select>
+                </NativeSelect>
               </label>
             )}
             <label className="min-w-0 text-sm font-medium text-fg">
               Subes en
-              <select className={CAMPO} value={origenIndice}
+              <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={origenIndice}
                 onChange={(e) => aplicar(estaciones, sistema, { linea, origen: Number(e.target.value), destino: destinoIndice })}>
                 {origenIndice < 0 && <option value={-1}>{cargaCatalogo ? 'Cargando…' : 'Sin estaciones disponibles'}</option>}
                 {origenes.map(({ estacion, indice }) => <option key={indice} value={indice}>{etiquetaEstacion(estacion)}</option>)}
-              </select>
+              </NativeSelect>
             </label>
             <label className="min-w-0 text-sm font-medium text-fg">
               Bajas en
-              <select className={CAMPO} value={destinoIndice} onChange={(e) => setDestinoIndice(Number(e.target.value))}>
+              <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={destinoIndice} onChange={(e) => setDestinoIndice(Number(e.target.value))}>
                 {destinoIndice < 0 && <option value={-1}>{cargaCatalogo ? 'Cargando…' : 'Sin paraderos posteriores'}</option>}
                 {destinos.map(({ estacion, indice }) => <option key={indice} value={indice}>{etiquetaEstacion(estacion)}</option>)}
-              </select>
+              </NativeSelect>
             </label>
             <label className="min-w-0 text-sm font-medium text-fg">
               Día

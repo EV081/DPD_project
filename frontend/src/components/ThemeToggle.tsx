@@ -1,5 +1,6 @@
 'use client';
 
+import { SegmentedControl } from '@mantine/core';
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { useTheme, ThemePreference } from '@/context/ThemeContext';
 
@@ -29,21 +30,7 @@ const OPTIONS: { id: ThemePreference; label: string; icon: typeof Sun }[] = [
 // Selector de tres opciones (página de cuenta)
 export function ThemeSelector() {
   const { preference, setPreference } = useTheme();
-  return (
-    <div role="radiogroup" aria-label="Tema" className="grid grid-cols-3 gap-1 rounded-xl border border-line bg-surface-2 p-1">
-      {OPTIONS.map(({ id, label, icon: Icon }) => (
-        <button
-          key={id}
-          role="radio"
-          aria-checked={preference === id}
-          onClick={() => setPreference(id)}
-          className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-            preference === id ? 'bg-surface text-fg shadow-sm' : 'text-muted hover:text-fg'
-          }`}
-        >
-          <Icon size={16} /> {label}
-        </button>
-      ))}
-    </div>
-  );
+  return <SegmentedControl fullWidth value={preference} onChange={(value) => setPreference(value as ThemePreference)}
+    aria-label="Tema" data={OPTIONS.map(({ id, label, icon: Icon }) => ({ value: id,
+      label: <span className="flex items-center justify-center gap-2"><Icon size={16} />{label}</span> }))} />;
 }

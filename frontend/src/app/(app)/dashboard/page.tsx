@@ -1,10 +1,12 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Tabs } from '@mantine/core';
 import { Activity, RefreshCw } from 'lucide-react';
+import DataTable, { type DataColumn } from '@/components/DataTable';
 import Alert from '@/components/Alert';
 import { Skeleton } from '@/components/Spinner';
-import { ChartCard, Cifra, Columnas, BarrasH, DECIMAL, ENTERO, Estado, LineasSistemas, SISTEMAS_MODELO, TablaDatos, claveSistema, fechaCorta, infoSistema, type Nivel } from '@/components/dashboard/viz';
+import { ChartCard, Cifra, Tendencia, Columnas, BarrasH, DECIMAL, ENTERO, Estado, LineasSistemas, SISTEMAS_MODELO, claveSistema, fechaCorta, infoSistema, type Nivel } from '@/components/dashboard/viz';
 import { getDashboard, type Dashboard, type EjecucionPipeline } from '@/lib/admin';
 import { errorMessage } from '@/lib/client';
 
@@ -126,6 +128,15 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
         <Cifra etiqueta="Alertas del modelo" valor={ENTERO.format(alertas)} nivel={alertas ? 'warn' : 'ok'} detalle={alertas ? 'en la última semana' : 'sin alertas'} />
       </div>
 
+      <Tabs defaultValue="salud" keepMounted={false} variant="outline">
+        <Tabs.List aria-label="Secciones del panel" className="us-dashboard-tabs">
+          <Tabs.Tab value="salud">Resumen</Tabs.Tab>
+          <Tabs.Tab value="uso">Uso de la app</Tabs.Tab>
+          <Tabs.Tab value="calidad">Calidad del modelo</Tabs.Tab>
+          <Tabs.Tab value="procesos">Procesos</Tabs.Tab>
+          <Tabs.Tab value="seguridad">Seguridad</Tabs.Tab>
+        </Tabs.List>
+      <Tabs.Panel value="salud" pt="xl">
       <Seccion titulo="Salud del sistema" descripcion="Estado actual de cada componente.">
         <div className="grid gap-3 lg:grid-cols-2">
           <div className="card px-4 py-1 sm:px-5">
@@ -154,27 +165,31 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
           </div>
         </div>
       </Seccion>
+      </Tabs.Panel>
 
+      <Tabs.Panel value="uso" pt="xl">
       <Seccion titulo="Uso" descripcion="Abordajes confirmados por las personas usuarias con «Ya abordé». Es una muestra de quienes usan la app, no la demanda real.">
         <div className="grid gap-3 lg:grid-cols-2">
           <ChartCard titulo="Abordajes por día" descripcion="Últimos 14 días"
-            tabla={{ cabeceras: ['Fecha', 'Abordajes'], filas: uso.abordajes_por_dia.map((x) => [x.fecha, ENTERO.format(x.n)]) }}
+            tabla={{ cabeceras: ['Fecha', 'Abordajes'], filas: uso.abordajes_por_dia.map((x) => [x.fecha, x.n]) }}
             vacio={abordajes14 === 0 ? 'Todavía no hay abordajes registrados en los últimos 14 días.' : undefined}>
-            <Columnas datos={uso.abordajes_por_dia} x="fecha" nombre="Abordajes" formatoX={(v) => fechaCorta(String(v))} formatoTip={(l) => fechaCorta(String(l))} />
+            <Tendencia datos={uso.abordajes_por_dia} x="fecha" nombre="Abordajes" formatoX={(v) => fechaCorta(String(v))} formatoTip={(l) => fechaCorta(String(l))} />
           </ChartCard>
           <ChartCard titulo="Abordajes por hora del día" descripcion="Últimos 30 días · hora de Lima"
-            tabla={{ cabeceras: ['Hora', 'Abordajes'], filas: uso.abordajes_por_hora.map((x) => [`${String(x.hora).padStart(2, '0')}:00`, ENTERO.format(x.n)]) }}
+            tabla={{ cabeceras: ['Hora', 'Abordajes'], filas: uso.abordajes_por_hora.map((x) => [`${String(x.hora).padStart(2, '0')}:00`, x.n]) }}
             vacio={uso.abordajes_por_hora.every((x) => x.n === 0) ? 'Sin abordajes en los últimos 30 días.' : undefined}>
             <Columnas datos={uso.abordajes_por_hora} x="hora" nombre="Abordajes" formatoX={(v) => `${v}h`} formatoTip={(l) => `${String(l).padStart(2, '0')}:00`} />
           </ChartCard>
           <ChartCard titulo="Abordajes por sistema" descripcion="Últimos 30 días" className="lg:col-span-2"
-            tabla={{ cabeceras: ['Sistema', 'Abordajes'], filas: uso.abordajes_por_sistema.map((x) => [infoSistema(x.sistema).label, ENTERO.format(x.n)]) }}
+            tabla={{ cabeceras: ['Sistema', 'Abordajes'], filas: uso.abordajes_por_sistema.map((x) => [infoSistema(x.sistema).label, x.n]) }}
             vacio={uso.abordajes_por_sistema.length === 0 ? 'Sin abordajes por sistema en los últimos 30 días.' : undefined}>
             <BarrasH nombre="Abordajes" datos={uso.abordajes_por_sistema.map((x) => ({ etiqueta: infoSistema(x.sistema).label, n: x.n, color: infoSistema(x.sistema).token }))} />
           </ChartCard>
         </div>
       </Seccion>
+      </Tabs.Panel>
 
+      <Tabs.Panel value="calidad" pt="xl">
       <Seccion titulo="Calidad del modelo" descripcion="Se compara lo que dijo la app con lo que respondieron las personas al abordar. Pocas respuestas = métricas poco estables.">
         <div className="grid gap-3 lg:grid-cols-2">
           <ChartCard titulo="Error medio de la espera (MAE)" descripcion="Minutos de diferencia, por semana"
@@ -212,7 +227,9 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
           </div>
         </div>
       </Seccion>
+      </Tabs.Panel>
 
+      <Tabs.Panel value="procesos" pt="xl">
       <Seccion titulo="Procesos programados" descripcion="Mantenimiento diario y semanal. Una corrida «sin datos nuevos» es normal cuando no hubo actividad.">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {Object.entries(pipelines.por_job).map(([nombre, job]) => (
@@ -230,7 +247,9 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
             : <div className="mt-3"><TablaPipelines filas={pipelines.ultimas} /></div>}
         </div>
       </Seccion>
+      </Tabs.Panel>
 
+      <Tabs.Panel value="seguridad" pt="xl">
       <Seccion titulo="Eje 2 · Reportes de seguridad" descripcion="Solo conteos. Los reportes individuales, las ubicaciones y las personas nunca se muestran.">
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           <Cifra etiqueta="Reportes activos" valor={ENTERO.format(eje2.activos)} detalle={`${ENTERO.format(eje2.retirados)} retirados`} />
@@ -240,39 +259,30 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
         </div>
         <div className="grid gap-3 lg:grid-cols-2">
           <ChartCard titulo="Reportes por tipo" descripcion="Activos"
-            tabla={{ cabeceras: ['Tipo', 'Reportes'], filas: Object.entries(eje2.por_tipo).map(([t, n]) => [t, ENTERO.format(n)]) }}>
+            tabla={{ cabeceras: ['Tipo', 'Reportes'], filas: Object.entries(eje2.por_tipo).map(([t, n]) => [t, n]) }}>
             <BarrasH nombre="Reportes" datos={Object.entries(eje2.por_tipo).map(([t, n]) => ({ etiqueta: t[0]!.toUpperCase() + t.slice(1), n }))} />
           </ChartCard>
           <ChartCard titulo="Reportes por día" descripcion="Últimos 14 días"
-            tabla={{ cabeceras: ['Fecha', 'Reportes'], filas: eje2.por_dia.map((x) => [x.fecha, ENTERO.format(x.n)]) }}
+            tabla={{ cabeceras: ['Fecha', 'Reportes'], filas: eje2.por_dia.map((x) => [x.fecha, x.n]) }}
             vacio={eje2.por_dia.every((x) => x.n === 0) ? 'Sin reportes nuevos en los últimos 14 días.' : undefined}>
             <Columnas datos={eje2.por_dia} x="fecha" nombre="Reportes" formatoX={(v) => fechaCorta(String(v))} formatoTip={(l) => fechaCorta(String(l))} />
           </ChartCard>
         </div>
         <p className="text-xs text-muted">{eje2.subregistro}</p>
       </Seccion>
+      </Tabs.Panel>
+      </Tabs>
     </div>
   );
 }
 
 function TablaPipelines({ filas }: { filas: EjecucionPipeline[] }) {
-  return (
-    <div className="overflow-x-auto rounded-xl border border-line">
-      <table className="w-full min-w-[34rem] text-left text-xs">
-        <caption className="sr-only">Últimas ejecuciones de los procesos programados</caption>
-        <thead className="bg-surface-2 text-muted"><tr>{['Proceso', 'Estado', 'Inicio (Lima)', 'Duración', 'Detalle'].map((h) => <th key={h} scope="col" className="px-3 py-2 font-semibold">{h}</th>)}</tr></thead>
-        <tbody>
-          {filas.map((f) => (
-            <tr key={f.id} className="border-t border-line">
-              <td className="px-3 py-1.5 font-mono text-fg">{f.nombre}</td>
-              <td className="px-3 py-1.5"><Estado nivel={estadoJob(f.estado).nivel}>{estadoJob(f.estado).texto}</Estado></td>
-              <td className="px-3 py-1.5 tabular-nums text-fg">{fechaHora(f.inicio)}</td>
-              <td className="px-3 py-1.5 tabular-nums text-fg">{f.duracion_s == null ? '—' : `${DECIMAL.format(f.duracion_s)} s`}</td>
-              <td className="px-3 py-1.5 text-muted">{f.error ?? '—'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+  const columns: DataColumn<EjecucionPipeline>[] = [
+    { id: 'nombre', label: 'Proceso', value: (f) => f.nombre },
+    { id: 'estado', label: 'Estado', value: (f) => estadoJob(f.estado).texto, render: (f) => <Estado nivel={estadoJob(f.estado).nivel}>{estadoJob(f.estado).texto}</Estado> },
+    { id: 'inicio', label: 'Inicio (Lima)', value: (f) => f.inicio, render: (f) => fechaHora(f.inicio) },
+    { id: 'duracion', label: 'Duración (s)', value: (f) => f.duracion_s },
+    { id: 'detalle', label: 'Detalle', value: (f) => f.error },
+  ];
+  return <DataTable rows={filas} columns={columns} title="Últimas ejecuciones" />;
 }

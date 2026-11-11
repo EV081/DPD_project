@@ -1,4 +1,8 @@
-import { forwardRef } from 'react';
+'use client';
+
+import { forwardRef, useId } from 'react';
+import { PasswordInput, TextInput } from '@mantine/core';
+import Alert from './Alert';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -6,25 +10,16 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   hint?: string;
 }
 
-// Campo de formulario con etiqueta asociada, icono opcional y ayuda
-export const Field = forwardRef<HTMLInputElement, Props>(function Field({ label, icon: Icon, hint, id, className = '', ...rest }, ref) {
-  const fid = id || `f-${label.toLowerCase().replace(/\W+/g, '-')}`;
-  return (
-    <div className={className}>
-      <label htmlFor={fid} className="mb-1.5 block text-sm font-medium text-fg">{label}</label>
-      <div className="relative">
-        {Icon && <Icon size={17} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" />}
-        <input ref={ref} id={fid} className={`input ${Icon ? '!pl-10' : ''}`} {...rest} />
-      </div>
-      {hint && <p className="mt-1.5 text-xs text-muted">{hint}</p>}
-    </div>
-  );
+export const Field = forwardRef<HTMLInputElement, Props>(function Field({ label, icon: Icon, hint, id, className = '', type, size: _size, ...rest }, ref) {
+  const generated = useId();
+  const props = { ...rest, ref, id: id || generated, label, description: hint,
+    className, leftSection: Icon ? <Icon size={17} /> : undefined,
+    classNames: { input: 'us-field-input', label: 'us-field-label', description: 'us-field-hint' } };
+  return type === 'password'
+    ? <PasswordInput {...props} visibilityToggleButtonProps={{ 'aria-label': 'Mostrar u ocultar contraseña' }} />
+    : <TextInput {...props} type={type} />;
 });
 
 export function ErrorNote({ children }: { children: React.ReactNode }) {
-  return (
-    <p role="alert" className="rounded-lg bg-danger/12 px-3 py-2.5 text-sm text-danger">
-      {children}
-    </p>
-  );
+  return <Alert tono="danger">{children}</Alert>;
 }
