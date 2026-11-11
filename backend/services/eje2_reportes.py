@@ -254,7 +254,10 @@ def recalibrar(ahora: dt.datetime | None = None, g: E.GrafoEje2 | None = None) -
     desde = ahora - dt.timedelta(days=p["ventana_dias"] + 1)
     filas = (db.session.query(ReporteSeguridad.seg_id, ReporteSeguridad.franja, ReporteSeguridad.user_id, ReporteSeguridad.ocurrido_en)
              .filter(ReporteSeguridad.creado_en >= desde, ReporteSeguridad.estado == "activo").all())
-    reportes = [{"seg_id": f.seg_id, "franja": f.franja, "user_id": f.user_id, "ocurrido_en": f.ocurrido_en} for f in filas]
+    # SQLite devuelve fechas sin zona; estos instantes siempre se guardan en UTC.
+    reportes = [{"seg_id": f.seg_id, "franja": f.franja, "user_id": f.user_id,
+                 "ocurrido_en": f.ocurrido_en if f.ocurrido_en.tzinfo else f.ocurrido_en.replace(tzinfo=dt.timezone.utc)}
+                for f in filas]
     ajustes_nuevos = calcular_ajustes(reportes, g, ahora, p)
     db.session.query(AjusteRiesgoSegmento).delete()
     db.session.add_all(AjusteRiesgoSegmento(seg_id=a["seg_id"], franja=a["franja"], delta=a["delta"], n_reportes=a["n_reportes"],

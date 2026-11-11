@@ -53,7 +53,7 @@ export default function HomeSheet({ name, recents, showStations, onToggleStation
 
         <button type="button" onClick={onReport} className="group flex w-full items-center gap-3 rounded-2xl border border-line bg-surface-2 p-3.5 text-left text-sm font-semibold text-fg transition-[transform,border-color] hover:border-danger/40 active:scale-[.98]">
           <Siren size={20} className="shrink-0 text-danger" />
-          <span>Reportar un incidente<span className="block text-xs font-normal text-muted">Es anónimo y ayuda a tu zona</span></span>
+          <span>Reportar un incidente<span className="block text-xs font-normal text-muted">Puedes revisar tus reportes en tu cuenta.</span></span>
         </button>
 
         <div>

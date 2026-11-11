@@ -40,7 +40,8 @@ def test_banda_de_riesgo():
 def test_lambda_cero_es_la_ruta_mas_corta(tmp_path):
     r = E.rutas(ORIGEN, DESTINO, lam=0, g=grafo(tmp_path))
     assert r["rutas"]["segura"]["distancia_m"] == r["rutas"]["normal"]["distancia_m"] == 250.0
-    assert r["recomendada"] == "misma" and "ya es la más segura" in r["explicacion"]["resumen"]
+    assert r["recomendada"] == "misma"
+    assert "coinciden" in r["explicacion"]["resumen"]
 
 
 def test_la_segura_esquiva_la_calle_riesgosa(tmp_path):

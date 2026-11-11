@@ -1,65 +1,102 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MapPin, Map, Bus, ChevronRight, TriangleAlert, Footprints, Lightbulb, Clock, Repeat2 } from 'lucide-react';
+import { MapPin, Map, Bus, ChevronRight, TriangleAlert, Footprints, Lightbulb, Repeat2, Check } from 'lucide-react';
 import SearchAutocomplete from '@/components/SearchAutocomplete';
 import SystemBadge from '@/components/SystemBadge';
+import TripComparison, { RouteMetrics } from '@/components/TripComparison';
+import { ForecastScopeNote } from '@/components/ForecastPanel';
+import { comparedRoutes, ROUTE_PAGE_SIZE, tripRouteKey, tripRouteLabel } from '@/lib/trip-comparison';
 import { Skeleton, EmptyState } from '@/components/Spinner';
 import { matchTrip } from '@/lib/services';
-import { opcionesDeViaje, etiquetaClase, claseAforo, textoOcupacion } from '@/lib/aforo';
+import { opcionesDeViaje } from '@/lib/aforo';
 import { getUserLocation, LIMA_CENTER, Coords } from '@/lib/geolocation';
+import { createRequestGate } from '@/lib/ui-state';
 import { TRIP_STORAGE_KEY } from '@/lib/constants';
-import { TripMatchResponse, AutocompleteSuggestion } from '@/lib/types';
+import { TripMatchResponse, AutocompleteSuggestion, MatchedRoute } from '@/lib/types';
 
 export default function DestinationsPage() {
   const router = useRouter();
   const [location, setLocation] = useState<Coords | null>(null);
+  const [locationFallback, setLocationFallback] = useState(false);
   const [tripData, setTripData] = useState<TripMatchResponse | null>(null);
+  const [tripOriginIsReference, setTripOriginIsReference] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [locationNote, setLocationNote] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(ROUTE_PAGE_SIZE);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const requests = useRef(createRequestGate());
+  useEffect(() => () => requests.current.cancel(), []);
 
   useEffect(() => {
     getUserLocation()
       .then(setLocation)
       .catch(() => {
         setLocation(LIMA_CENTER);
+        setLocationFallback(true);
         setLocationNote('Sin acceso a tu ubicación: se usa el centro de Lima como punto de partida.');
       });
   }, []);
 
   const search = async (input: string | AutocompleteSuggestion) => {
+    const vigente = requests.current.begin();
     const origin = location ?? LIMA_CENTER;
+    setLocationNote(!location ? 'La ubicación aún no está disponible: esta búsqueda parte del centro de Lima.'
+      : locationFallback ? 'Sin acceso a tu ubicación: esta búsqueda parte del centro de Lima.' : null);
     setLoading(true);
     setMessage(null);
     setTripData(null);
+    setVisibleCount(ROUTE_PAGE_SIZE);
+    setSelectedKeys([]);
     try {
       const dest = typeof input === 'string' ? input : { lat: input.lat, lon: input.lon };
       const respuesta = await matchTrip(origin.lat, origin.lon, dest);
+      if (!vigente()) return;
       // Con coordenadas el backend no sabe cómo se llama el lugar: se usa el nombre que eligió la persona
       const response = typeof input === 'string' ? respuesta
         : { ...respuesta, destination: { ...respuesta.destination, resolved_name: input.display_name } };
       setTripData(response);
+      setTripOriginIsReference(!location || locationFallback);
       if (opcionesDeViaje(response).rutas.length === 0) {
         setMessage('No se encontraron rutas a este destino, ni directas ni con un transbordo, dentro del radio de búsqueda.');
       }
     } catch (error) {
+      if (!vigente()) return;
       console.error('Error al planificar el viaje:', error);
       setMessage('Ocurrió un error al buscar rutas hacia tu destino. Inténtalo de nuevo.');
     } finally {
-      setLoading(false);
+      if (vigente()) setLoading(false);
     }
   };
 
   const { rutas: routes, conTransbordo } = tripData ? opcionesDeViaje(tripData) : { rutas: [], conTransbordo: false };
+
+  const shownRoutes = routes.slice(0, visibleCount);
+  const comparison = comparedRoutes(routes, selectedKeys);
+  const toggleCompare = (route: MatchedRoute) => {
+    const key = tripRouteKey(route);
+    setSelectedKeys((current) => current.includes(key)
+      ? current.filter((selected) => selected !== key)
+      : current.length < 2 ? [...current, key] : current);
+  };
+  const openRoute = (route: MatchedRoute) => {
+    if (!tripData) return;
+    try {
+      sessionStorage.setItem(TRIP_STORAGE_KEY, JSON.stringify({ selectedRoute: route, destination: tripData.destination, origin: tripData.origin, originIsReference: tripOriginIsReference }));
+      router.push('/map');
+    } catch {
+      setMessage('No pudimos guardar la selección para abrir el mapa. Revisa el almacenamiento del navegador e inténtalo otra vez.');
+    }
+  };
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-6 md:px-8 md:py-10">
       <header className="hero p-6 md:p-8">
         <div className="pointer-events-none absolute -right-10 -top-16 h-56 w-56 rounded-full bg-sky-400/30 blur-3xl" />
         <h1 className="relative text-3xl font-bold tracking-tight">¿A dónde vas hoy?</h1>
-        <p className="relative mt-1.5 max-w-xl text-sm text-blue-100/90">Compara rutas directas con su aforo y tiempo de espera, y elige la que mejor te conviene.</p>
+        <p className="relative mt-1.5 max-w-xl text-sm text-blue-100/90">Revisa unas pocas opciones, compara su espera y aforo, y abre la que prefieras en el mapa.</p>
       </header>
 
       <SearchAutocomplete className="relative z-20 mt-6" placeholder="¿A qué lugar o avenida te diriges?"
@@ -80,19 +117,21 @@ export default function DestinationsPage() {
 
       {!loading && tripData && routes.length > 0 && (
         <section className="mt-8" aria-label="Resultados">
-          <div className="card flex items-center gap-3 p-4">
+          <div className="card flex flex-wrap items-center gap-3 p-4">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-danger/12 text-danger">
               <MapPin size={19} />
             </span>
             <div className="min-w-0 flex-1">
               <p className="eyebrow">Destino</p>
-              <p className="truncate font-semibold text-fg">{tripData.destination.resolved_name}</p>
+              <p className="break-words font-semibold text-fg">{tripData.destination.resolved_name}</p>
             </div>
             <span className="shrink-0 rounded-full bg-brand-soft px-3 py-1 text-sm font-semibold text-brand">
-              {routes.length} {routes.length === 1 ? 'opción' : 'opciones'}
+              {shownRoutes.length} de {routes.length} opciones
             </span>
           </div>
 
+          <p className="mt-3 text-sm text-muted">Mantenemos el orden del cálculo del servidor. Puedes comparar hasta dos opciones; mostrar más no cambia tu selección.</p>
+          <ForecastScopeNote />
           {conTransbordo && (
             <p className="mt-3 flex gap-2.5 rounded-xl bg-surface-2 px-4 py-3 text-sm text-muted">
               <Repeat2 size={17} className="mt-0.5 shrink-0" />
@@ -106,23 +145,22 @@ export default function DestinationsPage() {
             </p>
           )}
 
-          <div className="mt-4 grid gap-4 lg:grid-cols-2">
-            {routes.map((item, index) => {
+          <TripComparison routes={comparison} onOpen={openRoute} onRemove={toggleCompare} onClear={() => setSelectedKeys([])} />
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            {shownRoutes.map((item, index) => {
+              const key = tripRouteKey(item);
+              const selected = selectedKeys.includes(key);
               const walkTo = Math.round(item.origin_walk_m);
               const walkFrom = Math.round(item.dest_walk_m);
               const best = index === 0;
               return (
-                <button
-                  key={`${item.boarding_id}-${item.route_code}-${index}`}
-                  onClick={() => {
-                    sessionStorage.setItem(TRIP_STORAGE_KEY, JSON.stringify({ selectedRoute: item, destination: tripData.destination }));
-                    router.push('/map');
-                  }}
-                  className={`card group relative p-5 text-left ${best ? '!border-brand ring-1 ring-brand/30' : ''}`}
+                <article
+                  key={key}
+                  className={`card group relative min-w-0 p-5 text-left ${best ? '!border-brand ring-1 ring-brand/30' : ''}`}
                 >
                   {best && (
                     <span className="absolute -top-2.5 left-4 rounded-full bg-brand px-2.5 py-0.5 text-xs font-semibold text-white dark:text-[#06101f]">
-                      Recomendada
+                      Primera opción del sistema
                     </span>
                   )}
                   <div className="flex items-start justify-between gap-3">
@@ -149,48 +187,25 @@ export default function DestinationsPage() {
                     )}
                   </ul>
 
-                  {item.transbordo && item.costo_generalizado_min != null && (
-                    <div className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center">
-                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
-                        <p className="text-sm font-bold tabular-nums text-fg">≈ {Math.round(item.costo_generalizado_min)} min</p>
-                        <p className="text-xs text-muted">En total</p>
-                      </div>
-                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
-                        <p className="text-sm font-bold tabular-nums text-fg">{item.viaje_min != null ? `${Math.round(item.viaje_min)} min` : '—'}</p>
-                        <p className="text-xs text-muted">A bordo</p>
-                      </div>
-                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
-                        <p className="text-sm font-bold tabular-nums text-fg">{item.caminata_min != null ? `${Math.round(item.caminata_min)} min` : '—'}</p>
-                        <p className="text-xs text-muted">Caminando</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {item.aforo?.clase && (
-                    <div className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center">
-                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
-                        <p className={`text-sm font-bold ${claseAforo(item.aforo.clase)}`}>{etiquetaClase(item.aforo.clase)}</p>
-                        <p className="text-xs text-muted">{textoOcupacion(item.aforo.ocupacion)} ocupado</p>
-                      </div>
-                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
-                        <p className="flex items-center justify-center gap-1 text-sm font-bold tabular-nums text-fg"><Clock size={13} />{item.espera_min != null ? `${item.espera_min} min` : '—'}</p>
-                        <p className="text-xs text-muted">Espera</p>
-                      </div>
-                      <div className="rounded-xl bg-surface-2 px-2 py-2.5">
-                        <p className="text-sm font-bold tabular-nums text-fg">{item.viaje_min != null ? `${Math.round(item.viaje_min)} min` : '—'}</p>
-                        <p className="text-xs text-muted">Viaje</p>
-                      </div>
-                    </div>
-                  )}
-                </button>
+                  <RouteMetrics route={item} />
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <button className="btn btn-primary flex-1" onClick={() => openRoute(item)} aria-label={`Ver en mapa: ${tripRouteLabel(item)}`}>Ver en mapa <ChevronRight size={16} /></button>
+                    <button className={`btn ${selected ? 'btn-primary' : 'btn-secondary'}`} aria-pressed={selected} aria-label={`${selected ? 'Quitar de comparación' : 'Comparar'}: ${tripRouteLabel(item)}`} disabled={!selected && selectedKeys.length === 2} onClick={() => toggleCompare(item)}>{selected && <Check size={15} />}{selected ? 'Seleccionada' : 'Comparar'}</button>
+                  </div>
+                </article>
               );
             })}
+          </div>
+          <div className="mt-6 flex flex-col items-center gap-3">
+            {shownRoutes.length < routes.length && <button className="btn btn-secondary" onClick={() => setVisibleCount((count) => Math.min(count + ROUTE_PAGE_SIZE, routes.length))}>Mostrar {Math.min(ROUTE_PAGE_SIZE, routes.length - shownRoutes.length)} opciones más</button>}
+            <p className="text-sm text-muted" aria-live="polite">Ves {shownRoutes.length} de {routes.length} opciones. {comparison.length} de 2 seleccionadas para comparar.</p>
+            {comparison.length > 0 && <a href="#comparacion-rutas" className="text-sm font-medium text-brand underline underline-offset-4">Ir a mi comparación</a>}
           </div>
         </section>
       )}
 
       {!loading && !tripData && !message && (
-        <EmptyState icon={Map} title="¿A dónde vas?" text="Escribe un destino y te mostraremos los paraderos cercanos con sus rutas directas." />
+        <EmptyState icon={Map} title="¿A dónde vas?" text="Escribe un destino para consultar las opciones de transporte que conectan sus paraderos cercanos." />
       )}
     </div>
   );

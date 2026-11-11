@@ -7,6 +7,7 @@ import { errorMessage } from '@/lib/client';
 import { etiquetaClase } from '@/lib/aforo';
 import { PredictionItem, Station } from '@/lib/types';
 import { Spinner } from './Spinner';
+import { boardingWaitMinutes } from '@/lib/ui-state';
 
 interface Props {
   station: Station;
@@ -21,17 +22,19 @@ const CLASES = ['Asientos', 'De_pie', 'Saturado'] as const;
 export default function FeedbackBox({ station, current, consultedAt }: Props) {
   const [step, setStep] = useState<'idle' | 'aforo' | 'sending' | 'done' | 'error'>('idle');
   const [mensaje, setMensaje] = useState('');
+  const [boardedAt, setBoardedAt] = useState<number | null>(null);
 
   // Otra predicción u otro paradero: el feedback anterior ya no aplica
-  useEffect(() => setStep('idle'), [station.id, consultedAt]);
+  useEffect(() => { setStep('idle'); setBoardedAt(null); }, [station.id, consultedAt]);
 
   const enviar = async (aforoPercibido: string | null) => {
+    if (boardedAt === null) return;
     setStep('sending');
     try {
       await sendFeedback({
         station_id: station.id,
         sistema: station.model_system || station.system,
-        espera_real_min: Math.min((Date.now() - consultedAt) / 60000, 180),
+        espera_real_min: boardingWaitMinutes(consultedAt, boardedAt),
         eta_mostrado_min: current.eta_min,
         eta_base_min: current.eta_base_min ?? current.eta_min,
         factor_trafico: current.factor_trafico,
@@ -77,7 +80,7 @@ export default function FeedbackBox({ station, current, consultedAt }: Props) {
 
   return (
     <div className="mt-4">
-      <button onClick={() => setStep('aforo')} className="btn btn-primary w-full">Ya abordé</button>
+      <button onClick={() => { if (boardedAt === null) setBoardedAt(Date.now()); setStep('aforo'); }} className="btn btn-primary w-full">Ya abordé</button>
       {step === 'error' && <p className="mt-2 text-center text-sm text-danger">{mensaje}</p>}
     </div>
   );

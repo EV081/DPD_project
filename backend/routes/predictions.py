@@ -40,6 +40,7 @@ def _item(fila: dict, sentido: str | None, sentidos: dict | None) -> dict:
     out = {
         "datetime": pd.Timestamp(fila["fecha_hora"]).strftime("%Y-%m-%d %H:%M"),
         "value": _num(fila.get("validaciones_pron"), 1),
+        "model": fila.get("modelo"),
         "band80": {"low": _num(fila.get("banda80_lo"), 1), "high": _num(fila.get("banda80_hi"), 1)},
         "crowding": _num(ocup, 3),
         "class": clase,
@@ -87,9 +88,12 @@ def _es_ahora(res: dict, hora: int) -> bool:
 
 
 def _hora_param() -> int:
-    hora = request.args.get("hour", default=None, type=int)
-    if hora is None:
+    if "hour" not in request.args:
         return calendario.ahora_lima().hour
+    try:
+        hora = int(request.args["hour"])
+    except ValueError:
+        raise MS.PrediccionError("La hora debe ser un número entero") from None
     if not 0 <= hora <= 23:
         raise MS.PrediccionError("La hora debe estar entre 0 y 23")
     return hora
@@ -97,8 +101,10 @@ def _hora_param() -> int:
 
 def _meta(res: dict) -> dict:
     m = MS.modelo(res["sistema"])
+    modelos = {f["modelo"] for f in res["filas"] if f.get("modelo")}
     return {
-        "system": res["sistema"], "series": res["serie"], "model": "lightgbm",
+        "system": res["sistema"], "series": res["serie"],
+        "model": next(iter(modelos)) if len(modelos) == 1 else ("mixto" if modelos else "lightgbm"),
         "nivel": res.get("nivel", "serie"),
         "metodo_aforo": "ocupacion_od_v2" if m.linea is not None else "presion_abordaje_v1",
         "unidades": {
@@ -124,7 +130,7 @@ def _buscar_estacion(station_id, ruta: str | None = None):
     candidatas = [s for s in load_all_stations_into_memory() if str(s["id"]).strip().lower() == objetivo]
     if ruta:
         con_ruta = [s for s in candidatas if str((s.get("raw_properties") or {}).get("ruta")) == str(ruta)]
-        candidatas = con_ruta or candidatas
+        candidatas = con_ruta
     return candidatas[0] if candidatas else None
 
 
@@ -152,7 +158,9 @@ def get_station_prediction(station_id):
         hacia = None
         if request.args.get("hacia_id"):
             dest = _buscar_estacion(request.args["hacia_id"])
-            hacia = serie_de_estacion(dest)[1] if dest else None
+            if dest is None:
+                raise MS.PrediccionError("Estación de destino no encontrada", 404)
+            hacia = serie_de_estacion(dest)[1]
         # Corredores: el código del paradero ya fija ruta y sentido -> detalle del paradero
         paradero = (est.get("raw_properties") or {}).get("cod_paradero") if sistema == "corredor" else None
         res = MS.prediccion_serie(sistema, serie, request.args.get("dia"), hacia=hacia, paradero=paradero)
@@ -197,8 +205,11 @@ def get_prediction(system, series):
 def get_forecast(system, series):
     """Pronóstico horario del día (``hours`` horas desde ``desde_hora``, por defecto 0-23)."""
     try:
-        hours = request.args.get("hours", default=24, type=int)
-        desde = request.args.get("desde_hora", default=0, type=int)
+        try:
+            hours = int(request.args.get("hours", 24))
+            desde = int(request.args.get("desde_hora", 0))
+        except ValueError:
+            raise MS.PrediccionError("hours y desde_hora deben ser números enteros") from None
         if not 1 <= hours <= 24:
             return jsonify({"error": "hours debe estar entre 1 y 24"}), 400
         if not 0 <= desde <= 23:

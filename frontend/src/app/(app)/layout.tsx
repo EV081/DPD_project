@@ -3,16 +3,19 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Map, Search, Navigation, User } from 'lucide-react';
+import { Map, Search, Navigation, User, ChartColumn, ArrowUpRight, LayoutDashboard, ShieldAlert } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Logo } from '@/components/Logo';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Spinner } from '@/components/Spinner';
+import { isAdminRoute } from '@/lib/access';
 
-const NAV = [
+const NAV: { href: string; label: string; icon: typeof Map; admin?: boolean }[] = [
   { href: '/map', label: 'Mapa', icon: Map },
   { href: '/search', label: 'Paraderos', icon: Search },
   { href: '/destinations', label: 'Destinos', icon: Navigation },
+  { href: '/simulacion', label: 'Simulación', icon: ChartColumn, admin: true },
+  { href: '/dashboard', label: 'Panel', icon: LayoutDashboard, admin: true },
   { href: '/account', label: 'Cuenta', icon: User },
 ];
 
@@ -20,13 +23,15 @@ const iniciales = (name?: string) =>
   (name || '?').split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0]!.toUpperCase()).join('');
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  const { user, loading, connectionError, retry } = useAuth();
+  const { user, loading, connectionError, retry, isAdmin } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!loading && !user && !connectionError) router.replace('/login');
-  }, [loading, user, connectionError, router]);
+    if (!loading && !user && !connectionError) {
+      router.replace(isAdminRoute(pathname) ? `/login?continuar=${pathname.split('/')[1]}` : '/login');
+    }
+  }, [loading, user, connectionError, pathname, router]);
 
   if (connectionError) {
     return (
@@ -42,19 +47,21 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     return <div className="flex h-dvh items-center justify-center"><Spinner size={28} /></div>;
   }
 
+  const items = NAV.filter((item) => !item.admin || isAdmin);
+  const restringida = isAdminRoute(pathname) && !isAdmin;
   const isActive = (href: string) => pathname === href || (href === '/search' && pathname.startsWith('/station'));
 
   return (
     <div className="flex h-dvh flex-col md:flex-row">
       {/* Barra lateral: tablet y escritorio */}
-      <aside className="hidden w-[4.5rem] shrink-0 flex-col border-r border-line bg-surface md:flex lg:w-64">
-        <Link href="/map" className="flex h-16 items-center justify-center border-b border-line px-5 lg:justify-start">
+      <aside className="mobility-nav hidden w-[4.5rem] shrink-0 flex-col border-r border-line md:flex lg:w-60">
+        <Link href="/map" className="mobility-nav-brand flex h-20 items-center justify-center border-b px-5 lg:justify-start">
           <Logo size={30} showText={false} />
-          <span className="ml-2.5 hidden text-lg font-bold tracking-tight text-fg lg:block">UrbanSafe</span>
+          <span className="ml-2.5 hidden text-lg font-bold tracking-tight lg:block">UrbanSafe</span>
         </Link>
 
         <nav className="flex flex-1 flex-col gap-1 p-3" aria-label="Principal">
-          {NAV.map(({ href, label, icon: Icon }) => {
+          {items.map(({ href, label, icon: Icon }) => {
             const active = isActive(href);
             return (
               <Link
@@ -62,11 +69,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 href={href}
                 title={label}
                 aria-current={active ? 'page' : undefined}
-                className={`relative flex items-center justify-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors lg:justify-start ${
-                  active ? 'bg-brand-soft text-brand' : 'text-muted hover:bg-surface-2 hover:text-fg'
-                }`}
+                className="mobility-nav-link relative flex items-center justify-center gap-3 rounded-xl px-3 py-3 text-sm font-medium transition-colors lg:justify-start"
               >
-                {active && <span aria-hidden className="absolute -left-3 top-2 bottom-2 w-1 rounded-r-full bg-brand" />}
                 <Icon size={19} strokeWidth={active ? 2.25 : 2} />
                 <span className="hidden lg:block">{label}</span>
               </Link>
@@ -74,7 +78,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           })}
         </nav>
 
-        <div className="flex items-center justify-center gap-2 border-t border-line p-3 lg:justify-between">
+        {isAdmin && <div className="mobility-nav-note hidden lg:block"><strong>Prueba antes de salir.</strong><p>Compara un día histórico y descubre cómo cambia el aforo.</p><Link href="/simulacion" className="mt-3 inline-flex items-center gap-1.5 font-semibold">Abrir simulación <ArrowUpRight size={14} /></Link></div>}
+
+        <div className="mobility-nav-user flex items-center justify-center gap-2 border-t p-3 lg:justify-between">
           <Link href="/account" className="flex min-w-0 items-center gap-2.5 rounded-lg p-1 hover:bg-surface-2" title={user.name}>
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-soft text-xs font-bold text-brand">
               {iniciales(user.name)}
@@ -88,14 +94,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <main className="min-h-0 min-w-0 flex-1 overflow-y-auto"><div key={pathname} className="page-in h-full">{children}</div></main>
+      <main className="min-h-0 min-w-0 flex-1 overflow-y-auto">
+        <div key={pathname} className="page-in h-full">{restringida ? <AccesoRestringido /> : children}</div>
+      </main>
 
       {/* Barra inferior: móvil */}
       <nav
         aria-label="Principal"
-        className="grid shrink-0 grid-cols-4 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
+        style={{ gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))` }}
+        className="grid shrink-0 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
       >
-        {NAV.map(({ href, label, icon: Icon }) => {
+        {items.map(({ href, label, icon: Icon }) => {
           const active = isActive(href);
           return (
             <Link
@@ -112,6 +121,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           );
         })}
       </nav>
+    </div>
+  );
+}
+
+function AccesoRestringido() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-3 px-6 text-center">
+      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-2 text-muted"><ShieldAlert size={22} aria-hidden /></span>
+      <h1 className="text-lg font-bold text-fg">Acceso restringido</h1>
+      <p className="max-w-sm text-sm text-muted">Esta sección es solo para la cuenta de administración. Tu cuenta puede usar el mapa, los paraderos y los destinos.</p>
+      <Link href="/map" className="btn btn-primary mt-2">Volver al mapa</Link>
     </div>
   );
 }

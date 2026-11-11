@@ -3,20 +3,22 @@
 import React, { createContext, useCallback, useContext, useEffect, useState, ReactNode } from 'react';
 import { api, TOKEN_KEY, UNAUTHORIZED_EVENT } from '@/lib/client';
 
-export interface User { id: number; name: string; email: string }
+export interface User { id: number; name: string; email: string; role: 'user' | 'admin' }
 
 interface AuthContextType {
   token: string | null;
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   loading: boolean;
-  /** Hay sesión guardada pero el servidor no respondió (arranque en frío, sin red): se puede reintentar. */
   connectionError: boolean;
   retry: () => void;
-  login: (email: string, pass: string) => Promise<void>;
+  login: (email: string, pass: string) => Promise<User>;
   register: (name: string, email: string, pass: string) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
+  /** Cuenta administradora (la define el servidor; el cliente solo lo usa para mostrar u ocultar pantallas). */
+  isAdmin: boolean;
+  updateProfile: (data: { name?: string; email?: string }) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -36,8 +38,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
-  // Sesión guardada: se valida con /auth/me. Solo un 401 cierra la sesión; un fallo de red o un
-  // arranque en frío del servidor se reintenta y, si persiste, se ofrece "Reintentar" sin perder el token.
   useEffect(() => {
     const stored = localStorage.getItem(TOKEN_KEY);
     if (!stored) {
@@ -65,18 +65,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => { cancelled = true; };
   }, [attempt, clearSession]);
 
-  // Token vencido en cualquier llamada posterior
   useEffect(() => {
     window.addEventListener(UNAUTHORIZED_EVENT, clearSession);
     return () => window.removeEventListener(UNAUTHORIZED_EVENT, clearSession);
   }, [clearSession]);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<User> => {
     const res = await api.post('/auth/login', { email, password });
     const accessToken = res.data.access_token;
+    const nextUser: User = res.data.user || res.data;
     localStorage.setItem(TOKEN_KEY, accessToken);
     setToken(accessToken);
-    setUser(res.data.user || res.data);
+    setUser(nextUser);
+    return nextUser;
   };
 
   const register = async (name: string, email: string, password: string) => {
@@ -84,10 +85,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await login(email, password);
   };
 
+  const updateProfile = async (data: { name?: string; email?: string }) => {
+    const res = await api.put('/auth/me', { name: data.name, email: data.email });
+    setUser(res.data.user || res.data);
+  };
+
   const logout = clearSession;
 
   return (
-    <AuthContext.Provider value={{ token, user, setUser, loading, connectionError, retry: () => setAttempt((n) => n + 1), login, register, logout, isAuthenticated: !!token }}>
+    <AuthContext.Provider value={{ token, user, setUser, loading, connectionError, retry: () => setAttempt((n) => n + 1), login, register, logout, isAuthenticated: !!token, isAdmin: user?.role === 'admin', updateProfile }}>
       {children}
     </AuthContext.Provider>
   );

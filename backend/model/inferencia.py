@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import sys
 from functools import lru_cache
 from pathlib import Path
@@ -31,6 +32,7 @@ import model_atu_v2 as V  # noqa: E402
 from ocupacion import cargar_capa  # noqa: E402
 
 DIAS_CONTEXTO = 28
+LOG = logging.getLogger(__name__)
 
 
 def sha256(ruta: Path) -> str:
@@ -64,16 +66,25 @@ def panel_desde_contexto(sistema: str, contexto: pd.DataFrame, dia) -> tuple[V.P
     """Panel con el contexto observado y el día objetivo en cero (no se usa para predecir)."""
     dia = pd.Timestamp(dia).normalize()
     ctx = contexto.sort_index()
+    if not isinstance(ctx.index, pd.DatetimeIndex) or ctx.index.has_duplicates:
+        raise ValueError("el contexto debe tener fechas horarias únicas")
     ctx = ctx.loc[:dia - pd.Timedelta(hours=1)]
+    if ctx.empty:
+        raise ValueError("falta contexto observado antes del día solicitado")
     inicio = ctx.index.min().normalize()
     if (dia - inicio).days < DIAS_CONTEXTO:
         raise ValueError(f"se requieren ≥ {DIAS_CONTEXTO} días de contexto antes de {dia.date()}")
     idx = pd.date_range(inicio, dia + pd.Timedelta(hours=23), freq="h")
-    Y = ctx.reindex(idx).fillna(0.0)
+    observado = ctx.reindex(idx)
+    reciente = observado.loc[dia - pd.Timedelta(days=DIAS_CONTEXTO):dia - pd.Timedelta(hours=1)]
+    values = reciente.to_numpy(dtype=float)
+    if not np.isfinite(values).all() or (values < 0).any():
+        raise ValueError("los últimos 28 días deben tener validaciones horarias completas, finitas y no negativas")
+    Y = observado.fillna(0.0)
     dias = idx.normalize()
     P = V.Panel(
         sistema=sistema, index=idx, Y=Y.to_numpy(dtype=np.float64),
-        obs=np.ones(Y.shape, dtype=bool), series=[str(c) for c in Y.columns], df_h=None,
+        obs=observado.notna().to_numpy(), series=[str(c) for c in Y.columns], df_h=None,
         fer=dias.isin(V.FERIADOS_TS).astype(np.float32),
         paro=dias.isin(V.PAROS_TS).astype(np.float32),
     )
@@ -192,21 +203,23 @@ class ModeloSistema:
             pt, Q = self._pronostico_modelo(self.principal, P, p)
             return pt, Q, self.principal
         except Exception as exc:  # pragma: no cover - ruta de contingencia
-            print(f"[inferencia] {self.sistema}: {self.principal} falló ({exc}); uso media_4sem")
+            LOG.warning("%s: %s falló (%s); uso media_4sem", self.sistema, self.principal, exc)
             pt, _ = V.f_media_4sem(P, p)
             return pt, None, "media_4sem_fallback"
 
     def _banda(self, pt, Q, escala, conformal: dict) -> tuple[np.ndarray, np.ndarray]:
-        por_hora = conformal["por_hora"]
-        lo, hi = np.zeros_like(pt), np.zeros_like(pt)
+        por_hora = conformal.get("por_hora", {})
+        # Sin residuos de calibración no existe una banda del 80 %. NaN llega a
+        # la API como null; usar el punto en ambos extremos simularía certeza.
+        lo, hi = np.full_like(pt, np.nan), np.full_like(pt, np.nan)
         for h in range(24):
             c = por_hora.get(str(h), por_hora.get(h, {}))
-            if conformal["tipo"] == "cqr" and Q is not None:
-                lo[:, h] = Q[:, V.Q_LO, h] - c.get("q", 0.0) * escala[:, h]
-                hi[:, h] = Q[:, V.Q_HI, h] + c.get("q", 0.0) * escala[:, h]
-            else:
-                lo[:, h] = pt[:, h] - c.get("q_lo", 0.0) * escala[:, h]
-                hi[:, h] = pt[:, h] + c.get("q_hi", 0.0) * escala[:, h]
+            if conformal.get("tipo") == "cqr" and Q is not None and np.isfinite(c.get("q", np.nan)):
+                lo[:, h] = Q[:, V.Q_LO, h] - c["q"] * escala[:, h]
+                hi[:, h] = Q[:, V.Q_HI, h] + c["q"] * escala[:, h]
+            elif conformal.get("tipo") == "residuo" and all(np.isfinite(c.get(k, np.nan)) for k in ("q_lo", "q_hi")):
+                lo[:, h] = pt[:, h] - c["q_lo"] * escala[:, h]
+                hi[:, h] = pt[:, h] + c["q_hi"] * escala[:, h]
         return np.clip(lo, 0, None), np.clip(hi, 0, None)
 
     def pronosticar(self, contexto: pd.DataFrame, dia, modo: str = "principal", con_paradas: bool = False):
@@ -218,8 +231,13 @@ class ModeloSistema:
         P, p = panel_desde_contexto(self.sistema, contexto[self.series], dia)
         observado = None
         if self.sentido is not None and modo == "ligero":
-            pt, observado = self.agrupar_sentidos(self.pronostico_por_sentido(contexto, dia))
-            Q, usado, conformal = None, "lightgbm_sentido", self.conformal_sentido
+            try:
+                pt, observado = self.agrupar_sentidos(self.pronostico_por_sentido(contexto, dia))
+                Q, usado, conformal = None, "lightgbm_sentido", self.conformal_sentido
+            except Exception as exc:
+                LOG.warning("%s: pronóstico por sentido falló (%s); uso media_4sem", self.sistema, exc)
+                pt, _ = V.f_media_4sem(P, p)
+                Q, usado, conformal = None, "media_4sem_fallback", {"tipo": "residuo", "por_hora": {}}
         else:
             pt, Q, usado = self.pronostico_puntual(P, p, modo)
             if usado == "lightgbm" and modo == "ligero":

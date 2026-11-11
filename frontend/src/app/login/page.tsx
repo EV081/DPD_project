@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
@@ -9,6 +9,7 @@ import { errorMessage } from '@/lib/client';
 import { AuthShell } from '@/components/AuthShell';
 import { Field, ErrorNote } from '@/components/Field';
 import { Spinner } from '@/components/Spinner';
+import { destinoAdmin } from '@/lib/access';
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -17,6 +18,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [destino, setDestino] = useState<string | null>(null);
+
+  useEffect(() => {
+    setDestino(destinoAdmin(new URLSearchParams(window.location.search).get('continuar')));
+  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,8 +30,8 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
     try {
-      await login(email, password);
-      router.replace('/map');
+      const usuario = await login(email, password);
+      router.replace(destino && usuario.role === 'admin' ? destino : '/map');
     } catch (err: any) {
       setError(err?.response?.status === 401 ? 'El correo o la contraseña son incorrectos.' : errorMessage(err, 'Ocurrió un error inesperado.'));
     } finally {
@@ -36,7 +42,7 @@ export default function LoginPage() {
   return (
     <AuthShell>
       <h2 className="text-2xl font-bold tracking-tight text-fg">Inicia sesión</h2>
-      <p className="mt-1.5 text-sm text-muted">Accede para planificar rutas y consultar el aforo en tiempo real.</p>
+      <p className="mt-1.5 text-sm text-muted">Accede para planificar rutas y consultar el aforo estimado.</p>
 
       <form onSubmit={submit} className="mt-8 space-y-4" noValidate>
         <Field label="Correo electrónico" icon={Mail} type="email" autoComplete="email" value={email}

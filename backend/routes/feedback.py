@@ -3,10 +3,13 @@
 No reentrena el modelo de demanda (aprende de validaciones ATU): sirve para medir el error
 del ETA, validar el ajuste por tráfico (``modo_datos``) y calibrar el aforo percibido.
 """
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
 from db.connection import db
+from routes.permisos import admin_required
+from routes.validation import json_object, number, text_field
+from werkzeug.exceptions import BadRequest
 
 feedback_bp = Blueprint("feedback", __name__)
 
@@ -33,13 +36,6 @@ class FeedbackViaje(db.Model):
     aforo_percibido = db.Column(db.String(12))                # opcional
 
 
-def _num(v):
-    try:
-        return float(v) if v is not None else None
-    except (TypeError, ValueError):
-        return None
-
-
 @feedback_bp.route("", methods=["POST"])
 @jwt_required()
 def crear_feedback():
@@ -50,9 +46,10 @@ def crear_feedback():
     security:
       - Bearer: []
     """
-    d = request.get_json(silent=True) or {}
-    station_id, sistema = str(d.get("station_id") or "").strip(), str(d.get("sistema") or "").strip()
-    espera = _num(d.get("espera_real_min"))
+    d = json_object()
+    station_id = text_field(d, "station_id", 150)
+    sistema = text_field(d, "sistema", 30)
+    espera = number(d.get("espera_real_min"), "espera_real_min", 0, ESPERA_MAX_MIN)
     if not station_id or not sistema or espera is None:
         return jsonify({"error": "station_id, sistema y espera_real_min son obligatorios"}), 400
     if not 0 <= espera <= ESPERA_MAX_MIN:
@@ -61,11 +58,21 @@ def crear_feedback():
     if percibido is not None and percibido not in CLASES_AFORO:
         return jsonify({"error": f"aforo_percibido debe ser uno de {', '.join(CLASES_AFORO)}"}), 400
     modo = d.get("modo_datos") if d.get("modo_datos") in MODOS else None
+    medidas = {}
+    for campo in ("eta_mostrado_min", "eta_base_min", "factor_trafico"):
+        medidas[campo] = number(d[campo], campo, 0) if d.get(campo) is not None else None
+    from services.mapeo_estaciones import resolver_serie, sistema_modelo
+    from routes.stations import load_all_stations_into_memory
+    modelo = sistema_modelo(sistema)
+    coincide = any(e["id"] == station_id and sistema_modelo(e["system"]) == modelo
+                   for e in load_all_stations_into_memory())
+    if modelo is None or not (coincide or resolver_serie(modelo, station_id)):
+        raise BadRequest("La estación y el sistema no corresponden al catálogo disponible")
     fila = FeedbackViaje(
         user_id=get_jwt_identity() and int(get_jwt_identity()),
         station_id=station_id, sistema=sistema, espera_real_min=round(espera, 2),
-        eta_mostrado_min=_num(d.get("eta_mostrado_min")), eta_base_min=_num(d.get("eta_base_min")),
-        factor_trafico=_num(d.get("factor_trafico")), modo_datos=modo,
+        eta_mostrado_min=medidas["eta_mostrado_min"], eta_base_min=medidas["eta_base_min"],
+        factor_trafico=medidas["factor_trafico"], modo_datos=modo,
         aforo_mostrado=d.get("aforo_mostrado") if d.get("aforo_mostrado") in CLASES_AFORO else None,
         aforo_percibido=percibido,
     )
@@ -96,9 +103,9 @@ def _resumen(filas: list[FeedbackViaje]) -> dict:
 
 
 @feedback_bp.route("/resumen", methods=["GET"])
-@jwt_required()
+@admin_required
 def resumen_feedback():
-    """Métricas agregadas: error del ETA (MAE y sesgo) y acierto del aforo, global y por modo de
+    """(Solo administradores.) Métricas agregadas: error del ETA (MAE y sesgo) y acierto del aforo, global y por modo de
     tráfico (en_vivo / reciente / historico) para validar el ajuste con TomTom.
     ---
     tags:

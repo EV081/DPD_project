@@ -38,7 +38,7 @@ export default function RegisterPage() {
   return (
     <AuthShell>
       <h2 className="text-2xl font-bold tracking-tight text-fg">Crea tu cuenta</h2>
-      <p className="mt-1.5 text-sm text-muted">Es gratis y toma menos de un minuto.</p>
+      <p className="mt-1.5 text-sm text-muted">Crea tu acceso para explorar rutas y escenarios de movilidad.</p>
 
       <form onSubmit={submit} className="mt-8 space-y-4" noValidate>
         <Field label="Nombre completo" icon={User} value={name} onChange={(e) => setName(e.target.value)}

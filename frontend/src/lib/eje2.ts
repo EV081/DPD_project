@@ -41,6 +41,13 @@ export interface RespuestaRuta {
   franja: 'dia' | 'noche';
   destino: IndiceAcceso | null;
   comparacion: { distancia_extra_m: number; distancia_extra_pct: number; minutos_extra: number; reduccion_riesgo_pct: number };
+  tolerancia_caminata?: {
+    max_minutos_extra: number;
+    minutos_extra_segura: number;
+    cumple_segura: boolean;
+    metodo: 'comparacion_de_dos_rutas';
+    aviso: string;
+  };
   rutas: { normal: RutaPeatonal; segura: RutaPeatonal };
   explicacion: {
     resumen: string;
@@ -75,11 +82,13 @@ export const getRutaPeatonal = async (
   origen: { lat: number; lon: number },
   estacion: Station,
   preferencia: 'segura' | 'normal' = 'segura',
+  maxMinutosExtra?: number | null,
 ): Promise<RespuestaRuta> =>
   (await api.post('/eje2/ruta', {
     origen,
     destino: { station_id: estacion.id, sistema: estacion.system },
     preferencia,
+    ...(maxMinutosExtra == null ? {} : { max_minutos_extra: maxMinutosExtra }),
   })).data;
 
 export const getIndiceEstacion = async (estacion: Station): Promise<IndiceAcceso | null> => {

@@ -1,6 +1,7 @@
 import os
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import event
 
 
 db = SQLAlchemy()
@@ -31,7 +32,16 @@ def init_db(app):
         if db.engine.dialect.name == "postgresql":
             _crear_esquema_postgres(tablas, particiones)
         else:
+            if db.engine.dialect.name == "sqlite":
+                # SQLite requiere activar las claves foráneas en cada conexión.
+                @event.listens_for(db.engine, "connect")
+                def sqlite_foreign_keys(connection, _record):
+                    cursor = connection.cursor()
+                    cursor.execute("PRAGMA foreign_keys=ON")
+                    cursor.close()
             db.create_all()                                   # otros motores: tablas normales (sin particionado)
+        from services.usuarios import asegurar_columna_role   # bases anteriores a los roles: agrega users.role
+        asegurar_columna_role()
 
 
 # Clave del bloqueo asesor que serializa la creación del esquema entre procesos (workers de gunicorn, jobs, etc.)

@@ -195,8 +195,8 @@ def test_el_reporte_se_guarda_sin_texto_libre_y_con_coordenadas_redondeadas(clie
     rid = client.post("/api/eje2/reportes", json={"tipo": "robo", "comentario": "Juan Pérez me robó", **p}, headers=ana).get_json()["id"]
     with app_ctx.app_context():
         fila = db.session.execute(text("SELECT lat, lon, tipo, seg_id FROM reporte_seguridad WHERE id = :i"), {"i": rid}).one()
-        columnas = {r[0] for r in db.session.execute(text(
-            "SELECT column_name FROM information_schema.columns WHERE table_name = 'reporte_seguridad'")).all()}
+        from sqlalchemy import inspect
+        columnas = {r["name"] for r in inspect(db.engine).get_columns("reporte_seguridad")}
         db.session.rollback()
     assert fila.lat == round(p["lat"], 5) and fila.lon == round(p["lon"], 5) and fila.seg_id and fila.tipo == "robo"
     assert not columnas & {"comentario", "descripcion", "texto", "nombre"}              # no hay dónde guardar texto libre ni nombres

@@ -87,6 +87,19 @@ cp .env.example .env
 | `LOCATIONIQ_TOKEN` | Autocompletado de destinos |
 | `DATABASE_URL` | Base de usuarios. Vacía = SQLite local; en producción, Postgres |
 | `PORT` | Solo local; Render lo define |
+| `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD`, `SEED_ADMIN_NAME` | Cuenta de **administrador** (acceso a Simulación y al Panel operacional). Clave: mínimo 8 caracteres |
+| `SEED_ADMIN_ON_START` | `1` (por defecto) crea/actualiza al administrador al arrancar; `0` lo desactiva |
+
+### 3.1 Administrador y roles
+- Roles: `user` (por defecto) y `admin`. El registro público **siempre** crea `user`; el rol nunca se acepta desde el cliente.
+- Al arrancar la API (o con `flask --app app seed-admin`) se crea o actualiza al administrador con las variables `SEED_ADMIN_*` del `.env`.
+  Es idempotente: si el correo ya existe se promueve a `admin`, y el `.env` manda sobre el nombre y la contraseña.
+  Sin las variables no se crea nada (la API arranca igual).
+- Solo `admin` puede usar `GET /api/admin/dashboard` (panel operacional) y `GET /api/feedback/resumen`. El rol se lee de la base en cada petición:
+  degradar a alguien le quita el acceso aunque conserve un token vigente.
+- Bases anteriores a los roles: al arrancar se agrega la columna `users.role` automáticamente.
+- El panel solo devuelve agregados: nunca reportes individuales, ubicaciones, correos ni identificadores de usuarios.
+- Privacidad: existen cuentas (nombre y correo) y los reportes del Eje 2 guardan `user_id`; esto debe reflejarse en la descripción del RNF-05 de los requisitos.
 
 ### 4. Ejecutar la aplicacióm
 Inicia el servidor local ejecutando el archivo principal:
@@ -116,7 +129,7 @@ En el panel de Render (**Environment**) define `JWT_SECRET_KEY`, `LOCATIONIQ_TOK
 (la URL de tu Postgres). Sin `DATABASE_URL` se usa SQLite, que se borra en cada redeploy y **no soporta** las tablas particionadas ni el pipeline del Eje 2: usa Postgres.
 Cada worker carga su copia de los modelos y del grafo del Eje 2 (~100 MB): en servidores de 512 MB usa `WEB_CONCURRENCY=1`.
 
-### 3.1. Jobs programados (Render → Cron Jobs)
+### 3.2. Jobs programados (Render → Cron Jobs)
 
 Crea dos Cron Jobs con el mismo repositorio, `DATABASE_URL` y variables que el servicio web:
 

@@ -1,0 +1,64 @@
+.showcase {
+  --panel-accent: #b6d1ff;
+  display: grid;
+  grid-template-columns: minmax(240px, .72fr) minmax(0, 1.7fr);
+  color: #ebf1ee;
+  background: #121f2c;
+  border: 1px solid #3a5361;
+  border-radius: 1.55rem;
+  overflow: hidden;
+  box-shadow: 0 26px 70px #0a1a2329;
+}
+.panel { padding: clamp(1.2rem, 3vw, 2.25rem); border-right: 1px solid #344956; }
+.line { display: flex; align-items: center; gap: .55rem; color: var(--panel-accent); font-size: .72rem; font-weight: 650; text-transform: uppercase; letter-spacing: .12em; }
+.panel h3 { margin: .65rem 0 .16rem; font-size: clamp(1.35rem, 2.25vw, 2rem); font-weight: 740; letter-spacing: -.04em; line-height: 1.13; }
+.context, .small { color: #b1c2c9; font-size: .76rem; line-height: 1.55; }
+.selectLabel { display: block; margin-top: 1.45rem; color: #deebe8; font-size: .78rem; font-weight: 600; }
+.shortcuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; margin: .5rem 0; }
+.shortcuts button, .select {
+  min-height: 2.55rem;
+  padding: .46rem .5rem;
+  border: 1px solid #4e6673;
+  border-radius: .5rem;
+  background: #1d303e;
+  color: #e6f1ee;
+  font-size: .81rem;
+  font-variant-numeric: tabular-nums;
+}
+.shortcuts button { cursor: pointer; transition: background-color .18s, border-color .18s, color .18s; }
+.shortcuts button[aria-pressed="true"] { background: var(--panel-accent); color: #10234a; border-color: var(--panel-accent); font-weight: 700; }
+.shortcuts button:hover:not([aria-pressed="true"]) { border-color: var(--panel-accent); }
+.select { width: 100%; }
+.shortcuts button:focus-visible, .select:focus-visible, .full:focus-visible { outline: 2px solid var(--panel-accent); outline-offset: 3px; }
+.result { margin: 1.1rem 0 .8rem; padding-block: .85rem; border-top: 1px solid #3e5563; border-bottom: 1px solid #3e5563; }
+.state { display: inline-flex; align-items: center; gap: .42rem; color: var(--estado); font-size: .8rem; font-weight: 650; }
+.state::before { content: ''; width: .4rem; height: .4rem; border-radius: 50%; background: var(--estado); }
+.metrics { display: grid; grid-template-columns: 1.2fr 1fr; gap: .4rem; margin: .7rem 0 .5rem; }
+.metrics dt { font-size: .68rem; color: #bfd0d5; line-height: 1.3; }
+.metrics dd { margin: .2rem 0 0; font-size: clamp(1.14rem, 1.9vw, 1.78rem); font-weight: 720; white-space: nowrap; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+.decision { display: flex; align-items: center; gap: .35rem; color: #dcebe3; font-size: .73rem; }
+.full { display: inline-flex; align-items: center; gap: .4rem; margin-top: .85rem; min-height: 2.25rem; color: var(--panel-accent); font-size: .8rem; font-weight: 700; text-underline-offset: .25em; }
+.full:hover { text-decoration: underline; }
+.figure { display: flex; flex-direction: column; justify-content: center; min-width: 0; margin: 0; padding: clamp(1rem, 2.5vw, 1.85rem); background: radial-gradient(ellipse at 50% 40%, #1a3849, #10202d 76%); }
+.figureTop, .profileTop { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem .65rem; font-size: .67rem; font-weight: 620; text-transform: uppercase; letter-spacing: .11em; }
+.figureTop { color: #bed2d5; }
+.figureTop span:first-child { color: var(--panel-accent); }
+.scene { display: block; width: 100%; height: auto; margin: .12rem 0 .45rem; }
+.routeGlow { transition: stroke .25s; }
+.profile { border-block: 1px solid #4a6673; padding: .6rem 0; }
+.profileTop { color: #bfced2; font-size: .6rem; }
+.bars { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); align-items: end; gap: clamp(1px, .34vw, 5px); height: 2.75rem; margin-top: .3rem; }
+.bars span { height: var(--barra); border-radius: .18rem .18rem 0 0; background: #6c8996; }
+.bars .barActive { background: var(--estado); }
+.stops { display: flex; flex-wrap: wrap; gap: .3rem .9rem; padding: 0; margin: .85rem 0 .55rem; list-style: none; }
+.stops li { display: flex; align-items: center; gap: .3rem; font-size: .68rem; color: #dae7e7; }
+.stops b { display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border: 1px solid #6e8b94; border-radius: 50%; font-size: .63rem; }
+.figure figcaption { color: #b0c4cc; font-size: .66rem; line-height: 1.45; }
+@media (max-width: 780px) {
+  .showcase { grid-template-columns: minmax(0, 1fr); }
+  .panel { border-right: 0; border-bottom: 1px solid #344956; }
+  .figure { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shortcuts button, .routeGlow { transition: none; }
+}

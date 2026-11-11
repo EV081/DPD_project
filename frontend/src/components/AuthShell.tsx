@@ -1,49 +1,54 @@
-import Image from 'next/image';
+import { ArrowDown, ArrowUpRight, ChartNoAxesCombined, Navigation, Clock3 } from 'lucide-react';
+import Link from 'next/link';
 import { Logo } from './Logo';
-import { RouteLine, RouteLineMini } from './RouteLine';
 import { ThemeToggle } from './ThemeToggle';
+import MobilityIllustration from './MobilityIllustration';
 
-// Estructura de login y registro: panel de marca a la izquierda (solo escritorio) y formulario a la derecha
+const PASOS = [
+  { icon: Navigation, titulo: 'Elige tu destino', texto: 'Encuentra opciones de transporte.' },
+  { icon: Clock3, titulo: 'Compara tu viaje', texto: 'Revisa espera, caminata y aforo.' },
+  { icon: ChartNoAxesCombined, titulo: 'Explora por hora', texto: 'Prueba un escenario histórico.' },
+];
+
+// El acceso conserva el mismo formulario y la misma autenticación.
 export function AuthShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid min-h-dvh lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)]">
-      <aside className="relative hidden overflow-hidden bg-[#0d2a63] p-12 text-white lg:flex lg:flex-col lg:justify-between">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-500/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-sky-400/20 blur-3xl" />
+    <div className="mobility-entry">
+      <aside className="mobility-story">
+        <header className="mobility-story-top">
+          <div className="flex items-center gap-2.5"><Logo size={32} showText={false} /><span className="text-xl font-bold tracking-tight">UrbanSafe</span></div>
+          <span className="mobility-tag">Movilidad · Lima</span>
+        </header>
 
-        <div className="relative flex items-center gap-2.5">
-          <Logo size={34} showText={false} />
-          <span className="text-xl font-bold tracking-tight">UrbanSafe</span>
+        <div className="mobility-story-copy">
+          <p className="mobility-kicker"><span /> Antes de salir</p>
+          <h1>El viaje empieza<br />antes de <em>subir.</em></h1>
+          <p>Conoce tus opciones, compara horarios y mira el transporte de Lima desde los datos.</p>
+          <a href="#acceso" className="mobility-entry-link">Entrar a UrbanSafe <ArrowDown size={17} /></a>
         </div>
 
-        <div className="relative max-w-lg">
-          <h1 className="rise text-4xl font-bold leading-tight tracking-tight">
-            Viaja por Lima sabiendo cómo viene el bus.
-          </h1>
-          <p className="mt-4 text-lg text-blue-100/80">
-            Predicción de aforo y tiempos de espera para el Metropolitano, corredores, alimentadores y la Línea 1.
-          </p>
-          <RouteLine className="mt-10 max-w-xs" />
-          <p className="mt-4 text-sm text-blue-100/70">Así vemos cada tramo: asientos, de pie o saturado, hora a hora.</p>
-        </div>
+        <MobilityIllustration className="mobility-story-image" />
 
-        <div className="relative flex items-center gap-4 text-sm text-blue-100/70">
-          <Image src="/img/utec_completo.png" alt="UTEC" width={96} height={72} className="h-14 w-auto opacity-90" />
-          <span>Proyecto de Desarrollo de Producto de Datos · UTEC</span>
+        <div className="mobility-steps">
+          {PASOS.map(({ icon: Icon, titulo, texto }, indice) => (
+            <div key={titulo}>
+              <span className="mobility-step-number">0{indice + 1}<Icon size={17} /></span>
+              <h2>{titulo}</h2>
+              <p>{texto}</p>
+            </div>
+          ))}
         </div>
+        <p className="mobility-source">Aforo estimado con datos ATU de 2025. No es un conteo en vivo.</p>
       </aside>
 
-      <main className="relative flex flex-col justify-center px-5 py-10 sm:px-10">
-        <div className="absolute right-4 top-4"><ThemeToggle /></div>
-        <div className="mx-auto w-full max-w-sm">
-          <div className="hero mb-8 p-6 lg:hidden">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sky-400/30 blur-2xl" />
-            <div className="relative flex items-center gap-2.5"><Logo size={34} showText={false} /><span className="text-xl font-bold tracking-tight">UrbanSafe</span></div>
-            <p className="relative mt-4 text-lg font-semibold leading-snug">Viaja por Lima sabiendo cómo viene el bus.</p>
-            <RouteLineMini className="relative mt-5" />
-          </div>
+      <main id="acceso" className="mobility-access">
+        <div className="mobility-access-top"><Link href="/" className="hover:underline">← Volver al inicio</Link><ThemeToggle /></div>
+        <div className="mobility-access-form">
+          <div className="mobility-access-mark" aria-hidden="true"><ArrowUpRight size={28} strokeWidth={1.5} /></div>
           <div className="stagger">{children}</div>
+          <div className="mobility-access-note"><span className="mobility-mini-dot" /><p>Explora el mapa, compara rutas y ensaya escenarios en la misma cuenta.</p></div>
         </div>
+        <footer className="mobility-access-footer"><span>UrbanSafe</span><span>Un proyecto de estudiantes · UTEC</span></footer>
       </main>
     </div>
   );

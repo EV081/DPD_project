@@ -35,12 +35,13 @@ export interface OcupacionSentido {
 export interface PredictionItem {
   datetime: string;                 // fecha y hora del pronóstico (hora de Lima)
   value: number | null;             // subidas pronosticadas en la hora
+  model?: string | null;            // método usado en esta hora (modelo o respaldo)
   crowding: number | null;          // ocupación = pasajeros a bordo / capacidad (puede superar 1)
   class: ClaseAforo;
   eta_min: number | null;           // espera estimada en andén (min)
   eta2_min: number | null;          // espera hasta el segundo vehículo
   recommendation: Recomendacion;
-  band80?: { low: number | null; high: number | null };
+  band80?: { low: number | null; high: number | null } | null;
   sentido?: string | null;          // p. ej. "hacia Bayóvar" o "hacia CERES"
   pasajeros_por_tren?: number | null;  // pasajeros a bordo por vehículo al salir del paradero
   paradero?: string;                // corredores: nombre del paradero ATU

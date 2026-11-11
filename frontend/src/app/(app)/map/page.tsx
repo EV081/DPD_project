@@ -19,12 +19,22 @@ import Alert from '@/components/Alert';
 import HomeSheet from '@/components/HomeSheet';
 import { useAuth } from '@/context/AuthContext';
 import { getRecents, addRecent, RecentDestination } from '@/lib/recents';
-import { getStations, getRouteGeoJson, getCaminata, getRouteCodeFromStation, matchTrip, getStationPrediction } from '@/lib/services';
+import { getStations, getRouteGeoJson, getCaminata, getRouteCodeFromStation, mapSystemToBackendApi, matchTrip, getStationPrediction } from '@/lib/services';
 import { opcionesDeViaje } from '@/lib/aforo';
 import { tramoEntre } from '@/lib/route';
 import { TRIP_STORAGE_KEY, FOCUS_STORAGE_KEY } from '@/lib/constants';
 import { getUserLocation, LIMA_CENTER, Coords } from '@/lib/geolocation';
+import { createRequestGate } from '@/lib/ui-state';
 import { Station, TripMatchResponse, MatchedRoute, TramoTransbordo, AutocompleteSuggestion, ForecastView } from '@/lib/types';
+
+function paraderoDelViaje(estaciones: Station[], id: string, sistema: string, ruta?: string) {
+  const sistemaCatalogo = mapSystemToBackendApi(sistema);
+  const candidatas = estaciones.filter((estacion) => estacion.id === id && estacion.system === sistemaCatalogo);
+  if (sistemaCatalogo === 'corredores' && ruta) {
+    return candidatas.find((estacion) => getRouteCodeFromStation(estacion) === ruta);
+  }
+  return candidatas[0];
+}
 
 // Trazado recortado entre un paradero de subida y uno de bajada (sin tocar el estado), o null si no hay trazado que cubra ambos
 async function trazoDeTramo(subida: Station, bajada: Station): Promise<any | null> {
@@ -56,6 +66,7 @@ export default function MapPage() {
   const [loadingMap, setLoadingMap] = useState(true);
   const [routeGeoJson, setRouteGeoJson] = useState<any | null>(null);
   const [tripData, setTripData] = useState<TripMatchResponse | null>(null);
+  const [tripReference, setTripReference] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState<MatchedRoute | null>(null);
   const [filterIds, setFilterIds] = useState<string[] | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -65,6 +76,8 @@ export default function MapPage() {
   const [stationsError, setStationsError] = useState(false);
   const [walk, setWalk] = useState<CaminataMapa | null>(null);
   const [reportOpen, setReportOpen] = useState(false);
+  const tripRequests = useRef(createRequestGate());
+  useEffect(() => () => { tripRequests.current.cancel(); lastLoad.current++; }, []);
   const lastLoad = useRef(0);                               // descarta respuestas de un paradero anterior
   const lastRequest = useRef<{ station: Station; haciaId?: string; tramo2?: TramoTransbordo } | null>(null);
 
@@ -78,7 +91,7 @@ export default function MapPage() {
       getStations().catch((e) => { console.error('Error cargando estaciones:', e); setStationsError(true); return [] as Station[]; }),
     ]);
     setLocationDenied(!loc);
-    setLocation((prev) => (loc ? loc : prev ?? LIMA_CENTER));
+    setLocation(loc ?? LIMA_CENTER);
     setStations(all);
     setLoadingMap(false);
   }, []);
@@ -109,7 +122,7 @@ export default function MapPage() {
         if (matched.length > 0) features = matched;
       }
       // En un viaje solo importa el tramo subida → bajada, no todo el recorrido del servicio
-      const bajada = haciaId ? stations.find((s) => s.id === haciaId) : undefined;
+      const bajada = haciaId ? paraderoDelViaje(stations, haciaId, station.system, routeCode) : undefined;
       if (bajada) {
         const tramo = tramoEntre(
           features,
@@ -121,13 +134,13 @@ export default function MapPage() {
       }
       // Viaje con transbordo: se dibuja también el segundo tramo
       if (tramo2) {
-        const sube2 = stations.find((s) => s.id === tramo2.boarding_id);
-        const baja2 = stations.find((s) => s.id === tramo2.leaving_id);
+        const sube2 = paraderoDelViaje(stations, tramo2.boarding_id, tramo2.system, tramo2.route_code);
+        const baja2 = paraderoDelViaje(stations, tramo2.leaving_id, tramo2.system, tramo2.route_code);
         if (sube2 && baja2) {
           const t2 = await trazoDeTramo(sube2, baja2);
           if (!vigente()) return;
           if (t2) {
-            const baja1 = haciaId ? stations.find((s) => s.id === haciaId) : undefined;
+            const baja1 = bajada;
             // Caminata entre paraderos por las calles; si el servicio falla, línea recta
             let aPie: any[] = [];
             if (baja1) {
@@ -163,8 +176,9 @@ export default function MapPage() {
     }
   }, [stations]);
 
-  const showRoute = useCallback((trip: TripMatchResponse, route: MatchedRoute) => {
+  const showRoute = useCallback((trip: TripMatchResponse, route: MatchedRoute, origenDeReferencia: boolean) => {
     setTripData(trip);
+    setTripReference(origenDeReferencia);
     setSelectedRoute(route);
     setSelectedStation(null);
     setFilterIds([route.boarding_id, route.leaving_id, ...(route.transbordo ? [route.transbordo.boarding_id, route.transbordo.leaving_id] : [])]);
@@ -177,14 +191,19 @@ export default function MapPage() {
     if (!raw) return;
     sessionStorage.removeItem(TRIP_STORAGE_KEY);
     try {
-      const { selectedRoute: route, destination } = JSON.parse(raw);
-      showRoute({ origin: location, destination, radius_meters: 1000, found_routes: [route] }, route);
-      const boarding = stations.find((s) => s.id === route.boarding_id);
+      const { selectedRoute: route, destination, origin, originIsReference } = JSON.parse(raw);
+      const tieneOrigen = Number.isFinite(origin?.lat) && Number.isFinite(origin?.lon);
+      showRoute(
+        { origin: tieneOrigen ? origin : location, destination, radius_meters: 1000, found_routes: [route] },
+        route,
+        tieneOrigen && typeof originIsReference === 'boolean' ? originIsReference : locationDenied,
+      );
+      const boarding = paraderoDelViaje(stations, route.boarding_id, route.system, route.route_code);
       if (boarding) loadStation(boarding, false, route.leaving_id, route.transbordo);
     } catch (e) {
       console.error(e);
     }
-  }, [location, stations, showRoute, loadStation]);
+  }, [location, locationDenied, stations, showRoute, loadStation]);
 
   // Paradero elegido desde su detalle ("Ver en el mapa"): se muestra solo ese paradero y su ficha
   useEffect(() => {
@@ -203,9 +222,11 @@ export default function MapPage() {
     if (!location) return;
     setNotice(null);
     closeTrip();   // una búsqueda nueva no deja la ruta anterior dibujada (si no hay ruta, el mapa queda limpio)
+    const vigente = tripRequests.current.begin();
     const dest = typeof input === 'string' ? input : { lat: input.lat, lon: input.lon };
     try {
       const respuesta = await matchTrip(location.lat, location.lon, dest);
+      if (!vigente()) return;
       const response = typeof input === 'string' ? respuesta
         : { ...respuesta, destination: { ...respuesta.destination, resolved_name: input.display_name } };
       const { rutas: ofrecibles } = opcionesDeViaje(response);   // sin ruta directa llegan los transbordos; la tarjeta lo explica
@@ -219,10 +240,11 @@ export default function MapPage() {
           ? { label: input }
           : { label: input.display_name, lat: input.lat, lon: input.lon },
       ));
-      showRoute(response, best);
-      const boarding = stations.find((s) => s.id === best.boarding_id);
+      showRoute(response, best, locationDenied);
+      const boarding = paraderoDelViaje(stations, best.boarding_id, best.system, best.route_code);
       if (boarding) loadStation(boarding, false, best.leaving_id, best.transbordo);
     } catch (error) {
+      if (!vigente()) return;
       console.error('Error al planificar el viaje:', error);
       setNotice('No se pudo planificar el viaje. Inténtalo de nuevo.');
     }
@@ -231,7 +253,12 @@ export default function MapPage() {
   const retryForecast = () => { if (lastRequest.current) loadStation(lastRequest.current.station, false, lastRequest.current.haciaId, lastRequest.current.tramo2); };
 
   const closeTrip = () => {
+    tripRequests.current.cancel();
     lastLoad.current++;
+    setSelectedStation(null);
+    setLoadingForecast(false);
+    setForecastError(false);
+    setForecastStation(null);
     setWalk(null);
     setTripData(null);
     setSelectedRoute(null);
@@ -257,7 +284,8 @@ export default function MapPage() {
   return (
     <div className="relative h-full w-full">
       <MapView
-        center={location}
+        center={tripData?.origin ?? location}
+        centerIsReference={tripData ? tripReference : locationDenied}
         stations={stations}
         filterIds={filterIds}
         showAll={showStations}
@@ -265,7 +293,7 @@ export default function MapPage() {
         routeGeoJson={routeGeoJson}
         walk={walk}
         destination={tripData ? { lat: tripData.destination.lat, lon: tripData.destination.lon, name: tripData.destination.resolved_name } : null}
-        onStationClick={(s) => { if (!tripData) loadStation(s); }}
+        onStationClick={(s) => { if (!tripData) { tripRequests.current.cancel(); loadStation(s); } }}
       />
 
       {/* Buscador: ancho completo en móvil, tarjeta lateral en pantallas grandes */}
@@ -274,10 +302,10 @@ export default function MapPage() {
           <SearchAutocomplete className="min-w-0 flex-1" variant="float" onSelectDestination={handleSearchDestination} onSearchSubmit={handleSearchDestination} />
           <SosButton className="!h-[3.375rem] shrink-0" onReport={() => setReportOpen(true)} />
         </div>
-        {locationDenied && (
+        {(tripData ? tripReference : locationDenied) && (
           <p className="float-panel mt-2 flex items-start gap-2 px-3.5 py-2.5 text-sm text-muted">
             <MapPinOff size={16} className="mt-0.5 shrink-0 text-warn" />
-            Sin acceso a tu ubicación: se usa el centro de Lima como punto de partida.
+            Esta búsqueda usa el centro de Lima como origen de referencia.
           </p>
         )}
         {stationsError && (
@@ -307,10 +335,10 @@ export default function MapPage() {
           <TripSummaryCard
             tripData={tripData} selectedRoute={selectedRoute} forecast={forecast} loadingForecast={loadingForecast} forecastError={forecastError} onRetry={retryForecast} onClose={closeTrip}
             walkSlot={(() => {
-              const boarding = stations.find((st) => st.id === selectedRoute.boarding_id);
+              const boarding = paraderoDelViaje(stations, selectedRoute.boarding_id, selectedRoute.system, selectedRoute.route_code);
               return boarding ? (
                 <div className="space-y-4">
-                  <RutaSegura station={boarding} origen={location} origenReal={!locationDenied} auto onChange={setWalk} />
+                  <RutaSegura station={boarding} origen={tripData.origin} origenReal={!tripReference} permitirOrigenReferencia auto onChange={setWalk} />
                   <SeguridadAcceso station={boarding} />
                 </div>
               ) : null;

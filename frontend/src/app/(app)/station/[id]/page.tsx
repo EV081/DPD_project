@@ -3,17 +3,25 @@
 import { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, MapPin, Map, Info, CalendarX, CircleAlert, Activity } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import SystemBadge from '@/components/SystemBadge';
 import PredictionCard from '@/components/PredictionCard';
+import { ForecastScopeNote } from '@/components/ForecastPanel';
 import FeedbackBox from '@/components/FeedbackBox';
 import { Spinner, Skeleton, EmptyState } from '@/components/Spinner';
 import SeguridadAcceso from '@/components/SeguridadAcceso';
 import Alert from '@/components/Alert';
 import { getStation, getStationPrediction } from '@/lib/services';
 import { FOCUS_STORAGE_KEY } from '@/lib/constants';
-import { etiquetaClase, claseAforo, textoEspera } from '@/lib/aforo';
+import { etiquetaClase, claseAforo, textoEspera, textoAjusteEspera } from '@/lib/aforo';
 import { systemInfo } from '@/lib/systems';
 import { Station, StationPrediction } from '@/lib/types';
+
+// Carga dinámica del MiniMapa sin SSR
+const MiniMap = dynamic(() => import('@/components/MiniMap'), {
+  ssr: false,
+  loading: () => <div className="h-48 w-full animate-pulse rounded-2xl bg-surface-muted" />,
+});
 
 export default function StationPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -30,6 +38,8 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
     let cancelled = false;
     (async () => {
       setLoading(true);
+      setForecast(null);
+      setConsultedAt(0);
       setPredError(false);
       let st: Station;
       try {
@@ -43,12 +53,11 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
       setStation(st);
       setNotFound(false);
       try {
-        // Una llamada por id de estación; fecha y hora las pone el backend (hora de Lima)
         const pred = await getStationPrediction(st);
         if (!cancelled) { setForecast(pred); setConsultedAt(Date.now()); }
       } catch (err) {
         console.error('Error al cargar el pronóstico:', err);
-        if (!cancelled) setPredError(true);   // la estación existe: solo falló el pronóstico
+        if (!cancelled) { setForecast(null); setPredError(true); }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -57,7 +66,12 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
   }, [id, reload]);
 
   if (loading && !station) {
-    return <div className="mx-auto max-w-5xl space-y-4 px-4 py-10 md:px-8" role="status" aria-label="Cargando"><Skeleton className="h-40 !rounded-2xl" /><Skeleton className="h-28 !rounded-2xl" /></div>;
+    return (
+      <div className="mx-auto max-w-5xl space-y-4 px-4 py-10 md:px-8" role="status" aria-label="Cargando">
+        <Skeleton className="h-40 !rounded-2xl" />
+        <Skeleton className="h-28 !rounded-2xl" />
+      </div>
+    );
   }
 
   if (notFound || !station) {
@@ -70,8 +84,7 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
   }
 
   const cur = forecast?.current;
-  const extraTrafico = cur?.eta_base_min != null && cur.eta_min != null && cur.eta_min - cur.eta_base_min >= 0.5
-    ? Math.round(cur.eta_min - cur.eta_base_min) : null;
+  const ajusteEspera = textoAjusteEspera(cur);
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-6 md:px-8 md:py-10">
@@ -95,19 +108,24 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
             className="btn btn-secondary !py-2"
             onClick={() => { sessionStorage.setItem(FOCUS_STORAGE_KEY, station.id); router.push('/map'); }}
           >
-            <Map size={16} /> Ver en el mapa
+             Ver en el mapa
           </button>
         </div>
       </header>
 
-      <section className="rise mt-6" style={{ '--i': 1 } as React.CSSProperties} aria-label="Seguridad del acceso"><SeguridadAcceso station={station} /></section>
+      <section className="rise mt-6" style={{ '--i': 1 } as React.CSSProperties} aria-label="Seguridad del acceso">
+        <SeguridadAcceso station={station} />
+      </section>
 
       <section className="rise mt-8" style={{ '--i': 2 } as React.CSSProperties} aria-label="Pronóstico de aforo">
         <h2 className="text-lg font-semibold text-fg">Pronóstico de aforo</h2>
         <p className="mt-0.5 text-sm text-muted">Ocupación estimada a bordo con demanda pronosticada (LightGBM) y matriz origen-destino.</p>
+        <ForecastScopeNote referenceDate={forecast?.referencia?.fecha_referencia_datos} />
 
         {loading ? (
-          <div className="flex items-center justify-center gap-2.5 py-16 text-sm text-muted"><Spinner size={18} /> Calculando predicciones…</div>
+          <div className="flex items-center justify-center gap-2.5 py-16 text-sm text-muted">
+            <Spinner size={18} /> Calculando predicciones…
+          </div>
         ) : forecast && cur ? (
           <div className="mt-4 space-y-5">
             <div className="card rise flex flex-wrap items-center gap-x-8 gap-y-3 p-5">
@@ -119,18 +137,22 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
                 <p className="eyebrow">Espera estimada</p>
                 <p className="mt-0.5 text-3xl font-bold tracking-tight tabular-nums text-fg">{textoEspera(cur)}</p>
               </div>
-              {extraTrafico !== null && (
+              {ajusteEspera !== null && (
                 <p className="flex items-center gap-2 text-sm text-warn">
-                  <Activity size={16} /> Incluye +{extraTrafico} min por tráfico en vivo
+                  <Activity size={16} /> {ajusteEspera}
                 </p>
               )}
-              <div className="w-full sm:ml-auto sm:w-56"><FeedbackBox station={station} current={cur} consultedAt={consultedAt} /></div>
+              <div className="w-full sm:ml-auto sm:w-56">
+                <FeedbackBox station={station} current={cur} consultedAt={consultedAt} />
+              </div>
             </div>
 
             <div>
               <h3 className="mb-3 text-sm font-semibold text-fg">Próximas horas</h3>
               <div className="scroll-thin -mx-1 flex gap-3 overflow-x-auto px-1 pb-3">
-                {forecast.forecast.filter((p) => p.datetime >= cur.datetime).map((p, i) => <PredictionCard key={i} prediction={p} index={i} />)}
+                {forecast.forecast.filter((p) => p.datetime >= cur.datetime).map((p, i) => (
+                  <PredictionCard key={i} prediction={p} index={i} />
+                ))}
               </div>
             </div>
 
@@ -148,8 +170,24 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
             <button onClick={() => setReload((n) => n + 1)} className="btn btn-secondary">Reintentar</button>
           </div>
         ) : (
-          <EmptyState icon={CalendarX} title="Sin pronóstico" text="Este paradero no tiene datos de validaciones ATU propios, así que no se muestra una predicción." />
+          <div className="mt-4">
+            <EmptyState icon={CalendarX} title="Sin pronóstico" text="Este paradero no tiene datos de validaciones ATU propios, así que no se muestra una predicción." />
+          </div>
         )}
+
+        {/* MINI MAPA CON TIPOGRAFÍA UNIFORME */}
+        <div className="mt-8">
+          <h2 className="text-lg font-semibold text-fg">Ubicación del paradero</h2>
+          <p className="mt-0.5 text-sm text-muted">Vista satelital o de calles de la estación en el entorno urbano.</p>
+        <div className="mt-3 overflow-hidden rounded-2xl border border-line shadow-sm">
+        <MiniMap
+          latitude={station.latitude}
+          longitude={station.longitude}
+          stationName={station.name}
+          systemColor={systemInfo(station.system).color}
+        />
+        </div>
+        </div>
       </section>
     </div>
   );

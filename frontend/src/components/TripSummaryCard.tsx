@@ -76,7 +76,7 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
         <header className="px-5 pb-3 pt-1">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="eyebrow">Ruta recomendada</p>
+              <p className="eyebrow">Ruta seleccionada</p>
               <h3 className="mt-0.5 truncate text-lg font-bold text-fg">{tripData.destination.resolved_name}</h3>
             </div>
             <button onClick={onClose} aria-label="Cerrar" className="btn btn-ghost !rounded-full !bg-surface-2 !p-2"><X size={18} /></button>

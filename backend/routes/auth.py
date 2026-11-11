@@ -1,6 +1,9 @@
 import bcrypt
+from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
+from werkzeug.exceptions import BadRequest
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, jsonify
 from flask_jwt_extended import (
     create_access_token,
     jwt_required,
@@ -8,9 +11,38 @@ from flask_jwt_extended import (
 )
 
 from db.connection import db
+from routes.validation import json_object, text_field
 
 
 auth_bp = Blueprint("auth", __name__)
+
+
+def _email(data):
+    email = text_field(data, "email", 150).lower()
+    if email.count("@") != 1 or any(c.isspace() for c in email) or not all(email.split("@")):
+        raise BadRequest("El correo no tiene un formato válido")
+    return email
+
+
+def _password(data, field="password", minimum=1):
+    value = text_field(data, field, 72, strip=False)
+    # bcrypt trabaja con un máximo de 72 bytes, no de 72 letras.
+    if len(value) < minimum or len(value.encode("utf-8")) > 72:
+        raise BadRequest(f"{field} debe tener al menos {minimum} caracteres y como máximo 72 bytes")
+    return value
+
+
+def _by_email(email):
+    return User.query.filter(func.lower(func.trim(User.email)) == email).first()
+
+
+def _save():
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return jsonify({"error": "El correo ya está registrado"}), 409
+    return None
 
 
 class User(db.Model):
@@ -41,6 +73,24 @@ class User(db.Model):
         db.DateTime,
         server_default=db.func.now()
     )
+
+    # 'user' (por defecto) o 'admin'. El rol nunca se recibe del cliente: solo lo asigna `flask seed-admin`.
+    role = db.Column(
+        db.String(10),
+        nullable=False,
+        default="user",
+        server_default="user"
+    )
+
+    @property
+    def is_admin(self):
+        return self.role == "admin"
+
+    def to_dict(self, *, with_created=False):
+        data = {"id": self.id, "name": self.name, "email": self.email, "role": self.role}
+        if with_created:
+            data["created_at"] = self.created_at
+        return data
 
 
 @auth_bp.route("/register", methods=["POST"])
@@ -81,22 +131,11 @@ def register():
         description: El correo ya está registrado
     """
 
-    data = request.get_json()
-
-    name = data.get("name")
-    email = data.get("email")
-    password = data.get("password")
-
-    if not name or not email or not password:
-        return jsonify({
-            "error": "name, email y password son obligatorios"
-        }), 400
-
-    email = email.lower().strip()
-
-    existing_user = User.query.filter_by(
-        email=email
-    ).first()
+    data = json_object()
+    name = text_field(data, "name", 100)
+    email = _email(data)
+    password = _password(data, minimum=6)
+    existing_user = _by_email(email)
 
     if existing_user:
         return jsonify({
@@ -115,15 +154,13 @@ def register():
     )
 
     db.session.add(user)
-    db.session.commit()
+    error = _save()
+    if error:
+        return error
 
     return jsonify({
         "message": "Usuario registrado correctamente",
-        "user": {
-            "id": user.id,
-            "name": user.name,
-            "email": user.email
-        }
+        "user": user.to_dict()
     }), 201
 
 
@@ -161,21 +198,10 @@ def login():
         description: Credenciales incorrectas
     """
 
-    data = request.get_json()
-
-    email = data.get("email")
-    password = data.get("password")
-
-    if not email or not password:
-        return jsonify({
-            "error": "email y password son obligatorios"
-        }), 400
-
-    email = email.lower().strip()
-
-    user = User.query.filter_by(
-        email=email
-    ).first()
+    data = json_object()
+    email = _email(data)
+    password = _password(data)
+    user = _by_email(email)
 
     if not user:
         return jsonify({
@@ -199,11 +225,7 @@ def login():
     return jsonify({
         "message": "Login exitoso",
         "access_token": access_token,
-        "user": {
-            "id": user.id,
-            "name": user.name,
-            "email": user.email
-        }
+        "user": user.to_dict()
     }), 200
 
 
@@ -233,19 +255,14 @@ def get_current_user():
 
     user_id = get_jwt_identity()
 
-    user = User.query.get(user_id)
+    user = db.session.get(User, int(user_id))
 
     if not user:
         return jsonify({
             "error": "Usuario no encontrado"
         }), 404
 
-    return jsonify({
-        "id": user.id,
-        "name": user.name,
-        "email": user.email,
-        "created_at": user.created_at
-    }), 200
+    return jsonify(user.to_dict(with_created=True)), 200
 
 @auth_bp.route("/me", methods=["PUT"])
 @jwt_required()
@@ -282,47 +299,36 @@ def update_profile():
     """
 
     user_id = get_jwt_identity()
-    user = User.query.get(int(user_id))
+    user = db.session.get(User, int(user_id))
 
     if not user:
         return jsonify({
             "error": "Usuario no encontrado"
         }), 404
 
-    data = request.get_json() or {}
-
-    name = data.get("name")
-    email = data.get("email")
-
-    if not name and not email:
+    data = json_object()
+    if "name" not in data and "email" not in data:
         return jsonify({
             "error": "Debe enviar al menos name o email"
         }), 400
 
-    if name:
-        user.name = name
-
-    if email and email != user.email:
-
-        existing_user = User.query.filter_by(email=email).first()
-
-        if existing_user:
+    name = text_field(data, "name", 100) if "name" in data else user.name
+    email = _email(data) if "email" in data else user.email
+    if email != user.email:
+        existing_user = _by_email(email)
+        if existing_user and existing_user.id != user.id:
             return jsonify({
                 "error": "El email ya está registrado"
             }), 409
 
-        user.email = email
-
-    db.session.commit()
+    user.name, user.email = name, email
+    error = _save()
+    if error:
+        return error
 
     return jsonify({
         "message": "Perfil actualizado correctamente",
-        "user": {
-            "id": user.id,
-            "name": user.name,
-            "email": user.email,
-            "created_at": user.created_at
-        }
+        "user": user.to_dict(with_created=True)
     }), 200
 
 @auth_bp.route("/me/password", methods=["PUT"])
@@ -363,22 +369,16 @@ def update_password():
     """
 
     user_id = get_jwt_identity()
-    user = User.query.get(int(user_id))
+    user = db.session.get(User, int(user_id))
 
     if not user:
         return jsonify({
             "error": "Usuario no encontrado"
         }), 404
 
-    data = request.get_json() or {}
-
-    current_password = data.get("current_password")
-    new_password = data.get("new_password")
-
-    if not current_password or not new_password:
-        return jsonify({
-            "error": "current_password y new_password son obligatorios"
-        }), 400
+    data = json_object()
+    current_password = _password(data, "current_password")
+    new_password = _password(data, "new_password", minimum=6)
 
     if not bcrypt.checkpw(
         current_password.encode("utf-8"),
@@ -387,11 +387,6 @@ def update_password():
         return jsonify({
             "error": "La contraseña actual es incorrecta"
         }), 401
-
-    if len(new_password) < 6:
-        return jsonify({
-            "error": "La nueva contraseña debe tener al menos 6 caracteres"
-        }), 400
 
     hashed_password = bcrypt.hashpw(
         new_password.encode("utf-8"),
@@ -425,7 +420,7 @@ def delete_account():
     """
 
     user_id = get_jwt_identity()
-    user = User.query.get(int(user_id))
+    user = db.session.get(User, int(user_id))
 
     if not user:
         return jsonify({

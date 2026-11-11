@@ -60,6 +60,21 @@ export const textoEspera = (p?: PredictionItem | null): string => {
   return `${p.eta_min} min`;
 };
 
+// El ETA puede incorporar tráfico y calibración. Una diferencia frente a la base
+// no demuestra por sí sola que exista información de tráfico en vivo.
+export const textoAjusteEspera = (p?: PredictionItem | null): string | null => {
+  if (!p || p.eta_min == null || p.eta_base_min == null) return null;
+  const extra = p.eta_min - p.eta_base_min;
+  if (!Number.isFinite(extra) || extra < 0.5) return null;
+  const minutos = Math.round(extra);
+  const calibrado = p.factor_calibracion != null && Math.abs(p.factor_calibracion - 1) > 0.000001;
+  if ((p.factor_trafico ?? 1) > 1 && !calibrado) {
+    if (p.modo_datos === 'en_vivo') return `Tráfico en vivo: +${minutos} min de espera`;
+    if (p.modo_datos === 'reciente') return `Tráfico reciente: +${minutos} min de espera`;
+  }
+  return `Ajuste de la espera estimada: +${minutos} min`;
+};
+
 // Hora local de Lima (UTC-5 fijo; Perú no tiene horario de verano)
 export const formatoHora = (fechaHora?: string): string => {
   if (!fechaHora) return '';
