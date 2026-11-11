@@ -37,7 +37,7 @@ PASO_MIN = 10                 # separación entre salidas evaluadas
 HORIZONTE_MIN = 240           # se evalúan salidas hasta 4 h antes de la hora límite
 VENTANA_MIN = 60              # se muestran las que llegan hasta 60 min antes
 PESO_ANTICIPACION = 0.6       # Small (1982): llegar antes pesa ~0,6 del tiempo de viaje
-AHORRO_PARADA_MIN = 0.5       # con 25,5 km/h comerciales y 45 estaciones, ~0,5 min por parada
+AHORRO_PARADA_MIN = 1.5       # detención + frenado/aceleración omitidos; tope en VEL_CRUCERO_KMH
 VEL_CRUCERO_KMH = 35.0        # velocidad entre paradas que reproduce los 25,5 km/h comerciales
 # El modelo troncal ordena en una sola línea los dos ramales del centro; cada servicio usa uno
 RAMALES_CENTRO = (frozenset({"España", "Quilca", "2 de Mayo"}), frozenset({"Colmena", "Jiron de la Unión", "Tacna"}))

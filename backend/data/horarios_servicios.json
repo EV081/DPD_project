@@ -95,10 +95,23 @@
       ]
      }
     },
-    "intervalo_min": {},
+    "intervalo_min": {
+     "LAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "SAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "DOM": {
+      "punta": 5.0,
+      "valle": 5.0
+     }
+    },
     "frecuencia_texto": null,
     "notas": [
-     "La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo."
+     "La fuente no publica la frecuencia: calibrada a 5 min para no sesgar la espera al intervalo típico del modelo."
     ]
    },
    "Ruta B": {
@@ -194,19 +207,21 @@
     "intervalo_min": {
      "LAB": {
       "punta": 4.0,
-      "valle": null
+      "valle": 4.0
      },
      "SAB": {
       "punta": 4.0,
-      "valle": null
+      "valle": 4.0
      },
      "DOM": {
       "punta": 4.0,
-      "valle": null
+      "valle": 4.0
      }
     },
     "frecuencia_texto": "De lunes a viernes la Ruta B opera de 10:00 a.m. a 11:00 p.m. Los sábados y domingos el servicio comienza a las 5:00 a.m. y finaliza a las 11:00 p.m. (10:00 p.m. los domingos). La frecuencia es de 3 a 5 minutos en hora punta.",
-    "notas": []
+    "notas": [
+     "La fuente solo publica la punta (4 min): el valle se calibra igual para no caer al intervalo típico del modelo."
+    ]
    },
    "Ruta C": {
     "url": "https://metrolima.info/metropolitano/ruta-c/",
@@ -306,10 +321,23 @@
       ]
      }
     },
-    "intervalo_min": {},
+    "intervalo_min": {
+     "LAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "SAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "DOM": {
+      "punta": 5.0,
+      "valle": 5.0
+     }
+    },
     "frecuencia_texto": null,
     "notas": [
-     "La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo."
+     "La fuente no publica la frecuencia: calibrada a 5 min (misma orden de magnitud que Expreso 1 en punta) para no sesgar la espera al intervalo típico del modelo."
     ]
    },
    "Ruta D": {
@@ -458,7 +486,7 @@
     "intervalo_min": {
      "LAB": {
       "punta": 5.0,
-      "valle": null
+      "valle": 5.0
      },
      "SAB": {
       "punta": 8.0,
@@ -470,7 +498,9 @@
      }
     },
     "frecuencia_texto": "El Expreso 1 opera todos los días: lunes a viernes de 5:00 a.m. a 9:00 p.m. (cada 5 minutos en hora punta) y sábados y domingos de 6:00 a.m. a 9:00 p.m. (cada 8 minutos).",
-    "notas": []
+    "notas": [
+     "En días laborables el valle no viene publicado: se calibra a 5 min como la punta, para no caer al intervalo típico del modelo."
+    ]
    },
    "Expreso 2": {
     "url": "https://metrolima.info/metropolitano/expreso-2/",
@@ -648,10 +678,23 @@
       ]
      }
     },
-    "intervalo_min": {},
+    "intervalo_min": {
+     "LAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "SAB": {
+      "punta": 5.0,
+      "valle": 5.0
+     },
+     "DOM": {
+      "punta": 5.0,
+      "valle": 5.0
+     }
+    },
     "frecuencia_texto": null,
     "notas": [
-     "La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo."
+     "La fuente no publica la frecuencia: calibrada a 5 min para no sesgar la espera al intervalo típico del modelo."
     ]
    },
    "Expreso 6": {

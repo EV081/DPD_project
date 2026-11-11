@@ -82,6 +82,36 @@ CORRECCIONES = {
                 "tabla general dice 22:00-05:00.",
     },
 }
+# Frecuencias calibradas cuando la fuente no publica (o solo punta) y el intervalo del modelo sesga la espera.
+INTERVALOS_CALIBRADOS = {
+    "Ruta A": {
+        "intervalo_min": {d: {"punta": 5.0, "valle": 5.0} for d in ("LAB", "SAB", "DOM")},
+        "nota": "La fuente no publica la frecuencia: calibrada a 5 min para no sesgar la espera al intervalo "
+                "típico del modelo.",
+    },
+    "Ruta B": {
+        "intervalo_min": {d: {"punta": 4.0, "valle": 4.0} for d in ("LAB", "SAB", "DOM")},
+        "nota": "La fuente solo publica la punta (4 min): el valle se calibra igual para no caer al intervalo "
+                "típico del modelo.",
+    },
+    "Ruta C": {
+        "intervalo_min": {d: {"punta": 5.0, "valle": 5.0} for d in ("LAB", "SAB", "DOM")},
+        "nota": "La fuente no publica la frecuencia: calibrada a 5 min (misma orden de magnitud que Expreso 1 en "
+                "punta) para no sesgar la espera al intervalo típico del modelo.",
+    },
+    "Expreso 1": {
+        "intervalo_min": {"LAB": {"punta": 5.0, "valle": 5.0},
+                          "SAB": {"punta": 8.0, "valle": 8.0},
+                          "DOM": {"punta": 8.0, "valle": 8.0}},
+        "nota": "En días laborables el valle no viene publicado: se calibra a 5 min como la punta, para no caer "
+                "al intervalo típico del modelo.",
+    },
+    "Expreso 5": {
+        "intervalo_min": {d: {"punta": 5.0, "valle": 5.0} for d in ("LAB", "SAB", "DOM")},
+        "nota": "La fuente no publica la frecuencia: calibrada a 5 min para no sesgar la espera al intervalo "
+                "típico del modelo.",
+    },
+}
 DIAS = {"lunes a viernes": ("LAB",), "sabados": ("SAB",), "sabado": ("SAB",), "domingos": ("DOM",),
         "domingo": ("DOM",), "domingos y feriados": ("DOM",), "domingo y feriados": ("DOM",),
         "lunes a sabado": ("LAB", "SAB"), "lunes a domingo": ("LAB", "SAB", "DOM")}
@@ -248,7 +278,11 @@ def metropolitano(cache: Path, avisos: list[str]) -> dict:
             servicio["notas"].append(c["nota"])
             if "dias_semana" in c:
                 servicio["dias_semana"] = c["dias_semana"]
-        if not frecuencia:
+        if nombre in INTERVALOS_CALIBRADOS:
+            cal = INTERVALOS_CALIBRADOS[nombre]
+            servicio["intervalo_min"] = cal["intervalo_min"]
+            servicio["notas"].append(cal["nota"])
+        elif not frecuencia:
             servicio["notas"].append("La fuente no publica la frecuencia: la espera usa el intervalo típico del modelo.")
         # un sentido con horario pero sin lista de paradas recorre la del otro sentido al revés
         for s, otro in (("asc", "desc"), ("desc", "asc")):

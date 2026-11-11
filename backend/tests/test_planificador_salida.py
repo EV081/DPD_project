@@ -88,10 +88,12 @@ def test_intervalo_distingue_punta_y_valle():
     alisos = H.servicio("alimentador", "Alisos")
     assert H.intervalo_min(alisos, momento(LUNES, "07:10")) == 7.5
     assert H.intervalo_min(alisos, momento(LUNES, "11:00")) == 16.0
-    exp1 = H.servicio("troncal", "Expreso 1")                              # la fuente solo publica la punta
+    exp1 = H.servicio("troncal", "Expreso 1")
     assert H.intervalo_min(exp1, momento(LUNES, "18:00")) == 5.0
-    assert H.intervalo_min(exp1, momento(LUNES, "11:00")) is None
-    assert H.intervalo_min(H.servicio("troncal", "Ruta A"), momento(LUNES, "18:00")) is None
+    assert H.intervalo_min(exp1, momento(LUNES, "11:00")) == 5.0           # valle calibrado (fuente solo punta)
+    assert H.intervalo_min(H.servicio("troncal", "Ruta C"), momento(LUNES, "18:00")) == 5.0
+    assert H.intervalo_min(H.servicio("troncal", "Ruta A"), momento(LUNES, "18:00")) == 5.0
+    assert H.intervalo_min(H.servicio("troncal", "Expreso 5"), momento(LUNES, "12:00")) == 5.0
 
 
 # --------------------------------------------------------------------------- aforo dentro de la hora
@@ -131,7 +133,8 @@ def test_el_expreso_tarda_menos_que_el_regular_pero_no_mas_rapido_que_el_crucero
     km = dict(zip(linea.estaciones, linea.cfg["km"]))
     dist = abs(km["Matellini"] - km["Javier Prado"])
     assert n_expreso < n_regular and t_expreso < t_regular
-    assert t_expreso == pytest.approx(t_regular - P.AHORRO_PARADA_MIN * (n_regular - n_expreso))
+    sin_tope = t_regular - P.AHORRO_PARADA_MIN * (n_regular - n_expreso)
+    assert t_expreso == pytest.approx(max(sin_tope, dist / P.VEL_CRUCERO_KMH * 60))
     assert t_expreso >= dist / P.VEL_CRUCERO_KMH * 60
     assert t_regular <= dist / linea.cfg["velocidad_comercial_kmh"] * 60 + 1e-9
 
