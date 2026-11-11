@@ -20,12 +20,6 @@ const MiniMap = dynamic(() => import('@/components/MiniMap'), {
   loading: () => <div className="h-48 w-full animate-pulse rounded-2xl bg-surface-2" />,
 });
 
-// Carga dinámica del MiniMapa sin SSR para la ubicación del usuario
-const MiniMap = dynamic(() => import('@/components/MiniMap'), {
-  ssr: false,
-  loading: () => <div className="h-48 w-full animate-pulse rounded-2xl bg-surface-2" />,
-});
-
 type ModalKind = 'profile' | 'password' | 'delete' | null;
 
 const iniciales = (name?: string) =>
