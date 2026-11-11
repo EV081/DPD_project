@@ -3,7 +3,7 @@ import pytest
 
 pytestmark = pytest.mark.bd
 
-ADMIN = {"SEED_ADMIN_EMAIL": "Admin@Test.com", "SEED_ADMIN_PASSWORD": "clave-segura-1", "SEED_ADMIN_NAME": "Admin Prueba"}
+ADMIN = {"SEED_ADMIN_EMAIL": "Admin@Test.com", "SEED_ADMIN_PASSWORD": "TestAdminPass_01", "SEED_ADMIN_NAME": "Admin Prueba"}
 
 
 @pytest.fixture(scope="module")
@@ -33,9 +33,9 @@ def sesiones(app_):
     with app_.app_context():
         usuarios.sembrar_admin()
     c = app_.test_client()
-    c.post("/api/auth/register", json={"name": "Normal", "email": "normal@test.com", "password": "123456"})
+    c.post("/api/auth/register", json={"name": "Normal", "email": "normal@test.com", "password": "TestUserPass_01"})
     _, h_admin = _login(c, "admin@test.com", ADMIN["SEED_ADMIN_PASSWORD"])
-    _, h_user = _login(c, "normal@test.com", "123456")
+    _, h_user = _login(c, "normal@test.com", "TestUserPass_01")
     return c, h_admin, h_user
 
 
@@ -51,11 +51,11 @@ def test_seed_es_idempotente_y_el_env_manda(app_, sesiones, monkeypatch):
     with app_.app_context():
         assert usuarios.sembrar_admin()["estado"] == "sin_cambios"
         antes = User.query.count()
-        monkeypatch.setenv("SEED_ADMIN_PASSWORD", "otra-clave-nueva-2")
+        monkeypatch.setenv("SEED_ADMIN_PASSWORD", "TestAdminPass_02")
         assert usuarios.sembrar_admin()["estado"] == "actualizado"
         assert User.query.count() == antes
     c = app_.test_client()
-    assert _login(c, "admin@test.com", "otra-clave-nueva-2")[0].status_code == 200
+    assert _login(c, "admin@test.com", "TestAdminPass_02")[0].status_code == 200
     assert _login(c, "admin@test.com", ADMIN["SEED_ADMIN_PASSWORD"])[0].status_code == 401
     with app_.app_context():
         monkeypatch.setenv("SEED_ADMIN_PASSWORD", ADMIN["SEED_ADMIN_PASSWORD"])
@@ -68,7 +68,7 @@ def test_seed_promueve_cuenta_existente(app_, sesiones):
     from db.connection import db
     import os
     c, _, _ = sesiones
-    c.post("/api/auth/register", json={"name": "Otro", "email": "otro@test.com", "password": "123456"})
+    c.post("/api/auth/register", json={"name": "Otro", "email": "otro@test.com", "password": "TestUserPass_01"})
     os.environ["SEED_ADMIN_EMAIL"] = "otro@test.com"
     try:
         with app_.app_context():
@@ -88,7 +88,7 @@ def test_seed_sin_variables_se_omite(app_, monkeypatch):
         assert usuarios.sembrar_admin()["estado"] == "omitido"
 
 
-@pytest.mark.parametrize("env", [{"SEED_ADMIN_PASSWORD": "corta"}, {"SEED_ADMIN_PASSWORD": "changeme"},
+@pytest.mark.parametrize("env", [{"SEED_ADMIN_PASSWORD": "short"}, {"SEED_ADMIN_PASSWORD": "changeme"},
                                  {"SEED_ADMIN_EMAIL": "no-es-correo"}, {"SEED_ADMIN_EMAIL": ""},
                                  {"SEED_ADMIN_PASSWORD": "é" * 40}])
 def test_seed_rechaza_configuracion_invalida(app_, monkeypatch, env):
@@ -101,7 +101,7 @@ def test_seed_rechaza_configuracion_invalida(app_, monkeypatch, env):
 
 def test_arranque_no_falla_con_configuracion_invalida(app_, monkeypatch):
     from services import usuarios
-    monkeypatch.setenv("SEED_ADMIN_PASSWORD", "corta")
+    monkeypatch.setenv("SEED_ADMIN_PASSWORD", "short")
     mensajes = []
     with app_.app_context():
         usuarios.sembrar_al_arrancar(log=mensajes.append)       # no lanza
@@ -110,15 +110,15 @@ def test_arranque_no_falla_con_configuracion_invalida(app_, monkeypatch):
 
 def test_registro_publico_nunca_crea_admin(app_, sesiones):
     c, _, _ = sesiones
-    r = c.post("/api/auth/register", json={"name": "Listo", "email": "listo@test.com", "password": "123456", "role": "admin"})
+    r = c.post("/api/auth/register", json={"name": "Listo", "email": "listo@test.com", "password": "TestUserPass_01", "role": "admin"})
     assert r.status_code == 201 and r.get_json()["user"]["role"] == "user"
-    c.put("/api/auth/me", json={"name": "Listo", "role": "admin"}, headers=_login(c, "listo@test.com", "123456")[1])
-    assert c.get("/api/auth/me", headers=_login(c, "listo@test.com", "123456")[1]).get_json()["role"] == "user"
+    c.put("/api/auth/me", json={"name": "Listo", "role": "admin"}, headers=_login(c, "listo@test.com", "TestUserPass_01")[1])
+    assert c.get("/api/auth/me", headers=_login(c, "listo@test.com", "TestUserPass_01")[1]).get_json()["role"] == "user"
 
 
 def test_login_devuelve_rol(app_, sesiones):
     c, _, _ = sesiones
-    assert _login(c, "normal@test.com", "123456")[0].get_json()["user"]["role"] == "user"
+    assert _login(c, "normal@test.com", "TestUserPass_01")[0].get_json()["user"]["role"] == "user"
 
 
 RUTAS_ADMIN = ["/api/admin/dashboard", "/api/feedback/resumen"]
@@ -152,11 +152,11 @@ def test_rol_se_lee_de_la_base_en_cada_peticion(app_, sesiones):
     from routes.auth import User
     from db.connection import db
     c, _, _ = sesiones
-    c.post("/api/auth/register", json={"name": "Temp", "email": "temp@test.com", "password": "123456"})
+    c.post("/api/auth/register", json={"name": "Temp", "email": "temp@test.com", "password": "TestUserPass_01"})
     with app_.app_context():
         User.query.filter_by(email="temp@test.com").update({"role": "admin"})
         db.session.commit()
-    h = _login(c, "temp@test.com", "123456")[1]
+    h = _login(c, "temp@test.com", "TestUserPass_01")[1]
     assert c.get("/api/admin/dashboard", headers=h).status_code == 200
     with app_.app_context():
         User.query.filter_by(email="temp@test.com").update({"role": "user"})
@@ -183,7 +183,6 @@ def test_migra_columna_role_en_bases_antiguas(tmp_path):
 def test_token_con_otra_clave_responde_401_no_422(sesiones):
     """Tras cambiar JWT_SECRET_KEY, un token viejo debe cerrar la sesión (401) y no parecer un error del servidor."""
     c, _, _ = sesiones
-    ajeno = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjo5OTk5OTk5OTk5fQ."
-             "firma-que-no-corresponde-a-esta-clave-0000000000000")
+    ajeno = "invalid.jwt.token-for-wrong-signing-key"
     r = c.get("/api/auth/me", headers={"Authorization": f"Bearer {ajeno}"})
     assert r.status_code == 401
