@@ -2,6 +2,21 @@ import { api } from './client';
 import { PlanSalida, System, Station, StationPrediction } from './types';
 import { AutocompleteSuggestion, TripMatchResponse } from './types';
 
+// Caché breve y acotada: reutiliza consultas idénticas e incluye solicitudes en curso.
+// Las rutas dependen de la hora; los trazados estáticos pueden conservarse más tiempo.
+const consultas = new Map<string, { vence: number; promesa: Promise<any> }>();
+function consultaReutilizable<T>(clave: string, duracion: number, pedir: () => Promise<T>): Promise<T> {
+  const ahora = Date.now();
+  for (const [key, value] of consultas) if (value.vence <= ahora) consultas.delete(key);
+  const anterior = consultas.get(clave);
+  if (anterior) return anterior.promesa;
+  if (consultas.size >= 32) consultas.delete(consultas.keys().next().value!);
+  const entrada = { vence: ahora + duracion, promesa: Promise.resolve().then(pedir) };
+  consultas.set(clave, entrada);
+  void entrada.promesa.catch(() => { if (consultas.get(clave) === entrada) consultas.delete(clave); });
+  return entrada.promesa;
+}
+
 // 1. Mapeador para llamadas a endpoints de Backend (p. ej. GET /api/stations?system=...)
 export const mapSystemToBackendApi = (system: string): string => {
   const cleanSystem = system ? system.toLowerCase().trim() : '';
@@ -84,8 +99,10 @@ export const getRouteGeoJson = async (systemName: string, routeCode?: string | n
     params.code = routeCode; 
   }
 
-  const res = await api.get(`/geo/routes/${mappedSystem}`, { params });
-  return res.data;
+  return consultaReutilizable(`trazado:${mappedSystem}:${JSON.stringify(params)}`, 300000, async () => {
+    const res = await api.get(`/geo/routes/${mappedSystem}`, { params });
+    return res.data;
+  });
 };
 
 /**
@@ -196,8 +213,11 @@ export const matchTrip = async (
     params.dest_lon = destination.lon;
   }
 
-  const res = await api.get('/geo/match-trip', { params });
-  return res.data;
+  const minutoLima = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Lima', dateStyle: 'short', timeStyle: 'short' }).format(new Date());
+  return consultaReutilizable(`viaje:${minutoLima}:${JSON.stringify(params)}`, 30000, async () => {
+    const res = await api.get('/geo/match-trip', { params });
+    return res.data;
+  });
 };
 
 

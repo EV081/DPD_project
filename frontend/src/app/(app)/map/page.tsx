@@ -56,6 +56,7 @@ export default function MapPage() {
   const { user } = useAuth();
   const [localizando, setLocalizando] = useState(false);
   const [errorUbicacion, setErrorUbicacion] = useState('');
+  const [buscandoDestino, setBuscandoDestino] = useState<string | null>(null);
   const [recents, setRecents] = useState<RecentDestination[]>([]);
   const [location, setLocation] = useState<Coords | null>(null);
   const [locationDenied, setLocationDenied] = useState(false);
@@ -126,6 +127,7 @@ export default function MapPage() {
     setForecast(null);
     setRouteGeoJson(null);
 
+    const trazadoPendiente = (async () => {
     try {
       const routeCode = getRouteCodeFromStation(station);
       const geo = await getRouteGeoJson(station.system, routeCode, !!haciaId);
@@ -150,6 +152,7 @@ export default function MapPage() {
         // Si ningún trazado pasa cerca de ambos paraderos no se dibuja otra línea (una ruta equivocada confunde más que ninguna)
         features = tramo ? [tramo] : [];
       }
+      if (features.length > 0) setRouteGeoJson({ type: 'FeatureCollection', features });
       // Viaje con transbordo: se dibuja también el segundo tramo
       if (tramo2) {
         const sube2 = paraderoDelViaje(stations, tramo2.boarding_id, tramo2.system, tramo2.route_code);
@@ -178,6 +181,7 @@ export default function MapPage() {
     } catch (error) {
       console.error('Error al obtener GeoJSON de la ruta:', error);
     }
+    })();
 
     try {
       // Una sola llamada: estado actual + pronóstico del día (sentido según el destino, si hay)
@@ -194,6 +198,7 @@ export default function MapPage() {
     } finally {
       if (vigente()) setLoadingForecast(false);
     }
+    await trazadoPendiente;
   }, [stations]);
 
   const showRoute = useCallback((trip: TripMatchResponse, route: MatchedRoute, origenDeReferencia: boolean) => {
@@ -243,6 +248,7 @@ export default function MapPage() {
     setNotice(null);
     closeTrip();   // una búsqueda nueva no deja la ruta anterior dibujada (si no hay ruta, el mapa queda limpio)
     const vigente = tripRequests.current.begin();
+    setBuscandoDestino(typeof input === 'string' ? input : input.display_name);
     const dest = typeof input === 'string' ? input : { lat: input.lat, lon: input.lon };
     try {
       const respuesta = await matchTrip(location.lat, location.lon, dest);
@@ -255,11 +261,10 @@ export default function MapPage() {
         return;
       }
       const best = ofrecibles[0]; // la de menor costo generalizado
-      setRecents(addRecent(
-        typeof input === 'string'
-          ? { label: input }
-          : { label: input.display_name, lat: input.lat, lon: input.lon },
-      ));
+      setRecents(addRecent({
+        label: typeof input === 'string' ? input : input.display_name,
+        lat: response.destination.lat, lon: response.destination.lon,
+      }));
       showRoute(response, best, locationDenied);
       const boarding = paraderoDelViaje(stations, best.boarding_id, best.system, best.route_code);
       if (boarding) loadStation(boarding, false, best.leaving_id, best.transbordo);
@@ -267,6 +272,8 @@ export default function MapPage() {
       if (!vigente()) return;
       console.error('Error al planificar el viaje:', error);
       setNotice('No se pudo planificar el viaje. Inténtalo de nuevo.');
+    } finally {
+      if (vigente()) setBuscandoDestino(null);
     }
   };
 
@@ -274,6 +281,7 @@ export default function MapPage() {
 
   const closeTrip = () => {
     tripRequests.current.cancel();
+    setBuscandoDestino(null);
     lastLoad.current++;
     setSelectedStation(null);
     setLoadingForecast(false);
@@ -408,6 +416,7 @@ export default function MapPage() {
           <HomeSheet
             name={user?.name}
             recents={recents}
+            buscandoDestino={buscandoDestino}
             showStations={showStations}
             onReport={() => setReportOpen(true)}
             onToggleStations={() => {

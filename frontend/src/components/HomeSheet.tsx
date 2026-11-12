@@ -2,12 +2,14 @@
 
 import { Clock, MapPin, Navigation, Search, Siren } from 'lucide-react';
 import Link from 'next/link';
+import { Spinner } from './Spinner';
 import BottomSheet from './BottomSheet';
 import { RecentDestination } from '@/lib/recents';
 
 interface Props {
   name?: string;
   recents: RecentDestination[];
+  buscandoDestino?: string | null;
   showStations: boolean;
   onToggleStations: () => void;
   onReport: () => void;
@@ -20,7 +22,7 @@ const saludo = () => {
 };
 
 // Pantalla de inicio del mapa: saludo, accesos rápidos y destinos recientes
-export default function HomeSheet({ name, recents, showStations, onToggleStations, onReport, onPickRecent }: Props) {
+export default function HomeSheet({ name, recents, buscandoDestino, showStations, onToggleStations, onReport, onPickRecent }: Props) {
   const first = name?.split(/\s+/)[0];
 
   return (
@@ -58,6 +60,7 @@ export default function HomeSheet({ name, recents, showStations, onToggleStation
 
         <div>
           <p className="eyebrow mb-1.5">Recientes</p>
+          {buscandoDestino && <p role="status" className="mb-2 text-xs text-muted">Buscando una ruta a {buscandoDestino}…</p>}
           {recents.length === 0 ? (
             <p className="flex items-center gap-2.5 rounded-xl bg-surface-2 px-3.5 py-3 text-sm text-muted">
               <Search size={16} className="shrink-0" /> Tus destinos buscados aparecerán aquí.
@@ -69,10 +72,12 @@ export default function HomeSheet({ name, recents, showStations, onToggleStation
                   <button
                     type="button"
                     onClick={() => onPickRecent(r)}
+                    disabled={buscandoDestino === r.label}
+                    aria-busy={buscandoDestino === r.label}
                     className="flex w-full items-center gap-3 rounded-xl px-2 py-2.5 text-left transition-colors hover:bg-surface-2"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-2 text-muted">
-                      <Clock size={16} />
+                      {buscandoDestino === r.label ? <Spinner size={16} /> : <Clock size={16} />}
                     </span>
                     <span className="line-clamp-2 text-sm font-medium text-fg">{r.label}</span>
                   </button>

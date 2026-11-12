@@ -81,8 +81,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </nav>
 
 
-        <div className="mobility-nav-user flex items-center justify-center gap-2 border-t p-3 lg:justify-between">
-          <Link href="/account" className="flex min-w-0 items-center gap-2.5 rounded-lg p-1 hover:bg-surface-2" title={user.name}>
+        <div className="mobility-nav-user flex items-stretch border-t">
+          <Link href="/account" aria-label={`Ir a mi cuenta: ${user.name}`} className="flex min-w-0 flex-1 items-center justify-center gap-2.5 p-3 hover:bg-surface-2 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand lg:justify-start" title="Ir a mi cuenta">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-soft text-xs font-bold text-brand">
               {iniciales(user.name)}
             </span>
@@ -91,7 +91,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <span className="block truncate text-xs text-muted">{user.email}</span>
             </span>
           </Link>
-          <ThemeToggle className="hidden lg:inline-flex" />
+          <ThemeToggle className="mr-2 hidden self-center lg:inline-flex" />
         </div>
       </aside>
 
