@@ -32,3 +32,22 @@ test('CSV conserva cifras, comillas y saltos y neutraliza fórmulas en cadenas',
   assert.ok(csv.includes('"\'  @SUM(A1)",""'));
   assert.equal(csv.split('\r\n').length, 4);
 });
+
+const { mobilityStyle } = await load('../src/lib/map-style.ts');
+test('el estilo de movilidad conserva las fuentes, reduce POI y sigue el tema sin mutar el original', () => {
+  const style = { version: 8, sources: { basemap: { type: 'vector', url: 'https://example.com/tiles.json' } }, layers: [
+    { id: 'background', type: 'background', paint: { 'background-color': '#fff' } },
+    { id: 'poi', type: 'symbol', source: 'basemap', 'source-layer': 'poi' },
+    { id: 'road-main', type: 'line', source: 'basemap', 'source-layer': 'transportation', paint: { 'line-width': 4 } },
+    { id: 'road-label', type: 'symbol', source: 'basemap', 'source-layer': 'transportation_name' },
+  ] };
+  const before = JSON.stringify(style);
+  const light = mobilityStyle(style, false);
+  const dark = mobilityStyle(style, true);
+  assert.equal(light.sources, style.sources);
+  assert.equal(light.layers[1].layout.visibility, 'none');
+  assert.equal(light.layers[2].paint['line-width'], 4);
+  assert.equal(light.layers[3].layout['text-allow-overlap'], false);
+  assert.notEqual(light.layers[0].paint['background-color'], dark.layers[0].paint['background-color']);
+  assert.equal(JSON.stringify(style), before);
+});

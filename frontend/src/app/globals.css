@@ -396,3 +396,5 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .us-dashboard-tabs { gap: 4px; }
 .us-dashboard-tabs button { color: var(--muted); min-height: 44px; font-weight: 600; }
 .us-dashboard-tabs button[data-active] { color: var(--brand); background: var(--surface); border-color: var(--line); border-bottom-color: var(--surface); }
+
+.us-trip-stop { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 4px solid; border-radius: 50%; background: var(--surface); color: var(--fg); font-size: 12px; font-weight: 800; box-shadow: 0 2px 8px #0005; }

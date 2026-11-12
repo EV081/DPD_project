@@ -20,7 +20,9 @@ Rutas: `/login`, `/register`, `/map`, `/search`, `/destinations`, `/station/[id]
 - Ambos temas se sincronizan desde `ThemeContext`; `UIProvider` centraliza la configuración. El orden de capas CSS es `theme, base, mantine, mui, components, utilities`; no añadir un segundo reset global.
 - `DataTable<T>` usa TanStack Table v8: orden, búsqueda local, paginación y CSV de todas las filas filtradas y ordenadas. El catálogo permite alternar tarjetas y tabla. Las tablas de gráficos y de procesos usan el mismo componente.
 - Recharts: gráficos del panel y de ocupación horaria en simulación, con tabla alternativa y movimiento reducido.
-- React Leaflet v5 gestiona marcadores, popups y rutas. MapLibre dibuja la base vectorial OpenFreeMap clara/oscura. Si falla al cargar o no hay WebGL, se usa OpenStreetMap ráster. Requiere acceso de red a los proveedores cartográficos; no requiere una clave nueva.
-- Los minimapas mantienen atribución de OpenStreetMap y muestran los nombres como texto de React.
+- React Leaflet v5 gestiona marcadores, popups y rutas. MapLibre dibuja la base vectorial OpenFreeMap clara/oscura. Si falla al cargar o no hay WebGL, se usan los lienzos grises de Esri en el mismo tema. Requiere acceso de red a los proveedores cartográficos; no requiere una clave nueva.
+- Los minimapas comparten la base sobria y las atribuciones cartográficas; muestran los nombres como texto de React.
 
 Comprobaciones: `npm run lint`, `npm test`, `npm run build`. En entornos que bloquean los puertos internos de Turbopack se puede verificar con `npx next build --webpack`.
+
+La base vectorial usa la paleta de movilidad de `src/lib/map-style.ts`: calles neutras, parques y agua suaves, sin POI comerciales ni escudos. El respaldo conserva la misma dirección visual, también durante la carga.

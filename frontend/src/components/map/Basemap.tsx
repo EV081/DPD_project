@@ -2,62 +2,75 @@
 
 import { useEffect, useState } from 'react';
 import { TileLayer, useMap } from 'react-leaflet';
-import { setWorkerUrl } from 'maplibre-gl';
+import { setWorkerUrl, type StyleSpecification } from 'maplibre-gl';
 import { useTheme } from '@/context/ThemeContext';
+import { mobilityStyle } from '@/lib/map-style';
 
-// MapLibre 6 separa el worker: el bundler publica este recurso con hash y sirve la URL local.
 setWorkerUrl(new URL('maplibre-gl/dist/maplibre-gl-worker.mjs', import.meta.url).href);
+const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
 
-/** Un solo motor de interacción (Leaflet); MapLibre dibuja únicamente el fondo vectorial. */
 export default function Basemap() {
   const map = useMap();
   const { resolved } = useTheme();
-  const [fallback, setFallback] = useState(false);
   const [vectorReady, setVectorReady] = useState(false);
   useEffect(() => {
     let disposed = false;
+    let failed = false;
     let layer: import('leaflet').Layer | undefined;
-    let timeout: ReturnType<typeof setTimeout> | undefined;
     let gl: import('maplibre-gl').Map | undefined;
-    let loaded = false;
-    setFallback(false);
+    const controller = new AbortController();
     setVectorReady(false);
-    const fail = (error?: unknown) => {
-      if (disposed || loaded) return;
-      if (error) console.warn('No se pudo cargar el mapa vectorial; se usa OpenStreetMap.', error);
-      setFallback(true);
+    const fail = () => {
+      if (disposed || failed) return;
+      failed = true;
+      controller.abort();
+      clearTimeout(timeout);
+      setVectorReady(false);
       if (layer && map.hasLayer(layer)) map.removeLayer(layer);
     };
-    void import('@maplibre/maplibre-gl-leaflet').then(({ maplibreGL }) => {
-      if (disposed) return;
+    const timeout = setTimeout(fail, 15000);
+    void Promise.all([
+      import('@maplibre/maplibre-gl-leaflet'),
+      fetch('https://tiles.openfreemap.org/styles/positron', { signal: controller.signal }).then((response) => {
+        if (!response.ok) throw new Error('No se pudo cargar el estilo cartográfico');
+        return response.json() as Promise<StyleSpecification>;
+      }),
+    ]).then(([{ maplibreGL }, style]) => {
+      if (disposed || failed) return;
       try {
-        const vector = maplibreGL({
-          style: `https://tiles.openfreemap.org/styles/${resolved === 'dark' ? 'dark' : 'positron'}`,
-          attributionControl: false,
-        });
+        const vector = maplibreGL({ style: mobilityStyle(style, resolved === 'dark'), attributionControl: false });
         layer = vector;
         vector.addTo(map);
-        vector.getContainer().style.zIndex = '2';
+        vector.getContainer().style.zIndex = '3';
         gl = vector.getMaplibreMap();
-        gl.once('load', () => { if (!disposed) { loaded = true; setVectorReady(true); clearTimeout(timeout); } });
-        gl.on('error', fail);
-        timeout = setTimeout(fail, 12000);
-      } catch (error) { fail(error); }
+        gl.once('load', () => {
+          if (!disposed && !failed) { setVectorReady(true); clearTimeout(timeout); }
+        });
+        // Un error posterior de un mosaico no sustituye todo el mapa ya cargado.
+        gl.on('error', () => { if (!gl?.isStyleLoaded()) fail(); });
+      } catch { fail(); }
     }).catch(fail);
     return () => {
       disposed = true;
+      controller.abort();
       clearTimeout(timeout);
-      gl?.off('error', fail);
       if (layer && map.hasLayer(layer)) map.removeLayer(layer);
     };
   }, [map, resolved]);
 
   useEffect(() => {
+    if (!vectorReady) return;
     const attribution = '© <a href="https://openfreemap.org">OpenFreeMap</a> · <a href="https://www.openmaptiles.org/">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-    if (!fallback) map.attributionControl.addAttribution(attribution);
+    map.attributionControl.addAttribution(attribution);
     return () => { map.attributionControl.removeAttribution(attribution); };
-  }, [map, fallback]);
+  }, [map, vectorReady]);
 
-  return fallback || !vectorReady ? <TileLayer attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} /> : null;
+  // El respaldo también es gris y sigue el tema: nunca vuelve al mapa multicolor.
+  const canvas = resolved === 'dark' ? 'Dark' : 'Light';
+  return !vectorReady ? <>
+    <TileLayer key={`base-${canvas}`} url={`${ESRI}/World_${canvas}_Gray_Base/MapServer/tile/{z}/{y}/{x}`}
+      maxZoom={19} maxNativeZoom={16} zIndex={1} attribution='Tiles © Esri · Esri, HERE, Garmin, OpenStreetMap contributors' />
+    <TileLayer key={`labels-${canvas}`} url={`${ESRI}/World_${canvas}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`}
+      maxZoom={19} maxNativeZoom={16} zIndex={2} />
+  </> : null;
 }
