@@ -1,7 +1,7 @@
 """Horario y frecuencia publicados de cada servicio (``data/horarios_servicios.json``).
 
 Los horarios ATU revisados en ``horarios_atu_oficial.json`` prevalecen sobre el catálogo
-secundario de metrolima.info. Las frecuencias y paradas conservan su procedencia secundaria.
+secundario de metrolima.info. Las frecuencias conservan su procedencia secundaria; las paradas del Metropolitano se corrigen con mapas ATU revisados.
 Son referenciales; no reemplazan la oferta del modelo de ocupación.
 
 Sistemas: ``metropolitano`` (un registro por servicio: Ruta A, Expreso 5…), ``metro_l1``
@@ -28,14 +28,14 @@ SISTEMA_HORARIO = {"troncal": "metropolitano", "metro_l1": "metro_l1", "corredor
 def datos() -> dict:
     base = json.loads(ARCHIVO.read_text(encoding="utf-8"))
     oficial = json.loads(ARCHIVO.with_name("horarios_atu_oficial.json").read_text(encoding="utf-8"))
-    for sistema in ("metropolitano", "metro_l1", "corredor"):
+    for sistema in ("metropolitano", "metro_l1", "corredor", "alimentador"):
         for nombre, reg in base["servicios"][sistema].items():
             ficha = oficial["servicios"][sistema].get(nombre)
             if ficha:
                 _aplicar_oficial(reg, ficha, sistema)
     base["fuente"] = {**oficial["fuente"], "nombre": "ATU y fuentes complementarias",
-        "aviso": "Horarios de Metro L1, corredores y Metropolitano: portal oficial ATU. "
-                 "Frecuencias, paradas y horarios de alimentadores: catálogo secundario metrolima.info; "
+        "aviso": "Horarios de Metro L1, corredores, Metropolitano y alimentadores: portal oficial ATU. "
+                 "Frecuencias: metrolima.info; paradas y coordenadas tienen auditoría geográfica separada. "
                  "algunas frecuencias son calibradas, no publicadas por ATU. Feriados sin confirmación oficial."}
     return base
 
@@ -45,7 +45,7 @@ def _aplicar_oficial(reg: dict, ficha: dict, sistema: str) -> None:
     semanal, etiquetas = {}, {}
     for i, direccion in enumerate(ficha["direcciones"]):
         label = direccion["sentido_publicado"]
-        if sistema == "corredor":
+        if sistema in ("corredor", "alimentador"):
             keys = [f"sentido_{i + 1}"]  # La ficha usa terminales, no los asc/desc del modelo.
         elif norm(label) == "ambos sentidos":
             keys = ["asc", "desc"]
@@ -70,10 +70,14 @@ def _aplicar_oficial(reg: dict, ficha: dict, sistema: str) -> None:
     reg.update({"url": ficha["url"], "fuente_horario": "ATU", "horario_semanal": semanal,
                 "sentidos_publicados": etiquetas, "evidencias_horario": ficha["direcciones"],
                 "procedencia_complementaria": anteriores,
-                "notas": ficha["notas"] + ["Horario ATU por sentido y día. Frecuencia y paradas de fuente complementaria; no verificadas como oficiales en esta extracción."]})
+                "notas": ficha["notas"] + ["Horario ATU por sentido y día. Frecuencia de metrolima.info o calibrada; no es una frecuencia oficial ATU."]})
     # Compatibilidad con los consumidores que consultan las claves de sentido/tipo de día.
     reg["horario"] = {key: {tipo: days[str(d)] for tipo, d in (("LAB", 0), ("SAB", 5), ("DOM", 6)) if str(d) in days}
                       for key, days in semanal.items()}
+    if ficha.get("apto_para_planificador") is False:
+        reg["horario"] = {}
+        reg["estado_horario"] = "pendiente_aclaracion"
+
 
 
 def fuente() -> dict:
@@ -161,6 +165,8 @@ def intervalo_min(reg: dict | None, momento: dt.datetime) -> float | None:
 
 def texto_horario(reg: dict | None, sentido: str | None, fecha: dt.date) -> str | None:
     """'05:00–23:00' (o varios tramos) del día; 'No opera este día' si no hay tramos; None si no se publica."""
+    if reg and reg.get("estado_horario") == "pendiente_aclaracion":
+        return "Horario oficial con discrepancias: pendiente de aclaración"
     if not _publicado(reg):
         return None
     if sentido is not None and sentido not in reg["horario"]:

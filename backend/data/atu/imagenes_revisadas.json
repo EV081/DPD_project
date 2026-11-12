@@ -288,5 +288,397 @@
         ]
       }
     ]
+  },
+  "Alimentadores/AlimentadoresSur/LosProceres/": {
+    "imagen": "Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS PROCERESvf.png",
+    "sha256": "2bc61c6e83a5a67c3a220dc9804371fde35741bd0d38a3b7d9a97ff4007e31cd",
+    "revision": "Horarios y nombres/orden de paradas contrastados visualmente con la imagen oficial.",
+    "transcripcion": "Terminal Matellini a Paradero final\nLunes a sábado: 05:30–00:00\nDomingo: 05:30–23:00\nParadero final a Terminal Matellini\nLunes a sábado: 05:00–23:30\nDomingo: 05:00–22:30",
+    "direcciones": [
+      {
+        "sentido_publicado": "Terminal Matellini a Paradero final",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a sábado",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tramos": [
+              [
+                "05:30",
+                "00:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:30",
+                "23:00"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sentido_publicado": "Paradero final a Terminal Matellini",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a sábado",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "23:30"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "22:30"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "paradas_revisadas": [
+      "Calango",
+      "Guardia Peruana",
+      "El Sol",
+      "Alipio Ponce",
+      "Los Incas",
+      "Vista Alegre",
+      "Villa Alegre",
+      "Alcides Vigo",
+      "Las Crucetas",
+      "D. Tristan y Moscoso",
+      "Las Crucetas",
+      "Alcides Vigo",
+      "Parque Villa Alegre",
+      "Los Incas",
+      "Centro Instrucción PNP",
+      "Los Meteoros",
+      "Guardia Peruana",
+      "Calango",
+      "Óvalo la Curva"
+    ],
+    "notas": []
+  },
+  "Alimentadores/AlimentadoresSur/VillaElSalvador/": {
+    "imagen": "Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA EL SALVADOR.png",
+    "sha256": "aa35ddab47d7696cb557f96d923bfa93ef8360da98623d056f8fca35f5af2ffb",
+    "revision": "Horarios y nombres/orden de paradas contrastados visualmente con la imagen oficial.",
+    "transcripcion": "Terminal Matellini a Parque Zonal Huáscar\nLunes a sábado: 05:30–00:00\nDomingo: 05:30–23:00\nParque Zonal Huáscar a Terminal Matellini\nLunes a sábado: 05:00–23:30\nDomingo: 05:00–22:30",
+    "direcciones": [
+      {
+        "sentido_publicado": "Terminal Matellini a Parque Zonal Huáscar",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a sábado",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tramos": [
+              [
+                "05:30",
+                "00:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:30",
+                "23:00"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sentido_publicado": "Parque Zonal Huáscar a Terminal Matellini",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a sábado",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "23:30"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "22:30"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "paradas_revisadas": [
+      "INR",
+      "Confraternidad",
+      "Pantanos de Villa",
+      "Santa Rosa",
+      "Panamericana Sur",
+      "Almacenes",
+      "Villa Panamericana",
+      "Pastor Sevilla",
+      "Micaela Bastidas",
+      "Álamos",
+      "Velasco Alvarado",
+      "César Vallejo",
+      "José Carlos Mariátegui",
+      "200 Millas",
+      "Parque Zonal Huáscar",
+      "José Carlos Mariátegui",
+      "César Vallejo",
+      "Velasco Alvarado",
+      "Álamos",
+      "Micaela Bastidas",
+      "Pastor Sevilla",
+      "Villa Panamericana",
+      "Almacenes",
+      "Panamericana Sur",
+      "Santa Rosa",
+      "Pantanos de Villa",
+      "Lavalle"
+    ],
+    "notas": [
+      "La imagen publica atención especial de INR: lunes a sábado 07:00–19:00; Pantanos de Villa: lunes a domingo 05:30–19:00. El horario general no debe aplicarse automáticamente a estas dos paradas."
+    ]
+  },
+  "Alimentadores/AlimentadoresUniversidad/Trapiche/": {
+    "imagen": "Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png",
+    "sha256": "3732d6fd75588fcc54ff85e534e9e0f7b34d7ad8c47a3d1901dabe64f0c8bc18",
+    "revision": "Horarios y nombres/orden de paradas contrastados visualmente con la imagen oficial.",
+    "transcripcion": "Estación Universidad a Peycar (hora punta)\nLunes a viernes: 06:00–08:30 y 17:00–00:00\nPeycar a estación Universidad (hora punta)\nLunes a viernes: 05:00–09:00 y 17:45–11:30",
+    "direcciones": [
+      {
+        "sentido_publicado": "Estación Universidad a Peycar (hora punta)",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "06:00",
+                "08:30"
+              ],
+              [
+                "17:00",
+                "00:00"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sentido_publicado": "Peycar a estación Universidad (hora punta)",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "09:00"
+              ],
+              [
+                "17:45",
+                "11:30"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "paradas_revisadas": [
+      "Estación Universidad",
+      "Villasol",
+      "Yanbal",
+      "Plaza Vea",
+      "El Álamo",
+      "Botica",
+      "El Pinar",
+      "Kiosko",
+      "Los Incas",
+      "Alameda El Pinar",
+      "Oficina",
+      "San Felipe",
+      "Remanso",
+      "Peycar",
+      "Peycar",
+      "Remanso",
+      "San Felipe",
+      "Oficina",
+      "Alameda El Pinar",
+      "Los Incas",
+      "Kiosko",
+      "El Pinar",
+      "Botica",
+      "El Álamo",
+      "Segunda de Pro",
+      "La Amistad",
+      "Plaza Vea",
+      "Yanbal",
+      "Villasol",
+      "Estación Universidad"
+    ],
+    "notas": [
+      "La imagen de hora punta escribe 5:45 p. m.–11:30 a. m. en la vuelta. Se transcribe literalmente y se marca pendiente de aclaración, sin usar ese intervalo para confirmar salidas."
+    ]
+  },
+  "Alimentadores/AlimentadoresUniversidad/Trapiche/T-HV.php": {
+    "imagen": "Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png",
+    "sha256": "eab0c8e738fe4fa48fcd79017b94ec5bfca14e2fdd56d44623090e01b0850d6b",
+    "revision": "Horarios y lista de paradas contrastados visualmente.",
+    "direcciones": [
+      {
+        "sentido_publicado": "Estación Universidad a El Álamo (hora valle)",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a sábado",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tramos": [
+              [
+                "06:00",
+                "00:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:45",
+                "23:00"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sentido_publicado": "El Álamo a estación Universidad (hora valle)",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a sábado",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "11:30"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "22:30"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "paradas_revisadas": [
+      "Estación Universidad",
+      "Villasol",
+      "Yanbal",
+      "Plaza Vea",
+      "El Álamo",
+      "El Álamo",
+      "Segunda de Pro",
+      "La Amistad",
+      "Plaza Vea",
+      "Yanbal",
+      "Villasol",
+      "Estación Universidad"
+    ],
+    "notas": [
+      "El cartel dice hora valle y fin de semana, pero publica lunes a sábado hasta 11:30 a. m. para la vuelta. Se conserva literalmente; requiere aclaración antes de automatizar salidas."
+    ],
+    "transcripcion": "Estación Universidad a El Álamo (hora valle)\nLunes a sábado: 06:00–00:00\nDomingo: 05:45–23:00\nEl Álamo a estación Universidad (hora valle)\nLunes a sábado: 05:00–11:30\nDomingo: 05:00–22:30"
   }
 }

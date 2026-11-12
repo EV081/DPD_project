@@ -137,7 +137,7 @@ def _opcion_troncal(linea, a: str, b: str, sentido: str, momento: dt.datetime, i
             if n2 == n1 or b not in p2:
                 continue
             for x in p1[p1.index(a) + 1:]:
-                if x in p2[:p2.index(b)]:
+                if x in linea.estaciones and x in p2[:p2.index(b)]:
                     tramos = [tramo(n1, r1, p1, a, x), tramo(n2, r2, p2, x, b)]
                     if mejor is None or costo(tramos) < costo(mejor):
                         mejor = tramos

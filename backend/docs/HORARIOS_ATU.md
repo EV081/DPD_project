@@ -1,6 +1,6 @@
 # Horarios oficiales ATU: extracción del portal QR
 
-Consulta: **2026-11-11**. Hora local de Lima. Se extrajeron 37 fichas: 20 del Metropolitano (incluida una variante), Línea 1 y 16 de corredores.
+Consulta: **2026-11-11**. Hora local de Lima. Se extrajeron 60 fichas de servicio: 20 del Metropolitano (incluida una variante), Línea 1, 16 de corredores y 23 de alimentadores. Trapiche conserva sus dos variantes punta/valle.
 
 Los horarios son de salida del origen indicado en cada ficha, no una hora de paso por cada paradero. No se infieren frecuencias, feriados ni horarios faltantes. No se publicó una fecha de entrada en vigor: esta captura no reconstruye horarios históricos.
 
@@ -176,7 +176,7 @@ Los horarios son de salida del origen indicado en cada ficha, no una hora de pas
 
 - `data/horarios_atu_oficial.csv`: tabla para abrir en una hoja de cálculo, una fila por franja publicada.
 - `data/horarios_atu_oficial.json`: datos normalizados, texto de evidencia, enlaces, fecha de consulta y SHA-256 de cada documento.
-- `data/atu/imagenes_revisadas.json`: ocho imágenes contrastadas visualmente, con transcripción y hash. OCR utilizado solo como ayuda.
+- `data/atu/imagenes_revisadas.json`: doce imágenes contrastadas visualmente, con transcripción y hash. OCR utilizado solo como ayuda.
 - `scripts/extraer_horarios_atu.py`: descarga y analiza HTML visible, ignora comentarios/scripts y valida las imágenes contra sus hashes revisados. Una imagen modificada detiene la generación hasta revisarla.
 
 ```bash
@@ -192,6 +192,123 @@ La descarga solo se realiza al ejecutar el script; la API utiliza el JSON local.
 
 `services/horarios.py` prioriza los horarios ATU para los servicios ya soportados por el modelo. Las rutas adicionales quedan disponibles en el catálogo oficial, sin inventar un modelo predictivo para ellas. Los días se conservan individualmente (no se reduce miércoles–viernes a todos los laborables). Los corredores conservan los nombres de sus sentidos; cuando el contexto no determina uno y los estados difieren, la operación se declara desconocida.
 
-Paradas, frecuencias y alimentadores siguen procediendo del catálogo secundario `horarios_servicios.json`. Su procedencia y notas se conservan por registro; no se presentan como frecuencias oficiales ATU. La integración sustituye horarios, no valida ni actualiza el mapa de paradas.
+Las frecuencias siguen procediendo del catálogo secundario `horarios_servicios.json`. Su procedencia y notas se conservan por registro; no se presentan como frecuencias oficiales ATU. La integración sustituye horarios; la comparación de nombres y orden se documenta en la auditoría de paradas, con listas corregidas por servicio, sentido y variante. Se reutilizan ubicaciones existentes; las paradas sin coordenada contrastable no generan pins.
 
 Tras regenerar los archivos, reiniciar el backend para renovar la caché de horarios.
+
+## Alimentadores oficiales
+
+La cobertura abarca los 23 alimentadores del modelo. Las paradas tienen su [auditoría separada](VALIDACION_PARADAS_ATU.md); los nombres y las coordenadas no se certifican juntos. El enlace antiguo Norte/Trapiche redirige a la portada institucional: se utiliza la ficha vigente Universidad/Trapiche.
+
+| Alimentador | Sentido publicado | Días | Horario | Fuente |
+|---|---|---|---|---|
+| San Juan de Dios | Terminal Chimpu Ocllo a Polos | Lunes a sábado | 05:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/) |
+| San Juan de Dios | Terminal Chimpu Ocllo a Polos | Domingo | 05:00–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/) |
+| San Juan de Dios | Polos a Terminal Chimpu Ocllo | Lunes a sábado | 05:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/) |
+| San Juan de Dios | Polos a Terminal Chimpu Ocllo | Domingo | 05:00–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/) |
+| Universitaria | Terminal Chimpu Ocllo a paradero Periurbana | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/) |
+| Universitaria | Terminal Chimpu Ocllo a paradero Periurbana | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/) |
+| Universitaria | Paradero Periurbana a Terminal Chimpu Ocllo | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/) |
+| Universitaria | Paradero Periurbana a Terminal Chimpu Ocllo | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/) |
+| Carabayllo | Chimpu Ocllo a paradero Tokio | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/) |
+| Carabayllo | Chimpu Ocllo a paradero Tokio | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/) |
+| Carabayllo | Paradero Tokio a Chimpu Ocllo | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/) |
+| Carabayllo | Paradero Tokio a Chimpu Ocllo | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/) |
+| Collique | Estación Los Incas a paradero Río Seco | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/) |
+| Collique | Estación Los Incas a paradero Río Seco | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/) |
+| Collique | Paradero Río Seco a Estación Los Incas | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/) |
+| Collique | Paradero Río Seco a Estación Los Incas | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/) |
+| Torre Blanca | Chimpu Ocllo a Torre Blanca | Lunes a sábado | 05:45–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/) |
+| Torre Blanca | Chimpu Ocllo a Torre Blanca | Domingo | 05:45–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/) |
+| Torre Blanca | Torre Blanca a Chimpu Ocllo | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/) |
+| Torre Blanca | Torre Blanca a Chimpu Ocllo | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/) |
+| Antúnez de Mayolo | Terminal Naranjal a Nísperos | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/) |
+| Antúnez de Mayolo | Terminal Naranjal a Nísperos | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/) |
+| Antúnez de Mayolo | Nísperos a Terminal Naranjal | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/) |
+| Antúnez de Mayolo | Nísperos a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/) |
+| Belaunde | Paradero final al Terminal Naranjal | Lunes a Sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/) |
+| Belaunde | Paradero final al Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/) |
+| Belaunde | Terminal Naranjal al Paradero final | Lunes a Sábado | 05:30–12:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/) |
+| Belaunde | Terminal Naranjal al Paradero final | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/) |
+| Bertello | Terminal Naranjal a Los Pinos | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/) |
+| Bertello | Terminal Naranjal a Los Pinos | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/) |
+| Bertello | Los Pinos a Terminal Naranjal | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/) |
+| Bertello | Los Pinos a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/) |
+| Izaguirre | Terminal Naranjal a Santa Rosa | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/) |
+| Izaguirre | Terminal Naranjal a Santa Rosa | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/) |
+| Izaguirre | Santa Rosa a Terminal Naranjal | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/) |
+| Izaguirre | Santa Rosa a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/) |
+| Ensenada | Terminal Naranjal a Calle 5 | Lunes a sábado | 05:45–08:15 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/) |
+| Ensenada | Calle 5 a Terminal Naranjal | Lunes a sábado | 05:00–09:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/) |
+| Alisos | Terminal Naranjal a Avenida C | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/) |
+| Alisos | Terminal Naranjal a Avenida C | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/) |
+| Alisos | Avenida C a Terminal Naranjal | Lunes a Sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/) |
+| Alisos | Avenida C a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/) |
+| Los Olivos | Terminal Naranjal a Calle 2 | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/) |
+| Los Olivos | Terminal Naranjal a Calle 2 | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/) |
+| Los Olivos | Canta a Terminal Naranjal | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/) |
+| Los Olivos | Canta a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/) |
+| Milagro de Jesús | Paradero final al Terminal Naranjal | Lunes a Sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/) |
+| Milagro de Jesús | Paradero final al Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/) |
+| Milagro de Jesús | Terminal Naranjal al Paradero final | Lunes a Sábado | 05:45–12:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/) |
+| Milagro de Jesús | Terminal Naranjal al Paradero final | Domingo | 05:45–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/) |
+| Naranjal | Terminal Naranjal a Paramonga | Lunes a sábado | 05:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/) |
+| Naranjal | Terminal Naranjal a Paramonga | Domingo | 05:00–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/) |
+| Naranjal | Paramonga a Terminal Naranjal | Lunes a sábado | 05:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/) |
+| Naranjal | Paramonga a Terminal Naranjal | Domingo | 05:00–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/) |
+| Payet | Terminal Naranjal a 4 de Noviembre | Lunes a Sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/) |
+| Payet | Terminal Naranjal a 4 de Noviembre | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/) |
+| Payet | 4 de Noviembre a Terminal Naranjal | Lunes a Sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/) |
+| Payet | 4 de Noviembre a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/) |
+| Puente Piedra | Terminal Naranjal a Tottus | Lunes a sábado | 06:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/) |
+| Puente Piedra | Terminal Naranjal a Tottus | Domingo | 05:45–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/) |
+| Puente Piedra | Tottus a Terminal Naranjal | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/) |
+| Puente Piedra | Tottus a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/) |
+| Puno | Paradero final al Terminal Naranjal | Lunes a Sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/) |
+| Puno | Paradero final al Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/) |
+| Puno | Terminal Naranjal al Paradero final | Lunes a Sábado | 05:30–12:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/) |
+| Puno | Terminal Naranjal al Paradero final | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/) |
+| Tahuantinsuyo | Terminal Naranjal a Mascaypacha | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/) |
+| Tahuantinsuyo | Terminal Naranjal a Mascaypacha | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/) |
+| Tahuantinsuyo | Mascaypacha a Terminal Naranjal | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/) |
+| Tahuantinsuyo | Mascaypacha a Terminal Naranjal | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/) |
+| Las Américas | Terminal Matellini a Panamericana | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/) |
+| Las Américas | Terminal Matellini a Panamericana | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/) |
+| Las Américas | Paradero E a Terminal Matellini | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/) |
+| Las Américas | Paradero E a Terminal Matellini | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/) |
+| Cedros de Villa | Terminal Matellini a Isla Española | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/) |
+| Cedros de Villa | Terminal Matellini a Isla Española | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/) |
+| Cedros de Villa | Isla Española a Terminal Matellini | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/) |
+| Cedros de Villa | Isla Española a Terminal Matellini | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/) |
+| Los Próceres | Terminal Matellini a Paradero final | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS%20PROCERESvf.png) |
+| Los Próceres | Terminal Matellini a Paradero final | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS%20PROCERESvf.png) |
+| Los Próceres | Paradero final a Terminal Matellini | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS%20PROCERESvf.png) |
+| Los Próceres | Paradero final a Terminal Matellini | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS%20PROCERESvf.png) |
+| Villa El Salvador | Terminal Matellini a Parque Zonal Huáscar | Lunes a sábado | 05:30–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA%20EL%20SALVADOR.png) |
+| Villa El Salvador | Terminal Matellini a Parque Zonal Huáscar | Domingo | 05:30–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA%20EL%20SALVADOR.png) |
+| Villa El Salvador | Parque Zonal Huáscar a Terminal Matellini | Lunes a sábado | 05:00–23:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA%20EL%20SALVADOR.png) |
+| Villa El Salvador | Parque Zonal Huáscar a Terminal Matellini | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA%20EL%20SALVADOR.png) |
+| Trapiche | Estación Universidad a Peycar (hora punta) | Lunes a viernes | 06:00–08:30 y 17:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png) |
+| Trapiche | Peycar a estación Universidad (hora punta) | Lunes a viernes | 05:00–09:00 y 17:45–11:30 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png) |
+| Trapiche | Estación Universidad a El Álamo (hora valle) | Lunes a sábado | 06:00–00:00 (día siguiente) | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png) |
+| Trapiche | Estación Universidad a El Álamo (hora valle) | Domingo | 05:45–23:00 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png) |
+| Trapiche | El Álamo a estación Universidad (hora valle) | Lunes a sábado | 05:00–11:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png) |
+| Trapiche | El Álamo a estación Universidad (hora valle) | Domingo | 05:00–22:30 | [ATU](https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png) |
+
+### Incidencias de la fuente
+
+- Belaunde, Milagros de Jesús y Puno: la ficha escribe 12:00 **p. m.** desde Naranjal de lunes a sábado. Se conserva como mediodía y se señala la necesidad de aclaración.
+- Carabayllo: la ficha está bajo LosIncas y el menú lo agrupa en Belaunde, pero el horario dice Chimpu Ocllo; se conserva la evidencia sin reemplazar el terminal por suposición.
+- Trapiche: dos recorridos, a Peycar en punta y a El Álamo en valle. La vuelta de punta dice 17:45–11:30 a. m.; la vuelta de valle dice 05:00–11:30 a. m. de lunes a sábado. Los textos se conservan y la planificación automática de ese horario queda pendiente de aclaración.
+- Villa El Salvador: INR tiene atención lunes a sábado 07:00–19:00; Pantanos de Villa, lunes a domingo 05:30–19:00. El horario general del servicio no certifica atención en esas paradas fuera de sus restricciones.
+
+## Estaciones de Metropolitano y Línea 1
+
+La [auditoría de paradas](VALIDACION_PARADAS_ATU.md) incluye revisión visual de 28 mapas de Metropolitano y del mapa de Línea 1 (26 estaciones). Contrasta nombres y orden por sentido con el planificador; la pertenencia al catálogo geográfico del Metropolitano se comprueba incluyendo `otros_servicios`. Las discrepancias quedan registradas, sin certificar coordenadas ni cambiar rutas automáticamente. La variante SXN desde 22 de Agosto no tiene catálogo local propio.
+
+
+## Corrección reproducible de paradas
+
+Ejecutar `python scripts/corregir_paradas_atu.py` y después `python scripts/validar_paradas_atu.py` desde backend. Los reinicios de numeración de las fichas HTML están conservados en `data/atu/bloques_paradas_revisados.json`; los mapas transcritos, en `paradas_mapas_revisadas.json`. Se corrigen también las listas del planificador del Metropolitano, manteniendo las claves de estación que reconoce el modelo y las frecuencias de su fuente anterior.
+
+Las Vegas tiene ubicación en el catálogo, pero no una serie entrenada: se incluye en la secuencia oficial sin inventar aforo; no puede ser punto de transbordo del planificador predictivo. La variante SXN22 queda sin catálogo predictivo independiente. Los tres recorridos con orden parcial España/Central conservan esa limitación. Las paradas sin ubicación llevan `geometry: null`; los cargadores del mapa y de transbordos las omiten, sin interpolar posiciones.

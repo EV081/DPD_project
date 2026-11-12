@@ -5,8 +5,8 @@ Se usa cuando no hay ruta directa (o como alternativa). Es una búsqueda sobre l
 * Corredores: cada (ruta, sentido) es una secuencia ORDENADA de paradas (`paradas_corredores.geojson`, orden de ATU).
   Solo se puede viajar hacia delante en esa secuencia.
 * Metropolitano y Metro L1: son troncales que van en los dos sentidos. Del Metropolitano solo se sabe qué estaciones
-  sirve cada servicio (el campo `orden` de ese archivo es alfabético, no geográfico), así que se puede ir de cualquiera
-  de sus estaciones a otra. Los alimentadores quedan fuera: sus datos no traen el orden de las paradas.
+  sirve cada servicio por sentido según mapas ATU revisados. Los catálogos antiguos sin sentido conservan el comportamiento
+  bidireccional; los mapas con orden parcial no se usan para construir transbordos. Los alimentadores quedan fuera: sus datos no traen el orden de las paradas.
 
 Los tiempos son estimaciones simples (velocidades y esperas típicas por sistema); no usan el pronóstico de aforo.
 """
@@ -107,6 +107,8 @@ def construir_servicios(estaciones: list[dict], paradas_corredores: list[dict], 
     grupos: dict[tuple[str, int], list[tuple[int, dict]]] = {}
     for f in paradas_corredores:
         p = f.get("properties", {})
+        if not (f.get("geometry") or {}).get("coordinates"):
+            continue
         grupos.setdefault((str(p.get("ruta")), int(p.get("direccion") or 1)), []).append((int(p.get("orden") or 0), f))
     for (ruta, sentido), items in grupos.items():
         candidatas = por_ruta.get(ruta, [])
@@ -132,16 +134,20 @@ def construir_servicios(estaciones: list[dict], paradas_corredores: list[dict], 
     servicios: dict[str, list[tuple]] = {}
     for f in servicios_metro:
         p = f.get("properties", {})
+        if p.get("orden_completo") is False:
+            continue  # No convertir un ramal esquemático ambiguo en un recorrido dirigido.
         e = por_nombre.get(normalizar(p.get("estacion")))
         if e is None and metro:   # sin coincidencia por nombre: la estación más cercana si está a menos de 300 m
+            if not (f.get("geometry") or {}).get("coordinates"):
+                continue
             lon, lat = f["geometry"]["coordinates"][:2]
             d = _dist(lat, lon, [m["latitude"] for m in metro], [m["longitude"] for m in metro])
             k = int(np.argmin(d))
             e = metro[k] if d[k] <= 300 else None
         if e is not None:
-            servicios.setdefault(str(p.get("servicio_nombre")), []).append((e["id"], e["name"], e["latitude"], e["longitude"]))
-    for nombre, paradas in servicios.items():
-        s = _servicio(f"metropolitano:{nombre}", "metropolitano", nombre, True, list(dict.fromkeys(paradas)))
+            servicios.setdefault((str(p.get("servicio_nombre")), p.get("sentido"), p.get("bidireccional", True)), []).append((e["id"], e["name"], e["latitude"], e["longitude"]))
+    for (nombre, sentido, bidireccional), paradas in servicios.items():
+        s = _servicio(f"metropolitano:{nombre}" + (f":{sentido}" if sentido else ""), "metropolitano", nombre, bidireccional, list(dict.fromkeys(paradas)))
         if s:
             out.append(s)
 

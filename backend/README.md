@@ -146,4 +146,6 @@ Cada vez que realices un `git push` a la rama principal, Render recompilará las
 
 ## Horarios oficiales ATU
 
-El catálogo QR oficial contiene 37 fichas y 66 sentidos/variantes, con extracción HTML y ocho imágenes contrastadas visualmente. Los servicios soportados usan esos horarios antes que los de la fuente secundaria. Consulta la [tabla completa, limitaciones y reproducción](docs/HORARIOS_ATU.md).
+El catálogo QR oficial contiene 60 fichas de servicio (incluidos 23 alimentadores), con extracción HTML y doce imágenes contrastadas visualmente. Los servicios soportados usan esos horarios antes que los de la fuente secundaria. Consulta la [tabla completa, limitaciones y reproducción](docs/HORARIOS_ATU.md).
+
+La [validación de paradas ATU](docs/VALIDACION_PARADAS_ATU.md) compara nombres, multiplicidad y orden con el catálogo, e identifica discrepancias y variantes. No certifica coordenadas OSM/Google ni promueve OCR sin revisión.

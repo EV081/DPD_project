@@ -50,7 +50,7 @@ def load_all_stations_into_memory():
                 data = json.load(f)
                 for index, feat in enumerate(data.get("features", [])):
                     props = feat.get("properties", {})
-                    geom = feat.get("geometry", {})
+                    geom = feat.get("geometry") or {}
                     coords = geom.get("coordinates", [])
                     
                     if not coords or len(coords) < 2:

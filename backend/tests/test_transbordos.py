@@ -84,3 +84,22 @@ def test_misma_pareja_de_paraderos_con_distintas_rutas_se_agrupa():
     pares = {(x["boarding_station"], x["leaving_station"], x["transbordo"]["boarding_station"], x["transbordo"]["leaving_station"]) for x in r}
     assert len(pares) == len(r), "no debe haber dos viajes con los mismos paraderos"
     assert any("A" in x["route_code"] and "A2" in x["route_code"] for x in r)
+
+
+def test_parada_sin_coordenada_no_se_inventa_y_se_respetan_sentidos_atu():
+    est = [
+        {'id':'A','name':'A','system':'metropolitano','latitude':-12.,'longitude':-77.},
+        {'id':'B','name':'B','system':'metropolitano','latitude':-12.01,'longitude':-77.},
+    ]
+    features = [
+        {'properties':{'estacion':e['name'],'servicio_nombre':'Expreso de prueba','sentido':'desc','bidireccional':False,'orden_completo':True},
+         'geometry':{'coordinates':[e['longitude'],e['latitude']]}}
+        for e in est
+    ]
+    features.append({'properties':{'estacion':'Pendiente','servicio_nombre':'Expreso de prueba'},'geometry':None})
+    unknown_corridor = [{'properties':{'ruta':'9','direccion':1,'orden':1},'geometry':None}]
+    services = T.construir_servicios(est, unknown_corridor, features)
+    assert len(services) == 1
+    assert services[0].ids == ['A','B']
+    assert services[0].siguientes(1).tolist() == []
+    assert services[0].siguientes(0).tolist() == [1]

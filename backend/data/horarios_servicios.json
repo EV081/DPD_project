@@ -112,7 +112,8 @@
     "frecuencia_texto": null,
     "notas": [
      "La fuente no publica la frecuencia: calibrada a 5 min para no sesgar la espera al intervalo típico del modelo."
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Ruta B": {
     "url": "https://metrolima.info/metropolitano/ruta-b/",
@@ -122,6 +123,7 @@
       "Los Incas",
       "Andres Belaunde",
       "22 De Agosto",
+      "Las Vegas",
       "Universidad",
       "Naranjal",
       "Izaguirre",
@@ -156,6 +158,7 @@
       "Izaguirre",
       "Naranjal",
       "Universidad",
+      "Las Vegas",
       "22 De Agosto",
       "Andres Belaunde",
       "Los Incas",
@@ -221,7 +224,8 @@
     "frecuencia_texto": "De lunes a viernes la Ruta B opera de 10:00 a.m. a 11:00 p.m. Los sábados y domingos el servicio comienza a las 5:00 a.m. y finaliza a las 11:00 p.m. (10:00 p.m. los domingos). La frecuencia es de 3 a 5 minutos en hora punta.",
     "notas": [
      "La fuente solo publica la punta (4 min): el valle se calibra igual para no caer al intervalo típico del modelo."
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Ruta C": {
     "url": "https://metrolima.info/metropolitano/ruta-c/",
@@ -338,7 +342,8 @@
     "frecuencia_texto": null,
     "notas": [
      "La fuente no publica la frecuencia: calibrada a 5 min (misma orden de magnitud que Expreso 1 en punta) para no sesgar la espera al intervalo típico del modelo."
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Ruta D": {
     "url": "https://metrolima.info/metropolitano/ruta-d/",
@@ -411,7 +416,8 @@
      }
     },
     "frecuencia_texto": "La Ruta D opera de lunes a viernes en un único turno, de 5:00 a.m. a 10:30 a.m. en ambos sentidos, con una frecuencia de 5 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 1": {
     "url": "https://metrolima.info/metropolitano/expreso-1/",
@@ -500,7 +506,8 @@
     "frecuencia_texto": "El Expreso 1 opera todos los días: lunes a viernes de 5:00 a.m. a 9:00 p.m. (cada 5 minutos en hora punta) y sábados y domingos de 6:00 a.m. a 9:00 p.m. (cada 8 minutos).",
     "notas": [
      "En días laborables el valle no viene publicado: se calibra a 5 min como la punta, para no caer al intervalo típico del modelo."
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 2": {
     "url": "https://metrolima.info/metropolitano/expreso-2/",
@@ -564,7 +571,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 2 opera de lunes a viernes en dos turnos (5:00 a. m. a 9:00 a. m. y 5:00 p. m. a 9:00 p. m., cada 10 minutos) y sábados de 6:00 a. m. a 9:00 a. m., también cada 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 3": {
     "url": "https://metrolima.info/metropolitano/expreso-3/",
@@ -612,7 +620,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 3 opera solo en sentido Sur a Norte: lunes a viernes de 5:00 p. m. a 9:00 p. m. y sábados de 12:30 p. m. a 3:30 p. m., ambos con frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 5": {
     "url": "https://metrolima.info/metropolitano/expreso-5/",
@@ -735,7 +744,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 6 opera de lunes a viernes, en sentido Norte a Sur, de 5:30 a. m. a 10:00 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 7": {
     "url": "https://metrolima.info/metropolitano/expreso-7/",
@@ -773,7 +783,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 7 opera de lunes a viernes, en sentido Norte a Sur, de 5:30 a. m. a 9:00 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 8": {
     "url": "https://metrolima.info/metropolitano/expreso-8/",
@@ -836,7 +847,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 8 opera de lunes a viernes, en ambos sentidos, de 5:00 p. m. a 9:00 p. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 9": {
     "url": "https://metrolima.info/metropolitano/expreso-9/",
@@ -894,7 +906,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 9 opera de lunes a viernes, en ambos sentidos, de 5:30 a. m. a 9:00 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 10": {
     "url": "https://metrolima.info/metropolitano/expreso-10/",
@@ -906,7 +919,6 @@
       "Tacna",
       "Jiron de la Unión",
       "Colmena",
-      "España",
       "Estacion Central"
      ]
     },
@@ -935,7 +947,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 10 opera de lunes a viernes, en sentido Norte a Sur, de 6:00 a. m. a 9:00 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 11": {
     "url": "https://metrolima.info/metropolitano/expreso-11/",
@@ -944,16 +957,16 @@
       "Los Incas",
       "Andres Belaunde",
       "22 De Agosto",
+      "Las Vegas",
       "Universidad",
-      "Naranjal",
       "Pacifico",
       "Estacion Central"
      ],
      "asc": [
       "Estacion Central",
-      "Pacifico",
       "Naranjal",
       "Universidad",
+      "Las Vegas",
       "22 De Agosto",
       "Andres Belaunde",
       "Los Incas"
@@ -992,7 +1005,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 11 opera de lunes a viernes, en ambos sentidos, de 5:00 a. m. a 10:45 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 12": {
     "url": "https://metrolima.info/metropolitano/expreso-12/",
@@ -1031,7 +1045,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 12 opera de lunes a viernes, en sentido Norte a Sur, de 5:45 a. m. a 10:00 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Expreso 13": {
     "url": "https://metrolima.info/metropolitano/expreso-13/",
@@ -1081,7 +1096,8 @@
      }
     },
     "frecuencia_texto": "El Expreso 13 opera de lunes a viernes, en ambos sentidos, de 5:00 a. m. a 10:00 a. m., con una frecuencia de 10 minutos.",
-    "notas": []
+    "notas": [],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Super Expreso": {
     "url": "https://metrolima.info/metropolitano/super-expreso/",
@@ -1095,9 +1111,6 @@
       "28 de Julio"
      ],
      "asc": [
-      "28 de Julio",
-      "Benavides",
-      "Angamos",
       "Aramburu",
       "Canaval y Moreyra",
       "Naranjal"
@@ -1158,13 +1171,17 @@
     "frecuencia_texto": "El Súper Expreso opera de lunes a viernes en dos turnos (5:30 a. m. a 9:00 a. m. y 5:00 p. m. a 9:00 p. m.) y sábados de 6:00 a. m. a 9:00 a. m., siempre con una frecuencia de 5 minutos.",
     "notas": [
      "Dos turnos (05:30-09:00 y 17:00-21:00; sábados 06:00-09:00) según la página del servicio, que no indica el sentido de cada turno: se aplican a los dos. La tabla general solo lista 05:30-09:00."
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Super Expreso Norte": {
     "url": "https://metrolima.info/metropolitano/super-expreso-norte/",
     "paradas": {
      "desc": [
       "Naranjal",
+      "2 de Mayo",
+      "Quilca",
+      "España",
       "Estacion Central"
      ],
      "asc": [
@@ -1218,7 +1235,8 @@
     "frecuencia_texto": "El Súper Expreso Norte opera de lunes a viernes en dos turnos (5:00 a. m. a 10:00 a. m. y 4:30 p. m. a 9:00 p. m.), ambos con una frecuencia de 8 minutos.",
     "notas": [
      "Dos turnos (05:00-10:00 y 16:30-21:00) según la página del servicio, que no indica el sentido de cada turno: se aplican a los dos. La tabla general lista 16:00-22:00."
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    },
    "Lechucero": {
     "url": "https://metrolima.info/metropolitano/lechucero/",
@@ -1304,7 +1322,8 @@
      3,
      4,
      5
-    ]
+    ],
+    "fuente_paradas": "ATU · mapas revisados 2026-11-11"
    }
   },
   "metro_l1": {

@@ -91,7 +91,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Ruta B": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularB.php",
@@ -150,7 +158,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularB.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/nuevo-Regular-B-QR.jpg",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Ruta C": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
@@ -236,7 +252,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Ruta D": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
@@ -296,7 +320,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 1": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-M.php",
@@ -383,7 +415,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_NS.jpg",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-SN-N.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_SN.jpg",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 2": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
@@ -468,7 +514,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-SN-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-SN-M.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 3": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
@@ -553,7 +613,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-N.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-N.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 5": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
@@ -637,7 +711,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 6": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
@@ -672,7 +754,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 7": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
@@ -707,7 +797,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 8": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
@@ -767,7 +865,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 9": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
@@ -830,7 +936,21 @@
         "notas": [
           "Se usa el sentido escrito en el horario, no el sufijo NS/SN del enlace; hay pestañas oficiales con nombres inconsistentes."
         ],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX9-SN.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX9-SN.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 10": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
@@ -865,7 +985,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 11": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
@@ -926,7 +1054,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-SN.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-SN.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 12": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
@@ -961,7 +1103,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Expreso 13": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-NS.php",
@@ -1022,7 +1172,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-NS.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-NS.png",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-SN.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-SN.png",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Super Expreso": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
@@ -1095,7 +1259,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-N.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-N.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Super Expreso Norte": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-NS-M.php",
@@ -1164,7 +1342,21 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-NS-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-NS-M.png",
+            "metodo": "html",
+            "nombres_en_orden": []
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-SN-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-SN-M.png",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Super Expreso Norte (22 de Agosto)": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN22.php",
@@ -1199,7 +1391,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN22.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-22-Agosto.jpg",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       },
       "Lechucero": {
         "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
@@ -1231,7 +1431,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       }
     },
     "metro_l1": {
@@ -1281,7 +1489,15 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/MetroLima/L1/",
+            "evidencia": "https://portal.atu.gob.pe/QR/MetroLima/L1/",
+            "metodo": "html",
+            "nombres_en_orden": []
+          }
+        ]
       }
     },
     "corredor": {
@@ -1393,7 +1609,103 @@
         "notas": [
           "La ficha publica cierre a las 10:47 a. m. (laborables) y 10:14 a. m. (sábado) en 24 de Junio → Plaza Butters. Se conserva literalmente; pendiente de aclaración por ATU."
         ],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "24 de Junio",
+              "Complejo Deportivo",
+              "Eduardo Dibós",
+              "Carlos Valderrama",
+              "Calle 1",
+              "Amancaes",
+              "La Colonia",
+              "Madrid",
+              "Leoncio Prado",
+              "Guardia Republicana",
+              "Chira",
+              "Virú",
+              "Ica",
+              "Moquegua",
+              "Ilo",
+              "Bolivia",
+              "España",
+              "Tarma",
+              "Saco Oliveros",
+              "Ramón Dagnino",
+              "Cuba",
+              "E. Villar",
+              "Manuel Segura",
+              "Manuel Candamo",
+              "Tomás Guido",
+              "Soledad",
+              "Manuel Bañón",
+              "Juan de Arona",
+              "Choquehuanca",
+              "R. Morales (Aramburú)",
+              "Los Ángeles",
+              "Andalucía",
+              "Ayacucho",
+              "Angamos",
+              "Piura",
+              "Pardo",
+              "Berlín",
+              "28 de Julio",
+              "Larco",
+              "Armendáriz",
+              "San Ignacio de Loyola",
+              "La Paz",
+              "Chipoco",
+              "Centenario",
+              "Balta",
+              "Plaza Butters",
+              "El Sol",
+              "Chipoco",
+              "Acacias",
+              "N. Balboa",
+              "Juan Fanning",
+              "28 de Julio",
+              "Benavides",
+              "Schell",
+              "Ricardo Palma",
+              "Piura",
+              "Angamos",
+              "Ayacucho",
+              "C. Tenaud",
+              "Rio de Janeiro",
+              "Aramburú",
+              "La Habana",
+              "Juan de Arona",
+              "Olavide",
+              "Pedro Conde",
+              "Tomás Guido",
+              "Manuel Candamo",
+              "Manuel Segura",
+              "E. Villar",
+              "E. Fernández",
+              "Ramón Dagnino",
+              "Saco Oliveros",
+              "Bolivia",
+              "Quilca",
+              "Emancipación",
+              "Callao",
+              "Pizarro",
+              "Chira",
+              "G. Republicana",
+              "Alcázar",
+              "Las Calezas",
+              "F. Arancibia",
+              "Amancaes",
+              "Calle 3",
+              "El Sol",
+              "Calle 10",
+              "24 de Junio"
+            ]
+          }
+        ]
       },
       "303": {
         "url": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
@@ -1477,7 +1789,56 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Lima",
+              "Comisaria",
+              "La Losa",
+              "Túnel",
+              "Leoncio Prado",
+              "Pizarro",
+              "Huancavelica",
+              "Nicolás de Piérola",
+              "Villarán",
+              "España",
+              "Huancayo",
+              "Natalio Sánchez",
+              "Cuba",
+              "Manuel Segura",
+              "Risso",
+              "Soledad",
+              "Manuel Bañón",
+              "Raymundo Morales",
+              "Teruel",
+              "Angamos",
+              "2 de Mayo (Pardo)",
+              "2 de Mayo",
+              "Angamos",
+              "Teruel",
+              "Aramburú",
+              "Olavide",
+              "Pedro Conde",
+              "Bernardo Alcedo",
+              "Manuel Segura",
+              "E. Fernandéz",
+              "Saco Oliveros",
+              "España",
+              "Bolivia",
+              "Uruguay",
+              "Moquegua",
+              "Ica",
+              "Pizarro",
+              "Alcázar",
+              "Talara",
+              "Proceres"
+            ]
+          }
+        ]
       },
       "305": {
         "url": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
@@ -1578,7 +1939,80 @@
         "notas": [
           "La ficha de vuelta dice lunes a domingo y además especifica sábado y domingo con otras horas. Se conservan las reglas; los días específicos prevalecen en la consulta."
         ],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Condominios",
+              "Morro de Arica",
+              "Amancaes",
+              "La Colonia",
+              "Madrid",
+              "Leoncio Prado",
+              "G. Republicana",
+              "Chira",
+              "Virú",
+              "Ica",
+              "Moquegua",
+              "Ilo",
+              "Bolivia",
+              "España",
+              "Huancayo",
+              "Saco Oliveros",
+              "Ramón Dagnino",
+              "Cuba",
+              "E. Villar",
+              "Manuel Segura",
+              "Manuel Candamo",
+              "Tomás Guido",
+              "Soledad",
+              "Manuel Bañón",
+              "Juan de Arona",
+              "Choquehuanca",
+              "R. Morales (Aramburú)",
+              "Los Ángeles",
+              "Andalucía",
+              "Ayacucho",
+              "Angamos",
+              "Piura",
+              "2 de Mayo (Final)",
+              "2 de Mayo (Inicial)",
+              "Piura",
+              "Angamos",
+              "Ayacucho",
+              "C. Tenaud",
+              "Río de Janeiro",
+              "Aramburú",
+              "La Habana",
+              "Juan de Arona",
+              "Olavide",
+              "Tomás Guido",
+              "Manuel Candamo",
+              "Manuel Segura",
+              "E. Villar",
+              "E. Fernandéz",
+              "Ramón Dagnino",
+              "Saco Oliveros",
+              "España",
+              "Bolivia",
+              "Quilca",
+              "Emancipación",
+              "Callao",
+              "Pizarro",
+              "Chira",
+              "G. Republicana",
+              "Alcázar",
+              "Las Calezas",
+              "F. Arancibia",
+              "Amancaes",
+              "Morro de Arica",
+              "Condominios"
+            ]
+          }
+        ]
       },
       "336": {
         "url": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
@@ -1662,7 +2096,69 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "24 de Junio",
+              "Complejo Deportivo",
+              "Eduardo Dibos",
+              "Carlos Valderrama",
+              "Aguilar",
+              "Los Virreyes",
+              "Leoncio Prado",
+              "Viru",
+              "Huancavelica",
+              "Nicolás de Piérola",
+              "Villarán",
+              "España",
+              "Huancayo",
+              "Saco Oliveros",
+              "Cuba",
+              "Manuel Del Pino",
+              "León Velarde",
+              "Joaquin Bernal",
+              "Javier Prado",
+              "Manual Bañon",
+              "Paz Soldán",
+              "Choquehuanca",
+              "Pezet",
+              "Dasso",
+              "Óvalo Gutierrez",
+              "Angamos",
+              "Pardo",
+              "Pardo",
+              "Angamos",
+              "Óvalo Gutierrez",
+              "Pardo y Aliaga",
+              "Conde de la Monclava",
+              "Choquehuanca",
+              "Paz Soldán",
+              "Olavide",
+              "Domingo Casanova",
+              "Risso",
+              "Manuel Candamo",
+              "Manuel Segura",
+              "Alejandro Tirado",
+              "Saco Oliveros",
+              "España",
+              "Bolivia",
+              "Uruguay",
+              "Moquegua",
+              "Ica",
+              "Pizarro",
+              "Alcázar",
+              "Los Virreyes",
+              "Aguilar",
+              "El Sol",
+              "Calle 10",
+              "24 de Junio"
+            ]
+          }
+        ]
       },
       "370": {
         "url": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
@@ -1770,7 +2266,49 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Mónaco",
+              "Pasaje 17",
+              "Cerezos",
+              "Claveles",
+              "24 de Junio",
+              "Complejo Deportivo",
+              "Eduardo Dibós",
+              "Carlos Valderrama",
+              "Calle 1",
+              "Amancaes",
+              "Madrid",
+              "Antón Sánchez",
+              "Prolongación Tacna",
+              "22 de Agosto",
+              "Sechura",
+              "Cajamarca",
+              "Trujillo",
+              "Acho",
+              "Acho",
+              "Chiclayo",
+              "Alameda de los Descalzos",
+              "Prolongación Alcázar",
+              "Antón Sánchez",
+              "Las Calezas",
+              "Amancaes",
+              "Calle 3",
+              "El Sol",
+              "Calle 10",
+              "24 de Junio",
+              "Claveles",
+              "Cerezos",
+              "Pasaje 17",
+              "Mónaco"
+            ]
+          }
+        ]
       },
       "371": {
         "url": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
@@ -1878,7 +2416,23 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Las Lomas",
+              "Morro de Arica",
+              "Amancaes",
+              "Amancaes",
+              "Morro de Arica",
+              "Condominios",
+              "Las Lomas"
+            ]
+          }
+        ]
       },
       "SE-08": {
         "url": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
@@ -1986,7 +2540,64 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Chiclayo",
+              "Huancayo",
+              "Plaza de Armas",
+              "Andahuaylas",
+              "Abancay",
+              "Villa Rica",
+              "San Salvador",
+              "Santa Fe",
+              "Pinar del Rio",
+              "Pérez de Tudela",
+              "Materiales",
+              "Argentina",
+              "Naciones Unidas",
+              "Zorritos",
+              "INO",
+              "Arica",
+              "Aguarico",
+              "Loreto",
+              "Huaraz",
+              "Alfonso Ugarte",
+              "Garcilazo de la Vega",
+              "Uruguay",
+              "Quilca",
+              "Nicolás de Piérola",
+              "Emacipación",
+              "Callao",
+              "Ica",
+              "Nicólas de Piérola",
+              "Villarán",
+              "Chota",
+              "Iquique",
+              "Jorge Chávez",
+              "Aguarico",
+              "Tingo María",
+              "Naciones Unidas",
+              "Zorritos",
+              "Galdeano y Mendoza",
+              "Dansey",
+              "Argentina",
+              "Pedro Gárezon",
+              "Duárez",
+              "Perú",
+              "Santo Domingo",
+              "Villa Rica",
+              "Camaná",
+              "Iquitos",
+              "Huancayo",
+              "Salaverry"
+            ]
+          }
+        ]
       },
       "201": {
         "url": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
@@ -2094,7 +2705,108 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Calle 66",
+              "Venezuela",
+              "Óvalo la Perla",
+              "Bomberos",
+              "Haya de la Torre",
+              "Base Naval",
+              "Los Insurgentes",
+              "Canamelares",
+              "Honda",
+              "Rafael Escardo",
+              "P. de las Leyendas",
+              "Universitaria",
+              "Bartolomé Herrera",
+              "Sucre",
+              "Hospital Militar",
+              "Gregorio Escobedo",
+              "Salaverry",
+              "Javier Prado",
+              "Las Flores",
+              "Los Cedros",
+              "Las Palmeras",
+              "Arenales",
+              "Petit Thouars",
+              "Parodi",
+              "Orquídeas",
+              "Masías",
+              "Clínica Ricardo Palma",
+              "Guardia Civil",
+              "Aviación",
+              "San Luis",
+              "Rosa Toro",
+              "Circunvalación",
+              "Jockey",
+              "U. de Lima",
+              "Camacho",
+              "Los Frutales",
+              "La Molina",
+              "Ingenieros",
+              "Flora Tristán",
+              "Óvalo Huarochirí",
+              "Monumental",
+              "París",
+              "Vista Alegre",
+              "Holanda",
+              "Berlín",
+              "Ceres",
+              "Ceres",
+              "Berlín",
+              "Holanda",
+              "Vista Alegre",
+              "París",
+              "Monumental",
+              "Ovalo Huarochirí",
+              "Flora Tristán",
+              "Ingenieros",
+              "La Molina",
+              "Frutales",
+              "Camacho",
+              "Clínica",
+              "La Floresta",
+              "Evitamiento",
+              "Circunvalación",
+              "J. Borja",
+              "Rosa Toro",
+              "San Luis",
+              "Aviación",
+              "Guardia Civil",
+              "Quiñones",
+              "Masías",
+              "Orquídeas",
+              "Petit Thouars",
+              "Arenales",
+              "Las Palmeras",
+              "Los Nogales",
+              "Pershing",
+              "Salaverry",
+              "Gregorio Escobedo",
+              "Hospital Militar",
+              "Sucre",
+              "Bartolomé Herrera",
+              "Universitaria",
+              "Plaza San Miguel",
+              "P. de las Leyendas",
+              "Rafael Escardo",
+              "Faucett",
+              "José Marti",
+              "Los Insurgentes",
+              "Haya de la Torre",
+              "Lopez Albujar",
+              "Bomberos",
+              "Óvalo la Perla",
+              "Venezuela"
+            ]
+          }
+        ]
       },
       "204": {
         "url": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
@@ -2202,7 +2914,144 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Huertos",
+              "Grifo",
+              "Ca. 62",
+              "Tres Marias",
+              "Ca. 39",
+              "Union",
+              "Naranjos",
+              "Uno",
+              "San Cristobal",
+              "Ecoparque",
+              "Ca. 10",
+              "Ca. 15",
+              "Enrique Palacios",
+              "Ovalo San Juan Bautista",
+              "Ensenada",
+              "San Juan Bautista",
+              "Paradero 1",
+              "Víctor Malásquez",
+              "Las Dunas",
+              "Sauces",
+              "Madreselvas",
+              "Naplo",
+              "La Punta",
+              "Mónaco",
+              "El Sol",
+              "Rinconada del Lago",
+              "Laguna Grande",
+              "A. Quesada",
+              "Molicentro",
+              "Bello Horizonte",
+              "Centenario",
+              "Huarochirí",
+              "Flora Tristán",
+              "Ingenieros",
+              "La Molina",
+              "Camacho",
+              "Clínica",
+              "Floresta",
+              "Evitamiento",
+              "Circunvalación",
+              "J. Borja",
+              "Rosa Toro",
+              "San Luis",
+              "Aviación",
+              "Guardia Civil",
+              "Quiñones",
+              "Masías",
+              "Orquídeas",
+              "Petit Thouars",
+              "Arenales",
+              "Las Palmeras",
+              "Los Nogales",
+              "Pershing",
+              "Embajada",
+              "Aliaga",
+              "Gonzales Prada",
+              "Brasil",
+              "Junin",
+              "Sucre",
+              "Bartolomé Herrera",
+              "Universitaria",
+              "Plaza San Miguel",
+              "Parque de las Leyendas",
+              "Rafael Escardó",
+              "Contisuyo",
+              "La Marina",
+              "Rafael Escardó",
+              "Parque de las Leyendas",
+              "Universitaria",
+              "Bartolomé Herrera",
+              "Sucre",
+              "Larco",
+              "Gonzales Prada",
+              "Aliaga",
+              "Embajada",
+              "Las Flores",
+              "Los Cedros",
+              "Palmera (Los Sauces)",
+              "Arenales",
+              "Petit Thouars",
+              "Parodi",
+              "Orquídeas",
+              "Masías",
+              "Clínica Ricardo Palma",
+              "Guardia Civil",
+              "Aviación",
+              "San Luís",
+              "Rosa Toro",
+              "Circunvalación",
+              "Jockey",
+              "U. de Lima",
+              "Camacho",
+              "Los Frutales",
+              "La Molina",
+              "Los Ingenieros",
+              "Flora Tristán",
+              "Asunción",
+              "Aruba",
+              "Bello Horizonte",
+              "Molicentro",
+              "Parque",
+              "Laguna Grande",
+              "Rinconada del Lago",
+              "El Sol",
+              "Miami",
+              "La Punta",
+              "Naplo",
+              "Madreselva",
+              "Sauces",
+              "Las Dunas",
+              "Víctor Malásquez",
+              "Paradero 1",
+              "San Juan Bautista",
+              "San Juan Bautista 2",
+              "Ovalo San Juan Bautista",
+              "Enrique Palacios",
+              "Ca. 15",
+              "Ca. 08",
+              "Los Ficus",
+              "San Cristobal",
+              "Uno",
+              "Naranjos",
+              "Union",
+              "Ca.39",
+              "Tres Marias",
+              "Ca. 63",
+              "Grifo",
+              "Huertos"
+            ]
+          }
+        ]
       },
       "206": {
         "url": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
@@ -2310,7 +3159,105 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "San Marcos",
+              "Católica",
+              "La Mar",
+              "La Marina",
+              "Bartolomé Herrera",
+              "Sucre",
+              "Hospital Militar",
+              "Gregorio Escobedo",
+              "Salaverry",
+              "Javier Prado",
+              "Las Flores",
+              "Los Cedros",
+              "Palmeras",
+              "Arenales",
+              "Petit Thouars",
+              "Parodi",
+              "Orquídeas",
+              "Masías",
+              "Clínica Ricardo Palma",
+              "Guardia Civil",
+              "Aviación",
+              "San Luis",
+              "Rosa Toro",
+              "Circunvalación",
+              "Jockey",
+              "U. de Lima",
+              "Camacho",
+              "Los Frutales",
+              "La Molina",
+              "Ministerio",
+              "Escuela PNP",
+              "Los Sauces",
+              "Secoyas",
+              "Cordillera Blanca",
+              "El Monte",
+              "Derecho",
+              "El Prado",
+              "Paseo de Aguas",
+              "Castilla",
+              "Vascongadas",
+              "Chan Chan",
+              "Corregidor",
+              "Río Magdalena",
+              "Cisne",
+              "Lugo",
+              "Las Palmas",
+              "Calle 2",
+              "Río Amarillo",
+              "Santa María",
+              "Chan Chan",
+              "Vascongadas",
+              "Castilla",
+              "Paseo de Aguas",
+              "El Bosque",
+              "Derecho",
+              "Medicina",
+              "Los Bambúes",
+              "Los Sauces",
+              "CIAM",
+              "Ministerio",
+              "La Molina",
+              "Frutales",
+              "Camacho",
+              "Clínica",
+              "La Floresta",
+              "Evitamiento",
+              "Circunvalación",
+              "J. Borja",
+              "Rosa Toro",
+              "San Luis",
+              "Aviación",
+              "Guardia Civil",
+              "Quiñones",
+              "Masías",
+              "Orquídeas",
+              "Petit Thouars",
+              "Arenales",
+              "Las Palmeras",
+              "Los Nogales",
+              "Pershing",
+              "Salaverry",
+              "Gregorio Escobedo",
+              "Hospital Militar",
+              "Sucre",
+              "Bartolomé Herrera",
+              "Universitaria",
+              "La Mar",
+              "Católica",
+              "San Marcos"
+            ]
+          }
+        ]
       },
       "209": {
         "url": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
@@ -2418,7 +3365,103 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "San Marcos",
+              "Católica",
+              "La Mar",
+              "La Marina & Universitaria",
+              "Bartolomé Herrera",
+              "Sucre",
+              "Hospital Militar",
+              "Gregorio Escobedo",
+              "Salaverry",
+              "Javier Prado",
+              "Las Flores",
+              "Los Cedros",
+              "La Palmeras",
+              "Arenales",
+              "Petit Thouars",
+              "Parodi",
+              "Orquídeas",
+              "Masías",
+              "Clínica Ricardo Palma",
+              "Guardia Civil",
+              "Aviación",
+              "San Luis",
+              "Rosa Toro",
+              "Circunvalación",
+              "Jockey",
+              "Universidad de Lima",
+              "Camacho",
+              "Los Frutales",
+              "La Molina",
+              "La Molina (Metro)",
+              "La Molina & Const.",
+              "Industriales",
+              "Ingenieros",
+              "Flora Tristán & Const.",
+              "Huarochirí",
+              "Separadora Industrial",
+              "Mayorazgo",
+              "Backus",
+              "Josfel",
+              "Puruchuco",
+              "Pista Nueva",
+              "Soldadura",
+              "Los Angeles",
+              "Ceres",
+              "Tagore",
+              "Tagore",
+              "Los Angeles",
+              "Soldadura",
+              "Pista Nueva",
+              "Josfel",
+              "Backus",
+              "Mayorazgo",
+              "Huarochirí",
+              "Constructores",
+              "Flora Tristán & Const.",
+              "Ingenieros & Const.",
+              "Industriales",
+              "La Molina & Const.",
+              "La Molina",
+              "Los Frutales",
+              "Camacho",
+              "Clínica",
+              "La Floresta",
+              "Evitamiento",
+              "Circunvalación",
+              "J. Borja",
+              "Rosa Toro",
+              "San Luis",
+              "Aviación",
+              "Guardia Civil",
+              "Quiñones",
+              "Masías",
+              "Orquídeas",
+              "Petit Thouars",
+              "Arenales",
+              "Las Palmeras",
+              "Los Nogales",
+              "Pershing",
+              "Salaverry",
+              "Gregorio Escobedo",
+              "Hospital Militar",
+              "Sucre",
+              "Bartolomé Herrera",
+              "Universitaria",
+              "La Mar",
+              "Católica",
+              "San Marcos"
+            ]
+          }
+        ]
       },
       "404": {
         "url": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
@@ -2526,7 +3569,104 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Capilla",
+              "Montenegro",
+              "Motupe",
+              "8 de Mariscal",
+              "Mariátegui",
+              "La Cinco",
+              "La Cuatro",
+              "Bayóvar",
+              "La Quince",
+              "San Martín",
+              "La Ocho",
+              "Sedapal",
+              "San Carlos",
+              "Basadre",
+              "Los Postes",
+              "La Hacienda",
+              "Celima",
+              "Pirámides del Sol",
+              "Encimas",
+              "Túpac Amaru",
+              "Lima (Las Flores)",
+              "Concejo",
+              "Mercado de Flores",
+              "Acho",
+              "Áncash",
+              "Ucayali",
+              "Cuzco",
+              "Nicolás de Piérola",
+              "Grau",
+              "Cotabambas",
+              "Garcilaso",
+              "Bolognesi",
+              "Don Bosco",
+              "Hospital del Niño",
+              "La Nueve",
+              "La Doce",
+              "Bolivar",
+              "La Dieciocho",
+              "Óvalo",
+              "Colegio",
+              "Hospital PNP",
+              "Javier Prado",
+              "Venus",
+              "La Virgen",
+              "Venus",
+              "Javier Prado",
+              "Hospital PNP",
+              "Colegio",
+              "Óvalo",
+              "La Dieciocho",
+              "Bolivar",
+              "La Doce",
+              "La Nueve",
+              "Hospital del Niño",
+              "Plaza Bolognesi",
+              "Chota",
+              "Garcilaso",
+              "José Gálvez",
+              "Montevideo",
+              "Nicolás de Piérola",
+              "Cuzco",
+              "Santa Rosa",
+              "Huallaga",
+              "Acho",
+              "Mercado de Flores",
+              "Concejo",
+              "Túpac Amaru",
+              "Encinas",
+              "Pirámides del Sol",
+              "Ascarruz",
+              "Celima",
+              "La Hacienda",
+              "Los Postes",
+              "Basadre",
+              "San Carlos",
+              "Sedapal",
+              "La Ocho",
+              "San Martín",
+              "Santa Rosa",
+              "La Quince",
+              "Bayóvar",
+              "La Cuatro",
+              "La Cinco",
+              "Mariátegui",
+              "8 de Mariscal",
+              "Motupe",
+              "Montenegro",
+              "La Capilla"
+            ]
+          }
+        ]
       },
       "405": {
         "url": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
@@ -2634,7 +3774,97 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Capilla",
+              "Montenegro",
+              "Motupe",
+              "8 de Mariscal",
+              "Mariátegui",
+              "La Cinco",
+              "La Cuatro",
+              "Seoane",
+              "Bayóvar DC",
+              "La Quince",
+              "Santa Rosa",
+              "San Martín",
+              "La Ocho",
+              "Sedapal",
+              "San Carlos",
+              "Basadre",
+              "Los Postes",
+              "La Hacienda",
+              "Celima",
+              "Pirámides del Sol",
+              "Encinas",
+              "Túpac Amaru",
+              "Lima (Las Flores)",
+              "Concejo",
+              "Mercado de Flores",
+              "Acho",
+              "Áncash",
+              "Ucayali",
+              "Cuzco",
+              "Nicolás de Piérola",
+              "Grau",
+              "28 de Julio",
+              "Unanue",
+              "Católica",
+              "México",
+              "Pardo de Zela",
+              "Tomás Guido",
+              "Javier Prado",
+              "Canaval y Moreyra",
+              "Canaval y Moreyra",
+              "Javier Prado",
+              "Torre Ugarte",
+              "Risso",
+              "Candamo",
+              "Segura",
+              "Estación México",
+              "México",
+              "Católica",
+              "Unanue",
+              "Bauzate y Meza",
+              "Grau",
+              "N. Piérola",
+              "Cuzco",
+              "Santa Rosa",
+              "Huallaga",
+              "Acho",
+              "Mdo. de Flores",
+              "Consejo",
+              "Túpac Amaru",
+              "Encinas",
+              "Pirámides del Sol",
+              "Ascarruz",
+              "Celima",
+              "La Hacienda",
+              "Los Postes",
+              "Basadre",
+              "San Carlos",
+              "Sedapal",
+              "La Ocho",
+              "San Martín",
+              "Santa Rosa",
+              "La Quince",
+              "Bayóvar",
+              "Seoane",
+              "La Cuatro",
+              "La Cinco",
+              "Mariátegui",
+              "8 de Mariscal",
+              "Motupe",
+              "Montenegro",
+              "La Capilla"
+            ]
+          }
+        ]
       },
       "406": {
         "url": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
@@ -2742,7 +3972,112 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Capilla",
+              "Montenegro",
+              "Central",
+              "La Posta",
+              "Santa Maria",
+              "Calle 3",
+              "8 de Mariscal",
+              "7 de Mariscal",
+              "Del Cruce Este",
+              "Augusto B. Leguía",
+              "5 de Mariscal",
+              "Ciro Alegría",
+              "Carcamo",
+              "Recabarren",
+              "Mercado H. del Cenepa",
+              "Estacion",
+              "Bayovar",
+              "La Quince",
+              "Santa Rosa",
+              "San Martín",
+              "La Ocho",
+              "Del Parque",
+              "Sedapal",
+              "Los Ciruelos",
+              "San Carlos",
+              "Basadre",
+              "San Hilarion",
+              "Los Postes",
+              "Las Sabilas",
+              "La Doce",
+              "La Hacienda",
+              "Britanico",
+              "Parque Zonal",
+              "Celima",
+              "Pirámide del Sol",
+              "Encinas",
+              "Túpac Amaru",
+              "Lima",
+              "Concejo",
+              "Mercado de Flores",
+              "Acho",
+              "Ancash",
+              "Ucayali",
+              "Cusco",
+              "Nicolás de Piérola",
+              "Grau",
+              "Cotabambas",
+              "Garcilaso",
+              "España",
+              "Washington",
+              "Bolivia",
+              "Paseo de Los Héroes Navales",
+              "José Galvez",
+              "Montevideo",
+              "Nicolás de Piérola",
+              "Santa Rosa",
+              "Acho",
+              "Mercado de Flores",
+              "Concejo",
+              "Túpac Amaru",
+              "Encinas",
+              "Pirámide del Sol",
+              "Ascarruz",
+              "Celima",
+              "Parque Zonal",
+              "Britanico",
+              "La Hacienda",
+              "La Doce",
+              "Las Amatitas",
+              "Los Postes",
+              "San Hilarion",
+              "Basadre",
+              "San Carlos",
+              "Los Ciruelos",
+              "Sedapal",
+              "Del Parque",
+              "La Ocho",
+              "San Martín",
+              "Santa Rosa",
+              "La Quince",
+              "Bayovar",
+              "Heroes del Cenepa",
+              "Pozo Seco",
+              "Carcamo",
+              "Ciro Alegria",
+              "5 de Mariscal",
+              "Augusto B. Leguia",
+              "Del Cruce Este",
+              "7 de Mariscal",
+              "8 de Mariscal",
+              "Calle 15",
+              "Santa Maria",
+              "La Posta",
+              "Central",
+              "Montenegro",
+              "La Capilla"
+            ]
+          }
+        ]
       },
       "412": {
         "url": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
@@ -2850,7 +4185,75 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Capilla",
+              "Montenegro",
+              "Motupe",
+              "8 de Mariscal",
+              "Mariátegui",
+              "La Cinco",
+              "La Cuatro",
+              "Bayóvar",
+              "La Quince",
+              "Santa Rosa",
+              "San Martín",
+              "La Ocho",
+              "Canto Rey",
+              "San Carlos",
+              "Basadre",
+              "Los Postes",
+              "La Doce",
+              "La Hacienda DC",
+              "Celima",
+              "Pirámide del Sol",
+              "Encinas",
+              "Túpac Amaru",
+              "Lima Aux. (Las Flores)",
+              "Comisaría",
+              "La Losa",
+              "Túnel",
+              "Alcázar",
+              "Pizarro",
+              "Ica",
+              "Nicolas de Pierola",
+              "Moquegua",
+              "Ica",
+              "Pizarro",
+              "Alcázar",
+              "La 15 de Caja de Agua",
+              "Talara",
+              "Proceres",
+              "Tupac Amaru",
+              "Encinas",
+              "Pirámide del Sol",
+              "Celima",
+              "La Hacienda",
+              "La Doce",
+              "Los Postes",
+              "Basadre",
+              "San Carlos",
+              "Canto Rey",
+              "La Ocho",
+              "San Martín",
+              "Santa Rosa",
+              "La Quince",
+              "Bayóvar",
+              "La Cuatro",
+              "La Cinco",
+              "Mariátegui",
+              "8 de Mariscal",
+              "Motupe",
+              "Montenegro",
+              "La Capilla"
+            ]
+          }
+        ]
       },
       "SE-09": {
         "url": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
@@ -2958,7 +4361,2905 @@
           }
         ],
         "notas": [],
-        "frecuencia_publicada_min": null
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Capilla",
+              "Motupe",
+              "Mariátegui",
+              "La Cinco",
+              "Lubricantes",
+              "Farmacia Leo",
+              "Bayóvar",
+              "La Ocho",
+              "San Carlos",
+              "Basadre",
+              "Los Postes",
+              "La Hacienda",
+              "Celima",
+              "Piràmide del Sol",
+              "Lima",
+              "Concejo",
+              "Mercado las Flores",
+              "Acho",
+              "Àncash",
+              "CUcayali",
+              "Cusco",
+              "Nicolàs de Pierola",
+              "Grau",
+              "28 de Julio",
+              "Unanue",
+              "Catòlica",
+              "Mèxico",
+              "Pardo de Zela",
+              "Tomàs Guido",
+              "Javier Prado",
+              "Canaval y Moreyra",
+              "Canaval y Moreyra",
+              "Javier Prado",
+              "Torre Ugarte",
+              "Risso",
+              "Candamo",
+              "Segura",
+              "Estación México",
+              "Soyuz",
+              "Católica",
+              "Unánue",
+              "Bausate y Meza",
+              "Grau",
+              "Nicolás de Piérola",
+              "Cusco",
+              "Santa Rosa",
+              "Huallaga",
+              "Acho",
+              "Mercado de Flores",
+              "Concejo",
+              "Pirámides del Sol",
+              "Celima",
+              "La Hacienda",
+              "Los Postes",
+              "Basadre",
+              "San Carlos",
+              "La Ocho",
+              "Santa Rosa",
+              "Bayóvar",
+              "Farmacia Leo",
+              "Lubricantes",
+              "La Cinco",
+              "Mariátegui",
+              "Motupe",
+              "La Capilla"
+            ]
+          }
+        ]
+      }
+    },
+    "alimentador": {
+      "San Juan de Dios": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Chimpu Ocllo a Polos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+            "metodo": "html",
+            "texto_fuente": "San Juan de Dios\nTerminal Chimpu Ocllo a Polos\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m.\nPolos a Terminal Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Polos a Terminal Chimpu Ocllo",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+            "metodo": "html",
+            "texto_fuente": "San Juan de Dios\nTerminal Chimpu Ocllo a Polos\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m.\nPolos a Terminal Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Terminal Chimpu Ocllo",
+              "Chimpu Ocllo",
+              "Mercado Frontera",
+              "Chany",
+              "Paradero 39",
+              "Paradero Q",
+              "Paradero U",
+              "Calle 5",
+              "Salamanca",
+              "Edén",
+              "Rinconada",
+              "Esmeralda",
+              "Santa Rosa",
+              "San Pedro",
+              "Cooperativa",
+              "El Pino",
+              "San Antonio",
+              "Lark",
+              "Haras",
+              "Condominio Real",
+              "Casuarinas",
+              "Maestro",
+              "Polos (Final)",
+              "Polos (Inicial)",
+              "Maestro",
+              "Casuarinas",
+              "Condominio Real",
+              "Haras",
+              "Lark",
+              "San Antonio",
+              "El Pino",
+              "Cooperativa",
+              "San Pedro",
+              "Santa Rosa",
+              "Esmeralda",
+              "Rinconada",
+              "Edén",
+              "Salamanca",
+              "Calle 5",
+              "Paradero U",
+              "Paradero Q",
+              "Paradero 39",
+              "Chany",
+              "Mercado Frontera",
+              "Chimpu Ocllo",
+              "Terminal Chimpu Ocllo"
+            ]
+          }
+        ]
+      },
+      "Universitaria": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Chimpu Ocllo a paradero Periurbana",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+            "metodo": "html",
+            "texto_fuente": "Horario Universitaria\nTerminal Chimpu Ocllo a paradero Periurbana\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero Periurbana a Terminal Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Paradero Periurbana a Terminal Chimpu Ocllo",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+            "metodo": "html",
+            "texto_fuente": "Horario Universitaria\nTerminal Chimpu Ocllo a paradero Periurbana\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero Periurbana a Terminal Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Chimpu Ocllo",
+              "Paucartambo",
+              "Valle Chillón",
+              "Club Deportivo",
+              "Camino Real",
+              "Las Lomas",
+              "Manuel Prado",
+              "Billinghurts",
+              "Pacayal",
+              "Calle 2",
+              "Calle 1",
+              "Periurbana (final)",
+              "Periurbana (inicial)",
+              "Calle 5",
+              "Pacayal",
+              "Calle 2",
+              "Manuel Prado",
+              "Santa Cruz",
+              "Camino Real",
+              "Manco Cápac",
+              "Terminal",
+              "Paucartambo",
+              "Chimpu Ocllo"
+            ]
+          }
+        ]
+      },
+      "Carabayllo": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Chimpu Ocllo a paradero Tokio",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+            "metodo": "html",
+            "texto_fuente": "Horario Carabayllo\nChimpu Ocllo a paradero Tokio\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero Tokio a Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Paradero Tokio a Chimpu Ocllo",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+            "metodo": "html",
+            "texto_fuente": "Horario Carabayllo\nChimpu Ocllo a paradero Tokio\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero Tokio a Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [
+          "La URL y el menú no coinciden con el terminal escrito en el horario: la ficha dice Chimpu Ocllo. Se conserva el texto, no se cambia por Los Incas/Belaunde."
+        ],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Terminal Chimpu Ocllo",
+              "Chimpu Ocllo",
+              "La Flor",
+              "Caudivilla",
+              "Manco Cápac",
+              "José Pardo",
+              "Villa Esperanza",
+              "Ciro Alegría",
+              "La Cumbre",
+              "Augusto B. Leguía",
+              "Plaza El Progreso",
+              "Lenin",
+              "Santos Chocano",
+              "Tokio",
+              "Tokio",
+              "Jorge Chávez",
+              "Lenin",
+              "Plaza El Progreso",
+              "Túpac Amaru",
+              "Augusto B. Leguía",
+              "La Cumbre",
+              "Ciro Alegría",
+              "Cedros",
+              "Villa Esperanza",
+              "José Pardo",
+              "Manco Cápac",
+              "Caudivilla",
+              "La Flor",
+              "Chimpu Ocllo",
+              "Terminal Chimpu Ocllo"
+            ]
+          }
+        ]
+      },
+      "Collique": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Los Incas a paradero Río Seco",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+            "metodo": "html",
+            "texto_fuente": "Horario Collique\nEstación Los Incas a paradero Río Seco\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero Río Seco a Estación Los Incas\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Paradero Río Seco a Estación Los Incas",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+            "metodo": "html",
+            "texto_fuente": "Horario Collique\nEstación Los Incas a paradero Río Seco\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero Río Seco a Estación Los Incas\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Universitaria (inicial)",
+              "Fe y Alegría",
+              "Sánchez Cerro",
+              "Julio C. Tello",
+              "Cerro de Pasco",
+              "Ramón Castilla",
+              "Andahuaylas",
+              "Piura",
+              "Francisco de Zela",
+              "Río Seco (final)",
+              "Río Seco (inicial)",
+              "Francisco de Zela",
+              "Piura",
+              "Alcides Carrión",
+              "Ramón Castilla",
+              "Arica",
+              "Julio C. Tello",
+              "Sánchez Cerro",
+              "Fe y Alegría",
+              "Universitaria (final)"
+            ]
+          }
+        ]
+      },
+      "Torre Blanca": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Chimpu Ocllo a Torre Blanca",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+            "metodo": "html",
+            "texto_fuente": "Horario de Atención\nChimpu Ocllo a Torre Blanca\nLunes a sábado:\n05:45 a. m. - 12:00 a. m.\nDomingo:\n05:45 a. m. - 11:00 p. m.\nTorre Blanca a Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Torre Blanca a Chimpu Ocllo",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+            "metodo": "html",
+            "texto_fuente": "Horario de Atención\nChimpu Ocllo a Torre Blanca\nLunes a sábado:\n05:45 a. m. - 12:00 a. m.\nDomingo:\n05:45 a. m. - 11:00 p. m.\nTorre Blanca a Chimpu Ocllo\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Terminal Chimpu Ocllo",
+              "Machuca",
+              "21",
+              "Huascarán",
+              "Vega",
+              "San Antonio",
+              "Pisa",
+              "Mercado",
+              "El Carmen",
+              "Avenida 3",
+              "Torre Blanca",
+              "Torre Blanca",
+              "Avenida 3",
+              "El Carmen",
+              "Mercado",
+              "Pisa",
+              "San Antonio",
+              "Vega",
+              "Progreso",
+              "21",
+              "Machuca",
+              "Terminal Chimpu Ocllo"
+            ]
+          }
+        ]
+      },
+      "Antúnez de Mayolo": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Nísperos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+            "metodo": "html",
+            "texto_fuente": "Horario Antúnez de Mayolo\nTerminal Naranjal a Nísperos\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nNísperos a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Nísperos a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+            "metodo": "html",
+            "texto_fuente": "Horario Antúnez de Mayolo\nTerminal Naranjal a Nísperos\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nNísperos a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Galeano",
+              "Las Palmeras",
+              "Amarantos",
+              "Telefónica",
+              "Plaza Vea",
+              "Mercado Covida",
+              "Telefónica",
+              "Universitaria",
+              "San Francisco",
+              "12 de Octubre",
+              "Puente Camote",
+              "Alcides Vigo",
+              "Coopip",
+              "Nísperos (Final)",
+              "Nísperos (Inicial)",
+              "Coopip",
+              "Santa Rosa",
+              "Puente Camote",
+              "12 de Octubre",
+              "San Francisco",
+              "Río Santa",
+              "Telefónica",
+              "Mercado Covida",
+              "Plaza Vea",
+              "Acacias",
+              "Amarantos",
+              "Las Palmeras",
+              "Galeano"
+            ]
+          }
+        ]
+      },
+      "Belaunde": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Paradero final al Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+            "metodo": "html",
+            "texto_fuente": "Horario Belaunde\nParadero final al Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\nTerminal Naranjal al Paradero final\nLunes a Sábado:\n05:30 a. m. - 12:00 p. m.\nDomingo:\n05:30 a. m. - 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Terminal Naranjal al Paradero final",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "12:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+            "metodo": "html",
+            "texto_fuente": "Horario Belaunde\nParadero final al Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\nTerminal Naranjal al Paradero final\nLunes a Sábado:\n05:30 a. m. - 12:00 p. m.\nDomingo:\n05:30 a. m. - 11:00 p. m."
+          }
+        ],
+        "notas": [
+          "La ficha publica 12:00 p. m. (mediodía), no 12:00 a. m., para el cierre desde Naranjal de lunes a sábado. Se conserva literalmente; pendiente de aclaración por ATU."
+        ],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Merced",
+              "Politécnico",
+              "Correo",
+              "Colegio Israel",
+              "Banco de La Nación",
+              "Cipreses",
+              "San Martín",
+              "1 de Mayo",
+              "Larco Herrera",
+              "San Pablo",
+              "Huáscar",
+              "3 de Octubre (Final)",
+              "3 de Octubre (Inicial)",
+              "Talara",
+              "Carabayllo",
+              "San Pablo",
+              "Larco Herrera",
+              "1 de Mayo",
+              "San Martín",
+              "Cipreses",
+              "Belaunde",
+              "Banco de la Nación",
+              "Puno",
+              "Correo",
+              "Politécnico",
+              "La Merced"
+            ]
+          }
+        ]
+      },
+      "Bertello": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Los Pinos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+            "metodo": "html",
+            "texto_fuente": "Horario Bertello\nTerminal Naranjal a Los Pinos\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nLos Pinos a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Los Pinos a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+            "metodo": "html",
+            "texto_fuente": "Horario Bertello\nTerminal Naranjal a Los Pinos\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nLos Pinos a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Unger",
+              "Hospital Los Olivos",
+              "Marcará",
+              "Las Palmeras",
+              "Universitaria",
+              "Huandoy",
+              "Portales de Naranjal",
+              "Santo Domingo",
+              "Jardines de Naranjal",
+              "Los Alisos",
+              "Los Olivos",
+              "Izaguirre",
+              "Dominicos",
+              "Pacasmayo",
+              "Bertello",
+              "Los Pinos (Final)",
+              "Los Pinos (Inicial)",
+              "Bertello",
+              "Pacasmayo",
+              "Dominicos",
+              "Izaguirre",
+              "Los Olivos",
+              "Los Alisos",
+              "Jardines de Naranjal",
+              "Santo Domingo",
+              "Portales de Naranjal",
+              "Huandoy",
+              "Universitaria",
+              "Las Palmeras",
+              "Marcará",
+              "Hospital Los Olivos",
+              "Unger"
+            ]
+          }
+        ]
+      },
+      "Izaguirre": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Santa Rosa",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+            "metodo": "html",
+            "texto_fuente": "Horario Izaguirre\nTerminal Naranjal a Santa Rosa\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nSanta Rosa a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Santa Rosa a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+            "metodo": "html",
+            "texto_fuente": "Horario Izaguirre\nTerminal Naranjal a Santa Rosa\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nSanta Rosa a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Daniel Fernández",
+              "Santos Chocano",
+              "Las Palmeras",
+              "El Amargón",
+              "Estibina",
+              "San Francisco",
+              "12 de Octubre",
+              "Santa Rosa (Final)",
+              "Santa Rosa (Inicial)",
+              "12 de Octubre",
+              "San Francisco",
+              "Universitaria",
+              "Estibila",
+              "Conococha",
+              "Mayolo",
+              "Santos Chocano",
+              "Ignacio Merino",
+              "Plaza Vea",
+              "Túpac Amaru"
+            ]
+          }
+        ]
+      },
+      "Ensenada": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Calle 5",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "08:15"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+            "metodo": "html",
+            "texto_fuente": "Horario La Ensenada Regular\nTerminal Naranjal a Calle 5\nLunes a sábado:\n05:45 a. m. - 08:15 a. m.\n05:00 p. m. - 09:00 p. m.\nCalle 5 a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 09:00 a. m.\n06:00 p. m. - 09:30 p. m."
+          },
+          {
+            "sentido_publicado": "Calle 5 a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+            "metodo": "html",
+            "texto_fuente": "Horario La Ensenada Regular\nTerminal Naranjal a Calle 5\nLunes a sábado:\n05:45 a. m. - 08:15 a. m.\n05:00 p. m. - 09:00 p. m.\nCalle 5 a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 09:00 a. m.\n06:00 p. m. - 09:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Hospital Los Olivos",
+              "Tres Postes",
+              "Universitaria",
+              "Santa Elvira",
+              "Huandoy",
+              "San Martín",
+              "Los Rosales",
+              "2 de Octubre",
+              "Los Portales",
+              "Coordialidad",
+              "Honradez",
+              "Calle 27",
+              "Parque Los Portales",
+              "Alborada",
+              "Rosedal",
+              "Comisaría",
+              "Palmeras",
+              "Conquistadores",
+              "Ca 5 (Final)",
+              "Ca 5 (Inicial)",
+              "23 de Agosto",
+              "Botica",
+              "El Rosedal",
+              "Las Granadas",
+              "Alborada",
+              "Parque Los Portales",
+              "Calle 2",
+              "Honradez",
+              "Los Próceres",
+              "Los Portales",
+              "2 de Octubre",
+              "Los Rosales",
+              "San Martín",
+              "Central",
+              "Santa Elvira",
+              "Universitaria",
+              "Tres Postes",
+              "Marañón",
+              "Hospital Los Olivos"
+            ]
+          }
+        ]
+      },
+      "Alisos": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Avenida C",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+            "metodo": "html",
+            "texto_fuente": "Horario Los Alisos\nTerminal Naranjal a Avenida C\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nAvenida C a Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Avenida C a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+            "metodo": "html",
+            "texto_fuente": "Horario Los Alisos\nTerminal Naranjal a Avenida C\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nAvenida C a Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Maracuyá",
+              "Galeano",
+              "Las Palmeras",
+              "El Naranjal",
+              "Universitaria",
+              "Girasoles",
+              "Huandoy",
+              "Las Malvas",
+              "Avenida C (Final)",
+              "Avenida C (Inicial)",
+              "El Rosario",
+              "Huandoy",
+              "Avenida A",
+              "Universitaria",
+              "El Naranjal",
+              "Las Palmeras",
+              "Galeano",
+              "Maracuyá"
+            ]
+          }
+        ]
+      },
+      "Los Olivos": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Calle 2",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+            "metodo": "html",
+            "texto_fuente": "Horario Los Olivos\nTerminal Naranjal a Calle 2\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nCanta a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Canta a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+            "metodo": "html",
+            "texto_fuente": "Horario Los Olivos\nTerminal Naranjal a Calle 2\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nCanta a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Jade",
+              "Calle 9",
+              "Calle 3",
+              "Avenida B",
+              "Santa Rosa",
+              "Calle 2",
+              "Canta",
+              "Santa Rosa",
+              "Avenida B",
+              "Kodak",
+              "Calle 9",
+              "Jade"
+            ]
+          }
+        ]
+      },
+      "Milagro de Jesús": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Paradero final al Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+            "metodo": "html",
+            "texto_fuente": "Horario Milagros de Jesús Regular\nParadero final al Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\nTerminal Naranjal al Paradero final\nLunes a Sábado:\n05:45 a. m. - 12:00 p. m.\nDomingo:\n05:45 a. m. - 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Terminal Naranjal al Paradero final",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "12:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+            "metodo": "html",
+            "texto_fuente": "Horario Milagros de Jesús Regular\nParadero final al Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\nTerminal Naranjal al Paradero final\nLunes a Sábado:\n05:45 a. m. - 12:00 p. m.\nDomingo:\n05:45 a. m. - 11:00 p. m."
+          }
+        ],
+        "notas": [
+          "La ficha publica 12:00 p. m. (mediodía), no 12:00 a. m., para el cierre desde Naranjal de lunes a sábado. Se conserva literalmente; pendiente de aclaración por ATU."
+        ],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Politécnico",
+              "Cueto Fernandini",
+              "Santa Rosa",
+              "Banco de la Nación",
+              "Belaunde",
+              "Mercado Chacra Cerro",
+              "La Pascana",
+              "Cáceres (Jamaica)",
+              "Miguel Grau",
+              "Francisco Bolognesi",
+              "Fe y Alegría",
+              "José Olaya",
+              "Sánchez Cerro",
+              "Huascarán",
+              "Julio C. Tello",
+              "Cañete",
+              "Santa Rosa",
+              "San Pedro (Final)",
+              "San Pedro (Inicial)",
+              "San Miguel",
+              "Santa Clara",
+              "Arnaldo Márquez",
+              "Revolución",
+              "La Mar",
+              "Sánchez Cerro",
+              "Jorge Chávez",
+              "Fe y Alegría",
+              "Grifo Año Nuevo",
+              "Miguel Grau (Velasco)",
+              "Jamaica",
+              "La Pascana",
+              "Mercado Chacra Cerro",
+              "Banco de la Nación",
+              "Reniec",
+              "Mega 80",
+              "Politécnico"
+            ]
+          }
+        ]
+      },
+      "Naranjal": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Paramonga",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+            "metodo": "html",
+            "texto_fuente": "Horario Naranjal\nTerminal Naranjal a Paramonga\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m.\nParamonga a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Paramonga a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+            "metodo": "html",
+            "texto_fuente": "Horario Naranjal\nTerminal Naranjal a Paramonga\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m.\nParamonga a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 12:00 a. m.\nDomingo:\n05:00 a. m. - 11:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Terminal Naranjal",
+              "Marcara",
+              "Las Palmeras",
+              "Universitaria",
+              "Huandoy",
+              "Portales de Naranjal",
+              "Jircan",
+              "Las Américas",
+              "Pacasmayo",
+              "Central",
+              "Paramonga (Final)",
+              "Paramonga (Inicial)",
+              "Central",
+              "Pacasmayo",
+              "Las Américas",
+              "Jircan",
+              "Portales de Naranjal",
+              "Huandoy",
+              "Universitaria",
+              "Las Palmeras",
+              "Marcara",
+              "Terminal Naranjal"
+            ]
+          }
+        ]
+      },
+      "Payet": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a 4 de Noviembre",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+            "metodo": "html",
+            "texto_fuente": "Horario Payet\nTerminal Naranjal a 4 de Noviembre\nLunes a Sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\n4 de Noviembre a Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "4 de Noviembre a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+            "metodo": "html",
+            "texto_fuente": "Horario Payet\nTerminal Naranjal a 4 de Noviembre\nLunes a Sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\n4 de Noviembre a Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Huáscar",
+              "Calle 3",
+              "Río Sapi",
+              "Antisuyo",
+              "J. G. Condorcanqui",
+              "Posta",
+              "Progreso",
+              "Alca",
+              "Real Felipe",
+              "José Olaya",
+              "Huaytapampa",
+              "Progreso",
+              "Posta",
+              "Calle Marco",
+              "Calle 17",
+              "Huamachuco",
+              "Calle 1",
+              "Túpac Amaru"
+            ]
+          }
+        ]
+      },
+      "Puente Piedra": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Tottus",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+            "metodo": "html",
+            "texto_fuente": "Horario Puente Piedra\nTerminal Naranjal a Tottus\nLunes a sábado:\n06:00 a. m. - 12:00 a. m.\nDomingo:\n05:45 a. m. - 11:00 p. m.\nTottus a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\n(*) PARADEROS DESHABILITADOS TEMPORALMENTE"
+          },
+          {
+            "sentido_publicado": "Tottus a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+            "metodo": "html",
+            "texto_fuente": "Horario Puente Piedra\nTerminal Naranjal a Tottus\nLunes a sábado:\n06:00 a. m. - 12:00 a. m.\nDomingo:\n05:45 a. m. - 11:00 p. m.\nTottus a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\n(*) PARADEROS DESHABILITADOS TEMPORALMENTE"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Yanbal",
+              "Prolima",
+              "Acobamba",
+              "Shangri-la",
+              "Tres Ruedas(domingos) (*)",
+              "Establo",
+              "Famesa",
+              "Rosa Luz",
+              "Cementerio(domingos) (*)",
+              "Tottus",
+              "Tottus",
+              "Cementerio (domingos) (*)",
+              "Rosa Luz",
+              "Famesa",
+              "Establo",
+              "Tres Ruedas (domingos) (*)",
+              "Shangri-la",
+              "Acobamba",
+              "Prolima",
+              "Primera de Pro",
+              "Yanbal"
+            ]
+          }
+        ]
+      },
+      "Puno": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Paradero final al Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+            "metodo": "html",
+            "texto_fuente": "Horario Puno\nParadero final al Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\nTerminal Naranjal al Paradero final\nLunes a Sábado:\n05:30 a. m. - 12:00 p. m.\nDomingo:\n05:30 a. m. - 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Terminal Naranjal al Paradero final",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "12:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+            "metodo": "html",
+            "texto_fuente": "Horario Puno\nParadero final al Terminal Naranjal\nLunes a Sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m.\nTerminal Naranjal al Paradero final\nLunes a Sábado:\n05:30 a. m. - 12:00 p. m.\nDomingo:\n05:30 a. m. - 11:00 p. m."
+          }
+        ],
+        "notas": [
+          "La ficha publica 12:00 p. m. (mediodía), no 12:00 a. m., para el cierre desde Naranjal de lunes a sábado. Se conserva literalmente; pendiente de aclaración por ATU."
+        ],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "La Cincuenta",
+              "La Merced",
+              "Politécnico",
+              "Cueto Fernandini",
+              "Correo",
+              "España",
+              "Edelnor",
+              "Lima",
+              "Piura",
+              "La Habana",
+              "Progreso",
+              "Vallejo (Final)",
+              "Vallejo (Inicial)",
+              "24 de Agosto",
+              "La Habana",
+              "Piura",
+              "Lima",
+              "Túpac Amaru",
+              "España",
+              "Correo",
+              "Mega 80",
+              "Politécnico",
+              "La Merced",
+              "La Cincuenta"
+            ]
+          }
+        ]
+      },
+      "Tahuantinsuyo": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Mascaypacha",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+            "metodo": "html",
+            "texto_fuente": "Horario Tahuantinsuyo\nTerminal Naranjal a Mascaypacha\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nMascaypacha a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Mascaypacha a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+            "metodo": "html",
+            "texto_fuente": "Horario Tahuantinsuyo\nTerminal Naranjal a Mascaypacha\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nMascaypacha a Terminal Naranjal\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Huáscar",
+              "Paracas",
+              "Cahuide",
+              "Pisac",
+              "Quipaypampa",
+              "Yauri",
+              "Vilcanota",
+              "Mascaypacha",
+              "Mascaypacha",
+              "Cusihuallar",
+              "Yanaoca",
+              "Huatanay",
+              "Muquiyauyos",
+              "Indoamérica",
+              "Tiahuanaco",
+              "Túpac Amaru"
+            ]
+          }
+        ]
+      },
+      "Las Américas": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Matellini a Panamericana",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+            "metodo": "html",
+            "texto_fuente": "Horario América\nTerminal Matellini a Panamericana:\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero E a Terminal Matellini:\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Paradero E a Terminal Matellini",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+            "metodo": "html",
+            "texto_fuente": "Horario América\nTerminal Matellini a Panamericana:\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nParadero E a Terminal Matellini:\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Óvalo La Curva",
+              "Guardia Peruana",
+              "El Sol",
+              "Paradero C",
+              "Los Naranjos",
+              "Calle 3",
+              "Velasco Alvarado",
+              "Santa Rosa",
+              "Mártir Olaya",
+              "Mártires",
+              "Unión",
+              "Panamericana",
+              "Paradero E",
+              "Unión",
+              "Mártires",
+              "Micaela Bastidas",
+              "Unanue",
+              "Velasco Alvarado",
+              "Vista Alegre",
+              "Los Naranjos",
+              "Paradero B",
+              "Los Meteoros",
+              "Guardia Peruana",
+              "Óvalo La Curva"
+            ]
+          }
+        ]
+      },
+      "Cedros de Villa": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Matellini a Isla Española",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+            "metodo": "html",
+            "texto_fuente": "Horario Cedros de Villa\nTerminal Matellini a Isla Española:\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nIsla Española a Terminal Matellini:\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Isla Española a Terminal Matellini",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+            "metodo": "html",
+            "texto_fuente": "Horario Cedros de Villa\nTerminal Matellini a Isla Española:\nLunes a sábado:\n05:30 a. m. - 12:00 a. m.\nDomingo:\n05:30 a. m. - 11:00 p. m.\nIsla Española a Terminal Matellini:\nLunes a sábado:\n05:00 a. m. - 11:30 p. m.\nDomingo:\n05:00 a. m. - 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+            "metodo": "html",
+            "nombres_en_orden": [
+              "Huaylas",
+              "Alameda Sur",
+              "Los Pinos",
+              "Plaza Vea",
+              "Las Camelias",
+              "Cedros de Villa",
+              "Ballestas",
+              "Isla Española (Final)",
+              "Isla Española (Inicial)",
+              "Aruba",
+              "Las Tortugas",
+              "Cedros de Villa",
+              "San Lorenzo",
+              "Plaza Vea",
+              "Machupicchu",
+              "10 de Noviembre",
+              "Santa Anita"
+            ]
+          }
+        ]
+      },
+      "Los Próceres": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Matellini a Paradero final",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS PROCERESvf.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Matellini a Paradero final\nLunes a sábado: 05:30–00:00\nDomingo: 05:30–23:00\nParadero final a Terminal Matellini\nLunes a sábado: 05:00–23:30\nDomingo: 05:00–22:30"
+          },
+          {
+            "sentido_publicado": "Paradero final a Terminal Matellini",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS PROCERESvf.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Matellini a Paradero final\nLunes a sábado: 05:30–00:00\nDomingo: 05:30–23:00\nParadero final a Terminal Matellini\nLunes a sábado: 05:00–23:30\nDomingo: 05:00–22:30"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS PROCERESvf.png",
+            "metodo": "imagen_revisada",
+            "nombres_en_orden": [
+              "Calango",
+              "Guardia Peruana",
+              "El Sol",
+              "Alipio Ponce",
+              "Los Incas",
+              "Vista Alegre",
+              "Villa Alegre",
+              "Alcides Vigo",
+              "Las Crucetas",
+              "D. Tristan y Moscoso",
+              "Las Crucetas",
+              "Alcides Vigo",
+              "Parque Villa Alegre",
+              "Los Incas",
+              "Centro Instrucción PNP",
+              "Los Meteoros",
+              "Guardia Peruana",
+              "Calango",
+              "Óvalo la Curva"
+            ]
+          }
+        ]
+      },
+      "Villa El Salvador": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Matellini a Parque Zonal Huáscar",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA EL SALVADOR.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Matellini a Parque Zonal Huáscar\nLunes a sábado: 05:30–00:00\nDomingo: 05:30–23:00\nParque Zonal Huáscar a Terminal Matellini\nLunes a sábado: 05:00–23:30\nDomingo: 05:00–22:30"
+          },
+          {
+            "sentido_publicado": "Parque Zonal Huáscar a Terminal Matellini",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA EL SALVADOR.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Matellini a Parque Zonal Huáscar\nLunes a sábado: 05:30–00:00\nDomingo: 05:30–23:00\nParque Zonal Huáscar a Terminal Matellini\nLunes a sábado: 05:00–23:30\nDomingo: 05:00–22:30"
+          }
+        ],
+        "notas": [
+          "La imagen publica atención especial de INR: lunes a sábado 07:00–19:00; Pantanos de Villa: lunes a domingo 05:30–19:00. El horario general no debe aplicarse automáticamente a estas dos paradas."
+        ],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA EL SALVADOR.png",
+            "metodo": "imagen_revisada",
+            "nombres_en_orden": [
+              "INR",
+              "Confraternidad",
+              "Pantanos de Villa",
+              "Santa Rosa",
+              "Panamericana Sur",
+              "Almacenes",
+              "Villa Panamericana",
+              "Pastor Sevilla",
+              "Micaela Bastidas",
+              "Álamos",
+              "Velasco Alvarado",
+              "César Vallejo",
+              "José Carlos Mariátegui",
+              "200 Millas",
+              "Parque Zonal Huáscar",
+              "José Carlos Mariátegui",
+              "César Vallejo",
+              "Velasco Alvarado",
+              "Álamos",
+              "Micaela Bastidas",
+              "Pastor Sevilla",
+              "Villa Panamericana",
+              "Almacenes",
+              "Panamericana Sur",
+              "Santa Rosa",
+              "Pantanos de Villa",
+              "Lavalle"
+            ]
+          }
+        ]
+      },
+      "Trapiche": {
+        "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/",
+          "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/T-HV.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Universidad a Peycar (hora punta)",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "08:30"
+                  ],
+                  [
+                    "17:00",
+                    "00:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Universidad a Peycar (hora punta)\nLunes a viernes: 06:00–08:30 y 17:00–00:00\nPeycar a estación Universidad (hora punta)\nLunes a viernes: 05:00–09:00 y 17:45–11:30"
+          },
+          {
+            "sentido_publicado": "Peycar a estación Universidad (hora punta)",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "09:00"
+                  ],
+                  [
+                    "17:45",
+                    "11:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Universidad a Peycar (hora punta)\nLunes a viernes: 06:00–08:30 y 17:00–00:00\nPeycar a estación Universidad (hora punta)\nLunes a viernes: 05:00–09:00 y 17:45–11:30"
+          },
+          {
+            "sentido_publicado": "Estación Universidad a El Álamo (hora valle)",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/T-HV.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Universidad a El Álamo (hora valle)\nLunes a sábado: 06:00–00:00\nDomingo: 05:45–23:00\nEl Álamo a estación Universidad (hora valle)\nLunes a sábado: 05:00–11:30\nDomingo: 05:00–22:30"
+          },
+          {
+            "sentido_publicado": "El Álamo a estación Universidad (hora valle)",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "11:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/T-HV.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Universidad a El Álamo (hora valle)\nLunes a sábado: 06:00–00:00\nDomingo: 05:45–23:00\nEl Álamo a estación Universidad (hora valle)\nLunes a sábado: 05:00–11:30\nDomingo: 05:00–22:30"
+          }
+        ],
+        "notas": [
+          "La imagen de hora punta escribe 5:45 p. m.–11:30 a. m. en la vuelta. Se transcribe literalmente y se marca pendiente de aclaración, sin usar ese intervalo para confirmar salidas.",
+          "El cartel dice hora valle y fin de semana, pero publica lunes a sábado hasta 11:30 a. m. para la vuelta. Se conserva literalmente; requiere aclaración antes de automatizar salidas."
+        ],
+        "frecuencia_publicada_min": null,
+        "paradas_publicadas": [
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png",
+            "metodo": "imagen_revisada",
+            "nombres_en_orden": [
+              "Estación Universidad",
+              "Villasol",
+              "Yanbal",
+              "Plaza Vea",
+              "El Álamo",
+              "Botica",
+              "El Pinar",
+              "Kiosko",
+              "Los Incas",
+              "Alameda El Pinar",
+              "Oficina",
+              "San Felipe",
+              "Remanso",
+              "Peycar",
+              "Peycar",
+              "Remanso",
+              "San Felipe",
+              "Oficina",
+              "Alameda El Pinar",
+              "Los Incas",
+              "Kiosko",
+              "El Pinar",
+              "Botica",
+              "El Álamo",
+              "Segunda de Pro",
+              "La Amistad",
+              "Plaza Vea",
+              "Yanbal",
+              "Villasol",
+              "Estación Universidad"
+            ]
+          },
+          {
+            "pagina": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/T-HV.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png",
+            "metodo": "imagen_revisada",
+            "nombres_en_orden": [
+              "Estación Universidad",
+              "Villasol",
+              "Yanbal",
+              "Plaza Vea",
+              "El Álamo",
+              "El Álamo",
+              "Segunda de Pro",
+              "La Amistad",
+              "Plaza Vea",
+              "Yanbal",
+              "Villasol",
+              "Estación Universidad"
+            ]
+          }
+        ],
+        "apto_para_planificador": false
       }
     }
   },
@@ -3174,6 +7475,118 @@
     {
       "url": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
       "sha256": "a3041e360ef475de3da8a59a017508946f235aa9aa98698d9a970189939fc09a"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/SanJuanDeDios/",
+      "sha256": "70699e4e16bc22ddcfaf929d04af6b442c7321d7a047e5a3eb1a0e9ae393dab7"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresChimpuOcllo/Universitaria/",
+      "sha256": "09f86a979905216d64c688356eed04e1a138ae0f386c558afb726487e5f2fa28"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Carabayllo/",
+      "sha256": "d72fd909bcf7df14a22980043ea9c2585767d527d427f8d0faa4f7dac06c4608"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/Collique/",
+      "sha256": "00cccac2debcd20cdd74cb6291cea25aac895403e1fc9d531a7665d42df89813"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresLosIncas/TorreBlanca/",
+      "sha256": "6414e57a7f1c73a2cb830fb87fe771c16486518ec0ad90f9d6a7950ae00c10ad"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/AntunezDeMayolo/",
+      "sha256": "c73024baf5b92ee92efd42e497e132a75ecfece3e1b30c0c559ecf11b61437b4"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Belaunde/",
+      "sha256": "784a2f36dbfe63d2b3ac0f6a98c4f7ccda8d8277f08e51450daea41e174245cd"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Bertello/",
+      "sha256": "ff4469d84c2d336c86d22799c911ed1c052c7381c58269acf7853c7083aea695"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Izaguirre/",
+      "sha256": "1b099b336c519a0ef1e8022429cef70cfde52b7766b7bc92e2079b1a965c5612"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LaEnsenada/",
+      "sha256": "e7b945fa5313a064507a50697d7120fbe15dfa6bfecc91ce04133cee736cba5c"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosAlisos/",
+      "sha256": "e385140ac4b5ef523077b87de7f503ceda44e109d22bd2a91838ae28a68b24ad"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/LosOlivos/",
+      "sha256": "a491735b769c0b2ce5889ce9cbf0af05f804b85f1f65a16aa35deda1b11bf429"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/MilagroDeJesus/",
+      "sha256": "8e80ccaf6f41b39cf77be747f84d24e8f6c583504ceeacc0326c03f560be7849"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Naranjal/",
+      "sha256": "90b7196abbecdfba79dba56e42cf72b141093c98d4f1fe54b2b159937d6c5f02"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Payet/",
+      "sha256": "64a3cd1dacb5c4b9c02d01297d4e0597565c109f8941368ce2e2b15a692fea73"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/PuentePiedra/",
+      "sha256": "5f963a79f120b3d9d0089b99a7e42964d582213767d3fd598778709789838f28"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Puno/",
+      "sha256": "deb382e44a4b5755c4b6735c08168195fa2da0bd110909aa47a003a8038a19ec"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresNorte/Tahuantinsuyo/",
+      "sha256": "019916bff6eb28cff6e5702815814b4f28c370f49f8197f6d460edb66ef8ba54"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/America/",
+      "sha256": "6e780598be9f766549a939bdac8832b4080d32ec866050b917d554b742a1db9a"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/CedrosDeVilla/",
+      "sha256": "15945ced452746a36e375f7b0d7492052971dfa7427e850b455d603ba19789bf"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/",
+      "sha256": "9d1fa7e187051523c78286010791432b982d5de9ddbd50977dd2055528e0119d"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/LosProceres/mapa-alimentador-metropolitano-SUR-LOS PROCERESvf.png",
+      "sha256": "2bc61c6e83a5a67c3a220dc9804371fde35741bd0d38a3b7d9a97ff4007e31cd"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/",
+      "sha256": "75690cf42f0b2bc00d4d00655d5dc09a61f98319ae36f3ad0a5f0dc5c9d98f20"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresSur/VillaElSalvador/mapa-alimentador-metropolitano-SUR-VILLA EL SALVADOR.png",
+      "sha256": "aa35ddab47d7696cb557f96d923bfa93ef8360da98623d056f8fca35f5af2ffb"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/",
+      "sha256": "2fc2dc970b0559d390d1b11c79f4eaf886ed0fd66fe1354087e0e567ac2d9b2c"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-punta.png",
+      "sha256": "3732d6fd75588fcc54ff85e534e9e0f7b34d7ad8c47a3d1901dabe64f0c8bc18"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/T-HV.php",
+      "sha256": "853dcaa1d76fab958e4c26aa0ea7cf1037a9c1df4442e1dcc09b757d9f755175"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Alimentadores/AlimentadoresUniversidad/Trapiche/Trapiche-hora-valle.png",
+      "sha256": "eab0c8e738fe4fa48fcd79017b94ec5bfca14e2fdd56d44623090e01b0850d6b"
     }
   ]
 }
