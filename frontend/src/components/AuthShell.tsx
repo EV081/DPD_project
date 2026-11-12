@@ -16,7 +16,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
     <div className="mobility-entry">
       <aside className="mobility-story">
         <header className="mobility-story-top">
-          <div className="flex items-center gap-2.5"><Logo size={32} showText={false} /><span className="text-xl font-bold tracking-tight">UrbanSafe</span></div>
+          <Link href="/" aria-label="UrbanSafe, ir al inicio" className="flex items-center gap-2.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"><Logo size={32} showText={false} /><span className="text-xl font-bold tracking-tight">UrbanSafe</span></Link>
           <span className="mobility-tag">Movilidad · Lima</span>
         </header>
 
