@@ -43,7 +43,7 @@ export default function Home() {
 
           <div className={styles.heroContent}>
             <p className={styles.eyebrow}><span /> La ciudad se mueve. Tú eliges cómo.</p>
-            <h1 id="portada-titulo">Lima cambia<br />de <em>ritmo.</em><br /><span>Tu viaje también.</span></h1>
+            <h1 id="portada-titulo">Lima cambia de ritmo.<br />Tu viaje también.</h1>
             <p className={styles.heroLead}>Una mirada al transporte desde los datos. Explora rutas, compara horarios y entiende mejor cada tramo de tu viaje.</p>
             <div className={styles.heroActions}>
               <Link href="/map" className={styles.primary}>Explorar UrbanSafe <ArrowUpRight size={19} /></Link>
@@ -60,15 +60,15 @@ export default function Home() {
 
         <section id="experiencia" className={styles.experience} aria-labelledby="experiencia-titulo">
           <div className={styles.experienceIntro}>
-            <p className={styles.sectionLabel}>01 / La experiencia</p>
-            <h2 id="experiencia-titulo">No es solo<br />llegar.<br /><em>Es elegir.</em></h2>
+            <p className={styles.sectionLabel}>La experiencia</p>
+            <h2 id="experiencia-titulo">No es solo llegar.<br />Es elegir.</h2>
             <p>Del momento de salir al camino al paradero: información para mirar el viaje con más detalle.</p>
             <Link href="/map" className={styles.textLink}>Conocer la aplicación <ArrowUpRight size={17} /></Link>
           </div>
           <div className={styles.featureList}>
             {CAPACIDADES.map(({ numero, icono: Icono, titulo, texto, enlace, accion }) => (
               <article className={styles.feature} key={numero}>
-                <div className={styles.featureNumber}><span>{numero}</span><Icono size={24} strokeWidth={1.4} aria-hidden="true" /></div>
+                <div className={styles.featureNumber}><Icono size={24} strokeWidth={1.4} aria-hidden="true" /></div>
                 <div><h3>{titulo}</h3><p>{texto}</p><Link href={enlace} className={styles.textLink}>{accion} <ArrowRight size={16} /></Link></div>
               </article>
             ))}
@@ -82,7 +82,7 @@ export default function Home() {
           </div>
           <div className={styles.streetContent}>
             <p className={styles.sectionLabel}>Del inicio al destino</p>
-            <h2 id="camino-titulo">Cada tramo<br /><em>cuenta.</em></h2>
+            <h2 id="camino-titulo">Cada tramo cuenta.</h2>
             <p>La comparación incluye el camino al paradero, la espera y el tiempo a bordo cuando existen datos para esa opción.</p>
             <Link href="/destinations" className={styles.textLink}>Comparar recorridos <ArrowUpRight size={17} /></Link>
           </div>
@@ -90,7 +90,7 @@ export default function Home() {
 
         <section id="demostracion" className={styles.demo} aria-labelledby="demo-titulo">
           <div className={styles.demoHeading}>
-            <div><p className={styles.sectionLabel}>02 / En movimiento</p><h2 id="demo-titulo">Mira cómo se<br /><em>conecta el viaje.</em></h2></div>
+            <div><p className={styles.sectionLabel}>Demostración</p><h2 id="demo-titulo">Mira cómo se conecta el viaje.</h2></div>
             <p>Explora esta muestra de la experiencia. Para consultar tus propios escenarios, entra a la aplicación.</p>
           </div>
           <LimaTransitShowcase />
@@ -99,18 +99,18 @@ export default function Home() {
 
         <section id="datos" className={styles.data} aria-labelledby="datos-titulo">
           <div className={styles.dataHeading}>
-            <div><p className={styles.sectionLabel}>03 / La base del proyecto</p><h2 id="datos-titulo">Datos claros.<br /><em>Contexto primero.</em></h2></div>
+            <div><p className={styles.sectionLabel}>Los datos del proyecto</p><h2 id="datos-titulo">Datos claros.<br />Contexto primero.</h2></div>
             <div className={styles.dataYear}><strong>2025</strong><span>Base histórica ATU para el aforo</span></div>
           </div>
           <div className={styles.dataNotes}>
-            <article><span>01</span><h3>Estimaciones, con origen.</h3><p>El aforo usa datos históricos de la ATU. No es un conteo de pasajeros en vivo.</p></article>
-            <article><span>02</span><h3>El riesgo requiere contexto.</h3><p>Las rutas a pie se ponderan con denuncias registradas. No garantizan seguridad ni describen incidentes en tiempo real.</p></article>
-            <article><span>03</span><h3>Un dato ausente se explica.</h3><p>Cuando una opción no tiene estimación disponible, se indica en la interfaz para no confundir ausencia con cero.</p></article>
+            <article><h3>Estimaciones, con origen.</h3><p>El aforo usa datos históricos de la ATU. No es un conteo de pasajeros en vivo.</p></article>
+            <article><h3>El riesgo requiere contexto.</h3><p>Las rutas a pie se ponderan con denuncias registradas. No garantizan seguridad ni describen incidentes en tiempo real.</p></article>
+            <article><h3>Un dato ausente se explica.</h3><p>Cuando una opción no tiene estimación disponible, se indica en la interfaz para no confundir ausencia con cero.</p></article>
           </div>
         </section>
 
         <section className={styles.closing} aria-labelledby="comenzar-titulo">
-          <div><p className={styles.sectionLabel}>La próxima salida</p><h2 id="comenzar-titulo">Empieza por<br /><em>mirar tus opciones.</em></h2></div>
+          <div><p className={styles.sectionLabel}>La próxima salida</p><h2 id="comenzar-titulo">Empieza por mirar tus opciones.</h2></div>
           <Link href="/map" className={styles.closingLink}>Entrar a UrbanSafe <ArrowUpRight size={28} strokeWidth={1.4} /></Link>
           <p className={styles.closingPhotoNote}>Imagen conceptual de Lima · no muestra una ruta calculada</p>
         </section>
