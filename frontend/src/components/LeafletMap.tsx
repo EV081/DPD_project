@@ -14,7 +14,7 @@ import Basemap from './map/Basemap';
 interface Destination { lat: number; lon: number; name: string }
 interface Caminata { normal: GeoJsonObject; segura: GeoJsonObject | null; seleccionada: 'normal' | 'segura' }
 interface Props {
-  center: Coords; centerIsReference: boolean; stations: Station[]; filterIds: string[] | null;
+  userLocation?: Coords; center: Coords; centerIsReference: boolean; stations: Station[]; filterIds: string[] | null;
   showAll: boolean; focus: Coords | null; routeGeoJson: GeoJsonObject | null;
   destination: Destination | null; walk: Caminata | null; onStationClick: (station: Station) => void;
 }
@@ -133,8 +133,8 @@ export default function LeafletMap(props: Props) {
     <Basemap /><ZoomControl position="topright" /><Viewport {...props} />
     <Routes routeGeoJson={props.routeGeoJson} walk={props.walk} />
     <Stations {...props} />
-    <Marker position={[props.center.lat, props.center.lon]} icon={userIcon} title={props.centerIsReference ? 'Origen de referencia' : 'Mi ubicación'}>
-      <Popup>{props.centerIsReference ? 'Origen de referencia · centro de Lima' : 'Mi ubicación'}</Popup>
+    <Marker position={[(props.userLocation ?? props.center).lat, (props.userLocation ?? props.center).lon]} icon={userIcon} title={!props.userLocation && props.centerIsReference ? 'Origen de referencia' : 'Mi ubicación'}>
+      <Popup>{!props.userLocation && props.centerIsReference ? 'Origen de referencia · centro de Lima' : 'Mi ubicación'}</Popup>
     </Marker>
     {props.destination && <Marker position={[props.destination.lat, props.destination.lon]} icon={destinationIcon} zIndexOffset={1500} title="Destino">
       <Popup><strong>Destino</strong><br />{props.destination.name}</Popup>

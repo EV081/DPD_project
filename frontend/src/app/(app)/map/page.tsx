@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { X, MapPinOff, RefreshCw } from 'lucide-react';
+import { X, MapPinOff, RefreshCw, LocateFixed } from 'lucide-react';
 import { Spinner } from '@/components/Spinner';
 import MapView from '@/components/MapView';
 import { SYSTEMS } from '@/lib/systems';
@@ -54,6 +54,8 @@ async function trazoDeTramo(subida: Station, bajada: Station): Promise<any | nul
 
 export default function MapPage() {
   const { user } = useAuth();
+  const [localizando, setLocalizando] = useState(false);
+  const [errorUbicacion, setErrorUbicacion] = useState('');
   const [recents, setRecents] = useState<RecentDestination[]>([]);
   const [location, setLocation] = useState<Coords | null>(null);
   const [locationDenied, setLocationDenied] = useState(false);
@@ -82,6 +84,22 @@ export default function MapPage() {
   const lastRequest = useRef<{ station: Station; haciaId?: string; tramo2?: TramoTransbordo } | null>(null);
 
   useEffect(() => { setRecents(getRecents()); }, []);
+
+  const centrarEnMi = async () => {
+    if (localizando) return;
+    setLocalizando(true);
+    setErrorUbicacion('');
+    try {
+      const actual = await getUserLocation();
+      setLocation(actual);
+      setLocationDenied(false);
+      setFocus({ ...actual });
+    } catch {
+      setErrorUbicacion('No pudimos obtener tu ubicación. Revisa el permiso de ubicación del navegador e inténtalo de nuevo.');
+    } finally {
+      setLocalizando(false);
+    }
+  };
 
   // Ubicación + red de estaciones
   const loadNetwork = useCallback(async () => {
@@ -286,6 +304,7 @@ export default function MapPage() {
   return (
     <div className="relative h-full w-full">
       <MapView
+        userLocation={!locationDenied ? location : undefined}
         center={tripData?.origin ?? location}
         centerIsReference={tripData ? tripReference : locationDenied}
         stations={stations}
@@ -297,6 +316,14 @@ export default function MapPage() {
         destination={tripData ? { lat: tripData.destination.lat, lon: tripData.destination.lon, name: tripData.destination.resolved_name } : null}
         onStationClick={(s) => { if (!tripData) { tripRequests.current.cancel(); loadStation(s); } }}
       />
+
+      <div className="absolute right-4 top-24 z-[1000] flex flex-col items-end gap-2 md:top-28">
+        <button type="button" onClick={() => void centrarEnMi()} disabled={localizando} aria-label="Centrar mapa en mi ubicación" title="Mi ubicación" aria-busy={localizando}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-fg shadow-md hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:opacity-60">
+          {localizando ? <Spinner size={19} /> : <LocateFixed size={21} aria-hidden="true" />}
+        </button>
+        {errorUbicacion && <p role="alert" className="max-w-64 rounded-xl border border-line bg-surface p-3 text-xs leading-relaxed text-fg shadow-md">{errorUbicacion}</p>}
+      </div>
 
       {/* Buscador: ancho completo en móvil, tarjeta lateral en pantallas grandes */}
       <div className="absolute left-3 right-3 top-3 z-[1000] md:right-auto md:left-4 md:top-4 md:w-[26rem]">

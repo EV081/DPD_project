@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState, type FormEvent, type CSSProperties } from 'react';
-import { ChartColumn, Download, MapPin } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState, type FormEvent, type CSSProperties } from 'react';
+import { ArrowLeft, Download, MapPin } from 'lucide-react';
 import OccupancyChart from '@/components/OccupancyChart';
 import { useAuth } from '@/context/AuthContext';
 import { NativeSelect } from '@mantine/core';
@@ -149,6 +149,14 @@ export default function SimulacionPage() {
   const [intento, setIntento] = useState(0);
   const [calculando, setCalculando] = useState(false);
   const [error, setError] = useState('');
+  const [verResultados, setVerResultados] = useState(false);
+  const vistaRef = useRef<HTMLDivElement>(null);
+  const primerCambio = useRef(true);
+  useEffect(() => {
+    if (primerCambio.current) { primerCambio.current = false; return; }
+    vistaRef.current?.focus();
+    vistaRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }, [verResultados]);
   const [plan, setPlan] = useState<Plan | null>(null);
   const [resultado, setResultado] = useState<StationPrediction | null>(null);
 
@@ -206,6 +214,7 @@ export default function SimulacionPage() {
       ]);
       setPlan(nuevoPlan);
       setResultado(datos);
+      setVerResultados(true);
     } catch (fallo: any) {
       setError(fallo?.response?.data?.error
         ?? 'No se pudo calcular este viaje. Comprueba la conexión con la API o prueba otra fecha.');
@@ -228,8 +237,8 @@ export default function SimulacionPage() {
       </header>
       <div className="mobility-process" aria-label="Pasos de la simulación"><span><b>1</b> Arma tu viaje</span><span><b>2</b> Elige tu salida</span><span><b>3</b> Revisa el día</span></div>
 
-      <div className="mobility-sim-grid">
-      <form onSubmit={simular} className="card mobility-sim-form">
+      <div ref={vistaRef} tabIndex={-1} className="mobility-sim-flow" aria-label={verResultados ? 'Resultados de tu viaje' : 'Configura tu viaje'}>
+      {!verResultados && <form onSubmit={simular} className="card mobility-sim-form">
         <div className="mb-3 flex items-center gap-2"><span className="mobility-section-number">01</span><MapPin size={17} className="text-muted" /></div>
         <h2 className="text-lg font-semibold tracking-tight text-fg">Tu viaje</h2>
         <p className="mt-1.5 text-xs leading-relaxed text-muted">Elige tu recorrido y la hora a la que quieres llegar.</p>
@@ -313,22 +322,17 @@ export default function SimulacionPage() {
         )}
         {calculando && <p role="status" className="sr-only">Calculando tu salida</p>}
         {error && <Alert tono="danger" className="mt-4">{error}</Alert>}
-      </form>
+      </form>}
 
-      {plan ? (
+      {verResultados && plan && (
         <div className="min-w-0 space-y-5">
+          <button type="button" className="btn btn-secondary" onClick={() => setVerResultados(false)}><ArrowLeft size={17} aria-hidden="true" /> Editar mi viaje</button>
+          <p className="text-sm text-muted">{plan.origen.name} → {plan.destino.name} · Llegar a las {plan.llegada_limite}</p>
           <PlanSalida key={`${plan.origen.id}-${plan.destino.id}-${plan.dia}-${plan.llegada_limite}`} plan={plan}>
           {isAdmin && resultado && <Comparacion key={`${resultado.station}-${plan.dia}-${horaSalida}`} resultado={resultado}
             horaInicial={horaSalida ? `${horaSalida.slice(0, 2)}:00` : undefined} />}
           </PlanSalida>
         </div>
-      ) : (
-        <section className="mobility-sim-empty" aria-label="Cómo comenzar">
-          <span className="mobility-sim-empty-icon"><ChartColumn size={25} strokeWidth={1.3} aria-hidden="true" /></span>
-          <h2>{calculando ? 'Estamos armando tu viaje.' : '¿A qué hora te conviene salir?'}</h2>
-          <p>{calculando ? 'Buscando una hora de salida para tu viaje.' : 'Elige tu viaje y pulsa «Calcular mi salida» para ver cuándo salir y a qué hora llegarías.'}</p>
-          <span className="mt-5 rounded-full border border-line px-3 py-1.5 text-xs text-muted">Estimaciones con datos de la ATU</span>
-        </section>
       )}
       </div>
     </div>
