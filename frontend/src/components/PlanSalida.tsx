@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type ReactNode } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import { Tabs } from '@mantine/core';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import Alert from '@/components/Alert';
@@ -136,6 +137,7 @@ function Servicio({ servicio, hora }: { servicio: ServicioPlan; hora: string }) 
 }
 
 export default function PlanSalida({ plan, children }: { plan: Plan; children?: ReactNode }) {
+  const { isAdmin } = useAuth();
   const [pestana, setPestana] = useState<string | null>('resumen');
   const [elegida, setElegida] = useState(plan.recomendada ?? plan.ultima_puntual);
   const opcion = plan.opciones.find((o) => o.salida === elegida);
@@ -150,7 +152,7 @@ export default function PlanSalida({ plan, children }: { plan: Plan; children?: 
           <Tabs.Tab value="resumen">Tu salida</Tabs.Tab>
           <Tabs.Tab value="alternativas">Otras horas</Tabs.Tab>
           <Tabs.Tab value="servicios">Servicios</Tabs.Tab>
-          {children && <Tabs.Tab value="dia">Durante el día</Tabs.Tab>}
+          {isAdmin && children && <Tabs.Tab value="dia">Durante el día</Tabs.Tab>}
         </Tabs.List>
         <Tabs.Panel value="resumen" pt="md">
       {opcion ? <Detalle plan={plan} opcion={opcion} /> : <Alert tono="warn">{plan.motivo}</Alert>}
@@ -219,7 +221,7 @@ export default function PlanSalida({ plan, children }: { plan: Plan; children?: 
 
       </div>
         </Tabs.Panel>
-        {children && <Tabs.Panel value="dia" pt="md">{children}</Tabs.Panel>}
+        {isAdmin && children && <Tabs.Panel value="dia" pt="md">{children}</Tabs.Panel>}
       </Tabs>
     </section>
   );

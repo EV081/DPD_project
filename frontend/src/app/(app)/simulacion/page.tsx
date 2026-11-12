@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useMemo, useState, type FormEvent, type CSSProperties } from 'react';
-import Link from 'next/link';
-import { ArrowUpRight, ChartColumn, Download, MapPin } from 'lucide-react';
+import { ChartColumn, Download, MapPin } from 'lucide-react';
 import OccupancyChart from '@/components/OccupancyChart';
+import { useAuth } from '@/context/AuthContext';
 import { NativeSelect } from '@mantine/core';
 import Alert from '@/components/Alert';
 import PlanSalida from '@/components/PlanSalida';
@@ -132,6 +132,10 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
 }
 
 export default function SimulacionPage() {
+  const { isAdmin } = useAuth();
+  const [prioridad, setPrioridad] = useState('equilibrado');
+  const [asiento, setAsiento] = useState('cualquiera');
+  const [directo, setDirecto] = useState(false);
   const [estaciones, setEstaciones] = useState<Station[]>([]);
   const [sistema, setSistema] = useState<Station['system']>('metro_l1');
   const [linea, setLinea] = useState('');
@@ -197,8 +201,8 @@ export default function SimulacionPage() {
       const hora = Number(llegada.slice(0, 2));
       const troncal = sistema === 'metro_l1' || sistema === 'metropolitano';   // el destino fija el sentido
       const [nuevoPlan, datos] = await Promise.all([
-        getTripPlan(origen, destino, dia, llegada),
-        getStationPrediction(origen, troncal ? destino.id : undefined, { dia, hora }).catch(() => null),
+        getTripPlan(origen, destino, dia, llegada, { prioridad, asiento, directo: String(directo) }),
+        isAdmin ? getStationPrediction(origen, troncal ? destino.id : undefined, { dia, hora }).catch(() => null) : Promise.resolve(null),
       ]);
       setPlan(nuevoPlan);
       setResultado(datos);
@@ -214,7 +218,7 @@ export default function SimulacionPage() {
 
   return (
     <div className="mobility-workspace">
-      <div className="mobility-workspace-header"><span>UrbanSafe / Simulación</span><Link href="/destinations">Comparar destinos <ArrowUpRight size={15} /></Link></div>
+      <div className="mobility-workspace-header"><span>UrbanSafe / Simulación</span></div>
       <header className="mobility-workspace-hero mobility-sim-hero">
         <div>
           <p className="mobility-kicker"><span /> Planifica tu salida</p>
@@ -278,6 +282,26 @@ export default function SimulacionPage() {
               Quiero llegar a las
               <input type="time" className={CAMPO} required value={llegada} onChange={(e) => setLlegada(e.target.value)} />
             </label>
+            <label className="min-w-0 text-sm font-medium text-fg">
+              ¿Qué priorizas?
+              <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={prioridad} onChange={(e) => setPrioridad(e.target.value)}>
+                <option value="equilibrado">Equilibrar tiempo y comodidad</option>
+                <option value="rapidez">Tardar menos en el viaje</option>
+                <option value="comodidad">Viajar con menos gente</option>
+              </NativeSelect>
+            </label>
+            <label className="min-w-0 text-sm font-medium text-fg">
+              Para viajar
+              <NativeSelect mt={6} classNames={{ input: 'us-field-input' }} value={asiento} onChange={(e) => setAsiento(e.target.value)}>
+                <option value="cualquiera">Puedo ir de pie o sentado</option>
+                <option value="sentado">Buscar opciones con asientos</option>
+              </NativeSelect>
+              <span className="mt-1.5 block text-xs font-normal text-muted">Los asientos son estimados; pueden variar.</span>
+            </label>
+            <label className="flex items-center gap-2 text-sm text-fg">
+              <input type="checkbox" checked={directo} onChange={(e) => setDirecto(e.target.checked)} />
+              Sin transbordos
+            </label>
             <button type="submit" className="btn btn-primary mt-1" disabled={origenIndice < 0 || destinoIndice < 0 || !dia}>
               {calculando && <Spinner size={16} />}
               {calculando ? 'Calculando…' : 'Calcular mi salida'}
@@ -294,7 +318,7 @@ export default function SimulacionPage() {
       {plan ? (
         <div className="min-w-0 space-y-5">
           <PlanSalida key={`${plan.origen.id}-${plan.destino.id}-${plan.dia}-${plan.llegada_limite}`} plan={plan}>
-          {resultado && <Comparacion key={`${resultado.station}-${plan.dia}-${horaSalida}`} resultado={resultado}
+          {isAdmin && resultado && <Comparacion key={`${resultado.station}-${plan.dia}-${horaSalida}`} resultado={resultado}
             horaInicial={horaSalida ? `${horaSalida.slice(0, 2)}:00` : undefined} />}
           </PlanSalida>
         </div>

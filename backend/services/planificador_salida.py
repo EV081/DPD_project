@@ -294,10 +294,12 @@ def proximas_salidas(est_a: dict, est_b: dict | None, ahora: dt.datetime, cuanta
     }
 
 
-def planificar(est_a: dict | None, est_b: dict | None, dia: str | None, llegada: str) -> dict:
+def planificar(est_a: dict | None, est_b: dict | None, dia: str | None, llegada: str, *, prioridad="equilibrado", asiento="cualquiera", directo="false") -> dict:
     """Salidas posibles para llegar a ``est_b`` antes de ``llegada`` (HH:MM) y la recomendada."""
     if est_a is None or est_b is None:
         raise MS.PrediccionError("Estación de origen o de destino no encontrada", 404)
+    if prioridad not in ("equilibrado", "rapidez", "comodidad") or asiento not in ("cualquiera", "sentado") or directo not in ("true", "false"):
+        raise MS.PrediccionError("Las preferencias del viaje no son válidas")
     limite = _minuto(llegada)
     fecha = MS.parsear_dia(dia)
     ctx = _contexto(est_a, est_b, fecha)
@@ -318,11 +320,22 @@ def planificar(est_a: dict | None, est_b: dict | None, dia: str | None, llegada:
             "costo_min": round(float(R.costo(espera, viaje, mult)) + PENALIZACION_TRANSBORDO_MIN * transbordo
                                + PESO_ANTICIPACION * max(margen, 0.0), 1),
         })
+    opciones = [o for o in opciones
+                if (asiento != "sentado" or o["clase"] == "Asientos")
+                and (directo != "true" or len(o.get("tramos") or []) <= 1)]
     opciones.reverse()                                             # de la más temprana a la más tardía
 
     a_tiempo = [o for o in opciones if o["estado"] != "tarde"]
     candidatas = [o for o in a_tiempo if o["estado"] == "con_margen"] or a_tiempo
-    recomendada = min(candidatas, key=lambda o: o["costo_min"]) if candidatas else None
+    if prioridad != "equilibrado":
+        candidatas = a_tiempo
+    def orden_preferencia(o):
+        if prioridad == "rapidez":
+            return (o["espera_min"] + o["viaje_min"], -_minuto(o["salida"]))
+        if prioridad == "comodidad":
+            return (o["ocupacion"], o["costo_min"])
+        return (o["costo_min"],)
+    recomendada = min(candidatas, key=orden_preferencia) if candidatas else None
     ultima = a_tiempo[-1] if a_tiempo else None
     tarde = [o for o in opciones if o["estado"] == "tarde"][:2]     # dos salidas tardías bastan como referencia
     visibles = [o for o in opciones if (o["estado"] != "tarde" and o["margen_min"] <= VENTANA_MIN)
@@ -338,7 +351,8 @@ def planificar(est_a: dict | None, est_b: dict | None, dia: str | None, llegada:
         "recomendada": recomendada["salida"] if recomendada else None,
         "ultima_puntual": ultima["salida"] if ultima else None,
         "mas_comoda": comoda["salida"] if comoda else None,
-        "motivo": _motivo(recomendada, ultima, bool(opciones)),
+        "motivo": ("No encontramos salidas que cumplan tus preferencias. Prueba permitiendo viajar de pie, con transbordos o cambiando la hora."
+                   if not opciones and (asiento == "sentado" or directo == "true") else _motivo(recomendada, ultima, bool(opciones))),
         "servicios": _servicios(sistema, serie, serie_b, res["sentido"], linea, fecha, recomendada or ultima, limite),
         "seguridad": _seguridad(recomendada or ultima),
         "supuestos": [

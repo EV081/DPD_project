@@ -134,9 +134,10 @@ export const getTripPlan = async (
   origen: Station,
   destino: Station,
   dia: string,
-  llegada: string
+  llegada: string,
+  preferencias: { prioridad: string; asiento: string; directo: string } = { prioridad: 'equilibrado', asiento: 'cualquiera', directo: 'false' }
 ): Promise<PlanSalida> => {
-  const params: Record<string, string> = { origen_id: origen.id, destino_id: destino.id, dia, llegada };
+  const params: Record<string, string> = { origen_id: origen.id, destino_id: destino.id, dia, llegada, ...preferencias };
   if (origen.system === 'corredores' && origen.raw_properties?.ruta) params.ruta = String(origen.raw_properties.ruta);
   if (origen.system === 'alimentadores') {   // los paraderos de un alimentador comparten id
     params.origen_nombre = origen.name;

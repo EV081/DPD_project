@@ -210,7 +210,9 @@ def get_trip_plan():
         ruta = request.args.get("ruta")
         origen = _buscar_estacion(request.args["origen_id"], ruta, request.args.get("origen_nombre"))
         destino = _buscar_estacion(request.args["destino_id"], ruta, request.args.get("destino_nombre"))
-        return jsonify(planificador_salida.planificar(origen, destino, request.args.get("dia"), request.args["llegada"])), 200
+        return jsonify(planificador_salida.planificar(origen, destino, request.args.get("dia"), request.args["llegada"],
+            prioridad=request.args.get("prioridad", "equilibrado"), asiento=request.args.get("asiento", "cualquiera"),
+            directo=request.args.get("directo", "false"))), 200
     except Exception as e:  # noqa: BLE001
         return _error(e)
 

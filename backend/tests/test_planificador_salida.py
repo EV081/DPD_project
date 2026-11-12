@@ -343,3 +343,16 @@ def test_la_recomendacion_dice_que_suba_al_primero_que_pase():
     assert rec["intervalo_min"] == pytest.approx(rec["tramos"][0]["intervalo_min"], abs=0.1)
     recomendados = [s["nombre"] for s in plan["servicios"] if s["recomendado"]]
     assert set(recomendados) == set(nombres) and plan["servicios"][0]["recomendado"]
+
+
+def test_preferencias_de_rapidez_y_asiento_filtran_salidas():
+    a, b = estacion('Plaza de Flores'), estacion('Canaval y Moreyra')
+    rapido = P.planificar(a, b, LUNES, '08:30', prioridad='rapidez')
+    puntuales = [o for o in rapido['opciones'] if o['estado'] != 'tarde']
+    assert puntuales
+    elegida = next(o for o in puntuales if o['salida'] == rapido['recomendada'])
+    assert elegida['espera_min'] + elegida['viaje_min'] == min(o['espera_min'] + o['viaje_min'] for o in puntuales)
+    sentado = P.planificar(a, b, LUNES, '08:30', asiento='sentado', directo='true')
+    assert all(o['clase'] == 'Asientos' and len(o.get('tramos') or []) <= 1 for o in sentado['opciones'])
+    with pytest.raises(MS.PrediccionError):
+        P.planificar(a, b, LUNES, '08:30', prioridad='invalida')
