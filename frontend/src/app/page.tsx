@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesCombined, Footprints, Route, Plus } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesCombined, ClipboardCheck, Clock3, Footprints, Route, Plus } from 'lucide-react';
 import { LogoMark } from '@/components/Logo';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import styles from './home.module.css';
@@ -29,6 +29,26 @@ const CAPACIDADES = [
   },
 ];
 
+const FUENTES = [
+  {
+    icono: ClipboardCheck, titulo: 'Horarios y paradas, desde la ATU.',
+    texto: 'Consultamos las fichas oficiales para revisar los horarios y las paradas de cada servicio.',
+    detalle: 'Revisamos la información publicada para el Metropolitano, la Línea 1, los corredores y los alimentadores. Los recorridos pueden cambiar según el sentido o el horario. Las ubicaciones en el mapa también pueden apoyarse en otras fuentes.',
+    enlace: 'https://portal.atu.gob.pe/QR/MetroLima/L1/', accion: 'Consultar el portal de ATU',
+  },
+  {
+    icono: ChartNoAxesCombined, titulo: 'La ocupación se estima con datos históricos.',
+    texto: 'Usamos registros de viajes de la ATU de 2025 para estimar qué tan lleno podría ir el transporte.',
+    detalle: 'Los viajes anteriores ayudan a reconocer las horas de mayor demanda. Lo que ves es una estimación para comparar opciones; no es un conteo de pasajeros en vivo.',
+  },
+  {
+    icono: Clock3, titulo: 'La frecuencia es una referencia.',
+    texto: 'Los intervalos entre servicios se apoyan en metrolima.info y en ajustes del proyecto.',
+    detalle: 'Estos intervalos ayudan a calcular una espera aproximada. No son frecuencias oficiales de la ATU ni indican cuándo llegará el próximo vehículo.',
+    enlace: 'https://metrolima.info/', accion: 'Visitar metrolima.info',
+  },
+];
+
 export default function Home() {
   return (
     <div className={styles.page}>
@@ -39,7 +59,7 @@ export default function Home() {
           <div className={styles.heroShade} aria-hidden="true" />
           <header className={styles.header}>
             <Link href="/" className={styles.brand} aria-label="UrbanSafe, inicio"><LogoMark size={32} /><span>UrbanSafe</span></Link>
-            <nav className={styles.navigation} aria-label="Navegación de la portada"><a href="#experiencia">Cómo te ayuda</a></nav>
+            <nav className={styles.navigation} aria-label="Navegación de la portada"><a href="#experiencia">Cómo te ayuda</a><a href="#fuentes">Los datos</a></nav>
             <ThemeToggle />
             <Link href="/login" className={styles.headerAccess}>Entrar <ArrowUpRight size={16} /></Link>
           </header>
@@ -70,6 +90,30 @@ export default function Home() {
                   <details className={styles.more}>
                     <summary><span className={styles.moreClosed}>Ver más</span><span className={styles.moreOpen}>Ver menos</span><Plus size={16} aria-hidden="true" /></summary>
                     <div className={styles.moreContent}><p>{detalle}</p><p className={styles.note}>{nota}</p><Link href={enlace} className={styles.textLink}>{accion} <ArrowRight size={16} /></Link></div>
+                  </details>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section id="fuentes" className={`${styles.experience} ${styles.sources}`} aria-labelledby="fuentes-titulo">
+          <div className={styles.experienceIntro}>
+            <p className={styles.sectionLabel}>De dónde vienen los datos</p>
+            <h2 id="fuentes-titulo">Conoce lo que hay detrás de tu viaje.</h2>
+            <p>Combinamos información publicada y estimaciones para ayudarte a decidir. Aquí te contamos qué aporta cada una.</p>
+          </div>
+          <div className={styles.featureList}>
+            {FUENTES.map(({ icono: Icono, titulo, texto, detalle, enlace, accion }) => (
+              <article className={styles.feature} key={titulo}>
+                <Icono size={23} strokeWidth={1.6} className={styles.featureIcon} aria-hidden="true" />
+                <div>
+                  <h3>{titulo}</h3><p>{texto}</p>
+                  <details className={styles.more}>
+                    <summary><span className={styles.moreClosed}>Ver más</span><span className={styles.moreOpen}>Ver menos</span><Plus size={16} aria-hidden="true" /></summary>
+                    <div className={styles.moreContent}>
+                      <p>{detalle}</p>
+                      {enlace && <a href={enlace} className={styles.textLink} target="_blank" rel="noopener noreferrer">{accion}<ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only"> (abre en otra pestaña)</span></a>}
+                    </div>
                   </details>
                 </div>
               </article>

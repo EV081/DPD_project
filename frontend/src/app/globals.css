@@ -212,11 +212,29 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .mobility-kicker > span { width: .45rem; height: .45rem; background: var(--brand); border-radius: 50%; }
 .mobility-story h1 { margin-top: 1rem; font-size: clamp(2.8rem, 4.6vw, 5rem); line-height: 1.1; letter-spacing: -.04em; font-weight: 650; }
 .mobility-story-copy > p:not(.mobility-kicker) { margin-top: 1.2rem; max-width: 32rem; font-size: .96rem; line-height: 1.7; color: #415a79; }
-.mobility-entry-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem; border-bottom: 1px solid currentColor; padding-bottom: .3rem; font-size: .85rem; font-weight: 600; }
 .mobility-illustration { margin: 0; position: relative; overflow: hidden; background: #dde7f8; border-radius: 1.15rem; }
 .mobility-illustration img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .mobility-illustration figcaption { position: absolute; bottom: .65rem; left: .7rem; right: .7rem; width: fit-content; max-width: calc(100% - 1.4rem); border-radius: .35rem; background: rgb(255 255 255 / .91); color: #263d63; padding: .3rem .5rem; font-size: .6rem; line-height: 1.4; }
 .mobility-story-image { height: clamp(13rem, 23vw, 21rem); }
+.ruta-animada { margin: 0; overflow: hidden; border-radius: 1.15rem; background: #e2ebfb; }
+.ruta-animada svg { display: block; width: 100%; height: 100%; }
+.ruta-calles line { stroke: #c9d7f0; stroke-width: 1.5; }
+.ruta-base { fill: none; stroke: #b4c6e6; stroke-width: 10; stroke-linecap: round; }
+.ruta-recorrida { fill: none; stroke: var(--brand); stroke-width: 10; stroke-linecap: round; }
+.ruta-parada { fill: #fff; stroke: #11274b; stroke-width: 4; }
+.ruta-etiqueta { fill: #11274b; font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.ruta-bus-cuerpo { fill: #11274b; }
+.ruta-bus-ventana { fill: #9cc0ff; }
+.ruta-fija { display: none; }
+.dark .ruta-animada { background: #1c3561; }
+.dark .ruta-calles line { stroke: #26416f; }
+.dark .ruta-base { stroke: #31507f; }
+.dark .ruta-parada { fill: #15294b; stroke: #edf3ff; }
+.dark .ruta-etiqueta { fill: #edf3ff; }
+.dark .ruta-bus-cuerpo { fill: #edf3ff; }
+.dark .ruta-bus-ventana { fill: #2563eb; }
+@media (prefers-reduced-motion: reduce) { .ruta-movil { display: none; } .ruta-fija { display: inline; } }
+@media (max-width: 767px) { .ruta-etiqueta { font-size: 21px; } }
 .mobility-illustration-fallback { height: 100%; min-height: 12rem; display: flex; align-items: center; justify-content: space-around; gap: 1rem; padding: 1.5rem; color: #1e479e; background: repeating-linear-gradient(105deg, transparent 0 70px, #c5d6f5 71px 73px), #e2ebfb; }
 .mobility-illustration-fallback > span { font-size: clamp(2rem, 4vw, 4rem); line-height: 1; letter-spacing: -.06em; font-weight: 600; }
 .mobility-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.7rem; }

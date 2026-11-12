@@ -1,8 +1,8 @@
-import { ArrowDown, ChartNoAxesCombined, Navigation, Clock3 } from 'lucide-react';
+import { ChartNoAxesCombined, Navigation, Clock3 } from 'lucide-react';
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
-import MobilityIllustration from './MobilityIllustration';
+import RutaAnimada from './RutaAnimada';
 
 const PASOS = [
   { icon: Navigation, titulo: 'Elige tu destino', texto: 'Encuentra opciones de transporte.' },
@@ -24,10 +24,9 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
           <p className="mobility-kicker"><span /> Antes de salir</p>
           <h1>El viaje empieza<br />antes de subir.</h1>
           <p>Conoce tus opciones, compara horarios y mira el transporte de Lima desde los datos.</p>
-          <a href="#acceso" className="mobility-entry-link">Entrar a UrbanSafe <ArrowDown size={17} /></a>
         </div>
 
-        <MobilityIllustration className="mobility-story-image" />
+        <RutaAnimada className="mobility-story-image" />
 
         <div className="mobility-steps">
           {PASOS.map(({ icon: Icon, titulo, texto }, indice) => (
@@ -38,7 +37,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
             </div>
           ))}
         </div>
-        <p className="mobility-source">Aforo estimado con datos ATU de 2025. No es un conteo en vivo.</p>
+        <p className="mobility-source">Aforo estimado con datos ATU. No es un conteo en vivo.</p>
       </aside>
 
       <main id="acceso" className="mobility-access">
