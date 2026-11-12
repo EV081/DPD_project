@@ -27,7 +27,7 @@ interface Props {
 }
 
 const AVISO = 'Basado en denuncias registradas. No es la probabilidad de ser víctima. En una emergencia llama al 105.';
-const NOMBRE = { normal: 'Más corta', segura: 'Ponderada por denuncias' } as const;
+const NOMBRE = { normal: 'Más corta', segura: 'Menor riesgo estimado' } as const;
 const DECIMALES = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 3 });
 
 function minutosDeCaminata(minutos: number) {
@@ -160,7 +160,7 @@ export default function RutaSegura({ station, origen, origenReal, permitirOrigen
   return (
     <section aria-label="Ruta a pie" className="space-y-3">
       {avisoReferencia}
-      {controles}
+      <details className="text-sm"><summary className="cursor-pointer py-2 font-medium text-brand">Ajustar cuánto caminar</summary><div className="mt-2">{controles}</div></details>
       {res.tolerancia_caminata && <div role="status" className="space-y-1 rounded-xl bg-surface-2 p-3 text-xs text-muted">
         <p>Límite aplicado: <b className="font-semibold text-fg">{minutosDeCaminata(res.tolerancia_caminata.max_minutos_extra)} extra</b>. La alternativa ponderada añade {minutosDeCaminata(res.tolerancia_caminata.minutos_extra_segura)}.</p>
         {!res.tolerancia_caminata.cumple_segura && <p className="font-medium text-fg">La alternativa ponderada supera tu límite. Se muestra el camino más corto; puedes ampliar los minutos o quitar el límite.</p>}
@@ -186,9 +186,10 @@ export default function RutaSegura({ station, origen, origenReal, permitirOrigen
         <span className={`ml-auto rounded-full px-2.5 py-1 text-xs font-semibold ${claseBanda(r.banda_riesgo)}`}>{etiquetaBanda(r.banda_riesgo)}</span>
       </div>
 
-      <p className="text-sm text-fg">{ex.resumen}</p>
+      <p className="text-sm text-fg">{misma ? 'Las dos alternativas coinciden en este recorrido.' : sel === 'normal' ? 'Estás viendo el camino más corto.' : 'Estás viendo la alternativa con menor riesgo estimado.'}</p>
       <p className="text-xs leading-relaxed text-muted">El recorrido se pondera con denuncias históricas; no garantiza seguridad ni describe incidentes en tiempo real.</p>
 
+      <details className="text-sm"><summary className="cursor-pointer py-2 font-medium text-brand">Por qué se sugiere este camino</summary><div className="space-y-3 py-2"><p className="text-sm text-muted">{ex.resumen}</p>
       {!misma && sel === 'segura' && ex.motivos.length > 0 && (
         <ul className="list-disc space-y-1 pl-5 text-sm text-muted">{ex.motivos.map((m, i) => <li key={i}>{m}</li>)}</ul>
       )}
@@ -212,6 +213,7 @@ export default function RutaSegura({ station, origen, origenReal, permitirOrigen
       </details>
 
       <Alert tono="info">{ex.aviso || AVISO}</Alert>
+      </div></details>
       {ex.llamar_105 && (
         <a href={`tel:${NUMERO_EMERGENCIA}`} className="btn btn-danger w-full"><Phone size={16} /> Emergencia: llamar al {NUMERO_EMERGENCIA}</a>
       )}

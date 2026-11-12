@@ -73,15 +73,15 @@ function Detalle({ plan, opcion }: { plan: Plan; opcion: OpcionSalida }) {
         <ol className="mt-4 space-y-2 text-sm text-fg">
           {opcion.tramos.map((tramo, indice) => tramo.servicios && tramo.servicios.length > 1 ? (
             <li key={`${tramo.servicio}-${tramo.sube}`} className="rounded-xl border border-line px-3 py-2.5">
-              <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <p className="flex flex-col items-start gap-2 leading-relaxed">
                 <span className="font-semibold">Sube al primero que pase</span>
-                <span className="inline-flex items-center gap-1.5 text-muted">{tramo.sube} <ArrowRight size={14} aria-label="hasta" /> {tramo.baja}</span>
+                <span className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-2 text-muted"><span className="break-words">{tramo.sube}</span><ArrowRight size={14} className="mt-1 shrink-0" aria-label="hasta" /><span className="break-words">{tramo.baja}</span></span>
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-3 divide-y divide-line">
                 {tramo.servicios.map((s, i) => (
-                  <li key={s.nombre} className="flex flex-wrap items-baseline justify-between gap-x-3 text-xs text-muted">
+                  <li key={s.nombre} className="flex min-w-0 flex-col gap-1.5 py-3 text-xs leading-relaxed text-muted first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-x-4">
                     <span><strong className="text-sm font-semibold text-fg">{s.nombre}</strong>{i === 0 && ' · el más rápido'}</span>
-                    <span className="tabular-nums">
+                    <span className="tabular-nums sm:text-right">
                       {minutos(s.viaje_min)} a bordo · {s.paradas_intermedias === 0 ? 'sin paradas intermedias' : `${s.paradas_intermedias} paradas`} · cada {minutos(s.intervalo_min)}
                     </span>
                   </li>

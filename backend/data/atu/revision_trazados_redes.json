@@ -1,0 +1,2011 @@
+{
+  "alcance": "Inspección estructural de todos los trazados usados por el mapa. Una repetición o segmento largo es una señal para revisión, no prueba de un error. No certifica itinerarios oficiales ni circulación actual.",
+  "resultados": [
+    {
+      "archivo": "trazados_corredores",
+      "indice": 0,
+      "servicio": "201",
+      "direccion": "1",
+      "vertices": 997,
+      "retornos_a_vertice_previo": 34,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 295,
+      "procedencia": {
+        "ruta": "201",
+        "direccion": "1",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 997,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (41 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 1,
+      "servicio": "201",
+      "direccion": "2",
+      "vertices": 1102,
+      "retornos_a_vertice_previo": 39,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 345,
+      "procedencia": {
+        "ruta": "201",
+        "direccion": "2",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 1102,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (41 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 2,
+      "servicio": "204",
+      "direccion": "1",
+      "vertices": 1399,
+      "retornos_a_vertice_previo": 39,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 328,
+      "procedencia": {
+        "ruta": "204",
+        "direccion": "1",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 1399,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (60 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 3,
+      "servicio": "204",
+      "direccion": "2",
+      "vertices": 1148,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 295,
+      "procedencia": {
+        "ruta": "204",
+        "direccion": "2",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 1148,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (59 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 4,
+      "servicio": "206",
+      "direccion": "1",
+      "vertices": 1062,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 287,
+      "procedencia": {
+        "ruta": "206",
+        "direccion": "1",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 1062,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (42 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 5,
+      "servicio": "206",
+      "direccion": "2",
+      "vertices": 1150,
+      "retornos_a_vertice_previo": 50,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 328,
+      "procedencia": {
+        "ruta": "206",
+        "direccion": "2",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 1150,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (34 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 6,
+      "servicio": "209",
+      "direccion": "1",
+      "vertices": 935,
+      "retornos_a_vertice_previo": 30,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 276,
+      "procedencia": {
+        "ruta": "209",
+        "direccion": "1",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 935,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (43 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 7,
+      "servicio": "209",
+      "direccion": "2",
+      "vertices": 1228,
+      "retornos_a_vertice_previo": 74,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 328,
+      "procedencia": {
+        "ruta": "209",
+        "direccion": "2",
+        "corredor": "Rojo",
+        "color_hex": "#c0392b",
+        "n_puntos": 1228,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (41 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 8,
+      "servicio": "301",
+      "direccion": "1",
+      "vertices": 655,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 180,
+      "procedencia": {
+        "ruta": "301",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 655,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (36 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 9,
+      "servicio": "301",
+      "direccion": "2",
+      "vertices": 584,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 272,
+      "procedencia": {
+        "ruta": "301",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 584,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (32 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 10,
+      "servicio": "302",
+      "direccion": "1",
+      "vertices": 389,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 180,
+      "procedencia": {
+        "ruta": "302",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 389,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (26 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 11,
+      "servicio": "302",
+      "direccion": "2",
+      "vertices": 359,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 272,
+      "procedencia": {
+        "ruta": "302",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 359,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (24 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 12,
+      "servicio": "303",
+      "direccion": "1",
+      "vertices": 452,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 180,
+      "procedencia": {
+        "ruta": "303",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 452,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (16 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 13,
+      "servicio": "303",
+      "direccion": "2",
+      "vertices": 462,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 272,
+      "procedencia": {
+        "ruta": "303",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 462,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (18 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 14,
+      "servicio": "305",
+      "direccion": "1",
+      "vertices": 433,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 180,
+      "procedencia": {
+        "ruta": "305",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 433,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (27 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 15,
+      "servicio": "305",
+      "direccion": "2",
+      "vertices": 426,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 272,
+      "procedencia": {
+        "ruta": "305",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 426,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (26 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 16,
+      "servicio": "306",
+      "direccion": "1",
+      "vertices": 394,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 180,
+      "procedencia": {
+        "ruta": "306",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 394,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (16 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 17,
+      "servicio": "306",
+      "direccion": "2",
+      "vertices": 377,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 272,
+      "procedencia": {
+        "ruta": "306",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 377,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (18 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 18,
+      "servicio": "336",
+      "direccion": "1",
+      "vertices": 525,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 181,
+      "procedencia": {
+        "ruta": "336",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 525,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (25 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 19,
+      "servicio": "336",
+      "direccion": "2",
+      "vertices": 522,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 272,
+      "procedencia": {
+        "ruta": "336",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 522,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (25 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 20,
+      "servicio": "370",
+      "direccion": "1",
+      "vertices": 213,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 142,
+      "procedencia": {
+        "ruta": "370",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 213,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (17 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 21,
+      "servicio": "370",
+      "direccion": "2",
+      "vertices": 212,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 204,
+      "procedencia": {
+        "ruta": "370",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 212,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (13 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 22,
+      "servicio": "371",
+      "direccion": "1",
+      "vertices": 44,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 146,
+      "procedencia": {
+        "ruta": "371",
+        "direccion": "1",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 44,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (2 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 23,
+      "servicio": "371",
+      "direccion": "2",
+      "vertices": 73,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 217,
+      "procedencia": {
+        "ruta": "371",
+        "direccion": "2",
+        "corredor": "Azul",
+        "color_hex": "#2471a3",
+        "n_puntos": 73,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (3 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 24,
+      "servicio": "404",
+      "direccion": "1",
+      "vertices": 990,
+      "retornos_a_vertice_previo": 36,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 264,
+      "procedencia": {
+        "ruta": "404",
+        "direccion": "1",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 990,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (35 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 25,
+      "servicio": "404",
+      "direccion": "2",
+      "vertices": 901,
+      "retornos_a_vertice_previo": 9,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 342,
+      "procedencia": {
+        "ruta": "404",
+        "direccion": "2",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 901,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (34 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 26,
+      "servicio": "405",
+      "direccion": "1",
+      "vertices": 862,
+      "retornos_a_vertice_previo": 27,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 247,
+      "procedencia": {
+        "ruta": "405",
+        "direccion": "1",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 862,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (36 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 27,
+      "servicio": "405",
+      "direccion": "2",
+      "vertices": 930,
+      "retornos_a_vertice_previo": 9,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 342,
+      "procedencia": {
+        "ruta": "405",
+        "direccion": "2",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 930,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (38 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 28,
+      "servicio": "406",
+      "direccion": "1",
+      "vertices": 746,
+      "retornos_a_vertice_previo": 32,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 247,
+      "procedencia": {
+        "ruta": "406",
+        "direccion": "1",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 746,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (42 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 29,
+      "servicio": "406",
+      "direccion": "2",
+      "vertices": 701,
+      "retornos_a_vertice_previo": 37,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 342,
+      "procedencia": {
+        "ruta": "406",
+        "direccion": "2",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 701,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (39 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 30,
+      "servicio": "412",
+      "direccion": "1",
+      "vertices": 688,
+      "retornos_a_vertice_previo": 8,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 247,
+      "procedencia": {
+        "ruta": "412",
+        "direccion": "1",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 688,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (26 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazados_corredores",
+      "indice": 31,
+      "servicio": "412",
+      "direccion": "2",
+      "vertices": 625,
+      "retornos_a_vertice_previo": 28,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 342,
+      "procedencia": {
+        "ruta": "412",
+        "direccion": "2",
+        "corredor": "Morado",
+        "color_hex": "#7d3c98",
+        "n_puntos": 625,
+        "tramos_recta": 0,
+        "sistema": "corredor",
+        "nota": "derivado: OSRM driving entre paraderos (26 tramos ok, 0 en recta); no es el trazado oficial",
+        "limpieza": "Sin desvíos cerrados redundantes que omiten paraderos; conserva calles y extremos; tolerancia adicional máxima de 35 m a paraderos."
+      }
+    },
+    {
+      "archivo": "trazado_troncal",
+      "indice": 0,
+      "servicio": null,
+      "direccion": null,
+      "vertices": 427,
+      "retornos_a_vertice_previo": 1,
+      "segmentos_mayores_500m": 1,
+      "segmento_mayor_m": 7423,
+      "procedencia": {
+        "sistema": "troncal",
+        "osm_ref": "C",
+        "osm_id": 1963019,
+        "osm_name": "Regular C Matellini - Castilla",
+        "nota": "OSM relation route=bus network=Metropolitano ref=C (corredor BRT)",
+        "fuente": "https://www.openstreetmap.org + Overpass API"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 0,
+      "servicio": "EX11-NS",
+      "direccion": null,
+      "vertices": 490,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 2,
+      "segmento_mayor_m": 570,
+      "procedencia": {
+        "servicio_slug": "EX11-NS",
+        "servicio_nombre": "Expreso 11",
+        "osm_ref": "EX11",
+        "osm_id": 19938633,
+        "n_puntos": 490,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX11 (id=19938633)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 1,
+      "servicio": "EX13-NS",
+      "direccion": null,
+      "vertices": 511,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 4,
+      "segmento_mayor_m": 930,
+      "procedencia": {
+        "servicio_slug": "EX13-NS",
+        "servicio_nombre": "Expreso 13",
+        "osm_ref": "EX13",
+        "osm_id": 19947410,
+        "n_puntos": 511,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX13 (id=19947410)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 2,
+      "servicio": "EX9-NS",
+      "direccion": null,
+      "vertices": 356,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 355,
+      "procedencia": {
+        "servicio_slug": "EX9-NS",
+        "servicio_nombre": "Expreso 9",
+        "osm_ref": "EX9",
+        "osm_id": 19935611,
+        "n_puntos": 356,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX9 (id=19935611)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 3,
+      "servicio": "Lechucero",
+      "direccion": null,
+      "vertices": 695,
+      "retornos_a_vertice_previo": 12,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 273,
+      "procedencia": {
+        "servicio_slug": "Lechucero",
+        "servicio_nombre": "Lechucero",
+        "osm_ref": "L",
+        "osm_id": 19950877,
+        "n_puntos": 695,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=L (id=19950877)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 4,
+      "servicio": "RegularA",
+      "direccion": null,
+      "vertices": 318,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 333,
+      "procedencia": {
+        "servicio_slug": "RegularA",
+        "servicio_nombre": "Ruta A",
+        "osm_ref": "A",
+        "osm_id": 2051510,
+        "n_puntos": 318,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=A (id=2051510)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 5,
+      "servicio": "RegularB",
+      "direccion": null,
+      "vertices": 549,
+      "retornos_a_vertice_previo": 11,
+      "segmentos_mayores_500m": 5,
+      "segmento_mayor_m": 9897,
+      "procedencia": {
+        "servicio_slug": "RegularB",
+        "servicio_nombre": "Ruta B",
+        "osm_ref": "B",
+        "osm_id": 2113936,
+        "n_puntos": 549,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=B (id=2113936)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 6,
+      "servicio": "RegularC",
+      "direccion": null,
+      "vertices": 427,
+      "retornos_a_vertice_previo": 1,
+      "segmentos_mayores_500m": 1,
+      "segmento_mayor_m": 7423,
+      "procedencia": {
+        "servicio_slug": "RegularC",
+        "servicio_nombre": "Ruta C",
+        "osm_ref": "C",
+        "osm_id": 1963019,
+        "n_puntos": 427,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=C (id=1963019)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 7,
+      "servicio": "RegularD",
+      "direccion": null,
+      "vertices": 329,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 333,
+      "procedencia": {
+        "servicio_slug": "RegularD",
+        "servicio_nombre": "Ruta D",
+        "osm_ref": "D",
+        "osm_id": 9465431,
+        "n_puntos": 329,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=D (id=9465431)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 8,
+      "servicio": "SX-M",
+      "direccion": null,
+      "vertices": 488,
+      "retornos_a_vertice_previo": 16,
+      "segmentos_mayores_500m": 2,
+      "segmento_mayor_m": 17910,
+      "procedencia": {
+        "servicio_slug": "SX-M",
+        "servicio_nombre": "Super Expreso M",
+        "osm_ref": "SX",
+        "osm_id": 19947782,
+        "n_puntos": 488,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=SX (id=19947782)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 9,
+      "servicio": "SXN-NS-M",
+      "direccion": null,
+      "vertices": 352,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 2,
+      "segmento_mayor_m": 522,
+      "procedencia": {
+        "servicio_slug": "SXN-NS-M",
+        "servicio_nombre": "Super Expreso Norte",
+        "osm_ref": "SXN",
+        "osm_id": 19948156,
+        "n_puntos": 352,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=SXN (id=19948156)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 10,
+      "servicio": "X1-M",
+      "direccion": null,
+      "vertices": 338,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 355,
+      "procedencia": {
+        "servicio_slug": "X1-M",
+        "servicio_nombre": "Expreso 1",
+        "osm_ref": "EX1",
+        "osm_id": 19922541,
+        "n_puntos": 338,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX1 (id=19922541)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 11,
+      "servicio": "X10",
+      "direccion": null,
+      "vertices": 363,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 248,
+      "procedencia": {
+        "servicio_slug": "X10",
+        "servicio_nombre": "Expreso 10",
+        "osm_ref": "EX10",
+        "osm_id": 19935795,
+        "n_puntos": 363,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX10 (id=19935795)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 12,
+      "servicio": "X12",
+      "direccion": null,
+      "vertices": 170,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 273,
+      "procedencia": {
+        "servicio_slug": "X12",
+        "servicio_nombre": "Expreso 12",
+        "osm_ref": "EX12",
+        "osm_id": 19943426,
+        "n_puntos": 170,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX12 (id=19943426)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 13,
+      "servicio": "X3-N",
+      "direccion": null,
+      "vertices": 428,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 355,
+      "procedencia": {
+        "servicio_slug": "X3-N",
+        "servicio_nombre": "Expreso 3",
+        "osm_ref": "EX3",
+        "osm_id": 19924157,
+        "n_puntos": 428,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX3 (id=19924157)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 14,
+      "servicio": "X5",
+      "direccion": null,
+      "vertices": 500,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 355,
+      "procedencia": {
+        "servicio_slug": "X5",
+        "servicio_nombre": "Expreso 5",
+        "osm_ref": "EX5",
+        "osm_id": 19926250,
+        "n_puntos": 500,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX5 (id=19926250)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 15,
+      "servicio": "X6",
+      "direccion": null,
+      "vertices": 399,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 273,
+      "procedencia": {
+        "servicio_slug": "X6",
+        "servicio_nombre": "Expreso 6",
+        "osm_ref": "EX6",
+        "osm_id": 19930949,
+        "n_puntos": 399,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX6 (id=19930949)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 16,
+      "servicio": "X7",
+      "direccion": null,
+      "vertices": 314,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 273,
+      "procedencia": {
+        "servicio_slug": "X7",
+        "servicio_nombre": "Expreso 7",
+        "osm_ref": "EX7",
+        "osm_id": 19931024,
+        "n_puntos": 314,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX7 (id=19931024)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_metropolitano_servicios",
+      "indice": 17,
+      "servicio": "X8",
+      "direccion": null,
+      "vertices": 449,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 355,
+      "procedencia": {
+        "servicio_slug": "X8",
+        "servicio_nombre": "Expreso 8",
+        "osm_ref": "EX8",
+        "osm_id": 19931266,
+        "n_puntos": 449,
+        "sistema": "metropolitano_servicio",
+        "color_hex": "#1f4e79",
+        "nota": "OSM relation route=bus network=Metropolitano ref=EX8 (id=19931266)",
+        "fuente": "OpenStreetMap Overpass"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 0,
+      "servicio": "ChimpuOcllo/SanJuanDeDios",
+      "direccion": 1,
+      "vertices": 293,
+      "retornos_a_vertice_previo": 33,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 243,
+      "procedencia": {
+        "ruta": "ChimpuOcllo/SanJuanDeDios",
+        "direccion": 1,
+        "codigo": "",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (22 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 1,
+      "servicio": "ChimpuOcllo/SanJuanDeDios",
+      "direccion": 2,
+      "vertices": 318,
+      "retornos_a_vertice_previo": 37,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 304,
+      "procedencia": {
+        "ruta": "ChimpuOcllo/SanJuanDeDios",
+        "direccion": 2,
+        "codigo": "",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (22 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 2,
+      "servicio": "ChimpuOcllo/Universitaria",
+      "direccion": 1,
+      "vertices": 158,
+      "retornos_a_vertice_previo": 27,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 210,
+      "procedencia": {
+        "ruta": "ChimpuOcllo/Universitaria",
+        "direccion": 1,
+        "codigo": "AN-11",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 3,
+      "servicio": "ChimpuOcllo/Universitaria",
+      "direccion": 2,
+      "vertices": 118,
+      "retornos_a_vertice_previo": 3,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 224,
+      "procedencia": {
+        "ruta": "ChimpuOcllo/Universitaria",
+        "direccion": 2,
+        "codigo": "AN-11",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 4,
+      "servicio": "LosIncas/Carabayllo",
+      "direccion": 1,
+      "vertices": 182,
+      "retornos_a_vertice_previo": 10,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 213,
+      "procedencia": {
+        "ruta": "LosIncas/Carabayllo",
+        "direccion": 1,
+        "codigo": "AN-09",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (13 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 5,
+      "servicio": "LosIncas/Carabayllo",
+      "direccion": 2,
+      "vertices": 244,
+      "retornos_a_vertice_previo": 26,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 141,
+      "procedencia": {
+        "ruta": "LosIncas/Carabayllo",
+        "direccion": 2,
+        "codigo": "AN-09",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (14 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 6,
+      "servicio": "LosIncas/Collique",
+      "direccion": 1,
+      "vertices": 204,
+      "retornos_a_vertice_previo": 12,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 147,
+      "procedencia": {
+        "ruta": "LosIncas/Collique",
+        "direccion": 1,
+        "codigo": "AN-04",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 7,
+      "servicio": "LosIncas/Collique",
+      "direccion": 2,
+      "vertices": 170,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 165,
+      "procedencia": {
+        "ruta": "LosIncas/Collique",
+        "direccion": 2,
+        "codigo": "AN-04",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 8,
+      "servicio": "LosIncas/TorreBlanca",
+      "direccion": 1,
+      "vertices": 156,
+      "retornos_a_vertice_previo": 7,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 259,
+      "procedencia": {
+        "ruta": "LosIncas/TorreBlanca",
+        "direccion": 1,
+        "codigo": "",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 9,
+      "servicio": "LosIncas/TorreBlanca",
+      "direccion": 2,
+      "vertices": 142,
+      "retornos_a_vertice_previo": 7,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 150,
+      "procedencia": {
+        "ruta": "LosIncas/TorreBlanca",
+        "direccion": 2,
+        "codigo": "",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 10,
+      "servicio": "Norte/AntunezDeMayolo",
+      "direccion": 1,
+      "vertices": 274,
+      "retornos_a_vertice_previo": 43,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 178,
+      "procedencia": {
+        "ruta": "Norte/AntunezDeMayolo",
+        "direccion": 1,
+        "codigo": "AN-17",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 11,
+      "servicio": "Norte/AntunezDeMayolo",
+      "direccion": 2,
+      "vertices": 285,
+      "retornos_a_vertice_previo": 50,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 244,
+      "procedencia": {
+        "ruta": "Norte/AntunezDeMayolo",
+        "direccion": 2,
+        "codigo": "AN-17",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 12,
+      "servicio": "Norte/Belaunde",
+      "direccion": 1,
+      "vertices": 167,
+      "retornos_a_vertice_previo": 24,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 317,
+      "procedencia": {
+        "ruta": "Norte/Belaunde",
+        "direccion": 1,
+        "codigo": "AN-07",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 13,
+      "servicio": "Norte/Belaunde",
+      "direccion": 2,
+      "vertices": 232,
+      "retornos_a_vertice_previo": 16,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 384,
+      "procedencia": {
+        "ruta": "Norte/Belaunde",
+        "direccion": 2,
+        "codigo": "AN-07",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (13 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 14,
+      "servicio": "Norte/Bertello",
+      "direccion": 1,
+      "vertices": 285,
+      "retornos_a_vertice_previo": 11,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 464,
+      "procedencia": {
+        "ruta": "Norte/Bertello",
+        "direccion": 1,
+        "codigo": "AN-14",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (15 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 15,
+      "servicio": "Norte/Bertello",
+      "direccion": 2,
+      "vertices": 386,
+      "retornos_a_vertice_previo": 77,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 283,
+      "procedencia": {
+        "ruta": "Norte/Bertello",
+        "direccion": 2,
+        "codigo": "AN-14",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (15 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 16,
+      "servicio": "Norte/Carabayllo",
+      "direccion": 1,
+      "vertices": 468,
+      "retornos_a_vertice_previo": 37,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 213,
+      "procedencia": {
+        "ruta": "Norte/Carabayllo",
+        "direccion": 1,
+        "codigo": "AN-09",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (19 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 17,
+      "servicio": "Norte/Carabayllo",
+      "direccion": 2,
+      "vertices": 643,
+      "retornos_a_vertice_previo": 54,
+      "segmentos_mayores_500m": 1,
+      "segmento_mayor_m": 503,
+      "procedencia": {
+        "ruta": "Norte/Carabayllo",
+        "direccion": 2,
+        "codigo": "AN-09",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (22 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 18,
+      "servicio": "Norte/Collique",
+      "direccion": 1,
+      "vertices": 487,
+      "retornos_a_vertice_previo": 92,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 395,
+      "procedencia": {
+        "ruta": "Norte/Collique",
+        "direccion": 1,
+        "codigo": "AN-04",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (19 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 19,
+      "servicio": "Norte/Collique",
+      "direccion": 2,
+      "vertices": 467,
+      "retornos_a_vertice_previo": 78,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 211,
+      "procedencia": {
+        "ruta": "Norte/Collique",
+        "direccion": 2,
+        "codigo": "AN-04",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (18 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 20,
+      "servicio": "Norte/Izaguirre",
+      "direccion": 1,
+      "vertices": 113,
+      "retornos_a_vertice_previo": 9,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 284,
+      "procedencia": {
+        "ruta": "Norte/Izaguirre",
+        "direccion": 1,
+        "codigo": "AN-18",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 21,
+      "servicio": "Norte/Izaguirre",
+      "direccion": 2,
+      "vertices": 201,
+      "retornos_a_vertice_previo": 2,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 244,
+      "procedencia": {
+        "ruta": "Norte/Izaguirre",
+        "direccion": 2,
+        "codigo": "AN-18",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 22,
+      "servicio": "Norte/LaEnsenada",
+      "direccion": 1,
+      "vertices": 282,
+      "retornos_a_vertice_previo": 17,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 276,
+      "procedencia": {
+        "ruta": "Norte/LaEnsenada",
+        "direccion": 1,
+        "codigo": "AN-13",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (16 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 23,
+      "servicio": "Norte/LaEnsenada",
+      "direccion": 2,
+      "vertices": 359,
+      "retornos_a_vertice_previo": 12,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 246,
+      "procedencia": {
+        "ruta": "Norte/LaEnsenada",
+        "direccion": 2,
+        "codigo": "AN-13",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (17 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 24,
+      "servicio": "Norte/LosAlisos",
+      "direccion": 1,
+      "vertices": 209,
+      "retornos_a_vertice_previo": 6,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 268,
+      "procedencia": {
+        "ruta": "Norte/LosAlisos",
+        "direccion": 1,
+        "codigo": "AN-15",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 25,
+      "servicio": "Norte/LosAlisos",
+      "direccion": 2,
+      "vertices": 179,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 208,
+      "procedencia": {
+        "ruta": "Norte/LosAlisos",
+        "direccion": 2,
+        "codigo": "AN-15",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 26,
+      "servicio": "Norte/LosOlivos",
+      "direccion": 1,
+      "vertices": 46,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 136,
+      "procedencia": {
+        "ruta": "Norte/LosOlivos",
+        "direccion": 1,
+        "codigo": "AN-16",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (5 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 27,
+      "servicio": "Norte/LosOlivos",
+      "direccion": 2,
+      "vertices": 49,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 136,
+      "procedencia": {
+        "ruta": "Norte/LosOlivos",
+        "direccion": 2,
+        "codigo": "AN-16",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (5 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 28,
+      "servicio": "Norte/MilagroDeJesus",
+      "direccion": 1,
+      "vertices": 389,
+      "retornos_a_vertice_previo": 45,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 395,
+      "procedencia": {
+        "ruta": "Norte/MilagroDeJesus",
+        "direccion": 1,
+        "codigo": "AN-08",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (17 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 29,
+      "servicio": "Norte/MilagroDeJesus",
+      "direccion": 2,
+      "vertices": 345,
+      "retornos_a_vertice_previo": 33,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 211,
+      "procedencia": {
+        "ruta": "Norte/MilagroDeJesus",
+        "direccion": 2,
+        "codigo": "AN-08",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (17 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 30,
+      "servicio": "Norte/Naranjal",
+      "direccion": 1,
+      "vertices": 265,
+      "retornos_a_vertice_previo": 15,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 268,
+      "procedencia": {
+        "ruta": "Norte/Naranjal",
+        "direccion": 1,
+        "codigo": "",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 31,
+      "servicio": "Norte/Naranjal",
+      "direccion": 2,
+      "vertices": 295,
+      "retornos_a_vertice_previo": 48,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 205,
+      "procedencia": {
+        "ruta": "Norte/Naranjal",
+        "direccion": 2,
+        "codigo": "",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 32,
+      "servicio": "Norte/Payet",
+      "direccion": 1,
+      "vertices": 125,
+      "retornos_a_vertice_previo": 17,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 206,
+      "procedencia": {
+        "ruta": "Norte/Payet",
+        "direccion": 1,
+        "codigo": "AN-05",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 33,
+      "servicio": "Norte/Payet",
+      "direccion": 2,
+      "vertices": 121,
+      "retornos_a_vertice_previo": 13,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 206,
+      "procedencia": {
+        "ruta": "Norte/Payet",
+        "direccion": 2,
+        "codigo": "AN-05",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 34,
+      "servicio": "Norte/PuentePiedra",
+      "direccion": 1,
+      "vertices": 170,
+      "retornos_a_vertice_previo": 1,
+      "segmentos_mayores_500m": 1,
+      "segmento_mayor_m": 745,
+      "procedencia": {
+        "ruta": "Norte/PuentePiedra",
+        "direccion": 1,
+        "codigo": "AN-12",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 35,
+      "servicio": "Norte/PuentePiedra",
+      "direccion": 2,
+      "vertices": 230,
+      "retornos_a_vertice_previo": 26,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 467,
+      "procedencia": {
+        "ruta": "Norte/PuentePiedra",
+        "direccion": 2,
+        "codigo": "AN-12",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (8 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 36,
+      "servicio": "Norte/Puno",
+      "direccion": 1,
+      "vertices": 203,
+      "retornos_a_vertice_previo": 8,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 317,
+      "procedencia": {
+        "ruta": "Norte/Puno",
+        "direccion": 1,
+        "codigo": "AN-06",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (10 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 37,
+      "servicio": "Norte/Puno",
+      "direccion": 2,
+      "vertices": 182,
+      "retornos_a_vertice_previo": 39,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 395,
+      "procedencia": {
+        "ruta": "Norte/Puno",
+        "direccion": 2,
+        "codigo": "AN-06",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 38,
+      "servicio": "Norte/SantoDomingo",
+      "direccion": 1,
+      "vertices": 683,
+      "retornos_a_vertice_previo": 82,
+      "segmentos_mayores_500m": 2,
+      "segmento_mayor_m": 546,
+      "procedencia": {
+        "ruta": "Norte/SantoDomingo",
+        "direccion": 1,
+        "codigo": "AN-10",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (26 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 39,
+      "servicio": "Norte/SantoDomingo",
+      "direccion": 2,
+      "vertices": 1118,
+      "retornos_a_vertice_previo": 298,
+      "segmentos_mayores_500m": 4,
+      "segmento_mayor_m": 934,
+      "procedencia": {
+        "ruta": "Norte/SantoDomingo",
+        "direccion": 2,
+        "codigo": "AN-10",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (23 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 40,
+      "servicio": "Norte/Tahuantinsuyo",
+      "direccion": 1,
+      "vertices": 75,
+      "retornos_a_vertice_previo": 3,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 201,
+      "procedencia": {
+        "ruta": "Norte/Tahuantinsuyo",
+        "direccion": 1,
+        "codigo": "AN-01",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 41,
+      "servicio": "Norte/Tahuantinsuyo",
+      "direccion": 2,
+      "vertices": 72,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 201,
+      "procedencia": {
+        "ruta": "Norte/Tahuantinsuyo",
+        "direccion": 2,
+        "codigo": "AN-01",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 42,
+      "servicio": "Norte/Tungasuca",
+      "direccion": 1,
+      "vertices": 585,
+      "retornos_a_vertice_previo": 72,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 456,
+      "procedencia": {
+        "ruta": "Norte/Tungasuca",
+        "direccion": 1,
+        "codigo": "AN-02",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (20 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 43,
+      "servicio": "Norte/Tungasuca",
+      "direccion": 2,
+      "vertices": 884,
+      "retornos_a_vertice_previo": 294,
+      "segmentos_mayores_500m": 6,
+      "segmento_mayor_m": 934,
+      "procedencia": {
+        "ruta": "Norte/Tungasuca",
+        "direccion": 2,
+        "codigo": "AN-02",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (16 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 44,
+      "servicio": "Sur/America",
+      "direccion": 1,
+      "vertices": 234,
+      "retornos_a_vertice_previo": 23,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 190,
+      "procedencia": {
+        "ruta": "Sur/America",
+        "direccion": 1,
+        "codigo": "AS-07",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 45,
+      "servicio": "Sur/America",
+      "direccion": 2,
+      "vertices": 206,
+      "retornos_a_vertice_previo": 23,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 210,
+      "procedencia": {
+        "ruta": "Sur/America",
+        "direccion": 2,
+        "codigo": "AS-07",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 46,
+      "servicio": "Sur/CedrosDeVilla",
+      "direccion": 1,
+      "vertices": 142,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 342,
+      "procedencia": {
+        "ruta": "Sur/CedrosDeVilla",
+        "direccion": 1,
+        "codigo": "AS-02",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 47,
+      "servicio": "Sur/CedrosDeVilla",
+      "direccion": 2,
+      "vertices": 101,
+      "retornos_a_vertice_previo": 8,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 189,
+      "procedencia": {
+        "ruta": "Sur/CedrosDeVilla",
+        "direccion": 2,
+        "codigo": "AS-02",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (8 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 48,
+      "servicio": "Sur/LosProceres",
+      "direccion": 1,
+      "vertices": 262,
+      "retornos_a_vertice_previo": 43,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 211,
+      "procedencia": {
+        "ruta": "Sur/LosProceres",
+        "direccion": 1,
+        "codigo": "AS-08",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (8 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 49,
+      "servicio": "Sur/LosProceres",
+      "direccion": 2,
+      "vertices": 196,
+      "retornos_a_vertice_previo": 26,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 210,
+      "procedencia": {
+        "ruta": "Sur/LosProceres",
+        "direccion": 2,
+        "codigo": "AS-08",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (7 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 50,
+      "servicio": "Sur/VillaElSalvador",
+      "direccion": 1,
+      "vertices": 407,
+      "retornos_a_vertice_previo": 46,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 449,
+      "procedencia": {
+        "ruta": "Sur/VillaElSalvador",
+        "direccion": 1,
+        "codigo": "AS-04",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 51,
+      "servicio": "Sur/VillaElSalvador",
+      "direccion": 2,
+      "vertices": 216,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 347,
+      "procedencia": {
+        "ruta": "Sur/VillaElSalvador",
+        "direccion": 2,
+        "codigo": "AS-04",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (9 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 52,
+      "servicio": "Universidad/Trapiche",
+      "direccion": 1,
+      "vertices": 418,
+      "retornos_a_vertice_previo": 4,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 258,
+      "procedencia": {
+        "ruta": "Universidad/Trapiche",
+        "direccion": 1,
+        "codigo": "AN-10",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (11 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazados_alimentadores_atu",
+      "indice": 53,
+      "servicio": "Universidad/Trapiche",
+      "direccion": 2,
+      "vertices": 286,
+      "retornos_a_vertice_previo": 9,
+      "segmentos_mayores_500m": 0,
+      "segmento_mayor_m": 342,
+      "procedencia": {
+        "ruta": "Universidad/Trapiche",
+        "direccion": 2,
+        "codigo": "AN-10",
+        "sistema": "alimentador",
+        "nota": "derivado: OSRM entre paradas geocodificadas por nombre OSM (14 tramos ok, 0 en recta); no es el trazado oficial"
+      }
+    },
+    {
+      "archivo": "trazado_metro_l1",
+      "indice": 0,
+      "servicio": null,
+      "direccion": null,
+      "vertices": 489,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 5,
+      "segmento_mayor_m": 3089,
+      "procedencia": {
+        "sistema": "metro_l1"
+      }
+    },
+    {
+      "archivo": "trazado_metro_l1",
+      "indice": 1,
+      "servicio": null,
+      "direccion": null,
+      "vertices": 2225,
+      "retornos_a_vertice_previo": 0,
+      "segmentos_mayores_500m": 11,
+      "segmento_mayor_m": 2474,
+      "procedencia": {
+        "sistema": "metro_l1"
+      }
+    }
+  ]
+}

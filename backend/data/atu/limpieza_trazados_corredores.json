@@ -1,0 +1,262 @@
+{
+  "sha256_entrada": "009ae40ef220116181bc2d4ac5e54c858923472ac79350d858309dfc56dadc0b",
+  "alcance": "32 trazados: 16 corredores, dos sentidos. Conserva cercanía a paraderos (máximo 35 m adicionales) y segmentos originales. No certifica rutas oficiales.",
+  "trazados": [
+    {
+      "ruta": "201",
+      "sentido": "1",
+      "vertices_antes": 1425,
+      "vertices_despues": 997,
+      "desvios_redundantes_eliminados": 7,
+      "paraderos_con_ubicacion_protegidos": 134
+    },
+    {
+      "ruta": "201",
+      "sentido": "2",
+      "vertices_antes": 1167,
+      "vertices_despues": 1102,
+      "desvios_redundantes_eliminados": 2,
+      "paraderos_con_ubicacion_protegidos": 134
+    },
+    {
+      "ruta": "204",
+      "sentido": "1",
+      "vertices_antes": 1593,
+      "vertices_despues": 1399,
+      "desvios_redundantes_eliminados": 6,
+      "paraderos_con_ubicacion_protegidos": 188
+    },
+    {
+      "ruta": "204",
+      "sentido": "2",
+      "vertices_antes": 1471,
+      "vertices_despues": 1148,
+      "desvios_redundantes_eliminados": 9,
+      "paraderos_con_ubicacion_protegidos": 187
+    },
+    {
+      "ruta": "206",
+      "sentido": "1",
+      "vertices_antes": 1361,
+      "vertices_despues": 1062,
+      "desvios_redundantes_eliminados": 4,
+      "paraderos_con_ubicacion_protegidos": 132
+    },
+    {
+      "ruta": "206",
+      "sentido": "2",
+      "vertices_antes": 1198,
+      "vertices_despues": 1150,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 124
+    },
+    {
+      "ruta": "209",
+      "sentido": "1",
+      "vertices_antes": 1266,
+      "vertices_despues": 935,
+      "desvios_redundantes_eliminados": 5,
+      "paraderos_con_ubicacion_protegidos": 131
+    },
+    {
+      "ruta": "209",
+      "sentido": "2",
+      "vertices_antes": 1407,
+      "vertices_despues": 1228,
+      "desvios_redundantes_eliminados": 3,
+      "paraderos_con_ubicacion_protegidos": 129
+    },
+    {
+      "ruta": "301",
+      "sentido": "1",
+      "vertices_antes": 669,
+      "vertices_despues": 655,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 126
+    },
+    {
+      "ruta": "301",
+      "sentido": "2",
+      "vertices_antes": 584,
+      "vertices_despues": 584,
+      "desvios_redundantes_eliminados": 0,
+      "paraderos_con_ubicacion_protegidos": 120
+    },
+    {
+      "ruta": "302",
+      "sentido": "1",
+      "vertices_antes": 389,
+      "vertices_despues": 389,
+      "desvios_redundantes_eliminados": 0,
+      "paraderos_con_ubicacion_protegidos": 60
+    },
+    {
+      "ruta": "302",
+      "sentido": "2",
+      "vertices_antes": 361,
+      "vertices_despues": 359,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 60
+    },
+    {
+      "ruta": "303",
+      "sentido": "1",
+      "vertices_antes": 496,
+      "vertices_despues": 452,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 57
+    },
+    {
+      "ruta": "303",
+      "sentido": "2",
+      "vertices_antes": 496,
+      "vertices_despues": 462,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 58
+    },
+    {
+      "ruta": "305",
+      "sentido": "1",
+      "vertices_antes": 454,
+      "vertices_despues": 433,
+      "desvios_redundantes_eliminados": 2,
+      "paraderos_con_ubicacion_protegidos": 93
+    },
+    {
+      "ruta": "305",
+      "sentido": "2",
+      "vertices_antes": 458,
+      "vertices_despues": 426,
+      "desvios_redundantes_eliminados": 3,
+      "paraderos_con_ubicacion_protegidos": 91
+    },
+    {
+      "ruta": "306",
+      "sentido": "1",
+      "vertices_antes": 396,
+      "vertices_despues": 394,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 44
+    },
+    {
+      "ruta": "306",
+      "sentido": "2",
+      "vertices_antes": 377,
+      "vertices_despues": 377,
+      "desvios_redundantes_eliminados": 0,
+      "paraderos_con_ubicacion_protegidos": 44
+    },
+    {
+      "ruta": "336",
+      "sentido": "1",
+      "vertices_antes": 525,
+      "vertices_despues": 525,
+      "desvios_redundantes_eliminados": 0,
+      "paraderos_con_ubicacion_protegidos": 79
+    },
+    {
+      "ruta": "336",
+      "sentido": "2",
+      "vertices_antes": 522,
+      "vertices_despues": 522,
+      "desvios_redundantes_eliminados": 0,
+      "paraderos_con_ubicacion_protegidos": 78
+    },
+    {
+      "ruta": "370",
+      "sentido": "1",
+      "vertices_antes": 215,
+      "vertices_despues": 213,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 51
+    },
+    {
+      "ruta": "370",
+      "sentido": "2",
+      "vertices_antes": 212,
+      "vertices_despues": 212,
+      "desvios_redundantes_eliminados": 0,
+      "paraderos_con_ubicacion_protegidos": 47
+    },
+    {
+      "ruta": "371",
+      "sentido": "1",
+      "vertices_antes": 59,
+      "vertices_despues": 44,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 10
+    },
+    {
+      "ruta": "371",
+      "sentido": "2",
+      "vertices_antes": 88,
+      "vertices_despues": 73,
+      "desvios_redundantes_eliminados": 1,
+      "paraderos_con_ubicacion_protegidos": 11
+    },
+    {
+      "ruta": "404",
+      "sentido": "1",
+      "vertices_antes": 1139,
+      "vertices_despues": 990,
+      "desvios_redundantes_eliminados": 4,
+      "paraderos_con_ubicacion_protegidos": 124
+    },
+    {
+      "ruta": "404",
+      "sentido": "2",
+      "vertices_antes": 1116,
+      "vertices_despues": 901,
+      "desvios_redundantes_eliminados": 4,
+      "paraderos_con_ubicacion_protegidos": 123
+    },
+    {
+      "ruta": "405",
+      "sentido": "1",
+      "vertices_antes": 999,
+      "vertices_despues": 862,
+      "desvios_redundantes_eliminados": 3,
+      "paraderos_con_ubicacion_protegidos": 117
+    },
+    {
+      "ruta": "405",
+      "sentido": "2",
+      "vertices_antes": 1021,
+      "vertices_despues": 930,
+      "desvios_redundantes_eliminados": 3,
+      "paraderos_con_ubicacion_protegidos": 120
+    },
+    {
+      "ruta": "406",
+      "sentido": "1",
+      "vertices_antes": 898,
+      "vertices_despues": 746,
+      "desvios_redundantes_eliminados": 2,
+      "paraderos_con_ubicacion_protegidos": 137
+    },
+    {
+      "ruta": "406",
+      "sentido": "2",
+      "vertices_antes": 933,
+      "vertices_despues": 701,
+      "desvios_redundantes_eliminados": 4,
+      "paraderos_con_ubicacion_protegidos": 135
+    },
+    {
+      "ruta": "412",
+      "sentido": "1",
+      "vertices_antes": 731,
+      "vertices_despues": 688,
+      "desvios_redundantes_eliminados": 3,
+      "paraderos_con_ubicacion_protegidos": 86
+    },
+    {
+      "ruta": "412",
+      "sentido": "2",
+      "vertices_antes": 720,
+      "vertices_despues": 625,
+      "desvios_redundantes_eliminados": 3,
+      "paraderos_con_ubicacion_protegidos": 86
+    }
+  ]
+}

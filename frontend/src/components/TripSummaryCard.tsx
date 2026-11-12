@@ -1,5 +1,5 @@
-import { useId, useState } from 'react';
-import { Bus, TrainFront, X, Lightbulb, TriangleAlert, ChevronDown } from 'lucide-react';
+import { Tabs } from '@mantine/core';
+import { Bus, TrainFront, X, Lightbulb, TriangleAlert } from 'lucide-react';
 import { TripMatchResponse, MatchedRoute, ForecastView } from '@/lib/types';
 import ForecastPanel from './ForecastPanel';
 import BottomSheet from './BottomSheet';
@@ -40,25 +40,7 @@ function Step({ color, last, children }: { color: string; last?: boolean; childr
   );
 }
 
-// Sección plegable: solo una abierta a la vez para que la hoja no se vuelva una columna larga
-function Seccion({ titulo, abierta, onToggle, children }: { titulo: string; abierta: boolean; onToggle: () => void; children: React.ReactNode }) {
-  const id = useId();
-  return (
-    <section className="border-t border-line">
-      <h4>
-        <button type="button" onClick={onToggle} aria-expanded={abierta} aria-controls={id} className="flex w-full items-center justify-between gap-3 py-3.5 text-left text-sm font-semibold text-fg outline-none focus-visible:text-brand">
-          <span className="min-w-0 truncate">{titulo}</span>
-          <ChevronDown size={18} aria-hidden className={`shrink-0 text-muted transition-transform ${abierta ? 'rotate-180' : ''}`} />
-        </button>
-      </h4>
-      <div id={id} hidden={!abierta} className="pb-4">{children}</div>
-    </section>
-  );
-}
-
 export default function TripSummaryCard({ tripData, selectedRoute, forecast, loadingForecast, forecastError, onRetry, walkSlot, onClose, children }: Props) {
-  const [abierta, setAbierta] = useState<'aforo' | 'camino' | null>('aforo');
-  const alternar = (k: 'aforo' | 'camino') => setAbierta((a) => (a === k ? null : k));
   const t = selectedRoute.transbordo;
   const Icon = selectedRoute.system === 'metropolitano' || selectedRoute.system === 'metro_l1' ? TrainFront : Bus;
   const color = systemInfo(selectedRoute.system).color;
@@ -107,6 +89,13 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
       }
     >
       <div className="px-5 pb-2">
+        <Tabs defaultValue="recorrido" keepMounted className="mobility-result-tabs">
+          <Tabs.List aria-label="Detalles del viaje">
+            <Tabs.Tab value="recorrido">Recorrido</Tabs.Tab>
+            <Tabs.Tab value="ocupacion">Ocupación</Tabs.Tab>
+            {walkSlot && <Tabs.Tab value="camino">A pie</Tabs.Tab>}
+          </Tabs.List>
+          <Tabs.Panel value="recorrido" pt="md">
         <ol aria-label="Itinerario" className="px-1 pb-4">
           <Step color="var(--muted)">
             <p className="font-semibold text-fg">Camina {Math.round(selectedRoute.origin_walk_m)} m</p>
@@ -153,16 +142,18 @@ export default function TripSummaryCard({ tripData, selectedRoute, forecast, loa
           </p>
         ) : null}
 
-        <Seccion titulo={t ? `Aforo en ${selectedRoute.boarding_station} (primer paradero)` : `Aforo en ${selectedRoute.boarding_station}`} abierta={abierta === 'aforo'} onToggle={() => alternar('aforo')}>
-          <ForecastPanel compact forecast={forecast} loading={loadingForecast} error={forecastError} onRetry={onRetry} />
-          {children}
-        </Seccion>
-
-        {walkSlot && (
-          <Seccion titulo={`Cómo llegar a ${selectedRoute.boarding_station}`} abierta={abierta === 'camino'} onToggle={() => alternar('camino')}>
+          <p className="pb-4 text-xs leading-relaxed text-muted">El trazo del bus es aproximado y puede variar respecto al recorrido real.</p>
+          </Tabs.Panel>
+          <Tabs.Panel value="ocupacion" pt="md">
+            <p className="mb-3 text-sm font-semibold text-fg">Al subir en {selectedRoute.boarding_station}</p>
+            <ForecastPanel compact forecast={forecast} loading={loadingForecast} error={forecastError} onRetry={onRetry} />
+            {children}
+          </Tabs.Panel>
+          {walkSlot && <Tabs.Panel value="camino" pt="md">
+            <p className="mb-3 text-sm font-semibold text-fg">Camina hasta {selectedRoute.boarding_station}</p>
             {walkSlot}
-          </Seccion>
-        )}
+          </Tabs.Panel>}
+        </Tabs>
       </div>
     </BottomSheet>
   );

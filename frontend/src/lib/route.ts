@@ -34,7 +34,7 @@ const CONTRA_M = 20000;
 
 /**
  * Devuelve un único Feature con el tramo subida → bajada, o null si el trazado no pasa cerca de
- * ambos paraderos (entonces conviene mostrar la ruta completa).
+ * ambos paraderos (no se dibuja un trazado ajeno al viaje).
  *
  * Los trazados de OSM recorren la línea de ida y vuelta (y los servicios del Metropolitano repiten
  * tramos). Quedarse con "el vértice más cercano" a cada paradero puede caer en la ida para subir y
@@ -56,6 +56,9 @@ export function tramoEntre(features: any[], subida: Punto, bajada: Punto, maxM =
       for (const a of A) {
         for (const b of B) {
           if (a.i === b.i) continue;
+          // Los corredores tienen un trazado por sentido. No invertir una calle
+          // de sentido único para ofrecer un tramo de la dirección contraria.
+          if (f.properties?.direccion != null && a.i > b.i) continue;
           const arco = Math.abs(acum[b.i] - acum[a.i]);
           const costo = arco + 2 * (a.d + b.d) + (a.i > b.i ? CONTRA_M : 0);
           if (!mejor || costo < mejor.costo) mejor = { feature: f, coords: linea, i: a.i, j: b.i, costo };
@@ -69,6 +72,6 @@ export function tramoEntre(features: any[], subida: Punto, bajada: Punto, maxM =
   return {
     type: 'Feature',
     properties: mejor.feature.properties || {},
-    geometry: { type: 'LineString', coordinates: mejor.coords.slice(desde, hasta + 1) },
+    geometry: { type: 'LineString', coordinates: mejor.i <= mejor.j ? mejor.coords.slice(desde, hasta + 1) : mejor.coords.slice(desde, hasta + 1).reverse() },
   };
 }

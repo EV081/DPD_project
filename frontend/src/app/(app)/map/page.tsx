@@ -341,7 +341,7 @@ export default function MapPage() {
               return boarding ? (
                 <div className="space-y-4">
                   <RutaSegura station={boarding} origen={tripData.origin} origenReal={!tripReference} permitirOrigenReferencia auto onChange={setWalk} />
-                  <SeguridadAcceso station={boarding} />
+                  <details><summary className="cursor-pointer py-2 text-sm font-medium text-brand">Información de la zona</summary><div className="pt-2"><SeguridadAcceso station={boarding} /></div></details>
                 </div>
               ) : null;
             })()}

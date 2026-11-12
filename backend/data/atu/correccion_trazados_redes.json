@@ -1,0 +1,448 @@
+{
+  "metropolitano": [
+    {
+      "servicio": "RegularA",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/A-REGULAR.png"
+    },
+    {
+      "servicio": "RegularB",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/nuevo-Regular-B-QR.jpg"
+    },
+    {
+      "servicio": "RegularC",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/REGULAR-C-QR.png"
+    },
+    {
+      "servicio": "RegularD",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/D-REGULAR.png"
+    },
+    {
+      "servicio": "X1-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_NS.jpg"
+    },
+    {
+      "servicio": "X1-SN-N",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_SN.jpg"
+    },
+    {
+      "servicio": "X2-NS-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-2A_NS.jpg"
+    },
+    {
+      "servicio": "X2-SN-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-2A_SN.jpg"
+    },
+    {
+      "servicio": "X3-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-3A.png"
+    },
+    {
+      "servicio": "X3-N",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-3B.png"
+    },
+    {
+      "servicio": "X5",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/Nuevo-mapa-EX5_2024.jpg"
+    },
+    {
+      "servicio": "X6",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-6.png"
+    },
+    {
+      "servicio": "X7",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-7.png"
+    },
+    {
+      "servicio": "X8",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/nuevo-EX8-QR.jpg"
+    },
+    {
+      "servicio": "X9-NS",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-9N_NS.jpg"
+    },
+    {
+      "servicio": "EX9-SN",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/nuevo-EX9-(sur-a-norte)-QR.jpg"
+    },
+    {
+      "servicio": "X10",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-10.png"
+    },
+    {
+      "servicio": "EX11-NS",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX11-NS.jpg"
+    },
+    {
+      "servicio": "EX11-SN",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX11-SN.jpg"
+    },
+    {
+      "servicio": "X12",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX12.jpg"
+    },
+    {
+      "servicio": "EX13-NS",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-NS.png"
+    },
+    {
+      "servicio": "EX13-SN",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-SN.png"
+    },
+    {
+      "servicio": "SX-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SX-Recorrido-nuevo2026.jpg"
+    },
+    {
+      "servicio": "SX-N",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SX-1B.png"
+    },
+    {
+      "servicio": "SXN-NS-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-NS-M.png"
+    },
+    {
+      "servicio": "SXN-SN-M",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-SN-M.png"
+    },
+    {
+      "servicio": "SXN22",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-22-Agosto.jpg"
+    },
+    {
+      "servicio": "Lechucero",
+      "estado": "reconstruido_por_estaciones_atu",
+      "conexiones_pendientes": [],
+      "fuente": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/mapa-Lechucero2.png"
+    }
+  ],
+  "alimentadores": [
+    {
+      "ruta": "ChimpuOcllo/SanJuanDeDios",
+      "sentido": 1,
+      "desvios_eliminados": 7
+    },
+    {
+      "ruta": "ChimpuOcllo/SanJuanDeDios",
+      "sentido": 2,
+      "desvios_eliminados": 9
+    },
+    {
+      "ruta": "ChimpuOcllo/Universitaria",
+      "sentido": 1,
+      "desvios_eliminados": 1
+    },
+    {
+      "ruta": "ChimpuOcllo/Universitaria",
+      "sentido": 2,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "LosIncas/Carabayllo",
+      "sentido": 1,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "LosIncas/Carabayllo",
+      "sentido": 2,
+      "desvios_eliminados": 7
+    },
+    {
+      "ruta": "LosIncas/Collique",
+      "sentido": 1,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "LosIncas/Collique",
+      "sentido": 2,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "LosIncas/TorreBlanca",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "LosIncas/TorreBlanca",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/AntunezDeMayolo",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/AntunezDeMayolo",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/Belaunde",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/Belaunde",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/Bertello",
+      "sentido": 1,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/Bertello",
+      "sentido": 2,
+      "desvios_eliminados": 6
+    },
+    {
+      "ruta": "Norte/Carabayllo",
+      "sentido": 1,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/Carabayllo",
+      "sentido": 2,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/Collique",
+      "sentido": 1,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/Collique",
+      "sentido": 2,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/Izaguirre",
+      "sentido": 1,
+      "desvios_eliminados": 1
+    },
+    {
+      "ruta": "Norte/Izaguirre",
+      "sentido": 2,
+      "desvios_eliminados": 1
+    },
+    {
+      "ruta": "Norte/LaEnsenada",
+      "sentido": 1,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/LaEnsenada",
+      "sentido": 2,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/LosAlisos",
+      "sentido": 1,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Norte/LosAlisos",
+      "sentido": 2,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Norte/LosOlivos",
+      "sentido": 1,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Norte/LosOlivos",
+      "sentido": 2,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Norte/MilagroDeJesus",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/MilagroDeJesus",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/Naranjal",
+      "sentido": 1,
+      "desvios_eliminados": 4
+    },
+    {
+      "ruta": "Norte/Naranjal",
+      "sentido": 2,
+      "desvios_eliminados": 5
+    },
+    {
+      "ruta": "Norte/Payet",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/Payet",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/PuentePiedra",
+      "sentido": 1,
+      "desvios_eliminados": 1
+    },
+    {
+      "ruta": "Norte/PuentePiedra",
+      "sentido": 2,
+      "desvios_eliminados": 1
+    },
+    {
+      "ruta": "Norte/Puno",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/Puno",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    },
+    {
+      "ruta": "Norte/SantoDomingo",
+      "sentido": 1,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/SantoDomingo",
+      "sentido": 2,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/Tahuantinsuyo",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Norte/Tahuantinsuyo",
+      "sentido": 2,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Norte/Tungasuca",
+      "sentido": 1,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Norte/Tungasuca",
+      "sentido": 2,
+      "estado": "archivado_sin_ficha_vigente_en_catalogo_revisado"
+    },
+    {
+      "ruta": "Sur/America",
+      "sentido": 1,
+      "desvios_eliminados": 5
+    },
+    {
+      "ruta": "Sur/America",
+      "sentido": 2,
+      "desvios_eliminados": 4
+    },
+    {
+      "ruta": "Sur/CedrosDeVilla",
+      "sentido": 1,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Sur/CedrosDeVilla",
+      "sentido": 2,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Sur/LosProceres",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Sur/LosProceres",
+      "sentido": 2,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Sur/VillaElSalvador",
+      "sentido": 1,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Sur/VillaElSalvador",
+      "sentido": 2,
+      "desvios_eliminados": 0
+    },
+    {
+      "ruta": "Universidad/Trapiche",
+      "sentido": 1,
+      "desvios_eliminados": 3
+    },
+    {
+      "ruta": "Universidad/Trapiche",
+      "sentido": 2,
+      "desvios_eliminados": 2
+    }
+  ],
+  "linea_1": {
+    "trazos_continuos": 1,
+    "fuente": "https://portal.atu.gob.pe/QR/MetroLima/L1/"
+  }
+}
