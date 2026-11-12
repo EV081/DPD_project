@@ -1,0 +1,292 @@
+{
+  "Metropolitano/Servicios/RegularB.php": {
+    "imagen": "Metropolitano/imagenes/nuevo-Regular-B-QR.jpg",
+    "sha256": "524e079666485c47ce453fb7bd58ff12b670c21d28d12f8ee8cca769e2a67bb2",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Ambos sentidos\nLunes a viernes: 10:00–23:00\nSábado: 05:00–23:00\nDomingo: 05:00–22:00",
+    "direcciones": [
+      {
+        "sentido_publicado": "Ambos sentidos",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "10:00",
+                "23:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Sábado",
+            "dias_semana": [
+              5
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "23:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Domingo",
+            "dias_semana": [
+              6
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "22:00"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/X1-M.php": {
+    "imagen": "Metropolitano/imagenes/EXPRESO-1AN_NS.jpg",
+    "sha256": "324661a3d55edc4d9c1e2529f963f2d945f4d11cd7c4aac6b799d7623e47c1a5",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Estación Central a terminal Matellini\nLunes a viernes: 05:30–21:00\nSábado y domingo: 06:30–21:00",
+    "direcciones": [
+      {
+        "sentido_publicado": "Estación Central a terminal Matellini",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:30",
+                "21:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Sábado y domingo",
+            "dias_semana": [
+              5,
+              6
+            ],
+            "tramos": [
+              [
+                "06:30",
+                "21:00"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/X1-SN-N.php": {
+    "imagen": "Metropolitano/imagenes/EXPRESO-1AN_SN.jpg",
+    "sha256": "2fed70d2bc81359020a14c43fe2e53aa3d165d50c1ce64a56b8a2dded8d65876",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Terminal Matellini a estación Central\nLunes a viernes: 05:00–21:00\nSábado y domingo: 06:00–21:00",
+    "direcciones": [
+      {
+        "sentido_publicado": "Terminal Matellini a estación Central",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "21:00"
+              ]
+            ]
+          },
+          {
+            "dias_texto": "Sábado y domingo",
+            "dias_semana": [
+              5,
+              6
+            ],
+            "tramos": [
+              [
+                "06:00",
+                "21:00"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/EX13-NS.php": {
+    "imagen": "Metropolitano/imagenes/EX13-NS.png",
+    "sha256": "3cf620236125727e87fe99d979356dd6c2ac242840f00c873515f57b043c1425",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Terminal Chimpu Ocllo a estación Central\nLunes a viernes: 05:00–10:00",
+    "direcciones": [
+      {
+        "sentido_publicado": "Terminal Chimpu Ocllo a estación Central",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "10:00"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/EX13-SN.php": {
+    "imagen": "Metropolitano/imagenes/EX13-SN.png",
+    "sha256": "bd9b1be730a60d810d6d83af6048b24d62151701bfa7f5bd0a5f6a44c9c386d1",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Estación Central a terminal Chimpu Ocllo\nLunes a viernes: 05:50–10:00",
+    "direcciones": [
+      {
+        "sentido_publicado": "Estación Central a terminal Chimpu Ocllo",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:50",
+                "10:00"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/SXN-NS-M.php": {
+    "imagen": "Metropolitano/imagenes/SXN-NS-M.png",
+    "sha256": "dd55ea0e2b56c723d357d8dfb772293928a15cf54f03ee5b35ce44c3313f453d",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Terminal Naranjal a estación Central\nLunes a viernes: 05:00–10:00 y 16:30–20:30",
+    "direcciones": [
+      {
+        "sentido_publicado": "Terminal Naranjal a estación Central",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:00",
+                "10:00"
+              ],
+              [
+                "16:30",
+                "20:30"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/SXN-SN-M.php": {
+    "imagen": "Metropolitano/imagenes/SXN-SN-M.png",
+    "sha256": "d83b452b53acea8bb3d5c0435d7e658bc46cd4dedd197a780382d7b4b612b0f5",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "Estación Central a terminal Naranjal\nLunes a viernes: 05:30–10:00 y 17:00–21:00",
+    "direcciones": [
+      {
+        "sentido_publicado": "Estación Central a terminal Naranjal",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "05:30",
+                "10:00"
+              ],
+              [
+                "17:00",
+                "21:00"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Metropolitano/Servicios/SXN22.php": {
+    "imagen": "Metropolitano/imagenes/SXN-22-Agosto.jpg",
+    "sha256": "2ca8fda1784cef82bdc753aa983850ad3af6bf621d6849b495940d5c3a835e60",
+    "revision": "Transcripción contrastada visualmente con la imagen oficial.",
+    "transcripcion": "22 de Agosto a estación Central (de norte a sur)\nLunes a viernes: 06:00–08:30",
+    "direcciones": [
+      {
+        "sentido_publicado": "22 de Agosto a estación Central (de norte a sur)",
+        "reglas": [
+          {
+            "dias_texto": "Lunes a viernes",
+            "dias_semana": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "tramos": [
+              [
+                "06:00",
+                "08:30"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

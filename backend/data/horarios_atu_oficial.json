@@ -1,0 +1,3179 @@
+{
+  "fuente": {
+    "nombre": "ATU · Portal QR oficial",
+    "url": "https://portal.atu.gob.pe/QR/",
+    "consultado": "2026-11-11",
+    "aviso": "Transcripción de las fichas oficiales consultadas. No son salidas en tiempo real. Los días no publicados y los feriados no se completan por suposición."
+  },
+  "servicios": {
+    "metropolitano": {
+      "Ruta A": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingos",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO REGULAR A\nTerminal Naranjal a Estación Central:\nLunes a sábado:\n5:00 a. m. - 11:00 p. m.\nDomingos:\n5:00 a. m. - 10:00 p. m.\nEstación Central a Terminal Naranjal:\nLunes a sábado:\n5:35 a. m. - 11:00 p. m.\nDomingos:\n5:35 a. m. - 10:00 p. m."
+          },
+          {
+            "sentido_publicado": "Estación Central a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:35",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingos",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:35",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO REGULAR A\nTerminal Naranjal a Estación Central:\nLunes a sábado:\n5:00 a. m. - 11:00 p. m.\nDomingos:\n5:00 a. m. - 10:00 p. m.\nEstación Central a Terminal Naranjal:\nLunes a sábado:\n5:35 a. m. - 11:00 p. m.\nDomingos:\n5:35 a. m. - 10:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Ruta B": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularB.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularB.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Ambos sentidos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "10:00",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularB.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/nuevo-Regular-B-QR.jpg",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Ambos sentidos\nLunes a viernes: 10:00–23:00\nSábado: 05:00–23:00\nDomingo: 05:00–22:00"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Ruta C": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Ramón Castilla a Terminal Matellini",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingos",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO REGULAR C\nEstación Ramón Castilla a Terminal Matellini:\nLunes a sábado:\n05:00 a. m. - 11:00 p. m.\nDomingos:\n05:00 a. m. - 10:00 p. m.\nTerminal Matellini a Estación Ramón Castilla:\nLunes a sábado:\n05:00 a. m. - 11:00 p. m.\nDomingos:\n05:00 a. m. - 10:00 p. m."
+          },
+          {
+            "sentido_publicado": "Terminal Matellini a Estación Ramón Castilla",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingos",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO REGULAR C\nEstación Ramón Castilla a Terminal Matellini:\nLunes a sábado:\n05:00 a. m. - 11:00 p. m.\nDomingos:\n05:00 a. m. - 10:00 p. m.\nTerminal Matellini a Estación Ramón Castilla:\nLunes a sábado:\n05:00 a. m. - 11:00 p. m.\nDomingos:\n05:00 a. m. - 10:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Ruta D": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "10:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO REGULAR D\nTerminal Naranjal a Estación Central:\nLunes a viernes:\n05:00 a. m. - 10:30 a. m.\nEstación Central a Terminal Naranjal:\nLunes a viernes:\n05:35 a. m. - 11:00 a. m."
+          },
+          {
+            "sentido_publicado": "Estación Central a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:35",
+                    "11:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO REGULAR D\nTerminal Naranjal a Estación Central:\nLunes a viernes:\n05:00 a. m. - 10:30 a. m.\nEstación Central a Terminal Naranjal:\nLunes a viernes:\n05:35 a. m. - 11:00 a. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 1": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-M.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-M.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-SN-N.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Central a terminal Matellini",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "21:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado y domingo",
+                "dias_semana": [
+                  5,
+                  6
+                ],
+                "tramos": [
+                  [
+                    "06:30",
+                    "21:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_NS.jpg",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Central a terminal Matellini\nLunes a viernes: 05:30–21:00\nSábado y domingo: 06:30–21:00"
+          },
+          {
+            "sentido_publicado": "Terminal Matellini a estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado y domingo",
+                "dias_semana": [
+                  5,
+                  6
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "21:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-SN-N.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_SN.jpg",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Matellini a estación Central\nLunes a viernes: 05:00–21:00\nSábado y domingo: 06:00–21:00"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 2": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-SN-M.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación 28 de Julio",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "09:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 2\nTerminal Naranjal a Estación 28 de Julio:\nLunes a viernes:\n05:00 a. m. - 09:00 a. m.\nSábado:\n06:00 a. m. - 09:00 a. m.\nDe sur a norte no se brindará el servicio en hora punta mañana."
+          },
+          {
+            "sentido_publicado": "Estación Ricardo Palma a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "17:00",
+                    "21:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "12:30",
+                    "15:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-SN-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-SN-M.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 2\nEstación Ricardo Palma a Terminal Naranjal:\nLunes a viernes:\n05:00 p. m. - 09:00 p. m.\nSábado:\n12:30 p. m. - 03:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 3": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-N.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación 28 de Julio",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "09:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 3\nTerminal Naranjal a Estación 28 de Julio:\nLunes a viernes:\n05:30 a. m. - 09:00 a. m.\nSábado:\n06:00 a. m. - 09:00 a. m."
+          },
+          {
+            "sentido_publicado": "Estación Benavides a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "17:00",
+                    "21:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "12:30",
+                    "15:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-N.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-N.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 3\nEstación Benavides a Terminal Naranjal:\nLunes a viernes:\n05:00 p. m. - 09:00 p. m.\nSábado:\n12:30 p. m. - 03:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 5": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación Plaza de Flores",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "09:00",
+                    "17:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sabado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:15",
+                    "20:20"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 5\nTerminal Naranjal a Estación Plaza de Flores:\nLunes a viernes:\n09:00 a. m. - 05:00 p. m.\nSabado:\n05:15 a. m. - 08:20 p. m.\nEstación Plaza de Flores a Terminal Naranjal:\nLunes a viernes:\n09:00 a. m. - 05:00 p. m.\nSabado:\n05:15 a. m. - 08:20 p. m."
+          },
+          {
+            "sentido_publicado": "Estación Plaza de Flores a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "09:00",
+                    "17:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sabado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:15",
+                    "20:20"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 5\nTerminal Naranjal a Estación Plaza de Flores:\nLunes a viernes:\n09:00 a. m. - 05:00 p. m.\nSabado:\n05:15 a. m. - 08:20 p. m.\nEstación Plaza de Flores a Terminal Naranjal:\nLunes a viernes:\n09:00 a. m. - 05:00 p. m.\nSabado:\n05:15 a. m. - 08:20 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 6": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Izaguirre a Estación Benavides",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "10:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 6\nEstación Izaguirre a Estación Benavides:\nLunes a viernes:\n05:30 a. m. - 10:00 a. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 7": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Tomás Valle a Estación Angamos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 7\nEstación Tomás Valle a Estación Angamos:\nLunes a viernes:\n05:30 a. m. - 09:00 a. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 8": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Izaguirre a Estación Plaza de Flores",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "17:00",
+                    "20:20"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 8\nEstación Izaguirre a Estación Plaza de Flores:\nLunes a viernes:\n05:00 p. m. - 08:20 p. m.\nEstación Plaza de Flores a Estación Izaguirre:\nLunes a viernes:\n05:00 p. m. - 09:00 p. m."
+          },
+          {
+            "sentido_publicado": "Estación Plaza de Flores a Estación Izaguirre",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "17:00",
+                    "21:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 8\nEstación Izaguirre a Estación Plaza de Flores:\nLunes a viernes:\n05:00 p. m. - 08:20 p. m.\nEstación Plaza de Flores a Estación Izaguirre:\nLunes a viernes:\n05:00 p. m. - 09:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 9": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX9-SN.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación UNI a Estación Benavides",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 9\nEstación UNI a Estación Benavides:\nLunes a viernes:\n05:30 a. m. - 09:00 a. m."
+          },
+          {
+            "sentido_publicado": "Estación Plaza de Flores a Estación UNI",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX9-SN.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX9-SN.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 9\nEstación Plaza de Flores a Estación UNI:\nLunes a viernes:\n05:30 a. m. - 09:00 a. m."
+          }
+        ],
+        "notas": [
+          "Se usa el sentido escrito en el horario, no el sufijo NS/SN del enlace; hay pestañas oficiales con nombres inconsistentes."
+        ],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 10": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 10\nTerminal Naranjal a Estación Central:\nLunes a viernes:\n06:00 a. m. - 09:00 a. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 11": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-SN.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Los Incas a Estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "10:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 11\nEstación Los Incas a Estación Central:\nLunes a viernes:\n05:00 a. m. - 10:00 a. m."
+          },
+          {
+            "sentido_publicado": "Estación Central a Estación Los Incas",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "10:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-SN.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-SN.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 11\nEstación Central a Estación Los Incas:\nLunes a viernes:\n05:45 a. m. - 10:00 a. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 12": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Estación Central a Estación Benavides",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "10:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO EXPRESO 12\nEstación Central a Estación Benavides:\nLunes a viernes:\n05:45 a. m. - 10:00 a. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Expreso 13": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-NS.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-NS.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-SN.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Chimpu Ocllo a estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "10:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-NS.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-NS.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Chimpu Ocllo a estación Central\nLunes a viernes: 05:00–10:00"
+          },
+          {
+            "sentido_publicado": "Estación Central a terminal Chimpu Ocllo",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:50",
+                    "10:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-SN.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-SN.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Central a terminal Chimpu Ocllo\nLunes a viernes: 05:50–10:00"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Super Expreso": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-N.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a Estación 28 de Julio",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "09:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sabado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "09:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO SÚPER EXPRESO\nTerminal Naranjal a Estación 28 de Julio:\nLunes a viernes:\n05:30 a. m. - 09:00 a. m.\nSabado:\n06:00 a. m. - 09:00 a. m."
+          },
+          {
+            "sentido_publicado": "Estación Aramburú a Terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "17:00",
+                    "21:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-N.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-N.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO SÚPER EXPRESO\nEstación Aramburú a Terminal Naranjal:\nLunes a viernes:\n05:00 p. m. - 09:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Super Expreso Norte": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-NS-M.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-NS-M.php",
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-SN-M.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Terminal Naranjal a estación Central",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "10:00"
+                  ],
+                  [
+                    "16:30",
+                    "20:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-NS-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-NS-M.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Terminal Naranjal a estación Central\nLunes a viernes: 05:00–10:00 y 16:30–20:30"
+          },
+          {
+            "sentido_publicado": "Estación Central a terminal Naranjal",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "10:00"
+                  ],
+                  [
+                    "17:00",
+                    "21:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-SN-M.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-SN-M.png",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "Estación Central a terminal Naranjal\nLunes a viernes: 05:30–10:00 y 17:00–21:00"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Super Expreso Norte (22 de Agosto)": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN22.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN22.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "22 de Agosto a estación Central (de norte a sur)",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "08:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN22.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-22-Agosto.jpg",
+            "metodo": "imagen_revisada",
+            "texto_fuente": "22 de Agosto a estación Central (de norte a sur)\nLunes a viernes: 06:00–08:30"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "Lechucero": {
+        "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Ambos sentidos",
+            "reglas": [
+              {
+                "dias_texto": "Viernes y Sábado",
+                "dias_semana": [
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "23:30",
+                    "04:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
+            "metodo": "html",
+            "texto_fuente": "HORARIO LECHUCERO L\nViernes y Sábado:\n11:30 p.m - 4:00 a.m"
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      }
+    },
+    "metro_l1": {
+      "Línea 1": {
+        "url": "https://portal.atu.gob.pe/QR/MetroLima/L1/",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/MetroLima/L1/"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Ambos sentidos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a sábado",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/MetroLima/L1/",
+            "evidencia": "https://portal.atu.gob.pe/QR/MetroLima/L1/",
+            "metodo": "html",
+            "texto_fuente": "HORARIO LÍNEA 1\nLunes a sábado:\n05:00 a. m. - 10:00 p. m.\nDomingo:\n05:30 a. m. - 10:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      }
+    },
+    "corredor": {
+      "301": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/index.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "24 de Junio a Plaza Butters",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a Viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:30",
+                    "10:47"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:30",
+                    "10:14"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:22"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 301\n24 de Junio a Plaza Butters\nLunes a Viernes:\n4:30 a. m. a 10:47 a. m\nSábado:\n4:30 a. m. a 10:14 a. m.\nDomingo:\n05:00 a. m. a 9:22 p. m.\nEl Sol a 24 de Junio\nLunes a viernes:\n05:00 a. m. a 11:58 p. m.\nSábado:\n05:18 a. m. a 11:28 p. m.\nDomingo:\n06:00 a. m. a 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "El Sol a 24 de Junio",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:18",
+                    "23:28"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "06:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 301\n24 de Junio a Plaza Butters\nLunes a Viernes:\n4:30 a. m. a 10:47 a. m\nSábado:\n4:30 a. m. a 10:14 a. m.\nDomingo:\n05:00 a. m. a 9:22 p. m.\nEl Sol a 24 de Junio\nLunes a viernes:\n05:00 a. m. a 11:58 p. m.\nSábado:\n05:18 a. m. a 11:28 p. m.\nDomingo:\n06:00 a. m. a 10:30 p. m."
+          }
+        ],
+        "notas": [
+          "La ficha publica cierre a las 10:47 a. m. (laborables) y 10:14 a. m. (sábado) en 24 de Junio → Plaza Butters. Se conserva literalmente; pendiente de aclaración por ATU."
+        ],
+        "frecuencia_publicada_min": null
+      },
+      "303": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/303.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Lima a 2 de Mayo",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "21:05"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:30",
+                    "21:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 303\nLima a 2 de Mayo\nLunes a viernes:\n05:30 a. m. a 09:05 p. m.\nSábado:\n05:30 a. m. a 09:00 p. m.\n2 de Mayo a Av. Próceres\nLunes a viernes:\n06:13 a. m. a 09:57 p. m.\nSábado:\n06:10 a. m. a 09:57 p. m."
+          },
+          {
+            "sentido_publicado": "2 de Mayo a Av. Próceres",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "06:13",
+                    "21:57"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:10",
+                    "21:57"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 303\nLima a 2 de Mayo\nLunes a viernes:\n05:30 a. m. a 09:05 p. m.\nSábado:\n05:30 a. m. a 09:00 p. m.\n2 de Mayo a Av. Próceres\nLunes a viernes:\n06:13 a. m. a 09:57 p. m.\nSábado:\n06:10 a. m. a 09:57 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "305": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/305.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Condominios a 2 de Mayo",
+            "reglas": [
+              {
+                "dias_texto": "Miércoles a Viernes",
+                "dias_semana": [
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "00:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado a Martes",
+                "dias_semana": [
+                  5,
+                  6,
+                  0,
+                  1
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 305\nCondominios a 2 de Mayo\nMiércoles a Viernes:\n05:00 a. m. a 00:00 a. m.\nSábado a Martes:\n05:00 a. m. a 11:00 p. m.\nPiura a Condominios\nLunes a domingo:\n05:38 a. m. a 11:00 p. m.\nSábado:\n05:42 a. m. a 11:00 p. m.\nDomingo:\n05:45 a. m. a 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Piura a Condominios",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a domingo",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:38",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:42",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:45",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 305\nCondominios a 2 de Mayo\nMiércoles a Viernes:\n05:00 a. m. a 00:00 a. m.\nSábado a Martes:\n05:00 a. m. a 11:00 p. m.\nPiura a Condominios\nLunes a domingo:\n05:38 a. m. a 11:00 p. m.\nSábado:\n05:42 a. m. a 11:00 p. m.\nDomingo:\n05:45 a. m. a 10:30 p. m."
+          }
+        ],
+        "notas": [
+          "La ficha de vuelta dice lunes a domingo y además especifica sábado y domingo con otras horas. Se conservan las reglas; los días específicos prevalecen en la consulta."
+        ],
+        "frecuencia_publicada_min": null
+      },
+      "336": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/336.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Rimac a Miraflores",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:04"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:10"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 336\nRimac a Miraflores\nLunes a viernes:\n05:00 a.m. a 10:04 p. m.\nSábado:\n05:00 a. m. a 10:10 p. m.\nMiraflores a Rimac\nLunes a viernes:\n05:43 a. m. a 10:58 p. m.\nSábado:\n05:32 a. m. a 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Miraflores a Rimac",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:43",
+                    "22:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:32",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 336\nRimac a Miraflores\nLunes a viernes:\n05:00 a.m. a 10:04 p. m.\nSábado:\n05:00 a. m. a 10:10 p. m.\nMiraflores a Rimac\nLunes a viernes:\n05:43 a. m. a 10:58 p. m.\nSábado:\n05:32 a. m. a 11:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "370": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/370.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Mónaco a Acho",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:34"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:42"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:01"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 370\nMónaco a Acho\nLunes a viernes:\n05:00 a. m. a 10:34 p. m.\nSábado:\n05:00 a. m. a 10:42 p. m.\nDomingo:\n05:00 a. m. a 10:01 p. m.\nAcho a Mónaco\nLunes a viernes:\n05:21 a. m. a 11:00 p. m.\nSábado:\n05:21 a. m. a 11:10 p. m.\nDomingo:\n05:27 a. m. a 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "Acho a Mónaco",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:21",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:21",
+                    "23:10"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:27",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 370\nMónaco a Acho\nLunes a viernes:\n05:00 a. m. a 10:34 p. m.\nSábado:\n05:00 a. m. a 10:42 p. m.\nDomingo:\n05:00 a. m. a 10:01 p. m.\nAcho a Mónaco\nLunes a viernes:\n05:21 a. m. a 11:00 p. m.\nSábado:\n05:21 a. m. a 11:10 p. m.\nDomingo:\n05:27 a. m. a 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "371": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/371.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Las Lomas a Amancaes",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:51"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:51"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:51"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 371\nLas Lomas a Amancaes\nLunes a viernes:\n05:00 a. m. a 10:51 p. m.\nSábado\n05:00 a. m. a 10:51 p. m.\nDomingo\n05:00 a. m. a 10:51 p. m.\nAmancaes a Las Lomas\nLunes a viernes:\n05:05 a. m. a 10:58 p. m.\nSábado\n05:07a. m. a 11:00 p. m.\nDomingo\n05:07 a. m. a 11:00 p. m."
+          },
+          {
+            "sentido_publicado": "Amancaes a Las Lomas",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:05",
+                    "22:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:07",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:07",
+                    "23:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 371\nLas Lomas a Amancaes\nLunes a viernes:\n05:00 a. m. a 10:51 p. m.\nSábado\n05:00 a. m. a 10:51 p. m.\nDomingo\n05:00 a. m. a 10:51 p. m.\nAmancaes a Las Lomas\nLunes a viernes:\n05:05 a. m. a 10:58 p. m.\nSábado\n05:07a. m. a 11:00 p. m.\nDomingo\n05:07 a. m. a 11:00 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "SE-08": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "San Martin de Porres a Cercado de Lima",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:46"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:53"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:03"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor SE-08\nSan Martin de Porres a Cercado de Lima\nLunes a viernes:\n05:00 a. m. a 9:46 p. m.\nSábado\n05:00 a. m. a 9:53 p. m.\nDomingo\n05:00 a. m. a 9:03 p. m.\nCercado de Lima a San Martin de Porres\nLunes a viernes:\n05:42 a. m. a 10:36 p. m.\nSábado\n05:51 a. m. a 10:58 p. m.\nDomingo\n05:47 a. m. a 9:50 p. m."
+          },
+          {
+            "sentido_publicado": "Cercado de Lima a San Martin de Porres",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:42",
+                    "22:36"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:51",
+                    "22:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:47",
+                    "21:50"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor SE-08\nSan Martin de Porres a Cercado de Lima\nLunes a viernes:\n05:00 a. m. a 9:46 p. m.\nSábado\n05:00 a. m. a 9:53 p. m.\nDomingo\n05:00 a. m. a 9:03 p. m.\nCercado de Lima a San Martin de Porres\nLunes a viernes:\n05:42 a. m. a 10:36 p. m.\nSábado\n05:51 a. m. a 10:58 p. m.\nDomingo\n05:47 a. m. a 9:50 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "201": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorRojo/index.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Ceres a Calle 66",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:45",
+                    "22:41"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:50",
+                    "22:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:11"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 201\nCeres a Calle 66\nLunes a viernes:\n4:45 a. m. a 10:41 p. m.\nSábado:\n4:50 a. m. a 10:30 p. m.\nDomingo:\n05:00 a. m. a 10:11 p. m.\nCalle 66 a Ceres\nLunes a viernes:\n05:00 a. m. a 11:00 p. m.\nSábado:\n05:00 a. m. a 10:58 p. m.\nDomingo:\n05:00 a. m. a 10:29 p. m."
+          },
+          {
+            "sentido_publicado": "Calle 66 a Ceres",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:29"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 201\nCeres a Calle 66\nLunes a viernes:\n4:45 a. m. a 10:41 p. m.\nSábado:\n4:50 a. m. a 10:30 p. m.\nDomingo:\n05:00 a. m. a 10:11 p. m.\nCalle 66 a Ceres\nLunes a viernes:\n05:00 a. m. a 11:00 p. m.\nSábado:\n05:00 a. m. a 10:58 p. m.\nDomingo:\n05:00 a. m. a 10:29 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "204": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorRojo/204.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Huertos a la Marina",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:30",
+                    "21:41"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:40",
+                    "22:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "04:40",
+                    "22:00"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 204\nHuertos a la Marina\nLunes a viernes:\n4:30 a. m. a 9:41 p. m.\nSábado:\n4:40 a. m. a 10:00 p. m.\nDomingo:\n04:40 a. m. a 10:00 p. m.\nLa Marina a Huertos\nLunes a viernes:\n05:00 a. m. a 10:30 p. m.\nSábado:\n05:00 a. m. a 10:58 p. m.\nDomingo:\n05:00 a. m. a 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "La Marina a Huertos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 204\nHuertos a la Marina\nLunes a viernes:\n4:30 a. m. a 9:41 p. m.\nSábado:\n4:40 a. m. a 10:00 p. m.\nDomingo:\n04:40 a. m. a 10:00 p. m.\nLa Marina a Huertos\nLunes a viernes:\n05:00 a. m. a 10:30 p. m.\nSábado:\n05:00 a. m. a 10:58 p. m.\nDomingo:\n05:00 a. m. a 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "206": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorRojo/206.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "Santa María a San Marcos",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:17"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:40"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:45"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 206\nSanta María a San Marcos\nLunes a viernes:\n5:00 a. m. a 10:17 p. m.\nSábado:\n5:00 a. m. a 9:40 p. m.\nDomingo:\n05:00 a. m. a 9:45 p. m.\nSan Marcos a Santa Maria\nLunes a viernes:\n05:00 a. m. a 11:01 p. m.\nSábado:\n05:10 a. m. a 10:30 p. m.\nDomingo:\n05:15 a. m. a 10:30 p. m."
+          },
+          {
+            "sentido_publicado": "San Marcos a Santa Maria",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "23:01"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:10",
+                    "22:30"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:15",
+                    "22:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 206\nSanta María a San Marcos\nLunes a viernes:\n5:00 a. m. a 10:17 p. m.\nSábado:\n5:00 a. m. a 9:40 p. m.\nDomingo:\n05:00 a. m. a 9:45 p. m.\nSan Marcos a Santa Maria\nLunes a viernes:\n05:00 a. m. a 11:01 p. m.\nSábado:\n05:10 a. m. a 10:30 p. m.\nDomingo:\n05:15 a. m. a 10:30 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "209": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorRojo/209.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "San Miguel a Ate",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:20"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:22"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:20"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 209\nSan Miguel a Ate\nLunes a viernes:\n5:00 a. m. a 10:20 p. m.\nSábado:\n5:00 a. m. a 10:22 p. m.\nDomingo:\n05:00 a. m. a 10:20 p. m.\nAte a San Miguel\nLunes a viernes:\n05:05 a. m. a 11:52 p. m.\nSábado:\n5:00 a. m. a 10:58 p. m.\nDomingo:\n05:00 a. m. a 10:20 p. m."
+          },
+          {
+            "sentido_publicado": "Ate a San Miguel",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:05",
+                    "23:52"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:58"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "22:20"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 209\nSan Miguel a Ate\nLunes a viernes:\n5:00 a. m. a 10:20 p. m.\nSábado:\n5:00 a. m. a 10:22 p. m.\nDomingo:\n05:00 a. m. a 10:20 p. m.\nAte a San Miguel\nLunes a viernes:\n05:05 a. m. a 11:52 p. m.\nSábado:\n5:00 a. m. a 10:58 p. m.\nDomingo:\n05:00 a. m. a 10:20 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "404": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorMorado/index.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "La Capilla a La Virgen",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:30",
+                    "22:02"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:30",
+                    "22:02"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:30"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 404\nLa Capilla a La Virgen\nLunes a viernes:\n4:30 a. m. a 10:02 p. m.\nSábado:\n4:30 a. m. a 10:02 p. m.\nDomingo:\n05:00 a. m. a 9:30 p. m.\nVenus a La Capilla\nLunes a viernes:\n05:35 a. m. a 11:13 p. m.\nSábado:\n05:35 a. m. a 11:09 p. m.\nDomingo:\n06:05 a. m. a 10:33 p. m."
+          },
+          {
+            "sentido_publicado": "Venus a La Capilla",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:35",
+                    "23:13"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:35",
+                    "23:09"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "06:05",
+                    "22:33"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 404\nLa Capilla a La Virgen\nLunes a viernes:\n4:30 a. m. a 10:02 p. m.\nSábado:\n4:30 a. m. a 10:02 p. m.\nDomingo:\n05:00 a. m. a 9:30 p. m.\nVenus a La Capilla\nLunes a viernes:\n05:35 a. m. a 11:13 p. m.\nSábado:\n05:35 a. m. a 11:09 p. m.\nDomingo:\n06:05 a. m. a 10:33 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "405": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorMorado/405.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "La Capilla a Carnaval y Moreyra",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:01",
+                    "22:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:03",
+                    "22:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:17",
+                    "21:31"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 405\nLa Capilla a Carnaval y Moreyra\nLunes a viernes:\n5:01 a. m. a 10:00 p. m.\nSábado:\n5:03 a. m. a 10:00 p. m.\nDomingo:\n05:17 a. m. a 9:31 p. m.\nCarnaval y Moreyra a La Capilla\nLunes a viernes:\n06:06 a. m. a 11:08 p. m.\nSábado:\n06:07 a. m. a 11:04 p. m.\nDomingo:\n06:19 a. m. a 10:38 p. m."
+          },
+          {
+            "sentido_publicado": "Carnaval y Moreyra a La Capilla",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "06:06",
+                    "23:08"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "06:07",
+                    "23:04"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "06:19",
+                    "22:38"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 405\nLa Capilla a Carnaval y Moreyra\nLunes a viernes:\n5:01 a. m. a 10:00 p. m.\nSábado:\n5:03 a. m. a 10:00 p. m.\nDomingo:\n05:17 a. m. a 9:31 p. m.\nCarnaval y Moreyra a La Capilla\nLunes a viernes:\n06:06 a. m. a 11:08 p. m.\nSábado:\n06:07 a. m. a 11:04 p. m.\nDomingo:\n06:19 a. m. a 10:38 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "406": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorMorado/406.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "La Capilla a Washington",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:50",
+                    "22:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:50",
+                    "22:00"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:38"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 406\nLa Capilla a Washington\nLunes a viernes:\n4:50 a. m. a 10:00 p. m.\nSábado:\n4:50 a. m. a 10:00 p. m.\nDomingo:\n05:00 a. m. a 9:38 p. m.\nBolivia a La Capilla\nLunes a viernes:\n05:50 a. m. a 11:03 p. m.\nSábado:\n05:50 a. m. a 11:03 p. m.\nDomingo:\n05:57 a. m. a 10:40 p. m."
+          },
+          {
+            "sentido_publicado": "Bolivia a La Capilla",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:50",
+                    "23:03"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:50",
+                    "23:03"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:57",
+                    "22:40"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 406\nLa Capilla a Washington\nLunes a viernes:\n4:50 a. m. a 10:00 p. m.\nSábado:\n4:50 a. m. a 10:00 p. m.\nDomingo:\n05:00 a. m. a 9:38 p. m.\nBolivia a La Capilla\nLunes a viernes:\n05:50 a. m. a 11:03 p. m.\nSábado:\n05:50 a. m. a 11:03 p. m.\nDomingo:\n05:57 a. m. a 10:40 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "412": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorMorado/412.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "La Capilla a Nicolás de Piérola",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:50",
+                    "22:05"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:50",
+                    "22:04"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:45"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 412\nLa Capilla a Nicolás de Piérola\nLunes a viernes:\n4:50 a. m. a 10:05 p. m.\nSábado:\n4:50 a. m. a 10:04 p. m.\nDomingo:\n05:00 a. m. a 9:45 p. m.\nMoquegua a La Capilla\nLunes a viernes:\n05:38 a. m. a 11:09 p. m.\nSábado:\n05:37 a. m. a 11:05 p. m.\nDomingo:\n05:47 a. m. a 10:33 p. m."
+          },
+          {
+            "sentido_publicado": "Moquegua a La Capilla",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:38",
+                    "23:09"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:37",
+                    "23:05"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:47",
+                    "22:33"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor 412\nLa Capilla a Nicolás de Piérola\nLunes a viernes:\n4:50 a. m. a 10:05 p. m.\nSábado:\n4:50 a. m. a 10:04 p. m.\nDomingo:\n05:00 a. m. a 9:45 p. m.\nMoquegua a La Capilla\nLunes a viernes:\n05:38 a. m. a 11:09 p. m.\nSábado:\n05:37 a. m. a 11:05 p. m.\nDomingo:\n05:47 a. m. a 10:33 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      },
+      "SE-09": {
+        "url": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+        "paginas": [
+          "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php"
+        ],
+        "direcciones": [
+          {
+            "sentido_publicado": "La Capilla a Carnaval y Moreyra",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "04:40",
+                    "21:53"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "04:40",
+                    "21:51"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "05:00",
+                    "21:14"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor SE-09\nLa Capilla a Carnaval y Moreyra\nLunes a viernes:\n4:40 a. m. a 9:53 p. m.\nSábado:\n4:40 a. m. a 9:51 p. m.\nDomingo:\n05:00 a. m. a 9:14 p. m.\nCarnaval y Moreyra a La Capilla\nLunes a viernes:\n05:40 a. m. a 11:01 p. m.\nSábado:\n05:40 a. m. a 10:56 p. m.\nDomingo:\n06:02 a. m. a 10:21 p. m."
+          },
+          {
+            "sentido_publicado": "Carnaval y Moreyra a La Capilla",
+            "reglas": [
+              {
+                "dias_texto": "Lunes a viernes",
+                "dias_semana": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "tramos": [
+                  [
+                    "05:40",
+                    "23:01"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Sábado",
+                "dias_semana": [
+                  5
+                ],
+                "tramos": [
+                  [
+                    "05:40",
+                    "22:56"
+                  ]
+                ]
+              },
+              {
+                "dias_texto": "Domingo",
+                "dias_semana": [
+                  6
+                ],
+                "tramos": [
+                  [
+                    "06:02",
+                    "22:21"
+                  ]
+                ]
+              }
+            ],
+            "pagina": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+            "evidencia": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+            "metodo": "html",
+            "texto_fuente": "Horario Corredor SE-09\nLa Capilla a Carnaval y Moreyra\nLunes a viernes:\n4:40 a. m. a 9:53 p. m.\nSábado:\n4:40 a. m. a 9:51 p. m.\nDomingo:\n05:00 a. m. a 9:14 p. m.\nCarnaval y Moreyra a La Capilla\nLunes a viernes:\n05:40 a. m. a 11:01 p. m.\nSábado:\n05:40 a. m. a 10:56 p. m.\nDomingo:\n06:02 a. m. a 10:21 p. m."
+          }
+        ],
+        "notas": [],
+        "frecuencia_publicada_min": null
+      }
+    }
+  },
+  "documentos": [
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularA.php",
+      "sha256": "c6bf160bd4b9ed0e89026a769076d2bb6473bd20891210a1e5d2c9e05e9b7208"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularB.php",
+      "sha256": "9df5b8e168b83d532e1aa542f54dc38aa839e62505b8493d43c3a9f3108780d7"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/nuevo-Regular-B-QR.jpg",
+      "sha256": "524e079666485c47ce453fb7bd58ff12b670c21d28d12f8ee8cca769e2a67bb2"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularC.php",
+      "sha256": "cd2da492e57bf49242c8f80e05fecbabaa9f1cdf683ccbaca29e32726727b251"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/RegularD.php",
+      "sha256": "893c2e936fc61985993c858830f091c7f7c20ba9306e5af4fd5c944e3caf42d9"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-M.php",
+      "sha256": "a8c48f68979871ed0cc581b0ef7ae9b2515ad6379ba75d9d47006da506aeba84"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_NS.jpg",
+      "sha256": "324661a3d55edc4d9c1e2529f963f2d945f4d11cd7c4aac6b799d7623e47c1a5"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X1-SN-N.php",
+      "sha256": "9413d710e02f865791ab8e352e89b867dc5c1b92015fdf0930cbd975bfb70698"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EXPRESO-1AN_SN.jpg",
+      "sha256": "2fed70d2bc81359020a14c43fe2e53aa3d165d50c1ce64a56b8a2dded8d65876"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-NS-M.php?p=2",
+      "sha256": "a828a2507f2f03e42ed7c708611b4410ba79a840df4f345155c50d049062adf9"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X2-SN-M.php",
+      "sha256": "4e59182eaa938d1229a3e4ff0da8cb230dc2d113fa8bec8c5c76f57c6ffe1046"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-M.php",
+      "sha256": "8c30ec6570d2994a66e45c2727b9649ceea9eedb7d8b9df3c4fd928cce9d38f6"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X3-N.php",
+      "sha256": "9c99d38a922ba21ef0926fd22437595c3a6fa5f01ea80045b007440dc0b33702"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X5.php",
+      "sha256": "393cccc4602ead5f5d4592c7ce2422aeefa373196bba549e94e7793de89056e7"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X6.php",
+      "sha256": "dbe59f55d0bd40da95961debd39b3dfaf5f9407fababe4c3422064b11d23f39c"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X7.php",
+      "sha256": "6c60424380b774ff29fb7e40f60c95e914eaeb3cc5d786a95dd3b9fbd5c3cf2a"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X8.php",
+      "sha256": "94b0dcdcb9a74c44893f2de0e5dbe29d7ba2e8d664efb2c1426b71da5541cbc0"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X9-NS.php",
+      "sha256": "6141e0998ea5d50bdc68930f09ed3ab5aa8da2bb76773cd9c89add9aaad1f650"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX9-SN.php",
+      "sha256": "3fc9efc3205af42bf774f93eb4cca46431f9bb476ed34da5263c8b5b0334f739"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X10.php",
+      "sha256": "0b5f2239a7a0a98c8540b89656549a2109e2bf3025cdd0bf4d0731324848a312"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-NS.php",
+      "sha256": "3a92e5a4d080ca2749c94fc9d5738891954aaf7b3542975d6d73677517284ff5"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX11-SN.php",
+      "sha256": "de059c3f665b2a8a059ca9303f90a64e0d93abeac01698aacaef16a4e6a3cd73"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/X12.php",
+      "sha256": "b88829baca8df3e5d5b0eea40fe3e697ce27e99902b111e4223fc5f39913bfe8"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-NS.php",
+      "sha256": "c068345fde05735843dc383a4cfa683a1b49b9ebf3d9ad7418e4eef85c073076"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-NS.png",
+      "sha256": "3cf620236125727e87fe99d979356dd6c2ac242840f00c873515f57b043c1425"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/EX13-SN.php",
+      "sha256": "b07ca10d39639e5b01c51f3994d7fdcc99f7b965101c246e80429b65e4dde41d"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/EX13-SN.png",
+      "sha256": "bd9b1be730a60d810d6d83af6048b24d62151701bfa7f5bd0a5f6a44c9c386d1"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-M.php",
+      "sha256": "7f3e3499e89d422630601ca3fda197c54d71342a47eee28b8a0ea48e87b8157e"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SX-N.php",
+      "sha256": "e7ad34a88e1bb7fa05d7c756675e1f298bb075fb9bc4a716d9bd6d99f77ad36f"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-NS-M.php",
+      "sha256": "61d46b90b29bc36f975f85135850986d30a4c0d098437e59db303bd8e0da8564"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-NS-M.png",
+      "sha256": "dd55ea0e2b56c723d357d8dfb772293928a15cf54f03ee5b35ce44c3313f453d"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN-SN-M.php",
+      "sha256": "9354186cb4a48f0a08234c2ba9f21e7ad288190fa47878c239aeb288b2317794"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-SN-M.png",
+      "sha256": "d83b452b53acea8bb3d5c0435d7e658bc46cd4dedd197a780382d7b4b612b0f5"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/SXN22.php",
+      "sha256": "8f290e2a1e1e6e2e5772bdd70751b3d03ba57cec50aef66d22b0348b0c80b400"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/imagenes/SXN-22-Agosto.jpg",
+      "sha256": "2ca8fda1784cef82bdc753aa983850ad3af6bf621d6849b495940d5c3a835e60"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/Metropolitano/Servicios/Lechucero.php",
+      "sha256": "7dd901da11be8d4883f4a6157a365768db7853ad1ddc350d89e5e99363fa0154"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/MetroLima/L1/",
+      "sha256": "56ee1cb48d846651da0767223a8b25d0e562f0a873ecdd5e8592795c479606d8"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/index.php",
+      "sha256": "d4fbbc4055c1f3842f75af589195b8322322564483d1552680be1237eff896b6"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/303.php",
+      "sha256": "df3660c776cab6e784e67e9e6d20f18c399fdc08cf6222d39563b4eac6125a55"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/305.php",
+      "sha256": "43ddb07196209bfc7beaf6e09b085fa309a1c232aef0491bcca457a29154c2f1"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/336.php",
+      "sha256": "6ff8d0ff90dcccae5e767c061fa6e69db2ce46a849cf4c4bcf04bcbf5eb2d99c"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/370.php",
+      "sha256": "e7bbdb4321bdef82afdcfeac790faf559c7c0eae7cc654538c767695c31b3f6f"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/371.php",
+      "sha256": "841e30ff380cd7e50a935ac050a41825523b6dcd65729526ff1e932819c7ff3a"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorAzul/SE-08.php",
+      "sha256": "e74e684e14f5f80f59aef08ce950ca1198cc732dcf783511045c71164bae6923"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorRojo/index.php",
+      "sha256": "d59f9042ab6bfcc867a69a0b6e23963e44510ad1bd552fd24429dae8e55702c8"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorRojo/204.php",
+      "sha256": "50cfb79014b52663cb81ef128c98c8b6cd98ed5cf129dc39d434600c68f3f1ed"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorRojo/206.php",
+      "sha256": "f7054f1b3178060112a75200c8412bbcf5a4ad3c3718efb2a980b9053dd8089a"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorRojo/209.php",
+      "sha256": "1bc68d4d36e452dad0fb4188d88a8613d8df3ce7e4d201a3b4f26ba6849c2b83"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorMorado/index.php",
+      "sha256": "08794caa3c3eb3cf063ce28d6a5874a8c7ede085612123526e36f5372b0423af"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorMorado/405.php",
+      "sha256": "148b75669b53a8d8a5444da1c0f5bbcd7d7cb71e98ab158b89ccd3566a640632"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorMorado/406.php",
+      "sha256": "94d569724b61818813be87adffe988d0edaf52d46a4c87f6d4b9e8f0dc0cf24f"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorMorado/412.php",
+      "sha256": "e3a8ff456893013ea0bbede05776a18e688c309ed8fefebe589abf7ebb395282"
+    },
+    {
+      "url": "https://portal.atu.gob.pe/QR/CorredorMorado/SE-09.php",
+      "sha256": "a3041e360ef475de3da8a59a017508946f235aa9aa98698d9a970189939fc09a"
+    }
+  ]
+}

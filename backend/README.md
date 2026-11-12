@@ -143,3 +143,7 @@ Cada corrida queda registrada en la tabla `pipeline_ejecucion` (`ok`, `sin_datos
 ### 4. Despliegue Automático
 
 Cada vez que realices un `git push` a la rama principal, Render recompilará las dependencias a partir de `requirements.txt` y actualizará el servicio en línea.
+
+## Horarios oficiales ATU
+
+El catálogo QR oficial contiene 37 fichas y 66 sentidos/variantes, con extracción HTML y ocho imágenes contrastadas visualmente. Los servicios soportados usan esos horarios antes que los de la fuente secundaria. Consulta la [tabla completa, limitaciones y reproducción](docs/HORARIOS_ATU.md).

@@ -101,7 +101,7 @@ function Detalle({ plan, opcion }: { plan: Plan; opcion: OpcionSalida }) {
 
 function Servicio({ servicio, hora }: { servicio: ServicioPlan; hora: string }) {
   const estado = servicio.opera === null
-    ? { texto: 'Horario no publicado', clase: 'bg-surface-2 text-muted' }
+    ? { texto: servicio.horario ? 'Horario por confirmar' : 'Horario no publicado', clase: 'bg-surface-2 text-muted' }
     : servicio.opera
       ? { texto: `Circula a las ${hora}`, clase: 'bg-ok/12 text-ok' }
       : { texto: `No circula a las ${hora}`, clase: 'bg-surface-2 text-muted' };
@@ -114,12 +114,13 @@ function Servicio({ servicio, hora }: { servicio: ServicioPlan; hora: string }) 
       <p className="mt-1.5 text-xs leading-relaxed text-muted">
         {[
           servicio.horario ? `Horario del día: ${servicio.horario}` : 'La fuente no publica su horario',
-          servicio.intervalo_min != null ? `cada ${minutos(servicio.intervalo_min)}` : 'frecuencia no publicada',
+          servicio.intervalo_min != null ? `intervalo de referencia: ${minutos(servicio.intervalo_min)}` : 'frecuencia no publicada',
           servicio.viaje_min != null && `${minutos(servicio.viaje_min)} a bordo`,
           servicio.paradas_intermedias != null && (servicio.paradas_intermedias === 0 ? 'sin paradas intermedias' : `${servicio.paradas_intermedias} paradas intermedias`),
         ].filter(Boolean).join(' · ')}
       </p>
       {servicio.notas.map((nota) => <p key={nota} className="mt-1 text-xs leading-relaxed text-muted">{nota}</p>)}
+      {servicio.url && <a href={servicio.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-brand hover:underline">Consultar la fuente del horario <ExternalLink size={12} aria-label="(se abre en otra pestaña)" /></a>}
     </li>
   );
 }
@@ -193,7 +194,7 @@ export default function PlanSalida({ plan }: { plan: Plan }) {
           <p className="mt-3 text-sm text-muted">Ningún servicio une estas dos estaciones sin transbordo.</p>
         )}
         <p className="mt-4 text-xs leading-relaxed text-muted">
-          Horarios y frecuencias:{' '}
+          Fuentes del servicio:{' '}
           <a href={plan.fuente_horarios.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-brand hover:underline">
             {plan.fuente_horarios.nombre} <ExternalLink size={12} aria-label="(se abre en otra pestaña)" />
           </a>{' '}

@@ -56,7 +56,7 @@ def test_expreso_de_la_manana_no_opera_en_la_tarde_ni_el_sabado():
     exp6 = H.servicio("troncal", "Expreso 6")
     assert H.opera(exp6, "desc", momento(LUNES, "07:00")) is True
     assert H.opera(exp6, "desc", momento(LUNES, "15:00")) is False
-    assert H.opera(exp6, "desc", momento(SABADO, "07:00")) is False
+    assert H.opera(exp6, "desc", momento(SABADO, "07:00")) is None  # la ficha no publica sábado
     assert H.opera(exp6, "asc", momento(LUNES, "07:00")) is False       # solo circula hacia el sur
 
 
@@ -69,19 +69,20 @@ def test_el_limite_del_horario_es_abierto_al_cierre():
 
 def test_servicio_que_cruza_la_medianoche():
     lechucero = H.servicio("troncal", "Lechucero")
-    jueves, viernes, miercoles = "2025-11-20", "2025-11-21", "2025-11-19"
-    assert H.opera(lechucero, "asc", momento(jueves, "23:45")) is True
-    assert H.opera(lechucero, "asc", momento(viernes, "02:00")) is True   # turno que empezó el jueves
+    jueves, viernes, sabado = "2025-11-20", "2025-11-21", "2025-11-22"
+    assert H.opera(lechucero, "asc", momento(viernes, "23:45")) is True
+    assert H.opera(lechucero, "asc", momento(sabado, "02:00")) is True   # turno que empezó el viernes
     assert H.opera(lechucero, "asc", momento(viernes, "05:00")) is False
-    assert H.opera(lechucero, "asc", momento(miercoles, "23:45")) is False
+    assert H.opera(lechucero, "asc", momento(jueves, "23:45")) is None
     ruta301 = H.servicio("corredor", "301")                               # cierra a las 00:00
-    assert H.opera(ruta301, None, momento(LUNES, "23:30")) is True
+    assert H.opera(ruta301, "sentido_2", momento(LUNES, "23:30")) is True
     assert H.opera(ruta301, None, momento(LUNES, "03:00")) is False
 
 
-def test_ruta_sin_horario_publicado_devuelve_none():
-    assert H.opera(H.servicio("corredor", "206"), None, momento(LUNES, "10:00")) is None
-    assert H.texto_horario(H.servicio("corredor", "206"), None, dt.date(2025, 11, 17)) is None
+def test_ruta_206_ahora_tiene_horario_oficial():
+    assert H.opera(H.servicio("corredor", "206"), None, momento(LUNES, "10:00")) is True
+    assert "22:17" in H.texto_horario(H.servicio("corredor", "206"), None, dt.date(2025, 11, 17))
+    assert H.opera(None, None, momento(LUNES, "10:00")) is None
 
 
 def test_intervalo_distingue_punta_y_valle():
@@ -159,7 +160,7 @@ def test_la_recomendada_llega_a_tiempo_con_margen_para_perder_un_vehiculo():
     assert minutos(rec["llegada"]) <= 16 * 60
     assert rec["tramos"][0]["servicio"] == "Expreso 5"                    # único directo que opera a esa hora
     assert plan["tipo_dia"] == "LAB" and plan["sentido"].startswith("hacia el sur")
-    assert plan["fuente_horarios"]["nombre"] == "metrolima.info"
+    assert plan["fuente_horarios"]["nombre"] == "ATU y fuentes complementarias"
 
 
 def test_las_opciones_son_coherentes():
@@ -286,14 +287,14 @@ def test_la_espera_de_la_hora_actual_se_puede_corregir_con_trafico():
     assert por_hora["07:40"] == 9.0 and por_hora["07:50"] == 9.0 and por_hora["08:00"] != 9.0
 
 
-def test_super_expreso_circula_en_sus_dos_turnos():
+def test_super_expreso_no_asigna_ambos_turnos_a_los_dos_sentidos():
     sx = H.servicio("troncal", "Super Expreso")
-    for sentido in ("asc", "desc"):
-        assert H.opera(sx, sentido, momento(LUNES, "07:00")) is True
-        assert H.opera(sx, sentido, momento(LUNES, "18:00")) is True
-        assert H.opera(sx, sentido, momento(LUNES, "12:00")) is False
-        assert H.opera(sx, sentido, momento(SABADO, "18:00")) is False
-    assert H.texto_horario(sx, "desc", dt.date(2025, 11, 17)) == "05:30–09:00 y 17:00–21:00"
+    assert H.opera(sx, "desc", momento(LUNES, "07:00")) is True
+    assert H.opera(sx, "asc", momento(LUNES, "07:00")) is False
+    assert H.opera(sx, "asc", momento(LUNES, "18:00")) is True
+    assert H.opera(sx, "desc", momento(LUNES, "18:00")) is False
+    assert H.opera(sx, "desc", momento(SABADO, "07:00")) is True
+    assert H.texto_horario(sx, "desc", dt.date(2025, 11, 17)) == "05:30–09:00"
 
 
 def test_api_estacion_incluye_proximas_salidas_solo_para_ahora(client):
