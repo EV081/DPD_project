@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, ChartNoAxesCombined, Navigation, Clock3 } from 'lucide-react';
+import { ArrowDown, ChartNoAxesCombined, Navigation, Clock3 } from 'lucide-react';
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
@@ -22,7 +22,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
 
         <div className="mobility-story-copy">
           <p className="mobility-kicker"><span /> Antes de salir</p>
-          <h1>El viaje empieza<br />antes de <em>subir.</em></h1>
+          <h1>El viaje empieza<br />antes de subir.</h1>
           <p>Conoce tus opciones, compara horarios y mira el transporte de Lima desde los datos.</p>
           <a href="#acceso" className="mobility-entry-link">Entrar a UrbanSafe <ArrowDown size={17} /></a>
         </div>
@@ -44,7 +44,6 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
       <main id="acceso" className="mobility-access">
         <div className="mobility-access-top"><Link href="/" className="hover:underline">← Volver al inicio</Link><ThemeToggle /></div>
         <div className="mobility-access-form">
-          <div className="mobility-access-mark" aria-hidden="true"><ArrowUpRight size={28} strokeWidth={1.5} /></div>
           <div className="stagger">{children}</div>
           <div className="mobility-access-note"><span className="mobility-mini-dot" /><p>Explora el mapa, compara rutas y ensaya escenarios en la misma cuenta.</p></div>
         </div>

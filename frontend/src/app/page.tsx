@@ -1,25 +1,31 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesCombined, Footprints, Route } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesCombined, Footprints, Route, Plus } from 'lucide-react';
 import { LogoMark } from '@/components/Logo';
-import LimaTransitShowcase from '@/components/LimaTransitShowcase';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import styles from './home.module.css';
 
 const CAPACIDADES = [
   {
-    numero: '01', icono: ChartNoAxesCombined, titulo: 'La hora también cambia el viaje.',
-    texto: 'Elige de dónde sales, a dónde vas y a qué hora quieres llegar. Te sugerimos cuándo salir y te mostramos la ocupación estimada del día.',
-    enlace: '/simulacion', accion: 'Abrir el simulador',
+    icono: ChartNoAxesCombined, titulo: 'Encuentra una mejor hora para salir.',
+    texto: 'Dinos a qué hora quieres llegar. Compara salidas y elige entre viajar con más calma o llegar con más margen.',
+    detalle: 'Por ejemplo, si entras a clases a las ocho, puedes revisar qué pasa al salir unos minutos antes. Verás la espera y qué tan lleno podría ir el transporte para decidir qué horario te conviene.',
+    nota: 'La ocupación es una estimación; puede cambiar durante tu viaje.',
+    enlace: '/simulacion', accion: 'Planificar mi salida',
   },
   {
-    numero: '02', icono: Route, titulo: 'Más contexto para elegir tu ruta.',
-    texto: 'Encuentra opciones hacia tu destino y compara dos recorridos: caminata, tiempo a bordo, espera y aforo, cuando esos datos están disponibles.',
-    enlace: '/destinations', accion: 'Comparar destinos',
+    icono: Route, titulo: 'Compara antes de elegir tu ruta.',
+    texto: 'Busca tu destino y revisa las opciones: cuánto caminarías, cuánto esperarías y cómo sería el recorrido.',
+    detalle: 'No siempre la opción con menos caminata es la que más te conviene. Puedes comparar dos viajes lado a lado, revisar los cambios de transporte y abrir el recorrido que prefieras en el mapa.',
+    nota: 'Cuando un tiempo o una estimación no está disponible, te lo indicamos.',
+    enlace: '/destinations', accion: 'Buscar mi destino',
   },
   {
-    numero: '03', icono: Footprints, titulo: 'El camino al paradero importa.',
-    texto: 'Compara el camino más corto con una ruta segura, ponderada por denuncias históricas. Decide cuántos minutos adicionales aceptarías caminar.',
-    enlace: '/destinations', accion: 'Preparar un viaje',
+    icono: Footprints, titulo: 'También piensa en el camino al paradero.',
+    texto: 'Revisa alternativas para llegar caminando y decide si prefieres un camino más corto u otro con menor riesgo estimado.',
+    detalle: 'El viaje empieza antes de subir. UrbanSafe te permite comparar cuánto caminarías con cada alternativa y decidir si unos minutos adicionales encajan con tu día.',
+    nota: 'La información de seguridad es orientativa: ninguna ruta garantiza estar libre de incidentes.',
+    enlace: '/map', accion: 'Explorar el mapa',
   },
 ];
 
@@ -29,94 +35,50 @@ export default function Home() {
       <a href="#experiencia" className={styles.skip}>Saltar al contenido</a>
       <main>
         <section className={styles.hero} aria-labelledby="portada-titulo">
-          <Image src="/imagenes/lima-tren-manana.webp" alt="Imagen conceptual de un tren elevado en un entorno urbano limeño de día" fill priority sizes="100vw" className={styles.heroPhoto} />
+          <Image src="/imagenes/lima-tren-manana.webp" alt="Tren elevado en un entorno urbano limeño, imagen ilustrativa" fill priority sizes="100vw" className={styles.heroPhoto} />
           <div className={styles.heroShade} aria-hidden="true" />
           <header className={styles.header}>
-            <Link href="/" className={styles.brand} aria-label="UrbanSafe, inicio"><LogoMark size={34} /><span>UrbanSafe</span></Link>
-            <nav className={styles.navigation} aria-label="Navegación de la portada">
-              <a href="#experiencia">La experiencia</a>
-              <a href="#demostracion">Demostración</a>
-              <a href="#datos">Los datos</a>
-            </nav>
+            <Link href="/" className={styles.brand} aria-label="UrbanSafe, inicio"><LogoMark size={32} /><span>UrbanSafe</span></Link>
+            <nav className={styles.navigation} aria-label="Navegación de la portada"><a href="#experiencia">Cómo te ayuda</a></nav>
+            <ThemeToggle />
             <Link href="/login" className={styles.headerAccess}>Entrar <ArrowUpRight size={16} /></Link>
           </header>
-
           <div className={styles.heroContent}>
-            <p className={styles.eyebrow}><span /> La ciudad se mueve. Tú eliges cómo.</p>
+            <p className={styles.eyebrow}>La ciudad se mueve. Tú eliges cómo.</p>
             <h1 id="portada-titulo">Lima cambia de ritmo.<br />Tu viaje también.</h1>
-            <p className={styles.heroLead}>Una mirada al transporte desde los datos. Explora rutas, compara horarios y entiende mejor cada tramo de tu viaje.</p>
+            <p className={styles.heroLead}>Elige cuándo salir y cómo llegar. Compara rutas, espera y ocupación para viajar por Lima con más información y menos dudas.</p>
             <div className={styles.heroActions}>
               <Link href="/map" className={styles.primary}>Explorar UrbanSafe <ArrowUpRight size={19} /></Link>
-              <a href="#demostracion" className={styles.secondary}>Ver demostración <ArrowDown size={17} /></a>
+              <a href="#experiencia" className={styles.secondary}>Cómo funciona <ArrowDown size={17} /></a>
             </div>
-            <p className={styles.accessNote}>El mapa y los escenarios completos requieren iniciar sesión.</p>
-          </div>
-
-          <div className={styles.heroBottom}>
-            <div><span className={styles.heroBottomLabel}>Transporte de Lima</span><p>Metropolitano · Línea 1 · Corredores · Alimentadores</p></div>
-            <p className={styles.photoNote}>Imagen conceptual.<br />No representa una ruta real.</p>
+            <p className={styles.accessNote}>Inicia sesión para planificar tu viaje.</p>
           </div>
         </section>
-
         <section id="experiencia" className={styles.experience} aria-labelledby="experiencia-titulo">
           <div className={styles.experienceIntro}>
-            <p className={styles.sectionLabel}>La experiencia</p>
-            <h2 id="experiencia-titulo">No es solo llegar.<br />Es elegir.</h2>
-            <p>Del momento de salir al camino al paradero: información para mirar el viaje con más detalle.</p>
-            <Link href="/map" className={styles.textLink}>Conocer la aplicación <ArrowUpRight size={17} /></Link>
+            <p className={styles.sectionLabel}>Cómo te ayuda</p>
+            <h2 id="experiencia-titulo">Tu viaje empieza con una buena elección.</h2>
+            <p>Para ir a clases, al trabajo o volver a casa: encuentra la opción que mejor se acomode a tu día.</p>
+            <Link href="/map" className={styles.textLink}>Empezar mi viaje <ArrowUpRight size={17} /></Link>
           </div>
           <div className={styles.featureList}>
-            {CAPACIDADES.map(({ numero, icono: Icono, titulo, texto, enlace, accion }) => (
-              <article className={styles.feature} key={numero}>
-                <div className={styles.featureNumber}><Icono size={24} strokeWidth={1.4} aria-hidden="true" /></div>
-                <div><h3>{titulo}</h3><p>{texto}</p><Link href={enlace} className={styles.textLink}>{accion} <ArrowRight size={16} /></Link></div>
+            {CAPACIDADES.map(({ icono: Icono, titulo, texto, detalle, nota, enlace, accion }) => (
+              <article className={styles.feature} key={titulo}>
+                <Icono size={23} strokeWidth={1.6} className={styles.featureIcon} aria-hidden="true" />
+                <div>
+                  <h3>{titulo}</h3><p>{texto}</p>
+                  <details className={styles.more}>
+                    <summary><span className={styles.moreClosed}>Ver más</span><span className={styles.moreOpen}>Ver menos</span><Plus size={16} aria-hidden="true" /></summary>
+                    <div className={styles.moreContent}><p>{detalle}</p><p className={styles.note}>{nota}</p><Link href={enlace} className={styles.textLink}>{accion} <ArrowRight size={16} /></Link></div>
+                  </details>
+                </div>
               </article>
             ))}
           </div>
         </section>
-
-        <section className={styles.streetStory} aria-labelledby="camino-titulo">
-          <div className={styles.streetPhoto}>
-            <Image src="/imagenes/lima-camino-paradero.webp" alt="Escena ilustrativa de personas caminando hacia un paradero en Lima" fill sizes="(max-width: 767px) 100vw, 65vw" />
-            <span>Imagen ilustrativa · no corresponde a una ruta calculada</span>
-          </div>
-          <div className={styles.streetContent}>
-            <p className={styles.sectionLabel}>Del inicio al destino</p>
-            <h2 id="camino-titulo">Cada tramo cuenta.</h2>
-            <p>La comparación incluye el camino al paradero, la espera y el tiempo a bordo cuando existen datos para esa opción.</p>
-            <Link href="/destinations" className={styles.textLink}>Comparar recorridos <ArrowUpRight size={17} /></Link>
-          </div>
-        </section>
-
-        <section id="demostracion" className={styles.demo} aria-labelledby="demo-titulo">
-          <div className={styles.demoHeading}>
-            <div><p className={styles.sectionLabel}>Demostración</p><h2 id="demo-titulo">Mira cómo se conecta el viaje.</h2></div>
-            <p>Explora esta muestra de la experiencia. Para consultar tus propios escenarios, entra a la aplicación.</p>
-          </div>
-          <LimaTransitShowcase />
-          <div className={styles.demoFooter}><p>La demostración ayuda a entender el flujo. Revisa siempre el origen y el alcance de cada estimación.</p><Link href="/map" className={styles.textLink}>Abrir la aplicación <ArrowUpRight size={17} /></Link></div>
-        </section>
-
-        <section id="datos" className={styles.data} aria-labelledby="datos-titulo">
-          <div className={styles.dataHeading}>
-            <div><p className={styles.sectionLabel}>Los datos del proyecto</p><h2 id="datos-titulo">Datos claros.<br />Contexto primero.</h2></div>
-            <div className={styles.dataYear}><strong>2025</strong><span>Base histórica ATU para el aforo</span></div>
-          </div>
-          <div className={styles.dataNotes}>
-            <article><h3>Estimaciones, con origen.</h3><p>El aforo usa datos históricos de la ATU. No es un conteo de pasajeros en vivo.</p></article>
-            <article><h3>El riesgo requiere contexto.</h3><p>Las rutas a pie se ponderan con denuncias registradas. No garantizan seguridad ni describen incidentes en tiempo real.</p></article>
-            <article><h3>Un dato ausente se explica.</h3><p>Cuando una opción no tiene estimación disponible, se indica en la interfaz para no confundir ausencia con cero.</p></article>
-          </div>
-        </section>
-
-        <section className={styles.closing} aria-labelledby="comenzar-titulo">
-          <div><p className={styles.sectionLabel}>La próxima salida</p><h2 id="comenzar-titulo">Empieza por mirar tus opciones.</h2></div>
-          <Link href="/map" className={styles.closingLink}>Entrar a UrbanSafe <ArrowUpRight size={28} strokeWidth={1.4} /></Link>
-          <p className={styles.closingPhotoNote}>Imagen conceptual de Lima · no muestra una ruta calculada</p>
-        </section>
       </main>
       <footer className={styles.footer}>
-        <Link href="/" className={styles.brand}><LogoMark size={28} /><span>UrbanSafe</span></Link>
+        <Link href="/" className={styles.brand}><LogoMark size={26} /><span>UrbanSafe</span></Link>
         <p>Un proyecto de estudiantes · UTEC</p>
         <a href="#portada-titulo" className={styles.backTop}>Volver arriba <ArrowUpRight size={15} /></a>
       </footer>
