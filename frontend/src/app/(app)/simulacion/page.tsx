@@ -6,7 +6,6 @@ import { ArrowUpRight, ChartColumn, Download, MapPin } from 'lucide-react';
 import OccupancyChart from '@/components/OccupancyChart';
 import { NativeSelect } from '@mantine/core';
 import Alert from '@/components/Alert';
-import MobilityIllustration from '@/components/MobilityIllustration';
 import PlanSalida from '@/components/PlanSalida';
 import { Spinner } from '@/components/Spinner';
 import { claseAforo, etiquetaClase, etiquetaRecomendacion, formatoHora } from '@/lib/aforo';
@@ -81,9 +80,7 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
             <Download size={16} /> Descargar CSV
           </button>
         </div>
-        <p className="mt-4 rounded-lg bg-surface-2 p-3 text-xs leading-relaxed text-muted">
-          Referencia ATU {referencia.fecha_referencia_datos} · {referencia.criterio}
-        </p>
+
 
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           {([
@@ -109,13 +106,11 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
                       <div><dt className="text-xs text-muted">Ocupación</dt><dd className="mobility-number text-fg">{ocupacion(item)}</dd></div>
                       <div><dt className="text-xs text-muted">Espera</dt><dd className="mobility-number text-fg">{espera(item)}</dd></div>
                       <div className="col-span-2">
-                        <dt className="mt-2 border-t border-line pt-2 text-xs text-muted">Recomendación del modelo</dt>
+                        <dt className="mt-2 border-t border-line pt-2 text-xs text-muted">Sugerencia para viajar</dt>
                         <dd className="mt-1 text-sm font-semibold text-fg">{etiquetaRecomendacion(item.recommendation)}</dd>
                       </div>
                     </dl>
-                    <p className="mt-3 text-xs text-muted">
-                      {[item.sentido, item.model ?? resultado.model].filter(Boolean).join(' · ')}
-                    </p>
+
                   </>
                 )}
               </div>
@@ -129,7 +124,7 @@ function Comparacion({ resultado, horaInicial }: { resultado: StationPrediction;
           <div><p className="eyebrow">El ritmo del día</p><h3 className="mt-1 font-semibold text-fg">Ocupación por hora</h3></div>
           <div className="flex gap-3 text-xs text-muted"><span><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#3c69ce]" />Hora A</span><span><i className="mr-1 inline-block h-2 w-2 rounded-full bg-[#88a53d]" />Hora B</span></div>
         </div>
-        <p className="mt-2 text-xs leading-relaxed text-muted">Porcentaje de la capacidad al salir del paradero. Las dos horas elegidas se destacan; una raya indica falta de servicio o estimación.</p>
+        <p className="mt-2 text-xs leading-relaxed text-muted">Compara qué tan lleno podría ir el transporte. Las horas que eliges aparecen resaltadas.</p>
         <OccupancyChart hours={horas} first={primera} second={segunda} />
       </div>
     </section>
@@ -220,13 +215,12 @@ export default function SimulacionPage() {
   return (
     <div className="mobility-workspace">
       <div className="mobility-workspace-header"><span>UrbanSafe / Simulación</span><Link href="/destinations">Comparar destinos <ArrowUpRight size={15} /></Link></div>
-      <header className="mobility-workspace-hero">
+      <header className="mobility-workspace-hero mobility-sim-hero">
         <div>
-          <p className="mobility-kicker"><span /> Laboratorio de movilidad</p>
-          <h1>Un mismo viaje.<br /><em>Distintas horas.</em></h1>
+          <p className="mobility-kicker"><span /> Planifica tu salida</p>
+          <h1>Un mismo viaje.<br />Distintas horas.</h1>
           <p>Dinos de dónde sales, a dónde vas y a qué hora quieres llegar. Te sugerimos cuándo salir según la puntualidad, la espera y el aforo.</p>
         </div>
-        <MobilityIllustration className="mobility-sim-visual" />
       </header>
       <div className="mobility-process" aria-label="Pasos de la simulación"><span><b>1</b> Arma tu viaje</span><span><b>2</b> Elige tu salida</span><span><b>3</b> Revisa el día</span></div>
 
@@ -234,7 +228,7 @@ export default function SimulacionPage() {
       <form onSubmit={simular} className="card mobility-sim-form">
         <div className="mb-3 flex items-center gap-2"><span className="mobility-section-number">01</span><MapPin size={17} className="text-muted" /></div>
         <h2 className="text-lg font-semibold tracking-tight text-fg">Tu viaje</h2>
-        <p className="mt-1.5 text-xs leading-relaxed text-muted">Usa los modelos del proyecto y datos históricos ATU. No muestra el aforo en vivo.</p>
+        <p className="mt-1.5 text-xs leading-relaxed text-muted">Elige tu recorrido y la hora a la que quieres llegar.</p>
         {errorCatalogo ? (
           <div className="mt-4 space-y-3">
             <Alert tono="danger">No pudimos cargar el catálogo.</Alert>
@@ -299,16 +293,17 @@ export default function SimulacionPage() {
 
       {plan ? (
         <div className="min-w-0 space-y-5">
-          <PlanSalida key={`${plan.origen.id}-${plan.destino.id}-${plan.dia}-${plan.llegada_limite}`} plan={plan} />
+          <PlanSalida key={`${plan.origen.id}-${plan.destino.id}-${plan.dia}-${plan.llegada_limite}`} plan={plan}>
           {resultado && <Comparacion key={`${resultado.station}-${plan.dia}-${horaSalida}`} resultado={resultado}
             horaInicial={horaSalida ? `${horaSalida.slice(0, 2)}:00` : undefined} />}
+          </PlanSalida>
         </div>
       ) : (
         <section className="mobility-sim-empty" aria-label="Cómo comenzar">
-          <span className="mobility-sim-empty-icon"><ChartColumn size={38} strokeWidth={1.3} aria-hidden="true" /></span>
+          <span className="mobility-sim-empty-icon"><ChartColumn size={25} strokeWidth={1.3} aria-hidden="true" /></span>
           <h2>{calculando ? 'Estamos armando tu viaje.' : '¿A qué hora te conviene salir?'}</h2>
-          <p>{calculando ? 'Calculando salidas, esperas y aforo con los modelos y datos disponibles del proyecto.' : 'Arma tu viaje y pulsa «Calcular mi salida». Verás la hora recomendada, las alternativas, los servicios que te llevan y la ocupación del día.'}</p>
-          <span className="mt-5 rounded-full border border-line px-3 py-1.5 text-xs text-muted">Estimaciones con datos ATU de 2025</span>
+          <p>{calculando ? 'Buscando una hora de salida para tu viaje.' : 'Elige tu viaje y pulsa «Calcular mi salida» para ver cuándo salir y a qué hora llegarías.'}</p>
+          <span className="mt-5 rounded-full border border-line px-3 py-1.5 text-xs text-muted">Estimaciones con datos de la ATU</span>
         </section>
       )}
       </div>

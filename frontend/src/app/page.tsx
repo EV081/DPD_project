@@ -43,7 +43,7 @@ const FUENTES = [
   },
   {
     icono: Clock3, titulo: 'La frecuencia es una referencia.',
-    texto: 'Los intervalos entre servicios se apoyan en metrolima.info y en ajustes del proyecto.',
+    texto: 'Tomamos como referencia los intervalos publicados en Metrolima.info para darte una idea de cuánto podrías esperar entre servicios.',
     detalle: 'Estos intervalos ayudan a calcular una espera aproximada. No son frecuencias oficiales de la ATU ni indican cuándo llegará el próximo vehículo.',
     enlace: 'https://metrolima.info/', accion: 'Visitar metrolima.info',
   },

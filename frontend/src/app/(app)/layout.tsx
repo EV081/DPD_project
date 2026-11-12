@@ -5,7 +5,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Map, Search, Navigation, User, ChartColumn, ArrowUpRight, LayoutDashboard, ShieldAlert } from 'lucide-react';
+import { Map, Search, Navigation, User, ChartColumn, LayoutDashboard, ShieldAlert } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Logo } from '@/components/Logo';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -80,7 +80,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           })}
         </nav>
 
-        <div className="mobility-nav-note hidden lg:block"><strong>Prueba antes de salir.</strong><p>Dinos a qué hora quieres llegar y te sugerimos cuándo salir.</p><Link href="/simulacion" className="mt-3 inline-flex items-center gap-1.5 font-semibold">Abrir simulación <ArrowUpRight size={14} /></Link></div>
 
         <div className="mobility-nav-user flex items-center justify-center gap-2 border-t p-3 lg:justify-between">
           <Link href="/account" className="flex min-w-0 items-center gap-2.5 rounded-lg p-1 hover:bg-surface-2" title={user.name}>

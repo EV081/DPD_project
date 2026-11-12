@@ -117,9 +117,9 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
         <SeguridadAcceso station={station} />
       </section>
 
-      <section className="rise mt-8" style={{ '--i': 2 } as React.CSSProperties} aria-label="Pronóstico de aforo">
-        <h2 className="text-lg font-semibold text-fg">Pronóstico de aforo</h2>
-        <p className="mt-0.5 text-sm text-muted">Ocupación estimada a bordo con demanda pronosticada (LightGBM) y matriz origen-destino.</p>
+      <section className="rise mt-8" style={{ '--i': 2 } as React.CSSProperties} aria-label="Qué tan lleno podría ir">
+        <h2 className="text-lg font-semibold text-fg">Qué tan lleno podría ir</h2>
+        <p className="mt-0.5 text-sm text-muted">Revisa la ocupación y la espera estimadas para elegir cuándo viajar.</p>
         <ForecastScopeNote referenceDate={forecast?.referencia?.fecha_referencia_datos} />
 
         {loading ? (
@@ -159,8 +159,8 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
             <div className="flex items-start gap-3 rounded-xl border border-brand/25 bg-brand-soft p-4">
               <Info size={18} className="mt-0.5 shrink-0 text-brand" />
               <p className="text-sm leading-relaxed text-fg">
-                La ocupación es la de los vehículos al salir de este paradero. La recomendación
-                (<b>Abordar</b>, <b>Esperar el siguiente</b> o <b>Cambiar de paradero</b>) considera el aforo de esta hora y de la siguiente.
+                Te sugerimos si conviene <b>subir</b>, <b>esperar el siguiente</b> o <b>buscar otro paradero</b>
+                según qué tan lleno podría ir el transporte ahora y durante la próxima hora.
               </p>
             </div>
           </div>
@@ -171,14 +171,14 @@ export default function StationPage({ params }: { params: Promise<{ id: string }
           </div>
         ) : (
           <div className="mt-4">
-            <EmptyState icon={CalendarX} title="Sin pronóstico" text="Este paradero no tiene datos de validaciones ATU propios, así que no se muestra una predicción." />
+            <EmptyState icon={CalendarX} title="Sin pronóstico" text="Todavía no tenemos información suficiente para estimar la ocupación en este paradero." />
           </div>
         )}
 
         {/* MINI MAPA CON TIPOGRAFÍA UNIFORME */}
         <div className="mt-8">
           <h2 className="text-lg font-semibold text-fg">Ubicación del paradero</h2>
-          <p className="mt-0.5 text-sm text-muted">Vista satelital o de calles de la estación en el entorno urbano.</p>
+          <p className="mt-0.5 text-sm text-muted">Encuentra el paradero y ubícate antes de salir.</p>
         <div className="mt-3 overflow-hidden rounded-2xl border border-line shadow-sm">
         <MiniMap
           latitude={station.latitude}

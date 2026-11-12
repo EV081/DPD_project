@@ -413,3 +413,13 @@ input[type="search"]::-webkit-search-cancel-button { display: none; }
 .us-dashboard-tabs button[data-active] { color: var(--brand); background: var(--surface); border-color: var(--line); border-bottom-color: var(--surface); }
 
 .us-trip-stop { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 4px solid; border-radius: 50%; background: var(--surface); color: var(--fg); font-size: 12px; font-weight: 800; box-shadow: 0 2px 8px #0005; }
+
+/* Resultados de simulación: una vista a la vez, con pestañas accesibles. */
+.mobility-result-tabs .mantine-Tabs-list { flex-wrap: nowrap; overflow-x: auto; border-color: var(--line); }
+.mobility-result-tabs .mantine-Tabs-tab { flex-shrink: 0; min-height: 44px; padding-inline: 1rem; color: var(--muted); font-weight: 600; }
+.mobility-result-tabs .mantine-Tabs-tab[data-active] { color: var(--brand); border-color: var(--brand); }
+.mobility-result-tabs .mantine-Tabs-tab:hover { background: var(--surface-2); }
+.mobility-result-tabs .mantine-Tabs-tab:focus-visible { outline: 2px solid var(--brand); outline-offset: -3px; }
+
+.mobility-sim-hero { grid-template-columns: minmax(0, 1fr); }
+.mobility-sim-empty-icon { width: 3rem; height: 3rem; border-radius: .85rem; }

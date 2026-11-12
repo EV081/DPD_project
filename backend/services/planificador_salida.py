@@ -110,6 +110,41 @@ def _espera(intervalo: float, cv: float, p_no_subir: float) -> float:
     return intervalo * (1 + cv ** 2) / 2.0 + intervalo * p_no_subir
 
 
+def lineas_comunes(tramos: list[dict], cv: float, p_no_subir: float, mult: float) -> dict:
+    """Servicios directos entre las mismas dos estaciones: subir al primero que pase del conjunto atractivo.
+
+    Problema de líneas comunes (Chriqui y Robillard, 1975; Ortúzar y Willumsen §10.2.4): se ordenan los
+    servicios por tiempo a bordo y se agrega uno al conjunto mientras baje el costo esperado
+
+        2 · espera(1/F) + multiplicador · Σ fᵢ·tᵢ / F,    F = Σ fᵢ (vehículos por minuto)
+
+    Un servicio lento con buena frecuencia entra solo si esperarlo menos compensa el tiempo a bordo extra.
+    Cada servicio del conjunto se toma con probabilidad fᵢ/F (el que llegue primero).
+    """
+    def evaluar(conjunto):
+        F = sum(1.0 / t["intervalo_min"] for t in conjunto)
+        viaje = sum(t["viaje_min"] / t["intervalo_min"] for t in conjunto) / F
+        espera = _espera(1.0 / F, cv, p_no_subir)
+        return R.A_ESPERA * espera + mult * viaje, F, espera, viaje
+
+    orden = sorted(tramos, key=lambda t: (t["viaje_min"], t["intervalo_min"]))
+    conjunto = [orden[0]]
+    for t in orden[1:]:
+        if evaluar(conjunto + [t])[0] < evaluar(conjunto)[0] - 1e-9:
+            conjunto.append(t)
+    _, F, espera, viaje = evaluar(conjunto)
+    rapido = conjunto[0]
+    return {
+        "servicio": " o ".join(t["servicio"] for t in conjunto), "sube": rapido["sube"], "baja": rapido["baja"],
+        "viaje_min": viaje, "espera_min": espera, "intervalo_min": 1.0 / F,
+        "paradas_intermedias": rapido["paradas_intermedias"],
+        "frecuencia_publicada": all(t["frecuencia_publicada"] for t in conjunto),
+        "servicios": [{"nombre": t["servicio"], "viaje_min": round(t["viaje_min"], 1),
+                       "intervalo_min": round(t["intervalo_min"], 1), "paradas_intermedias": t["paradas_intermedias"],
+                       "probabilidad": round((1.0 / t["intervalo_min"]) / F, 2)} for t in conjunto],
+    }
+
+
 def _opcion_troncal(linea, a: str, b: str, sentido: str, momento: dt.datetime, intervalo_modelo: float,
                     p_no_subir: float, mult: float) -> dict | None:
     """Mejor forma de ir de ``a`` a ``b`` en ``momento``: servicio directo o, si no hay, un transbordo."""
@@ -126,9 +161,9 @@ def _opcion_troncal(linea, a: str, b: str, sentido: str, momento: dt.datetime, i
 
     activos = [(n, r, p) for n, r in H.servicios("metropolitano").items()
                if H.opera(r, sentido, momento) and (p := (r.get("paradas") or {}).get(sentido))]
-    directos = [[tramo(n, r, p, a, b)] for n, r, p in activos if a in p and b in p and p.index(a) < p.index(b)]
+    directos = [tramo(n, r, p, a, b) for n, r, p in activos if a in p and b in p and p.index(a) < p.index(b)]
     if directos:
-        return {"tramos": min(directos, key=costo)}
+        return {"tramos": [lineas_comunes(directos, linea.cv, p_no_subir, mult)]}
     mejor = None
     for n1, r1, p1 in activos:
         if a not in p1:
@@ -220,6 +255,7 @@ def _evaluar(ctx: dict, salida: int, esperas: dict[int, float] | None = None) ->
             return None                                            # ningún servicio publicado une A y B a esa hora
         tramos = opcion["tramos"]
         espera, viaje = sum(t["espera_min"] for t in tramos), sum(t["viaje_min"] for t in tramos)
+        intervalo = tramos[0]["intervalo_min"]      # el siguiente vehículo que te sirve (conjunto de líneas comunes)
     else:
         if H.opera(ctx["reg_linea"], None, momento) is False:
             return None                                            # fuera del horario publicado
@@ -323,6 +359,14 @@ def _motivo(rec: dict | None, ultima: dict | None, hay_servicio: bool) -> str:
         return ("No hay una salida que llegue a tiempo ese día: prueba con una hora de llegada más tarde."
                 if hay_servicio else "No hay servicio publicado para ese viaje en las horas previas a tu llegada.")
     base = f"Llegas a las {rec['llegada']}, {round(rec['margen_min'])} min antes, y viajas {ETIQUETA_CLASE[rec['clase']]}."
+    grupo = ((rec.get("tramos") or [{}])[0].get("servicios") or []) if len(rec.get("tramos") or []) == 1 else []
+    if len(grupo) > 1:
+        nombres = ", ".join(g["nombre"] for g in grupo[:-1]) + f" o {grupo[-1]['nombre']}"
+        ventaja = grupo[-1]["viaje_min"] - grupo[0]["viaje_min"]
+        base = (f"Sube al primero que pase: {nombres}. "
+                + (f"El {grupo[0]['nombre']} tarda ~{max(1, round(ventaja))} min menos a bordo que la {grupo[-1]['nombre']}, "
+                   "pero esperarlo solo a él no compensa. "
+                   if ventaja >= 0.5 else "") + base)
     if rec["estado"] == "justo":
         return base + " Vas con el tiempo justo: si pierdes un vehículo, llegas tarde."
     if ultima and ultima is not rec and ultima["clase"] != rec["clase"]:
@@ -360,4 +404,7 @@ def _servicios(sistema, serie, serie_b, sentido, linea, fecha, opcion, limite) -
             continue                                               # no circula en este sentido
         viaje, intermedias = _viaje_servicio(linea, serie, serie_b, paradas)
         out.append(fila(nombre, reg, sentido, {"viaje_min": round(viaje, 1), "paradas_intermedias": intermedias}))
-    return sorted(out, key=lambda s: (not s["opera"], s["viaje_min"]))
+    elegidos = {x["nombre"] for t in (opcion or {}).get("tramos") or [] for x in t.get("servicios") or [{"nombre": t["servicio"]}]}
+    for fila_ in out:
+        fila_["recomendado"] = fila_["nombre"] in elegidos
+    return sorted(out, key=lambda s: (not s["recomendado"], not s["opera"], s["viaje_min"]))

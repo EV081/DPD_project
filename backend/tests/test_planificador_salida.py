@@ -304,3 +304,42 @@ def test_api_estacion_incluye_proximas_salidas_solo_para_ahora(client):
     assert all(o["llegada"] for o in d["proximas_salidas"])
     pasado = client.get("/api/predictions/estacion", query_string={"id": "Naranjal", "dia": LUNES, "hour": 8}).get_json()
     assert "proximas_salidas" not in pasado and "ahora" not in pasado
+
+
+# --------------------------------------------------------------------------- líneas comunes
+def _t(nombre, viaje, intervalo):
+    return {"servicio": nombre, "sube": "A", "baja": "B", "viaje_min": viaje, "intervalo_min": intervalo,
+            "paradas_intermedias": 0, "frecuencia_publicada": True, "espera_min": None}
+
+
+def test_lineas_comunes_suma_frecuencias_y_pondera_el_viaje():
+    g = P.lineas_comunes([_t("Expreso", 10, 5), _t("Regular", 10.5, 5)], cv=0.3, p_no_subir=0, mult=1)
+    assert g["servicio"] == "Expreso o Regular"
+    assert g["intervalo_min"] == pytest.approx(2.5)                       # pasan el doble de vehículos
+    assert g["espera_min"] == pytest.approx(2.5 * 1.09 / 2)
+    assert g["viaje_min"] == pytest.approx(10.25)
+    assert [s["probabilidad"] for s in g["servicios"]] == [0.5, 0.5]
+
+
+def test_lineas_comunes_deja_fuera_al_lento_que_no_compensa():
+    g = P.lineas_comunes([_t("Regular", 30, 5), _t("Expreso", 15, 5)], cv=0.3, p_no_subir=0, mult=1)
+    assert g["servicio"] == "Expreso" and len(g["servicios"]) == 1
+    assert g["espera_min"] == pytest.approx(5 * 1.09 / 2)
+
+
+def test_lineas_comunes_pone_primero_al_mas_rapido_y_lo_frecuente_pesa_mas():
+    g = P.lineas_comunes([_t("Ruta C", 4.5, 5), _t("Expreso 9", 3.3, 10), _t("Expreso 1", 3.3, 5)], cv=0.3, p_no_subir=0, mult=1)
+    assert [s["nombre"] for s in g["servicios"]][:2] == ["Expreso 1", "Expreso 9"]
+    probs = {s["nombre"]: s["probabilidad"] for s in g["servicios"]}
+    assert probs["Expreso 1"] > probs["Expreso 9"] and sum(probs.values()) == pytest.approx(1, abs=0.02)
+
+
+def test_la_recomendacion_dice_que_suba_al_primero_que_pase():
+    plan = P.planificar(estacion("Angamos"), estacion("Canaval y Moreyra"), "2026-11-13", "08:15")
+    rec = next(o for o in plan["opciones"] if o["salida"] == plan["recomendada"])
+    nombres = [s["nombre"] for s in rec["tramos"][0]["servicios"]]
+    assert len(nombres) > 1 and nombres[0] == "Expreso 1" and "Ruta C" in nombres
+    assert plan["motivo"].startswith("Sube al primero que pase")
+    assert rec["intervalo_min"] == pytest.approx(rec["tramos"][0]["intervalo_min"], abs=0.1)
+    recomendados = [s["nombre"] for s in plan["servicios"] if s["recomendado"]]
+    assert set(recomendados) == set(nombres) and plan["servicios"][0]["recomendado"]

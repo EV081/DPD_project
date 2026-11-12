@@ -16,13 +16,10 @@ interface Props {
   compact?: boolean;
 }
 
-export function ForecastScopeNote({ referenceDate }: { referenceDate?: string }) {
-  const date = referenceDate && /^\d{4}-\d{2}-\d{2}$/.test(referenceDate)
-    ? referenceDate.split('-').reverse().join('/') : null;
+export function ForecastScopeNote(_props: { referenceDate?: string }) {
   return (
     <p className="mt-2 text-xs leading-relaxed text-muted">
-      Aforo estimado con datos ATU de 2025; no es un conteo en vivo.
-      {date && ` Día de referencia utilizado: ${date}.`}
+      Es una estimación basada en viajes anteriores. La ocupación y la espera pueden variar.
     </p>
   );
 }
@@ -50,7 +47,7 @@ export default function ForecastPanel({ forecast, loading, error, onRetry, compa
   if (forecast.sinDatos) {
     return (
       <p className="rounded-lg bg-surface-2 px-3 py-3 text-center text-sm text-muted">
-        Sin predicción: este paradero no tiene datos de validaciones ATU propios.
+        Todavía no tenemos información suficiente para estimar la ocupación en este paradero.
       </p>
     );
   }

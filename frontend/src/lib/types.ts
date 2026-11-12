@@ -96,6 +96,8 @@ export interface TramoPlan {
   intervalo_min: number;
   paradas_intermedias: number;
   frecuencia_publicada: boolean;    // false: la espera usa el intervalo típico del modelo
+  // Líneas comunes: servicios directos entre las dos estaciones; se sube al primero que pase
+  servicios?: { nombre: string; viaje_min: number; intervalo_min: number; paradas_intermedias: number; probabilidad: number }[];
 }
 
 // Una salida desde el paradero (mapa): sin destino no hay llegada, tiempo a bordo ni servicio
@@ -136,6 +138,7 @@ export interface ServicioPlan {
   notas: string[];
   viaje_min?: number;
   paradas_intermedias?: number;
+  recomendado?: boolean;            // forma parte de la salida recomendada
 }
 
 export interface PlanSalida {
