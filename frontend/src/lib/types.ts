@@ -201,12 +201,25 @@ export interface MatchedRoute {
   sentido_contrario?: boolean;              // paradero en la vereda equivocada: no se ofrece
   sin_prediccion?: boolean;
   aforo?: { clase?: string; ocupacion?: number | null; pasajeros_por_vehiculo?: number | null; sentido?: string | null };
+  /** Solo Metropolitano: qué servicio tomar (Expreso, Regular…) según horario y paradas de cada uno. */
+  servicio_troncal?: ServicioTroncal;
+}
+
+export interface ServicioTroncal {
+  /** "Expreso 5 o Expreso 9" (el primero que pase) o "Expreso 1 hasta Estacion Central, luego Ruta B". */
+  texto: string;
+  sentido: 'asc' | 'desc';
+  transbordos: number;
+  tramos: {
+    servicio: string; sube: string; baja: string; viaje_min: number; espera_min: number; intervalo_min: number;
+    servicios: { nombre: string; viaje_min: number; intervalo_min: number; paradas_intermedias: number; probabilidad: number }[];
+  }[];
 }
 
 export interface RecomendacionViaje {
   criterio: string;
   hora: number;
-  mejor: { boarding_station: string; route_code: string };
+  mejor: { boarding_station: string; route_code: string; servicio?: string };
   cambiar_paradero?: boolean;
   ahorro_min?: number;
   mensaje?: string;

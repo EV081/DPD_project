@@ -11,7 +11,7 @@ async function loadHelper(relativePath) {
   return import('data:text/javascript;base64,' + Buffer.from(outputText).toString('base64'));
 }
 
-const { tripRouteKey, comparedRoutes, formatMinutes, ROUTE_PAGE_SIZE } = await loadHelper('../src/lib/trip-comparison.ts');
+const { tripRouteKey, comparedRoutes, formatMinutes, ROUTE_PAGE_SIZE, routeServiceLabel, tripRouteLabel } = await loadHelper('../src/lib/trip-comparison.ts');
 const { parseWalkingLimit } = await loadHelper('../src/lib/walking-preferences.ts');
 
 const route = {
@@ -54,4 +54,15 @@ test('el límite rechaza valores negativos o no finitos antes de consultar al se
   for (const value of ['-1', 'Infinity', 'NaN', 'abc', '1e999']) {
     assert.throws(() => parseWalkingLimit(value), /cero o más minutos/);
   }
+});
+
+test('el Metropolitano dice qué servicio tomar, no "Ruta METROPOLITANO"', () => {
+  const metro = { ...route, type: 'DIRECTO_POR_SISTEMA', system: 'metropolitano', route_code: 'METROPOLITANO',
+    boarding_station: 'Canaval y Moreyra', leaving_station: 'España' };
+  assert.equal(routeServiceLabel(metro), null);
+  const conServicio = { ...metro, servicio_troncal: { texto: 'Expreso 5 o Expreso 9', sentido: 'desc', transbordos: 0, tramos: [] } };
+  assert.equal(routeServiceLabel(conServicio), 'Expreso 5 o Expreso 9');
+  assert.equal(tripRouteLabel(conServicio), 'Expreso 5 o Expreso 9 · Canaval y Moreyra → España');
+  assert.equal(routeServiceLabel(route), 'Ruta 301');
+  assert.equal(routeServiceLabel({ ...metro, system: 'metro_l1', route_code: 'METRO_L1' }), null);
 });

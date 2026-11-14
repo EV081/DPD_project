@@ -27,7 +27,10 @@ const nombreDe = (sistema: string, codigo: string): string => {
     default: return `Corredor ${codigo}`;
   }
 };
-const nombreServicio = (route: MatchedRoute): string => nombreDe(route.system, route.route_code);
+const nombreServicio = (route: MatchedRoute): string => {
+  const texto = route.system === 'metropolitano' ? route.servicio_troncal?.texto : null;
+  return texto ? `Metropolitano · ${texto}` : nombreDe(route.system, route.route_code);
+};
 
 // Paso de la línea de tiempo: punto de color + línea que lo une con el siguiente
 function Step({ color, last, children }: { color: string; last?: boolean; children: React.ReactNode }) {

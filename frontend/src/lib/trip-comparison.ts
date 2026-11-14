@@ -24,6 +24,15 @@ export function comparedRoutes(routes: MatchedRoute[], selectedKeys: string[]): 
   });
 }
 
-export const tripRouteLabel = (route: MatchedRoute) =>
-  `${route.route_code ? `Ruta ${route.route_code} · ` : ''}${route.boarding_station} → ${route.leaving_station}`
+/** Qué tomar: "Ruta 301", "Expreso 9"… null si el sistema basta (Metro L1, o Metropolitano sin horario). */
+export function routeServiceLabel(route: Pick<MatchedRoute, 'system' | 'route_code' | 'servicio_troncal'>): string | null {
+  if (route.system === 'metropolitano') return route.servicio_troncal?.texto ?? null;
+  if (route.system === 'metro_l1' || !route.route_code) return null;
+  return `Ruta ${route.route_code}`;
+}
+
+export const tripRouteLabel = (route: MatchedRoute) => {
+  const servicio = routeServiceLabel(route);
+  return `${servicio ? `${servicio} · ` : ''}${route.boarding_station} → ${route.leaving_station}`
   + (route.transbordo ? ` · Transbordo ${route.transbordo.route_code}: ${route.transbordo.boarding_station} → ${route.transbordo.leaving_station}` : '');
+};

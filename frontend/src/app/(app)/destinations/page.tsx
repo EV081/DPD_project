@@ -7,7 +7,7 @@ import SearchAutocomplete from '@/components/SearchAutocomplete';
 import SystemBadge from '@/components/SystemBadge';
 import TripComparison, { RouteMetrics } from '@/components/TripComparison';
 import { ForecastScopeNote } from '@/components/ForecastPanel';
-import { comparedRoutes, ROUTE_PAGE_SIZE, tripRouteKey, tripRouteLabel } from '@/lib/trip-comparison';
+import { comparedRoutes, ROUTE_PAGE_SIZE, tripRouteKey, tripRouteLabel, routeServiceLabel } from '@/lib/trip-comparison';
 import { Skeleton, EmptyState } from '@/components/Spinner';
 import { matchTrip } from '@/lib/services';
 import { opcionesDeViaje } from '@/lib/aforo';
@@ -167,7 +167,7 @@ export default function DestinationsPage() {
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
                         <SystemBadge system={item.system} />
-                        {item.route_code && <span className="rounded-md bg-surface-2 px-2 py-0.5 text-xs font-semibold text-fg">Ruta {item.route_code}</span>}
+                        {routeServiceLabel(item) && <span className="rounded-md bg-surface-2 px-2 py-0.5 text-xs font-semibold text-fg">{routeServiceLabel(item)}</span>}
                       </div>
                       {item.transbordo && <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-soft px-2 py-0.5 text-xs font-semibold text-brand"><Repeat2 size={12} /> 1 transbordo</span>}
                       <p className="mt-2.5 text-base font-semibold text-fg">Sube en {item.boarding_station}</p>
