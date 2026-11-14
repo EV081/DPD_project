@@ -6,7 +6,10 @@
 | :--- | :--- |
 | Aplicación web (Vercel) | <https://dpd-project.vercel.app> |
 | API REST (Render) | <https://urbansafe-api.onrender.com/api/health> · documentación Swagger en [`/apidocs`](https://urbansafe-api.onrender.com/apidocs) |
+| Base de datos | Supabase (PostgreSQL, vía *pooler*); credenciales fuera del repositorio |
 | Repositorio | <https://github.com/EV081/DPD_project> |
+| **Entrega final (S15)** | [`deliveries/week15/`](deliveries/week15/) · informe: [`FinalReport.pdf`](deliveries/week15/FinalReport.pdf) |
+| Video demo | *pendiente: se agregará el enlace tras subirlo* |
 | Datos ATU originales (Drive) | <https://drive.google.com/drive/folders/1qktczst2lUi7BqOt3Lr5ffcip9wqOSSw> |
 
 > La API está en el plan gratuito de Render: si estuvo inactiva, **el primer pedido tarda ~50 s** en
@@ -18,9 +21,9 @@
 
 | Integrante | Rol |
 | :--- | :--- |
-| **Elmer Jose Manuel Villegas Suarez** | *Data Engineer* — ingesta, pipelines y diccionarios de datos. |
-| **Alessandro Facundo Freed Monzón Gallegos** | *Data Product Manager & AI/ML Developer* — requerimientos, backend y frontend. |
-| **Juan David Velo Poma** (*Líder de Proyecto*) | *Data Scientist & Leader* — modelado, explicabilidad y evaluación. |
+| **Elmer Jose Manuel Villegas Suarez** | *Data Engineer y full stack* — ingesta, pipelines y diccionarios de datos; infraestructura y despliegue (Vercel, Render, Supabase, Docker); Eje 2 (denuncias, riesgo y ruteo); desarrollo full stack junto con Alessandro y documentación. |
+| **Alessandro Facundo Freed Monzón Gallegos** | *Data Product Manager, AI/ML Developer y full stack* — requerimientos, backend y frontend (junto con Elmer). |
+| **Juan David Velo Poma** | *Data Scientist* — Eje 1: modelado, explicabilidad y evaluación (pronóstico de demanda y aforo, matriz O-D). |
 
 ---
 
@@ -36,13 +39,17 @@ UrbanSafe AI responde dos preguntas:
 * **Eje 2 — ¿por dónde camino?** Para la primera y última milla (~10 min a pie de una estación o
   paradero) propone la **ruta peatonal más segura** con un riesgo por calle estimado de denuncias
   policiales, y recibe reportes de los usuarios (acoso, seguimiento, robo).
+* **Simulador (Eje 1):** para quien ya conoce su paradero y servicio (Metro L1, Metropolitano, corredores o
+  alimentadores), elige un día y una hora y la app muestra qué opción conviene tomar (ocupación, espera,
+  recomendación y plan de salida; descarga en CSV).
 
 **Fuentes de datos**
 
 | Fuente | Uso |
 | :--- | :--- |
-| **Validaciones ATU 2025** (solicitud de acceso a la información; Metro L1, troncal, alimentadores y corredores) | Demanda horaria: entrenamiento y evaluación del Eje 1 |
-| Horarios y flotas oficiales (Metro de Lima, ATU) | Oferta: pasajeros por vehículo e intervalos |
+| **ATU: validaciones 2025** (solicitud de acceso a la información; Metro L1, troncal, alimentadores y corredores) | Demanda horaria: entrenamiento y evaluación del Eje 1 |
+| **ATU: rutas, servicios y paraderos** (catálogo oficial y fichas de horarios) | Red de líneas, matriz O-D y oferta |
+| **metrolima.info** | Frecuencia aproximada de paso de cada bus y horarios del Metro de Lima |
 | **Denuncias SIDPOL** (MININTER, Lima y Callao, hasta 2025) | Riesgo por calle del Eje 2 |
 | **OpenStreetMap** | Grafo peatonal y puntos de interés del Eje 2 |
 | TomTom Traffic API (opcional) | Ajuste del ETA de buses con la congestión en vivo |
@@ -55,13 +62,21 @@ desde la S08 todo el proyecto usa los datos reales de Lima.
 
 ## 3. Arquitectura
 
-```
-Datos ATU 2025 ──► pipeline (deliveries/week08–10) ──► entrenamiento y evaluación ──► backend/models (v1.3.0, sha256)
-Denuncias SIDPOL + OSM ──► notebooks Eje 2 (deliveries/week12) ──► riesgo por calle ──► backend/data/eje2
-                                                                                                  │
-Navegador ──► frontend Next.js (Vercel) ──HTTP/JSON──► API Flask (Render) ── carga los modelos ───┘
-                                                         └── Postgres: usuarios, reportes y feedback
-```
+![Arquitectura de UrbanSafe AI](deliveries/week15/diagrams/architecture.png)
+
+*Diagrama hecho con la skill [`stack-diagram`](https://github.com/caru-ini/stack-diagram); versión oscura y HTML en
+[`deliveries/week15/diagrams/`](deliveries/week15/diagrams/).*
+
+* **Datos:** ATU (validaciones y catálogo de rutas/paraderos), metrolima.info (frecuencias), MININTER/SIDPOL
+  (denuncias), OpenStreetMap (grafo) y, en tiempo real, TomTom y LocationIQ.
+* **Dos modelos separados, entrenados offline:** *ETA/aforo* (LightGBM + matriz O-D) y *seguridad*
+  (LightGBM Poisson). La API en Render los carga como artefactos versionados (v1.3.0, sha256).
+* **Capas:** web en **Vercel**, API Flask en **Render** (Docker + gunicorn) y base de datos en **Supabase**
+  (usuarios, reportes y feedback).
+* **Calibración con el uso (Cron Jobs de Render):** el job semanal re-ajusta el factor del ETA con el feedback
+  «Ya abordé» (se promueve solo si mejora al vigente) y el diario recalibra el riesgo de las calles con los
+  reportes de usuarios. Es *calibración*; el re-entrenamiento completo de los modelos es offline y la
+  integración del feedback al entrenamiento es trabajo futuro.
 
 * **Eje 1:** LightGBM pronostica las subidas por hora → una **matriz origen-destino** (Furness /
   gravedad, Ortúzar y Willumsen) estima bajadas y carga a bordo → con la oferta (horario o flota) se
@@ -71,7 +86,7 @@ Navegador ──► frontend Next.js (Vercel) ──HTTP/JSON──► API Flask
   (λ = 12) → Dijkstra entre el usuario y la estación. Los reportes de usuarios recalibran el riesgo
   de forma acotada.
 * La demanda y los modelos viajan como archivos versionados: la API no necesita una base de datos de
-  demanda. Postgres guarda solo usuarios, reportes y feedback.
+  demanda. Postgres (Supabase) guarda solo usuarios, reportes y feedback.
 
 ---
 
@@ -96,7 +111,8 @@ DPD_project/
     ├── week08/                ← datos reales ATU 2025: EDA y modelado por sistema
     ├── week09/                ← avance S09: evaluación v2, data_csv/ y PresentationWeek09
     ├── week10/                ← pipeline PostgreSQL + Docker, modelos v1.0.0, PrototypeReport y PresentationWeek10
-    └── week12/                ← Eje 2 (EDA, features, modelo y ruteo) y EvaluationReport del Eje 1
+    ├── week12/                ← Eje 2 (EDA, features, modelo y ruteo) y EvaluationReport del Eje 1
+    └── week15/                ← **entrega final**: FinalReport (.tex/.pdf), PresentationFinal, Data Product Canvas, Requirements, diagramas, página del proyecto y guion del video
 ```
 
 ---
@@ -155,8 +171,10 @@ en ZIP) están en el enlace de Drive del inicio.
 
 ### 5.E Despliegue
 
+* **Base de datos:** Supabase (PostgreSQL). Usar la URL del *pooler* como `DATABASE_URL`.
 * **API:** Render con [`render.yaml`](render.yaml) (Docker, `rootDir: backend`). Variables:
-  `DATABASE_URL` (Postgres), `JWT_SECRET_KEY`, `LOCATIONIQ_TOKEN`, `API_TOMTOM`.
+  `DATABASE_URL` (Supabase), `JWT_SECRET_KEY`, `LOCATIONIQ_TOKEN`, `API_TOMTOM`. Cron Jobs: `pipeline-diario`
+  (03:00 Lima) y `pipeline-semanal` (lunes 02:00 Lima), ver `backend/README.md`.
 * **Web:** Vercel con `frontend/` como raíz y `NEXT_PUBLIC_API_URL=https://urbansafe-api.onrender.com/api`.
 
 ---
@@ -175,6 +193,10 @@ Detalle, baselines y limitaciones en
 [`deliveries/week12/docs/EvaluationReport_Eje1.md`](deliveries/week12/docs/EvaluationReport_Eje1.md) y
 [`deliveries/week12/docs/Model_Eje2.md`](deliveries/week12/docs/Model_Eje2.md).
 
+> **Sobre el F1-macro:** corredores (0,66) y alimentadores (0,54) no cumplen el umbral de RNF-01 (≥ 0,72) porque la
+> clase «Saturado» es rara en buses (1,5 % y 2,7 % de las horas de test) y el F1-macro pesa igual las tres clases;
+> la accuracy sí cumple (0,86–0,93). Se explica en el informe final (§7.3).
+
 ---
 
 ## 7. Documentación
@@ -185,6 +207,7 @@ Detalle, baselines y limitaciones en
 | [`deliveries/week08/docs/`](deliveries/week08/docs/) | EDA y modelado con datos ATU 2025, diccionarios de datos. |
 | [`deliveries/week09/README.md`](deliveries/week09/README.md) | Estado del producto en la S09 y evaluación v2. |
 | [`deliveries/week10/PrototypeReport.md`](deliveries/week10/PrototypeReport.md) | Prototipo funcional (S10). |
+| [`deliveries/week15/FinalReport.pdf`](deliveries/week15/FinalReport.pdf) | **Informe final**: problema, datos, requerimientos, enfoque, arquitectura, evaluación, casos de estudio, limitaciones, contribución y reflexión. |
 | [`deliveries/week12/docs/EvaluationReport_Eje1.md`](deliveries/week12/docs/EvaluationReport_Eje1.md) | Evaluación del Eje 1: demanda, aforo, O-D y recomendación. |
 | [`deliveries/week12/docs/EDA_Eje2.md`](deliveries/week12/docs/EDA_Eje2.md) · [`Model_Eje2.md`](deliveries/week12/docs/Model_Eje2.md) | EDA de denuncias, modelo de riesgo y ruteo seguro. |
 | [`backend/docs/`](backend/docs/) | Modelo de ocupación, Eje 2 en la API, contrato con el frontend. |
@@ -201,11 +224,19 @@ Detalle, baselines y limitaciones en
 | S10 | Prototipo funcional: pipeline, modelos serializados, API y frontend | `deliveries/week10`, `backend/`, `frontend/` |
 | S11–S12 | Eje 2 (módulo peatonal) y evaluación | `deliveries/week12` |
 | S13 | Despliegue cloud y Docker | `render.yaml`, `docker-compose.yml`, Vercel |
-| S14–S15 | Video demo, informe final y presentación | `deliveries/week15` (video pendiente) |
+| S14–S15 | Informe final, presentación, Data Product Canvas, página del proyecto y guion del video (el video está pendiente) | `deliveries/week15` |
 
 ---
 
-## 9. Referencias
+## 9. Licencia
+
+El código de este repositorio se distribuye bajo la licencia **MIT** (ver [`LICENSE`](LICENSE)). Los datos de la ATU,
+MININTER (SIDPOL) y OpenStreetMap, y los logos de terceros, mantienen sus propias licencias y condiciones de uso;
+no se redistribuyen datos restringidos.
+
+---
+
+## 10. Referencias
 
 * Ortúzar, J. de D. y Willumsen, L. G. *Modelos de Transporte*. (Furness, gravedad, estimación de
   matrices O-D desde conteos, costo generalizado).
