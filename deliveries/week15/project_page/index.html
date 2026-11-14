@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UrbanSafe AI · Página del proyecto</title>
+<style>
+:root{--bg:#f4f7fc;--fg:#0f172a;--muted:#475569;--brand:#2563eb;--card:#fff;--line:#d7e0ee}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1220;--fg:#e8eef9;--muted:#9fb0c9;--brand:#6ea0ff;--card:#121b2e;--line:#243350}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:2rem;margin:.2em 0}h2{margin-top:2em;color:var(--brand)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+a{color:var(--brand)}img{max-width:100%;border-radius:12px;border:1px solid var(--line)}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}.row>*{flex:1 1 260px}
+.btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;margin:4px 4px 4px 0}
+</style></head><body><main>
+<p style="color:var(--muted)">DS-3022 · Desarrollo de Producto de Datos · UTEC 2026-II</p>
+<h1>UrbanSafe AI</h1>
+<p>Ecosistema de movilidad predictiva y segura para Lima: ¿subo a la próxima unidad? ¿por dónde camino?</p>
+<a class="btn" href="https://dpd-project.vercel.app">Abrir la aplicación</a>
+<a class="btn" href="https://github.com/EV081/DPD_project">Repositorio</a>
+<a class="btn" href="https://urbansafe-api.onrender.com/apidocs">API (Swagger)</a>
+<div class="row" style="margin-top:16px"><div><img src="home_web.png" alt="Inicio de UrbanSafe en web"><img src="home_mobile.png" alt="Inicio de UrbanSafe en móvil" style="max-width:150px;margin-top:8px"></div><div class="card">
+<h2 style="margin-top:0">Qué hace</h2>
+<p><b>Eje 1.</b> Pronostica la demanda horaria (LightGBM), estima la ocupación a bordo con una matriz origen-destino y recomienda abordar, esperar o cambiar de paradero.</p>
+<p><b>Eje 2.</b> Calcula la ruta peatonal que equilibra distancia y denuncias registradas: −43,8 % de denuncias con +8,7 % de distancia (test 2024).</p></div></div>
+<h2>Demostración</h2>
+<p><i>Video demo: enlace pendiente (el equipo debe pegarlo aquí).</i></p>
+<h2>Arquitectura</h2><img src="architecture.png" alt="Diagrama: Vercel, Render, Supabase y servicios externos">
+<h2>Equipo</h2>
+<ul><li>Elmer Jose Manuel Villegas Suarez — Data Engineer</li>
+<li>Alessandro Facundo Freed Monzón Gallegos — Data Product Manager y AI/ML Developer</li>
+<li>Juan David Velo Poma — Data Scientist</li></ul>
+<h2>Ejecutar</h2>
+<pre class="card">cp .env.example .env &amp;&amp; docker compose up --build</pre>
+<p>Instrucciones completas en el <a href="https://github.com/EV081/DPD_project#readme">README</a>. La API gratuita tarda ~50 s en despertar.</p>
+<h2>Límites</h2><p>Las denuncias no equivalen al delito (subregistro y sesgo); el modelo ordena calles, no garantiza seguridad. Ver el informe final.</p>
+</main></body></html>

@@ -201,7 +201,7 @@ Detalle, baselines y limitaciones en
 | S10 | Prototipo funcional: pipeline, modelos serializados, API y frontend | `deliveries/week10`, `backend/`, `frontend/` |
 | S11–S12 | Eje 2 (módulo peatonal) y evaluación | `deliveries/week12` |
 | S13 | Despliegue cloud y Docker | `render.yaml`, `docker-compose.yml`, Vercel |
-| S14–S15 | Video demo, informe final y presentación | pendiente |
+| S14–S15 | Video demo, informe final y presentación | `deliveries/week15` (video pendiente) |
 
 ---
 
