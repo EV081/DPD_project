@@ -1,0 +1,601 @@
+﻿sesion_id,usuario_id,fecha_hora_lima,sistema,estacion,ruta,consulta_generada,recomendacion_vista,abordaje_confirmado,feedback_enviado,eta_pred_min,eta_obs_min,error_eta_abs_min,aforo_pred,aforo_observado,ruta_segura_solicitada,reporte_seguridad,tipo_reporte,latencia_api_ms,api_correcta,fallback_historico,cache_hit,modo_datos
+SIM-0183,USR-SIM-0183,2026-10-14T07:55,alimentadores,Estación Naranjal Embarque Nº 13,Milagro de Jesús                                            ,True,True,True,False,11.0,12.5,1.4,Saturado,De_pie,False,False,,529,True,False,True,simulado
+SIM-0405,USR-SIM-0405,2026-10-14T08:05,corredores,8 de Mariscal,412,True,True,True,True,9.2,6.8,2.4,Saturado,Saturado,False,False,,267,True,False,False,simulado
+SIM-0548,USR-SIM-0548,2026-10-14T08:15,metropolitano,Balta,Troncal,True,True,False,False,9.6,,,De_pie,,True,False,,203,True,False,True,simulado
+SIM-0290,USR-SIM-0290,2026-10-14T08:25,metro_l1,Bayovar,Línea 1,True,True,True,False,7.6,4.5,3.0,De_pie,De_pie,True,False,,441,True,False,False,simulado
+SIM-0266,USR-SIM-0266,2026-10-14T09:10,metro_l1,Parque Industrial,Línea 1,True,False,False,False,7.5,,,De_pie,,False,False,,291,True,False,True,simulado
+SIM-0297,USR-SIM-0297,2026-10-14T09:15,corredores,La Floresta,209,True,True,True,True,12.7,12.6,0.1,Saturado,De_pie,False,False,,209,True,False,True,simulado
+SIM-0225,USR-SIM-0225,2026-10-14T10:25,alimentadores,Estación Naranjal Embarque Nº 12,Belaunde                                                    ,True,False,False,False,7.5,,,De_pie,,False,False,,482,True,False,True,simulado
+SIM-0345,USR-SIM-0345,2026-10-14T11:30,corredores,Bolognesi,404,True,True,True,False,7.7,6.9,0.7,Asientos,Asientos,True,False,,743,True,False,True,simulado
+SIM-0450,USR-SIM-0450,2026-10-14T14:45,alimentadores,Estación Naranjal Embarque Nº 01,Izaguirre                                                   ,True,True,False,False,10.4,,,Asientos,,True,False,,236,True,False,True,simulado
+SIM-0494,USR-SIM-0494,2026-10-14T16:20,metropolitano,Rosario de Villa,Troncal,True,True,True,True,4.2,7.6,3.4,Asientos,Asientos,False,False,,448,True,False,True,simulado
+SIM-0275,USR-SIM-0275,2026-10-14T17:35,metropolitano,Las Vegas,Troncal,True,True,True,False,8.9,11.1,2.2,Saturado,Saturado,False,False,,307,True,False,True,simulado
+SIM-0468,USR-SIM-0468,2026-10-14T17:40,metropolitano,Parque del Trabajo,Troncal,True,True,True,False,8.1,3.8,4.4,De_pie,De_pie,False,False,,305,True,False,True,simulado
+SIM-0229,USR-SIM-0229,2026-10-14T18:00,metropolitano,Colmena,Troncal,True,True,True,False,10.7,12.3,1.6,Saturado,Saturado,True,False,,174,True,True,False,simulado
+SIM-0032,USR-SIM-0032,2026-10-14T18:05,metropolitano,Las Vegas,Troncal,True,True,True,False,10.3,12.9,2.6,Saturado,Saturado,False,False,,618,True,False,True,simulado
+SIM-0528,USR-SIM-0528,2026-10-14T18:05,metro_l1,Angamos,Línea 1,True,True,False,False,3.9,,,Saturado,,False,False,,278,True,False,False,simulado
+SIM-0226,USR-SIM-0226,2026-10-14T18:30,metro_l1,Villa Maria,Línea 1,True,True,False,False,6.2,,,De_pie,,True,False,,290,True,False,True,simulado
+SIM-0041,USR-SIM-0041,2026-10-14T18:50,metro_l1,Villa El Salvador,Línea 1,True,True,True,False,6.2,13.1,7.0,Saturado,Saturado,True,True,acoso,117,True,False,True,simulado
+SIM-0227,USR-SIM-0227,2026-10-14T18:50,corredores,Alcázar,305,True,True,False,False,11.1,,,De_pie,,True,False,,258,True,False,True,simulado
+SIM-0117,USR-SIM-0117,2026-10-15T05:00,corredores,Calle 10,336,True,True,False,False,7.2,,,Asientos,,False,False,,188,True,False,True,simulado
+SIM-0271,USR-SIM-0271,2026-10-15T05:35,metropolitano,Plaza de Flores,Troncal,True,True,True,True,5.1,5.6,0.6,De_pie,De_pie,False,False,,426,True,False,True,simulado
+SIM-0470,USR-SIM-0470,2026-10-15T06:00,metro_l1,Gamarra,Línea 1,True,True,False,False,6.6,,,Saturado,,False,False,,847,True,False,True,simulado
+SIM-0022,USR-SIM-0022,2026-10-15T06:35,metropolitano,Canadá,Troncal,True,True,True,False,8.4,9.3,0.9,Saturado,Saturado,False,False,,525,True,False,True,simulado
+SIM-0451,USR-SIM-0451,2026-10-15T08:35,metro_l1,Los Postes,Línea 1,True,False,False,False,6.1,,,De_pie,,False,False,,583,True,False,False,simulado
+SIM-0338,USR-SIM-0338,2026-10-15T08:40,corredores,Soledad,303,True,True,False,False,11.4,,,Saturado,,False,False,,912,True,False,True,simulado
+SIM-0235,USR-SIM-0235,2026-10-15T10:45,metropolitano,Bulevar,Troncal,True,True,False,False,7.3,,,Asientos,,False,False,,252,True,False,True,simulado
+SIM-0030,USR-SIM-0030,2026-10-15T10:50,metro_l1,Los Postes,Línea 1,True,True,False,False,4.3,,,De_pie,,False,False,,473,True,False,True,simulado
+SIM-0498,USR-SIM-0498,2026-10-15T18:55,metropolitano,Canadá,Troncal,True,True,False,False,5.8,,,De_pie,,False,False,,199,True,False,True,simulado
+SIM-0241,USR-SIM-0241,2026-10-15T19:05,alimentadores,Estación Naranjal Embarque Nº 13,Puno                                                        ,True,True,True,True,12.8,13.2,0.5,Saturado,Saturado,False,False,,411,True,False,True,simulado
+SIM-0496,USR-SIM-0496,2026-10-15T20:10,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,6.2,,,Saturado,,False,False,,416,True,False,True,simulado
+SIM-0344,USR-SIM-0344,2026-10-15T20:25,metropolitano,Domingo Orué,Troncal,True,True,True,False,8.4,7.6,0.8,Saturado,De_pie,False,False,,134,True,False,True,simulado
+SIM-0439,USR-SIM-0439,2026-10-15T21:55,corredores,San Martín,412,True,True,False,False,8.4,,,De_pie,,True,False,,398,True,False,False,simulado
+SIM-0101,USR-SIM-0101,2026-10-16T06:25,metro_l1,Bayovar,Línea 1,True,True,False,False,7.9,,,Saturado,,False,False,,230,True,False,False,simulado
+SIM-0472,USR-SIM-0472,2026-10-16T06:25,metropolitano,Los Incas,Troncal,True,True,True,False,8.6,7.9,0.7,De_pie,De_pie,False,False,,601,True,False,True,simulado
+SIM-0174,USR-SIM-0174,2026-10-16T07:05,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,8.3,,,Saturado,,False,False,,233,True,False,True,simulado
+SIM-0352,USR-SIM-0352,2026-10-16T07:20,metro_l1,Maria Auxiliadora,Línea 1,True,True,True,False,5.7,7.5,1.7,De_pie,De_pie,False,False,,361,True,True,True,simulado
+SIM-0387,USR-SIM-0387,2026-10-16T07:20,metro_l1,Villa El Salvador,Línea 1,True,True,True,False,5.5,4.2,1.3,Saturado,Saturado,False,False,,192,True,False,False,simulado
+SIM-0280,USR-SIM-0280,2026-10-16T07:30,corredores,La Hacienda,405,True,True,True,False,10.0,13.3,3.3,Saturado,Saturado,False,False,,216,True,True,True,simulado
+SIM-0063,USR-SIM-0063,2026-10-16T08:25,metro_l1,San Borja Sur,Línea 1,True,False,False,False,4.3,,,De_pie,,False,False,,201,False,False,False,simulado
+SIM-0207,USR-SIM-0207,2026-10-16T08:40,alimentadores,Estación Naranjal Embarque Nº 11,Carabayllo,True,True,True,True,11.7,16.3,4.6,Saturado,Saturado,False,False,,423,True,False,False,simulado
+SIM-0208,USR-SIM-0208,2026-10-16T08:55,metro_l1,Nicolas Arriola,Línea 1,True,False,False,False,7.1,,,Saturado,,False,False,,346,True,False,True,simulado
+SIM-0131,USR-SIM-0131,2026-10-16T09:05,metropolitano,Angamos,Troncal,True,True,True,False,8.4,9.0,0.6,Saturado,Saturado,False,False,,181,True,True,True,simulado
+SIM-0298,USR-SIM-0298,2026-10-16T10:05,metro_l1,San Martin,Línea 1,True,True,True,True,4.9,4.6,0.3,Asientos,De_pie,True,False,,590,True,False,False,simulado
+SIM-0360,USR-SIM-0360,2026-10-16T10:55,alimentadores,Estación Naranjal Embarque Nº 11,Milagro de Jesús                                            ,True,True,False,False,11.6,,,Saturado,,True,False,,159,True,False,True,simulado
+SIM-0475,USR-SIM-0475,2026-10-16T14:00,metropolitano,El Milagro,Troncal,True,True,False,False,5.5,,,Asientos,,True,False,,556,True,False,False,simulado
+SIM-0146,USR-SIM-0146,2026-10-16T16:05,metropolitano,Balta,Troncal,True,True,True,False,8.3,7.8,0.5,De_pie,De_pie,False,False,,124,True,True,True,simulado
+SIM-0307,USR-SIM-0307,2026-10-16T16:50,metro_l1,Maria Auxiliadora,Línea 1,True,False,False,False,7.7,,,De_pie,,False,False,,727,True,False,False,simulado
+SIM-0537,USR-SIM-0537,2026-10-16T17:00,metropolitano,Rosario de Villa,Troncal,True,True,False,False,7.0,,,Saturado,,True,False,,455,True,False,True,simulado
+SIM-0510,USR-SIM-0510,2026-10-16T17:15,alimentadores,Estación Naranjal Embarque Nº 02,Naranjal,True,True,True,False,13.4,14.2,0.8,De_pie,De_pie,False,False,,239,True,False,False,simulado
+SIM-0391,USR-SIM-0391,2026-10-16T18:00,corredores,Castilla,206,True,True,True,False,10.3,9.6,0.7,Saturado,De_pie,False,False,,720,True,True,True,simulado
+SIM-0010,USR-SIM-0010,2026-10-16T18:35,metropolitano,Las Vegas,Troncal,True,True,False,False,7.8,,,De_pie,,True,False,,232,True,False,True,simulado
+SIM-0309,USR-SIM-0309,2026-10-16T19:20,corredores,Santa Rosa,SE-09,True,True,False,False,12.3,,,De_pie,,False,False,,376,True,False,False,simulado
+SIM-0351,USR-SIM-0351,2026-10-16T19:55,metro_l1,San Borja Sur,Línea 1,True,True,True,False,6.7,7.2,0.5,De_pie,De_pie,False,False,,384,True,False,False,simulado
+SIM-0084,USR-SIM-0084,2026-10-17T05:25,metro_l1,Santa Rosa,Línea 1,True,True,False,False,6.0,,,Asientos,,False,False,,380,True,False,True,simulado
+SIM-0487,USR-SIM-0487,2026-10-17T06:05,corredores,Del Parque,406,True,True,False,False,9.4,,,Saturado,,False,False,,382,True,False,True,simulado
+SIM-0424,USR-SIM-0424,2026-10-17T06:25,metro_l1,Nicolas Arriola,Línea 1,True,True,False,False,5.8,,,De_pie,,False,False,,425,True,False,True,simulado
+SIM-0015,USR-SIM-0015,2026-10-17T06:50,corredores,Chipoco,301,True,True,True,True,11.9,10.1,1.8,Saturado,Saturado,True,False,,231,True,False,True,simulado
+SIM-0334,USR-SIM-0334,2026-10-17T07:20,alimentadores,Estación Naranjal Embarque Nº 07,Bertello                                                    ,True,True,True,False,13.7,10.5,3.2,Saturado,Saturado,False,False,,637,True,False,False,simulado
+SIM-0080,USR-SIM-0080,2026-10-17T08:20,metropolitano,Terán,Troncal,True,True,True,False,8.2,4.0,4.2,Saturado,Saturado,True,False,,436,True,False,True,simulado
+SIM-0491,USR-SIM-0491,2026-10-17T08:30,metropolitano,Parque del Trabajo,Troncal,True,True,False,False,9.9,,,Saturado,,False,False,,175,True,False,False,simulado
+SIM-0504,USR-SIM-0504,2026-10-17T09:50,metro_l1,San Borja Sur,Línea 1,True,True,False,False,7.2,,,De_pie,,False,False,,544,True,False,True,simulado
+SIM-0193,USR-SIM-0193,2026-10-17T10:50,metro_l1,Ayacucho,Línea 1,True,True,True,True,6.6,3.9,2.7,Asientos,Asientos,False,False,,280,True,False,False,simulado
+SIM-0108,USR-SIM-0108,2026-10-17T11:05,metropolitano,22 De Agosto,Troncal,True,True,False,False,8.2,,,De_pie,,False,False,,444,True,False,True,simulado
+SIM-0086,USR-SIM-0086,2026-10-17T11:15,metro_l1,Bayovar,Línea 1,True,True,True,False,5.2,6.4,1.2,Asientos,De_pie,False,False,,466,True,False,True,simulado
+SIM-0359,USR-SIM-0359,2026-10-17T15:20,metropolitano,Parque del Trabajo,Troncal,True,True,False,False,6.5,,,De_pie,,False,False,,531,True,False,False,simulado
+SIM-0347,USR-SIM-0347,2026-10-17T15:25,corredores,Tomás Guido,305,True,True,False,False,6.0,,,Asientos,,False,False,,287,True,False,False,simulado
+SIM-0466,USR-SIM-0466,2026-10-17T16:05,metro_l1,El Angel,Línea 1,True,True,True,False,8.3,6.7,1.6,De_pie,Asientos,False,False,,282,True,False,True,simulado
+SIM-0322,USR-SIM-0322,2026-10-17T16:55,metro_l1,Santa Rosa,Línea 1,True,True,True,True,6.7,7.4,0.7,De_pie,Saturado,False,False,,706,True,False,False,simulado
+SIM-0551,USR-SIM-0551,2026-10-17T17:00,metropolitano,Tacna,Troncal,True,True,False,False,10.4,,,De_pie,,True,False,,388,True,False,True,simulado
+SIM-0197,USR-SIM-0197,2026-10-17T17:15,metro_l1,Miguel Grau,Línea 1,True,True,True,False,7.6,8.0,0.4,Saturado,Saturado,True,False,,248,True,False,False,simulado
+SIM-0076,USR-SIM-0076,2026-10-17T17:30,corredores,Concejo,405,True,True,False,False,9.2,,,De_pie,,False,False,,313,True,True,True,simulado
+SIM-0170,USR-SIM-0170,2026-10-17T18:00,alimentadores,Estación Matellini Embarque Nº 04,Villa El Salvador                                           ,True,True,True,True,13.5,8.7,4.8,Saturado,Saturado,False,False,,287,True,False,True,simulado
+SIM-0294,USR-SIM-0294,2026-10-17T18:10,metropolitano,Matellini,Troncal,True,True,True,False,7.4,9.3,1.9,Saturado,Saturado,True,False,,429,True,False,True,simulado
+SIM-0350,USR-SIM-0350,2026-10-17T18:20,metro_l1,Santa Rosa,Línea 1,True,True,True,True,6.4,12.0,5.6,Saturado,Saturado,True,False,,284,True,True,True,simulado
+SIM-0133,USR-SIM-0133,2026-10-17T18:25,metro_l1,Cabitos,Línea 1,True,True,False,False,4.6,,,De_pie,,False,False,,153,True,False,True,simulado
+SIM-0588,USR-SIM-0588,2026-10-17T18:25,metro_l1,El Angel,Línea 1,True,True,False,False,9.1,,,Saturado,,False,False,,231,True,False,True,simulado
+SIM-0381,USR-SIM-0381,2026-10-17T18:35,metro_l1,Villa Maria,Línea 1,True,True,False,False,7.3,,,Saturado,,True,False,,590,True,True,True,simulado
+SIM-0464,USR-SIM-0464,2026-10-17T18:35,metropolitano,Aramburu,Troncal,True,True,True,True,10.5,12.7,2.2,Saturado,Saturado,False,False,,207,True,False,True,simulado
+SIM-0449,USR-SIM-0449,2026-10-17T18:55,alimentadores,Estación Naranjal Embarque Nº 14,Los Olivos                                                  ,True,True,True,False,13.7,16.6,3.0,Saturado,Saturado,True,False,,428,True,False,True,simulado
+SIM-0576,USR-SIM-0576,2026-10-17T18:55,metro_l1,Cabitos,Línea 1,True,True,True,True,8.1,8.8,0.7,Saturado,Saturado,False,False,,253,True,False,True,simulado
+SIM-0336,USR-SIM-0336,2026-10-17T19:40,metro_l1,Los Jardines,Línea 1,True,True,True,False,6.9,5.1,1.8,Saturado,Saturado,False,False,,367,True,False,False,simulado
+SIM-0272,USR-SIM-0272,2026-10-17T20:05,metropolitano,Escuela Militar,Troncal,True,True,True,False,6.6,6.1,0.5,De_pie,Saturado,False,False,,727,True,False,True,simulado
+SIM-0535,USR-SIM-0535,2026-10-17T22:35,corredores,Frutales,201,True,False,False,False,10.3,,,De_pie,,False,False,,229,True,False,True,simulado
+SIM-0404,USR-SIM-0404,2026-10-18T05:20,alimentadores,Estación Naranjal Embarque Nº 13,Torre Blanca,True,True,False,False,12.1,,,De_pie,,True,False,,235,True,False,True,simulado
+SIM-0137,USR-SIM-0137,2026-10-18T06:10,metro_l1,Jorge Chavez,Línea 1,True,True,True,False,6.8,8.6,1.8,De_pie,De_pie,False,False,,313,True,False,True,simulado
+SIM-0203,USR-SIM-0203,2026-10-18T06:20,metro_l1,Presbitero Maestro,Línea 1,True,True,True,False,7.4,2.8,4.7,Saturado,Saturado,False,False,,194,True,False,True,simulado
+SIM-0058,USR-SIM-0058,2026-10-18T07:00,alimentadores,Estación Matellini Embarque Nº 11,Cedros de Villa                                             ,True,True,False,False,12.2,,,Saturado,,False,False,,116,True,False,False,simulado
+SIM-0171,USR-SIM-0171,2026-10-18T07:35,alimentadores,Estación Naranjal Embarque Nº 13,Belaunde                                                    ,True,True,False,False,12.5,,,De_pie,,False,False,,551,True,False,True,simulado
+SIM-0282,USR-SIM-0282,2026-10-18T07:45,metropolitano,Naranjal,Troncal,True,True,False,False,9.1,,,Saturado,,True,False,,458,True,False,True,simulado
+SIM-0119,USR-SIM-0119,2026-10-18T08:00,metro_l1,Atocongo,Línea 1,True,False,False,False,5.5,,,De_pie,,False,False,,799,True,False,False,simulado
+SIM-0130,USR-SIM-0130,2026-10-18T08:20,metro_l1,Caja De Agua,Línea 1,True,True,True,False,7.6,9.2,1.6,Saturado,Saturado,True,False,,262,True,False,True,simulado
+SIM-0059,USR-SIM-0059,2026-10-18T08:55,metropolitano,Quilca,Troncal,True,False,False,False,8.3,,,Saturado,,False,False,,492,True,False,False,simulado
+SIM-0522,USR-SIM-0522,2026-10-18T09:05,metropolitano,Ramon Castilla,Troncal,True,True,True,False,9.6,11.0,1.4,Saturado,Saturado,False,False,,327,True,True,True,simulado
+SIM-0331,USR-SIM-0331,2026-10-18T09:35,metro_l1,Bayovar,Línea 1,True,True,False,False,7.5,,,Saturado,,True,False,,228,True,False,False,simulado
+SIM-0175,USR-SIM-0175,2026-10-18T09:40,alimentadores,Estación Matellini Embarque Nº 04,Villa El Salvador                                           ,True,True,True,False,13.1,17.4,4.3,De_pie,De_pie,False,False,,284,True,False,False,simulado
+SIM-0136,USR-SIM-0136,2026-10-18T09:45,corredores,Las Lomas,371,True,True,False,False,11.2,,,Saturado,,False,False,,556,True,True,True,simulado
+SIM-0005,USR-SIM-0005,2026-10-18T13:25,metro_l1,Los Postes,Línea 1,True,True,False,False,3.2,,,De_pie,,False,False,,374,True,False,False,simulado
+SIM-0433,USR-SIM-0433,2026-10-18T16:45,metro_l1,Maria Auxiliadora,Línea 1,True,True,False,False,5.0,,,De_pie,,False,False,,394,True,True,True,simulado
+SIM-0564,USR-SIM-0564,2026-10-18T17:00,corredores,Calle 66,201,True,True,False,False,9.7,,,Saturado,,False,False,,252,True,False,True,simulado
+SIM-0295,USR-SIM-0295,2026-10-18T17:10,metropolitano,Los jazmines,Troncal,True,True,True,False,7.8,6.0,1.9,De_pie,Saturado,False,False,,237,True,False,False,simulado
+SIM-0488,USR-SIM-0488,2026-10-18T17:20,metropolitano,Quilca,Troncal,True,False,False,False,7.5,,,Saturado,,False,False,,266,True,False,True,simulado
+SIM-0508,USR-SIM-0508,2026-10-18T17:20,metropolitano,Parque del Trabajo,Troncal,True,True,True,True,6.8,7.0,0.2,De_pie,Asientos,True,True,robo,508,True,False,False,simulado
+SIM-0521,USR-SIM-0521,2026-10-18T18:25,metro_l1,Bayovar,Línea 1,True,True,True,False,5.6,2.9,2.7,Saturado,Saturado,False,False,,325,True,False,False,simulado
+SIM-0354,USR-SIM-0354,2026-10-18T19:30,alimentadores,Estación Matellini Embarque Nº 01,Las Américas                                                ,True,True,True,True,13.1,8.2,4.9,Saturado,De_pie,False,False,,551,True,False,True,simulado
+SIM-0259,USR-SIM-0259,2026-10-18T20:20,metropolitano,Bulevar,Troncal,True,True,True,False,7.5,2.3,5.2,De_pie,De_pie,True,True,acoso,489,True,False,True,simulado
+SIM-0098,USR-SIM-0098,2026-10-18T22:45,metro_l1,Villa Maria,Línea 1,True,True,True,False,3.9,4.6,0.7,De_pie,De_pie,True,False,,288,True,False,True,simulado
+SIM-0068,USR-SIM-0068,2026-10-18T22:50,corredores,Viru,336,True,True,True,False,9.6,8.3,1.3,De_pie,De_pie,False,False,,441,True,False,True,simulado
+SIM-0064,USR-SIM-0064,2026-10-19T06:00,alimentadores,Estación Naranjal Embarque Nº 09,Puente Piedra                                               ,True,True,False,False,12.2,,,Saturado,,False,False,,293,True,False,True,simulado
+SIM-0127,USR-SIM-0127,2026-10-19T06:40,metropolitano,Angamos,Troncal,True,True,True,False,7.1,4.6,2.4,Saturado,Saturado,False,False,,312,True,False,True,simulado
+SIM-0383,USR-SIM-0383,2026-10-19T07:45,metropolitano,Parque del Trabajo,Troncal,True,True,False,False,8.5,,,De_pie,,False,False,,132,True,False,False,simulado
+SIM-0301,USR-SIM-0301,2026-10-19T09:30,corredores,Encinas,405,True,True,False,False,11.6,,,De_pie,,False,False,,378,True,False,True,simulado
+SIM-0164,USR-SIM-0164,2026-10-19T09:35,corredores,Moquegua,412,True,True,False,False,12.7,,,De_pie,,False,False,,191,True,False,False,simulado
+SIM-0533,USR-SIM-0533,2026-10-19T15:35,metropolitano,Bulevar,Troncal,True,True,True,True,7.5,4.3,3.2,Asientos,De_pie,True,False,,231,True,False,False,simulado
+SIM-0067,USR-SIM-0067,2026-10-19T15:45,metro_l1,Atocongo,Línea 1,True,True,True,False,6.8,10.6,3.9,De_pie,Saturado,False,False,,437,True,False,False,simulado
+SIM-0254,USR-SIM-0254,2026-10-19T16:15,metro_l1,El Angel,Línea 1,True,True,True,False,7.3,8.4,1.2,Asientos,Asientos,False,False,,484,True,False,False,simulado
+SIM-0033,USR-SIM-0033,2026-10-19T16:40,metropolitano,22 De Agosto,Troncal,True,True,True,True,7.2,8.0,0.8,Asientos,De_pie,False,False,,1091,True,False,True,simulado
+SIM-0053,USR-SIM-0053,2026-10-19T17:00,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,6.9,,,De_pie,,False,False,,413,True,False,True,simulado
+SIM-0426,USR-SIM-0426,2026-10-19T17:55,metropolitano,El Milagro,Troncal,True,True,True,False,6.7,3.4,3.3,Saturado,Saturado,False,False,,550,True,False,True,simulado
+SIM-0361,USR-SIM-0361,2026-10-19T18:10,metro_l1,San Juan,Línea 1,True,True,False,False,7.6,,,Saturado,,False,False,,360,True,False,True,simulado
+SIM-0105,USR-SIM-0105,2026-10-19T18:25,corredores,Cuba,303,True,True,False,False,10.0,,,Saturado,,True,False,,152,True,False,True,simulado
+SIM-0267,USR-SIM-0267,2026-10-19T18:30,corredores,Cuba,336,True,False,False,False,10.0,,,De_pie,,True,False,,139,False,False,False,simulado
+SIM-0515,USR-SIM-0515,2026-10-19T18:45,metro_l1,San Carlos,Línea 1,True,True,True,False,8.0,5.0,3.0,Saturado,Saturado,False,False,,308,True,False,True,simulado
+SIM-0407,USR-SIM-0407,2026-10-19T19:05,metropolitano,Tacna,Troncal,True,True,False,False,11.6,,,Saturado,,False,False,,986,True,False,False,simulado
+SIM-0595,USR-SIM-0595,2026-10-20T07:00,corredores,28 de Julio,SE-09,True,True,True,True,12.6,15.0,2.3,Saturado,Saturado,True,False,,252,True,False,True,simulado
+SIM-0536,USR-SIM-0536,2026-10-20T07:20,metro_l1,Presbitero Maestro,Línea 1,True,True,False,False,6.9,,,Saturado,,False,False,,617,True,False,False,simulado
+SIM-0501,USR-SIM-0501,2026-10-20T08:00,metro_l1,San Juan,Línea 1,True,True,False,False,7.1,,,De_pie,,False,False,,302,True,False,True,simulado
+SIM-0273,USR-SIM-0273,2026-10-20T08:30,metropolitano,Bulevar,Troncal,True,True,True,False,9.6,10.7,1.1,Saturado,Saturado,False,False,,1178,True,False,False,simulado
+SIM-0211,USR-SIM-0211,2026-10-20T08:35,metropolitano,Estadio Nacional,Troncal,True,True,True,False,9.1,7.7,1.4,De_pie,De_pie,True,False,,1978,True,False,True,simulado
+SIM-0036,USR-SIM-0036,2026-10-20T12:55,corredores,Huallaga,SE-09,True,True,False,False,11.8,,,De_pie,,True,True,robo,263,True,False,False,simulado
+SIM-0366,USR-SIM-0366,2026-10-20T15:05,metro_l1,La Cultura,Línea 1,True,True,False,False,6.0,,,De_pie,,False,False,,181,True,False,False,simulado
+SIM-0210,USR-SIM-0210,2026-10-20T15:25,corredores,Garcilaso,404,True,True,True,False,7.8,5.5,2.3,Asientos,Asientos,False,False,,386,True,False,True,simulado
+SIM-0256,USR-SIM-0256,2026-10-20T17:00,corredores,Los Frutales,206,True,True,True,False,12.4,17.6,5.2,Saturado,Saturado,False,False,,421,True,False,True,simulado
+SIM-0143,USR-SIM-0143,2026-10-20T17:15,metro_l1,San Juan,Línea 1,True,True,False,False,9.0,,,De_pie,,False,False,,655,True,False,False,simulado
+SIM-0158,USR-SIM-0158,2026-10-20T17:40,metropolitano,Las Vegas,Troncal,True,True,True,False,8.8,6.8,2.0,Saturado,Saturado,False,False,,316,True,False,False,simulado
+SIM-0045,USR-SIM-0045,2026-10-20T17:50,metropolitano,Las Vegas,Troncal,True,True,False,False,8.7,,,Saturado,,True,False,,413,True,False,False,simulado
+SIM-0039,USR-SIM-0039,2026-10-20T17:55,metro_l1,Maria Auxiliadora,Línea 1,True,True,True,False,7.2,8.1,0.9,Saturado,Saturado,False,False,,468,True,False,False,simulado
+SIM-0001,USR-SIM-0001,2026-10-20T18:45,metro_l1,El Angel,Línea 1,True,True,False,False,6.7,,,De_pie,,False,False,,532,True,False,True,simulado
+SIM-0482,USR-SIM-0482,2026-10-20T18:50,metro_l1,San Martin,Línea 1,True,True,True,False,7.8,11.5,3.7,Saturado,Saturado,False,False,,335,True,False,True,simulado
+SIM-0181,USR-SIM-0181,2026-10-20T19:30,corredores,Mercado de Flores,405,True,True,True,True,10.3,14.9,4.6,Saturado,De_pie,False,False,,266,True,False,True,simulado
+SIM-0009,USR-SIM-0009,2026-10-20T19:45,metropolitano,Balta,Troncal,True,True,True,False,9.1,16.2,7.1,De_pie,De_pie,True,False,,541,True,True,False,simulado
+SIM-0216,USR-SIM-0216,2026-10-20T19:45,metropolitano,Naranjal,Troncal,True,True,True,True,10.4,10.6,0.1,De_pie,De_pie,False,False,,491,True,False,True,simulado
+SIM-0395,USR-SIM-0395,2026-10-20T20:00,metropolitano,Uni,Troncal,True,True,True,False,6.5,4.1,2.4,Saturado,De_pie,False,False,,374,True,False,True,simulado
+SIM-0552,USR-SIM-0552,2026-10-20T20:30,corredores,Clínica Ricardo Palma,201,True,True,True,False,11.5,8.2,3.3,Saturado,De_pie,True,False,,240,True,False,True,simulado
+SIM-0560,USR-SIM-0560,2026-10-20T20:35,metropolitano,22 De Agosto,Troncal,True,False,False,False,9.6,,,De_pie,,False,False,,281,True,False,False,simulado
+SIM-0437,USR-SIM-0437,2026-10-21T07:30,metropolitano,Plaza de Flores,Troncal,True,True,False,False,10.4,,,De_pie,,False,False,,307,True,False,True,simulado
+SIM-0503,USR-SIM-0503,2026-10-21T07:40,alimentadores,Estación Matellini Embarque Nº 11,Los Próceres                                                ,True,False,False,False,12.8,,,Saturado,,True,False,,382,False,False,False,simulado
+SIM-0392,USR-SIM-0392,2026-10-21T09:45,metropolitano,Canaval y Moreyra,Troncal,True,True,False,False,8.4,,,Saturado,,False,False,,308,True,False,False,simulado
+SIM-0543,USR-SIM-0543,2026-10-21T10:15,metro_l1,Atocongo,Línea 1,True,True,False,False,5.2,,,Asientos,,False,False,,256,True,False,True,simulado
+SIM-0159,USR-SIM-0159,2026-10-21T13:15,corredores,San Hilarion,406,True,True,True,False,5.3,7.9,2.6,De_pie,Asientos,False,False,,315,True,False,True,simulado
+SIM-0325,USR-SIM-0325,2026-10-21T16:15,alimentadores,Estación Naranjal Embarque Nº 06,Payet                                                       ,True,True,True,False,11.6,7.6,3.9,De_pie,Asientos,False,False,,500,True,False,True,simulado
+SIM-0431,USR-SIM-0431,2026-10-21T16:20,metro_l1,San Carlos,Línea 1,True,False,False,False,3.0,,,De_pie,,False,False,,620,True,False,True,simulado
+SIM-0037,USR-SIM-0037,2026-10-21T17:55,alimentadores,Estación Naranjal Embarque Nº 07,Bertello                                                    ,True,True,True,False,15.5,13.9,1.6,De_pie,Asientos,False,False,,171,True,False,False,simulado
+SIM-0077,USR-SIM-0077,2026-10-21T18:10,alimentadores,Estación Naranjal Embarque Nº 09,Ensenada                                                    ,True,False,False,False,15.0,,,Saturado,,False,False,,739,True,False,False,simulado
+SIM-0499,USR-SIM-0499,2026-10-21T19:05,metropolitano,Javier Prado,Troncal,True,True,True,False,9.4,12.2,2.8,De_pie,De_pie,False,False,,441,True,False,True,simulado
+SIM-0542,USR-SIM-0542,2026-10-21T19:25,corredores,Javier Prado,336,True,True,True,True,11.7,15.0,3.3,Saturado,De_pie,False,False,,292,True,False,True,simulado
+SIM-0281,USR-SIM-0281,2026-10-21T19:45,metro_l1,Jorge Chavez,Línea 1,True,True,False,False,9.0,,,De_pie,,False,False,,486,True,False,False,simulado
+SIM-0069,USR-SIM-0069,2026-10-21T19:55,metro_l1,Angamos,Línea 1,True,True,True,True,6.5,3.9,2.6,De_pie,De_pie,False,False,,186,True,False,False,simulado
+SIM-0124,USR-SIM-0124,2026-10-21T21:10,alimentadores,Estación Naranjal Embarque Nº 10,Ensenada                                                    ,True,True,True,False,11.1,9.4,1.6,De_pie,Saturado,False,False,,488,True,False,True,simulado
+SIM-0323,USR-SIM-0323,2026-10-22T05:00,corredores,Moquegua,301,True,True,True,True,7.2,8.0,0.8,De_pie,Saturado,False,False,,190,True,True,False,simulado
+SIM-0402,USR-SIM-0402,2026-10-22T07:20,alimentadores,Estación Matellini Embarque Nº 16,Circuito de Playas                                          ,True,True,False,False,15.2,,,De_pie,,False,False,,407,True,False,True,simulado
+SIM-0169,USR-SIM-0169,2026-10-22T07:35,alimentadores,Estación Naranjal Embarque Nº 12,Belaunde                                                    ,True,True,True,True,13.7,9.3,4.4,Saturado,De_pie,False,False,,95,True,False,False,simulado
+SIM-0557,USR-SIM-0557,2026-10-22T08:30,metropolitano,Estadio Nacional,Troncal,True,True,True,False,9.6,9.3,0.3,Saturado,De_pie,False,False,,174,True,False,True,simulado
+SIM-0003,USR-SIM-0003,2026-10-22T09:05,alimentadores,Estación Naranjal Embarque Nº 06,Tahuantinsuyo                                               ,True,True,True,False,12.9,12.2,0.7,Saturado,Saturado,False,False,,330,True,False,True,simulado
+SIM-0502,USR-SIM-0502,2026-10-22T09:45,metro_l1,Los Jardines,Línea 1,True,True,False,False,7.5,,,Saturado,,False,False,,256,True,False,True,simulado
+SIM-0075,USR-SIM-0075,2026-10-22T10:20,metro_l1,Gamarra,Línea 1,True,True,True,False,5.6,6.3,0.6,Asientos,Asientos,False,False,,870,True,False,True,simulado
+SIM-0326,USR-SIM-0326,2026-10-22T10:50,metropolitano,Bulevar,Troncal,True,True,False,False,7.1,,,Saturado,,False,False,,163,True,True,True,simulado
+SIM-0409,USR-SIM-0409,2026-10-22T12:55,metropolitano,Tacna,Troncal,True,True,False,False,5.0,,,De_pie,,False,False,,608,True,False,False,simulado
+SIM-0121,USR-SIM-0121,2026-10-22T14:50,metro_l1,Los Postes,Línea 1,True,True,True,False,5.0,4.2,0.8,De_pie,Asientos,True,False,,630,True,False,False,simulado
+SIM-0591,USR-SIM-0591,2026-10-22T15:45,corredores,Parodi,201,True,True,False,False,7.0,,,Asientos,,False,False,,433,True,False,True,simulado
+SIM-0480,USR-SIM-0480,2026-10-22T16:35,metro_l1,San Martin,Línea 1,True,True,False,False,4.6,,,De_pie,,False,False,,366,True,False,True,simulado
+SIM-0324,USR-SIM-0324,2026-10-22T18:35,corredores,Petit Thouars,206,True,True,False,False,9.9,,,De_pie,,False,False,,236,True,False,True,simulado
+SIM-0483,USR-SIM-0483,2026-10-22T18:50,alimentadores,Estación Naranjal Embarque Nº 17,Los Olivos                                                  ,True,True,False,False,14.0,,,De_pie,,False,False,,177,True,False,True,simulado
+SIM-0269,USR-SIM-0269,2026-10-22T19:05,corredores,Aramburú,303,True,True,True,True,12.2,7.4,4.8,Saturado,Saturado,False,False,,455,True,False,True,simulado
+SIM-0517,USR-SIM-0517,2026-10-22T19:35,metro_l1,Nicolas Arriola,Línea 1,True,True,False,False,10.5,,,De_pie,,False,False,,276,True,False,False,simulado
+SIM-0541,USR-SIM-0541,2026-10-22T19:50,metro_l1,Cabitos,Línea 1,True,True,False,False,6.1,,,De_pie,,False,False,,180,True,False,True,simulado
+SIM-0452,USR-SIM-0452,2026-10-22T20:05,corredores,Vascongadas,206,True,True,True,False,9.8,13.3,3.5,De_pie,De_pie,True,False,,344,True,False,True,simulado
+SIM-0221,USR-SIM-0221,2026-10-22T21:05,metro_l1,Parque Industrial,Línea 1,True,True,False,False,7.1,,,De_pie,,False,False,,254,True,False,True,simulado
+SIM-0057,USR-SIM-0057,2026-10-22T21:10,metropolitano,España,Troncal,True,True,True,False,8.4,9.6,1.2,Saturado,Saturado,True,False,,189,True,False,True,simulado
+SIM-0440,USR-SIM-0440,2026-10-22T22:25,corredores,U. de Lima,204,True,True,False,False,9.5,,,Asientos,,False,False,,404,True,False,True,simulado
+SIM-0590,USR-SIM-0590,2026-10-22T22:45,metropolitano,El Milagro,Troncal,True,True,False,False,2.8,,,De_pie,,False,False,,676,True,False,True,simulado
+SIM-0428,USR-SIM-0428,2026-10-23T06:45,metro_l1,San Carlos,Línea 1,True,True,True,True,6.6,7.3,0.7,De_pie,De_pie,False,False,,471,True,True,True,simulado
+SIM-0427,USR-SIM-0427,2026-10-23T07:10,metropolitano,Javier Prado,Troncal,True,True,True,True,5.2,2.2,3.1,De_pie,Saturado,False,False,,231,True,False,True,simulado
+SIM-0311,USR-SIM-0311,2026-10-23T07:35,metro_l1,Miguel Grau,Línea 1,True,True,False,False,5.6,,,Saturado,,True,False,,545,True,False,False,simulado
+SIM-0260,USR-SIM-0260,2026-10-23T07:40,metro_l1,Nicolas Arriola,Línea 1,True,True,True,True,4.6,0.5,4.1,Saturado,Saturado,False,False,,376,True,False,False,simulado
+SIM-0580,USR-SIM-0580,2026-10-23T08:00,metro_l1,Maria Auxiliadora,Línea 1,True,True,False,False,4.4,,,De_pie,,False,False,,287,True,True,False,simulado
+SIM-0278,USR-SIM-0278,2026-10-23T08:15,metropolitano,Ramon Castilla,Troncal,True,True,False,False,2.7,,,Saturado,,True,False,,300,True,False,False,simulado
+SIM-0097,USR-SIM-0097,2026-10-23T08:40,metro_l1,Pumacahua,Línea 1,True,True,True,True,7.8,5.4,2.5,Saturado,Saturado,True,False,,107,True,False,True,simulado
+SIM-0463,USR-SIM-0463,2026-10-23T08:50,corredores,C. Tenaud,301,True,True,True,True,11.4,4.5,6.9,Saturado,Saturado,False,False,,443,True,False,False,simulado
+SIM-0477,USR-SIM-0477,2026-10-23T09:15,metropolitano,Union,Troncal,True,True,True,False,10.2,14.3,4.1,Saturado,De_pie,False,False,,227,True,False,True,simulado
+SIM-0177,USR-SIM-0177,2026-10-23T09:45,metropolitano,Tacna,Troncal,True,True,False,False,6.1,,,Saturado,,True,False,,299,True,False,False,simulado
+SIM-0538,USR-SIM-0538,2026-10-23T12:30,metro_l1,San Carlos,Línea 1,True,False,False,False,6.0,,,De_pie,,False,False,,520,False,False,False,simulado
+SIM-0102,USR-SIM-0102,2026-10-23T13:50,metropolitano,Canaval y Moreyra,Troncal,True,True,False,False,7.2,,,De_pie,,False,False,,268,True,True,True,simulado
+SIM-0573,USR-SIM-0573,2026-10-23T14:35,metropolitano,Ricardo Palma,Troncal,True,True,True,False,6.8,13.8,7.1,De_pie,De_pie,False,False,,329,True,False,True,simulado
+SIM-0577,USR-SIM-0577,2026-10-23T16:10,metropolitano,Javier Prado,Troncal,True,True,True,False,6.9,12.0,5.1,Asientos,De_pie,False,False,,342,True,False,False,simulado
+SIM-0460,USR-SIM-0460,2026-10-23T16:30,metropolitano,Pacifico,Troncal,True,True,False,False,7.5,,,De_pie,,False,False,,351,True,False,True,simulado
+SIM-0011,USR-SIM-0011,2026-10-23T17:25,alimentadores,Estación Naranjal Embarque Nº 11,Belaunde                                                    ,True,True,True,False,12.4,9.1,3.2,De_pie,De_pie,True,False,,472,True,False,True,simulado
+SIM-0237,USR-SIM-0237,2026-10-23T18:20,metro_l1,Bayovar,Línea 1,True,True,True,False,8.7,8.1,0.6,De_pie,De_pie,True,False,,205,True,False,True,simulado
+SIM-0461,USR-SIM-0461,2026-10-23T18:50,alimentadores,Estación Naranjal Embarque Nº 18,Antúnez de Mayolo                                           ,True,False,False,False,12.0,,,De_pie,,False,False,,362,True,False,False,simulado
+SIM-0292,USR-SIM-0292,2026-10-23T19:20,metropolitano,Plaza de Flores,Troncal,True,True,False,False,6.3,,,Saturado,,False,False,,806,True,True,True,simulado
+SIM-0104,USR-SIM-0104,2026-10-23T20:45,metro_l1,Atocongo,Línea 1,True,True,False,False,7.9,,,De_pie,,False,False,,519,True,False,False,simulado
+SIM-0287,USR-SIM-0287,2026-10-24T05:50,alimentadores,Estación Naranjal Embarque Nº 17,Los Olivos                                                  ,True,False,False,False,10.3,,,De_pie,,True,False,,520,True,False,False,simulado
+SIM-0184,USR-SIM-0184,2026-10-24T05:55,metropolitano,Rosario de Villa,Troncal,True,True,False,False,6.2,,,Asientos,,False,False,,408,True,False,True,simulado
+SIM-0052,USR-SIM-0052,2026-10-24T06:25,corredores,Lima Aux. (Las Flores),412,True,True,False,False,12.2,,,Saturado,,False,False,,255,True,False,True,simulado
+SIM-0132,USR-SIM-0132,2026-10-24T06:30,metro_l1,Miguel Grau,Línea 1,True,True,False,False,6.8,,,Saturado,,False,False,,248,True,False,True,simulado
+SIM-0497,USR-SIM-0497,2026-10-24T08:15,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,4.2,,,Saturado,,False,False,,699,True,False,True,simulado
+SIM-0363,USR-SIM-0363,2026-10-24T09:10,metropolitano,Domingo Orué,Troncal,True,True,False,False,7.6,,,De_pie,,False,False,,132,True,False,False,simulado
+SIM-0027,USR-SIM-0027,2026-10-24T10:25,alimentadores,Estación Matellini Embarque Nº 04,Villa El Salvador                                           ,True,True,True,False,11.9,12.3,0.4,De_pie,Asientos,False,False,,348,True,False,True,simulado
+SIM-0250,USR-SIM-0250,2026-10-24T13:55,metropolitano,Tacna,Troncal,True,True,False,False,8.4,,,De_pie,,False,False,,364,True,False,True,simulado
+SIM-0147,USR-SIM-0147,2026-10-24T14:40,metropolitano,Los Incas,Troncal,True,True,True,False,5.6,4.2,1.4,Asientos,De_pie,False,False,,145,True,False,True,simulado
+SIM-0139,USR-SIM-0139,2026-10-24T15:40,corredores,Basadre,406,True,True,True,False,7.5,2.7,4.8,Asientos,Asientos,True,False,,199,True,True,True,simulado
+SIM-0458,USR-SIM-0458,2026-10-24T16:40,metro_l1,Presbitero Maestro,Línea 1,True,True,False,False,3.1,,,De_pie,,False,False,,253,True,False,True,simulado
+SIM-0249,USR-SIM-0249,2026-10-24T17:00,metro_l1,Atocongo,Línea 1,True,True,False,False,6.2,,,Saturado,,False,False,,337,True,False,True,simulado
+SIM-0481,USR-SIM-0481,2026-10-24T17:00,metropolitano,Tacna,Troncal,True,False,False,False,8.3,,,Saturado,,False,False,,133,True,False,False,simulado
+SIM-0540,USR-SIM-0540,2026-10-24T17:50,metro_l1,San Juan,Línea 1,True,True,False,False,7.3,,,De_pie,,False,False,,181,True,False,False,simulado
+SIM-0017,USR-SIM-0017,2026-10-24T18:20,metro_l1,Villa El Salvador,Línea 1,True,True,True,False,5.0,8.0,3.1,De_pie,Asientos,False,False,,384,True,False,False,simulado
+SIM-0581,USR-SIM-0581,2026-10-24T18:50,corredores,Rosa Toro,204,True,True,False,False,10.2,,,De_pie,,False,False,,305,True,False,True,simulado
+SIM-0471,USR-SIM-0471,2026-10-24T18:55,metropolitano,2 de Mayo,Troncal,True,True,True,True,7.4,7.3,0.1,Saturado,Saturado,False,False,,446,True,False,False,simulado
+SIM-0020,USR-SIM-0020,2026-10-24T19:05,metro_l1,Jorge Chavez,Línea 1,True,True,False,False,5.4,,,De_pie,,False,False,,213,True,False,True,simulado
+SIM-0179,USR-SIM-0179,2026-10-24T19:45,metro_l1,Angamos,Línea 1,True,False,False,False,7.3,,,Saturado,,False,False,,192,True,False,True,simulado
+SIM-0209,USR-SIM-0209,2026-10-24T21:50,metropolitano,Escuela Militar,Troncal,True,True,True,False,7.4,5.0,2.4,De_pie,Asientos,False,False,,227,True,False,False,simulado
+SIM-0258,USR-SIM-0258,2026-10-24T22:55,metropolitano,Rosario de Villa,Troncal,True,True,False,False,4.4,,,Asientos,,False,False,,262,True,False,False,simulado
+SIM-0293,USR-SIM-0293,2026-10-25T06:50,metro_l1,Piramides Del Sol,Línea 1,True,True,False,False,6.3,,,De_pie,,True,False,,398,True,True,True,simulado
+SIM-0112,USR-SIM-0112,2026-10-25T07:25,metro_l1,Maria Auxiliadora,Línea 1,True,True,False,False,7.0,,,Saturado,,False,False,,353,True,False,True,simulado
+SIM-0113,USR-SIM-0113,2026-10-25T07:40,metro_l1,Los Postes,Línea 1,True,True,True,True,11.0,8.8,2.2,De_pie,De_pie,False,False,,791,True,False,True,simulado
+SIM-0444,USR-SIM-0444,2026-10-25T07:40,metropolitano,Colmena,Troncal,True,True,True,False,9.6,10.5,0.9,Saturado,Saturado,False,False,,330,True,False,True,simulado
+SIM-0320,USR-SIM-0320,2026-10-25T08:00,metropolitano,Parque del Trabajo,Troncal,True,True,True,True,8.4,10.4,2.1,De_pie,Asientos,False,False,,278,True,False,True,simulado
+SIM-0110,USR-SIM-0110,2026-10-25T08:50,metro_l1,Santa Rosa,Línea 1,True,True,True,True,9.6,11.1,1.4,Saturado,Saturado,False,False,,214,True,False,True,simulado
+SIM-0286,USR-SIM-0286,2026-10-25T08:55,metropolitano,Canaval y Moreyra,Troncal,True,True,False,False,7.1,,,De_pie,,True,False,,220,True,False,True,simulado
+SIM-0448,USR-SIM-0448,2026-10-25T09:20,metropolitano,Naranjal,Troncal,True,True,False,False,8.6,,,Saturado,,False,False,,268,True,False,True,simulado
+SIM-0099,USR-SIM-0099,2026-10-25T10:00,alimentadores,Estación Matellini Embarque Nº 11,Las Américas                                                ,True,True,False,False,10.3,,,Asientos,,True,False,,488,True,False,True,simulado
+SIM-0585,USR-SIM-0585,2026-10-25T11:20,corredores,Bomberos,201,True,True,True,False,9.6,9.0,0.6,De_pie,Saturado,False,False,,287,True,True,False,simulado
+SIM-0079,USR-SIM-0079,2026-10-25T11:25,corredores,Acho,370,True,True,True,True,9.3,10.2,0.9,De_pie,De_pie,False,False,,538,True,False,True,simulado
+SIM-0329,USR-SIM-0329,2026-10-25T16:25,metropolitano,Ramon Castilla,Troncal,True,True,False,False,6.0,,,De_pie,,False,False,,887,True,False,False,simulado
+SIM-0085,USR-SIM-0085,2026-10-25T17:20,corredores,Castilla,206,True,True,False,False,11.2,,,Saturado,,False,False,,393,True,False,False,simulado
+SIM-0371,USR-SIM-0371,2026-10-25T17:45,corredores,Junin,204,True,True,True,False,11.1,14.3,3.2,Saturado,Saturado,True,False,,343,True,False,True,simulado
+SIM-0441,USR-SIM-0441,2026-10-25T17:45,metro_l1,Atocongo,Línea 1,True,True,False,False,7.6,,,Saturado,,False,False,,270,True,False,False,simulado
+SIM-0083,USR-SIM-0083,2026-10-25T18:10,alimentadores,Estación Matellini Embarque Nº 14,Villa El Salvador                                           ,True,True,False,False,10.1,,,De_pie,,True,False,,344,True,False,True,simulado
+SIM-0546,USR-SIM-0546,2026-10-25T18:20,metropolitano,México,Troncal,True,True,True,False,8.5,9.5,1.1,De_pie,De_pie,True,False,,419,True,False,False,simulado
+SIM-0168,USR-SIM-0168,2026-10-25T18:55,corredores,La Hacienda,404,True,True,True,False,10.7,13.4,2.7,De_pie,Saturado,False,False,,223,True,False,True,simulado
+SIM-0042,USR-SIM-0042,2026-10-25T19:50,corredores,Cuzco,404,True,True,True,False,12.4,12.9,0.5,Saturado,Saturado,False,False,,323,True,False,True,simulado
+SIM-0043,USR-SIM-0043,2026-10-25T19:50,corredores,Madrid,301,True,True,False,False,10.9,,,Saturado,,True,True,acoso,557,True,False,False,simulado
+SIM-0189,USR-SIM-0189,2026-10-25T20:00,metro_l1,Caja De Agua,Línea 1,True,True,False,False,7.1,,,Saturado,,False,False,,227,True,False,True,simulado
+SIM-0436,USR-SIM-0436,2026-10-25T20:10,metropolitano,Izaguirre,Troncal,True,True,False,False,9.3,,,De_pie,,False,False,,301,True,False,True,simulado
+SIM-0355,USR-SIM-0355,2026-10-25T22:40,metropolitano,Andres Belaunde,Troncal,True,True,False,False,5.9,,,Asientos,,False,False,,245,True,False,True,simulado
+SIM-0223,USR-SIM-0223,2026-10-26T07:20,metro_l1,El Angel,Línea 1,True,True,True,False,8.7,8.6,0.1,Saturado,Saturado,True,False,,440,True,False,False,simulado
+SIM-0220,USR-SIM-0220,2026-10-26T08:15,metropolitano,Terán,Troncal,True,True,True,False,10.0,7.5,2.4,Saturado,De_pie,False,False,,642,True,False,True,simulado
+SIM-0233,USR-SIM-0233,2026-10-26T08:25,metropolitano,Javier Prado,Troncal,True,True,False,False,9.0,,,Saturado,,True,False,,411,True,False,True,simulado
+SIM-0255,USR-SIM-0255,2026-10-26T08:40,metropolitano,Union,Troncal,True,True,False,False,4.3,,,Saturado,,False,False,,246,True,False,True,simulado
+SIM-0268,USR-SIM-0268,2026-10-26T08:45,metropolitano,Javier Prado,Troncal,True,False,False,False,7.8,,,De_pie,,False,False,,701,True,False,True,simulado
+SIM-0103,USR-SIM-0103,2026-10-26T09:35,metro_l1,San Borja Sur,Línea 1,True,True,False,False,7.5,,,De_pie,,False,False,,381,True,True,True,simulado
+SIM-0420,USR-SIM-0420,2026-10-26T12:40,corredores,Grau,404,True,True,True,False,7.5,9.3,1.8,Asientos,Asientos,True,False,,163,True,False,True,simulado
+SIM-0191,USR-SIM-0191,2026-10-26T13:10,metropolitano,Pacifico,Troncal,True,False,False,False,6.2,,,Asientos,,False,False,,215,True,False,True,simulado
+SIM-0455,USR-SIM-0455,2026-10-26T14:45,metropolitano,Javier Prado,Troncal,True,True,True,True,5.8,9.5,3.7,De_pie,Saturado,False,False,,423,True,False,True,simulado
+SIM-0376,USR-SIM-0376,2026-10-26T15:40,metro_l1,Atocongo,Línea 1,True,True,False,False,3.7,,,De_pie,,False,False,,233,True,True,True,simulado
+SIM-0245,USR-SIM-0245,2026-10-26T19:05,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,3.7,,,Saturado,,False,False,,194,True,False,True,simulado
+SIM-0176,USR-SIM-0176,2026-10-26T19:45,metropolitano,Ricardo Palma,Troncal,True,True,True,False,8.5,11.0,2.5,De_pie,Asientos,False,False,,686,True,False,True,simulado
+SIM-0248,USR-SIM-0248,2026-10-26T20:20,corredores,Guardia Republicana,301,True,True,False,False,10.3,,,Saturado,,True,False,,358,True,False,True,simulado
+SIM-0372,USR-SIM-0372,2026-10-26T20:20,metro_l1,Parque Industrial,Línea 1,True,True,False,False,7.8,,,Saturado,,False,False,,218,True,False,True,simulado
+SIM-0315,USR-SIM-0315,2026-10-26T21:25,metropolitano,Andres Belaunde,Troncal,True,True,True,False,6.0,5.6,0.4,De_pie,De_pie,False,False,,364,True,True,True,simulado
+SIM-0474,USR-SIM-0474,2026-10-26T22:55,metro_l1,Los Postes,Línea 1,True,True,False,False,4.8,,,De_pie,,False,False,,108,True,False,False,simulado
+SIM-0399,USR-SIM-0399,2026-10-27T06:55,metro_l1,Jorge Chavez,Línea 1,True,True,False,False,6.2,,,Saturado,,True,False,,222,True,False,False,simulado
+SIM-0219,USR-SIM-0219,2026-10-27T08:20,metropolitano,Terán,Troncal,True,True,True,True,10.0,10.8,0.8,Saturado,Saturado,True,False,,449,True,False,True,simulado
+SIM-0188,USR-SIM-0188,2026-10-27T08:40,metro_l1,Ayacucho,Línea 1,True,True,False,False,5.7,,,Saturado,,True,False,,368,True,False,True,simulado
+SIM-0006,USR-SIM-0006,2026-10-27T17:45,metropolitano,Independencia,Troncal,True,True,True,True,8.7,5.7,3.0,Saturado,Saturado,False,False,,161,True,False,True,simulado
+SIM-0304,USR-SIM-0304,2026-10-27T18:00,metropolitano,Bulevar,Troncal,True,True,True,False,10.1,8.0,2.1,De_pie,De_pie,False,False,,327,True,False,False,simulado
+SIM-0353,USR-SIM-0353,2026-10-27T18:45,metropolitano,22 De Agosto,Troncal,True,True,True,False,10.3,13.4,3.2,Saturado,Saturado,False,False,,404,True,False,False,simulado
+SIM-0073,USR-SIM-0073,2026-10-27T19:00,metro_l1,Nicolas Arriola,Línea 1,True,True,True,False,7.4,8.1,0.7,Saturado,Saturado,True,False,,244,True,True,False,simulado
+SIM-0232,USR-SIM-0232,2026-10-27T19:15,metro_l1,Parque Industrial,Línea 1,True,True,False,False,8.1,,,Saturado,,False,False,,571,True,False,False,simulado
+SIM-0593,USR-SIM-0593,2026-10-27T19:15,metro_l1,Caja De Agua,Línea 1,True,True,True,False,7.9,5.7,2.1,Saturado,Saturado,False,False,,148,True,True,False,simulado
+SIM-0123,USR-SIM-0123,2026-10-27T20:10,metropolitano,Estacion Central,Troncal,True,False,False,False,10.2,,,Saturado,,True,False,,310,False,False,False,simulado
+SIM-0519,USR-SIM-0519,2026-10-27T20:15,alimentadores,Estación Matellini Embarque Nº 04,Villa El Salvador                                           ,True,True,False,False,12.2,,,De_pie,,False,False,,338,True,False,False,simulado
+SIM-0410,USR-SIM-0410,2026-10-27T20:20,alimentadores,Estación Naranjal Embarque Nº 13,Milagro de Jesús                                            ,True,True,True,False,12.2,14.2,2.0,De_pie,Saturado,False,False,,309,True,False,True,simulado
+SIM-0333,USR-SIM-0333,2026-10-27T21:35,corredores,Andahuaylas,SE-08,True,True,False,False,9.0,,,De_pie,,False,False,,349,True,False,True,simulado
+SIM-0397,USR-SIM-0397,2026-10-28T06:45,metro_l1,Piramides Del Sol,Línea 1,True,True,False,False,8.4,,,De_pie,,False,False,,204,True,False,False,simulado
+SIM-0457,USR-SIM-0457,2026-10-28T07:05,metropolitano,Balta,Troncal,True,True,True,False,7.8,10.3,2.5,Saturado,Saturado,False,False,,234,True,False,False,simulado
+SIM-0090,USR-SIM-0090,2026-10-28T07:30,metropolitano,Las Vegas,Troncal,True,False,False,False,9.0,,,Saturado,,False,False,,393,True,False,True,simulado
+SIM-0062,USR-SIM-0062,2026-10-28T08:15,metropolitano,Bulevar,Troncal,True,True,True,False,11.4,11.0,0.5,De_pie,De_pie,False,False,,319,True,False,False,simulado
+SIM-0055,USR-SIM-0055,2026-10-28T08:20,metropolitano,Balta,Troncal,True,True,True,True,7.8,8.8,1.0,Saturado,Saturado,False,False,,361,True,False,True,simulado
+SIM-0046,USR-SIM-0046,2026-10-28T08:45,metropolitano,Union,Troncal,True,True,True,True,7.6,14.7,7.1,Saturado,De_pie,False,False,,378,True,False,True,simulado
+SIM-0071,USR-SIM-0071,2026-10-28T10:35,alimentadores,Estación Naranjal Embarque Nº 02,Naranjal,True,False,False,False,9.7,,,Asientos,,False,False,,273,True,False,True,simulado
+SIM-0529,USR-SIM-0529,2026-10-28T11:15,metro_l1,La Cultura,Línea 1,True,True,False,False,5.6,,,De_pie,,False,False,,282,True,False,True,simulado
+SIM-0346,USR-SIM-0346,2026-10-28T13:05,metro_l1,Angamos,Línea 1,True,True,False,False,2.8,,,Asientos,,True,False,,299,True,False,True,simulado
+SIM-0244,USR-SIM-0244,2026-10-28T14:05,metro_l1,San Borja Sur,Línea 1,True,True,True,False,6.3,4.4,1.8,De_pie,De_pie,False,False,,507,True,False,True,simulado
+SIM-0413,USR-SIM-0413,2026-10-28T14:20,corredores,Los Cedros,201,True,True,False,False,9.3,,,De_pie,,False,False,,338,True,False,True,simulado
+SIM-0161,USR-SIM-0161,2026-10-28T15:40,corredores,Monumental,201,True,True,False,False,6.7,,,De_pie,,True,False,,306,True,False,True,simulado
+SIM-0163,USR-SIM-0163,2026-10-28T16:15,corredores,Motupe,SE-09,True,True,False,False,5.4,,,Asientos,,False,False,,624,True,False,True,simulado
+SIM-0554,USR-SIM-0554,2026-10-28T16:50,alimentadores,Estación Naranjal Embarque Nº 10,Puente Piedra                                               ,True,True,True,False,10.1,9.4,0.7,Asientos,Asientos,False,False,,447,True,False,True,simulado
+SIM-0586,USR-SIM-0586,2026-10-28T16:50,metropolitano,Matellini,Troncal,True,True,True,False,6.6,7.8,1.2,Asientos,De_pie,False,False,,303,True,False,True,simulado
+SIM-0014,USR-SIM-0014,2026-10-28T17:10,metropolitano,Honorio Delgado,Troncal,True,True,True,False,9.4,5.4,3.9,Saturado,Saturado,False,False,,303,True,False,False,simulado
+SIM-0291,USR-SIM-0291,2026-10-28T17:20,alimentadores,Estación Matellini Embarque Nº 14,Los Próceres                                                ,True,True,True,False,13.2,14.6,1.4,Saturado,Saturado,True,False,,285,True,False,True,simulado
+SIM-0243,USR-SIM-0243,2026-10-28T17:30,alimentadores,Estación Naranjal Embarque Nº 14,Los Olivos                                                  ,True,True,True,False,10.4,6.0,4.4,Saturado,Saturado,False,False,,277,True,False,True,simulado
+SIM-0531,USR-SIM-0531,2026-10-28T17:45,metropolitano,22 De Agosto,Troncal,True,True,False,False,7.6,,,De_pie,,False,False,,309,True,False,True,simulado
+SIM-0214,USR-SIM-0214,2026-10-28T18:05,metropolitano,Andres Belaunde,Troncal,True,True,False,False,8.1,,,Saturado,,False,False,,95,True,False,True,simulado
+SIM-0332,USR-SIM-0332,2026-10-28T18:15,corredores,Villarán,336,True,True,False,False,12.0,,,De_pie,,False,False,,515,True,False,True,simulado
+SIM-0555,USR-SIM-0555,2026-10-28T18:50,corredores,Moquegua,336,True,True,False,False,9.6,,,Saturado,,False,False,,413,True,False,True,simulado
+SIM-0367,USR-SIM-0367,2026-10-28T19:35,metropolitano,Tacna,Troncal,True,True,True,False,10.0,10.8,0.8,Saturado,Saturado,False,False,,483,True,False,True,simulado
+SIM-0356,USR-SIM-0356,2026-10-28T20:50,metropolitano,Terán,Troncal,True,True,True,False,6.7,1.1,5.5,Asientos,Asientos,False,False,,233,True,False,True,simulado
+SIM-0317,USR-SIM-0317,2026-10-29T06:45,corredores,Áncash,404,True,False,False,False,11.2,,,De_pie,,True,False,,194,True,False,False,simulado
+SIM-0186,USR-SIM-0186,2026-10-29T07:15,metro_l1,El Angel,Línea 1,True,True,False,False,6.7,,,Saturado,,False,False,,285,True,False,False,simulado
+SIM-0553,USR-SIM-0553,2026-10-29T07:15,corredores,Ca. 39,204,True,True,True,False,11.8,10.3,1.5,Saturado,Saturado,False,False,,344,True,True,False,simulado
+SIM-0016,USR-SIM-0016,2026-10-29T07:30,metropolitano,Union,Troncal,True,True,False,False,6.8,,,De_pie,,True,False,,294,True,False,True,simulado
+SIM-0563,USR-SIM-0563,2026-10-29T07:30,metro_l1,Los Jardines,Línea 1,True,True,False,False,7.7,,,Saturado,,False,False,,224,True,True,True,simulado
+SIM-0530,USR-SIM-0530,2026-10-29T08:20,metro_l1,Atocongo,Línea 1,True,True,True,False,7.0,8.3,1.3,De_pie,Asientos,False,False,,645,True,False,False,simulado
+SIM-0222,USR-SIM-0222,2026-10-29T08:35,metropolitano,Quilca,Troncal,True,True,True,False,9.8,9.7,0.1,Saturado,Saturado,False,False,,321,True,True,True,simulado
+SIM-0185,USR-SIM-0185,2026-10-29T09:15,metropolitano,Andres Belaunde,Troncal,True,True,False,False,7.0,,,Saturado,,False,False,,200,True,False,True,simulado
+SIM-0362,USR-SIM-0362,2026-10-29T09:30,corredores,Chota,404,True,True,True,False,10.8,10.9,0.1,Asientos,Asientos,False,False,,382,True,False,True,simulado
+SIM-0459,USR-SIM-0459,2026-10-29T09:40,metropolitano,Independencia,Troncal,True,True,False,False,10.6,,,De_pie,,True,False,,470,True,False,True,simulado
+SIM-0414,USR-SIM-0414,2026-10-29T09:45,metro_l1,Ayacucho,Línea 1,True,True,True,False,7.9,10.2,2.4,De_pie,Asientos,False,False,,182,True,False,True,simulado
+SIM-0263,USR-SIM-0263,2026-10-29T09:50,metro_l1,Maria Auxiliadora,Línea 1,True,True,True,False,7.5,7.2,0.3,Saturado,Saturado,False,False,,390,True,False,True,simulado
+SIM-0047,USR-SIM-0047,2026-10-29T10:40,metropolitano,Honorio Delgado,Troncal,True,True,True,False,6.3,10.3,4.1,De_pie,De_pie,True,False,,528,True,False,True,simulado
+SIM-0453,USR-SIM-0453,2026-10-29T12:25,metro_l1,Pumacahua,Línea 1,True,True,False,False,4.9,,,De_pie,,False,False,,716,True,False,True,simulado
+SIM-0049,USR-SIM-0049,2026-10-29T13:45,metropolitano,Colmena,Troncal,True,True,False,False,5.7,,,De_pie,,False,False,,353,True,False,False,simulado
+SIM-0240,USR-SIM-0240,2026-10-29T15:25,metro_l1,El Angel,Línea 1,True,True,False,False,5.6,,,De_pie,,False,False,,678,True,False,True,simulado
+SIM-0128,USR-SIM-0128,2026-10-29T16:45,corredores,Colegio,404,True,True,False,False,8.0,,,De_pie,,False,False,,285,True,True,True,simulado
+SIM-0418,USR-SIM-0418,2026-10-29T18:05,metro_l1,Piramides Del Sol,Línea 1,True,True,False,False,7.8,,,Saturado,,True,False,,154,True,False,False,simulado
+SIM-0330,USR-SIM-0330,2026-10-29T18:10,metro_l1,Santa Rosa,Línea 1,True,True,True,False,10.0,9.3,0.7,De_pie,De_pie,False,False,,267,True,True,False,simulado
+SIM-0156,USR-SIM-0156,2026-10-29T18:45,metro_l1,Bayovar,Línea 1,True,True,False,False,8.3,,,De_pie,,False,False,,288,True,False,True,simulado
+SIM-0138,USR-SIM-0138,2026-10-29T20:25,metropolitano,Canadá,Troncal,True,True,False,False,11.7,,,Saturado,,False,False,,190,True,False,False,simulado
+SIM-0196,USR-SIM-0196,2026-10-29T21:20,corredores,Mercado de Flores,405,True,True,True,True,10.1,12.9,2.8,De_pie,De_pie,False,False,,908,True,False,False,simulado
+SIM-0511,USR-SIM-0511,2026-10-30T05:50,metropolitano,Estadio Nacional,Troncal,True,True,False,False,4.8,,,De_pie,,False,False,,396,True,False,True,simulado
+SIM-0382,USR-SIM-0382,2026-10-30T06:05,metropolitano,Ramon Castilla,Troncal,True,True,True,False,8.5,12.8,4.3,De_pie,Saturado,False,False,,484,True,False,True,simulado
+SIM-0558,USR-SIM-0558,2026-10-30T06:15,metropolitano,Colmena,Troncal,True,True,False,False,9.8,,,Saturado,,False,False,,1433,True,True,True,simulado
+SIM-0385,USR-SIM-0385,2026-10-30T06:25,alimentadores,Estación Naranjal Embarque Nº 15,Izaguirre                                                   ,True,False,False,False,14.6,,,Saturado,,True,False,,414,True,False,True,simulado
+SIM-0213,USR-SIM-0213,2026-10-30T06:35,alimentadores,Estación Naranjal Embarque Nº 12,Milagro de Jesús                                            ,True,True,False,False,12.3,,,Saturado,,True,False,,364,True,False,True,simulado
+SIM-0313,USR-SIM-0313,2026-10-30T06:45,metropolitano,Plaza de Flores,Troncal,True,True,True,False,8.7,7.4,1.3,Saturado,Saturado,False,False,,365,True,False,True,simulado
+SIM-0093,USR-SIM-0093,2026-10-30T06:50,corredores,La Habana,301,True,True,True,True,9.4,9.7,0.3,Saturado,Saturado,False,False,,413,True,False,True,simulado
+SIM-0393,USR-SIM-0393,2026-10-30T07:05,metro_l1,Jorge Chavez,Línea 1,True,True,True,False,7.8,9.2,1.4,Saturado,De_pie,False,False,,262,True,True,False,simulado
+SIM-0419,USR-SIM-0419,2026-10-30T07:30,alimentadores,Estación Naranjal Embarque Nº 15,Payet                                                       ,True,False,False,False,13.7,,,Saturado,,False,False,,437,True,False,True,simulado
+SIM-0061,USR-SIM-0061,2026-10-30T07:50,metropolitano,Tacna,Troncal,True,True,False,False,8.7,,,Saturado,,False,False,,276,True,False,False,simulado
+SIM-0454,USR-SIM-0454,2026-10-30T08:55,corredores,Acho,404,True,True,False,False,9.1,,,Saturado,,False,False,,569,True,False,True,simulado
+SIM-0100,USR-SIM-0100,2026-10-30T10:00,metropolitano,Los jazmines,Troncal,True,True,False,False,5.4,,,Asientos,,False,False,,362,True,False,False,simulado
+SIM-0379,USR-SIM-0379,2026-10-30T12:10,corredores,Schell,301,True,True,False,False,7.3,,,De_pie,,False,False,,535,True,False,False,simulado
+SIM-0374,USR-SIM-0374,2026-10-30T15:35,metro_l1,Villa El Salvador,Línea 1,True,False,False,False,5.5,,,Asientos,,False,False,,539,True,False,False,simulado
+SIM-0246,USR-SIM-0246,2026-10-30T15:55,metro_l1,Villa El Salvador,Línea 1,True,True,True,True,2.0,2.8,0.8,De_pie,De_pie,False,False,,263,True,False,True,simulado
+SIM-0109,USR-SIM-0109,2026-10-30T17:45,metropolitano,22 De Agosto,Troncal,True,True,True,True,8.8,11.1,2.3,Saturado,Saturado,False,False,,376,True,False,True,simulado
+SIM-0566,USR-SIM-0566,2026-10-30T17:50,alimentadores,Estación Naranjal Embarque Nº 11,Belaunde                                                    ,True,True,False,False,14.9,,,Saturado,,True,False,,145,True,False,False,simulado
+SIM-0561,USR-SIM-0561,2026-10-30T18:00,metro_l1,Jorge Chavez,Línea 1,True,True,True,False,7.3,7.7,0.5,De_pie,De_pie,True,True,acoso,467,True,False,False,simulado
+SIM-0340,USR-SIM-0340,2026-10-30T18:10,corredores,Cusco,406,True,True,True,False,10.6,8.2,2.4,Saturado,Saturado,True,False,,767,True,False,False,simulado
+SIM-0153,USR-SIM-0153,2026-10-30T18:50,metro_l1,San Martin,Línea 1,True,True,True,False,7.8,7.2,0.6,De_pie,Asientos,True,False,,191,True,True,False,simulado
+SIM-0234,USR-SIM-0234,2026-10-30T19:40,corredores,Alcázar,301,True,True,False,False,11.8,,,Saturado,,False,False,,309,True,False,False,simulado
+SIM-0129,USR-SIM-0129,2026-10-30T20:30,metro_l1,Santa Rosa,Línea 1,True,True,False,False,8.1,,,Saturado,,False,False,,551,True,True,True,simulado
+SIM-0118,USR-SIM-0118,2026-10-30T22:40,alimentadores,Estación Naranjal Embarque Nº 15,Izaguirre                                                   ,True,True,False,False,9.9,,,De_pie,,False,False,,435,True,False,True,simulado
+SIM-0396,USR-SIM-0396,2026-10-31T06:40,corredores,Manuel Segura,301,True,True,False,False,12.0,,,De_pie,,False,False,,196,True,True,True,simulado
+SIM-0509,USR-SIM-0509,2026-10-31T07:20,metropolitano,Parque del Trabajo,Troncal,True,True,True,False,8.3,2.2,6.2,De_pie,Saturado,False,False,,548,True,False,True,simulado
+SIM-0375,USR-SIM-0375,2026-10-31T07:25,metropolitano,México,Troncal,True,True,True,True,8.0,4.7,3.3,Saturado,Saturado,True,False,,548,True,False,False,simulado
+SIM-0257,USR-SIM-0257,2026-10-31T07:30,corredores,Ica,336,True,False,False,False,10.5,,,Saturado,,False,False,,358,True,False,True,simulado
+SIM-0438,USR-SIM-0438,2026-10-31T07:30,metro_l1,Pumacahua,Línea 1,True,True,False,False,4.4,,,Saturado,,False,False,,491,True,False,True,simulado
+SIM-0224,USR-SIM-0224,2026-10-31T07:35,metro_l1,La Cultura,Línea 1,True,True,False,False,4.4,,,Saturado,,True,False,,356,True,False,True,simulado
+SIM-0425,USR-SIM-0425,2026-10-31T08:15,metropolitano,Colmena,Troncal,True,True,False,False,9.7,,,Saturado,,False,False,,307,True,True,True,simulado
+SIM-0091,USR-SIM-0091,2026-10-31T08:30,metropolitano,Quilca,Troncal,True,False,False,False,7.8,,,Saturado,,False,False,,226,True,False,True,simulado
+SIM-0180,USR-SIM-0180,2026-10-31T08:55,metropolitano,España,Troncal,True,True,False,False,8.5,,,Saturado,,False,False,,131,True,False,False,simulado
+SIM-0583,USR-SIM-0583,2026-10-31T14:35,metropolitano,El Milagro,Troncal,True,True,False,False,8.2,,,Asientos,,False,False,,493,True,False,False,simulado
+SIM-0373,USR-SIM-0373,2026-10-31T16:10,metro_l1,Maria Auxiliadora,Línea 1,True,True,False,False,6.2,,,Asientos,,False,False,,231,True,False,True,simulado
+SIM-0054,USR-SIM-0054,2026-10-31T17:50,metropolitano,Canaval y Moreyra,Troncal,True,True,True,False,8.2,10.8,2.6,De_pie,De_pie,False,False,,475,True,False,False,simulado
+SIM-0182,USR-SIM-0182,2026-10-31T17:55,metro_l1,Jorge Chavez,Línea 1,True,False,False,False,6.1,,,Saturado,,False,False,,195,True,False,True,simulado
+SIM-0565,USR-SIM-0565,2026-10-31T18:40,metropolitano,Honorio Delgado,Troncal,True,True,True,False,10.4,10.2,0.3,Saturado,Saturado,True,False,,172,True,True,True,simulado
+SIM-0403,USR-SIM-0403,2026-10-31T18:45,metropolitano,Rosario de Villa,Troncal,True,True,False,False,9.4,,,Saturado,,False,False,,333,True,False,False,simulado
+SIM-0265,USR-SIM-0265,2026-10-31T19:00,alimentadores,Estación Matellini Embarque Nº 11,Los Próceres                                                ,True,True,True,False,13.1,15.0,1.9,Saturado,Saturado,False,False,,674,True,False,True,simulado
+SIM-0195,USR-SIM-0195,2026-10-31T19:10,metropolitano,Independencia,Troncal,True,True,False,False,11.2,,,Saturado,,False,False,,273,True,False,True,simulado
+SIM-0152,USR-SIM-0152,2026-10-31T19:30,alimentadores,Estación Naranjal Embarque Nº 01,Izaguirre                                                   ,True,True,True,False,13.1,11.8,1.3,Saturado,Saturado,False,False,,267,True,False,True,simulado
+SIM-0262,USR-SIM-0262,2026-10-31T20:15,corredores,Aramburú,305,True,True,False,False,11.1,,,De_pie,,False,False,,266,True,False,False,simulado
+SIM-0060,USR-SIM-0060,2026-11-01T05:20,corredores,Ca. 10,204,True,True,True,True,8.2,9.8,1.5,De_pie,Asientos,False,False,,595,True,False,False,simulado
+SIM-0302,USR-SIM-0302,2026-11-01T06:00,corredores,Villarán,303,True,True,True,True,13.3,15.8,2.5,Asientos,Asientos,False,False,,389,True,True,True,simulado
+SIM-0205,USR-SIM-0205,2026-11-01T06:25,alimentadores,Estación Naranjal Embarque Nº 01,Los Olivos                                                  ,True,True,True,False,12.7,14.2,1.5,Saturado,Saturado,True,False,,247,True,False,True,simulado
+SIM-0429,USR-SIM-0429,2026-11-01T06:45,corredores,San Luis,204,True,True,True,False,9.5,12.3,2.8,Saturado,Saturado,False,False,,604,True,False,True,simulado
+SIM-0349,USR-SIM-0349,2026-11-01T07:45,corredores,Ca. 62,204,True,True,False,False,9.7,,,Saturado,,True,False,,550,True,False,True,simulado
+SIM-0358,USR-SIM-0358,2026-11-01T08:25,metropolitano,Estacion Central,Troncal,True,True,False,False,6.1,,,Saturado,,False,False,,112,True,False,True,simulado
+SIM-0582,USR-SIM-0582,2026-11-01T09:30,metro_l1,Miguel Grau,Línea 1,True,True,True,False,4.9,5.5,0.6,De_pie,Asientos,False,False,,275,True,False,True,simulado
+SIM-0321,USR-SIM-0321,2026-11-01T09:35,corredores,Moquegua,301,True,True,True,False,9.5,9.3,0.3,Saturado,Saturado,True,False,,185,True,False,False,simulado
+SIM-0544,USR-SIM-0544,2026-11-01T16:20,corredores,Abancay,SE-08,True,True,True,False,9.5,8.1,1.4,De_pie,Saturado,True,True,acoso,877,True,False,True,simulado
+SIM-0398,USR-SIM-0398,2026-11-01T16:25,metro_l1,El Angel,Línea 1,True,True,True,True,4.7,5.7,1.0,Asientos,Asientos,False,False,,629,True,True,True,simulado
+SIM-0478,USR-SIM-0478,2026-11-01T16:40,corredores,La Punta,204,True,True,False,False,7.7,,,Asientos,,False,False,,275,True,False,True,simulado
+SIM-0572,USR-SIM-0572,2026-11-01T17:00,metro_l1,Miguel Grau,Línea 1,True,True,False,False,6.0,,,De_pie,,False,False,,471,True,False,False,simulado
+SIM-0008,USR-SIM-0008,2026-11-01T17:40,metropolitano,Estadio Nacional,Troncal,True,True,False,False,8.4,,,Saturado,,False,False,,142,True,True,True,simulado
+SIM-0190,USR-SIM-0190,2026-11-01T17:55,metro_l1,Los Postes,Línea 1,True,True,True,False,6.0,1.1,4.9,De_pie,De_pie,False,False,,495,True,False,True,simulado
+SIM-0545,USR-SIM-0545,2026-11-01T18:00,metro_l1,Los Jardines,Línea 1,True,True,False,False,5.8,,,Saturado,,False,False,,137,True,True,True,simulado
+SIM-0306,USR-SIM-0306,2026-11-01T19:10,alimentadores,Estación Matellini Embarque Nº 14,Los Próceres                                                ,True,True,False,False,16.3,,,Saturado,,False,False,,133,True,True,True,simulado
+SIM-0434,USR-SIM-0434,2026-11-01T19:20,metro_l1,Cabitos,Línea 1,True,True,False,False,5.8,,,Saturado,,False,False,,484,True,False,True,simulado
+SIM-0230,USR-SIM-0230,2026-11-01T21:25,metro_l1,La Cultura,Línea 1,True,True,False,False,2.2,,,De_pie,,False,False,,208,True,False,True,simulado
+SIM-0443,USR-SIM-0443,2026-11-02T06:50,corredores,Pardo,301,True,True,False,False,9.6,,,De_pie,,False,False,,424,True,False,True,simulado
+SIM-0512,USR-SIM-0512,2026-11-02T07:50,metropolitano,Universidad,Troncal,True,True,False,False,3.5,,,Saturado,,False,False,,782,True,False,True,simulado
+SIM-0390,USR-SIM-0390,2026-11-02T08:20,corredores,Nicolás de Piérola,405,True,True,False,False,8.9,,,Saturado,,True,False,,215,True,False,False,simulado
+SIM-0369,USR-SIM-0369,2026-11-02T08:50,metro_l1,Los Jardines,Línea 1,True,False,False,False,6.0,,,Saturado,,False,False,,209,True,False,True,simulado
+SIM-0288,USR-SIM-0288,2026-11-02T09:15,metro_l1,Pumacahua,Línea 1,True,True,True,False,6.6,8.0,1.4,Saturado,Saturado,False,False,,470,True,False,True,simulado
+SIM-0239,USR-SIM-0239,2026-11-02T12:40,metro_l1,Cabitos,Línea 1,True,True,True,False,6.7,5.6,1.1,Asientos,Asientos,False,False,,155,True,False,True,simulado
+SIM-0495,USR-SIM-0495,2026-11-02T15:35,metro_l1,Santa Rosa,Línea 1,True,True,True,True,4.8,6.9,2.1,Asientos,Asientos,False,False,,212,True,False,True,simulado
+SIM-0587,USR-SIM-0587,2026-11-02T16:30,metro_l1,Angamos,Línea 1,True,True,True,False,7.1,6.5,0.6,Asientos,Asientos,False,False,,453,True,False,True,simulado
+SIM-0539,USR-SIM-0539,2026-11-02T16:55,corredores,Nicolàs de Pierola,SE-09,True,False,False,False,8.5,,,De_pie,,False,False,,481,True,False,True,simulado
+SIM-0570,USR-SIM-0570,2026-11-02T17:05,metro_l1,Villa Maria,Línea 1,True,True,False,False,8.3,,,De_pie,,True,False,,292,True,True,True,simulado
+SIM-0447,USR-SIM-0447,2026-11-02T17:20,metro_l1,Jorge Chavez,Línea 1,True,True,True,True,8.3,8.7,0.5,De_pie,De_pie,True,False,,495,True,False,False,simulado
+SIM-0018,USR-SIM-0018,2026-11-02T18:10,corredores,Masías,209,True,True,False,False,9.4,,,Saturado,,False,False,,409,True,False,True,simulado
+SIM-0277,USR-SIM-0277,2026-11-02T18:15,corredores,E. Fernández,301,True,True,True,True,11.8,16.7,4.9,Saturado,Saturado,False,False,,482,True,False,True,simulado
+SIM-0151,USR-SIM-0151,2026-11-02T20:40,metro_l1,Atocongo,Línea 1,True,True,True,False,7.3,5.0,2.4,Saturado,Saturado,False,False,,473,True,False,True,simulado
+SIM-0388,USR-SIM-0388,2026-11-03T07:50,corredores,Montevideo,406,True,True,False,False,11.2,,,Saturado,,True,False,,267,True,False,True,simulado
+SIM-0279,USR-SIM-0279,2026-11-03T08:00,corredores,La Marina,206,True,True,False,False,7.6,,,Saturado,,False,False,,586,True,False,True,simulado
+SIM-0270,USR-SIM-0270,2026-11-03T08:10,corredores,Huertos,204,True,True,False,False,9.8,,,De_pie,,True,False,,235,True,False,True,simulado
+SIM-0204,USR-SIM-0204,2026-11-03T09:15,metro_l1,Miguel Grau,Línea 1,True,True,False,False,6.1,,,De_pie,,True,False,,250,True,False,True,simulado
+SIM-0034,USR-SIM-0034,2026-11-03T12:55,corredores,Villarán,336,True,True,False,False,8.0,,,De_pie,,False,False,,311,True,False,True,simulado
+SIM-0446,USR-SIM-0446,2026-11-03T15:05,metropolitano,Izaguirre,Troncal,True,True,False,False,4.9,,,Asientos,,True,True,seguimiento,490,True,True,False,simulado
+SIM-0368,USR-SIM-0368,2026-11-03T15:40,metropolitano,México,Troncal,True,True,False,False,7.1,,,Asientos,,False,False,,630,True,True,True,simulado
+SIM-0507,USR-SIM-0507,2026-11-03T16:50,corredores,Emancipación,301,True,True,False,False,9.4,,,De_pie,,False,False,,254,True,False,True,simulado
+SIM-0547,USR-SIM-0547,2026-11-03T17:15,metropolitano,Canadá,Troncal,True,True,True,False,8.2,4.1,4.1,Saturado,Saturado,False,False,,437,True,False,True,simulado
+SIM-0134,USR-SIM-0134,2026-11-03T17:40,metro_l1,Santa Rosa,Línea 1,True,True,True,False,9.4,0.7,8.7,De_pie,De_pie,False,False,,250,True,False,False,simulado
+SIM-0516,USR-SIM-0516,2026-11-03T18:00,alimentadores,Estación Naranjal Embarque Nº 13,Collique,True,True,True,False,11.5,11.9,0.4,De_pie,Saturado,True,False,,309,True,False,True,simulado
+SIM-0513,USR-SIM-0513,2026-11-03T18:10,metro_l1,Piramides Del Sol,Línea 1,True,True,True,False,8.2,7.7,0.6,De_pie,Saturado,False,False,,595,True,False,True,simulado
+SIM-0525,USR-SIM-0525,2026-11-03T18:15,metropolitano,Escuela Militar,Troncal,True,True,True,True,8.7,6.1,2.6,De_pie,De_pie,False,False,,322,True,False,True,simulado
+SIM-0327,USR-SIM-0327,2026-11-03T18:55,metropolitano,Independencia,Troncal,True,False,False,False,9.0,,,De_pie,,False,False,,292,True,False,True,simulado
+SIM-0578,USR-SIM-0578,2026-11-03T19:05,metropolitano,Caqueta,Troncal,True,True,False,False,9.0,,,De_pie,,True,False,,357,True,False,False,simulado
+SIM-0148,USR-SIM-0148,2026-11-03T19:35,metro_l1,San Martin,Línea 1,True,True,True,False,7.0,7.1,0.1,Saturado,Saturado,False,False,,748,True,False,False,simulado
+SIM-0019,USR-SIM-0019,2026-11-03T20:20,alimentadores,Estación Naranjal Embarque Nº 14,Los Olivos                                                  ,True,True,True,False,13.4,11.7,1.7,De_pie,Saturado,False,False,,631,True,False,True,simulado
+SIM-0012,USR-SIM-0012,2026-11-04T06:00,alimentadores,Estación Naranjal Embarque Nº 01,Los Olivos                                                  ,True,True,False,False,12.4,,,Asientos,,False,False,,324,True,False,True,simulado
+SIM-0465,USR-SIM-0465,2026-11-04T07:05,metropolitano,Bulevar,Troncal,True,True,False,False,9.5,,,De_pie,,False,False,,380,True,False,False,simulado
+SIM-0140,USR-SIM-0140,2026-11-04T07:40,metro_l1,San Borja Sur,Línea 1,True,True,False,False,8.1,,,Saturado,,False,False,,299,True,False,False,simulado
+SIM-0514,USR-SIM-0514,2026-11-04T08:00,metropolitano,Chimpu Ocllo,Troncal,True,False,False,False,4.4,,,Saturado,,False,False,,497,False,False,False,simulado
+SIM-0111,USR-SIM-0111,2026-11-04T09:35,metropolitano,Andres Belaunde,Troncal,True,True,True,False,8.7,10.8,2.0,Saturado,Saturado,False,False,,600,True,False,False,simulado
+SIM-0357,USR-SIM-0357,2026-11-04T09:50,metro_l1,Nicolas Arriola,Línea 1,True,True,True,True,7.7,9.8,2.1,Saturado,Saturado,False,False,,442,True,False,True,simulado
+SIM-0489,USR-SIM-0489,2026-11-04T14:35,metropolitano,Estadio Nacional,Troncal,True,True,False,False,9.2,,,De_pie,,False,False,,294,True,False,True,simulado
+SIM-0150,USR-SIM-0150,2026-11-04T16:20,metropolitano,Estacion Central,Troncal,True,True,True,False,6.3,8.2,1.9,Asientos,Asientos,False,False,,674,True,False,True,simulado
+SIM-0416,USR-SIM-0416,2026-11-04T17:10,metro_l1,Piramides Del Sol,Línea 1,True,True,True,True,6.3,5.7,0.6,Saturado,Saturado,False,False,,454,True,False,False,simulado
+SIM-0435,USR-SIM-0435,2026-11-04T17:10,metro_l1,Maria Auxiliadora,Línea 1,True,False,False,False,8.9,,,Saturado,,False,False,,231,True,True,False,simulado
+SIM-0550,USR-SIM-0550,2026-11-04T17:35,alimentadores,Estación Matellini Embarque Nº 14,Villa El Salvador                                           ,True,True,True,False,13.0,19.1,6.0,Saturado,De_pie,False,False,,591,True,True,True,simulado
+SIM-0598,USR-SIM-0598,2026-11-04T19:40,metro_l1,Ayacucho,Línea 1,True,True,False,False,9.4,,,De_pie,,False,False,,247,True,False,True,simulado
+SIM-0070,USR-SIM-0070,2026-11-04T19:50,metro_l1,Los Postes,Línea 1,True,True,False,False,9.3,,,Saturado,,False,False,,299,True,False,False,simulado
+SIM-0155,USR-SIM-0155,2026-11-04T19:50,metropolitano,Canadá,Troncal,True,True,True,False,5.7,6.3,0.7,Saturado,Saturado,False,False,,541,True,False,True,simulado
+SIM-0200,USR-SIM-0200,2026-11-04T19:50,alimentadores,Estación Naranjal Embarque Nº 06,Antúnez de Mayolo                                           ,True,True,False,False,14.0,,,Saturado,,False,False,,213,True,False,True,simulado
+SIM-0114,USR-SIM-0114,2026-11-04T22:20,metropolitano,Izaguirre,Troncal,True,True,False,False,7.6,,,Asientos,,False,False,,361,True,False,True,simulado
+SIM-0013,USR-SIM-0013,2026-11-04T22:25,metro_l1,Piramides Del Sol,Línea 1,True,True,True,True,5.7,5.2,0.4,Saturado,Saturado,False,False,,301,True,False,True,simulado
+SIM-0199,USR-SIM-0199,2026-11-05T06:25,metropolitano,Uni,Troncal,True,True,True,False,9.5,9.8,0.3,Saturado,Saturado,False,False,,294,True,False,True,simulado
+SIM-0026,USR-SIM-0026,2026-11-05T06:45,corredores,Pizarro,303,True,True,False,False,10.6,,,De_pie,,False,False,,248,True,False,False,simulado
+SIM-0597,USR-SIM-0597,2026-11-05T06:45,metro_l1,San Carlos,Línea 1,True,True,True,False,6.8,4.7,2.1,Saturado,De_pie,False,False,,657,True,False,False,simulado
+SIM-0318,USR-SIM-0318,2026-11-05T07:15,metro_l1,Piramides Del Sol,Línea 1,True,True,True,True,7.9,10.4,2.5,Saturado,De_pie,True,False,,316,True,False,False,simulado
+SIM-0122,USR-SIM-0122,2026-11-05T07:35,corredores,Grau,406,True,True,False,False,11.9,,,Saturado,,False,False,,237,True,False,True,simulado
+SIM-0562,USR-SIM-0562,2026-11-05T07:35,metro_l1,Jorge Chavez,Línea 1,True,True,False,False,8.4,,,Saturado,,False,False,,469,True,False,False,simulado
+SIM-0160,USR-SIM-0160,2026-11-05T07:45,alimentadores,Estación Matellini Embarque Nº 11,Los Próceres                                                ,True,False,False,False,11.2,,,Saturado,,False,False,,579,True,False,False,simulado
+SIM-0559,USR-SIM-0559,2026-11-05T08:15,corredores,F. Arancibia,305,True,False,False,False,10.2,,,De_pie,,True,True,acoso,194,False,False,False,simulado
+SIM-0242,USR-SIM-0242,2026-11-05T08:25,metropolitano,22 De Agosto,Troncal,True,True,False,False,6.6,,,Asientos,,False,False,,569,True,False,True,simulado
+SIM-0144,USR-SIM-0144,2026-11-05T09:15,metro_l1,San Carlos,Línea 1,True,True,False,False,8.1,,,De_pie,,True,False,,359,True,False,False,simulado
+SIM-0228,USR-SIM-0228,2026-11-05T09:25,metro_l1,Cabitos,Línea 1,True,True,True,True,8.4,9.8,1.3,De_pie,De_pie,False,False,,348,True,False,True,simulado
+SIM-0251,USR-SIM-0251,2026-11-05T10:55,corredores,La Cuatro,404,True,True,True,False,6.8,7.2,0.4,De_pie,De_pie,False,False,,263,True,False,True,simulado
+SIM-0192,USR-SIM-0192,2026-11-05T12:00,metropolitano,Angamos,Troncal,True,True,False,False,8.1,,,De_pie,,False,False,,1219,True,False,True,simulado
+SIM-0165,USR-SIM-0165,2026-11-05T12:40,alimentadores,Estación Naranjal Embarque Nº 15,Tahuantinsuyo                                               ,True,True,True,False,9.4,10.7,1.3,Asientos,Asientos,False,False,,281,True,True,True,simulado
+SIM-0116,USR-SIM-0116,2026-11-05T13:40,metropolitano,Matellini,Troncal,True,True,False,False,6.4,,,De_pie,,True,False,,390,True,False,True,simulado
+SIM-0002,USR-SIM-0002,2026-11-05T13:50,alimentadores,Estación Naranjal Embarque Nº 12,Belaunde                                                    ,True,False,False,False,11.8,,,De_pie,,False,False,,404,True,True,True,simulado
+SIM-0141,USR-SIM-0141,2026-11-05T16:15,metropolitano,Pacifico,Troncal,True,True,False,False,6.3,,,De_pie,,False,False,,321,True,False,False,simulado
+SIM-0178,USR-SIM-0178,2026-11-05T16:35,metro_l1,Santa Rosa,Línea 1,True,True,False,False,5.0,,,Asientos,,True,False,,126,True,False,False,simulado
+SIM-0044,USR-SIM-0044,2026-11-05T17:10,corredores,La Hacienda DC,412,True,True,False,False,11.6,,,De_pie,,False,False,,528,True,False,True,simulado
+SIM-0526,USR-SIM-0526,2026-11-05T17:25,metro_l1,Jorge Chavez,Línea 1,True,True,False,False,6.4,,,Saturado,,False,False,,422,True,False,False,simulado
+SIM-0198,USR-SIM-0198,2026-11-05T18:10,metro_l1,El Angel,Línea 1,True,True,True,True,7.6,8.0,0.4,De_pie,Asientos,False,False,,278,True,False,False,simulado
+SIM-0378,USR-SIM-0378,2026-11-05T18:10,corredores,Basadre,404,True,True,False,False,10.7,,,Saturado,,False,False,,315,True,False,True,simulado
+SIM-0456,USR-SIM-0456,2026-11-05T18:30,corredores,Iquitos,SE-08,True,True,False,False,8.2,,,De_pie,,False,False,,254,True,False,False,simulado
+SIM-0106,USR-SIM-0106,2026-11-05T18:40,metro_l1,Miguel Grau,Línea 1,True,True,False,False,6.4,,,De_pie,,False,False,,305,True,False,False,simulado
+SIM-0505,USR-SIM-0505,2026-11-05T18:45,alimentadores,Estación Naranjal Embarque Nº 11,Belaunde                                                    ,True,True,False,False,14.1,,,Saturado,,False,False,,502,True,False,True,simulado
+SIM-0202,USR-SIM-0202,2026-11-05T18:55,metropolitano,Independencia,Troncal,True,True,False,False,6.3,,,Saturado,,False,False,,264,True,False,True,simulado
+SIM-0532,USR-SIM-0532,2026-11-06T06:10,alimentadores,Estación Naranjal Embarque Nº 08,Ensenada                                                    ,True,False,False,False,12.8,,,Saturado,,True,False,,232,False,False,False,simulado
+SIM-0218,USR-SIM-0218,2026-11-06T07:00,metro_l1,Caja De Agua,Línea 1,True,True,True,False,6.2,2.5,3.7,Saturado,Saturado,False,False,,525,True,False,True,simulado
+SIM-0135,USR-SIM-0135,2026-11-06T07:05,metro_l1,Presbitero Maestro,Línea 1,True,True,False,False,7.3,,,Saturado,,False,False,,199,True,False,True,simulado
+SIM-0172,USR-SIM-0172,2026-11-06T07:50,metropolitano,Matellini,Troncal,True,True,True,False,10.0,11.2,1.2,Saturado,Saturado,False,False,,234,True,False,True,simulado
+SIM-0423,USR-SIM-0423,2026-11-06T08:05,metropolitano,Independencia,Troncal,True,True,True,False,10.7,13.0,2.3,De_pie,De_pie,False,False,,451,True,False,False,simulado
+SIM-0310,USR-SIM-0310,2026-11-06T08:20,metropolitano,Benavides,Troncal,True,True,False,False,8.8,,,De_pie,,False,False,,303,True,False,False,simulado
+SIM-0167,USR-SIM-0167,2026-11-06T08:25,alimentadores,Estación Naranjal Embarque Nº 16,Bertello                                                    ,True,True,True,True,12.6,18.2,5.6,Saturado,Saturado,False,False,,536,True,False,True,simulado
+SIM-0126,USR-SIM-0126,2026-11-06T10:25,metropolitano,Bulevar,Troncal,True,True,True,False,5.3,3.6,1.7,Asientos,Asientos,False,False,,304,True,False,False,simulado
+SIM-0238,USR-SIM-0238,2026-11-06T10:25,corredores,Mercado de Flores,SE-09,True,True,True,False,9.7,10.3,0.7,Asientos,Asientos,False,False,,123,True,False,True,simulado
+SIM-0166,USR-SIM-0166,2026-11-06T10:55,corredores,Acho,SE-09,True,True,True,True,8.2,8.7,0.5,Asientos,Asientos,False,False,,359,True,False,False,simulado
+SIM-0028,USR-SIM-0028,2026-11-06T15:15,metro_l1,San Martin,Línea 1,True,True,True,False,5.8,4.2,1.5,De_pie,Saturado,False,False,,346,True,False,True,simulado
+SIM-0343,USR-SIM-0343,2026-11-06T15:45,metropolitano,Parque del Trabajo,Troncal,True,True,False,False,6.1,,,Saturado,,False,False,,1273,True,False,True,simulado
+SIM-0274,USR-SIM-0274,2026-11-06T16:40,metropolitano,Estadio Nacional,Troncal,True,True,True,False,5.2,7.4,2.2,Asientos,Asientos,True,False,,560,True,False,False,simulado
+SIM-0285,USR-SIM-0285,2026-11-06T16:55,metropolitano,México,Troncal,True,True,False,False,6.6,,,Asientos,,False,False,,721,True,False,True,simulado
+SIM-0469,USR-SIM-0469,2026-11-06T18:05,metropolitano,Los jazmines,Troncal,True,True,False,False,7.7,,,Saturado,,True,False,,398,True,False,True,simulado
+SIM-0252,USR-SIM-0252,2026-11-06T18:25,alimentadores,Estación Naranjal Embarque Nº 07,Antúnez de Mayolo                                           ,True,True,False,False,11.7,,,Saturado,,False,False,,341,True,False,False,simulado
+SIM-0600,USR-SIM-0600,2026-11-06T18:35,metro_l1,Jorge Chavez,Línea 1,True,True,True,False,6.5,6.5,0.1,Saturado,Saturado,True,False,,211,True,False,False,simulado
+SIM-0589,USR-SIM-0589,2026-11-06T19:35,alimentadores,Estación Matellini Embarque Nº 14,Las Américas                                                ,True,True,True,False,8.4,9.1,0.7,Saturado,Saturado,False,False,,402,True,False,False,simulado
+SIM-0574,USR-SIM-0574,2026-11-06T19:45,metro_l1,El Angel,Línea 1,True,True,False,False,8.2,,,Saturado,,True,False,,275,True,False,True,simulado
+SIM-0308,USR-SIM-0308,2026-11-06T20:40,metropolitano,Caqueta,Troncal,True,True,True,False,7.7,7.4,0.4,De_pie,De_pie,False,False,,529,True,False,False,simulado
+SIM-0401,USR-SIM-0401,2026-11-07T05:10,metropolitano,Domingo Orué,Troncal,True,True,False,False,9.4,,,Asientos,,True,False,,219,True,False,True,simulado
+SIM-0276,USR-SIM-0276,2026-11-07T05:35,alimentadores,Estación Naranjal Embarque Nº 10,Puente Piedra                                               ,True,True,True,False,10.0,15.2,5.1,Asientos,Asientos,True,False,,291,True,True,True,simulado
+SIM-0072,USR-SIM-0072,2026-11-07T07:00,corredores,Túpac Amaru,406,True,True,False,False,10.1,,,De_pie,,False,False,,372,True,False,False,simulado
+SIM-0394,USR-SIM-0394,2026-11-07T07:15,metropolitano,28 de Julio,Troncal,True,True,False,False,8.5,,,Saturado,,False,False,,187,True,False,True,simulado
+SIM-0594,USR-SIM-0594,2026-11-07T07:15,metropolitano,Ricardo Palma,Troncal,True,True,False,False,9.4,,,De_pie,,False,False,,342,True,False,False,simulado
+SIM-0473,USR-SIM-0473,2026-11-07T07:45,metropolitano,Caqueta,Troncal,True,True,False,False,8.3,,,Saturado,,True,False,,102,True,False,False,simulado
+SIM-0312,USR-SIM-0312,2026-11-07T07:50,corredores,Calle 1,301,True,True,True,False,10.0,8.6,1.4,Saturado,De_pie,False,False,,222,True,False,False,simulado
+SIM-0467,USR-SIM-0467,2026-11-07T07:55,metropolitano,Estadio Nacional,Troncal,True,True,True,True,6.2,7.8,1.6,Saturado,De_pie,False,False,,298,True,False,True,simulado
+SIM-0328,USR-SIM-0328,2026-11-07T08:00,metro_l1,Piramides Del Sol,Línea 1,True,True,True,False,8.6,6.6,2.0,Saturado,Saturado,False,False,,551,True,False,False,simulado
+SIM-0094,USR-SIM-0094,2026-11-07T08:30,metropolitano,Aramburu,Troncal,True,True,True,True,7.4,3.0,4.4,De_pie,De_pie,False,False,,289,True,False,False,simulado
+SIM-0549,USR-SIM-0549,2026-11-07T08:45,corredores,La Losa,303,True,True,False,False,10.3,,,Saturado,,False,False,,791,True,False,True,simulado
+SIM-0386,USR-SIM-0386,2026-11-07T08:55,metro_l1,Caja De Agua,Línea 1,True,True,False,False,8.9,,,De_pie,,False,False,,414,True,False,True,simulado
+SIM-0300,USR-SIM-0300,2026-11-07T09:15,metropolitano,Ramon Castilla,Troncal,True,True,False,False,6.8,,,De_pie,,False,False,,666,True,False,True,simulado
+SIM-0314,USR-SIM-0314,2026-11-07T09:40,corredores,Clínica Ricardo Palma,209,True,True,False,False,11.1,,,De_pie,,True,False,,263,True,False,True,simulado
+SIM-0142,USR-SIM-0142,2026-11-07T10:05,metropolitano,Universidad,Troncal,True,False,False,False,7.1,,,Asientos,,True,False,,312,True,False,True,simulado
+SIM-0380,USR-SIM-0380,2026-11-07T10:55,metropolitano,Benavides,Troncal,True,True,True,False,6.8,9.1,2.3,De_pie,Saturado,False,False,,281,True,False,True,simulado
+SIM-0484,USR-SIM-0484,2026-11-07T12:05,metro_l1,Gamarra,Línea 1,True,True,False,False,4.9,,,De_pie,,False,False,,506,True,False,True,simulado
+SIM-0154,USR-SIM-0154,2026-11-07T13:30,metropolitano,Bulevar,Troncal,True,True,False,False,5.9,,,De_pie,,False,False,,149,True,False,True,simulado
+SIM-0571,USR-SIM-0571,2026-11-07T15:20,metropolitano,Ramon Castilla,Troncal,True,True,False,False,5.6,,,Asientos,,False,False,,590,True,False,False,simulado
+SIM-0283,USR-SIM-0283,2026-11-07T16:05,corredores,Cuzco,404,True,True,False,False,8.1,,,Asientos,,True,False,,288,True,False,False,simulado
+SIM-0115,USR-SIM-0115,2026-11-07T16:20,corredores,Schell,301,True,True,False,False,9.3,,,Asientos,,False,False,,356,True,True,True,simulado
+SIM-0048,USR-SIM-0048,2026-11-07T16:40,metropolitano,Bulevar,Troncal,True,True,False,False,9.9,,,De_pie,,False,False,,284,True,False,True,simulado
+SIM-0337,USR-SIM-0337,2026-11-07T17:10,metro_l1,Angamos,Línea 1,True,True,False,False,6.3,,,Saturado,,False,False,,577,True,False,True,simulado
+SIM-0462,USR-SIM-0462,2026-11-07T17:20,metropolitano,Universidad,Troncal,True,True,True,False,8.1,7.2,0.9,Saturado,Saturado,False,False,,253,True,False,True,simulado
+SIM-0490,USR-SIM-0490,2026-11-07T17:45,metropolitano,Estadio Nacional,Troncal,True,True,False,False,11.3,,,Saturado,,True,False,,287,True,False,True,simulado
+SIM-0065,USR-SIM-0065,2026-11-07T18:50,metropolitano,Benavides,Troncal,True,True,True,False,9.8,10.6,0.7,Saturado,De_pie,True,False,,1051,True,False,False,simulado
+SIM-0567,USR-SIM-0567,2026-11-07T20:30,corredores,Jockey,201,True,True,False,False,9.5,,,Saturado,,True,False,,171,True,True,True,simulado
+SIM-0579,USR-SIM-0579,2026-11-08T05:10,metro_l1,Gamarra,Línea 1,True,True,False,False,6.8,,,De_pie,,False,False,,406,True,False,True,simulado
+SIM-0479,USR-SIM-0479,2026-11-08T07:05,metro_l1,Maria Auxiliadora,Línea 1,True,False,False,False,8.3,,,Saturado,,False,False,,202,True,False,True,simulado
+SIM-0031,USR-SIM-0031,2026-11-08T07:40,corredores,Celima,412,True,True,False,False,8.7,,,Saturado,,False,False,,101,True,False,True,simulado
+SIM-0534,USR-SIM-0534,2026-11-08T08:15,metro_l1,Villa Maria,Línea 1,True,True,True,False,9.1,10.8,1.8,Saturado,Saturado,False,False,,356,True,False,True,simulado
+SIM-0074,USR-SIM-0074,2026-11-08T08:35,metro_l1,Piramides Del Sol,Línea 1,True,True,True,False,4.7,4.5,0.2,Saturado,Saturado,False,False,,661,True,False,False,simulado
+SIM-0050,USR-SIM-0050,2026-11-08T08:45,metro_l1,Nicolas Arriola,Línea 1,True,True,False,False,6.8,,,De_pie,,False,False,,459,True,False,False,simulado
+SIM-0518,USR-SIM-0518,2026-11-08T08:50,metro_l1,Bayovar,Línea 1,True,False,False,False,7.9,,,Saturado,,False,False,,511,True,True,True,simulado
+SIM-0087,USR-SIM-0087,2026-11-08T08:55,metro_l1,San Juan,Línea 1,True,True,True,False,6.2,4.8,1.4,De_pie,De_pie,False,False,,375,True,False,True,simulado
+SIM-0051,USR-SIM-0051,2026-11-08T09:10,corredores,Bolivia,303,True,True,False,False,12.0,,,Saturado,,True,False,,225,True,False,True,simulado
+SIM-0412,USR-SIM-0412,2026-11-08T09:10,metropolitano,2 de Mayo,Troncal,True,True,True,True,9.6,7.6,2.1,Saturado,Saturado,True,False,,169,True,False,False,simulado
+SIM-0194,USR-SIM-0194,2026-11-08T09:15,metropolitano,México,Troncal,True,True,True,True,7.7,8.4,0.7,De_pie,Saturado,False,False,,285,True,False,True,simulado
+SIM-0319,USR-SIM-0319,2026-11-08T10:35,metro_l1,San Martin,Línea 1,True,True,False,False,2.8,,,De_pie,,False,False,,324,True,False,True,simulado
+SIM-0206,USR-SIM-0206,2026-11-08T10:45,alimentadores,Estación Naranjal Embarque Nº 06,Antúnez de Mayolo                                           ,True,True,False,False,10.5,,,De_pie,,False,False,,583,True,False,True,simulado
+SIM-0442,USR-SIM-0442,2026-11-08T12:10,corredores,San Luis,206,True,True,False,False,10.2,,,De_pie,,False,False,,298,True,False,False,simulado
+SIM-0415,USR-SIM-0415,2026-11-08T12:55,corredores,Basadre,406,True,True,False,False,8.7,,,Saturado,,True,False,,404,True,False,True,simulado
+SIM-0417,USR-SIM-0417,2026-11-08T16:55,corredores,Emancipación,305,True,True,True,True,7.5,7.7,0.2,Asientos,Asientos,True,False,,551,True,False,True,simulado
+SIM-0305,USR-SIM-0305,2026-11-08T17:05,alimentadores,Estación Naranjal Embarque Nº 15,Alisos                                                      ,True,True,False,False,12.0,,,Saturado,,True,False,,291,True,False,True,simulado
+SIM-0568,USR-SIM-0568,2026-11-08T17:25,metropolitano,Terán,Troncal,True,True,True,False,10.8,6.9,3.9,Saturado,Saturado,False,False,,341,True,False,False,simulado
+SIM-0081,USR-SIM-0081,2026-11-08T17:35,corredores,San Salvador,SE-08,True,True,True,False,11.2,9.3,1.9,Saturado,Saturado,False,False,,475,True,True,False,simulado
+SIM-0078,USR-SIM-0078,2026-11-08T19:05,metro_l1,Los Jardines,Línea 1,True,True,False,False,6.8,,,Saturado,,True,False,,205,True,False,True,simulado
+SIM-0296,USR-SIM-0296,2026-11-08T19:35,metro_l1,Atocongo,Línea 1,True,True,True,False,9.0,7.9,1.1,Saturado,Saturado,False,False,,525,True,True,True,simulado
+SIM-0384,USR-SIM-0384,2026-11-08T19:45,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,6.4,,,Saturado,,True,False,,647,True,False,True,simulado
+SIM-0596,USR-SIM-0596,2026-11-08T20:30,metropolitano,Balta,Troncal,True,True,True,True,8.1,9.8,1.7,De_pie,De_pie,False,False,,328,True,False,True,simulado
+SIM-0493,USR-SIM-0493,2026-11-08T20:45,metro_l1,Villa Maria,Línea 1,True,True,True,False,4.7,0.9,3.8,Saturado,Asientos,False,False,,327,True,False,False,simulado
+SIM-0201,USR-SIM-0201,2026-11-09T06:15,metro_l1,Angamos,Línea 1,True,True,True,False,7.6,5.0,2.6,Saturado,Saturado,False,False,,274,True,False,True,simulado
+SIM-0096,USR-SIM-0096,2026-11-09T06:35,alimentadores,Estación Naranjal Embarque Nº 15,Izaguirre                                                   ,True,True,False,False,14.0,,,Saturado,,False,False,,174,True,False,True,simulado
+SIM-0476,USR-SIM-0476,2026-11-09T07:05,metropolitano,Izaguirre,Troncal,True,True,False,False,9.2,,,Saturado,,False,False,,246,True,False,False,simulado
+SIM-0149,USR-SIM-0149,2026-11-09T07:55,metropolitano,Universidad,Troncal,True,True,True,True,8.0,12.1,4.1,De_pie,Saturado,False,False,,378,True,False,True,simulado
+SIM-0261,USR-SIM-0261,2026-11-09T08:20,metropolitano,Independencia,Troncal,True,True,False,False,6.9,,,Saturado,,False,False,,245,True,False,True,simulado
+SIM-0095,USR-SIM-0095,2026-11-09T08:50,metro_l1,Maria Auxiliadora,Línea 1,True,True,True,False,3.9,2.2,1.7,De_pie,Saturado,False,False,,296,True,False,True,simulado
+SIM-0289,USR-SIM-0289,2026-11-09T09:25,metro_l1,Villa Maria,Línea 1,True,True,False,False,8.7,,,Saturado,,False,False,,410,True,False,True,simulado
+SIM-0029,USR-SIM-0029,2026-11-09T10:30,alimentadores,Estación Naranjal Embarque Nº 11,Puno                                                        ,True,True,True,False,10.4,8.7,1.8,Asientos,Asientos,False,False,,477,True,False,True,simulado
+SIM-0107,USR-SIM-0107,2026-11-09T15:20,metropolitano,Canaval y Moreyra,Troncal,True,True,False,False,5.5,,,Saturado,,False,False,,510,True,False,True,simulado
+SIM-0500,USR-SIM-0500,2026-11-09T15:40,metropolitano,Tacna,Troncal,True,True,False,False,7.7,,,Asientos,,False,False,,177,True,False,True,simulado
+SIM-0370,USR-SIM-0370,2026-11-09T17:00,alimentadores,Estación Naranjal Embarque Nº 11,Collique,True,True,False,False,12.3,,,De_pie,,True,False,,347,True,False,True,simulado
+SIM-0445,USR-SIM-0445,2026-11-09T17:20,metro_l1,Los Jardines,Línea 1,True,True,False,False,3.8,,,De_pie,,False,False,,378,True,True,True,simulado
+SIM-0339,USR-SIM-0339,2026-11-09T17:45,alimentadores,Estación Naranjal Embarque Nº 14,Izaguirre                                                   ,True,True,False,False,10.7,,,Saturado,,True,False,,272,True,False,True,simulado
+SIM-0421,USR-SIM-0421,2026-11-09T18:05,metro_l1,El Angel,Línea 1,True,True,True,False,7.9,1.6,6.3,De_pie,De_pie,True,False,,227,True,True,True,simulado
+SIM-0486,USR-SIM-0486,2026-11-09T20:10,metro_l1,Gamarra,Línea 1,True,True,True,False,9.5,5.8,3.7,Saturado,Saturado,False,False,,503,True,False,True,simulado
+SIM-0066,USR-SIM-0066,2026-11-09T20:20,metro_l1,Maria Auxiliadora,Línea 1,True,True,True,False,6.0,3.3,2.6,Saturado,Saturado,False,False,,168,True,False,False,simulado
+SIM-0316,USR-SIM-0316,2026-11-09T21:05,corredores,Las Palmeras,201,True,False,False,False,6.0,,,De_pie,,False,False,,400,True,False,True,simulado
+SIM-0089,USR-SIM-0089,2026-11-10T05:40,metropolitano,Parque del Trabajo,Troncal,True,True,True,False,7.7,7.4,0.3,Asientos,Asientos,False,False,,416,True,True,False,simulado
+SIM-0236,USR-SIM-0236,2026-11-10T07:00,corredores,Ica,412,True,True,False,False,12.3,,,Saturado,,False,False,,265,True,False,True,simulado
+SIM-0125,USR-SIM-0125,2026-11-10T07:25,corredores,Aramburú,301,True,True,False,False,7.8,,,Saturado,,False,False,,288,True,False,True,simulado
+SIM-0389,USR-SIM-0389,2026-11-10T07:40,metropolitano,Uni,Troncal,True,True,True,False,8.0,6.6,1.4,Saturado,Saturado,False,False,,295,True,True,False,simulado
+SIM-0284,USR-SIM-0284,2026-11-10T08:05,alimentadores,Estación Naranjal Embarque Nº 16,Bertello                                                    ,True,True,True,True,12.2,11.0,1.2,De_pie,De_pie,False,False,,347,True,False,True,simulado
+SIM-0432,USR-SIM-0432,2026-11-10T08:05,corredores,Palmera (Los Sauces),204,True,True,True,False,10.1,8.2,1.9,De_pie,De_pie,False,False,,279,True,False,True,simulado
+SIM-0025,USR-SIM-0025,2026-11-10T09:20,metro_l1,Nicolas Arriola,Línea 1,True,True,False,False,6.6,,,De_pie,,False,False,,109,True,False,True,simulado
+SIM-0485,USR-SIM-0485,2026-11-10T09:55,metropolitano,Javier Prado,Troncal,True,True,True,True,9.5,10.8,1.4,Saturado,Saturado,False,False,,337,True,False,True,simulado
+SIM-0021,USR-SIM-0021,2026-11-10T10:05,metro_l1,Piramides Del Sol,Línea 1,True,False,False,False,4.7,,,De_pie,,False,False,,458,False,False,False,simulado
+SIM-0341,USR-SIM-0341,2026-11-10T10:15,metropolitano,Terán,Troncal,True,False,False,False,8.2,,,Asientos,,False,False,,187,True,False,False,simulado
+SIM-0408,USR-SIM-0408,2026-11-10T11:25,metro_l1,Villa El Salvador,Línea 1,True,True,False,False,2.1,,,De_pie,,False,False,,186,True,False,True,simulado
+SIM-0231,USR-SIM-0231,2026-11-10T11:40,alimentadores,Estación Naranjal Embarque Nº 14,Payet                                                       ,True,True,False,False,10.5,,,Asientos,,False,False,,425,True,False,False,simulado
+SIM-0430,USR-SIM-0430,2026-11-10T12:20,metropolitano,Chimpu Ocllo,Troncal,True,True,True,False,5.1,6.9,1.8,De_pie,De_pie,False,False,,95,True,False,False,simulado
+SIM-0506,USR-SIM-0506,2026-11-10T13:00,metro_l1,Villa El Salvador,Línea 1,True,True,True,False,7.8,6.1,1.6,De_pie,Saturado,False,False,,291,True,False,True,simulado
+SIM-0592,USR-SIM-0592,2026-11-10T14:45,metropolitano,Las Vegas,Troncal,True,True,False,False,5.4,,,Asientos,,False,False,,146,True,False,False,simulado
+SIM-0082,USR-SIM-0082,2026-11-10T14:55,metro_l1,Atocongo,Línea 1,True,True,False,False,5.9,,,De_pie,,False,False,,199,True,False,True,simulado
+SIM-0303,USR-SIM-0303,2026-11-10T16:30,corredores,Clínica Ricardo Palma,204,True,True,False,False,5.4,,,De_pie,,False,False,,313,True,False,True,simulado
+SIM-0299,USR-SIM-0299,2026-11-10T17:00,metropolitano,Escuela Militar,Troncal,True,True,True,False,9.0,7.8,1.2,Saturado,Saturado,False,False,,253,True,False,False,simulado
+SIM-0569,USR-SIM-0569,2026-11-10T17:20,metropolitano,Tomas Valle,Troncal,True,True,False,False,9.2,,,Saturado,,False,False,,205,True,False,True,simulado
+SIM-0247,USR-SIM-0247,2026-11-10T19:20,metropolitano,Izaguirre,Troncal,True,True,True,False,7.8,7.5,0.3,Saturado,De_pie,True,True,seguimiento,261,True,False,True,simulado
+SIM-0040,USR-SIM-0040,2026-11-10T20:45,metropolitano,Chimpu Ocllo,Troncal,True,True,True,False,9.9,15.3,5.4,Saturado,Saturado,False,False,,432,True,False,True,simulado
+SIM-0365,USR-SIM-0365,2026-11-10T21:10,metropolitano,Balta,Troncal,True,True,True,True,6.9,6.1,0.8,De_pie,Saturado,False,False,,776,True,False,True,simulado
+SIM-0088,USR-SIM-0088,2026-11-10T21:35,corredores,Moquegua,412,True,True,False,False,9.4,,,Asientos,,False,False,,157,True,True,False,simulado
+SIM-0187,USR-SIM-0187,2026-11-10T21:55,metropolitano,Canadá,Troncal,True,True,False,False,8.3,,,Asientos,,False,False,,267,True,False,True,simulado
+SIM-0492,USR-SIM-0492,2026-11-11T05:50,metropolitano,Quilca,Troncal,True,True,True,True,7.9,8.9,1.0,De_pie,De_pie,True,False,,274,True,False,True,simulado
+SIM-0524,USR-SIM-0524,2026-11-11T07:05,metropolitano,28 de Julio,Troncal,True,True,True,False,8.5,9.3,0.9,De_pie,Saturado,False,False,,665,True,False,False,simulado
+SIM-0422,USR-SIM-0422,2026-11-11T07:45,metropolitano,Uni,Troncal,True,True,True,False,7.4,9.4,2.0,De_pie,Asientos,False,False,,279,True,False,True,simulado
+SIM-0411,USR-SIM-0411,2026-11-11T07:55,metro_l1,Presbitero Maestro,Línea 1,True,True,False,False,5.3,,,Saturado,,False,False,,447,True,False,False,simulado
+SIM-0145,USR-SIM-0145,2026-11-11T08:15,corredores,Salaverry,SE-08,True,True,False,False,9.5,,,Saturado,,False,False,,885,True,False,False,simulado
+SIM-0520,USR-SIM-0520,2026-11-11T09:20,metro_l1,Presbitero Maestro,Línea 1,True,True,True,False,8.3,9.5,1.2,De_pie,De_pie,False,False,,689,True,False,True,simulado
+SIM-0007,USR-SIM-0007,2026-11-11T09:35,alimentadores,Estación Naranjal Embarque Nº 12,Belaunde                                                    ,True,True,False,False,15.0,,,De_pie,,True,False,,144,True,False,True,simulado
+SIM-0348,USR-SIM-0348,2026-11-11T17:05,corredores,Choquehuanca,305,True,True,False,False,11.3,,,Saturado,,False,False,,95,True,False,False,simulado
+SIM-0400,USR-SIM-0400,2026-11-11T17:55,metro_l1,Gamarra,Línea 1,True,True,True,False,6.0,5.0,1.1,Saturado,Saturado,False,False,,494,True,False,True,simulado
+SIM-0004,USR-SIM-0004,2026-11-11T18:30,metropolitano,Pacifico,Troncal,True,True,True,True,9.2,5.6,3.6,Saturado,De_pie,False,False,,253,True,False,False,simulado
+SIM-0092,USR-SIM-0092,2026-11-11T18:35,metro_l1,Presbitero Maestro,Línea 1,True,True,False,False,9.2,,,De_pie,,True,False,,386,True,False,True,simulado
+SIM-0584,USR-SIM-0584,2026-11-11T19:30,metro_l1,Jorge Chavez,Línea 1,True,True,False,False,8.1,,,Saturado,,False,False,,315,True,False,False,simulado
+SIM-0023,USR-SIM-0023,2026-11-12T06:05,metro_l1,Pumacahua,Línea 1,True,True,False,False,6.8,,,Saturado,,False,False,,608,True,False,False,simulado
+SIM-0056,USR-SIM-0056,2026-11-12T06:30,metropolitano,Honorio Delgado,Troncal,True,True,True,True,11.5,13.9,2.4,Saturado,Saturado,True,False,,332,True,True,True,simulado
+SIM-0162,USR-SIM-0162,2026-11-12T06:40,corredores,Grau,SE-09,True,True,True,False,9.0,7.4,1.6,Saturado,Saturado,False,False,,195,True,False,True,simulado
+SIM-0212,USR-SIM-0212,2026-11-12T07:15,metropolitano,Chimpu Ocllo,Troncal,True,True,True,False,8.7,13.9,5.2,De_pie,De_pie,False,False,,270,True,False,False,simulado
+SIM-0024,USR-SIM-0024,2026-11-12T08:20,metro_l1,Los Jardines,Línea 1,True,True,True,True,6.6,7.7,1.2,De_pie,De_pie,False,False,,240,True,False,False,simulado
+SIM-0120,USR-SIM-0120,2026-11-12T08:35,metro_l1,Caja De Agua,Línea 1,True,True,False,False,9.7,,,Saturado,,True,False,,131,True,False,True,simulado
+SIM-0523,USR-SIM-0523,2026-11-12T08:45,metro_l1,San Juan,Línea 1,True,True,False,False,5.7,,,Saturado,,False,False,,230,True,False,True,simulado
+SIM-0406,USR-SIM-0406,2026-11-12T09:10,metropolitano,Escuela Militar,Troncal,True,True,False,False,10.3,,,Saturado,,False,False,,383,True,False,True,simulado
+SIM-0038,USR-SIM-0038,2026-11-12T09:35,corredores,Santa Fe,SE-08,True,True,False,False,9.8,,,Saturado,,False,False,,290,True,False,False,simulado
+SIM-0342,USR-SIM-0342,2026-11-12T10:15,metropolitano,Las Vegas,Troncal,True,True,False,False,7.2,,,De_pie,,False,False,,382,True,False,True,simulado
+SIM-0217,USR-SIM-0217,2026-11-12T10:55,metropolitano,Colmena,Troncal,True,True,False,False,7.2,,,Asientos,,False,False,,313,True,False,True,simulado
+SIM-0575,USR-SIM-0575,2026-11-12T11:15,metropolitano,Escuela Militar,Troncal,True,True,False,False,6.7,,,De_pie,,True,False,,118,True,False,True,simulado
+SIM-0264,USR-SIM-0264,2026-11-12T16:45,metro_l1,San Carlos,Línea 1,True,True,True,True,5.5,6.0,0.5,De_pie,Asientos,True,False,,344,True,False,True,simulado
+SIM-0599,USR-SIM-0599,2026-11-12T17:15,corredores,Huancayo,305,True,True,True,False,8.3,9.9,1.6,De_pie,De_pie,False,False,,718,True,False,True,simulado
+SIM-0157,USR-SIM-0157,2026-11-12T17:30,metro_l1,Nicolas Arriola,Línea 1,True,False,False,False,6.5,,,De_pie,,False,False,,188,True,False,True,simulado
+SIM-0527,USR-SIM-0527,2026-11-12T18:00,metro_l1,Atocongo,Línea 1,True,False,False,False,8.9,,,Saturado,,False,False,,689,False,False,False,simulado
+SIM-0253,USR-SIM-0253,2026-11-12T18:15,metropolitano,Quilca,Troncal,True,True,True,True,6.5,7.0,0.5,Saturado,Saturado,False,False,,244,True,False,True,simulado
+SIM-0335,USR-SIM-0335,2026-11-12T18:35,metro_l1,Parque Industrial,Línea 1,True,False,False,False,5.6,,,Saturado,,False,False,,274,True,False,False,simulado
+SIM-0364,USR-SIM-0364,2026-11-12T18:35,metro_l1,Parque Industrial,Línea 1,True,True,True,False,9.4,10.7,1.2,De_pie,Saturado,False,False,,341,True,False,True,simulado
+SIM-0035,USR-SIM-0035,2026-11-12T18:40,metro_l1,Villa El Salvador,Línea 1,True,False,False,False,8.6,,,Saturado,,True,False,,485,True,True,False,simulado
+SIM-0377,USR-SIM-0377,2026-11-12T19:25,metro_l1,Ayacucho,Línea 1,True,True,False,False,9.4,,,Saturado,,False,False,,163,True,False,True,simulado
+SIM-0556,USR-SIM-0556,2026-11-12T19:35,metro_l1,Maria Auxiliadora,Línea 1,True,True,True,False,8.4,7.6,0.8,De_pie,Asientos,False,False,,431,True,False,True,simulado
+SIM-0173,USR-SIM-0173,2026-11-12T21:35,metro_l1,San Juan,Línea 1,True,True,False,False,3.9,,,Asientos,,False,False,,399,True,False,True,simulado
+SIM-0215,USR-SIM-0215,2026-11-12T22:15,metropolitano,Estadio Nacional,Troncal,True,True,False,False,6.5,,,De_pie,,True,False,,715,True,False,True,simulado

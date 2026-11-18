@@ -19,7 +19,7 @@ import Alert from '@/components/Alert';
 import HomeSheet from '@/components/HomeSheet';
 import { useAuth } from '@/context/AuthContext';
 import { getRecents, addRecent, RecentDestination } from '@/lib/recents';
-import { getStations, getRouteGeoJson, getCaminata, getRouteCodeFromStation, mapSystemToBackendApi, matchTrip, getStationPrediction } from '@/lib/services';
+import { getStations, getRouteGeoJson, getCaminata, getRouteCodeFromStation, mapSystemToBackendApi, matchTrip, getStationPrediction, registrarUso } from '@/lib/services';
 import { opcionesDeViaje } from '@/lib/aforo';
 import { tramoEntre } from '@/lib/route';
 import { TRIP_STORAGE_KEY, FOCUS_STORAGE_KEY } from '@/lib/constants';
@@ -192,6 +192,12 @@ export default function MapPage() {
       setForecast(data
         ? { current: data.current, predictions: data.forecast, referencia: data.referencia, ahora: data.ahora, proximas: data.proximas_salidas }
         : { sinDatos: true });
+      if (data && openCard) {
+        void registrarUso('consulta', station.system).catch(() => {});
+        if (data.current?.class !== 'Sin_servicio' && data.current?.recommendation) {
+          void registrarUso('recomendacion_vista', station.system).catch(() => {});
+        }
+      }
     } catch (error) {
       console.error('Error al obtener predicciones:', error);
       if (vigente()) setForecastError(true);
@@ -261,6 +267,8 @@ export default function MapPage() {
         return;
       }
       const best = ofrecibles[0]; // la de menor costo generalizado
+      void registrarUso('consulta', best.system).catch(() => {});
+      void registrarUso('recomendacion_vista', best.system).catch(() => {});
       setRecents(addRecent({
         label: typeof input === 'string' ? input : input.display_name,
         lat: response.destination.lat, lon: response.destination.lon,

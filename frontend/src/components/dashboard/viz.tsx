@@ -42,8 +42,8 @@ function useReducedMotion() {
 /* ---------- Tarjeta con vista de gráfico / tabla ---------- */
 export interface Tabla { cabeceras: string[]; filas: (string | number)[][] }
 
-export function ChartCard({ titulo, descripcion, tabla, vacio, children, className = '' }: {
-  titulo: string; descripcion?: string; tabla: Tabla; vacio?: string; children: ReactNode; className?: string;
+export function ChartCard({ titulo, descripcion, tabla, vacio, children, className = '', accion }: {
+  titulo: string; descripcion?: string; tabla: Tabla; vacio?: string; children: ReactNode; className?: string; accion?: ReactNode;
 }) {
   const [verTabla, setVerTabla] = useState(false);
   return (
@@ -63,6 +63,7 @@ export function ChartCard({ titulo, descripcion, tabla, vacio, children, classNa
         {vacio ? <p className="flex h-40 items-center justify-center rounded-xl bg-surface-2 px-4 text-center text-sm text-muted">{vacio}</p>
           : verTabla ? <TablaDatos tabla={tabla} titulo={titulo} /> : children}
       </div>
+      {accion && <div className="mt-3 flex justify-end">{accion}</div>}
     </section>
   );
 }
@@ -170,7 +171,7 @@ export function LineasSistemas({ datos, series, formato, formatoTip, dominio, al
             <Tooltip cursor={{ stroke: 'var(--viz-grid)' }} content={<Tip formato={formato} titulo={formatoTip} />} />
             {series.map((s) => (
               <Line key={s} type="monotone" dataKey={s} name={infoSistema(s).label} stroke={infoSistema(s).token} strokeWidth={2}
-                strokeLinecap="round" strokeLinejoin="round" connectNulls isAnimationActive={!reducido}
+                strokeLinecap="round" strokeLinejoin="round" isAnimationActive={!reducido}
                 dot={{ r: 4, fill: infoSistema(s).token, stroke: 'var(--surface)', strokeWidth: 2 }}
                 activeDot={{ r: 6, fill: infoSistema(s).token, stroke: 'var(--surface)', strokeWidth: 2 }} />
             ))}
@@ -196,9 +197,9 @@ export function Estado({ nivel, children }: { nivel: Nivel; children: ReactNode 
 }
 
 /* ---------- Tile de cifra ---------- */
-export function Cifra({ etiqueta, valor, detalle, nivel }: { etiqueta: string; valor: string; detalle?: string; nivel?: Nivel }) {
+export function Cifra({ etiqueta, valor, detalle, nivel, className = '' }: { etiqueta: string; valor: string; detalle?: string; nivel?: Nivel; className?: string }) {
   return (
-    <div className="card p-4">
+    <div className={`card p-4 ${className}`}>
       <p className="text-xs font-medium text-muted">{etiqueta}</p>
       <p className="mt-1 text-3xl font-bold tracking-tight text-fg">{valor}</p>
       {detalle && <p className="mt-1 text-xs text-muted">{nivel ? <Estado nivel={nivel}>{detalle}</Estado> : detalle}</p>}

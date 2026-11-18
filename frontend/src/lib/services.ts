@@ -2,6 +2,20 @@ import { api } from './client';
 import { PlanSalida, System, Station, StationPrediction } from './types';
 import { AutocompleteSuggestion, TripMatchResponse } from './types';
 
+type EventoUso = 'consulta' | 'recomendacion_vista';
+type SistemaUso = 'metro_l1' | 'metropolitano' | 'corredores' | 'alimentadores';
+
+/** Conteo agregado de una acción completada. La API descarta duplicados por UUID. */
+export const registrarUso = async (tipo: EventoUso, sistema: string): Promise<void> => {
+  const normalizado = mapSystemToBackendApi(sistema);
+  if (!(['metro_l1', 'metropolitano', 'corredores', 'alimentadores'] as string[]).includes(normalizado)) return;
+  await api.post('/uso/eventos', {
+    tipo,
+    sistema: normalizado as SistemaUso,
+    evento_id: crypto.randomUUID(),
+  });
+};
+
 // Caché breve y acotada: reutiliza consultas idénticas e incluye solicitudes en curso.
 // Las rutas dependen de la hora; los trazados estáticos pueden conservarse más tiempo.
 const consultas = new Map<string, { vence: number; promesa: Promise<any> }>();

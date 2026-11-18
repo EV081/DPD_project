@@ -22,6 +22,7 @@ from routes.feedback import feedback_bp
 from routes.geo import geo_bp  # <-- NUEVO: Blueprint para los GeoJSON de rutas y mapas
 from routes.eje2 import eje2_bp  # Eje 2: ruta peatonal segura y reportes de usuarios
 from routes.admin import admin_bp  # panel operacional (solo admin)
+from routes.uso import uso_bp  # eventos agregables del producto
 
 
 app = Flask(__name__)
@@ -118,6 +119,11 @@ app.register_blueprint(
 app.register_blueprint(
     admin_bp,
     url_prefix="/api/admin"
+)
+
+app.register_blueprint(
+    uso_bp,
+    url_prefix="/api/uso"
 )
 
 # Administrador desde backend/.env (SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD): se crea o actualiza al arrancar.

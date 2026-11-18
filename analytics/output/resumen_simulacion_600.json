@@ -1,0 +1,29 @@
+{
+  "metadatos": {
+    "modo_datos": "simulado",
+    "filas": 600,
+    "semilla": 20261112,
+    "usuarios_simulados": 600,
+    "diseno_escenario": "Un usuario ficticio por sesión; identificadores sin datos personales.",
+    "periodo_desde": "2026-10-14",
+    "periodo_hasta": "2026-11-12",
+    "advertencia": "Escenario sintético para demostración. ETA, aforo, disponibilidad y latencia son supuestos del generador; no son predicciones LightGBM ni mediciones reales de la API. No representa usuarios, viajes, delitos ni ventas reales."
+  },
+  "indicadores_control": {
+    "usuarios_simulados": 600,
+    "consultas": 600,
+    "recomendaciones_vistas": 549,
+    "abordajes_confirmados": 266,
+    "feedback": 77,
+    "mae_eta_min": 2.1,
+    "acierto_aforo": 0.7105,
+    "api_exito": 0.9833,
+    "latencia_p95_ms": 716,
+    "por_sistema": {
+      "alimentadores": 69,
+      "corredores": 118,
+      "metropolitano": 206,
+      "metro_l1": 207
+    }
+  }
+}

@@ -5,6 +5,7 @@ del ETA, validar el ajuste por tráfico (``modo_datos``) y calibrar el aforo per
 """
 from flask import Blueprint, jsonify
 from flask_jwt_extended import get_jwt_identity, jwt_required
+from sqlalchemy import and_, case, func
 
 from db.connection import db
 from routes.permisos import admin_required
@@ -102,6 +103,44 @@ def _resumen(filas: list[FeedbackViaje]) -> dict:
     }
 
 
+def _resumen_desde_bd() -> dict:
+    """Calcula las métricas en SQL sin cargar todos los viajes en memoria."""
+    aforo_completo = and_(
+        FeedbackViaje.aforo_mostrado.isnot(None), FeedbackViaje.aforo_mostrado != "",
+        FeedbackViaje.aforo_percibido.isnot(None), FeedbackViaje.aforo_percibido != "",
+    )
+    coincidencia = and_(aforo_completo, FeedbackViaje.aforo_mostrado == FeedbackViaje.aforo_percibido)
+    filas = (db.session.query(
+        FeedbackViaje.modo_datos,
+        func.count(FeedbackViaje.id),
+        func.count(FeedbackViaje.eta_mostrado_min),
+        func.sum(func.abs(FeedbackViaje.espera_real_min - FeedbackViaje.eta_mostrado_min)),
+        func.sum(FeedbackViaje.espera_real_min - FeedbackViaje.eta_mostrado_min),
+        func.sum(case((aforo_completo, 1), else_=0)),
+        func.sum(case((coincidencia, 1), else_=0)),
+    ).group_by(FeedbackViaje.modo_datos).all())
+
+    def presentar(totales: list[float]) -> dict:
+        n, eta_n, error_abs, error, aforo_n, aciertos = totales
+        return {
+            "n": int(n),
+            "eta": {"n": int(eta_n),
+                    "mae_min": round(error_abs / eta_n, 2) if eta_n else None,
+                    "sesgo_min": round(error / eta_n, 2) if eta_n else None},
+            "aforo": {"n": int(aforo_n),
+                      "acierto": round(aciertos / aforo_n, 3) if aforo_n else None},
+        }
+
+    total = [0.0] * 6
+    por_modo = {modo: presentar([0.0] * 6) for modo in MODOS}
+    for modo, *valores in filas:
+        numeros = [float(valor or 0) for valor in valores]
+        total = [a + b for a, b in zip(total, numeros)]
+        if modo in por_modo:
+            por_modo[modo] = presentar(numeros)
+    return {**presentar(total), "por_modo_datos": por_modo}
+
+
 @feedback_bp.route("/resumen", methods=["GET"])
 @admin_required
 def resumen_feedback():
@@ -113,6 +152,4 @@ def resumen_feedback():
     security:
       - Bearer: []
     """
-    filas = FeedbackViaje.query.all()
-    por_modo = {m: _resumen([f for f in filas if f.modo_datos == m]) for m in MODOS}
-    return jsonify({**_resumen(filas), "por_modo_datos": por_modo}), 200
+    return jsonify(_resumen_desde_bd()), 200

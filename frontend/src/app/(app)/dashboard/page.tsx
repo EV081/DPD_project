@@ -1,14 +1,16 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Tabs } from '@mantine/core';
-import { Activity, RefreshCw } from 'lucide-react';
+import { useCallback, useEffect, useId, useMemo, useState } from 'react';
+import { Switch, Tabs } from '@mantine/core';
+import LaboratorioSimulacion from '@/components/dashboard/LaboratorioSimulacion';
+import { Activity, Download, RefreshCw } from 'lucide-react';
 import DataTable, { type DataColumn } from '@/components/DataTable';
 import Alert from '@/components/Alert';
 import { Skeleton } from '@/components/Spinner';
 import { ChartCard, Cifra, Tendencia, Columnas, BarrasH, DECIMAL, ENTERO, Estado, LineasSistemas, SISTEMAS_MODELO, claveSistema, fechaCorta, infoSistema, type Nivel } from '@/components/dashboard/viz';
 import { getDashboard, type Dashboard, type EjecucionPipeline } from '@/lib/admin';
 import { errorMessage } from '@/lib/client';
+import { downloadCsv } from '@/lib/csv';
 
 const REFRESCO_MS = 60_000;
 const PORCENTAJE = new Intl.NumberFormat('es-PE', { style: 'percent', maximumFractionDigits: 1 });
@@ -24,10 +26,11 @@ const ESTADO_JOB: Record<string, { nivel: Nivel; texto: string }> = {
 const estadoJob = (e: string) => ESTADO_JOB[e] ?? { nivel: 'muted' as Nivel, texto: e };
 
 function Seccion({ titulo, descripcion, children }: { titulo: string; descripcion?: string; children: React.ReactNode }) {
+  const id = useId();
   return (
-    <section className="space-y-3" aria-labelledby={`sec-${titulo}`}>
+    <section className="space-y-3" aria-labelledby={id}>
       <div>
-        <h2 id={`sec-${titulo}`} className="text-base font-bold text-fg">{titulo}</h2>
+        <h2 id={id} className="text-base font-bold text-fg">{titulo}</h2>
         {descripcion && <p className="text-xs text-muted">{descripcion}</p>}
       </div>
       {children}
@@ -53,6 +56,8 @@ export default function DashboardPage() {
   const [datos, setDatos] = useState<Dashboard | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [actualizando, setActualizando] = useState(false);
+  const [refrescoAutomatico, setRefrescoAutomatico] = useState(true);
+  const [vista, setVista] = useState<'simulacion' | 'operacion'>('simulacion');
 
   const cargar = useCallback(async () => {
     setActualizando(true);
@@ -67,10 +72,35 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
+    if (vista !== 'operacion') return;
     void cargar();
+    if (!refrescoAutomatico) return;
     const id = setInterval(() => { if (!document.hidden) void cargar(); }, REFRESCO_MS);
     return () => clearInterval(id);
-  }, [cargar]);
+  }, [cargar, refrescoAutomatico, vista]);
+
+  const selector = (
+    <div role="group" aria-label="Vista del panel" className="flex flex-wrap gap-2">
+      <button type="button" aria-pressed={vista === 'simulacion'} onClick={() => setVista('simulacion')}
+        className={vista === 'simulacion' ? 'btn btn-primary' : 'btn btn-secondary'}>Simulaciones del curso</button>
+      <button type="button" aria-pressed={vista === 'operacion'} onClick={() => setVista('operacion')}
+        className={vista === 'operacion' ? 'btn btn-primary' : 'btn btn-secondary'}>Operación de la app</button>
+    </div>
+  );
+
+  if (vista === 'simulacion') {
+    return (
+      <div className="viz-root mx-auto w-full max-w-7xl space-y-4 px-4 py-6 sm:px-6">
+        <header>
+          <p className="eyebrow">Administración</p>
+          <h1 className="mt-1 flex items-center gap-2 text-2xl font-bold tracking-tight text-fg"><Activity size={22} aria-hidden className="text-brand" /> Panel de simulaciones</h1>
+          <p className="mt-1 max-w-2xl text-sm text-muted">Escenario del curso con 600 usuarios ficticios y 30 gráficos: los 6 clave en Principal y el resto por sección. Los datos son sintéticos: no son personas, viajes ni predicciones reales y no se suman a la actividad de la app.</p>
+        </header>
+        {selector}
+        <LaboratorioSimulacion />
+      </div>
+    );
+  }
 
   return (
     <div className="viz-root mx-auto w-full max-w-6xl space-y-6 px-4 py-6 sm:px-6">
@@ -80,19 +110,42 @@ export default function DashboardPage() {
           <h1 className="mt-1 flex items-center gap-2 text-2xl font-bold tracking-tight text-fg"><Activity size={22} aria-hidden className="text-brand" /> Panel operacional</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted">Estado de la API, los modelos y los procesos programados, con el uso de la app. Todo es agregado: no se muestran personas ni reportes individuales.</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-end gap-3">
+          <Switch checked={refrescoAutomatico} onChange={(e) => setRefrescoAutomatico(e.currentTarget.checked)}
+            label="Actualizar cada minuto" size="sm" color="var(--brand)" />
           {datos && <span className="text-xs text-muted" aria-live="polite">Actualizado {fechaHora(datos.generado_en)}</span>}
-          <button type="button" onClick={() => void cargar()} disabled={actualizando} className="btn" aria-label="Actualizar el panel">
+          {datos && <button type="button" onClick={() => descargarResumen(datos)} className="btn btn-secondary" aria-label="Descargar resumen del panel en CSV">
+            <Download size={16} aria-hidden /> Resumen CSV
+          </button>}
+          <button type="button" onClick={() => void cargar()} disabled={actualizando} className="btn" aria-label="Actualizar el panel ahora">
             <RefreshCw size={16} aria-hidden className={actualizando ? 'animate-spin motion-reduce:animate-none' : ''} /> Actualizar
           </button>
         </div>
       </header>
+      {selector}
 
       {error && <Alert tono="danger">{error}</Alert>}
       {!datos && !error && <Cargando />}
       {datos && <Contenido d={datos} desactualizado={actualizando || !!error} />}
     </div>
   );
+}
+
+function descargarResumen(d: Dashboard) {
+  const abordajes14 = d.uso.abordajes_por_dia.reduce((total, fila) => total + fila.n, 0);
+  downloadCsv('resumen_operacional', ['Indicador', 'Valor', 'Alcance'], [
+    ['Generado', d.generado_en, 'Hora del servidor'],
+    ['Cuentas registradas', d.uso.usuarios_total, 'Acumulado'],
+    ['Cuentas nuevas', d.uso.usuarios_nuevos_7d, 'Últimos 7 días'],
+    ['Consultas de viaje o estación', d.uso.consultas_14d ?? 0, 'Últimos 14 días'],
+    ['Recomendaciones de viaje o estación', d.uso.recomendaciones_14d ?? 0, 'Últimos 14 días'],
+    ['Abordajes confirmados', abordajes14, 'Últimos 14 días'],
+    ['Respuestas de feedback', d.uso.feedback_total, 'Acumulado'],
+    ['Alertas del modelo', d.monitoreo.alertas_activas.length, 'Última semana'],
+    ['Procesos con error', d.pipelines.con_error, 'Últimas ejecuciones'],
+    ['Reportes de seguridad activos', d.eje2.activos, 'Conteo agregado'],
+    ['Calles recalibradas', d.eje2.segmentos_ajustados, 'Último ajuste disponible'],
+  ]);
 }
 
 function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolean }) {
@@ -121,8 +174,10 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
 
   return (
     <div className="viz-refetch space-y-8" data-stale={desactualizado}>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
         <Cifra etiqueta="Cuentas registradas" valor={ENTERO.format(uso.usuarios_total)} detalle={`${ENTERO.format(uso.usuarios_nuevos_7d)} nuevas en 7 días`} />
+        <Cifra etiqueta="Consultas de viaje o estación" valor={ENTERO.format(uso.consultas_14d ?? 0)} detalle="últimos 14 días" />
+        <Cifra etiqueta="Recomendaciones vistas" valor={ENTERO.format(uso.recomendaciones_14d ?? 0)} detalle="viajes y estaciones · 14 días" />
         <Cifra etiqueta="Abordajes registrados (14 días)" valor={ENTERO.format(abordajes14)} detalle="botón «Ya abordé»" />
         <Cifra etiqueta="Respuestas de feedback" valor={ENTERO.format(uso.feedback_total)} detalle={`${ENTERO.format(uso.feedback_7d)} en 7 días`} />
         <Cifra etiqueta="Alertas del modelo" valor={ENTERO.format(alertas)} nivel={alertas ? 'warn' : 'ok'} detalle={alertas ? 'en la última semana' : 'sin alertas'} />
@@ -168,8 +223,18 @@ function Contenido({ d, desactualizado }: { d: Dashboard; desactualizado: boolea
       </Tabs.Panel>
 
       <Tabs.Panel value="uso" pt="xl">
-      <Seccion titulo="Uso" descripcion="Abordajes confirmados por las personas usuarias con «Ya abordé». Es una muestra de quienes usan la app, no la demanda real.">
+      <Seccion titulo="Uso" descripcion="Acciones de viaje y estación registradas en la simulación y el mapa. Una consulta, una recomendación y un abordaje son acciones distintas; no equivalen a la demanda total del transporte.">
         <div className="grid gap-3 lg:grid-cols-2">
+          <ChartCard titulo="Consultas de viaje o estación" descripcion="Últimos 14 días · solicitudes con respuesta válida"
+            tabla={{ cabeceras: ['Fecha', 'Consultas'], filas: (uso.consultas_por_dia ?? []).map((x) => [x.fecha, x.n]) }}
+            vacio={!uso.consultas_14d ? 'Todavía no hay consultas registradas en los últimos 14 días.' : undefined}>
+            <Tendencia datos={uso.consultas_por_dia ?? []} x="fecha" nombre="Consultas" formatoX={(v) => fechaCorta(String(v))} formatoTip={(l) => fechaCorta(String(l))} />
+          </ChartCard>
+          <ChartCard titulo="Recomendaciones vistas" descripcion="Últimos 14 días · viajes y estaciones con propuesta mostrada"
+            tabla={{ cabeceras: ['Fecha', 'Recomendaciones'], filas: (uso.recomendaciones_por_dia ?? []).map((x) => [x.fecha, x.n]) }}
+            vacio={!uso.recomendaciones_14d ? 'Todavía no hay recomendaciones vistas en los últimos 14 días.' : undefined}>
+            <Tendencia datos={uso.recomendaciones_por_dia ?? []} x="fecha" nombre="Recomendaciones" formatoX={(v) => fechaCorta(String(v))} formatoTip={(l) => fechaCorta(String(l))} />
+          </ChartCard>
           <ChartCard titulo="Abordajes por día" descripcion="Últimos 14 días"
             tabla={{ cabeceras: ['Fecha', 'Abordajes'], filas: uso.abordajes_por_dia.map((x) => [x.fecha, x.n]) }}
             vacio={abordajes14 === 0 ? 'Todavía no hay abordajes registrados en los últimos 14 días.' : undefined}>

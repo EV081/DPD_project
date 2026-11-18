@@ -40,6 +40,19 @@ export default function Basemap() {
       try {
         const vector = maplibreGL({ style: mobilityStyle(style, resolved === 'dark'), attributionControl: false });
         layer = vector;
+        // Al desmontar el mapa (p. ej. al pasar al panel) Leaflet puede haber retirado ya el contenedor del
+        // panel; la limpieza original lanza NotFoundError en removeChild. Esta versión tolera ese caso y
+        // sigue liberando el contexto WebGL de MapLibre.
+        const layerApi = vector as unknown as { onRemove: (m: import('leaflet').Map) => void; _glMap: unknown };
+        const originalOnRemove = layerApi.onRemove.bind(vector);
+        layerApi.onRemove = (m) => {
+          try { originalOnRemove(m); } catch {
+            const container = vector.getContainer();
+            container?.parentNode?.removeChild(container);
+            vector.getMaplibreMap()?.remove();
+            layerApi._glMap = null;
+          }
+        };
         vector.addTo(map);
         vector.getContainer().style.zIndex = '3';
         gl = vector.getMaplibreMap();
