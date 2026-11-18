@@ -14,11 +14,12 @@ from flask import Blueprint, jsonify
 from sqlalchemy import extract, func
 
 from db.connection import db
-from db.tablas import (AjusteRiesgoSegmento, CalibracionModelo, MonitoreoModelo, PipelineEjecucion, ReporteSeguridad,
+from db.tablas import (AjusteRiesgoSegmento, CalibracionModelo, EventoUso, MonitoreoModelo, PipelineEjecucion, ReporteSeguridad,
                        ValidacionHora, ahora_utc)
 from routes.auth import User
-from routes.feedback import FeedbackViaje, MODOS, _resumen
+from routes.feedback import FeedbackViaje, _resumen_desde_bd
 from routes.permisos import admin_required
+from services.calendario import TZ_LIMA
 
 admin_bp = Blueprint("admin", __name__)
 
@@ -120,31 +121,44 @@ def _rellenar_dias(valores: dict[str, int], dias: int, hoy: dt.date) -> list[dic
 
 
 def _uso(ahora: dt.datetime) -> dict:
-    hoy = ahora.date()
-    hace7, hace14, hace30 = ahora - dt.timedelta(days=7), ahora - dt.timedelta(days=14), ahora - dt.timedelta(days=30)
-    naive = lambda x: x.replace(tzinfo=None)  # noqa: E731 - ValidacionHora y FeedbackViaje guardan hora local/servidor sin zona
+    # ValidacionHora.fecha_hora contiene hora local de Lima sin zona. Las fechas
+    # de usuarios y feedback, en cambio, se siguen comparando con UTC.
+    lima = ahora.astimezone(TZ_LIMA)
+    hoy_lima = lima.date()
+    inicio_14d_lima = hoy_lima - dt.timedelta(days=13)
+    corte_14d_lima = dt.datetime.combine(inicio_14d_lima, dt.time.min)
+    corte_30d_lima = (lima - dt.timedelta(days=30)).replace(tzinfo=None)
+    hace7_utc = (ahora - dt.timedelta(days=7)).replace(tzinfo=None)
 
-    por_dia = _serie_diaria(ValidacionHora.fecha_hora, func.sum(ValidacionHora.n), naive(hace14), (ValidacionHora.fuente == "app",))
+    por_dia = _serie_diaria(ValidacionHora.fecha_hora, func.sum(ValidacionHora.n), corte_14d_lima, (ValidacionHora.fuente == "app",))
     por_sistema = (db.session.query(ValidacionHora.sistema, func.sum(ValidacionHora.n))
-                   .filter(ValidacionHora.fuente == "app", ValidacionHora.fecha_hora >= naive(hace30))
+                   .filter(ValidacionHora.fuente == "app", ValidacionHora.fecha_hora >= corte_30d_lima)
                    .group_by(ValidacionHora.sistema).order_by(func.sum(ValidacionHora.n).desc()).all())
     por_hora = dict(db.session.query(extract("hour", ValidacionHora.fecha_hora), func.sum(ValidacionHora.n))
-                    .filter(ValidacionHora.fuente == "app", ValidacionHora.fecha_hora >= naive(hace30))
+                    .filter(ValidacionHora.fuente == "app", ValidacionHora.fecha_hora >= corte_30d_lima)
                     .group_by(extract("hour", ValidacionHora.fecha_hora)).all())
+    eventos = (db.session.query(EventoUso.dia_lima, EventoUso.tipo, func.count(EventoUso.id))
+               .filter(EventoUso.dia_lima >= inicio_14d_lima, EventoUso.dia_lima <= hoy_lima)
+               .group_by(EventoUso.dia_lima, EventoUso.tipo).all())
+    consultas = {dia.isoformat(): int(n) for dia, tipo, n in eventos if tipo == "consulta"}
+    recomendaciones = {dia.isoformat(): int(n) for dia, tipo, n in eventos if tipo == "recomendacion_vista"}
     return {
         "usuarios_total": User.query.count(),
-        "usuarios_nuevos_7d": User.query.filter(User.created_at >= naive(hace7)).count(),
+        "usuarios_nuevos_7d": User.query.filter(User.created_at >= hace7_utc).count(),
         "feedback_total": FeedbackViaje.query.count(),
-        "feedback_7d": FeedbackViaje.query.filter(FeedbackViaje.creado_en >= naive(hace7)).count(),
-        "abordajes_por_dia": _rellenar_dias(por_dia, 14, hoy),
+        "feedback_7d": FeedbackViaje.query.filter(FeedbackViaje.creado_en >= hace7_utc).count(),
+        "abordajes_por_dia": _rellenar_dias(por_dia, 14, hoy_lima),
         "abordajes_por_sistema": [{"sistema": s, "n": int(n or 0)} for s, n in por_sistema],
         "abordajes_por_hora": [{"hora": h, "n": int(por_hora.get(h, por_hora.get(float(h), 0)) or 0)} for h in range(24)],
+        "consultas_14d": sum(consultas.values()),
+        "recomendaciones_14d": sum(recomendaciones.values()),
+        "consultas_por_dia": _rellenar_dias(consultas, 14, hoy_lima),
+        "recomendaciones_por_dia": _rellenar_dias(recomendaciones, 14, hoy_lima),
     }
 
 
 def _feedback() -> dict:
-    filas = FeedbackViaje.query.all()
-    return {**_resumen(filas), "por_modo_datos": {m: _resumen([f for f in filas if f.modo_datos == m]) for m in MODOS}}
+    return _resumen_desde_bd()
 
 
 def _eje2(ahora: dt.datetime) -> dict:

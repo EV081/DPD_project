@@ -37,6 +37,9 @@ export interface Dashboard {
   };
   uso: {
     usuarios_total: number; usuarios_nuevos_7d: number; feedback_total: number; feedback_7d: number;
+    consultas_14d: number; recomendaciones_14d: number;
+    consultas_por_dia: { fecha: string; n: number }[];
+    recomendaciones_por_dia: { fecha: string; n: number }[];
     abordajes_por_dia: { fecha: string; n: number }[];
     abordajes_por_sistema: { sistema: string; n: number }[];
     abordajes_por_hora: { hora: number; n: number }[];

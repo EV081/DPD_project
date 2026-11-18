@@ -9,7 +9,7 @@ import Alert from '@/components/Alert';
 import PlanSalida from '@/components/PlanSalida';
 import { Spinner } from '@/components/Spinner';
 import { claseAforo, etiquetaClase, etiquetaRecomendacion, formatoHora } from '@/lib/aforo';
-import { getStationPrediction, getStations, getTripPlan, mapSystemToBackendApi } from '@/lib/services';
+import { getStationPrediction, getStations, getTripPlan, mapSystemToBackendApi, registrarUso } from '@/lib/services';
 import { destinosDe, etiquetaEstacion, hoyLima, lineasDe, origenesDe, seleccion, sumarDias, usaRuta } from '@/lib/simulacion';
 import { systemInfo } from '@/lib/systems';
 import type { PlanSalida as Plan, PredictionItem, Station, StationPrediction } from '@/lib/types';
@@ -215,6 +215,11 @@ export default function SimulacionPage() {
       setPlan(nuevoPlan);
       setResultado(datos);
       setVerResultados(true);
+      // El conteo operacional solo se envía después de calcular y mostrar un viaje válido.
+      void registrarUso('consulta', origen.system).catch(() => {});
+      if (nuevoPlan.recomendada || nuevoPlan.ultima_puntual) {
+        void registrarUso('recomendacion_vista', origen.system).catch(() => {});
+      }
     } catch (fallo: any) {
       setError(fallo?.response?.data?.error
         ?? 'No se pudo calcular este viaje. Comprueba la conexión con la API o prueba otra fecha.');

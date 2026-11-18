@@ -61,6 +61,30 @@ class ValidacionHora(db.Model):
     __table_args__ = (db.Index("ix_validacion_sistema_hora", "sistema", "fecha_hora"),)
 
 
+class EventoUso(db.Model):
+    """Acción agregable del producto; el UUID evita duplicados de reintentos.
+
+    No guarda cuenta, estación, recorrido, ubicación ni contenido de la consulta.
+    ``dia_lima`` permite resumir por fecha sin depender de la zona horaria de la base.
+    """
+
+    __tablename__ = "evento_uso"
+
+    id = db.Column(db.String(36), primary_key=True)
+    tipo = db.Column(db.String(24), nullable=False)
+    sistema = db.Column(db.String(20), nullable=False)
+    creado_en = db.Column(db.DateTime(timezone=True), nullable=False, default=ahora_utc)
+    dia_lima = db.Column(db.Date, nullable=False)
+
+    __table_args__ = (
+        db.CheckConstraint("tipo IN ('consulta', 'recomendacion_vista')", name="ck_evento_uso_tipo"),
+        db.CheckConstraint("sistema IN ('metro_l1', 'metropolitano', 'corredores', 'alimentadores')",
+                           name="ck_evento_uso_sistema"),
+        db.Index("ix_evento_uso_dia_tipo", "dia_lima", "tipo"),
+        db.Index("ix_evento_uso_sistema_dia", "sistema", "dia_lima"),
+    )
+
+
 class AjusteRiesgoSegmento(db.Model):
     """Ajuste del riesgo de una calle por reportes recientes (lo calcula ``eje2-recalibrar``; vuelve a 0 sin reportes)."""
 
